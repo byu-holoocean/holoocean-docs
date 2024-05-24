@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Changelog — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="../holoocean/index.html" rel="next" title="HoloOcean"/>
+<link href="../develop/semaphores.html" rel="prev" title="Communication Protocol"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version">
+                1.0.0
+              </div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-1-0-0">HoloOcean 1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-0-5-8">HoloOcean 0.5.8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#highlights">Highlights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-0-5-0">HoloOcean 0.5.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Highlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changes">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-0-4-1">HoloOcean 0.4.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Bug Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-0-4-0">HoloOcean 0.4.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Highlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Bug Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pre-holoocean">Pre-HoloOcean</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">Changelog</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/changelog/changelog.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading"></a></h1>
+<section id="holoocean-1-0-0">
+<h2>HoloOcean 1.0.0<a class="headerlink" href="#holoocean-1-0-0" title="Permalink to this heading"></a></h2>
+<p><em>4/29/2024</em></p>
+<p>Migrating to GitHub, and updating license phrasing.</p>
+</section>
+<section id="holoocean-0-5-8">
+<h2>HoloOcean 0.5.8<a class="headerlink" href="#holoocean-0-5-8" title="Permalink to this heading"></a></h2>
+<p><em>4/3/2/2024</em></p>
+<p>Added custom dynamics and updated installation instructions to reflect current installation process to comply with Unreal Engine EULA.
+(Note that the version numbers 0.5.1-0.5.7 are absent because of some difficulties with updating the PyPI package. So 0.5.8 is the first release after 0.5.0)</p>
+<section id="highlights">
+<h3>Highlights<a class="headerlink" href="#highlights" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Added magnetometer</p></li>
+<li><p>Added dynamics sensor</p></li>
+<li><p>Simple PD controller for HoveringAUV</p></li>
+<li><p>Added SurfaceVessel agent</p></li>
+<li><p>misc bug fixes and documentation improvements</p></li>
+</ul>
+</section>
+</section>
+<section id="holoocean-0-5-0">
+<h2>HoloOcean 0.5.0<a class="headerlink" href="#holoocean-0-5-0" title="Permalink to this heading"></a></h2>
+<p><em>3/22/2022</em></p>
+<p>Large sonar upgrade!</p>
+<section id="id1">
+<h3>Highlights<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>3 new sonar sensors</p></li>
+<li><p>Upgraded noise modeling in Imaging and Profiling Sonar</p></li>
+<li><p>Lots of misc bug fixes!</p></li>
+<li><p>Upgrade to Unreal Engine 4.27</p></li>
+</ul>
+</section>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Added many new sonar sensors, including</p>
+<ul>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.SidescanSonar" title="holoocean.sensors.SidescanSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">SidescanSonar</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.ProfilingSonar" title="holoocean.sensors.ProfilingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProfilingSonar</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.SinglebeamSonar" title="holoocean.sensors.SinglebeamSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglebeamSonar</span></code></a></p></li>
+</ul>
+</li>
+<li><p>ImagingSonar now has significantly improved noise modeling</p></li>
+<li><p>Can now specify a lifetime parameter to draw functions</p></li>
+<li><p>Now based on Unreal Engine 4.27</p></li>
+</ul>
+</section>
+<section id="changes">
+<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>SonarSensor is now ImagingSonar</p></li>
+<li><p>Rotations are now a correct [roll, pitch, yaw].</p></li>
+<li><p>step function no longer returns terminal, reward and info. Only state.</p></li>
+<li><p>Environments no longer publish over lcm in pre-start ticks.</p></li>
+</ul>
+</section>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Timeouts are turned off for sonars to prevent premature termination of the simulation.</p></li>
+<li><p>Specifying a number of ticks to execute at once now ticks for all of them.</p></li>
+</ul>
+</section>
+</section>
+<section id="holoocean-0-4-1">
+<h2>HoloOcean 0.4.1<a class="headerlink" href="#holoocean-0-4-1" title="Permalink to this heading"></a></h2>
+<p><em>9/21/2021</em></p>
+<section id="id2">
+<h3>Bug Fixes<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Required pywin32 &lt;= 228 for easier Windows install.</p></li>
+</ul>
+</section>
+</section>
+<section id="holoocean-0-4-0">
+<h2>HoloOcean 0.4.0<a class="headerlink" href="#holoocean-0-4-0" title="Permalink to this heading"></a></h2>
+<p><em>9/17/2021</em></p>
+<p>First official release!</p>
+<section id="id3">
+<h3>Highlights<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>New Ocean environment package.</p></li>
+<li><p>2 new agents and 7 new sensors, along with updating of all previous sensors.</p></li>
+<li><p>Complete rebranding to HoloOcean.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>New Features<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Added agents <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.HoveringAUV" title="holoocean.agents.HoveringAUV"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoveringAUV</span></code></a> and <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.TorpedoAUV" title="holoocean.agents.TorpedoAUV"><code class="xref py py-class docutils literal notranslate"><span class="pre">TorpedoAUV</span></code></a></p></li>
+<li><p>Added a plethora of new sensors, all with optional noise configurations</p>
+<ul>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.DVLSensor" title="holoocean.sensors.DVLSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DVLSensor</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.DepthSensor" title="holoocean.sensors.DepthSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DepthSensor</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.GPSSensor" title="holoocean.sensors.GPSSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPSSensor</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.PoseSensor" title="holoocean.sensors.PoseSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoseSensor</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.AcousticBeaconSensor" title="holoocean.sensors.AcousticBeaconSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code></a></p></li>
+<li><p><a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.OpticalModemSensor" title="holoocean.sensors.OpticalModemSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code></a></p></li>
+</ul>
+</li>
+<li><p>New <a class="reference internal" href="../packages/Ocean/Ocean.html#ocean"><span class="std std-ref">Ocean</span></a> package.</p></li>
+<li><p>Added frame rate capping option.</p></li>
+<li><p>Added ticks_per_sec and frames_per_sec to scenario config, see <a class="reference internal" href="../usage/scenarios.html#configure-framerate"><span class="std std-ref">Frame Rates</span></a>.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Changes<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Everything is now rebranded from Holodeck -&gt; HoloOcean.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Bug Fixes<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Sensors now return values from their location, not the agent location.</p></li>
+<li><p>IMU now returns angular velocity instead of linear velocity.</p></li>
+<li><p>Various integer -&gt; float changes in scenario loading.</p></li>
+</ul>
+</section>
+</section>
+<section id="pre-holoocean">
+<h2>Pre-HoloOcean<a class="headerlink" href="#pre-holoocean" title="Permalink to this heading"></a></h2>
+<p>See <a class="reference external" href="https://holodeck.readthedocs.io/en/latest/changelog/changelog.html">Holodeck changelog</a></p>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="../develop/semaphores.html" rel="prev" title="Communication Protocol"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="../holoocean/index.html" rel="next" title="HoloOcean">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
