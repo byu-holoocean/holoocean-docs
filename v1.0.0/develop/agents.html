@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Developing Agents — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -75,7 +75,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
@@ -116,12 +116,12 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="developing-agents">
-<span id="develop-agents"></span><h1>Developing Agents<a class="headerlink" href="#developing-agents" title="Permalink to this heading"></a></h1>
+<span id="develop-agents"></span><h1>Developing Agents<a class="headerlink" href="#developing-agents" title="Link to this heading"></a></h1>
 <p>Unfortunately, due to agents needing to exist on the python, C++, and UE4 portions this is a rather involved process. It’s not difficult, mostly just tedious, but I’ll walk you through it here.</p>
 <section id="general-agents">
-<h2>General Agents<a class="headerlink" href="#general-agents" title="Permalink to this heading"></a></h2>
+<h2>General Agents<a class="headerlink" href="#general-agents" title="Link to this heading"></a></h2>
 <section id="python-portion">
-<h3>Python Portion<a class="headerlink" href="#python-portion" title="Permalink to this heading"></a></h3>
+<h3>Python Portion<a class="headerlink" href="#python-portion" title="Link to this heading"></a></h3>
 <p>First, open up <code class="docutils literal notranslate"><span class="pre">holodeck/client/src/agents.py</span></code>. To create my agent, I usually just copy <code class="docutils literal notranslate"><span class="pre">TurtleAgent</span></code> and edit it to my liking. You’ll need to edit the following:</p>
 <ul class="simple">
 <li><p>Class name</p></li>
@@ -159,7 +159,7 @@
 <p>Lower in the same file, in the <code class="docutils literal notranslate"><span class="pre">AgentDefinition</span></code> class, there is a dictionary mapping names to python classes. Add an entry for our new class, something like <code class="docutils literal notranslate"><span class="pre">"CustomAgent":</span> <span class="pre">CustomAgent,</span></code>. The name should match <code class="docutils literal notranslate"><span class="pre">agent_type</span></code> set in your class.</p>
 </section>
 <section id="c-portion">
-<h3>C++ Portion<a class="headerlink" href="#c-portion" title="Permalink to this heading"></a></h3>
+<h3>C++ Portion<a class="headerlink" href="#c-portion" title="Link to this heading"></a></h3>
 <p>Next, open up <code class="docutils literal notranslate"><span class="pre">holodeck/engine</span></code> in UE4. Then go to File-&gt;Open Visual Studio (or open your project files in your C++ editor of choice). You’ll need to duplicate 4 TurtleAgent files, and rename them accordingly: TurtleAgent.cpp, TurtleAgent.h, TurtleAgentController.cpp, and TurtleAgentController.h should be duplicated to CustomAgent.cpp, CustomAgent.h, CustomAgentController.cpp, and CustomAgentController.h. Make sure they stay in the same folder as the files they’re duplicates of (should be in some combination of public/private folders).</p>
 <p>Next, we’ll make edits to CustomAgent.h. Do the following:</p>
 <ul class="simple">
@@ -189,18 +189,18 @@
 <p>That covers the C++ portion.</p>
 </section>
 <section id="unreal-engine-4">
-<h3>Unreal Engine 4<a class="headerlink" href="#unreal-engine-4" title="Permalink to this heading"></a></h3>
+<h3>Unreal Engine 4<a class="headerlink" href="#unreal-engine-4" title="Link to this heading"></a></h3>
 <p>This is the one where things can be a little hidden. In UE4, click the compile button on the top toolbar. This will load our new C++ code into UE4. If you get errors, you likely did something wrong in the previous step and will have to go back to debug. Once compiling happens successfully, navigate to <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents</span></code> in the content browser. Create a new folder for your agent, and go into it. Right click and select to create a blueprint class. You’ll now get a dialog asking you to choose your parent class. Choose your C++ class (<code class="docutils literal notranslate"><span class="pre">CustomAgent</span></code>) from the previous step, and name your new blueprint something like CustomAgentBp. Here is where you’ll want to insert any meshes, weight, etc to make your agent look/weigh what you want. This is a little tricky sometimes, but there’s a bunch of UE4 tutorials online on making custom pawns.</p>
 <p>Finally, we’ll need to connect our python class with our UE4/C++ code. Navigate to <code class="docutils literal notranslate"><span class="pre">Content/</span></code> in the content browser and open up HolodeckGameModeBP. You’ll see an entry called Agent Bp Map on the right under the Default section. Expand it, and insert a new entry. On the left choose whatever you put as agent_type in your code before, and on the right, choose the blueprint (CustomAgentBp) that we just created.</p>
 <p>That’s it! If you find anything unclear/wrong here, feel free to edit it and clarify things for a future reader. You’ll need to repackage your environment (see above) and then should be able to use your new agent!</p>
 </section>
 </section>
 <section id="buoyant-agents">
-<h2>Buoyant Agents<a class="headerlink" href="#buoyant-agents" title="Permalink to this heading"></a></h2>
+<h2>Buoyant Agents<a class="headerlink" href="#buoyant-agents" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">AHolodeckBuoyantAgent</span></code> class was made to remove the need to re-implement buoyancy dynamics for all future AUVs put into HoloOcean. By setting a few necessary variables everything should basically work out of the box. All of the physics information is set in C++ and not in the blueprint. Anything set in the blueprint (like mass or COM offset) will be overriden in C++.</p>
 <p>We’re not going to go into details on how to create a custom agent here, see the above section for that. The only difference is you’ll need to inherit from <code class="docutils literal notranslate"><span class="pre">AHolodeckBuoyantAgent</span></code> instead of <code class="docutils literal notranslate"><span class="pre">AHolodeckAgent</span></code> and should probably copy the files of <code class="docutils literal notranslate"><span class="pre">AHoveringAUV</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ATurtleAgent</span></code>.</p>
 <section id="necessary-variables">
-<h3>Necessary Variables<a class="headerlink" href="#necessary-variables" title="Permalink to this heading"></a></h3>
+<h3>Necessary Variables<a class="headerlink" href="#necessary-variables" title="Link to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All these variables are stored with respect to to correct origin (without the OffsetToOrigin added into it)</p>
@@ -216,7 +216,7 @@
 <p>These are all basically what you’d expect them to be. You may get away with not setting <code class="docutils literal notranslate"><span class="pre">OffsetToOrigin</span></code> if your mesh was imported with the correct pivot point.</p>
 </section>
 <section id="extra-variables">
-<h3>Extra Variables<a class="headerlink" href="#extra-variables" title="Permalink to this heading"></a></h3>
+<h3>Extra Variables<a class="headerlink" href="#extra-variables" title="Link to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All these variables are stored with respect to to correct origin (without the OffsetToOrigin and CenterVehicle added into them) EXCEPT <code class="docutils literal notranslate"><span class="pre">SurfacePoints</span></code>.</p>
@@ -236,7 +236,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">SurfaceLevel</span></code> is the water level. For all of our environments, this has been set to 0.</p>
 </section>
 <section id="debugging-tools">
-<h3>Debugging Tools<a class="headerlink" href="#debugging-tools" title="Permalink to this heading"></a></h3>
+<h3>Debugging Tools<a class="headerlink" href="#debugging-tools" title="Link to this heading"></a></h3>
 <p>To be able to visualize the bounding box and surface points to make sure they’re placed currently, you can use the inherited functions <code class="docutils literal notranslate"><span class="pre">ShowBoundingBox()</span></code> and <code class="docutils literal notranslate"><span class="pre">ShowSurfacePoints()</span></code> functions in your agents tick method.</p>
 </section>
 </section>

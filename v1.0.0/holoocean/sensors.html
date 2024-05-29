@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Sensors — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
@@ -65,7 +65,129 @@
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.dtype"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.DVLSensor"><code class="docutils literal notranslate"><span class="pre">DVLSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DVLSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">DVLSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DVLSensor.dtype"><code class="docutils literal notranslate"><span class="pre">DVLSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.DepthSensor"><code class="docutils literal notranslate"><span class="pre">DepthSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DepthSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">DepthSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DepthSensor.dtype"><code class="docutils literal notranslate"><span class="pre">DepthSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.DynamicsSensor"><code class="docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DynamicsSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">DynamicsSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DynamicsSensor.dtype"><code class="docutils literal notranslate"><span class="pre">DynamicsSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.GPSSensor"><code class="docutils literal notranslate"><span class="pre">GPSSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPSSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">GPSSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPSSensor.dtype"><code class="docutils literal notranslate"><span class="pre">GPSSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPSSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">GPSSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.dtype"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.rotate"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.IMUSensor"><code class="docutils literal notranslate"><span class="pre">IMUSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.IMUSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">IMUSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.IMUSensor.dtype"><code class="docutils literal notranslate"><span class="pre">IMUSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.ImagingSonar"><code class="docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ImagingSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">ImagingSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ImagingSonar.dtype"><code class="docutils literal notranslate"><span class="pre">ImagingSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.LocationSensor"><code class="docutils literal notranslate"><span class="pre">LocationSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.LocationSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">LocationSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.LocationSensor.dtype"><code class="docutils literal notranslate"><span class="pre">LocationSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor"><code class="docutils literal notranslate"><span class="pre">MagnetometerSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">MagnetometerSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor.dtype"><code class="docutils literal notranslate"><span class="pre">MagnetometerSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.dtype"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.OrientationSensor"><code class="docutils literal notranslate"><span class="pre">OrientationSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OrientationSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">OrientationSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OrientationSensor.dtype"><code class="docutils literal notranslate"><span class="pre">OrientationSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.PoseSensor"><code class="docutils literal notranslate"><span class="pre">PoseSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.PoseSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">PoseSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.PoseSensor.dtype"><code class="docutils literal notranslate"><span class="pre">PoseSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.ProfilingSonar"><code class="docutils literal notranslate"><span class="pre">ProfilingSonar</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RGBCamera"><code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RGBCamera.data_shape"><code class="docutils literal notranslate"><span class="pre">RGBCamera.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RGBCamera.dtype"><code class="docutils literal notranslate"><span class="pre">RGBCamera.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RGBCamera.set_ticks_per_capture"><code class="docutils literal notranslate"><span class="pre">RGBCamera.set_ticks_per_capture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor"><code class="docutils literal notranslate"><span class="pre">RangeFinderSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">RangeFinderSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor.dtype"><code class="docutils literal notranslate"><span class="pre">RangeFinderSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RotationSensor"><code class="docutils literal notranslate"><span class="pre">RotationSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RotationSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">RotationSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RotationSensor.dtype"><code class="docutils literal notranslate"><span class="pre">RotationSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SensorDefinition"><code class="docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SensorDefinition.get_config_json_string"><code class="docutils literal notranslate"><span class="pre">SensorDefinition.get_config_json_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SensorFactory"><code class="docutils literal notranslate"><span class="pre">SensorFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SensorFactory.build_sensor"><code class="docutils literal notranslate"><span class="pre">SensorFactory.build_sensor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SidescanSonar"><code class="docutils literal notranslate"><span class="pre">SidescanSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SidescanSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">SidescanSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SidescanSonar.dtype"><code class="docutils literal notranslate"><span class="pre">SidescanSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar"><code class="docutils literal notranslate"><span class="pre">SinglebeamSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">SinglebeamSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar.dtype"><code class="docutils literal notranslate"><span class="pre">SinglebeamSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.VelocitySensor"><code class="docutils literal notranslate"><span class="pre">VelocitySensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.VelocitySensor.data_shape"><code class="docutils literal notranslate"><span class="pre">VelocitySensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.VelocitySensor.dtype"><code class="docutils literal notranslate"><span class="pre">VelocitySensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.ViewportCapture"><code class="docutils literal notranslate"><span class="pre">ViewportCapture</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ViewportCapture.data_shape"><code class="docutils literal notranslate"><span class="pre">ViewportCapture.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ViewportCapture.dtype"><code class="docutils literal notranslate"><span class="pre">ViewportCapture.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.WorldNumSensor"><code class="docutils literal notranslate"><span class="pre">WorldNumSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.WorldNumSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">WorldNumSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.WorldNumSensor.dtype"><code class="docutils literal notranslate"><span class="pre">WorldNumSensor.dtype</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
@@ -94,7 +216,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="module-holoocean.sensors">
-<span id="sensors"></span><h1>Sensors<a class="headerlink" href="#module-holoocean.sensors" title="Permalink to this heading"></a></h1>
+<span id="sensors"></span><h1>Sensors<a class="headerlink" href="#module-holoocean.sensors" title="Link to this heading"></a></h1>
 <p>Definition of all of the sensor information. The UE settings for sensors are such that the motion ticks happen before the sensor ticks.</p>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -175,7 +297,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">AcousticBeaconSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AcousticBeaconSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">AcousticBeaconSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AcousticBeaconSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor" title="Link to this definition"></a></dt>
 <dd><p>Acoustic Beacon Sensor. Can send message to other beacon from the <code class="xref py py-meth docutils literal notranslate"><span class="pre">send_acoustic_message()</span></code> command.</p>
 <p>Returning array depends on sent message type. Note received message will be delayed due to time of
 acoustic wave traveling. Possibly message types are, with ϕ representing the azimuth, ϴ
@@ -216,7 +338,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -229,7 +351,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -242,7 +364,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor.sensor_data">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.sensor_data" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.sensor_data" title="Link to this definition"></a></dt>
 <dd><p>Get the sensor data buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -256,7 +378,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.DVLSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DVLSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DVLSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DVLSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DVLSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DVLSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DVLSensor" title="Link to this definition"></a></dt>
 <dd><p>Doppler Velocity Log Sensor.</p>
 <p>Returns a 1D numpy array of:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">velocity_x</span><span class="p">,</span> <span class="n">velocity_y</span><span class="p">,</span> <span class="n">velocity_z</span><span class="p">,</span> <span class="n">range_x_forw</span><span class="p">,</span> <span class="n">range_y_forw</span><span class="p">,</span> <span class="n">range_x_back</span><span class="p">,</span> <span class="n">range_y_back</span><span class="p">]</span>
@@ -287,7 +409,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.DVLSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DVLSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DVLSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -300,7 +422,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.DVLSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DVLSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DVLSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -314,7 +436,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.DepthSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DepthSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DepthSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DepthSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DepthSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DepthSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DepthSensor" title="Link to this definition"></a></dt>
 <dd><p>Pressure/Depth Sensor.</p>
 <p>Returns a 1D numpy array of:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">position_z</span><span class="p">]</span>
@@ -339,7 +461,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.DepthSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DepthSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DepthSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -352,7 +474,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.DepthSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DepthSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DepthSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -366,7 +488,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.DynamicsSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DynamicsSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DynamicsSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DynamicsSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DynamicsSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor" title="Link to this definition"></a></dt>
 <dd><p>Gives all relevant information needed for implementing custom dynamics. Returns are all in the global frame and are as follows:</p>
 <blockquote>
 <div><p>[acceleration, velocity, position, angular accel., angular velocity, rpy]</p>
@@ -394,7 +516,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.DynamicsSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -407,7 +529,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.DynamicsSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -421,7 +543,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.GPSSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">GPSSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GPSSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.GPSSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">GPSSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GPSSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.GPSSensor" title="Link to this definition"></a></dt>
 <dd><p>Gets the location of the agent in the world if the agent is close enough to the surface.</p>
 <p>Returns coordinates in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
 <p><strong>Configuration</strong></p>
@@ -448,7 +570,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.GPSSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -461,7 +583,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.GPSSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -474,7 +596,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.GPSSensor.sensor_data">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.sensor_data" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.sensor_data" title="Link to this definition"></a></dt>
 <dd><p>Get the sensor data buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -488,7 +610,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">HoloOceanSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">HoloOceanSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor" title="Link to this definition"></a></dt>
 <dd><p>Base class for a sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -526,7 +648,7 @@ attached to a sensor</p></li>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -539,7 +661,7 @@ attached to a sensor</p></li>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -552,7 +674,7 @@ attached to a sensor</p></li>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.rotate">
-<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.rotate" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.rotate" title="Link to this definition"></a></dt>
 <dd><p>Rotate the sensor. It will be applied in approximately three ticks.
 <a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> or
 <a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code></a>.)</p>
@@ -566,7 +688,7 @@ specify it in your scenario configuration.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.sensor_data">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.sensor_data" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.sensor_data" title="Link to this definition"></a></dt>
 <dd><p>Get the sensor data buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -580,7 +702,7 @@ specify it in your scenario configuration.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.IMUSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">IMUSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IMUSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.IMUSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">IMUSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IMUSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.IMUSensor" title="Link to this definition"></a></dt>
 <dd><p>Inertial Measurement Unit sensor.</p>
 <p>Returns a 2D numpy array of:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="p">[</span><span class="n">accel_x</span><span class="p">,</span> <span class="n">accel_y</span><span class="p">,</span> <span class="n">accel_z</span><span class="p">],</span>
@@ -613,7 +735,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.IMUSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.IMUSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.IMUSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -626,7 +748,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.IMUSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.IMUSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.IMUSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -640,7 +762,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.ImagingSonar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ImagingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ImagingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ImagingSonar" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ImagingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ImagingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ImagingSonar" title="Link to this definition"></a></dt>
 <dd><p>Simulates an imaging sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
 how to configure the octree that is used.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
@@ -689,7 +811,7 @@ the options in the following sections.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.ImagingSonar.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.ImagingSonar.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.ImagingSonar.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -702,7 +824,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.ImagingSonar.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.ImagingSonar.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.ImagingSonar.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -716,7 +838,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.LocationSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">LocationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LocationSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.LocationSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">LocationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LocationSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.LocationSensor" title="Link to this definition"></a></dt>
 <dd><p>Gets the location of the agent in the world.</p>
 <p>Returns coordinates in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
 <p><strong>Configuration</strong></p>
@@ -738,7 +860,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.LocationSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.LocationSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.LocationSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -751,7 +873,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.LocationSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.LocationSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.LocationSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -765,7 +887,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.MagnetometerSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">MagnetometerSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MagnetometerSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">MagnetometerSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MagnetometerSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor" title="Link to this definition"></a></dt>
 <dd><p>Gets the global x-axis (or given vector) in the local frame.</p>
 <p><strong>Configuration</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
@@ -787,7 +909,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.MagnetometerSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -800,7 +922,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.MagnetometerSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -814,7 +936,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">OpticalModemSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OpticalModemSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">OpticalModemSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OpticalModemSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor" title="Link to this definition"></a></dt>
 <dd><p>Handles communication between agents using an optical modem. Can send message to other modem from the <code class="xref py py-meth docutils literal notranslate"><span class="pre">send_optical_message()</span></code> command.</p>
 <p><strong>Configuration</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
@@ -844,7 +966,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -857,7 +979,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -870,7 +992,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor.sensor_data">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.sensor_data" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.sensor_data" title="Link to this definition"></a></dt>
 <dd><p>Get the sensor data buffer</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -884,7 +1006,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.OrientationSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">OrientationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.OrientationSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">OrientationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.OrientationSensor" title="Link to this definition"></a></dt>
 <dd><p>Gets the forward, right, and up vector for the agent.
 Note that this is based on the sensor’s frame, not the agent’s frame so in the IMU socket,
 it will be NED, and in COM socket it will NWU. Our provided configurations have the sensor in the IMU socket.</p>
@@ -907,7 +1029,7 @@ it will be NED, and in COM socket it will NWU. Our provided configurations have 
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.OrientationSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.OrientationSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.OrientationSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -920,7 +1042,7 @@ it will be NED, and in COM socket it will NWU. Our provided configurations have 
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.OrientationSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.OrientationSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.OrientationSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -934,7 +1056,7 @@ it will be NED, and in COM socket it will NWU. Our provided configurations have 
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.PoseSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">PoseSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.PoseSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">PoseSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.PoseSensor" title="Link to this definition"></a></dt>
 <dd><p>Gets the forward, right, and up vector for the agent.
 Note that this is based on the sensor’s frame, not the agent’s frame so in the IMU socket,
 it will be NED, and in COM socket it will NWU. Our provided configurations have the sensor in the IMU socket.</p>
@@ -957,7 +1079,7 @@ it will be NED, and in COM socket it will NWU. Our provided configurations have 
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.PoseSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.PoseSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.PoseSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -970,7 +1092,7 @@ it will be NED, and in COM socket it will NWU. Our provided configurations have 
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.PoseSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.PoseSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.PoseSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -984,7 +1106,7 @@ it will be NED, and in COM socket it will NWU. Our provided configurations have 
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.ProfilingSonar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ProfilingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ProfilingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ProfilingSonar" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ProfilingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ProfilingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ProfilingSonar" title="Link to this definition"></a></dt>
 <dd><p>Simulates a multibeam profiling sonar. This is largely based off of the imaging sonar (<a class="reference internal" href="#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a>), just with
 different defaults. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on how to configure the octree that is used.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
@@ -1022,7 +1144,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RGBCamera">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RGBCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RGBCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBCamera" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RGBCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RGBCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBCamera" title="Link to this definition"></a></dt>
 <dd><p>Captures agent’s view.</p>
 <p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
 The resolution can be increased, but will significantly impact performance.</p>
@@ -1054,7 +1176,7 @@ options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.RGBCamera.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RGBCamera.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RGBCamera.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1067,7 +1189,7 @@ options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.RGBCamera.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RGBCamera.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RGBCamera.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1080,7 +1202,7 @@ options:</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.sensors.RGBCamera.set_ticks_per_capture">
-<span class="sig-name descname"><span class="pre">set_ticks_per_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBCamera.set_ticks_per_capture" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_ticks_per_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBCamera.set_ticks_per_capture" title="Link to this definition"></a></dt>
 <dd><p>Sets this RGBCamera to capture a new frame every ticks_per_capture.</p>
 <p>The sensor’s image will remain unchanged between captures.</p>
 <p>This method must be called after every call to env.reset.</p>
@@ -1093,7 +1215,7 @@ options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RangeFinderSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RangeFinderSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RangeFinderSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RangeFinderSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor" title="Link to this definition"></a></dt>
 <dd><p>Returns distances to nearest collisions in the directions specified by
 the parameters. For example, if an agent had two range sensors at different
 angles with 24 lasers each, the LaserDebug traces would look something like
@@ -1124,7 +1246,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1137,7 +1259,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1151,7 +1273,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RotationSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RotationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RotationSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RotationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RotationSensor" title="Link to this definition"></a></dt>
 <dd><p>Gets the rotation of the agent in the world, with rotation XYZ about the fixed frame, in degrees.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> (see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p>
 <p><strong>Attributes:</strong></p>
@@ -1167,7 +1289,7 @@ following options:</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.RotationSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RotationSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RotationSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1180,7 +1302,7 @@ following options:</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.RotationSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RotationSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RotationSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1194,7 +1316,7 @@ following options:</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SensorDefinition">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SensorDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lcm_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorDefinition" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SensorDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lcm_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorDefinition" title="Link to this definition"></a></dt>
 <dd><p>A class for new sensors and their parameters, to be used for adding new sensors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1222,7 +1344,7 @@ relative to agent (see <a class="reference internal" href="../usage/units-and-co
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.sensors.SensorDefinition.get_config_json_string">
-<span class="sig-name descname"><span class="pre">get_config_json_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorDefinition.get_config_json_string" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_config_json_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorDefinition.get_config_json_string" title="Link to this definition"></a></dt>
 <dd><p>Gets the configuration dictionary as a string ready for transport</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1236,7 +1358,7 @@ relative to agent (see <a class="reference internal" href="../usage/units-and-co
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SensorFactory">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SensorFactory</span></span><a class="headerlink" href="#holoocean.sensors.SensorFactory" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SensorFactory</span></span><a class="headerlink" href="#holoocean.sensors.SensorFactory" title="Link to this definition"></a></dt>
 <dd><p>Given a sensor definition, constructs the appropriate HoloOceanSensor object.</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -1248,7 +1370,7 @@ relative to agent (see <a class="reference internal" href="../usage/units-and-co
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.sensors.SensorFactory.build_sensor">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorFactory.build_sensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorFactory.build_sensor" title="Link to this definition"></a></dt>
 <dd><p>Constructs a given sensor associated with client</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1263,7 +1385,7 @@ relative to agent (see <a class="reference internal" href="../usage/units-and-co
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SidescanSonar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SidescanSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SidescanSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SidescanSonar" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SidescanSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SidescanSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SidescanSonar" title="Link to this definition"></a></dt>
 <dd><p>Simulates a sidescan sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
 how to configure the octree that is used.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
@@ -1307,7 +1429,7 @@ the options in the following sections.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.SidescanSonar.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.SidescanSonar.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.SidescanSonar.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1320,7 +1442,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.SidescanSonar.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.SidescanSonar.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.SidescanSonar.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1334,7 +1456,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SinglebeamSonar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SinglebeamSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SinglebeamSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SinglebeamSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SinglebeamSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar" title="Link to this definition"></a></dt>
 <dd><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
 how to configure the octree that is used.</p>
 <p>Returns a 1D numpy array of the average intensities held in each range bin of the sensor. The length of the array is specified by the number of range bins chosen for the sensor.</p>
@@ -1382,7 +1504,7 @@ the options in the following sections.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.SinglebeamSonar.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1395,7 +1517,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.SinglebeamSonar.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1409,7 +1531,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.VelocitySensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">VelocitySensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.VelocitySensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">VelocitySensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.VelocitySensor" title="Link to this definition"></a></dt>
 <dd><p>Returns the x, y, and z velocity of the sensor in the global frame.</p>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -1424,7 +1546,7 @@ the options in the following sections.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.VelocitySensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.VelocitySensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.VelocitySensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1437,7 +1559,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.VelocitySensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.VelocitySensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.VelocitySensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1451,7 +1573,7 @@ the options in the following sections.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.ViewportCapture">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ViewportCapture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ViewportCapture'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ViewportCapture" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ViewportCapture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ViewportCapture'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ViewportCapture" title="Link to this definition"></a></dt>
 <dd><p>Captures what the viewport is seeing.</p>
 <p>The ViewportCapture is faster than the RGB camera, but there can only be one camera
 and it must capture what the viewport is capturing. If performance is
@@ -1484,7 +1606,7 @@ dimensions.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.ViewportCapture.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.ViewportCapture.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.ViewportCapture.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1497,7 +1619,7 @@ dimensions.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.ViewportCapture.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.ViewportCapture.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.ViewportCapture.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1511,7 +1633,7 @@ dimensions.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.WorldNumSensor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">WorldNumSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">WorldNumSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor" title="Link to this definition"></a></dt>
 <dd><p>Returns any numeric value from the world corresponding to a given key. This is
 world specific.</p>
 <p><strong>Attributes:</strong></p>
@@ -1527,7 +1649,7 @@ world specific.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.WorldNumSensor.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor.data_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor.data_shape" title="Link to this definition"></a></dt>
 <dd><p>The shape of the sensor data</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1540,7 +1662,7 @@ world specific.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.WorldNumSensor.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor.dtype" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>

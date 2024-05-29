@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>HoloOcean Client — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
@@ -63,7 +63,15 @@
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">HoloOcean Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HoloOcean Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.holooceanclient.HoloOceanClient"><code class="docutils literal notranslate"><span class="pre">HoloOceanClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.holooceanclient.HoloOceanClient.acquire"><code class="docutils literal notranslate"><span class="pre">HoloOceanClient.acquire()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.holooceanclient.HoloOceanClient.malloc"><code class="docutils literal notranslate"><span class="pre">HoloOceanClient.malloc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.holooceanclient.HoloOceanClient.release"><code class="docutils literal notranslate"><span class="pre">HoloOceanClient.release()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
@@ -94,7 +102,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="module-holoocean.holooceanclient">
-<span id="holoocean-client"></span><h1>HoloOcean Client<a class="headerlink" href="#module-holoocean.holooceanclient" title="Permalink to this heading"></a></h1>
+<span id="holoocean-client"></span><h1>HoloOcean Client<a class="headerlink" href="#module-holoocean.holooceanclient" title="Link to this heading"></a></h1>
 <p>The client used for subscribing shared memory between python and c++.</p>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -106,7 +114,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.holooceanclient.HoloOceanClient">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.holooceanclient.</span></span><span class="sig-name descname"><span class="pre">HoloOceanClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.holooceanclient.</span></span><span class="sig-name descname"><span class="pre">HoloOceanClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient" title="Link to this definition"></a></dt>
 <dd><p>HoloOceanClient for controlling a shared memory session.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -130,12 +138,12 @@ The same UUID should be passed to the world through a command line flag. Default
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.holooceanclient.HoloOceanClient.acquire">
-<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.acquire" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.acquire" title="Link to this definition"></a></dt>
 <dd><p>Used to acquire control. Will wait until the HolodeckServer has finished its work.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.holooceanclient.HoloOceanClient.malloc">
-<span class="sig-name descname"><span class="pre">malloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.malloc" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">malloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.malloc" title="Link to this definition"></a></dt>
 <dd><p>Allocates a block of shared memory, and returns a numpy array whose data corresponds
 with that block.</p>
 <dl class="field-list simple">
@@ -156,7 +164,7 @@ with that block.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.holooceanclient.HoloOceanClient.release">
-<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.release" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.release" title="Link to this definition"></a></dt>
 <dd><p>Used to release control. Will allow the HolodeckServer to take a step.</p>
 </dd></dl>
 </dd></dl>

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Communication Protocol — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -89,7 +89,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
@@ -130,19 +130,19 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="communication-protocol">
-<span id="develop-sem"></span><h1>Communication Protocol<a class="headerlink" href="#communication-protocol" title="Permalink to this heading"></a></h1>
+<span id="develop-sem"></span><h1>Communication Protocol<a class="headerlink" href="#communication-protocol" title="Link to this heading"></a></h1>
 <p>This article was pulled from <a class="reference external" href="https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Communication-Protocol">here</a> for archiving purposes.</p>
 <p>In this wiki page, I explain how the two halves of holoocean (the client and engine) communicate.</p>
 <section id="prerequisite-reading">
-<h2>Prerequisite Reading<a class="headerlink" href="#prerequisite-reading" title="Permalink to this heading"></a></h2>
+<h2>Prerequisite Reading<a class="headerlink" href="#prerequisite-reading" title="Link to this heading"></a></h2>
 <p>Brush up on <a class="reference external" href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semaphores</a>
 and <a class="reference external" href="https://en.wikipedia.org/wiki/Shared_memory">shared memory</a>.</p>
 </section>
 <section id="the-two-halves-of-holoocean">
-<h2>The Two Halves of holoocean<a class="headerlink" href="#the-two-halves-of-holoocean" title="Permalink to this heading"></a></h2>
+<h2>The Two Halves of holoocean<a class="headerlink" href="#the-two-halves-of-holoocean" title="Link to this heading"></a></h2>
 <p>What we call “holoocean” is actually two seperate projects.</p>
 <section id="holoocean">
-<h3><code class="docutils literal notranslate"><span class="pre">holoocean</span></code><a class="headerlink" href="#holoocean" title="Permalink to this heading"></a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">holoocean</span></code><a class="headerlink" href="#holoocean" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Known as:
 - “python side”
@@ -155,7 +155,7 @@ and <a class="reference external" href="https://en.wikipedia.org/wiki/Shared_mem
 </ul>
 </section>
 <section id="holoocean-engine">
-<h3><code class="docutils literal notranslate"><span class="pre">holoocean-engine</span></code><a class="headerlink" href="#holoocean-engine" title="Permalink to this heading"></a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">holoocean-engine</span></code><a class="headerlink" href="#holoocean-engine" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Known as:
 - “c++ side”
@@ -168,7 +168,7 @@ and <a class="reference external" href="https://en.wikipedia.org/wiki/Shared_mem
 </section>
 </section>
 <section id="simple-usage-example">
-<h2>Simple Usage Example<a class="headerlink" href="#simple-usage-example" title="Permalink to this heading"></a></h2>
+<h2>Simple Usage Example<a class="headerlink" href="#simple-usage-example" title="Link to this heading"></a></h2>
 <p>In this walkthrough, we are going to explain what communication between
 <code class="docutils literal notranslate"><span class="pre">holoocean</span></code> and <code class="docutils literal notranslate"><span class="pre">holoocean-engine</span></code> needs to happen to make this example work:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">holoocean</span>
@@ -190,7 +190,7 @@ and <a class="reference external" href="https://en.wikipedia.org/wiki/Shared_mem
 </div>
 </section>
 <section id="part-1-holoocean-make">
-<h2>Part 1: <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code><a class="headerlink" href="#part-1-holoocean-make" title="Permalink to this heading"></a></h2>
+<h2>Part 1: <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code><a class="headerlink" href="#part-1-holoocean-make" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code> function is mostly a helper function to instantiate a
 <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code> object. <code class="docutils literal notranslate"><span class="pre">.make()</span></code> loads a configuration file and passes
 the appropriate paramaters to the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> of <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>.</p>
@@ -210,17 +210,17 @@ the appropriate paramaters to the <code class="docutils literal notranslate"><sp
 <li><p>Instantiates agents, sensors, which use malloc() to allocate buffers</p></li>
 </ol>
 <section id="creating-loading-semaphore">
-<h3>Creating Loading Semaphore<a class="headerlink" href="#creating-loading-semaphore" title="Permalink to this heading"></a></h3>
+<h3>Creating Loading Semaphore<a class="headerlink" href="#creating-loading-semaphore" title="Link to this heading"></a></h3>
 <p>A “loading semaphore” is created by the client and signaled by the engine.</p>
 <p>After starting the server process, the client will wait for the server to
 signal it so that the client knows the server has initialized.</p>
 <img alt="../_images/loading-1.svg" src="../_images/loading-1.svg"/></section>
 <section id="starting-subprocess">
-<h3>Starting Subprocess<a class="headerlink" href="#starting-subprocess" title="Permalink to this heading"></a></h3>
+<h3>Starting Subprocess<a class="headerlink" href="#starting-subprocess" title="Link to this heading"></a></h3>
 <p>Next, client will create the engine subprocess. It will pass a UUID on the
 engine’s command line that will be used to create unique semaphore names.</p>
 <img alt="../_images/loading-2.svg" src="../_images/loading-2.svg"/><section id="a-note-on-uuids">
-<h4>A note on UUIDs<a class="headerlink" href="#a-note-on-uuids" title="Permalink to this heading"></a></h4>
+<h4>A note on UUIDs<a class="headerlink" href="#a-note-on-uuids" title="Link to this heading"></a></h4>
 <p>The names for semaphores and shared memory (eg  <code class="docutils literal notranslate"><span class="pre">/HOLODECK_LOADING_SEM</span></code>) are
 global for all processes in the entire operating system.</p>
 <p>To avoid collisions between different instances of holodeck, <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code>
@@ -235,12 +235,12 @@ This proves very useful for debugging.</p>
 </section>
 </section>
 <section id="waiting-for-engine-to-load">
-<h3>Waiting for engine to load<a class="headerlink" href="#waiting-for-engine-to-load" title="Permalink to this heading"></a></h3>
+<h3>Waiting for engine to load<a class="headerlink" href="#waiting-for-engine-to-load" title="Link to this heading"></a></h3>
 <p>Now that the engine is initializing itself, the client waits on the
 <code class="docutils literal notranslate"><span class="pre">/HOLODECK_LOADING_SEM</span></code>.</p>
 <img alt="../_images/loading-3.svg" src="../_images/loading-3.svg"/></section>
 <section id="engine-is-done-loading">
-<h3>Engine is done loading<a class="headerlink" href="#engine-is-done-loading" title="Permalink to this heading"></a></h3>
+<h3>Engine is done loading<a class="headerlink" href="#engine-is-done-loading" title="Link to this heading"></a></h3>
 <p>Once the engine finishes loading, the engine will wait on another semaphore
 while the client does more stuff.</p>
 <img alt="../_images/loading-4.svg" src="../_images/loading-4.svg"/><p>At this point, the client spawns agents, sensors, tasks, by sending a series of
@@ -250,13 +250,13 @@ that each agent and sensor allocates shared memory buffers to allow
 communication between the engine and the client.</p>
 </section>
 <section id="main-synchronization-semaphores">
-<h3>Main Synchronization Semaphores<a class="headerlink" href="#main-synchronization-semaphores" title="Permalink to this heading"></a></h3>
+<h3>Main Synchronization Semaphores<a class="headerlink" href="#main-synchronization-semaphores" title="Link to this heading"></a></h3>
 <p>At this point of the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> of <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>, it creates a
 <code class="docutils literal notranslate"><span class="pre">HolodeckClient</span></code> object, which makes two important synchronization semaphores.
 These semaphores allow the engine and the client to work in lock-step and
 alternate back and forth (see HolodeckServer.cpp / holooceanclient.py)</p>
 <section id="holodeck-semaphore-server">
-<h4><code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_SERVER</span></code><a class="headerlink" href="#holodeck-semaphore-server" title="Permalink to this heading"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_SERVER</span></code><a class="headerlink" href="#holodeck-semaphore-server" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Known as <code class="docutils literal notranslate"><span class="pre">semaphore</span></code></p>
 <ul>
@@ -275,7 +275,7 @@ wants to do</p></li>
 </ul>
 </section>
 <section id="holodeck-semaphore-client">
-<h4><code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_CLIENT</span></code><a class="headerlink" href="#holodeck-semaphore-client" title="Permalink to this heading"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_CLIENT</span></code><a class="headerlink" href="#holodeck-semaphore-client" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>Known as <code class="docutils literal notranslate"><span class="pre">semaphore2</span></code></p></li>
 <li><p>The <strong>client</strong> waits on this semaphore while the <strong>engine</strong> simulates a tick</p></li>
@@ -286,7 +286,7 @@ wants to do</p></li>
 </section>
 </section>
 <section id="shared-memory-buffers">
-<h3>Shared Memory Buffers<a class="headerlink" href="#shared-memory-buffers" title="Permalink to this heading"></a></h3>
+<h3>Shared Memory Buffers<a class="headerlink" href="#shared-memory-buffers" title="Link to this heading"></a></h3>
 <p>Shared memory buffers are used for a lot in Holoocean.</p>
 <ol class="arabic simple">
 <li><p>Sending commands back and forth</p>
@@ -324,7 +324,7 @@ interpret action buffer)</p></li>
 </section>
 </section>
 <section id="part-2-step">
-<h2>Part 2: <code class="docutils literal notranslate"><span class="pre">.step()</span></code><a class="headerlink" href="#part-2-step" title="Permalink to this heading"></a></h2>
+<h2>Part 2: <code class="docutils literal notranslate"><span class="pre">.step()</span></code><a class="headerlink" href="#part-2-step" title="Link to this heading"></a></h2>
 <p>Now that we have a running environment, how do we get data back and forth?</p>
 <p>We will analyze what happens for</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span>
@@ -332,29 +332,29 @@ interpret action buffer)</p></li>
 </div>
 <p>to execute.</p>
 <section id="action-for-agent">
-<h3>1. Action for Agent<a class="headerlink" href="#action-for-agent" title="Permalink to this heading"></a></h3>
+<h3>1. Action for Agent<a class="headerlink" href="#action-for-agent" title="Link to this heading"></a></h3>
 <p>First, we copy the provided action (<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">1000]</span></code>) into the agent’s action
 buffer:</p>
 <img alt="../_images/step-1.svg" src="../_images/step-1.svg"/></section>
 <section id="signal-server">
-<h3>2. Signal Server<a class="headerlink" href="#signal-server" title="Permalink to this heading"></a></h3>
+<h3>2. Signal Server<a class="headerlink" href="#signal-server" title="Link to this heading"></a></h3>
 <p>Next, the client signals <code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_SERVER</span></code> and wakes the server up.</p>
 <img alt="../_images/step-2.svg" src="../_images/step-2.svg"/></section>
 <section id="client-waits-server-processes">
-<h3>3. Client waits, server processes<a class="headerlink" href="#client-waits-server-processes" title="Permalink to this heading"></a></h3>
+<h3>3. Client waits, server processes<a class="headerlink" href="#client-waits-server-processes" title="Link to this heading"></a></h3>
 <img alt="../_images/step-3.svg" src="../_images/step-3.svg"/></section>
 <section id="server-samples-sensor-data-copies-it-into-buffers">
-<h3>4. Server samples sensor data, copies it into buffers<a class="headerlink" href="#server-samples-sensor-data-copies-it-into-buffers" title="Permalink to this heading"></a></h3>
+<h3>4. Server samples sensor data, copies it into buffers<a class="headerlink" href="#server-samples-sensor-data-copies-it-into-buffers" title="Link to this heading"></a></h3>
 <img alt="../_images/step-4.svg" src="../_images/step-4.svg"/></section>
 <section id="wake-up-client">
-<h3>5. Wake up client<a class="headerlink" href="#wake-up-client" title="Permalink to this heading"></a></h3>
+<h3>5. Wake up client<a class="headerlink" href="#wake-up-client" title="Link to this heading"></a></h3>
 <img alt="../_images/step-5.svg" src="../_images/step-5.svg"/></section>
 <section id="server-blocks-and-waits-for-client-to-signal-it-again">
-<h3>6. Server blocks and waits for client to signal it again<a class="headerlink" href="#server-blocks-and-waits-for-client-to-signal-it-again" title="Permalink to this heading"></a></h3>
+<h3>6. Server blocks and waits for client to signal it again<a class="headerlink" href="#server-blocks-and-waits-for-client-to-signal-it-again" title="Link to this heading"></a></h3>
 <img alt="../_images/step-6.svg" src="../_images/step-6.svg"/></section>
 </section>
 <section id="remarks">
-<h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h2>
+<h2>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
 <p>Some interesting things to note.</p>
 <ol class="arabic simple">
 <li><p>Data copied into shared buffer persists. If an action is written, that same

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Improving HoloOcean Performance — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -78,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
@@ -119,7 +119,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="improving-holoocean-performance">
-<span id="improving-performance"></span><h1>Improving HoloOcean Performance<a class="headerlink" href="#improving-holoocean-performance" title="Permalink to this heading"></a></h1>
+<span id="improving-performance"></span><h1>Improving HoloOcean Performance<a class="headerlink" href="#improving-holoocean-performance" title="Link to this heading"></a></h1>
 <p>HoloOcean is fairly performant by default, but you can also sacrifice
 features to increase your frames per second.</p>
 <nav class="contents local" id="contents">
@@ -142,7 +142,7 @@ features to increase your frames per second.</p>
 </ul>
 </nav>
 <section id="rgbcamera">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">RGBCamera</a><a class="headerlink" href="#rgbcamera" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">RGBCamera</a><a class="headerlink" href="#rgbcamera" title="Link to this heading"></a></h2>
 <p>By far, the biggest single thing you can do to improve performance is to
 disable the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code>. Rendering the camera every frame causes a
 context switch deep in the rendering code of the engine, which has a
@@ -219,14 +219,14 @@ the same.</p>
 </tbody>
 </table>
 <section id="disabling-the-rgbcamera">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Disabling the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code></a><a class="headerlink" href="#disabling-the-rgbcamera" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Disabling the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code></a><a class="headerlink" href="#disabling-the-rgbcamera" title="Link to this heading"></a></h3>
 <p>
 Remove the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> entry from the scenario configuration file you are
 using.</p>
 <p>See <a class="reference internal" href="examples/custom-scenarios.html#custom-scenarios"><span class="std std-ref">Custom Scenario Configurations</span></a>.</p>
 </section>
 <section id="lowering-the-rgbcamera-resolution">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Lowering the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> resolution</a><a class="headerlink" href="#lowering-the-rgbcamera-resolution" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Lowering the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> resolution</a><a class="headerlink" href="#lowering-the-rgbcamera-resolution" title="Link to this heading"></a></h3>
 <p>Lowering the resolution of the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> can also help speed things up.
 Create a <a class="reference internal" href="examples/custom-scenarios.html#custom-scenarios"><span class="std std-ref">custom scenario</span></a> and in the
 <a class="reference internal" href="scenarios.html#configuration-block"><span class="std std-ref">configuration block</span></a> for the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> set the
@@ -234,17 +234,17 @@ Create a <a class="reference internal" href="examples/custom-scenarios.html#cust
 <p>See <a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.RGBCamera" title="holoocean.sensors.RGBCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">RGBCamera</span></code></a> for more details.</p>
 </section>
 <section id="changing-ticks-per-capture">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Changing ticks per capture</a><a class="headerlink" href="#changing-ticks-per-capture" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Changing ticks per capture</a><a class="headerlink" href="#changing-ticks-per-capture" title="Link to this heading"></a></h3>
 <p>The camera sample rate can be reduced to increase the average frames per second.
 See <a class="reference internal" href="scenarios.html#configure-sensors"><span class="std std-ref">Sensor Objects</span></a> and the <code class="docutils literal notranslate"><span class="pre">Hz</span></code> parameter for more info.</p>
 </section>
 </section>
 <section id="sonar-sensors">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Sonar Sensors</a><a class="headerlink" href="#sonar-sensors" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Sonar Sensors</a><a class="headerlink" href="#sonar-sensors" title="Link to this heading"></a></h2>
 <p>The sonar sensors can also be taxing on performance. There’s a number of things that can be
 done to help improve their performance as well.</p>
 <section id="lowering-octree-resolution">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Lowering Octree Resolution</a><a class="headerlink" href="#lowering-octree-resolution" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Lowering Octree Resolution</a><a class="headerlink" href="#lowering-octree-resolution" title="Link to this heading"></a></h3>
 <p>The Octree resolution has a large impact on sonar performance. The higher <code class="docutils literal notranslate"><span class="pre">octree_min</span></code>
 is, the less leaves there are to search through, and the faster it’ll run. This will have an
 impact on image quality, especially at close distances. If most objects that are being
@@ -252,13 +252,13 @@ inspected are a ways away, this parameter can be safely increased quite a bit.</
 <p>See <a class="reference internal" href="scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for info on how to do that.</p>
 </section>
 <section id="id1">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Changing ticks per capture</a><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Changing ticks per capture</a><a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>The sonar sample rate can be reduced to increase the average frames per second.
 See <a class="reference internal" href="scenarios.html#configure-sensors"><span class="std std-ref">Sensor Objects</span></a> and the <code class="docutils literal notranslate"><span class="pre">Hz</span></code> parameter for more info.</p>
 </section>
 </section>
 <section id="disable-viewport-rendering">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Disable Viewport Rendering</a><a class="headerlink" href="#disable-viewport-rendering" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Disable Viewport Rendering</a><a class="headerlink" href="#disable-viewport-rendering" title="Link to this heading"></a></h2>
 <p>Rendering the viewport window can be unnecessary during training. You can
 disable the viewport with the
 <a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code></a>
@@ -266,7 +266,7 @@ method.</p>
 <p>At lower <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> resolutions, you can expect a ~40% frame time reduction.</p>
 </section>
 <section id="change-render-quality">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Change Render Quality</a><a class="headerlink" href="#change-render-quality" title="Permalink to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Change Render Quality</a><a class="headerlink" href="#change-render-quality" title="Link to this heading"></a></h2>
 <p>You can adjust HoloOcean to render at a lower (or higher) quality to improve
 performance. See the
 <a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_render_quality()</span></code></a> method</p>

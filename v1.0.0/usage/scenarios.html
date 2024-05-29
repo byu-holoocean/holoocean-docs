@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Scenarios — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -75,7 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
@@ -116,9 +116,9 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="scenarios">
-<span id="id1"></span><h1>Scenarios<a class="headerlink" href="#scenarios" title="Permalink to this heading"></a></h1>
+<span id="id1"></span><h1>Scenarios<a class="headerlink" href="#scenarios" title="Link to this heading"></a></h1>
 <section id="what-is-a-scenario">
-<h2>What is a scenario?<a class="headerlink" href="#what-is-a-scenario" title="Permalink to this heading"></a></h2>
+<h2>What is a scenario?<a class="headerlink" href="#what-is-a-scenario" title="Link to this heading"></a></h2>
 <p>A scenario tells HoloOcean which world to load, which agents to place in the
 world, and which sensors they need.</p>
 <p>It defines:</p>
@@ -146,14 +146,14 @@ name of a scenario, eg <code class="docutils literal notranslate"><span class="p
 HoloOcean which world to load and where to place agents.</p>
 </section>
 <section id="scenario-file-format">
-<span id="scenario-files"></span><h2>Scenario File Format<a class="headerlink" href="#scenario-file-format" title="Permalink to this heading"></a></h2>
+<span id="scenario-files"></span><h2>Scenario File Format<a class="headerlink" href="#scenario-file-format" title="Link to this heading"></a></h2>
 <p>Scenario <code class="docutils literal notranslate"><span class="pre">.json</span></code> files are distributed in packages (see
 <a class="reference internal" href="../packages/docs/package-structure.html#package-contents"><span class="std std-ref">Package Contents</span></a>), and must be named
 <code class="docutils literal notranslate"><span class="pre">{WorldName}-{ScenarioName}.json</span></code>. By default they are stored in the
 <code class="docutils literal notranslate"><span class="pre">worlds/{PackageName}</span></code> directory, but they can be loaded from a
 Python dictionary as well.</p>
 <section id="scenario-file">
-<h3>Scenario File<a class="headerlink" href="#scenario-file" title="Permalink to this heading"></a></h3>
+<h3>Scenario File<a class="headerlink" href="#scenario-file" title="Link to this heading"></a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{Scenario Name}"</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">"world"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{world it is associated with}"</span><span class="p">,</span>
@@ -186,7 +186,7 @@ environment is created.</p>
 </div>
 </section>
 <section id="frame-rates">
-<span id="configure-framerate"></span><h3>Frame Rates<a class="headerlink" href="#frame-rates" title="Permalink to this heading"></a></h3>
+<span id="configure-framerate"></span><h3>Frame Rates<a class="headerlink" href="#frame-rates" title="Link to this heading"></a></h3>
 <p>There’s two parameters you can configure that’ll handle frame rate changes: <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code> and <code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code> changes how many ticks in a simulation second. This must be higher than any “Hz” sampling rate of the sensors used. Defaults to 30.</p>
 <p><code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code> is the max FPS the environment can run at. If <cite>true</cite>, it will match <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code>. If <cite>false</cite>, FPS will not be capped,
@@ -197,7 +197,7 @@ If you’re running headless/autonomous, you’ll likely want the simulation to 
 thus a good <code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code> would be false.</p>
 </section>
 <section id="configuring-octree">
-<span id="configure-octree"></span><h3>Configuring Octree<a class="headerlink" href="#configuring-octree" title="Permalink to this heading"></a></h3>
+<span id="configure-octree"></span><h3>Configuring Octree<a class="headerlink" href="#configuring-octree" title="Link to this heading"></a></h3>
 <p>When using a form of sonar sensor and initializing the world, an Octree will either be
 created or loaded from a cache. The parameters of these can be set using the <code class="docutils literal notranslate"><span class="pre">env_min</span></code>,
 <code class="docutils literal notranslate"><span class="pre">env_max</span></code>, <code class="docutils literal notranslate"><span class="pre">octree_min</span></code>, and <code class="docutils literal notranslate"><span class="pre">octree_max</span></code>. The octrees are cached in the <code class="docutils literal notranslate"><span class="pre">LinuxNoEditor/Holodeck/Octrees</span></code> folder
@@ -208,7 +208,7 @@ be set in <a class="reference internal" href="../packages/docs/package-structure
 can go as low as .01 (1cm), and then the octree will double in size till it reaches <code class="docutils literal notranslate"><span class="pre">octree_max</span></code>.</p>
 </section>
 <section id="agent-objects">
-<h3>Agent objects<a class="headerlink" href="#agent-objects" title="Permalink to this heading"></a></h3>
+<h3>Agent objects<a class="headerlink" href="#agent-objects" title="Link to this heading"></a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">"agent_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uav0"</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">"agent_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{agent types}"</span><span class="p">,</span>
@@ -228,7 +228,7 @@ can go as low as .01 (1cm), and then the octree will double in size till it reac
 <p>HoloOcean coordinates are <strong>right handed</strong> in meters. See <a class="reference internal" href="units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a></p>
 </div>
 <section id="location-randomization">
-<span id="id2"></span><h4>Location Randomization<a class="headerlink" href="#location-randomization" title="Permalink to this heading"></a></h4>
+<span id="id2"></span><h4>Location Randomization<a class="headerlink" href="#location-randomization" title="Link to this heading"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">location_randomization</span></code> and <code class="docutils literal notranslate"><span class="pre">rotation_randomization</span></code> are optional. If
 provided, the agent’s start location and/or rotation will vary by a
 random amount between the negative and the positive values of the
@@ -238,7 +238,7 @@ and the rotation is <code class="docutils literal notranslate"><span class="pre"
 ie R_z R_y R_x.</p>
 </section>
 <section id="agent-types">
-<h4>Agent Types<a class="headerlink" href="#agent-types" title="Permalink to this heading"></a></h4>
+<h4>Agent Types<a class="headerlink" href="#agent-types" title="Link to this heading"></a></h4>
 <p>Here are valid <code class="docutils literal notranslate"><span class="pre">agent_type</span></code> s:</p>
 <table class="docutils align-default">
 <thead>
@@ -263,14 +263,14 @@ ie R_z R_y R_x.</p>
 </table>
 </section>
 <section id="control-schemes">
-<h4>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h4>
+<h4>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h4>
 <p>Control schemes are represented as an integer. For valid values and a
 description of how each scheme works, see the documentation pages for each
 agent.</p>
 </section>
 </section>
 <section id="sensor-objects">
-<span id="configure-sensors"></span><h3>Sensor Objects<a class="headerlink" href="#sensor-objects" title="Permalink to this heading"></a></h3>
+<span id="configure-sensors"></span><h3>Sensor Objects<a class="headerlink" href="#sensor-objects" title="Link to this heading"></a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">"sensor_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RGBCamera"</span><span class="p">,</span>
 <span class="w">   </span><span class="nt">"sensor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FrontCamera"</span><span class="p">,</span>
@@ -358,7 +358,7 @@ rest will default as shown below</p>
 </div>
 </section>
 <section id="configuration-block">
-<span id="id3"></span><h3>Configuration Block<a class="headerlink" href="#configuration-block" title="Permalink to this heading"></a></h3>
+<span id="id3"></span><h3>Configuration Block<a class="headerlink" href="#configuration-block" title="Link to this heading"></a></h3>
 <p>The contents of the <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block are sensor-specific. That block is
 passed verbatim to the sensor itself, which parses it.</p>
 <p>For example, the docstring for <a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.RGBCamera" title="holoocean.sensors.RGBCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">RGBCamera</span></code></a> states that

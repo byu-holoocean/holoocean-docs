@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Installation — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -66,7 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
@@ -106,12 +106,12 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <p>HoloOcean is installed in two portions: a client python library (<code class="docutils literal notranslate"><span class="pre">holoocean</span></code>)
 is installed first, which then downloads world packages. The python portion is
 very small, while the world packages (“binaries”) can be several gigabytes.</p>
 <section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>&gt;= Python 3.6</p></li>
 <li><p>Several gigabytes of storage</p></li>
@@ -126,7 +126,7 @@ very small, while the world packages (“binaries”) can be several gigabytes.<
 </div>
 </section>
 <section id="stable-installation">
-<h2>Stable Installation<a class="headerlink" href="#stable-installation" title="Permalink to this heading"></a></h2>
+<h2>Stable Installation<a class="headerlink" href="#stable-installation" title="Link to this heading"></a></h2>
 <p>In accordance with the Unreal Engine EULA we can no longer offer HoloOcean through pypi. However,
 installing HoloOcean is still fairly simple, but requires a few more steps.</p>
 <p>First, follow the steps here to link your github account with Unreal: <a class="reference external" href="https://www.unrealengine.com/en-US/ue-on-github">https://www.unrealengine.com/en-US/ue-on-github</a>
@@ -165,7 +165,7 @@ it can be fixed by running <code class="docutils literal notranslate"><span clas
 </div>
 </section>
 <section id="beta-installation">
-<h2>Beta Installation<a class="headerlink" href="#beta-installation" title="Permalink to this heading"></a></h2>
+<h2>Beta Installation<a class="headerlink" href="#beta-installation" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you had previously installed holoocean before moving to the develop or any other branch,
@@ -190,12 +190,12 @@ Failure to do so may result in unpredictable behavior.</p>
 </div>
 </section>
 <section id="managing-world-packages">
-<h2>Managing World Packages<a class="headerlink" href="#managing-world-packages" title="Permalink to this heading"></a></h2>
+<h2>Managing World Packages<a class="headerlink" href="#managing-world-packages" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">holodeck</span></code> python package includes a <a class="reference internal" href="../holoocean/packagemanager.html#packagemanager"><span class="std std-ref">Package Manager</span></a> that is used
 to download and install world packages. Below are some example usages, but see
 <a class="reference internal" href="../holoocean/packagemanager.html#packagemanager"><span class="std std-ref">Package Manager</span></a> for complete documentation.</p>
 <section id="install-a-package-automatically">
-<h3>Install a Package Automatically<a class="headerlink" href="#install-a-package-automatically" title="Permalink to this heading"></a></h3>
+<h3>Install a Package Automatically<a class="headerlink" href="#install-a-package-automatically" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">holoocean</span> <span class="kn">import</span> <span class="n">packagemanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">installed_packages</span><span class="p">()</span>
 <span class="go">[]</span>
@@ -213,12 +213,12 @@ to download and install world packages. Below are some example usages, but see
 </div>
 </section>
 <section id="installation-location">
-<h3>Installation Location<a class="headerlink" href="#installation-location" title="Permalink to this heading"></a></h3>
+<h3>Installation Location<a class="headerlink" href="#installation-location" title="Link to this heading"></a></h3>
 <p>By default, HoloOcean will install packages local to your user profile. See
 <a class="reference internal" href="../packages/docs/installation.html#package-locations"><span class="std std-ref">Package Installation Location</span></a> for more information.</p>
 </section>
 <section id="manually-installing-a-package">
-<h3>Manually Installing a Package<a class="headerlink" href="#manually-installing-a-package" title="Permalink to this heading"></a></h3>
+<h3>Manually Installing a Package<a class="headerlink" href="#manually-installing-a-package" title="Link to this heading"></a></h3>
 <p>To manually install a package, you will be provided a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file.
 Extract it into the <code class="docutils literal notranslate"><span class="pre">worlds</span></code> folder in your HoloOcean installation location
 (see <a class="reference internal" href="../packages/docs/installation.html#package-locations"><span class="std std-ref">Package Installation Location</span></a>)</p>
@@ -248,7 +248,7 @@ Extract it into the <code class="docutils literal notranslate"><span class="pre"
 </div>
 </section>
 <section id="print-information">
-<h3>Print Information<a class="headerlink" href="#print-information" title="Permalink to this heading"></a></h3>
+<h3>Print Information<a class="headerlink" href="#print-information" title="Link to this heading"></a></h3>
 <p>There are several convenience functions provided to allow packages, worlds,
 and scenarios to be easily inspected.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">package_info</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Agents — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=888ff710"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -54,12 +54,84 @@
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Agents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.AgentDefinition"><code class="docutils literal notranslate"><span class="pre">AgentDefinition</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.AgentFactory"><code class="docutils literal notranslate"><span class="pre">AgentFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.AgentFactory.build_agent"><code class="docutils literal notranslate"><span class="pre">AgentFactory.build_agent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.ControlSchemes"><code class="docutils literal notranslate"><span class="pre">ControlSchemes</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.ANDROID_TORQUES"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.ANDROID_TORQUES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.CONTINUOUS_SPHERE_DEFAULT"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.CONTINUOUS_SPHERE_DEFAULT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.DISCRETE_SPHERE_DEFAULT"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.DISCRETE_SPHERE_DEFAULT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.NAV_TARGET_LOCATION"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.NAV_TARGET_LOCATION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.UAV_TORQUES"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.UAV_TORQUES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.UAV_ROLL_PITCH_YAW_RATE_ALT"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.UAV_ROLL_PITCH_YAW_RATE_ALT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.HAND_AGENT_MAX_TORQUES"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.HAND_AGENT_MAX_TORQUES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.AUV_THRUSTERS"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.AUV_THRUSTERS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.AUV_CONTROL"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.AUV_CONTROL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.AUV_FORCES"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.AUV_FORCES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.TAUV_FINS"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.TAUV_FINS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.TAUV_FORCES"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.TAUV_FORCES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.SV_THRUSTERS"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.SV_THRUSTERS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.SV_CONTROL"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.SV_CONTROL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.ControlSchemes.SV_FORCES"><code class="docutils literal notranslate"><span class="pre">ControlSchemes.SV_FORCES</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.name"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.sensors"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.sensors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.agent_state_dict"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.agent_state_dict</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.act"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.act()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.action_space"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.action_space</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.add_sensors"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.add_sensors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.clear_action"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.clear_action()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.control_schemes"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.control_schemes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.get_joint_constraints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.has_camera"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.has_camera()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.remove_sensors"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.remove_sensors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.set_control_scheme"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.set_control_scheme()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.set_physics_state"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.set_physics_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.teleport"><code class="docutils literal notranslate"><span class="pre">HoloOceanAgent.teleport()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.HoveringAUV"><code class="docutils literal notranslate"><span class="pre">HoveringAUV</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoveringAUV.control_schemes"><code class="docutils literal notranslate"><span class="pre">HoveringAUV.control_schemes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.HoveringAUV.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">HoveringAUV.get_joint_constraints()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.SphereAgent"><code class="docutils literal notranslate"><span class="pre">SphereAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.SphereAgent.control_schemes"><code class="docutils literal notranslate"><span class="pre">SphereAgent.control_schemes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.SphereAgent.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">SphereAgent.get_joint_constraints()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.SurfaceVessel"><code class="docutils literal notranslate"><span class="pre">SurfaceVessel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.SurfaceVessel.control_schemes"><code class="docutils literal notranslate"><span class="pre">SurfaceVessel.control_schemes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.SurfaceVessel.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">SurfaceVessel.get_joint_constraints()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.TorpedoAUV"><code class="docutils literal notranslate"><span class="pre">TorpedoAUV</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.TorpedoAUV.control_schemes"><code class="docutils literal notranslate"><span class="pre">TorpedoAUV.control_schemes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.TorpedoAUV.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">TorpedoAUV.get_joint_constraints()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.TurtleAgent"><code class="docutils literal notranslate"><span class="pre">TurtleAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.TurtleAgent.control_schemes"><code class="docutils literal notranslate"><span class="pre">TurtleAgent.control_schemes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.TurtleAgent.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">TurtleAgent.get_joint_constraints()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.agents.UavAgent"><code class="docutils literal notranslate"><span class="pre">UavAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.UavAgent.control_schemes"><code class="docutils literal notranslate"><span class="pre">UavAgent.control_schemes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.agents.UavAgent.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">UavAgent.get_joint_constraints()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
@@ -94,9 +166,9 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="agents">
-<h1>Agents<a class="headerlink" href="#agents" title="Permalink to this heading"></a></h1>
+<h1>Agents<a class="headerlink" href="#agents" title="Link to this heading"></a></h1>
 <p>For a higher level description of the agents, see <a class="reference internal" href="../agents/agents.html#agents"><span class="std std-ref">HoloOcean Agents</span></a>.</p>
-<span class="target" id="module-holoocean.agents"></span><p>Definitions for different agents that can be controlled from HoloOcean</p>
+<p id="module-holoocean.agents">Definitions for different agents that can be controlled from HoloOcean</p>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -134,7 +206,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.AgentDefinition">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">AgentDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_rot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_main_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.AgentDefinition" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">AgentDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_rot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_main_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.AgentDefinition" title="Link to this definition"></a></dt>
 <dd><p>Represents information needed to initialize agent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -155,7 +227,7 @@ HoloOceanSensors to read from this agent.</p></li>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.AgentFactory">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">AgentFactory</span></span><a class="headerlink" href="#holoocean.agents.AgentFactory" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">AgentFactory</span></span><a class="headerlink" href="#holoocean.agents.AgentFactory" title="Link to this definition"></a></dt>
 <dd><p>Creates an agent object</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -167,7 +239,7 @@ HoloOceanSensors to read from this agent.</p></li>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.AgentFactory.build_agent">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.AgentFactory.build_agent" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.AgentFactory.build_agent" title="Link to this definition"></a></dt>
 <dd><p>Constructs an agent</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -183,11 +255,11 @@ associated with</p></li>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">ControlSchemes</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">ControlSchemes</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes" title="Link to this definition"></a></dt>
 <dd><p>All allowed control schemes.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.ANDROID_TORQUES">
-<span class="sig-name descname"><span class="pre">ANDROID_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.ANDROID_TORQUES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ANDROID_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.ANDROID_TORQUES" title="Link to this definition"></a></dt>
 <dd><p>Default Android control scheme. Specify a torque for each joint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -197,7 +269,7 @@ associated with</p></li>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.CONTINUOUS_SPHERE_DEFAULT">
-<span class="sig-name descname"><span class="pre">CONTINUOUS_SPHERE_DEFAULT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.CONTINUOUS_SPHERE_DEFAULT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CONTINUOUS_SPHERE_DEFAULT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.CONTINUOUS_SPHERE_DEFAULT" title="Link to this definition"></a></dt>
 <dd><p>Default ContinuousSphere control scheme.
 Takes two commands, [forward_delta, turn_delta].</p>
 <dl class="field-list simple">
@@ -208,7 +280,7 @@ Takes two commands, [forward_delta, turn_delta].</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.DISCRETE_SPHERE_DEFAULT">
-<span class="sig-name descname"><span class="pre">DISCRETE_SPHERE_DEFAULT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.DISCRETE_SPHERE_DEFAULT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DISCRETE_SPHERE_DEFAULT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.DISCRETE_SPHERE_DEFAULT" title="Link to this definition"></a></dt>
 <dd><p>Default DiscreteSphere control scheme. Takes a value, 0-4,
 which corresponds with forward, backward, right, and left.</p>
 <dl class="field-list simple">
@@ -219,7 +291,7 @@ which corresponds with forward, backward, right, and left.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.NAV_TARGET_LOCATION">
-<span class="sig-name descname"><span class="pre">NAV_TARGET_LOCATION</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.NAV_TARGET_LOCATION" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">NAV_TARGET_LOCATION</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.NAV_TARGET_LOCATION" title="Link to this definition"></a></dt>
 <dd><p>Default NavAgent control scheme. Takes a target xyz coordinate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -229,7 +301,7 @@ which corresponds with forward, backward, right, and left.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.UAV_TORQUES">
-<span class="sig-name descname"><span class="pre">UAV_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.UAV_TORQUES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">UAV_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.UAV_TORQUES" title="Link to this definition"></a></dt>
 <dd><p>Default UAV control scheme. Takes torques for roll, pitch, and yaw, as
 well as thrust.</p>
 <dl class="field-list simple">
@@ -240,7 +312,7 @@ well as thrust.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.UAV_ROLL_PITCH_YAW_RATE_ALT">
-<span class="sig-name descname"><span class="pre">UAV_ROLL_PITCH_YAW_RATE_ALT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.UAV_ROLL_PITCH_YAW_RATE_ALT" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">UAV_ROLL_PITCH_YAW_RATE_ALT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.UAV_ROLL_PITCH_YAW_RATE_ALT" title="Link to this definition"></a></dt>
 <dd><p>Control scheme for UAV. Takes roll, pitch, yaw rate, and
 altitude targets.</p>
 <dl class="field-list simple">
@@ -251,7 +323,7 @@ altitude targets.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.HAND_AGENT_MAX_TORQUES">
-<span class="sig-name descname"><span class="pre">HAND_AGENT_MAX_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.HAND_AGENT_MAX_TORQUES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">HAND_AGENT_MAX_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.HAND_AGENT_MAX_TORQUES" title="Link to this definition"></a></dt>
 <dd><p>Default Android control scheme. Specify a torque for each joint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -261,7 +333,7 @@ altitude targets.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.AUV_THRUSTERS">
-<span class="sig-name descname"><span class="pre">AUV_THRUSTERS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_THRUSTERS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">AUV_THRUSTERS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_THRUSTERS" title="Link to this definition"></a></dt>
 <dd><p>Default HoveringAUV control scheme. Specify 8-vector of forces for each thruster.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -271,7 +343,7 @@ altitude targets.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.AUV_CONTROL">
-<span class="sig-name descname"><span class="pre">AUV_CONTROL</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_CONTROL" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">AUV_CONTROL</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_CONTROL" title="Link to this definition"></a></dt>
 <dd><p>Implemented PD controller. Specify 6-vector of position and roll,pitch,yaw to go too.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -281,7 +353,7 @@ altitude targets.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.AUV_FORCES">
-<span class="sig-name descname"><span class="pre">AUV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_FORCES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">AUV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_FORCES" title="Link to this definition"></a></dt>
 <dd><p>Used for custom dynamics. All internal dynamics (except collisions) are turned off including
 buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
 <dl class="field-list simple">
@@ -292,7 +364,7 @@ buoyancy, gravity, and damping. Specify 6-vector of linear and angular accelerat
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.TAUV_FINS">
-<span class="sig-name descname"><span class="pre">TAUV_FINS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.TAUV_FINS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TAUV_FINS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.TAUV_FINS" title="Link to this definition"></a></dt>
 <dd><p>Default TorpedoAUV control scheme. Specify 5-vector of fin rotations in degrees and propeller value in Newtons.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -302,7 +374,7 @@ buoyancy, gravity, and damping. Specify 6-vector of linear and angular accelerat
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.TAUV_FORCES">
-<span class="sig-name descname"><span class="pre">TAUV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.TAUV_FORCES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TAUV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.TAUV_FORCES" title="Link to this definition"></a></dt>
 <dd><p>Used for custom dynamics. All internal dynamics (except collisions) are turned off including
 buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
 <dl class="field-list simple">
@@ -313,7 +385,7 @@ buoyancy, gravity, and damping. Specify 6-vector of linear and angular accelerat
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.SV_THRUSTERS">
-<span class="sig-name descname"><span class="pre">SV_THRUSTERS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_THRUSTERS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SV_THRUSTERS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_THRUSTERS" title="Link to this definition"></a></dt>
 <dd><p>Default SurfaceVessel control scheme. Specify 2-vector of forces for left and right thruster.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -323,7 +395,7 @@ buoyancy, gravity, and damping. Specify 6-vector of linear and angular accelerat
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.SV_CONTROL">
-<span class="sig-name descname"><span class="pre">SV_CONTROL</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_CONTROL" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SV_CONTROL</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_CONTROL" title="Link to this definition"></a></dt>
 <dd><p>Implemented PD controller. Specify 2-vector of x and y position to go too.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -333,7 +405,7 @@ buoyancy, gravity, and damping. Specify 6-vector of linear and angular accelerat
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.SV_FORCES">
-<span class="sig-name descname"><span class="pre">SV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_FORCES" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_FORCES" title="Link to this definition"></a></dt>
 <dd><p>Used for custom dynamics. All internal dynamics (except collisions) are turned off including
 buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
 <dl class="field-list simple">
@@ -345,7 +417,7 @@ buoyancy, gravity, and damping. Specify 6-vector of linear and angular accelerat
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">HoloOceanAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">HoloOceanAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent" title="Link to this definition"></a></dt>
 <dd><p>A learning agent in HoloOcean</p>
 <p>Agents can act, receive rewards, and receive observations from their sensors.
 Examples include the Android, UAV, and SphereRobot.</p>
@@ -363,7 +435,7 @@ of HoloOceanSensors to read from this agent.</p></li>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.name">
-<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.name" title="Link to this definition"></a></dt>
 <dd><p>The name of the agent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -373,7 +445,7 @@ of HoloOceanSensors to read from this agent.</p></li>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.sensors">
-<span class="sig-name descname"><span class="pre">sensors</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.sensors" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sensors</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.sensors" title="Link to this definition"></a></dt>
 <dd><p>List of
 HoloOceanSensors on this agent.</p>
 <dl class="field-list simple">
@@ -384,7 +456,7 @@ HoloOceanSensors on this agent.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.agent_state_dict">
-<span class="sig-name descname"><span class="pre">agent_state_dict</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.agent_state_dict" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">agent_state_dict</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.agent_state_dict" title="Link to this definition"></a></dt>
 <dd><p>A dictionary that maps sensor names to sensor observation data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -437,7 +509,7 @@ HoloOceanSensors on this agent.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.act">
-<span class="sig-name descname"><span class="pre">act</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.act" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">act</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.act" title="Link to this definition"></a></dt>
 <dd><p>Sets the command for the agent. Action depends on the agent type and current control
 scheme.</p>
 <dl class="field-list simple">
@@ -448,7 +520,7 @@ scheme.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.action_space">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_space</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.action_space" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_space</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.action_space" title="Link to this definition"></a></dt>
 <dd><p>Gets the action space for the current agent and control scheme.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -465,7 +537,7 @@ scheme.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.add_sensors">
-<span class="sig-name descname"><span class="pre">add_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_defs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.add_sensors" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_defs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.add_sensors" title="Link to this definition"></a></dt>
 <dd><p>Adds a sensor to a particular agent object and attaches an instance of the sensor to the
 agent in the world.</p>
 <dl class="simple">
@@ -475,12 +547,12 @@ agent in the world.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.clear_action">
-<span class="sig-name descname"><span class="pre">clear_action</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.clear_action" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">clear_action</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.clear_action" title="Link to this definition"></a></dt>
 <dd><p>Sets the action to zeros, effectively removing any previous actions.</p>
 </dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.control_schemes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.control_schemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.control_schemes" title="Link to this definition"></a></dt>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
@@ -495,13 +567,13 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.get_joint_constraints">
-<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.get_joint_constraints" title="Link to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.has_camera">
-<span class="sig-name descname"><span class="pre">has_camera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.has_camera" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">has_camera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.has_camera" title="Link to this definition"></a></dt>
 <dd><p>Indicatates whether this agent has a camera or not.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -514,7 +586,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.remove_sensors">
-<span class="sig-name descname"><span class="pre">remove_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_defs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.remove_sensors" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">remove_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_defs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.remove_sensors" title="Link to this definition"></a></dt>
 <dd><p>Removes a sensor from a particular agent object and detaches it from the agent in the
 world.</p>
 <dl class="simple">
@@ -524,7 +596,7 @@ world.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.set_control_scheme">
-<span class="sig-name descname"><span class="pre">set_control_scheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.set_control_scheme" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_control_scheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.set_control_scheme" title="Link to this definition"></a></dt>
 <dd><p>Sets the control scheme for the agent. See <a class="reference internal" href="#holoocean.agents.ControlSchemes" title="holoocean.agents.ControlSchemes"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlSchemes</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -535,7 +607,7 @@ world.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.set_physics_state">
-<span class="sig-name descname"><span class="pre">set_physics_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angular_velocity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.set_physics_state" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_physics_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angular_velocity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.set_physics_state" title="Link to this definition"></a></dt>
 <dd><p>Sets the location, rotation, velocity and angular velocity of an agent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -551,7 +623,7 @@ world.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.teleport">
-<span class="sig-name descname"><span class="pre">teleport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.teleport" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">teleport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.teleport" title="Link to this definition"></a></dt>
 <dd><p>Teleports the agent to a specific location, with a specific rotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -571,7 +643,7 @@ and yaw in degrees of the agent.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.HoveringAUV">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">HoveringAUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoveringAUV" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">HoveringAUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoveringAUV" title="Link to this definition"></a></dt>
 <dd><p>A simple autonomous underwater vehicle. All variables are not actually used in simulation,
 modifying them will have no effect on results. They are exposed for convenience in implementing custom
 dynamics.</p>
@@ -614,7 +686,7 @@ dynamics.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.HoveringAUV.control_schemes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.HoveringAUV.control_schemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.HoveringAUV.control_schemes" title="Link to this definition"></a></dt>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
@@ -629,14 +701,14 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoveringAUV.get_joint_constraints">
-<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoveringAUV.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoveringAUV.get_joint_constraints" title="Link to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.SphereAgent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">SphereAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SphereAgent" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">SphereAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SphereAgent" title="Link to this definition"></a></dt>
 <dd><p>A basic sphere robot.</p>
 <p>See <a class="reference internal" href="../agents/sphere-agent.html#sphere-agent"><span class="std std-ref">SphereAgent</span></a> for more details.</p>
 <p><strong>Action Space:</strong></p>
@@ -684,7 +756,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.SphereAgent.control_schemes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.SphereAgent.control_schemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.SphereAgent.control_schemes" title="Link to this definition"></a></dt>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
@@ -699,14 +771,14 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.SphereAgent.get_joint_constraints">
-<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SphereAgent.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SphereAgent.get_joint_constraints" title="Link to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.SurfaceVessel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">SurfaceVessel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SurfaceVessel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">SurfaceVessel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SurfaceVessel" title="Link to this definition"></a></dt>
 <dd><p>A simple surface vessel. All variables are not actually used in simulation,
 modifying them will have no effect on results. They are exposed for convenience in implementing custom
 dynamics.</p>
@@ -748,7 +820,7 @@ dynamics.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.SurfaceVessel.control_schemes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.SurfaceVessel.control_schemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.SurfaceVessel.control_schemes" title="Link to this definition"></a></dt>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
@@ -763,14 +835,14 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.SurfaceVessel.get_joint_constraints">
-<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SurfaceVessel.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SurfaceVessel.get_joint_constraints" title="Link to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.TorpedoAUV">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">TorpedoAUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TorpedoAUV" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">TorpedoAUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TorpedoAUV" title="Link to this definition"></a></dt>
 <dd><p>A simple foward motion autonomous underwater vehicle. All variables are not actually used in simulation,
 modifying them will have no effect on results. They are exposed for convenience in implementing custom
 dynamics.</p>
@@ -812,7 +884,7 @@ dynamics.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.TorpedoAUV.control_schemes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.TorpedoAUV.control_schemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.TorpedoAUV.control_schemes" title="Link to this definition"></a></dt>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
@@ -827,14 +899,14 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.TorpedoAUV.get_joint_constraints">
-<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TorpedoAUV.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TorpedoAUV.get_joint_constraints" title="Link to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.TurtleAgent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">TurtleAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TurtleAgent" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">TurtleAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TurtleAgent" title="Link to this definition"></a></dt>
 <dd><p>A simple turtle bot.</p>
 <p><strong>Action Space</strong>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">[forward_force,</span> <span class="pre">rot_force]</span></code></p>
@@ -861,7 +933,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.TurtleAgent.control_schemes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.TurtleAgent.control_schemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.TurtleAgent.control_schemes" title="Link to this definition"></a></dt>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
@@ -876,14 +948,14 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.TurtleAgent.get_joint_constraints">
-<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TurtleAgent.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TurtleAgent.get_joint_constraints" title="Link to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.UavAgent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">UavAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.UavAgent" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">UavAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.UavAgent" title="Link to this definition"></a></dt>
 <dd><p>A UAV (quadcopter) agent</p>
 <p><strong>Action Space:</strong></p>
 <p>Has two possible continuous action control schemes</p>
@@ -911,7 +983,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 </table>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.agents.UavAgent.control_schemes">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.UavAgent.control_schemes" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">control_schemes</span></span><a class="headerlink" href="#holoocean.agents.UavAgent.control_schemes" title="Link to this definition"></a></dt>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
@@ -926,7 +998,7 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.UavAgent.get_joint_constraints">
-<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.UavAgent.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.UavAgent.get_joint_constraints" title="Link to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
 </dd></dl>
