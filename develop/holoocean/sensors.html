@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sensors — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=9a2dae69"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="lcm.html" rel="next" title="LCM"/>
+<link href="packagemanager.html" rel="prev" title="Package Manager"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version">
+                1.0.0
+              </div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.dtype"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.DVLSensor"><code class="docutils literal notranslate"><span class="pre">DVLSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DVLSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">DVLSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DVLSensor.dtype"><code class="docutils literal notranslate"><span class="pre">DVLSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.DepthSensor"><code class="docutils literal notranslate"><span class="pre">DepthSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DepthSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">DepthSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DepthSensor.dtype"><code class="docutils literal notranslate"><span class="pre">DepthSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.DynamicsSensor"><code class="docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DynamicsSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">DynamicsSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.DynamicsSensor.dtype"><code class="docutils literal notranslate"><span class="pre">DynamicsSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.GPSSensor"><code class="docutils literal notranslate"><span class="pre">GPSSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPSSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">GPSSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPSSensor.dtype"><code class="docutils literal notranslate"><span class="pre">GPSSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPSSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">GPSSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.dtype"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.rotate"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.IMUSensor"><code class="docutils literal notranslate"><span class="pre">IMUSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.IMUSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">IMUSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.IMUSensor.dtype"><code class="docutils literal notranslate"><span class="pre">IMUSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.ImagingSonar"><code class="docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ImagingSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">ImagingSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ImagingSonar.dtype"><code class="docutils literal notranslate"><span class="pre">ImagingSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.LocationSensor"><code class="docutils literal notranslate"><span class="pre">LocationSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.LocationSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">LocationSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.LocationSensor.dtype"><code class="docutils literal notranslate"><span class="pre">LocationSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor"><code class="docutils literal notranslate"><span class="pre">MagnetometerSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">MagnetometerSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor.dtype"><code class="docutils literal notranslate"><span class="pre">MagnetometerSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.dtype"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">OpticalModemSensor.sensor_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.OrientationSensor"><code class="docutils literal notranslate"><span class="pre">OrientationSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OrientationSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">OrientationSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.OrientationSensor.dtype"><code class="docutils literal notranslate"><span class="pre">OrientationSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.PoseSensor"><code class="docutils literal notranslate"><span class="pre">PoseSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.PoseSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">PoseSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.PoseSensor.dtype"><code class="docutils literal notranslate"><span class="pre">PoseSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.ProfilingSonar"><code class="docutils literal notranslate"><span class="pre">ProfilingSonar</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RGBCamera"><code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RGBCamera.data_shape"><code class="docutils literal notranslate"><span class="pre">RGBCamera.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RGBCamera.dtype"><code class="docutils literal notranslate"><span class="pre">RGBCamera.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RGBCamera.set_ticks_per_capture"><code class="docutils literal notranslate"><span class="pre">RGBCamera.set_ticks_per_capture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor"><code class="docutils literal notranslate"><span class="pre">RangeFinderSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">RangeFinderSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor.dtype"><code class="docutils literal notranslate"><span class="pre">RangeFinderSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RotationSensor"><code class="docutils literal notranslate"><span class="pre">RotationSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RotationSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">RotationSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RotationSensor.dtype"><code class="docutils literal notranslate"><span class="pre">RotationSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SensorDefinition"><code class="docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SensorDefinition.get_config_json_string"><code class="docutils literal notranslate"><span class="pre">SensorDefinition.get_config_json_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SensorFactory"><code class="docutils literal notranslate"><span class="pre">SensorFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SensorFactory.build_sensor"><code class="docutils literal notranslate"><span class="pre">SensorFactory.build_sensor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SidescanSonar"><code class="docutils literal notranslate"><span class="pre">SidescanSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SidescanSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">SidescanSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SidescanSonar.dtype"><code class="docutils literal notranslate"><span class="pre">SidescanSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar"><code class="docutils literal notranslate"><span class="pre">SinglebeamSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">SinglebeamSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar.dtype"><code class="docutils literal notranslate"><span class="pre">SinglebeamSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.VelocitySensor"><code class="docutils literal notranslate"><span class="pre">VelocitySensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.VelocitySensor.data_shape"><code class="docutils literal notranslate"><span class="pre">VelocitySensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.VelocitySensor.dtype"><code class="docutils literal notranslate"><span class="pre">VelocitySensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.ViewportCapture"><code class="docutils literal notranslate"><span class="pre">ViewportCapture</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ViewportCapture.data_shape"><code class="docutils literal notranslate"><span class="pre">ViewportCapture.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.ViewportCapture.dtype"><code class="docutils literal notranslate"><span class="pre">ViewportCapture.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.WorldNumSensor"><code class="docutils literal notranslate"><span class="pre">WorldNumSensor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.WorldNumSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">WorldNumSensor.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.WorldNumSensor.dtype"><code class="docutils literal notranslate"><span class="pre">WorldNumSensor.dtype</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">Sensors</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/holoocean/sensors.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="module-holoocean.sensors">
+<span id="sensors"></span><h1>Sensors<a class="headerlink" href="#module-holoocean.sensors" title="Link to this heading"></a></h1>
+<p>Definition of all of the sensor information. The UE settings for sensors are such that the motion ticks happen before the sensor ticks.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor" title="holoocean.sensors.AcousticBeaconSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Acoustic Beacon Sensor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DVLSensor" title="holoocean.sensors.DVLSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DVLSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<td><p>Doppler Velocity Log Sensor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DepthSensor" title="holoocean.sensors.DepthSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DepthSensor</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Pressure/Depth Sensor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DynamicsSensor" title="holoocean.sensors.DynamicsSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Gives all relevant information needed for implementing custom dynamics.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPSSensor" title="holoocean.sensors.GPSSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPSSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<td><p>Gets the location of the agent in the world if the agent is close enough to the surface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>(client[, agent_name, ...])</p></td>
+<td><p>Base class for a sensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.IMUSensor" title="holoocean.sensors.IMUSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IMUSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<td><p>Inertial Measurement Unit sensor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates an imaging sonar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.LocationSensor" title="holoocean.sensors.LocationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocationSensor</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Gets the location of the agent in the world.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor" title="holoocean.sensors.MagnetometerSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MagnetometerSensor</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Gets the global x-axis (or given vector) in the local frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor" title="holoocean.sensors.OpticalModemSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Handles communication between agents using an optical modem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.OrientationSensor" title="holoocean.sensors.OrientationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrientationSensor</span></code></a>(client[, agent_name, ...])</p></td>
+<td><p>Gets the forward, right, and up vector for the agent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.PoseSensor" title="holoocean.sensors.PoseSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoseSensor</span></code></a>(client[, agent_name, agent_type, ...])</p></td>
+<td><p>Gets the forward, right, and up vector for the agent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.ProfilingSonar" title="holoocean.sensors.ProfilingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates a multibeam profiling sonar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBCamera" title="holoocean.sensors.RGBCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RGBCamera</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<td><p>Captures agent's view.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor" title="holoocean.sensors.RangeFinderSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeFinderSensor</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Returns distances to nearest collisions in the directions specified by the parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RotationSensor" title="holoocean.sensors.RotationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotationSensor</span></code></a>(client[, agent_name, ...])</p></td>
+<td><p>Gets the rotation of the agent in the world, with rotation XYZ about the fixed frame, in degrees.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a>(agent_name, agent_type, ...)</p></td>
+<td><p>A class for new sensors and their parameters, to be used for adding new sensors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SensorFactory" title="holoocean.sensors.SensorFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorFactory</span></code></a>()</p></td>
+<td><p>Given a sensor definition, constructs the appropriate HoloOceanSensor object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SidescanSonar" title="holoocean.sensors.SidescanSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SidescanSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates a sidescan sonar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar" title="holoocean.sensors.SinglebeamSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SinglebeamSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.VelocitySensor" title="holoocean.sensors.VelocitySensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VelocitySensor</span></code></a>(client[, agent_name, ...])</p></td>
+<td><p>Returns the x, y, and z velocity of the sensor in the global frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.ViewportCapture" title="holoocean.sensors.ViewportCapture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewportCapture</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Captures what the viewport is seeing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.WorldNumSensor" title="holoocean.sensors.WorldNumSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorldNumSensor</span></code></a>(client[, agent_name, ...])</p></td>
+<td><p>Returns any numeric value from the world corresponding to a given key.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">AcousticBeaconSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AcousticBeaconSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor" title="Link to this definition"></a></dt>
+<dd><p>Acoustic Beacon Sensor. Can send message to other beacon from the <code class="xref py py-meth docutils literal notranslate"><span class="pre">send_acoustic_message()</span></code> command.</p>
+<p>Returning array depends on sent message type. Note received message will be delayed due to time of
+acoustic wave traveling. Possibly message types are, with ϕ representing the azimuth, ϴ
+elevation, r range, and d depth in water,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OWAY</span></code>: One way message that sends <code class="docutils literal notranslate"><span class="pre">["OWAY",</span> <span class="pre">from_sensor,</span> <span class="pre">payload]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OWAYU</span></code>: One way message that sends <code class="docutils literal notranslate"><span class="pre">["OWAYU",</span> <span class="pre">from_sensor,</span> <span class="pre">payload,</span> <span class="pre">ϕ,</span> <span class="pre">ϴ]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MSG_REQ</span></code>: Requests a return message of MSG_RESP and sends <code class="docutils literal notranslate"><span class="pre">["MSG_REQ",</span> <span class="pre">from_sensor,</span> <span class="pre">payload]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MSG_RESP</span></code>: Return message that sends <code class="docutils literal notranslate"><span class="pre">["MSG_RESP",</span> <span class="pre">from_sensor,</span> <span class="pre">payload]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MSG_REQU</span></code>: Requests a return message of MSG_RESPU and sends <code class="docutils literal notranslate"><span class="pre">["MSG_REQU",</span> <span class="pre">from_sensor,</span> <span class="pre">payload,</span> <span class="pre">ϕ,</span> <span class="pre">ϴ]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MSG_RESPU</span></code>: Return message that sends <code class="docutils literal notranslate"><span class="pre">["MSG_RESPU",</span> <span class="pre">from_sensor,</span> <span class="pre">payload,</span> <span class="pre">ϕ,</span> <span class="pre">ϴ,</span> <span class="pre">r]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MSG_REQX</span></code>: Requests a return message of MSG_RESPX and sends <code class="docutils literal notranslate"><span class="pre">["MSG_REQX",</span> <span class="pre">from_sensor,</span> <span class="pre">payload,</span> <span class="pre">ϕ,</span> <span class="pre">ϴ,</span> <span class="pre">d]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MSG_RESPX</span></code>: Return message that sends <code class="docutils literal notranslate"><span class="pre">["MSG_RESPX",</span> <span class="pre">from_sensor,</span> <span class="pre">payload,</span> <span class="pre">ϕ,</span> <span class="pre">ϴ,</span> <span class="pre">r,</span> <span class="pre">d]</span></code></p></li>
+</ul>
+<p>These messages types are based on the <a class="reference external" href="https://www.blueprintsubsea.com/pages/product.php?PN=BP00795">Blueprint Subsea SeaTrac X150</a></p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor. If not given, they are numbered sequentially.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CheckVisible</span></code>: Whether to check for linear line of sight to vehicle when verify message will be received. Used when sending data. Defaults to false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MaxDistance</span></code>: Max Distance in meters of AcousticBeacon. Used when sending data. Defaults to no max distance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DistanceSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">DistanceCov</span></code>: Determines the standard deviation/covariance of the noise on MaxDistance. Must be scalar value. (default 0 =&gt; no noise)</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.data_shape" title="holoocean.sensors.AcousticBeaconSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.dtype" title="holoocean.sensors.AcousticBeaconSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.AcousticBeaconSensor.sensor_data" title="holoocean.sensors.AcousticBeaconSensor.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
+<td><p>Get the sensor data buffer</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.AcousticBeaconSensor.sensor_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.AcousticBeaconSensor.sensor_data" title="Link to this definition"></a></dt>
+<dd><p>Get the sensor data buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> of size <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.data_shape</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.DVLSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DVLSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DVLSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DVLSensor" title="Link to this definition"></a></dt>
+<dd><p>Doppler Velocity Log Sensor.</p>
+<p>Returns a 1D numpy array of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">velocity_x</span><span class="p">,</span> <span class="n">velocity_y</span><span class="p">,</span> <span class="n">velocity_z</span><span class="p">,</span> <span class="n">range_x_forw</span><span class="p">,</span> <span class="n">range_y_forw</span><span class="p">,</span> <span class="n">range_x_back</span><span class="p">,</span> <span class="n">range_y_back</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>With the range potentially not returning if <code class="docutils literal notranslate"><span class="pre">ReturnRange</span></code> is set to false.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Angle of each acoustic beam off z-axis pointing down. Only used for noise/visualization. Defaults to 22.5 degrees =&gt; 45 field of view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DebugLines</span></code>: Whether to show lines of each beam. Defaults to false.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VelSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">VelCov</span></code>: Covariance/Std to be applied to each beam velocity. Can be scalar, 4-vector or 4x4-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ReturnRange</span></code>: Boolean of whether range of beams should also be returned. Defaults to true.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MaxRange</span></code>: Maximum range that can be returned by the beams.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeCov</span></code>: Covariance/Std to be applied to each beam range. Can be scalar, 4-vector or 4x4-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DVLSensor.data_shape" title="holoocean.sensors.DVLSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DVLSensor.dtype" title="holoocean.sensors.DVLSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DVLSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DVLSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DVLSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DVLSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DepthSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DepthSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DepthSensor" title="Link to this definition"></a></dt>
+<dd><p>Pressure/Depth Sensor.</p>
+<p>Returns a 1D numpy array of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">position_z</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std to be applied, a scalar. Defaults to 0 =&gt; no noise.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DepthSensor.data_shape" title="holoocean.sensors.DepthSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DepthSensor.dtype" title="holoocean.sensors.DepthSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DepthSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DepthSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.DynamicsSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DynamicsSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DynamicsSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor" title="Link to this definition"></a></dt>
+<dd><p>Gives all relevant information needed for implementing custom dynamics. Returns are all in the global frame and are as follows:</p>
+<blockquote>
+<div><p>[acceleration, velocity, position, angular accel., angular velocity, rpy]</p>
+</div></blockquote>
+<p>all of which are 3-vectors and rpy is roll, pitch, and yaw. This is the ONLY sensor that by default
+doesn’t operate in its socket, but rather in the COM. This is mostly for convenience since 99% of the
+time when doing custom dynamics the information is wanted at the COM.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UseCOM</span></code>: Whether to return data relative to the COM or the specified socket. Defaults to true.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UseRPY</span></code>: Whether to return orientation as roll, pitch, yaw, or as a quaternion. Defaults to true. When true, sensor returns an 18 vector, when false sensor returns as 19 vector. Quaternion is specified with scalar as last value ie x,y,z,w.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DynamicsSensor.data_shape" title="holoocean.sensors.DynamicsSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DynamicsSensor.dtype" title="holoocean.sensors.DynamicsSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DynamicsSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DynamicsSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DynamicsSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.GPSSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">GPSSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GPSSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.GPSSensor" title="Link to this definition"></a></dt>
+<dd><p>Gets the location of the agent in the world if the agent is close enough to the surface.</p>
+<p>Returns coordinates in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std of measurement. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depth</span></code>: How deep in the water we can still receive GPS messages in meters. Defaults to 2m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DepthSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">DepthCov</span></code>: Covariance/Std of depth. Must be a scalar. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPSSensor.data_shape" title="holoocean.sensors.GPSSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPSSensor.dtype" title="holoocean.sensors.GPSSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPSSensor.sensor_data" title="holoocean.sensors.GPSSensor.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
+<td><p>Get the sensor data buffer</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPSSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPSSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPSSensor.sensor_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.GPSSensor.sensor_data" title="Link to this definition"></a></dt>
+<dd><p>Get the sensor data buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> of size <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.data_shape</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">HoloOceanSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor" title="Link to this definition"></a></dt>
+<dd><p>Base class for a sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<a class="reference internal" href="holooceanclient.html#holoocean.holooceanclient.HoloOceanClient" title="holoocean.holooceanclient.HoloOceanClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanClient</span></code></a>) – Client
+attached to a sensor</p></li>
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of the parent agent</p></li>
+<li><p><strong>agent_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Type of the parent agent</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of the sensor</p></li>
+<li><p><strong>config</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>) – Configuration dictionary to pass to the engine</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.data_shape" title="holoocean.sensors.HoloOceanSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.dtype" title="holoocean.sensors.HoloOceanSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.sensor_data" title="holoocean.sensors.HoloOceanSensor.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
+<td><p>Get the sensor data buffer</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.rotate" title="holoocean.sensors.HoloOceanSensor.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotate</span></code></a>(rotation)</p></td>
+<td><p>Rotate the sensor.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.rotate">
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.rotate" title="Link to this definition"></a></dt>
+<dd><p>Rotate the sensor. It will be applied in approximately three ticks.
+<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> or
+<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code></a>.)</p>
+<p>This will not persist after a call to reset(). If you want a persistent rotation for a sensor,
+specify it in your scenario configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rotation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – rotation for sensor (see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.sensor_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.sensor_data" title="Link to this definition"></a></dt>
+<dd><p>Get the sensor data buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> of size <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.data_shape</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.IMUSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">IMUSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IMUSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.IMUSensor" title="Link to this definition"></a></dt>
+<dd><p>Inertial Measurement Unit sensor.</p>
+<p>Returns a 2D numpy array of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="p">[</span><span class="n">accel_x</span><span class="p">,</span> <span class="n">accel_y</span><span class="p">,</span> <span class="n">accel_z</span><span class="p">],</span>
+  <span class="p">[</span><span class="n">ang_vel_roll</span><span class="p">,</span>  <span class="n">ang_vel_pitch</span><span class="p">,</span> <span class="n">ang_vel_yaw</span><span class="p">],</span>
+  <span class="p">[</span><span class="n">accel_bias_x</span><span class="p">,</span> <span class="n">accel_bias_y</span><span class="p">,</span> <span class="n">accel_bias_z</span><span class="p">],</span>
+  <span class="p">[</span><span class="n">ang_vel_bias_roll</span><span class="p">,</span>  <span class="n">ang_vel_bias_pitch</span><span class="p">,</span> <span class="n">ang_vel_bias_yaw</span><span class="p">]</span>    <span class="p">]</span>
+</pre></div>
+</div>
+<p>where the accleration components are in m/s and the angular velocity is in rad/s.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AccelSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AccelCov</span></code>: Covariance/Std for acceleration component. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AngVelSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AngVelCov</span></code>: Covariance/Std for angular velocity component. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AccelBiasSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AccelCBiasov</span></code>: Covariance/Std for acceleration bias component. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AngVelBiasSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AngVelBiasCov</span></code>: Covariance/Std for acceleration bias component. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ReturnBias</span></code>: Whether the sensor should return the bias along with accel/ang. vel. Defaults to false.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.IMUSensor.data_shape" title="holoocean.sensors.IMUSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.IMUSensor.dtype" title="holoocean.sensors.IMUSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.IMUSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.IMUSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.IMUSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.IMUSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.ImagingSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ImagingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ImagingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ImagingSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates an imaging sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
+how to configure the octree that is used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) angle visible in degrees, defaults to 120.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation angle (up and down) visible in degrees, defaults to 20.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 512 bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthBins</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRes</span></code>: Number of azimuth bins of resulting image, or resolution (length in degrees) of each bin. Set one or the other. Defaults to 512 bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultiPath</span></code>: Whether to compute multipath or not. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ClusterSize</span></code>: Size of cluster when multipath is enabled. Defaults to 5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ScaleNoise</span></code>: Whether to scale the returned intensities or not. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthStreaks</span></code>: What sort of azimuth artifacts to introduce. -1 is a removal artifact, 0 is no artifact, and 1 is increased gain artifact. Defaults to 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeSigma</span></code>: Additive noise std from an exponential distribution that will be added to the range measurements, and the intensities will be scaled by the pdf. Needs to be a float. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ShowWarning</span></code>: Whether to show on screen warning about sonar computation happening. Defaults to True.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ElevationBins</span></code>/<code class="docutils literal notranslate"><span class="pre">ElevationRes</span></code>: Number of elevation bins used when shadowing is done, or resolution (length in degrees) of each bin. Set one or the other. By default this is computed based on the octree size and the min/max range. Should only be set if shadowing isn’t working.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InitOctreeRange</span></code>: Upon startup, all mid-level octrees within this distance of the agent will be created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewOctree</span></code>: What octree leaves to show. Less than -1 means none, -1 means all, and anything greater than or equal to 0 shows the corresponding beam index. Defaults to -10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShadowEpsilon</span></code>: What constitutes a break between clusters when shadowing. Defaults to 4*OctreeMin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UseApprox</span></code>: Whether to use the faster approximation of Atan2 or the slower exact implementation. Defaults to True.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.ImagingSonar.data_shape" title="holoocean.sensors.ImagingSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.ImagingSonar.dtype" title="holoocean.sensors.ImagingSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.ImagingSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.ImagingSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.ImagingSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.ImagingSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.LocationSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">LocationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LocationSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.LocationSensor" title="Link to this definition"></a></dt>
+<dd><p>Gets the location of the agent in the world.</p>
+<p>Returns coordinates in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.LocationSensor.data_shape" title="holoocean.sensors.LocationSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.LocationSensor.dtype" title="holoocean.sensors.LocationSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.LocationSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.LocationSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.LocationSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.LocationSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.MagnetometerSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">MagnetometerSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MagnetometerSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor" title="Link to this definition"></a></dt>
+<dd><p>Gets the global x-axis (or given vector) in the local frame.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std of measurement. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MagneticVector</span></code>: The given 3-vector to measure in the global frame. Defaults to [1,0,0].</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor.data_shape" title="holoocean.sensors.MagnetometerSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor.dtype" title="holoocean.sensors.MagnetometerSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.MagnetometerSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.MagnetometerSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">OpticalModemSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OpticalModemSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor" title="Link to this definition"></a></dt>
+<dd><p>Handles communication between agents using an optical modem. Can send message to other modem from the <code class="xref py py-meth docutils literal notranslate"><span class="pre">send_optical_message()</span></code> command.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor. If not given, they are numbered sequentially.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MaxDistance</span></code>: Max Distance in meters of OpticalModem. Used when sending data. (default 50)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DistanceSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">DistanceCov</span></code>: Determines the standard deviation/covariance of the noise on MaxDistance. Must be scalar value. (default 0 =&gt; no noise)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LaserAngle</span></code>: Angle of lasers from origin. Measured in degrees. Used when sending data. (default 60)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AngleSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AngleCov</span></code>: Determines the standard deviation of the noise on LaserAngle. Must be scalar value. (default 0 =&gt; no noise)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LaserDebug</span></code>: Show debug traces. (default false)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DebugNumSides</span></code>: Number of sides on the debug cone. (default 72)</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.data_shape" title="holoocean.sensors.OpticalModemSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.dtype" title="holoocean.sensors.OpticalModemSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor.sensor_data" title="holoocean.sensors.OpticalModemSensor.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
+<td><p>Get the sensor data buffer</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.OpticalModemSensor.sensor_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor.sensor_data" title="Link to this definition"></a></dt>
+<dd><p>Get the sensor data buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> of size <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.data_shape</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.OrientationSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">OrientationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.OrientationSensor" title="Link to this definition"></a></dt>
+<dd><p>Gets the forward, right, and up vector for the agent.
+Note that this is based on the sensor’s frame, not the agent’s frame so in the IMU socket,
+it will be NED, and in COM socket it will NWU. Our provided configurations have the sensor in the IMU socket.</p>
+<p>Returns a 2D numpy array of</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="p">[</span><span class="n">forward_x</span><span class="p">,</span> <span class="n">right_x</span><span class="p">,</span> <span class="n">up_x</span><span class="p">],</span>
+  <span class="p">[</span><span class="n">forward_y</span><span class="p">,</span> <span class="n">right_y</span><span class="p">,</span> <span class="n">up_y</span><span class="p">],</span>
+  <span class="p">[</span><span class="n">forward_z</span><span class="p">,</span> <span class="n">right_z</span><span class="p">,</span> <span class="n">up_z</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.OrientationSensor.data_shape" title="holoocean.sensors.OrientationSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.OrientationSensor.dtype" title="holoocean.sensors.OrientationSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.OrientationSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.OrientationSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.OrientationSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.OrientationSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.PoseSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">PoseSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.PoseSensor" title="Link to this definition"></a></dt>
+<dd><p>Gets the forward, right, and up vector for the agent.
+Note that this is based on the sensor’s frame, not the agent’s frame so in the IMU socket,
+it will be NED, and in COM socket it will NWU. Our provided configurations have the sensor in the IMU socket.</p>
+<p>Returns a 2D numpy array of</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="p">[</span><span class="n">R</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>where R is the rotation matrix (See OrientationSensor) and p is the robot world location (see LocationSensor)</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.PoseSensor.data_shape" title="holoocean.sensors.PoseSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.PoseSensor.dtype" title="holoocean.sensors.PoseSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.PoseSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.PoseSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.PoseSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.PoseSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.ProfilingSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ProfilingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ProfilingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ProfilingSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates a multibeam profiling sonar. This is largely based off of the imaging sonar (<a class="reference internal" href="#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a>), just with
+different defaults. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on how to configure the octree that is used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) angle visible in degrees, defaults to 120.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation angle (up and down) visible in degrees, defaults to 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 75.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 750 bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthBins</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRes</span></code>: Number of azimuth bins of resulting image, or resolution (length in degrees) of each bin. Set one or the other. Defaults to 480 bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultiPath</span></code>: Whether to compute multipath or not. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ClusterSize</span></code>: Size of cluster when multipath is enabled. Defaults to 5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ScaleNoise</span></code>: Whether to scale the returned intensities or not. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthStreaks</span></code>: What sort of azimuth artifacts to introduce. -1 is a removal artifact, 0 is no artifact, and 1 is increased gain artifact. Defaults to 0.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ShowWarning</span></code>: Whether to show on screen warning about sonar computation happening. Defaults to True.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ElevationBins</span></code>/<code class="docutils literal notranslate"><span class="pre">ElevationRes</span></code>: Number of elevation bins used when shadowing is done, or resolution (length in degrees) of each bin. Set one or the other. By default this is computed based on the octree size and the min/max range. Should only be set if shadowing isn’t working.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InitOctreeRange</span></code>: Upon startup, all mid-level octrees within this distance of the agent will be created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewOctree</span></code>: What octree leaves to show. Less than -1 means none, -1 means all, and anything greater than or equal to 0 shows the corresponding beam index. Defaults to -10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShadowEpsilon</span></code>: What constitutes a break between clusters when shadowing. Defaults to 4*OctreeMin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UseApprox</span></code>: Whether to use the faster approximation of Atan2 or the slower exact implementation. Defaults to True.</p></li>
+</ul>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.RGBCamera">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RGBCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RGBCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBCamera" title="Link to this definition"></a></dt>
+<dd><p>Captures agent’s view.</p>
+<p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
+The resolution can be increased, but will significantly impact performance.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code>: Width of captured image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CaptureHeight</span></code>: Height of captured image</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBCamera.data_shape" title="holoocean.sensors.RGBCamera.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RGBCamera.dtype" title="holoocean.sensors.RGBCamera.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBCamera.set_ticks_per_capture" title="holoocean.sensors.RGBCamera.set_ticks_per_capture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ticks_per_capture</span></code></a>(ticks_per_capture)</p></td>
+<td><p>Sets this RGBCamera to capture a new frame every ticks_per_capture.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RGBCamera.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RGBCamera.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RGBCamera.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RGBCamera.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.sensors.RGBCamera.set_ticks_per_capture">
+<span class="sig-name descname"><span class="pre">set_ticks_per_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBCamera.set_ticks_per_capture" title="Link to this definition"></a></dt>
+<dd><p>Sets this RGBCamera to capture a new frame every ticks_per_capture.</p>
+<p>The sensor’s image will remain unchanged between captures.</p>
+<p>This method must be called after every call to env.reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ticks_per_capture</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The amount of ticks to wait between camera captures.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RangeFinderSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RangeFinderSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor" title="Link to this definition"></a></dt>
+<dd><p>Returns distances to nearest collisions in the directions specified by
+the parameters. For example, if an agent had two range sensors at different
+angles with 24 lasers each, the LaserDebug traces would look something like
+this:</p>
+<img alt="../_images/UAVRangeFinder.PNG" src="../_images/UAVRangeFinder.PNG"/>
+<p>That is, for 1 laser, you’d have 1 laser facing forward, for 3, you’d have one forward,
+with the other 2 distributed evenly along the circle, at 120 degree intervals, and for
+24, you’d have a laser spaced every 15 degrees.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LaserMaxDistance</span></code>: Max Distance in meters of RangeFinder. (default 10)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LaserCount</span></code>: Number of lasers in sensor. Lasers are distributed evenly along the cone defined by laser angle. (default 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LaserAngle</span></code>: Angle of elevation of lasers from origin. Measured in degrees. Straight up would be 90 degrees, down would be -90. (default 0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LaserDebug</span></code>: Show debug traces. (default false)</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor.data_shape" title="holoocean.sensors.RangeFinderSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor.dtype" title="holoocean.sensors.RangeFinderSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.RotationSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RotationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RotationSensor" title="Link to this definition"></a></dt>
+<dd><p>Gets the rotation of the agent in the world, with rotation XYZ about the fixed frame, in degrees.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> (see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RotationSensor.data_shape" title="holoocean.sensors.RotationSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RotationSensor.dtype" title="holoocean.sensors.RotationSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RotationSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RotationSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RotationSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RotationSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.SensorDefinition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SensorDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lcm_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_every</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorDefinition" title="Link to this definition"></a></dt>
+<dd><p>A class for new sensors and their parameters, to be used for adding new sensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the parent agent.</p></li>
+<li><p><strong>agent_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The type of the parent agent</p></li>
+<li><p><strong>sensor_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the sensor.</p></li>
+<li><p><strong>sensor_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <a class="reference internal" href="#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>) – The type of the sensor.</p></li>
+<li><p><strong>socket</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – The name of the socket to attach sensor to.</p></li>
+<li><p><strong>location</strong> (Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> coordinates to place sensor
+relative to agent (or socket) (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>).</p></li>
+<li><p><strong>rotation</strong> (Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional) – <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> to rotate sensor
+relative to agent (see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p></li>
+<li><p><strong>config</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>) – Configuration dictionary for the sensor, to pass to engine</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SensorDefinition.get_config_json_string" title="holoocean.sensors.SensorDefinition.get_config_json_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_config_json_string</span></code></a>()</p></td>
+<td><p>Gets the configuration dictionary as a string ready for transport</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.sensors.SensorDefinition.get_config_json_string">
+<span class="sig-name descname"><span class="pre">get_config_json_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorDefinition.get_config_json_string" title="Link to this definition"></a></dt>
+<dd><p>Gets the configuration dictionary as a string ready for transport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The configuration as an escaped json string</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.SensorFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SensorFactory</span></span><a class="headerlink" href="#holoocean.sensors.SensorFactory" title="Link to this definition"></a></dt>
+<dd><p>Given a sensor definition, constructs the appropriate HoloOceanSensor object.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SensorFactory.build_sensor" title="holoocean.sensors.SensorFactory.build_sensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_sensor</span></code></a>(client, sensor_def)</p></td>
+<td><p>Constructs a given sensor associated with client</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.sensors.SensorFactory.build_sensor">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_sensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SensorFactory.build_sensor" title="Link to this definition"></a></dt>
+<dd><p>Constructs a given sensor associated with client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of the agent this sensor is attached to</p></li>
+<li><p><strong>sensor_def</strong> (<a class="reference internal" href="#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a>) – Sensor definition to construct</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.SidescanSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SidescanSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SidescanSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SidescanSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates a sidescan sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
+how to configure the octree that is used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) angle visible in degrees, defaults to 170.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation angle (up and down) visible in degrees, defaults to 0.25.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 35.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 0.05 m.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ShowWarning</span></code>: Whether to show on screen warning about sonar computation happening. Defaults to True.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthBins</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRes</span></code>: Number of azimuth bins of resulting image, or resolution (length in degrees) of each bin. Set one or the other. By default this is computed based on the OctreeMin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ElevationBins</span></code>/<code class="docutils literal notranslate"><span class="pre">ElevationRes</span></code>: Number of elevation bins used when shadowing is done, or resolution (length in degrees) of each bin. Set one or the other. By default this is computed based on the octree size and the min range. Should only be set if shadowing isn’t working.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InitOctreeRange</span></code>: Upon startup, all mid-level octrees within this distance of the agent will be created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewOctree</span></code>: What octree leaves to show. Less than -1 means none, -1 means all, and anything greater than or equal to 0 shows the corresponding beam index. Defaults to -10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShadowEpsilon</span></code>: What constitutes a break between clusters when shadowing. Defaults to 4*OctreeMin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UseApprox</span></code>: Whether to use the faster approximation of Atan2 or the slower exact implementation. Defaults to True.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SidescanSonar.data_shape" title="holoocean.sensors.SidescanSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SidescanSonar.dtype" title="holoocean.sensors.SidescanSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.SidescanSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.SidescanSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.SidescanSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.SidescanSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.SinglebeamSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SinglebeamSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SinglebeamSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
+how to configure the octree that is used.</p>
+<p>Returns a 1D numpy array of the average intensities held in each range bin of the sensor. The length of the array is specified by the number of range bins chosen for the sensor.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+options:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OpeningAngle</span></code>: Opening angle of the cone visible in degrees, defaults to 30. In this documentation, the opening angle would be 2 times the semi-vertical angle of the cone.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 200 bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeSigma</span></code>: Additive noise std from an exponential distribution that will be added to the range measurements. Needs to be a float. Defaults to 0/off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ShowWarning</span></code>: Whether to show on screen warning about sonar computation happening. Defaults to True.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OpeningAngleBins</span></code>/<code class="docutils literal notranslate"><span class="pre">OpeningAngleRes</span></code>: Number of OpeningAngle bins used when shadowing is done, or resolution (length in degrees) of each bin. Set one or the other. By default this is computed based on the octree size and the min/max range. Should only be set if shadowing isn’t working.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CentralAngleBins</span></code>/<code class="docutils literal notranslate"><span class="pre">CentralAngleRes</span></code>: Number of CentralAngle bins used when shadowing is done, or resolution (length in degrees) of each bin. Set one or the other. By default this is computed based on the octree size and the min/max range. Should only be set if shadowing isn’t working.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InitOctreeRange</span></code>: Upon startup, all mid-level octrees within this distance of the agent will be created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewOctree</span></code>: What octree leaves to show. Less than -1 means none, -1 means all, and anything greater than or equal to 0 shows the corresponding beam index. Defaults to -10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShadowEpsilon</span></code>: What constitutes a break between clusters when shadowing. Defaults to 4*OctreeMin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UseApprox</span></code>: Whether to use the faster approximation of Atan2 or the slower exact implementation. Defaults to True.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar.data_shape" title="holoocean.sensors.SinglebeamSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar.dtype" title="holoocean.sensors.SinglebeamSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.SinglebeamSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.SinglebeamSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.VelocitySensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">VelocitySensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.VelocitySensor" title="Link to this definition"></a></dt>
+<dd><p>Returns the x, y, and z velocity of the sensor in the global frame.</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.VelocitySensor.data_shape" title="holoocean.sensors.VelocitySensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.VelocitySensor.dtype" title="holoocean.sensors.VelocitySensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.VelocitySensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.VelocitySensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.VelocitySensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.VelocitySensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.ViewportCapture">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ViewportCapture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ViewportCapture'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ViewportCapture" title="Link to this definition"></a></dt>
+<dd><p>Captures what the viewport is seeing.</p>
+<p>The ViewportCapture is faster than the RGB camera, but there can only be one camera
+and it must capture what the viewport is capturing. If performance is
+critical, consider this camera instead of the RGBCamera.</p>
+<p>It may be useful
+to position the camera with
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">teleport_camera()</span></code>.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code>: Width of captured image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CaptureHeight</span></code>: Height of captured image</p></li>
+</ul>
+<p><strong>THESE DIMENSIONS MUST MATCH THE VIEWPORT DIMENSTIONS</strong></p>
+<p>If you have configured the size of the  viewport (<code class="docutils literal notranslate"><span class="pre">window_height/width</span></code>), you must
+make sure that <code class="docutils literal notranslate"><span class="pre">CaptureWidth/Height</span></code> of this configuration block is set to the same
+dimensions.</p>
+<p>The default resolution is <code class="docutils literal notranslate"><span class="pre">1280x720</span></code>, matching the default Viewport resolution.</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.ViewportCapture.data_shape" title="holoocean.sensors.ViewportCapture.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.ViewportCapture.dtype" title="holoocean.sensors.ViewportCapture.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.ViewportCapture.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.ViewportCapture.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.ViewportCapture.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.ViewportCapture.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.WorldNumSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">WorldNumSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor" title="Link to this definition"></a></dt>
+<dd><p>Returns any numeric value from the world corresponding to a given key. This is
+world specific.</p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.WorldNumSensor.data_shape" title="holoocean.sensors.WorldNumSensor.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.WorldNumSensor.dtype" title="holoocean.sensors.WorldNumSensor.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.WorldNumSensor.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.WorldNumSensor.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.WorldNumSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="packagemanager.html" rel="prev" title="Package Manager"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="lcm.html" rel="next" title="LCM">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
