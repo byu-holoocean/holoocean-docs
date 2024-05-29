@@ -18,7 +18,7 @@ def update_sidebar(file, level, num_links=7):
         dots = "../"
         for i in range(level):
             dots += "../"
-        new_link = BeautifulSoup('\n<li class="toctree-l1"><a class="reference internal" href=' + dots + '/versionList.html>Other Versions Documentation</a></li>', 'html.parser')
+        new_link = BeautifulSoup('\n<li class="toctree-l1"><a class="reference internal" href=' + dots + 'versionList.html>Other Versions Documentation</a></li>', 'html.parser')
         changelog.insert_after(new_link)
         tempvar = soup
     with open(file, 'w', encoding='utf-8') as f:
