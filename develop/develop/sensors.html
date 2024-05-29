@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Developing Sensors — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=8d563738"></script>
+<script src="../_static/doctools.js?v=9a2dae69"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="agents.html" rel="next" title="Developing Agents"/>
+<link href="env.html" rel="prev" title="Developing Environments"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version">
+                1.0.0
+              </div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="develop.html">Developing HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">Developing Environments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Developing Sensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c">C++</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#h-file">.h file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cpp-file">.cpp file</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allowing-your-sensor-to-be-used-in-holoocean">Allowing Your Sensor to Be Used In Holoocean</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="agents.html">Developing Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semaphores.html">Communication Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../..//versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="develop.html">Developing HoloOcean</a></li>
+<li class="breadcrumb-item active">Developing Sensors</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/develop/sensors.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="developing-sensors">
+<span id="develop-sensor"></span><h1>Developing Sensors<a class="headerlink" href="#developing-sensors" title="Link to this heading"></a></h1>
+<p>Similar to agents, the sensors are built on both the C++ and Python sides.</p>
+<section id="c">
+<h2>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h2>
+<p>Each sensor will need a ‘.h’ and ‘.cpp’ file, as is standard practice for C++.</p>
+<p>These will both be placed in the holoocean-engine repository. Most likely your .h file should be placed in <code class="docutils literal notranslate"><span class="pre">holoocean/engine/Source/Holodeck/Sensors/Public</span></code>, while your .cpp file should then go in <code class="docutils literal notranslate"><span class="pre">holoocean/engine/Source/Holodeck/Sensors/Private</span></code></p>
+<section id="h-file">
+<h3>.h file<a class="headerlink" href="#h-file" title="Link to this heading"></a></h3>
+<p>You will want to start by including the following in your ‘.h’ file:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Holodeck.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"HolodeckSensor.h"</span>
+</pre></div>
+</div>
+<p>Next you will want to set up the class for the sensor which will look something like this:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ExampleSensor.generated.h"</span>
+
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">ClassGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Custom</span><span class="p">),</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintSpawnableComponent</span><span class="p">))</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HOLODECK_API</span><span class="w"> </span><span class="n">UExampleSensor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UHolodeckSensor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="k">protected</span><span class="o">:</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>A few things to take note of:</p>
+<ul class="simple">
+<li><p>The name of the sensor needs to have the character “U” before it.</p></li>
+<li><p>The GENERATED_BODY() function automatically generates some things for you, but in order for it to work you need to also add the following line to your includes using the name of your sensor.  In this case we are using ExampleSensor:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ExampleSensor.generated.h"</span>
+</pre></div>
+</div>
+<p>Now let’s go over a few of the main necessary functions to put into the .h file.  First, make sure your sensor has a constructor and an InitializeSensor() override like this one (Note that these should be under ‘’’public’’’):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">UExampleSensor</span><span class="p">();</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">InitializeSensor</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Next, in the ‘’’protected’’’ section, you will need a tick function.  What this function does is defines the behavior of the sensor every time the simulation ticks.  The details of it can be covered later when we get to the ‘.cpp’ file, but for now, just declare it like so:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TickSensorComponent</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">,</span><span class="w"> </span><span class="n">ELevelTick</span><span class="w"> </span><span class="n">TickType</span><span class="p">,</span><span class="w"> </span><span class="n">FActorComponentTickFunction</span><span class="o">*</span><span class="w"> </span><span class="n">ThisTickFunction</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Finally, the last item that is essential for a sensor is the pointer to the parent agent in the ‘’’private’’’ section.  This simply stores a reference to whatever object the sensor is attached to.  All you need is the following line of code:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Parent</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You may also want to include some helper functions and some class variables, however, the above should be the bare essentials you need for your custom sensor.</p>
+</section>
+<section id="cpp-file">
+<h3>.cpp file<a class="headerlink" href="#cpp-file" title="Link to this heading"></a></h3>
+<p>Now that you are working in the .cpp file, you will want to make sure to include the matching header file along with <code class="docutils literal notranslate"><span class="pre">holodeck.h</span></code> and any other libraries you need.  At this point we can start defining the functions.
+Let’s start with the constructor first. It should look something like the following:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">UExampleSensor</span><span class="o">::</span><span class="n">UExampleSensor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PrimaryComponentTick</span><span class="p">.</span><span class="n">bCanEverTick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SensorName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ExampleSensor"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We now also need to initialize the sensor with any variables that it needs to function.  For example, we need to make sure to attach the sensor to it’s parent like so:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">UExampleSensor::InitializeSensor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">InitializeSensor</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">//You need to get the pointer to the object the sensor is attached to.</span>
+<span class="w">    </span><span class="n">Parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">GetAttachmentRootActor</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next we can take a look at the tick function.  How this typically works is that you want the engine to return sensor information to the client through the shared buffer.  So let’s have our sensor simply return the float 2.0 every time it ticks:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">UExampleSensor::TickSensorComponent</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">,</span><span class="w"> </span><span class="n">ELevelTick</span><span class="w"> </span><span class="n">TickType</span><span class="p">,</span><span class="w"> </span><span class="n">FActorComponentTickFunction</span><span class="o">*</span><span class="w"> </span><span class="n">ThisTickFunction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">FloatBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">Buffer</span><span class="p">);</span>
+<span class="w">    </span><span class="n">FloatBuffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These should be all of the necessary functions, but you will need to also fill in your other functions from the .h file as well.</p>
+</section>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h2>
+<p>Now that we have our C++ files, we don’t actually need to create a new python file for the sensor.  Instead, you will want to open up sensors.py (Found in the holoocean repository at holoocean/src/holoocean/sensors.py) and add a class for your new sensor.  Make sure you set the sensor type as follows as that will be important later.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleSensor</span><span class="p">(</span><span class="n">HolodeckSensor</span><span class="p">):</span>
+    <span class="n">sensor_type</span> <span class="o">=</span> <span class="s2">"ExampleSensor"</span>
+</pre></div>
+</div>
+<p>At this point you will also want to initialize anything you need to, but everything not specific to you sensor can be initialized by the super class.  If you have items that need to be initialized, at the very least, you will probably want something that looks like the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">,</span> <span class="n">agent_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"OpticalModemSensor"</span><span class="p">,</span>  <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ExampleSensor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">,</span> <span class="n">agent_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the above is not always necessary, but can be useful in some cases.</p>
+<p>The only other things that are required are the data type (dtype) and data shape (data_shape).  These let the client know how what kind of data it should be expecting to receive from the buffer.  Recall that in the .cpp file we set the tick function to return the float 2.0.  We also only returned the single float, not several.  With that in mind we know that the dtype should be a float and the data_shape should be 1.  It should look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span> <span class="c1">#Note that we are using numpy's data types to get the right size for the python data.</span>
+
+<span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">data_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>(Note that the data_shape can store a multi-dimensional array if necessary, so for a 2x2 array return [2, 2].)</p>
+</section>
+<section id="allowing-your-sensor-to-be-used-in-holoocean">
+<h2>Allowing Your Sensor to Be Used In Holoocean<a class="headerlink" href="#allowing-your-sensor-to-be-used-in-holoocean" title="Link to this heading"></a></h2>
+<p>At this point you have the main body of the sensor mostly figured out.  But there are a couple things we need to modify as well.
+First of all, towards the bottom of the sensors.py file there should be a _sensor_keys_ dictionary in the SensorDefinition class.  You will need to add a line to the dictionary so that certain functions can pull the sensor type if given the proper string.  In our case we simply add the following line to the end of the dictionary:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">"ExampleSensor"</span><span class="p">:</span><span class="n">ExampleSensor</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Similarly, you will need to find the file AddSensorCommand.h and add a #include for your sensor’s .h file before adding the sensor to the AddSensorCommand.cpp SensorMap like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">"ExampleSensor"</span><span class="p">,</span> <span class="n">UExampleSensor</span><span class="p">::</span><span class="n">StaticClass</span><span class="p">()</span> <span class="p">},</span>
+</pre></div>
+</div>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="env.html" rel="prev" title="Developing Environments"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="agents.html" rel="next" title="Developing Agents">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
