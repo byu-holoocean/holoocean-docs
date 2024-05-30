@@ -9,6 +9,18 @@ Usage: python Sidebar_version_links.py <version>
 For when adding a new version of the docs to the github pages site.
 '''
 
+def update_version_header(file):
+    tempvar = None
+    with open(file, 'r', encoding='utf-8') as f:
+        soup = BeautifulSoup(f, 'html.parser')
+        version_header = soup.find("div", {"class": "version"})
+        new_version = BeautifulSoup('<div class="version">Develop</div>', 'html.parser')
+        version_header.replaceWith(new_version)
+        tempvar = soup
+    with open(file, 'w', encoding='utf-8') as f:
+        f.write(str(tempvar))
+
+
 def update_sidebar(file, level, num_links=7):
     tempvar = None
     with open(file, 'r', encoding='utf-8') as f:
@@ -29,12 +41,15 @@ def main():
     parser.add_argument('folder', type=str, help='The folder to add to the path')
     args = parser.parse_args()
     version = args.folder
+    isDevelop = False if version != "develop" else True
     print("version is: ", version)
     os.chdir(version)
     path = os.getcwd()
     for file in os.listdir():
         if file.endswith(".html"):
             update_sidebar(file, 0)
+            if isDevelop:
+                update_version_header(file)
 
     path0 = os.path.join(path, "changelog")
     path1 = os.path.join(path, "agents")
@@ -47,6 +62,8 @@ def main():
         for file in os.listdir():
             if file.endswith(".html"):
                 update_sidebar(file, 1)
+                if isDevelop:
+                    update_version_header(file)
     os.chdir(path)
 
     paths = [path0, path2]
@@ -55,6 +72,8 @@ def main():
         for file in os.listdir():
             if file.endswith(".html"):
                 update_sidebar(file, 1)
+                if isDevelop:
+                    update_version_header(file)
     os.chdir("..")
 
     path = os.getcwd()
@@ -64,10 +83,14 @@ def main():
     for file in os.listdir():
         if file.endswith(".html"):
             update_sidebar(file, 1)
+            if isDevelop:
+                update_version_header(file)
     os.chdir("examples")
     for file in os.listdir():
         if file.endswith(".html"):
             update_sidebar(file, 2)
+            if isDevelop:
+                update_version_header(file)
     os.chdir("..")
     os.chdir("..")
     path = os.getcwd()
@@ -77,16 +100,22 @@ def main():
     for file in os.listdir():
         if file.endswith(".html"):
             update_sidebar(file, 1)
+            if isDevelop:
+                update_version_header(file)
         elif os.path.isdir(file):
             os.chdir(file)
             for file in os.listdir():
                 if file.endswith(".html"):
                     update_sidebar(file, 2)
+                    if isDevelop:
+                        update_version_header(file)
                 elif os.path.isdir(file):
                     os.chdir(file)
                     for file in os.listdir():
                         if file.endswith(".html"):
                             update_sidebar(file, 3)
+                            if isDevelop:
+                                update_version_header(file)
                     os.chdir("..")
             os.chdir("..")
     os.chdir("..")
