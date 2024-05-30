@@ -5,7 +5,7 @@ Many times, it may be useful for research to easily be able to implement custom 
 
 In addition, the :class:`~holoocean.sensors.DynamicsSensor` was made to provide all necessary current state information for computing dynamics including, accelerations, velocities, and current pose information.
 
-Here is an example of this in action, implementing gravity, buoyancy, and damping by hand.
+Here is an example of this in action, implementing gravity, buoyancy, and damping by hand..
 
 ::
 
