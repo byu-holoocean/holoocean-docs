@@ -38,6 +38,7 @@ General HoloOcean use:
 
 Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
 ::
+   
    @inproceedings{Potokar22iros,
       author = {E. Potokar and K. Lay and K. Norman and D. Benham and T. Neilsen and M. Kaess and J. Mangelson},
       title = {Holo{O}cean: Realistic Sonar Simulation},
