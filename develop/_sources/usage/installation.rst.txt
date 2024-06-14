@@ -12,7 +12,7 @@ very small, while the world packages ("binaries") can be several gigabytes.
 Requirements
 ============
 
-- >= Python 3.6
+- >= Python 3.7
 - Several gigabytes of storage
 - pip3
 - Linux or Windows 64bit
