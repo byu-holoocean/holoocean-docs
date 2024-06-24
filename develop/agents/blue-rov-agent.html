@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SphereAgent — HoloOcean 1.0.0 documentation</title>
+<title>BlueRov2 — HoloOcean 1.0.0 documentation</title>
 <link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -23,8 +23,8 @@
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
-<link href="uav-agent.html" rel="next" title="UavAgent"/>
-<link href="turtle-agent.html" rel="prev" title="TurtleAgent"/>
+<link href="turtle-agent.html" rel="next" title="TurtleAgent"/>
+<link href="torpedo-auv-agent.html" rel="prev" title="TorpedoAUV"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -53,15 +53,15 @@
 <li class="toctree-l2"><a class="reference internal" href="hovering-auv-agent.html">HoveringAUV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="surface-vessel-agent.html">SurfaceVessel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torpedo-auv-agent.html">TorpedoAUV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="blue-rov-agent.html">BlueRov2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="turtle-agent.html">TurtleAgent</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SphereAgent</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BlueRov2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#images">Images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-schemes">Control Schemes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sockets">Sockets</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="turtle-agent.html">TurtleAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphere-agent.html">SphereAgent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uav-agent.html">UavAgent</a></li>
 </ul>
 </li>
@@ -98,54 +98,56 @@
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
 <li class="breadcrumb-item"><a href="agents.html">HoloOcean Agents</a></li>
-<li class="breadcrumb-item active">SphereAgent</li>
+<li class="breadcrumb-item active">BlueRov2</li>
 <li class="wy-breadcrumbs-aside">
-<a href="../_sources/agents/sphere-agent.rst.txt" rel="nofollow"> View page source</a>
+<a href="../_sources/agents/blue-rov-agent.rst.txt" rel="nofollow"> View page source</a>
 </li>
 </ul>
 <hr/>
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
-<section id="sphereagent">
-<span id="sphere-agent"></span><h1>SphereAgent<a class="headerlink" href="#sphereagent" title="Link to this heading"></a></h1>
+<section id="bluerov2">
+<span id="blue-rov-agent"></span><h1>BlueRov2<a class="headerlink" href="#bluerov2" title="Link to this heading"></a></h1>
 <section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h2>
-<a class="reference internal image-reference" href="../_images/sphere.png"><img alt="../_images/sphere.png" src="../_images/sphere.png" style="width: 157.5px; height: 157.79999999999998px;"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov.png"><img alt="agents/images/blue-rov.png" src="agents/images/blue-rov.png"/></a>
 </section>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>A basic sphere robot that moves along a plane. The SphereAgent does not have
-physics - it simply computes its next location and teleports there, as
-compared to the <a class="reference internal" href="turtle-agent.html#turtle-agent"><span class="std std-ref">TurtleAgent</span></a> which has mass and momentum.</p>
-<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">SphereAgent</span></code> for more details.</p>
+<p>An implementation of the BlueRov2.</p>
+<p>See the <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.BlueROV2" title="holoocean.agents.BlueROV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlueROV2</span></code></a>.</p>
 </section>
 <section id="control-schemes">
 <h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h2>
 <dl class="simple">
-<dt><strong>Sphere discrete</strong> (<code class="docutils literal notranslate"><span class="pre">0</span></code>)</dt><dd><p>A single-length integer vector that accepts 1 of four
-possible numbers; 0: move forward, 1: move backward,
-2: turn right, 3: turn left</p>
+<dt><strong>AUV Thrusters (``0``)</strong></dt><dd><p>An 8-length floating point vector used to specify the control on each thruster. They begin with the front right vertical thrusters, then goes around counter-clockwise, then repeat the last four with the sideways thrusters.</p>
 </dd>
-<dt><strong>Sphere continuous</strong> (<code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>A 2-length floating point vector used to specify
-the agent’s forward speed (index 0) and rotation speed (index 1).</p>
+<dt><strong>PD Controller (``1``)</strong></dt><dd><p>A 6-length floating point vector of desired position in the global frame and roll, pitch, and yaw. A basic PD controller has been implementing to move the vehicle to that position and orientation using the needed forces and torques.</p>
+</dd>
+<dt><strong>Custom Dynamics (``2``)</strong></dt><dd><p>A 6-length floating point vector of linear and angular accelerations in the global frame. This is to be used for implementing custom dynamics. Besides collisions, all other forces and torques - including gravity, buoyancy, and damping - have been disabled in the simulator to allow for a clean slate for custom dynamics.</p>
 </dd>
 </dl>
 </section>
 <section id="sockets">
 <h2>Sockets<a class="headerlink" href="#sockets" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CameraSocket</span></code> located at the front of the sphere body</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Viewport</span></code> located behind the agent</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COM</span></code> Center of mass</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SonarSocket</span></code> A socket on the top of the AUV.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CameraSocket</span></code> Location of the camera sensor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Socket</span></code> A socket on the bottom of the AUV.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/sphere-sockets.png"><img alt="../_images/sphere-sockets.png" src="../_images/sphere-sockets.png" style="width: 337.2px; height: 195.29999999999998px;"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets.png"><img alt="agents/images/blue-rov-sockets.png" src="agents/images/blue-rov-sockets.png"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets-top.png"><img alt="agents/images/blue-rov-sockets-top.png" src="agents/images/blue-rov-sockets-top.png"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets-left.png"><img alt="agents/images/blue-rov-sockets-left.png" src="agents/images/blue-rov-sockets-left.png"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets-front.png"><img alt="agents/images/blue-rov-sockets-front.png" src="agents/images/blue-rov-sockets-front.png"/></a>
 </section>
 </section>
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
-<a accesskey="p" class="btn btn-neutral float-left" href="turtle-agent.html" rel="prev" title="TurtleAgent"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="uav-agent.html" rel="next" title="UavAgent">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="torpedo-auv-agent.html" rel="prev" title="TorpedoAUV"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="turtle-agent.html" rel="next" title="TurtleAgent">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
