@@ -62,7 +62,6 @@
 <li class="toctree-l1"><a class="reference internal" href="holoocean/holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holoocean/sensors.html">Sensors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="holoocean/dynamics.html">Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holoocean/lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holoocean/util.html">Util</a></li>
@@ -96,7 +95,6 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
- | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
@@ -132,23 +130,14 @@
 </ul></li>
 <li><a href="holoocean/spaces.html#holoocean.spaces.ActionSpace">ActionSpace (class in holoocean.spaces)</a>
 </li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinDep.actuator_dynamics">actuator_dynamics() (holoocean.vehicle_dynamics.torpedo.fourFinDep method)</a>
-<ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinInd.actuator_dynamics">(holoocean.vehicle_dynamics.torpedo.fourFinInd method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.actuator_dynamics">(holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.threeFinInd.actuator_dynamics">(holoocean.vehicle_dynamics.torpedo.threeFinInd method)</a>
-</li>
-</ul></li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.add_agent">add_agent() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
-</ul></td>
-<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/commands.html#holoocean.command.CommandsGroup.add_command">add_command() (holoocean.command.CommandsGroup method)</a>
 </li>
 <li><a href="holoocean/commands.html#holoocean.command.Command.add_number_parameters">add_number_parameters() (holoocean.command.Command method)</a>
 </li>
+</ul></td>
+<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.add_sensors">add_sensors() (holoocean.agents.HoloOceanAgent method)</a>
 </li>
 <li><a href="holoocean/commands.html#holoocean.command.Command.add_string_parameters">add_string_parameters() (holoocean.command.Command method)</a>
@@ -195,8 +184,6 @@
 <h2 id="C">C</h2>
 <table class="indextable genindextable" style="width: 100%"><tr>
 <td style="width: 33%; vertical-align: top;"><ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.calculate_additional_parameters">calculate_additional_parameters() (holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
-</li>
 <li><a href="holoocean/commands.html#holoocean.command.CommandCenter.clear">clear() (holoocean.command.CommandCenter method)</a>
 <ul>
 <li><a href="holoocean/commands.html#holoocean.command.CommandsGroup.clear">(holoocean.command.CommandsGroup method)</a>
@@ -289,25 +276,16 @@
 </ul></li>
 <li><a href="holoocean/commands.html#holoocean.command.DebugDrawCommand">DebugDrawCommand (class in holoocean.command)</a>
 </li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinDep.depthHeadingAutopilot">depthHeadingAutopilot() (holoocean.vehicle_dynamics.torpedo.fourFinDep method)</a>
-<ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinInd.depthHeadingAutopilot">(holoocean.vehicle_dynamics.torpedo.fourFinInd method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.depthHeadingAutopilot">(holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.threeFinInd.depthHeadingAutopilot">(holoocean.vehicle_dynamics.torpedo.threeFinInd method)</a>
-</li>
-</ul></li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.DepthSensor">DepthSensor (class in holoocean.sensors)</a>
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.ControlSchemes.DISCRETE_SPHERE_DEFAULT">DISCRETE_SPHERE_DEFAULT (holoocean.agents.ControlSchemes attribute)</a>
 </li>
-</ul></td>
-<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/spaces.html#holoocean.spaces.DiscreteActionSpace">DiscreteActionSpace (class in holoocean.spaces)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_arrow">draw_arrow() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
+</ul></td>
+<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_box">draw_box() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_line">draw_line() (holoocean.environments.HoloOceanEnvironment method)</a>
@@ -359,8 +337,6 @@
 </ul></li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.DVLSensor">DVLSensor (class in holoocean.sensors)</a>
 </li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.dynamics">dynamics() (holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
-</li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.DynamicsSensor">DynamicsSensor (class in holoocean.sensors)</a>
 </li>
 </ul></td>
@@ -369,17 +345,6 @@
 <table class="indextable genindextable" style="width: 100%"><tr>
 <td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/commands.html#holoocean.command.CommandCenter.enqueue_command">enqueue_command() (holoocean.command.CommandCenter method)</a>
-</li>
-</ul></td>
-</tr></table>
-<h2 id="F">F</h2>
-<table class="indextable genindextable" style="width: 100%"><tr>
-<td style="width: 33%; vertical-align: top;"><ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinDep">fourFinDep (class in holoocean.vehicle_dynamics.torpedo)</a>
-</li>
-</ul></td>
-<td style="width: 33%; vertical-align: top;"><ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinInd">fourFinInd (class in holoocean.vehicle_dynamics.torpedo)</a>
 </li>
 </ul></td>
 </tr></table>
@@ -543,13 +508,6 @@
 </li>
 </ul></li>
 <li>
-    holoocean.vehicle_dynamics.torpedo
-
-      <ul>
-<li><a href="holoocean/dynamics.html#module-holoocean.vehicle_dynamics.torpedo">module</a>
-</li>
-</ul></li>
-<li>
     holoocean.weather
 
       <ul>
@@ -642,8 +600,6 @@
 <li><a href="holoocean/spaces.html#module-holoocean.spaces">holoocean.spaces</a>
 </li>
 <li><a href="holoocean/util.html#module-holoocean.util">holoocean.util</a>
-</li>
-<li><a href="holoocean/dynamics.html#module-holoocean.vehicle_dynamics.torpedo">holoocean.vehicle_dynamics.torpedo</a>
 </li>
 <li><a href="holoocean/weather.html#module-holoocean.weather">holoocean.weather</a>
 </li>
@@ -778,20 +734,7 @@
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.sensors">sensors (holoocean.agents.HoloOceanAgent attribute)</a>
 </li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinDep.set_actuator_parameters">set_actuator_parameters() (holoocean.vehicle_dynamics.torpedo.fourFinDep method)</a>
-<ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinInd.set_actuator_parameters">(holoocean.vehicle_dynamics.torpedo.fourFinInd method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.set_actuator_parameters">(holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.threeFinInd.set_actuator_parameters">(holoocean.vehicle_dynamics.torpedo.threeFinInd method)</a>
-</li>
-</ul></li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.set_autopilot_parameters">set_autopilot_parameters() (holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
-</li>
 <li><a href="holoocean/commands.html#holoocean.command.Command.set_command_type">set_command_type() (holoocean.command.Command method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.set_control_mode">set_control_mode() (holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.set_control_scheme">set_control_scheme() (holoocean.agents.HoloOceanAgent method)</a>
 <ul>
@@ -802,12 +745,10 @@
 </li>
 <li><a href="holoocean/weather.html#holoocean.weather.WeatherController.set_fog_density">set_fog_density() (holoocean.weather.WeatherController method)</a>
 </li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.set_goal">set_goal() (holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
+<li><a href="holoocean/commands.html#holoocean.command.SpawnAgentCommand.set_location">set_location() (holoocean.command.SpawnAgentCommand method)</a>
 </li>
 </ul></td>
 <td style="width: 33%; vertical-align: top;"><ul>
-<li><a href="holoocean/commands.html#holoocean.command.SpawnAgentCommand.set_location">set_location() (holoocean.command.SpawnAgentCommand method)</a>
-</li>
 <li><a href="holoocean/commands.html#holoocean.command.SpawnAgentCommand.set_name">set_name() (holoocean.command.SpawnAgentCommand method)</a>
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.set_physics_state">set_physics_state() (holoocean.agents.HoloOceanAgent method)</a>
@@ -821,8 +762,6 @@
 <li><a href="holoocean/commands.html#holoocean.command.SpawnAgentCommand.set_type">set_type() (holoocean.command.SpawnAgentCommand method)</a>
 </li>
 <li><a href="holoocean/lcm.html#holoocean.lcm.SensorData.set_value">set_value() (holoocean.lcm.SensorData method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.set_vehicle_parameters">set_vehicle_parameters() (holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
 </li>
 <li><a href="holoocean/weather.html#holoocean.weather.WeatherController.set_weather">set_weather() (holoocean.weather.WeatherController method)</a>
 </li>
@@ -848,15 +787,6 @@
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.step">step() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinDep.stepInput">stepInput() (holoocean.vehicle_dynamics.torpedo.fourFinDep method)</a>
-<ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.fourFinInd.stepInput">(holoocean.vehicle_dynamics.torpedo.fourFinInd method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV.stepInput">(holoocean.vehicle_dynamics.torpedo.TAUV method)</a>
-</li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.threeFinInd.stepInput">(holoocean.vehicle_dynamics.torpedo.threeFinInd method)</a>
-</li>
-</ul></li>
 <li><a href="holoocean/weather.html#holoocean.weather.WeatherController.stop_day_cycle">stop_day_cycle() (holoocean.weather.WeatherController method)</a>
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.SurfaceVessel">SurfaceVessel (class in holoocean.agents)</a>
@@ -872,8 +802,6 @@
 <h2 id="T">T</h2>
 <table class="indextable genindextable" style="width: 100%"><tr>
 <td style="width: 33%; vertical-align: top;"><ul>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.TAUV">TAUV (class in holoocean.vehicle_dynamics.torpedo)</a>
-</li>
 <li><a href="holoocean/agents.html#holoocean.agents.ControlSchemes.TAUV_FINS">TAUV_FINS (holoocean.agents.ControlSchemes attribute)</a>
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.ControlSchemes.TAUV_FORCES">TAUV_FORCES (holoocean.agents.ControlSchemes attribute)</a>
@@ -882,12 +810,10 @@
 </li>
 <li><a href="holoocean/commands.html#holoocean.command.TeleportCameraCommand">TeleportCameraCommand (class in holoocean.command)</a>
 </li>
-<li><a href="holoocean/dynamics.html#holoocean.vehicle_dynamics.torpedo.threeFinInd">threeFinInd (class in holoocean.vehicle_dynamics.torpedo)</a>
+<li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.tick">tick() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
 </ul></td>
 <td style="width: 33%; vertical-align: top;"><ul>
-<li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.tick">tick() (holoocean.environments.HoloOceanEnvironment method)</a>
-</li>
 <li><a href="holoocean/exceptions.html#holoocean.exceptions.TimeoutException">TimeoutException</a>
 </li>
 <li><a href="holoocean/commands.html#holoocean.command.Command.to_json">to_json() (holoocean.command.Command method)</a>
