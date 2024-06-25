@@ -6,7 +6,7 @@ BlueRov2
 Images
 ------
 
-.. image:: images/blue-rov.png
+.. image:: images/blue-rov.PNG
    :scale: 100%
 
 Description
@@ -35,14 +35,14 @@ Sockets
 - ``CameraSocket`` Location of the camera sensor.
 - ``Socket`` A socket on the bottom of the AUV.
 
-.. image:: images/blue-rov-sockets.png
+.. image:: images/blue-rov-sockets.PNG
    :scale: 50%
 
-.. image:: images/blue-rov-sockets-top.png
+.. image:: images/blue-rov-sockets-top.PNG
    :scale: 47%
 
-.. image:: images/blue-rov-sockets-left.png
+.. image:: images/blue-rov-sockets-left.PNG
    :scale: 65%
 
-.. image:: images/blue-rov-sockets-front.png
+.. image:: images/blue-rov-sockets-front.PNG
    :scale: 63%
