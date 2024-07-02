@@ -72,6 +72,7 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    holoocean/holooceanclient
    holoocean/packagemanager
    holoocean/sensors
+   holoocean/dynamics
    holoocean/lcm
    holoocean/shmem
    holoocean/util

@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
@@ -224,7 +225,7 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>(action[, ticks, publish])</p></td>
 <td><p>Supplies an action to the main agent and tells the environment to tick once.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish, tick_clock])</p></td>
 <td><p>Ticks the environment once.</p></td>
 </tr>
 </tbody>
@@ -640,7 +641,7 @@ terminal sensors. Reward and terminals can also be gotten through <a class="refe
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.tick">
-<span class="sig-name descname"><span class="pre">tick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publish</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tick" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publish</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_clock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tick" title="Link to this definition"></a></dt>
 <dd><p>Ticks the environment once. Normally used for multi-agent environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
