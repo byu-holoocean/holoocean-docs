@@ -212,12 +212,14 @@ the appropriate paramaters to the <code class="docutils literal notranslate"><sp
 <p>A “loading semaphore” is created by the client and signaled by the engine.</p>
 <p>After starting the server process, the client will wait for the server to
 signal it so that the client knows the server has initialized.</p>
-<img alt="../_images/loading-1.svg" src="../_images/loading-1.svg"/></section>
+<img alt="../_images/loading-1.svg" src="../_images/loading-1.svg"/>
+</section>
 <section id="starting-subprocess">
 <h3>Starting Subprocess<a class="headerlink" href="#starting-subprocess" title="Link to this heading"></a></h3>
 <p>Next, client will create the engine subprocess. It will pass a UUID on the
 engine’s command line that will be used to create unique semaphore names.</p>
-<img alt="../_images/loading-2.svg" src="../_images/loading-2.svg"/><section id="a-note-on-uuids">
+<img alt="../_images/loading-2.svg" src="../_images/loading-2.svg"/>
+<section id="a-note-on-uuids">
 <h4>A note on UUIDs<a class="headerlink" href="#a-note-on-uuids" title="Link to this heading"></a></h4>
 <p>The names for semaphores and shared memory (eg  <code class="docutils literal notranslate"><span class="pre">/HOLODECK_LOADING_SEM</span></code>) are
 global for all processes in the entire operating system.</p>
@@ -236,12 +238,14 @@ This proves very useful for debugging.</p>
 <h3>Waiting for engine to load<a class="headerlink" href="#waiting-for-engine-to-load" title="Link to this heading"></a></h3>
 <p>Now that the engine is initializing itself, the client waits on the
 <code class="docutils literal notranslate"><span class="pre">/HOLODECK_LOADING_SEM</span></code>.</p>
-<img alt="../_images/loading-3.svg" src="../_images/loading-3.svg"/></section>
+<img alt="../_images/loading-3.svg" src="../_images/loading-3.svg"/>
+</section>
 <section id="engine-is-done-loading">
 <h3>Engine is done loading<a class="headerlink" href="#engine-is-done-loading" title="Link to this heading"></a></h3>
 <p>Once the engine finishes loading, the engine will wait on another semaphore
 while the client does more stuff.</p>
-<img alt="../_images/loading-4.svg" src="../_images/loading-4.svg"/><p>At this point, the client spawns agents, sensors, tasks, by sending a series of
+<img alt="../_images/loading-4.svg" src="../_images/loading-4.svg"/>
+<p>At this point, the client spawns agents, sensors, tasks, by sending a series of
 commands.</p>
 <p>This isn’t covered in this page, but for our purposes, the important part is
 that each agent and sensor allocates shared memory buffers to allow
@@ -333,23 +337,29 @@ interpret action buffer)</p></li>
 <h3>1. Action for Agent<a class="headerlink" href="#action-for-agent" title="Link to this heading"></a></h3>
 <p>First, we copy the provided action (<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">1000]</span></code>) into the agent’s action
 buffer:</p>
-<img alt="../_images/step-1.svg" src="../_images/step-1.svg"/></section>
+<img alt="../_images/step-1.svg" src="../_images/step-1.svg"/>
+</section>
 <section id="signal-server">
 <h3>2. Signal Server<a class="headerlink" href="#signal-server" title="Link to this heading"></a></h3>
 <p>Next, the client signals <code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_SERVER</span></code> and wakes the server up.</p>
-<img alt="../_images/step-2.svg" src="../_images/step-2.svg"/></section>
+<img alt="../_images/step-2.svg" src="../_images/step-2.svg"/>
+</section>
 <section id="client-waits-server-processes">
 <h3>3. Client waits, server processes<a class="headerlink" href="#client-waits-server-processes" title="Link to this heading"></a></h3>
-<img alt="../_images/step-3.svg" src="../_images/step-3.svg"/></section>
+<img alt="../_images/step-3.svg" src="../_images/step-3.svg"/>
+</section>
 <section id="server-samples-sensor-data-copies-it-into-buffers">
 <h3>4. Server samples sensor data, copies it into buffers<a class="headerlink" href="#server-samples-sensor-data-copies-it-into-buffers" title="Link to this heading"></a></h3>
-<img alt="../_images/step-4.svg" src="../_images/step-4.svg"/></section>
+<img alt="../_images/step-4.svg" src="../_images/step-4.svg"/>
+</section>
 <section id="wake-up-client">
 <h3>5. Wake up client<a class="headerlink" href="#wake-up-client" title="Link to this heading"></a></h3>
-<img alt="../_images/step-5.svg" src="../_images/step-5.svg"/></section>
+<img alt="../_images/step-5.svg" src="../_images/step-5.svg"/>
+</section>
 <section id="server-blocks-and-waits-for-client-to-signal-it-again">
 <h3>6. Server blocks and waits for client to signal it again<a class="headerlink" href="#server-blocks-and-waits-for-client-to-signal-it-again" title="Link to this heading"></a></h3>
-<img alt="../_images/step-6.svg" src="../_images/step-6.svg"/></section>
+<img alt="../_images/step-6.svg" src="../_images/step-6.svg"/>
+</section>
 </section>
 <section id="remarks">
 <h2>Remarks<a class="headerlink" href="#remarks" title="Link to this heading"></a></h2>
