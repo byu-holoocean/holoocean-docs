@@ -61,6 +61,12 @@ To avoid having to package the project anytime you want to see changes to your c
 
    These are all in meters. Tweak them as you need, they're all pretty self-explanatory.
 
+   .. note::
+
+      If you using the dynamics sensor, or expect certain tick per second rate, make sure to set -TicksPerSec=<val> as one of these arguments, so you get the simulation rate and behavior you expect..
+      The -FramesPerSec=<val> command controls how fast it runs on your computer. See https://byu-holoocean.github.io/holoocean-docs/v1.0.0/usage/scenarios.html#frame-rates.
+      In addition, the -log parameter is useful for being able to close the game window easily, as well as for seeing log messages for debugging purposes. 
+
 Open and prep a python script similar to the following
 
 .. code:: python

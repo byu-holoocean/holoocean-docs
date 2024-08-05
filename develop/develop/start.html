@@ -163,6 +163,12 @@
 </pre></div>
 </div>
 <p>These are all in meters. Tweak them as you need, they’re all pretty self-explanatory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you using the dynamics sensor, or expect certain tick per second rate, make sure to set -TicksPerSec=&lt;val&gt; as one of these arguments, so you get the simulation rate and behavior you expect..
+The -FramesPerSec=&lt;val&gt; command controls how fast it runs on your computer. See <a class="reference external" href="https://byu-holoocean.github.io/holoocean-docs/v1.0.0/usage/scenarios.html#frame-rates">https://byu-holoocean.github.io/holoocean-docs/v1.0.0/usage/scenarios.html#frame-rates</a>.
+In addition, the -log parameter is useful for being able to close the game window easily, as well as for seeing log messages for debugging purposes.</p>
+</div>
 </div>
 <p>Open and prep a python script similar to the following</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">holoocean</span>

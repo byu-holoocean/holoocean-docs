@@ -71,6 +71,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_line"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.draw_line()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_point"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.draw_point()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_joint_constraints"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.get_joint_constraints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_ocean_current_fields_count"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.get_ocean_current_fields_count()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.get_reward_terminal()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.info"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.info()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.modems"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.modems</span></code></a></li>
@@ -81,7 +82,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.send_optical_message()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_world_command"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.send_world_command()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_control_scheme"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.set_control_scheme()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_field_index"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.set_ocean_current_field_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_multiplier"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.set_ocean_current_multiplier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_offset"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.set_ocean_current_offset()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.set_render_quality()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.set_show_vector_field_name()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.should_render_viewport()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.spawn_prop"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.spawn_prop()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.step"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.step()</span></code></a></li>
@@ -188,43 +193,58 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_joint_constraints" title="holoocean.environments.HoloOceanEnvironment.get_joint_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_joint_constraints</span></code></a>(agent_name, joint_name)</p></td>
 <td><p>Returns the corresponding swing1, swing2 and twist limit values for the</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reward_terminal</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_ocean_current_fields_count" title="holoocean.environments.HoloOceanEnvironment.get_ocean_current_fields_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ocean_current_fields_count</span></code></a>()</p></td>
+<td><p>Get the number of ocean current fields.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reward_terminal</span></code></a>()</p></td>
 <td><p>Returns the reward and terminal state</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.info" title="holoocean.environments.HoloOceanEnvironment.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.info" title="holoocean.environments.HoloOceanEnvironment.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>()</p></td>
 <td><p>Returns a string with specific information about the environment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.move_viewport" title="holoocean.environments.HoloOceanEnvironment.move_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_viewport</span></code></a>(location, rotation)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.move_viewport" title="holoocean.environments.HoloOceanEnvironment.move_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_viewport</span></code></a>(location, rotation)</p></td>
 <td><p>Teleport the camera to the given location</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.reset" title="holoocean.environments.HoloOceanEnvironment.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.reset" title="holoocean.environments.HoloOceanEnvironment.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Resets the environment, and returns the state.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_acoustic_message</span></code></a>(id_from, id_to, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_acoustic_message</span></code></a>(id_from, id_to, ...)</p></td>
 <td><p>Send a message from one beacon to another.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_optical_message</span></code></a>(id_from, id_to, msg_data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_optical_message</span></code></a>(id_from, id_to, msg_data)</p></td>
 <td><p>Sends data between various instances of OpticalModemSensor</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_world_command" title="holoocean.environments.HoloOceanEnvironment.send_world_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_world_command</span></code></a>(name[, num_params, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_world_command" title="holoocean.environments.HoloOceanEnvironment.send_world_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_world_command</span></code></a>(name[, num_params, ...])</p></td>
 <td><p>Send a world command.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_control_scheme" title="holoocean.environments.HoloOceanEnvironment.set_control_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_scheme</span></code></a>(agent_name, control_scheme)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_control_scheme" title="holoocean.environments.HoloOceanEnvironment.set_control_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_scheme</span></code></a>(agent_name, control_scheme)</p></td>
 <td><p>Set the control scheme for a specific agent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_field_index" title="holoocean.environments.HoloOceanEnvironment.set_ocean_current_field_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ocean_current_field_index</span></code></a>(index)</p></td>
+<td><p>Set the ocean current field index.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_multiplier" title="holoocean.environments.HoloOceanEnvironment.set_ocean_current_multiplier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ocean_current_multiplier</span></code></a>(multiplier)</p></td>
+<td><p>Set the ocean current strength multiplier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_offset" title="holoocean.environments.HoloOceanEnvironment.set_ocean_current_offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ocean_current_offset</span></code></a>(offset)</p></td>
+<td><p>Set the ocean current position offset.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_render_quality</span></code></a>(render_quality)</p></td>
 <td><p>Adjusts the rendering quality of HoloOcean.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_render_viewport</span></code></a>(render_viewport)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name" title="holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_show_vector_field_name</span></code></a>(state)</p></td>
+<td><p>Set whether to show the vector field name in the viewport.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_render_viewport</span></code></a>(render_viewport)</p></td>
 <td><p>Controls whether the viewport is rendered or not</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.spawn_prop" title="holoocean.environments.HoloOceanEnvironment.spawn_prop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spawn_prop</span></code></a>(prop_type[, location, rotation, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.spawn_prop" title="holoocean.environments.HoloOceanEnvironment.spawn_prop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spawn_prop</span></code></a>(prop_type[, location, rotation, ...])</p></td>
 <td><p>Spawns a basic prop object in the world like a box or sphere.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>(action[, ticks, publish])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>(action[, ticks, publish])</p></td>
 <td><p>Supplies an action to the main agent and tells the environment to tick once.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish])</p></td>
 <td><p>Ticks the environment once.</p></td>
 </tr>
 </tbody>
@@ -419,6 +439,13 @@ with another call to act.</p></li>
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.get_ocean_current_fields_count">
+<span class="sig-name descname"><span class="pre">get_ocean_current_fields_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.get_ocean_current_fields_count" title="Link to this definition"></a></dt>
+<dd><p>Get the number of ocean current fields.
+:returns: The number of ocean current fields.
+:rtype: <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.get_reward_terminal">
 <span class="sig-name descname"><span class="pre">get_reward_terminal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="Link to this definition"></a></dt>
 <dd><p>Returns the reward and terminal state</p>
@@ -570,12 +597,46 @@ alter the state of the world.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_ocean_current_field_index">
+<span class="sig-name descname"><span class="pre">set_ocean_current_field_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_field_index" title="Link to this definition"></a></dt>
+<dd><p>Set the ocean current field index.
+:param index: The index of the ocean current field to use.
+:type index: <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_ocean_current_multiplier">
+<span class="sig-name descname"><span class="pre">set_ocean_current_multiplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">multiplier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_multiplier" title="Link to this definition"></a></dt>
+<dd><p>Set the ocean current strength multiplier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>multiplier</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The multiplier to apply to the ocean current.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_ocean_current_offset">
+<span class="sig-name descname"><span class="pre">set_ocean_current_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_current_offset" title="Link to this definition"></a></dt>
+<dd><p>Set the ocean current position offset.
+:param offset: The offset to apply to the ocean current.
+:type offset: <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_render_quality">
 <span class="sig-name descname"><span class="pre">set_render_quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">render_quality</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="Link to this definition"></a></dt>
 <dd><p>Adjusts the rendering quality of HoloOcean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>render_quality</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – An integer between 0 = Low Quality and 3 = Epic quality.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name">
+<span class="sig-name descname"><span class="pre">set_show_vector_field_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name" title="Link to this definition"></a></dt>
+<dd><p>Set whether to show the vector field name in the viewport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to show the vector field name in the viewport.</p>
 </dd>
 </dl>
 </dd></dl>
