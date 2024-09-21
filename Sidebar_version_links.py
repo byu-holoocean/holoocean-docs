@@ -32,6 +32,9 @@ def update_sidebar(file, level, num_links=7):
             dots += "../"
         new_link = BeautifulSoup('\n<li class="toctree-l1"><a class="reference internal" href=' + dots + 'versionList.html>Other Versions Documentation</a></li>', 'html.parser')
         changelog.insert_after(new_link)
+        versionHeader = soup.find("div", {"class": "version"})
+        val = versionHeader.getText(strip=True)
+        versionHeader.string = "<a href=" + dots + "\"versionList.html\" style=\"color: inherit\:>" + val + "</a>"
         tempvar = soup
     with open(file, 'w', encoding='utf-8') as f:
         f.write(str(tempvar))
@@ -61,9 +64,9 @@ def main():
         os.chdir(path)
         for file in os.listdir():
             if file.endswith(".html"):
-                update_sidebar(file, 1)
                 if isDevelop:
                     update_version_header(file)
+                update_sidebar(file, 1)
     os.chdir(path)
 
     paths = [path0, path2]
@@ -71,9 +74,9 @@ def main():
         os.chdir(path)
         for file in os.listdir():
             if file.endswith(".html"):
-                update_sidebar(file, 1)
                 if isDevelop:
                     update_version_header(file)
+                update_sidebar(file, 1)
     os.chdir("..")
 
     path = os.getcwd()
@@ -82,15 +85,15 @@ def main():
     os.chdir(pathu)
     for file in os.listdir():
         if file.endswith(".html"):
-            update_sidebar(file, 1)
             if isDevelop:
                 update_version_header(file)
+            update_sidebar(file, 1)
     os.chdir("examples")
     for file in os.listdir():
         if file.endswith(".html"):
-            update_sidebar(file, 2)
             if isDevelop:
                 update_version_header(file)
+            update_sidebar(file, 2)
     os.chdir("..")
     os.chdir("..")
     path = os.getcwd()
@@ -99,23 +102,23 @@ def main():
     os.chdir(pathp)
     for file in os.listdir():
         if file.endswith(".html"):
-            update_sidebar(file, 1)
             if isDevelop:
                 update_version_header(file)
+            update_sidebar(file, 1)
         elif os.path.isdir(file):
             os.chdir(file)
             for file in os.listdir():
                 if file.endswith(".html"):
-                    update_sidebar(file, 2)
                     if isDevelop:
                         update_version_header(file)
+                    update_sidebar(file, 2)
                 elif os.path.isdir(file):
                     os.chdir(file)
                     for file in os.listdir():
                         if file.endswith(".html"):
-                            update_sidebar(file, 3)
                             if isDevelop:
                                 update_version_header(file)
+                            update_sidebar(file, 3)
                     os.chdir("..")
             os.chdir("..")
     os.chdir("..")
