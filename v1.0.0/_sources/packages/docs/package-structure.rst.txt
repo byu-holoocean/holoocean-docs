@@ -4,7 +4,7 @@ Package Structure
 A holoocean package is a ``.zip`` file containing a build of `holoocean-engine`_
 that contains worlds and :ref:`scenarios` for those worlds.
 
-.. _`holoocean-engine`: https://bitbucket.org/frostlab/holoocean-engine
+.. _`holoocean-engine`: https://github.com/byu-holoocean/HoloOcean/tree/v1.0.0/engine
 
 A package file is platform specific, since it contains a compiled binary of
 HoloOcean.

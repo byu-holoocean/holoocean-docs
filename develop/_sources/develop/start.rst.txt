@@ -14,7 +14,7 @@ Cloning
 ~~~~~~~~~~
 For running holoocean live, you'll need to setup both the C++ and python portions of HoloOcean, which are now conveniently in the same repo.
 
- * Clone `holoocean <https://bitbucket.org/frostlab/holoocean>`_.
+ * Clone `holoocean <https://github.com/byu-holoocean/HoloOcean>`_.
  * Navigate into that directory.
  * Checkout to the branch you want to develop on, likely the develop branch, which you can access through ``git checkout develop``, 
 

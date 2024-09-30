@@ -57,4 +57,4 @@ example code.
 
 .. _`examples.py`: https://bitbucket.org/frostlab/holoocean/src/master/example.py
 
-.. _`holoocean repo`: https://bitbucket.org/frostlab/holoocean
+.. _`holoocean repo`: https://github.com/byu-holoocean/HoloOcean
