@@ -34,7 +34,8 @@ def update_sidebar(file, level, num_links=7):
         changelog.insert_after(new_link)
         versionHeader = soup.find("div", {"class": "version"})
         val = versionHeader.getText(strip=True)
-        versionHeader.string = "<a href=" + dots + "\"versionList.html\" style=\"color: inherit\:>" + val + "</a>"
+        versionHeader.replace_with(BeautifulSoup('<div class="version"><a href=' + dots + 'versionList.html style="color: inherit;">' + val + '</a></div>', 'html.parser'))
+        # versionHeader.string = "<a href=" + dots + "\"versionList.html\" style=\"color: inherit\:>" + val + "</a>"
         tempvar = soup
     with open(file, 'w', encoding='utf-8') as f:
         f.write(str(tempvar))
