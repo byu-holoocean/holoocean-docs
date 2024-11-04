@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HoveringAUV — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="surface-vessel-agent.html" rel="next" title="SurfaceVessel"/>
+<link href="agents.html" rel="prev" title="HoloOcean Agents"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version">&lt;a href=../../"versionList.html" style="color: inherit\:&gt;1.0.0&lt;/a&gt;</div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="agents.html">HoloOcean Agents</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HoveringAUV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#images">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-schemes">Control Schemes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sockets">Sockets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="surface-vessel-agent.html">SurfaceVessel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torpedo-auv-agent.html">TorpedoAUV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coug-uv-agent.html">CougUV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blue-rov-agent.html">BlueROV2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turtle-agent.html">TurtleAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sphere-agent.html">SphereAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uav-agent.html">UavAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fixed-wing-agent.html">FixedWing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="agents.html">HoloOcean Agents</a></li>
+<li class="breadcrumb-item active">HoveringAUV</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/agents/hovering-auv-agent.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="hoveringauv">
+<span id="hovering-auv-agent"></span><h1>HoveringAUV<a class="headerlink" href="#hoveringauv" title="Permalink to this heading"></a></h1>
+<section id="images">
+<h2>Images<a class="headerlink" href="#images" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/hovering-auv.png"><img alt="../_images/hovering-auv.png" src="../_images/hovering-auv.png" style="width: 529.6px; height: 362.0px;"/></a>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>Our custom in-house hovering AUV.</p>
+<p>See the <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.HoveringAUV" title="holoocean.agents.HoveringAUV"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoveringAUV</span></code></a>.</p>
+</section>
+<section id="control-schemes">
+<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>AUV Thrusters (``0``)</strong></dt><dd><p>An 8-length floating point vector used to specify the control on each thruster. They begin with the front right vertical thrusters, then goes around counter-clockwise, then repeat the last four with the sideways thrusters.</p>
+</dd>
+<dt><strong>PD Controller (``1``)</strong></dt><dd><p>A 6-length floating point vector of desired position in the global frame and roll, pitch, and yaw. A basic PD controller has been implementing to move the vehicle to that position and orientation using the needed forces and torques.</p>
+</dd>
+<dt><strong>Custom Dynamics (``2``)</strong></dt><dd><p>A 6-length floating point vector of linear and angular accelerations in the global frame. This is to be used for implementing custom dynamics. Besides collisions, all other forces and torques - including gravity, buoyancy, and damping - have been disabled in the simulator to allow for a clean slate for custom dynamics.</p>
+</dd>
+</dl>
+</section>
+<section id="sockets">
+<h2>Sockets<a class="headerlink" href="#sockets" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">COM</span></code> Center of mass</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DVLSocket</span></code> Location of the DVL</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IMUSocket</span></code> Location of the IMU. Rotated 180 on x axis, i.e. in a NED frame instead of NWU.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DepthSocket</span></code> Location of the depth sensor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SonarSocket</span></code> Location of the sonar sensor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CameraRightSocket</span></code> Location of the right camera (when looking in the same direction that the AUV is facing).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CameraLeftSocket</span></code> Location of the left camera (when looking in the same direction that the AUV is facing).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Origin</span></code> true center of the robot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Viewport</span></code> where the robot is viewed from.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/hovering-angled.png"><img alt="../_images/hovering-angled.png" src="../_images/hovering-angled.png" style="width: 587.5px; height: 471.0px;"/></a>
+<a class="reference internal image-reference" href="../_images/hovering-top.png"><img alt="../_images/hovering-top.png" src="../_images/hovering-top.png" style="width: 546.5px; height: 427.0px;"/></a>
+<a class="reference internal image-reference" href="../_images/hovering-right.png"><img alt="../_images/hovering-right.png" src="../_images/hovering-right.png" style="width: 559.5px; height: 354.0px;"/></a>
+<a class="reference internal image-reference" href="../_images/hovering-front.png"><img alt="../_images/hovering-front.png" src="../_images/hovering-front.png" style="width: 456.5px; height: 369.0px;"/></a>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="agents.html" rel="prev" title="HoloOcean Agents"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="surface-vessel-agent.html" rel="next" title="SurfaceVessel">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

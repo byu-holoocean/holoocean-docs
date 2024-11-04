@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Developing Agents — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="semaphores.html" rel="next" title="Communication Protocol"/>
+<link href="sensors.html" rel="prev" title="Developing Sensors"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version">&lt;a href=../../"versionList.html" style="color: inherit\:&gt;1.0.0&lt;/a&gt;</div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="develop.html">Developing HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">Developing Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Developing Agents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-agents">General Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-portion">Python Portion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-portion">C++ Portion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unreal-engine-5">Unreal Engine 5</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#buoyant-agents">Buoyant Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#necessary-variables">Necessary Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extra-variables">Extra Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debugging-tools">Debugging Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="semaphores.html">Communication Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="develop.html">Developing HoloOcean</a></li>
+<li class="breadcrumb-item active">Developing Agents</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/develop/agents.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="developing-agents">
+<span id="develop-agents"></span><h1>Developing Agents<a class="headerlink" href="#developing-agents" title="Permalink to this heading"></a></h1>
+<p>Unfortunately, due to agents needing to exist on the python, C++, and UE5 portions this is a rather involved process. It’s not difficult, mostly just tedious, but I’ll walk you through it here.</p>
+<section id="general-agents">
+<h2>General Agents<a class="headerlink" href="#general-agents" title="Permalink to this heading"></a></h2>
+<section id="python-portion">
+<h3>Python Portion<a class="headerlink" href="#python-portion" title="Permalink to this heading"></a></h3>
+<p>First, open up <code class="docutils literal notranslate"><span class="pre">holodeck/client/src/agents.py</span></code>. To create my agent, I usually just copy <code class="docutils literal notranslate"><span class="pre">TurtleAgent</span></code> and edit it to my liking. You’ll need to edit the following:</p>
+<ul class="simple">
+<li><p>Class name</p></li>
+<li><p>agent_type</p></li>
+<li><p>Anything related to the controls. This includes all the constants, and <code class="docutils literal notranslate"><span class="pre">control_schemes()</span></code>. Make sure you put the number of inputs your agent will have in <code class="docutils literal notranslate"><span class="pre">ContinuousActionSpace</span></code> in the return</p></li>
+</ul>
+<p>That should be about it for the python portion, you should end up with something like this</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomAgent</span><span class="p">(</span><span class="n">HoloOceanAgent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A simple custom bot.</span>
+
+<span class="sd">    Inherits from :class:`HoloOceanAgent`."""</span>
+    <span class="c1"># constants in CustomAgent.h in holodeck-engine</span>
+    <span class="n">__MAX</span> <span class="o">=</span> <span class="mf">160.0</span>
+    <span class="n">__MIN</span> <span class="o">=</span> <span class="o">-</span><span class="n">__MAX</span>
+
+    <span class="n">agent_type</span> <span class="o">=</span> <span class="s2">"CustomAgent"</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">control_schemes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">low</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__MIN</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span>
+        <span class="n">high</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__MAX</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="s2">"[first, second, third, fourth]"</span><span class="p">,</span> <span class="n">ContinuousActionSpace</span><span class="p">([</span><span class="mi">4</span><span class="p">],</span> <span class="n">low</span><span class="o">=</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">high</span><span class="p">))]</span>
+
+    <span class="k">def</span> <span class="nf">get_joint_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joint_name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">"CustomAgent "</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">__act__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">copyto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_action_buffer</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">copyto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_action_buffer</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Lower in the same file, in the <code class="docutils literal notranslate"><span class="pre">AgentDefinition</span></code> class, there is a dictionary mapping names to python classes. Add an entry for our new class, something like <code class="docutils literal notranslate"><span class="pre">"CustomAgent":</span> <span class="pre">CustomAgent,</span></code>. The name should match <code class="docutils literal notranslate"><span class="pre">agent_type</span></code> set in your class.</p>
+</section>
+<section id="c-portion">
+<h3>C++ Portion<a class="headerlink" href="#c-portion" title="Permalink to this heading"></a></h3>
+<p>Next, open up <code class="docutils literal notranslate"><span class="pre">holodeck/engine</span></code> in UE5. Then go to File-&gt;Open Visual Studio (or open your project files in your C++ editor of choice). You’ll need to duplicate 4 TurtleAgent files, and rename them accordingly: TurtleAgent.cpp, TurtleAgent.h, TurtleAgentController.cpp, and TurtleAgentController.h should be duplicated to CustomAgent.cpp, CustomAgent.h, CustomAgentController.cpp, and CustomAgentController.h. Make sure they stay in the same folder as the files they’re duplicates of (should be in some combination of public/private folders).</p>
+<p>Next, we’ll make edits to CustomAgent.h. Do the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgent.generated.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgent.generated.h"</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">HOLODECK_API</span> <span class="pre">ATurtleAgent</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">AHolodeckAgent</span></code> to <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">HOLODECK_API</span> <span class="pre">ACustomAgent</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">AHolodeckAgent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ATurtleAgent();</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgent();</span></code></p></li>
+<li><p>The line <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">GetRawActionSizeInBytes()</span> <span class="pre">const</span> <span class="pre">override</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">sizeof(float);</span> <span class="pre">};</span></code> change the 2 to however many inputs your agent has</p></li>
+<li><p>The line <code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">CommandArray[2];</span></code> change the 2 to however many inputs your agent has</p></li>
+</ul>
+<p>CustomAgent.cpp is where most of the magic happens: your dynamics, reactions to inputs, etc should all be here. In it, change all of the following</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgent.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgent.h"</span></code></p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">ATurtleAgent</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgent</span></code></p></li>
+<li><p>Anything you want your agent to do, or how it responds to the inputs all need to be put into <code class="docutils literal notranslate"><span class="pre">Tick(float</span> <span class="pre">DeltaSeconds)</span></code>.</p></li>
+</ul>
+<p>In CustomAgentController.h, change all of the following</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgent.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgent.h"</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgentController.generated.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgentController.generated.h"</span></code></p></li>
+<li><p>All instances of <code class="docutils literal notranslate"><span class="pre">ATurtleAgentController</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgentController</span></code></p></li>
+</ul>
+<p>In CustomAgentController.cpp, change all of the following</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgentController.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgentController.h"</span></code></p></li>
+<li><p>All instances of <code class="docutils literal notranslate"><span class="pre">ATurtleAgentController</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgentController</span></code></p></li>
+</ul>
+<p>That covers the C++ portion.</p>
+</section>
+<section id="unreal-engine-5">
+<h3>Unreal Engine 5<a class="headerlink" href="#unreal-engine-5" title="Permalink to this heading"></a></h3>
+<p>This is the one where things can be a little hidden. In UE5, click the compile button at the bottom right of the screen. This will load our new C++ code into UE5. If you get errors, you likely did something wrong in the previous step and will have to go back to debug. Once compiling happens successfully, navigate to <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents</span></code> in the content browser. Create a new folder for your agent, and go into it. Right click and select to create a blueprint class. You’ll now get a dialog asking you to choose your parent class. Choose your C++ class (<code class="docutils literal notranslate"><span class="pre">CustomAgent</span></code>) from the previous step, and name your new blueprint something like CustomAgentBp. Here is where you’ll want to insert any meshes, weight, etc to make your agent look/weigh what you want. This is a little tricky sometimes, but there’s a bunch of UE5 tutorials online on making custom pawns.</p>
+<p>Finally, we’ll need to connect our python class with our UE5/C++ code. Navigate to <code class="docutils literal notranslate"><span class="pre">Content/</span></code> in the content browser and open up HolodeckGameModeBP. You’ll see an entry called Agent Bp Map on the right under the Default section. Expand it, and insert a new entry. On the left choose whatever you put as agent_type in your code before, and on the right, choose the blueprint (CustomAgentBp) that we just created.</p>
+<p>That’s it! If you find anything unclear/wrong here, feel free to edit it and clarify things for a future reader. You’ll need to repackage your environment (see above) and then should be able to use your new agent!</p>
+</section>
+</section>
+<section id="buoyant-agents">
+<h2>Buoyant Agents<a class="headerlink" href="#buoyant-agents" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">AHolodeckBuoyantAgent</span></code> class was made to remove the need to re-implement buoyancy dynamics for all future AUVs put into HoloOcean. By setting a few necessary variables everything should basically work out of the box. All of the physics information is set in C++ and not in the blueprint. Anything set in the blueprint (like mass or COM offset) will be overriden in C++.</p>
+<p>We’re not going to go into details on how to create a custom agent here, see the above section for that. The only difference is you’ll need to inherit from <code class="docutils literal notranslate"><span class="pre">AHolodeckBuoyantAgent</span></code> instead of <code class="docutils literal notranslate"><span class="pre">AHolodeckAgent</span></code> and should probably copy the files of <code class="docutils literal notranslate"><span class="pre">AHoveringAUV</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ATurtleAgent</span></code>.</p>
+<section id="necessary-variables">
+<h3>Necessary Variables<a class="headerlink" href="#necessary-variables" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All these variables are stored with respect to to correct origin (without the OffsetToOrigin added into it)</p>
+</div>
+<p>The following MUST be set, either in your class constructor or in the <code class="docutils literal notranslate"><span class="pre">InitializeAgent</span></code> function before <code class="docutils literal notranslate"><span class="pre">Super::InitializeAgent()</span></code> is called.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">Volume</span><span class="p">;</span>
+<span class="n">FVector</span><span class="w"> </span><span class="n">CenterBuoyancy</span><span class="p">;</span>
+<span class="n">FVector</span><span class="w"> </span><span class="n">CenterMass</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">MassInKG</span><span class="p">;</span>
+<span class="n">FVector</span><span class="w"> </span><span class="n">OffsetToOrigin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FVector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>These are all basically what you’d expect them to be. You may get away with not setting <code class="docutils literal notranslate"><span class="pre">OffsetToOrigin</span></code> if your mesh was imported with the correct pivot point.</p>
+</section>
+<section id="extra-variables">
+<h3>Extra Variables<a class="headerlink" href="#extra-variables" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All these variables are stored with respect to to correct origin (without the OffsetToOrigin and CenterVehicle added into them) EXCEPT <code class="docutils literal notranslate"><span class="pre">SurfacePoints</span></code>.</p>
+</div>
+<p>These variables can be set to customize various aspects of how surface buoyancy is used, although all of them will be calculated if you don’t. Surface Buoyancy is calculated by random sampling points inside of the “Bounding Box” of your vehicle, then checking how many of them are above the surface in real time. You can see this bounding box by opening your static mesh in UE5 and clicking “Bounding Box”. This will obviously be a poor approximation if your robot isn’t a box, but works for our more boxy vehicles. Alternatively, if you want to sample offline and store the points, you can set them explicitly by hand.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">FVector</span><span class="w"> </span><span class="n">CenterVehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FVector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Center of vehicle from true origin. NEED to set if origin isn't center of vehicle</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">NumSurfacePoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<span class="n">FBox</span><span class="w"> </span><span class="n">BoundingBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FBox</span><span class="p">();</span>
+<span class="n">TArray</span><span class="o">&lt;</span><span class="n">FVector</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SurfacePoints</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">SurfaceLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">CenterVehicle</span></code> is the distance from the true origin to the physical center of your vehicle. It’s used to make sure your bounding box is actually where it should be. It MUST be set if you don’t use the center of your vehicle as the surface point.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NumSurfacePoints</span></code> will be the next most likely one you’ll set. It’s what is sounds like. May need to be larger/smaller based on robot size.</p>
+<p><code class="docutils literal notranslate"><span class="pre">BoundingBox</span></code> is the bounding box around your vehicle. It’s calculated automatically by the mesh if it’s not set. You can set this by hand if the auto-calculated one is too large.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SurfacePoints</span></code> are the sampled points. Set explicitly if you don’t want to use the bounding box method. NOTE: These are stored with <code class="docutils literal notranslate"><span class="pre">OffsetToOrigin</span></code> and <code class="docutils literal notranslate"><span class="pre">CenterVehicle</span></code> pre-added to reduce complexity. (IE we don’t want to do the same 2*NumSurfacePoints additions every tick)</p>
+<p><code class="docutils literal notranslate"><span class="pre">SurfaceLevel</span></code> is the water level. For all of our environments, this has been set to 0.</p>
+</section>
+<section id="debugging-tools">
+<h3>Debugging Tools<a class="headerlink" href="#debugging-tools" title="Permalink to this heading"></a></h3>
+<p>To be able to visualize the bounding box and surface points to make sure they’re placed currently, you can use the inherited functions <code class="docutils literal notranslate"><span class="pre">ShowBoundingBox()</span></code> and <code class="docutils literal notranslate"><span class="pre">ShowSurfacePoints()</span></code> functions in your agents tick method.</p>
+</section>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="sensors.html" rel="prev" title="Developing Sensors"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="semaphores.html" rel="next" title="Communication Protocol">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

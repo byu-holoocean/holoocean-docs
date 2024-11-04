@@ -62,9 +62,12 @@ def main():
     print("path is: ", path)
     if not os.path.exists(version):
         os.mkdir(version)
+        print("folder wasn't found, so there was an issue")
+        exit(2)
     else:
-        print("Folder already exists. Delete it and try again.")
-        exit(1)
+        print("folder was found")
+        # print("Folder already exists. Delete it and try again.")
+        # exit(1)
 
     update_versions_file(version)
     update_index_file(version)

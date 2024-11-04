@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Multi-Agent Communications — HoloOcean 1.0.0 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="pd-controllers.html" rel="next" title="PD Controller"/>
+<link href="multi-agent.html" rel="prev" title="Multi Agent Example"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version">&lt;a href=../../../"versionList.html" style="color: inherit\:&gt;1.0.0&lt;/a&gt;</div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../getting-started.html">Getting Started &amp; Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="camera.html">Visualizing RGBCamera Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Manually Controlling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom-dynamics.html">Manually Defining Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom-scenarios.html">Custom Scenario Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fossen-based-dynamics.html">Fossen-Based Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-agent.html">Multi Agent Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Multi-Agent Communications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sending-acoustic-messages">Sending Acoustic Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sending-optical-messages">Sending Optical Messages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pd-controllers.html">PD Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_imaging.html">Visualizing Imaging Sonar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_profiling.html">Visualizing Profiling Sonar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_sidescan.html">Visualizing Sidescan Sonar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_singlebeam.html">Visualizing Singlebeam Sonar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="breadcrumb-item active">Multi-Agent Communications</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/usage/examples/multi-coms.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="multi-agent-communications">
+<h1>Multi-Agent Communications<a class="headerlink" href="#multi-agent-communications" title="Permalink to this heading"></a></h1>
+<p>Many times it’s necessary to communicate between agents. This can be done using the
+<code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code> or the <code class="docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code>. Below are some examples of these</p>
+<section id="sending-acoustic-messages">
+<h2>Sending Acoustic Messages<a class="headerlink" href="#sending-acoustic-messages" title="Permalink to this heading"></a></h2>
+<p>The command <a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_acoustic_message()</span></code></a> is used to send messages between acoustic beacons.
+There’s a number of message types that can be sent, all with varying functionality, see <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.AcousticBeaconSensor" title="holoocean.sensors.AcousticBeaconSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.sensors.AcousticBeaconSensor</span></code></a>
+for details.</p>
+<p>Further, a few helper functions exist if needed,</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.beacons" title="holoocean.environments.HoloOceanEnvironment.beacons"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons</span></code></a> returns all beacons.</p></li>
+<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.beacons_id" title="holoocean.environments.HoloOceanEnvironment.beacons_id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons_id</span></code></a> returns all beacons’ ids.</p></li>
+<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.beacons_status" title="holoocean.environments.HoloOceanEnvironment.beacons_status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons_status</span></code></a> returns all beacons’ status (whether it’s transmitting or not).</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">holoocean</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_acou_coms"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"SimpleUnderwater"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"AcousticBeaconSensor"</span><span class="p">,</span>
+                    <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv1"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"AcousticBeaconSensor"</span><span class="p">,</span>
+                    <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># This is how you send a message from one acoustic com to another</span>
+<span class="c1"># This sends from id 0 to id 1 (ids configured above)</span>
+<span class="c1"># with message type "OWAY" and data "my_data_payload"</span>
+<span class="n">env</span><span class="o">.</span><span class="n">send_acoustic_message</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"OWAY"</span><span class="p">,</span> <span class="s2">"my_data_payload"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">):</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">"AcousticBeaconSensor"</span> <span class="ow">in</span> <span class="n">states</span><span class="p">[</span><span class="s1">'auv1'</span><span class="p">]:</span>
+        <span class="c1"># For this message, should receive back [message_type, from_sensor, data_payload]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">"Received:"</span><span class="p">,</span> <span class="n">states</span><span class="p">[</span><span class="s1">'auv1'</span><span class="p">][</span><span class="s2">"AcousticBeaconSensor"</span><span class="p">])</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">"No message received"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="sending-optical-messages">
+<h2>Sending Optical Messages<a class="headerlink" href="#sending-optical-messages" title="Permalink to this heading"></a></h2>
+<p>The command <a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_optical_message()</span></code></a> is used to send messages between optical modems.
+See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.OpticalModemSensor" title="holoocean.sensors.OpticalModemSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.sensors.OpticalModemSensor</span></code></a> for configuration details. Note in order for a message to be transmitted,
+the 2 sensors must be aligned.</p>
+<p>Further, a few helper functions exist if needed,</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.modems" title="holoocean.environments.HoloOceanEnvironment.modems"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.modems</span></code></a> returns all modems.</p></li>
+<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.modems_id" title="holoocean.environments.HoloOceanEnvironment.modems_id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.modems_id</span></code></a> returns all modems’ ids.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">holoocean</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_acou_coms"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"SimpleUnderwater"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"OpticalModemSensor"</span><span class="p">,</span>
+                    <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span>
+            <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv1"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"OpticalModemSensor"</span><span class="p">,</span>
+                    <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># This is how you send a message from one optical com to another</span>
+<span class="c1"># This sends from id 0 to id 1 (ids configured above)</span>
+<span class="c1"># with data "my_data_payload"</span>
+<span class="n">env</span><span class="o">.</span><span class="n">send_optical_message</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"my_data_payload"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">):</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">"OpticalModemSensor"</span> <span class="ow">in</span> <span class="n">states</span><span class="p">[</span><span class="s1">'auv1'</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">"Received:"</span><span class="p">,</span> <span class="n">states</span><span class="p">[</span><span class="s1">'auv1'</span><span class="p">][</span><span class="s2">"OpticalModemSensor"</span><span class="p">])</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">"No message received"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="multi-agent.html" rel="prev" title="Multi Agent Example"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="pd-controllers.html" rel="next" title="PD Controller">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

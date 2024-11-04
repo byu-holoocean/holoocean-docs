@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Package Manager — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="sensors.html" rel="next" title="Sensors"/>
+<link href="holooceanclient.html" rel="prev" title="HoloOcean Client"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version">&lt;a href=../../"versionList.html" style="color: inherit\:&gt;1.0.0&lt;/a&gt;</div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">Package Manager</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/holoocean/packagemanager.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="module-holoocean.packagemanager">
+<span id="package-manager"></span><span id="packagemanager"></span><h1>Package Manager<a class="headerlink" href="#module-holoocean.packagemanager" title="Permalink to this heading"></a></h1>
+<p>Package manager for worlds available to download and use for HoloOcean</p>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.packagemanager.available_packages" title="holoocean.packagemanager.available_packages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">available_packages</span></code></a>()</p></td>
+<td><p>Returns a list of package names available for the current version of HoloOcean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.packagemanager.get_binary_path_for_package" title="holoocean.packagemanager.get_binary_path_for_package"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_binary_path_for_package</span></code></a>(package_name)</p></td>
+<td><p>Gets the path to the binary of a specific package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.packagemanager.get_binary_path_for_scenario" title="holoocean.packagemanager.get_binary_path_for_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_binary_path_for_scenario</span></code></a>(scenario_name)</p></td>
+<td><p>Gets the path to the binary for a given scenario name</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.packagemanager.get_package_config_for_scenario" title="holoocean.packagemanager.get_package_config_for_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_package_config_for_scenario</span></code></a>(scenario)</p></td>
+<td><p>For the given scenario, returns the package config associated with it (config.json)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.packagemanager.get_scenario" title="holoocean.packagemanager.get_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scenario</span></code></a>(scenario_name)</p></td>
+<td><p>Gets the scenario configuration associated with the given name</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.packagemanager.install" title="holoocean.packagemanager.install"><code class="xref py py-obj docutils literal notranslate"><span class="pre">install</span></code></a>(package_name[, url, branch, commit])</p></td>
+<td><p>Installs a holoocean package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.packagemanager.installed_packages" title="holoocean.packagemanager.installed_packages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">installed_packages</span></code></a>()</p></td>
+<td><p>Returns a list of all installed packages</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.packagemanager.load_scenario_file" title="holoocean.packagemanager.load_scenario_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_scenario_file</span></code></a>(scenario_path)</p></td>
+<td><p>Loads the scenario config file and returns a dictionary containing the configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.packagemanager.package_info" title="holoocean.packagemanager.package_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">package_info</span></code></a>(pkg_name)</p></td>
+<td><p>Prints the information of a package.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.packagemanager.prune" title="holoocean.packagemanager.prune"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prune</span></code></a>()</p></td>
+<td><p>Prunes old versions of holoocean, other than the running version.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.packagemanager.remove" title="holoocean.packagemanager.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove</span></code></a>(package_name)</p></td>
+<td><p>Removes a holoocean package.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.packagemanager.remove_all_packages" title="holoocean.packagemanager.remove_all_packages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_all_packages</span></code></a>()</p></td>
+<td><p>Removes all holoocean packages.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.packagemanager.scenario_info" title="holoocean.packagemanager.scenario_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scenario_info</span></code></a>([scenario_name, scenario, ...])</p></td>
+<td><p>Gets and prints information for a particular scenario file Must match this format: scenario_name.json</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.packagemanager.world_info" title="holoocean.packagemanager.world_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">world_info</span></code></a>(world_name[, world_config, ...])</p></td>
+<td><p>Gets and prints the information of a world.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.available_packages">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">available_packages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.available_packages" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of package names available for the current version of HoloOcean</p>
+<dl class="simple">
+<dt>Returns (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>):</dt><dd><p>List of package names</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.get_binary_path_for_package">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">get_binary_path_for_package</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.get_binary_path_for_package" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the path to the binary of a specific package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>package_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of the package to search for</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the path to the config directory</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#holoocean.exceptions.NotFoundException" title="holoocean.exceptions.NotFoundException"><strong>NotFoundException</strong></a> – When the package requested is not found</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.get_binary_path_for_scenario">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">get_binary_path_for_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.get_binary_path_for_scenario" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the path to the binary for a given scenario name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scenario_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – name of the configuration to load - eg “UrbanCity-Follow”
+Must be an exact match. Name must be unique among all installed packages</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the configuration file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.get_package_config_for_scenario">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">get_package_config_for_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.get_package_config_for_scenario" title="Permalink to this definition"></a></dt>
+<dd><p>For the given scenario, returns the package config associated with it (config.json)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scenario</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>) – scenario dict to look up the package for</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>package configuration dictionary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.get_scenario">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">get_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.get_scenario" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the scenario configuration associated with the given name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scenario_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – name of the configuration to load - eg “UrbanCity-Follow”
+Must be an exact match. Name must be unique among all installed packages</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the configuration file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.install">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">install</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">branch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.install" title="Permalink to this definition"></a></dt>
+<dd><p>Installs a holoocean package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>package_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the package to install</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.installed_packages">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">installed_packages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.installed_packages" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of all installed packages</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all the currently installed packages</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.load_scenario_file">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">load_scenario_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.load_scenario_file" title="Permalink to this definition"></a></dt>
+<dd><p>Loads the scenario config file and returns a dictionary containing the configuration</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scenario_path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Path to the configuration file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the configuration file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.package_info">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">package_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pkg_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.package_info" title="Permalink to this definition"></a></dt>
+<dd><p>Prints the information of a package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pkg_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the desired package to get information</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.prune">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prunes old versions of holoocean, other than the running version.</p>
+<p><strong>DO NOT USE WITH HOLODECKPATH</strong></p>
+<p>Don’t use this function if you have overidden the path.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.remove">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Removes a holoocean package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>package_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – the name of the package to remove</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.remove_all_packages">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">remove_all_packages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.remove_all_packages" title="Permalink to this definition"></a></dt>
+<dd><p>Removes all holoocean packages.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.scenario_info">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">scenario_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.scenario_info" title="Permalink to this definition"></a></dt>
+<dd><p>Gets and prints information for a particular scenario file
+Must match this format: scenario_name.json</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scenario_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the scenario</p></li>
+<li><p><strong>scenario</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>, optional) – Loaded dictionary config
+(overrides world_name and scenario_name)</p></li>
+<li><p><strong>base_indent</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – How much to indent output by</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.packagemanager.world_info">
+<span class="sig-prename descclassname"><span class="pre">holoocean.packagemanager.</span></span><span class="sig-name descname"><span class="pre">world_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.packagemanager.world_info" title="Permalink to this definition"></a></dt>
+<dd><p>Gets and prints the information of a world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>world_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – the name of the world to retrieve information for</p></li>
+<li><p><strong>world_config</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>, optional) – A dictionary containing the world’s configuration.
+Will find the config if None. Defaults to None.</p></li>
+<li><p><strong>base_indent</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – How much to indent output</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="holooceanclient.html" rel="prev" title="HoloOcean Client"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="sensors.html" rel="next" title="Sensors">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

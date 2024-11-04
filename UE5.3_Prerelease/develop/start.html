@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Getting Started — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="env.html" rel="next" title="Developing Environments"/>
+<link href="develop.html" rel="prev" title="Developing HoloOcean"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version">&lt;a href=../../"versionList.html" style="color: inherit\:&gt;1.0.0&lt;/a&gt;</div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="develop.html">Developing HoloOcean</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cloning">Cloning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opening-prepping-project">Opening &amp; Prepping Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-vscode">Setting up VSCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling">Compiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-game-live">Launching Game Live</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">Developing Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agents.html">Developing Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semaphores.html">Communication Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="develop.html">Developing HoloOcean</a></li>
+<li class="breadcrumb-item active">Getting Started</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/develop/start.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="getting-started">
+<span id="develop-start"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<p>While unreal development is possible on Linux, I’ve found working on Windows to be much more straightforward and stable. Regardless of which one you use, you’ll need the following dependencies:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/installing-unreal-engine?application_version=5.3">Unreal Engine 5.3</a></p></li>
+<li><p><a class="reference external" href="https://visualstudio.microsoft.com/">Visual Studio 2022 or 2019</a> – See UE <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.3">documentation</a> for setup</p></li>
+<li><p>git</p></li>
+<li><p>Some sort of python installation (conda is my preferred)</p></li>
+</ul>
+<section id="cloning">
+<h2>Cloning<a class="headerlink" href="#cloning" title="Permalink to this heading"></a></h2>
+<p>For running holoocean live, you’ll need to setup both the C++ and python portions of HoloOcean, which are now conveniently in the same repo.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Clone <a class="reference external" href="https://github.com/byu-holoocean/HoloOcean">holoocean</a>.</p></li>
+<li><p>Navigate into that directory.</p></li>
+<li><p>Checkout to the branch you want to develop on, likely the develop branch, which you can access through <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">develop</span></code>,</p>
+<ul>
+<li><p>Alternatively create your own new branch for the feature or addition through <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">[your</span> <span class="pre">branch</span> <span class="pre">name]</span> <span class="pre">[the</span> <span class="pre">branch</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">branch</span> <span class="pre">off</span> <span class="pre">of]</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>You can now install the python package by running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">client/</span></code>.</p>
+</section>
+<section id="opening-prepping-project">
+<h2>Opening &amp; Prepping Project<a class="headerlink" href="#opening-prepping-project" title="Permalink to this heading"></a></h2>
+<p>Inside of your cloned repo in the engine directory, there is a holodeck.uproject file. Double click it, and choose “5.3” if an engine version dialog opens up, click “yes” to any dialog that says “Would you like to rebuild them now?”, and then unreal should pop open!</p>
+<p>There’s many ways to develop in unreal, but we’re going to focus on how I’ve found is the easiest way to development code.</p>
+<p>In the Unreal Editor, go to Platforms -&gt; Windows -&gt; Cook Content. After a few minutes you should get a success popup in the lower right.</p>
+</section>
+<section id="setting-up-vscode">
+<h2>Setting up VSCode<a class="headerlink" href="#setting-up-vscode" title="Permalink to this heading"></a></h2>
+<p>I’m not a fan of the Visual Studio IDE, and instead prefer to use VSCode. If VSCode is installed and you want to do this as well, do the following:</p>
+<ul class="simple">
+<li><p>In Unreal Editor, Go to Edit -&gt; Editor Preferences</p></li>
+<li><p>Then go to General -&gt; Source Code -&gt; Source Code Editor and select Visual Studio Code</p></li>
+<li><p>Once this is done you should now be able to generate a new Visual Studio Code project  using File -&gt; Generate Visual Studio Code Project</p></li>
+<li><p>To open up Visual Studio Code go to File -&gt; Open Visual Studio Code</p></li>
+</ul>
+</section>
+<section id="compiling">
+<h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this heading"></a></h2>
+<p>Generally you can compile by clicking the “Compile” button in Unreal Editor. Do this anytime you make changes to your C++ code. There’s also a way to compile in Visual Studio if you wish.</p>
+<p>The compile button in the Unreal Editor is at the bottom right of the screen. It might be hidden if your screen isn’t wide enough.</p>
+<img alt="../_images/compile-button-location.png" src="../_images/compile-button-location.png"/>
+</section>
+<section id="launching-game-live">
+<h2>Launching Game Live<a class="headerlink" href="#launching-game-live" title="Permalink to this heading"></a></h2>
+<p>To avoid having to package the project anytime you want to see changes to your code, you can play the game live from Unreal Editor and then attached your python code to it. This is a multi-step process, as follows.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If developing a sonar module, in UE5 click the 3 dots next to the “Play” button in the top toolbar, and click “Advanced Settings”. Add the following line to “Additional Launch Parameters”
+.. image:: images/standalone-game.png
+.. code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">EnvMinX</span><span class="o">=-</span><span class="mi">1000</span> <span class="o">-</span><span class="n">EnvMinY</span><span class="o">=-</span><span class="mi">1000</span> <span class="o">-</span><span class="n">EnvMinZ</span><span class="o">=-</span><span class="mi">1000</span> <span class="o">-</span><span class="n">EnvMaxX</span><span class="o">=</span><span class="mi">1000</span> <span class="o">-</span><span class="n">EnvMaxY</span><span class="o">=</span><span class="mi">1000</span> <span class="o">-</span><span class="n">EnvMinZ</span><span class="o">=</span><span class="mi">1000</span> <span class="o">-</span><span class="n">OctreeMin</span><span class="o">=</span><span class="mf">0.02</span> <span class="n">OctreeMax</span><span class="o">=</span><span class="mi">5</span>
+</pre></div>
+</div>
+<p>These are all in meters. Tweak them as you need, they’re all pretty self-explanatory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you using the dynamics sensor, or expect certain tick per second rate, make sure to set -TicksPerSec=&lt;val&gt; as one of these arguments, so you get the simulation rate and behavior you expect..
+The -FramesPerSec=&lt;val&gt; command controls how fast it runs on your computer. See <a class="reference external" href="https://byu-holoocean.github.io/holoocean-docs/v1.0.0/usage/scenarios.html#frame-rates">https://byu-holoocean.github.io/holoocean-docs/v1.0.0/usage/scenarios.html#frame-rates</a>.
+In addition, the -log parameter is useful for being able to close the game window easily, as well as for seeing log messages for debugging purposes.</p>
+</div>
+</div>
+<p>Open and prep a python script similar to the following</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">holoocean</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
+      <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"ExampleLevel"</span><span class="p">,</span>
+      <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+      <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+               <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+               <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+               <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="p">{</span>
+                        <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"LocationSensor"</span><span class="p">,</span>
+                  <span class="p">}</span>
+               <span class="p">],</span>
+               <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="p">}</span>
+      <span class="p">]</span>
+   <span class="p">}</span>
+
+<span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">start_world</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+   <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+      <span class="n">state</span><span class="p">,</span> <span class="n">reward</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tweak it to put the sensors/agents you need in as you see fit.</p>
+<ul class="simple">
+<li><p>Have some way to run this python file open and ready</p></li>
+<li><p>Back in Unreal Editor, click the arrow next to the “Play” button in the top toolbar, and select “Standalone Game”. A seperate window should pop open with the unreal game.</p></li>
+<li><p>Once this window pops open, run your python script. It will attach to the new open unreal game window and proceed as a normal holoocean simulation. Note you may have to try to run your script a couple of times, the unreal game window takes a second to load.</p></li>
+</ul>
+<p>That’s it! There’s a few weird quirks to keep an eye out for here as well. If you close the unreal game window before exiting the python script, your terminal will freeze and you’ll have to open a new one. I have a small .bat script that runs the python file that I have pinned to my taskbar to get around this.
+Alternatively, VSCode’s play button works rather smoothly as well for quickly opening/closing terminals with the correct conda environment.</p>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading"></a></h2>
+<p>While definitely not the best way to do things, I generally use the unreal equivalent of print statements to debug my code. [<a class="reference external" href="https://unrealcommunity.wiki/logging-lgpidy6i">https://unrealcommunity.wiki/logging-lgpidy6i</a> Here’s a good tutorial on sending things to the unreal log.]</p>
+<p>This log will be saved in holoocean-engine/Saved/Logs if you want to see it later, or, I prefer this way. In Unreal Editor,</p>
+<ul class="simple">
+<li><p>Go to Window -&gt; Output Log</p></li>
+</ul>
+<p>See <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/logging-in-unreal-engine">https://dev.epicgames.com/documentation/en-us/unreal-engine/logging-in-unreal-engine</a> for more information on logging in Unreal Engine.</p>
+<p>Easy Peasy!</p>
+<p>See <a class="reference internal" href="agents.html#develop-agents"><span class="std std-ref">Developing Agents</span></a>, <a class="reference internal" href="sensors.html#develop-sensor"><span class="std std-ref">Developing Sensors</span></a>, and <a class="reference internal" href="env.html#develop-env"><span class="std std-ref">Developing Environments</span></a> for information on developting custom sensors/agents/env and how to get started on those.</p>
+<p>For developing a custom sonar, see the <code class="docutils literal notranslate"><span class="pre">HolodeckSonarSensor.h</span></code> and <code class="docutils literal notranslate"><span class="pre">HolodeckSonarSensor.cpp</span></code> files for the required superclass, and <code class="docutils literal notranslate"><span class="pre">ImagingSonarSensor.h</span></code> and <code class="docutils literal notranslate"><span class="pre">ImagingSonarSensor.cpp</span></code> for examples on how to use them.</p>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="develop.html" rel="prev" title="Developing HoloOcean"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="env.html" rel="next" title="Developing Environments">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
