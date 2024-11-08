@@ -24,19 +24,24 @@ def update_version_header(file):
 def update_sidebar(file, level, num_links=7):
     tempvar = None
     with open(file, 'r', encoding='utf-8') as f:
-        soup = BeautifulSoup(f, 'html.parser')
-        links = soup.find_all("li", {"class": "toctree-l1"})
-        changelog = links[num_links-1]
-        dots = "../"
-        for i in range(level):
-            dots += "../"
-        new_link = BeautifulSoup('\n<li class="toctree-l1"><a class="reference internal" href=' + dots + 'versionList.html>Other Versions Documentation</a></li>', 'html.parser')
-        changelog.insert_after(new_link)
-        versionHeader = soup.find("div", {"class": "version"})
-        val = versionHeader.getText(strip=True)
-        versionHeader.replace_with(BeautifulSoup('<div class="version"><a href=' + dots + 'versionList.html style="color: inherit;">' + val + '</a></div>', 'html.parser'))
-        # versionHeader.string = "<a href=" + dots + "\"versionList.html\" style=\"color: inherit\:>" + val + "</a>"
-        tempvar = soup
+        try:
+            soup = BeautifulSoup(f, 'html.parser')
+            links = soup.find_all("li", {"class": "toctree-l1"})
+            changelog = links[num_links-1]
+            dots = "../"
+            for i in range(level):
+                dots += "../"
+            new_link = BeautifulSoup('\n<li class="toctree-l1"><a class="reference internal" href=' + dots + 'versionList.html>Other Versions Documentation</a></li>', 'html.parser')
+            changelog.insert_after(new_link)
+            versionHeader = soup.find("div", {"class": "version"})
+            val = versionHeader.getText(strip=True)
+            versionHeader.replace_with(BeautifulSoup('<div class="version"><a href=' + dots + 'versionList.html style="color: inherit;">' + val + '</a></div>', 'html.parser'))
+            # versionHeader.string = "<a href=" + dots + "\"versionList.html\" style=\"color: inherit\:>" + val + "</a>"
+            tempvar = soup
+        except Exception as e:
+            print("Error in file: ", file)
+            print(e)
+            exit(1)
     with open(file, 'w', encoding='utf-8') as f:
         f.write(str(tempvar))
 
