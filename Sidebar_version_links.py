@@ -40,6 +40,9 @@ def update_sidebar(file, level, num_links=7):
             tempvar = soup
         except Exception as e:
             print("Error in file: ", file)
+            print(soup)
+            print(soup.find("div", {"class": "version"}))
+            print(versionHeader)
             raise e
     with open(file, 'w', encoding='utf-8') as f:
         f.write(str(tempvar))
