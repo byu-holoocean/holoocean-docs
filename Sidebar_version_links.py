@@ -12,11 +12,16 @@ For when adding a new version of the docs to the github pages site.
 def update_version_header(file):
     tempvar = None
     with open(file, 'r', encoding='utf-8') as f:
-        soup = BeautifulSoup(f, 'html.parser')
-        version_header = soup.find("div", {"class": "version"})
-        new_version = BeautifulSoup('<div class="version">Develop</div>', 'html.parser')
-        version_header.replaceWith(new_version)
-        tempvar = soup
+        try:
+            soup = BeautifulSoup(f, 'html.parser')
+            version_header = soup.find("div", {"class": "version"})
+            new_version = BeautifulSoup('<div class="version">Develop</div>', 'html.parser')
+            version_header.replaceWith(new_version)
+            tempvar = soup
+        except Exception as e:
+            print("Error in file: ", file)
+            if file == "py-modindex.html":
+                return
     with open(file, 'w', encoding='utf-8') as f:
         f.write(str(tempvar))
 
