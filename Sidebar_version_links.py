@@ -40,6 +40,8 @@ def update_sidebar(file, level, num_links=7):
             tempvar = soup
         except Exception as e:
             print("Error in file: ", file)
+            if file == "py-modindex.html":
+                return
             print(soup)
             print(soup.find("div", {"class": "version"}))
             print(versionHeader)
