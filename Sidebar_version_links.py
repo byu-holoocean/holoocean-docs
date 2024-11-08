@@ -40,8 +40,7 @@ def update_sidebar(file, level, num_links=7):
             tempvar = soup
         except Exception as e:
             print("Error in file: ", file)
-            print(e)
-            exit(1)
+            raise e
     with open(file, 'w', encoding='utf-8') as f:
         f.write(str(tempvar))
 
