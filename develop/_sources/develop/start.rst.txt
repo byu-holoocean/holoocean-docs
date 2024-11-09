@@ -5,8 +5,8 @@ Getting Started
 
 While unreal development is possible on Linux, I've found working on Windows to be much more straightforward and stable. Regardless of which one you use, you'll need the following dependencies:
 
-* `Unreal Engine 4.27 <https://docs.unrealengine.com/4.27/en-US/Basics/InstallingUnrealEngine/>`_
-* `Visual Studio 2019 <https://visualstudio.microsoft.com/vs/older-downloads/>`_ -- See UE `documentation <https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/DevelopmentSetup/VisualStudioSetup/>`_ for setup
+* `Unreal Engine 5.3 <https://dev.epicgames.com/documentation/en-us/unreal-engine/installing-unreal-engine?application_version=5.3>`_
+* `Visual Studio 2022 or 2019 <https://visualstudio.microsoft.com/>`_ -- See UE `documentation <https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.3>`_ for setup
 * git
 * Some sort of python installation (conda is my preferred)
 
@@ -25,11 +25,11 @@ You can now install the python package by running ``pip install -e client/``.
 
 Opening & Prepping Project 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Inside of your cloned repo in the engine directory, there is a holodeck.uproject file. Double click it, and choose "4.27" if an engine version dialog opens up, click "yes" to any dialog that says "Would you like to rebuild them now?", and then unreal should pop open!
+Inside of your cloned repo in the engine directory, there is a holodeck.uproject file. Double click it, and choose "5.3" if an engine version dialog opens up, click "yes" to any dialog that says "Would you like to rebuild them now?", and then unreal should pop open!
 
 There's many ways to develop in unreal, but we're going to focus on how I've found is the easiest way to development code.
 
-In the Unreal Editor, go to File -> Cook Content for {Platform}. After a few minutes you should get a success popup in the lower right.
+In the Unreal Editor, go to Platforms -> Windows -> Cook Content. After a few minutes you should get a success popup in the lower right.
 
 Setting up VSCode 
 ~~~~~~~~~~~~~~~~~~~~
@@ -42,9 +42,11 @@ I'm not a fan of the Visual Studio IDE, and instead prefer to use VSCode. If VSC
 
 Compiling 
 ~~~~~~~~~~
-I generally compile by clicking the big "Compile" button in Unreal Editor. Do this anytime you make changes to your code. There's also a way to compile in Visual Studio if you wish.
+Generally you can compile by clicking the "Compile" button in Unreal Editor. Do this anytime you make changes to your C++ code. There's also a way to compile in Visual Studio if you wish.
 
-The compile button is on the top toolbar next to 'cinematics' and 'build'. It might be hidden if your screen isn't wide enough. Click the double arrow to scroll to the right.
+The compile button in the Unreal Editor is at the bottom right of the screen. It might be hidden if your screen isn't wide enough.
+
+.. image:: images/compile-button-location.png
 
 Launching Game Live 
 ~~~~~~~~~~~~~~~~~~~~
@@ -52,8 +54,8 @@ To avoid having to package the project anytime you want to see changes to your c
 
 .. note::
    
-   If developing a sonar module, in UE4 click the down arrow next to the "Play" button in the top toolbar, and click "Advanced Settings". Add the following line to "Additional Launch Parameters"
-
+   If developing a sonar module, in UE5 click the 3 dots next to the "Play" button in the top toolbar, and click "Advanced Settings". Add the following line to "Additional Launch Parameters"
+   .. image:: images/standalone-game.png
    .. code::
 
       -EnvMinX=-1000 -EnvMinY=-1000 -EnvMinZ=-1000 -EnvMaxX=1000 -EnvMaxY=1000 -EnvMinZ=1000 -OctreeMin=0.02 OctreeMax=5
@@ -62,11 +64,10 @@ To avoid having to package the project anytime you want to see changes to your c
    These are all in meters. Tweak them as you need, they're all pretty self-explanatory.
 
    .. note::
-
       If you using the dynamics sensor, or expect certain tick per second rate, make sure to set -TicksPerSec=<val> as one of these arguments, so you get the simulation rate and behavior you expect..
       The -FramesPerSec=<val> command controls how fast it runs on your computer. See https://byu-holoocean.github.io/holoocean-docs/v1.0.0/usage/scenarios.html#frame-rates.
       In addition, the -log parameter is useful for being able to close the game window easily, as well as for seeing log messages for debugging purposes. 
-
+      
 Open and prep a python script similar to the following
 
 .. code:: python
@@ -112,8 +113,9 @@ While definitely not the best way to do things, I generally use the unreal equiv
 
 This log will be saved in holoocean-engine/Saved/Logs if you want to see it later, or, I prefer this way. In Unreal Editor,
 
-* Go to Window -> Developer Tools -> Session Frontend
-* Under "My Sessions" your unreal game window will have an entry, and in it all it's log will be listed.
+* Go to Window -> Output Log
+
+See https://dev.epicgames.com/documentation/en-us/unreal-engine/logging-in-unreal-engine for more information on logging in Unreal Engine.
 
 Easy Peasy!
 

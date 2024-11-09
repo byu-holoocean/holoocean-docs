@@ -1,6 +1,6 @@
 .. _`blue-rov-agent`:
 
-BlueRov2
+BlueROV2
 ============
 
 Images
@@ -11,7 +11,7 @@ Images
 
 Description
 -----------
-An implementation of the BlueRov2.
+An implementation of the BlueROV2.
 
 See the :class:`~holoocean.agents.BlueROV2`.
 

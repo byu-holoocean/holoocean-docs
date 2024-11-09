@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Multi-Agent Communications — HoloOcean 1.0.0 documentation</title>
-<link href="../../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../../_static/jquery.js?v=5d32c60e"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../../_static/documentation_options.js?v=8d563738"></script>
-<script src="../../_static/doctools.js?v=9a2dae69"></script>
-<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -34,7 +34,7 @@
 <a class="icon icon-home" href="../../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -51,6 +51,7 @@
 <li class="toctree-l2"><a class="reference internal" href="controller.html">Manually Controlling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-dynamics.html">Manually Defining Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom-scenarios.html">Custom Scenario Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fossen-based-dynamics.html">Fossen-Based Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="multi-agent.html">Multi Agent Example</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Multi-Agent Communications</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sending-acoustic-messages">Sending Acoustic Messages</a></li>
@@ -82,6 +83,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
@@ -110,11 +113,11 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="multi-agent-communications">
-<h1>Multi-Agent Communications<a class="headerlink" href="#multi-agent-communications" title="Link to this heading"></a></h1>
+<h1>Multi-Agent Communications<a class="headerlink" href="#multi-agent-communications" title="Permalink to this heading"></a></h1>
 <p>Many times it’s necessary to communicate between agents. This can be done using the
 <code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code> or the <code class="docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code>. Below are some examples of these</p>
 <section id="sending-acoustic-messages">
-<h2>Sending Acoustic Messages<a class="headerlink" href="#sending-acoustic-messages" title="Link to this heading"></a></h2>
+<h2>Sending Acoustic Messages<a class="headerlink" href="#sending-acoustic-messages" title="Permalink to this heading"></a></h2>
 <p>The command <a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_acoustic_message()</span></code></a> is used to send messages between acoustic beacons.
 There’s a number of message types that can be sent, all with varying functionality, see <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.AcousticBeaconSensor" title="holoocean.sensors.AcousticBeaconSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.sensors.AcousticBeaconSensor</span></code></a>
 for details.</p>
@@ -186,7 +189,7 @@ for details.</p>
 </div>
 </section>
 <section id="sending-optical-messages">
-<h2>Sending Optical Messages<a class="headerlink" href="#sending-optical-messages" title="Link to this heading"></a></h2>
+<h2>Sending Optical Messages<a class="headerlink" href="#sending-optical-messages" title="Permalink to this heading"></a></h2>
 <p>The command <a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_optical_message()</span></code></a> is used to send messages between optical modems.
 See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.OpticalModemSensor" title="holoocean.sensors.OpticalModemSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.sensors.OpticalModemSensor</span></code></a> for configuration details. Note in order for a message to be transmitted,
 the 2 sensors must be aligned.</p>

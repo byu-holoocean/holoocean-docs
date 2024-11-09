@@ -16,3 +16,10 @@ There is 3 sizes of piers ranging from small fishing docks to larger freight siz
 
 .. image:: pier_close.png
 
+HoloOcean coordinates differ from coordinates listed within the Unreal Engine editor. The following images include coordinates 
+from HoloOcean for the pier harbor level.
+
+.. image:: pier_depth.png
+.. image:: pier_coordinates.png
+.. image:: pier_landmarks_1.png
+.. image:: pier_landmarks_2.png

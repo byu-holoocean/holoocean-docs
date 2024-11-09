@@ -2,7 +2,7 @@
 
 Developing Agents
 ==================
-Unfortunately, due to agents needing to exist on the python, C++, and UE4 portions this is a rather involved process. It's not difficult, mostly just tedious, but I'll walk you through it here. 
+Unfortunately, due to agents needing to exist on the python, C++, and UE5 portions this is a rather involved process. It's not difficult, mostly just tedious, but I'll walk you through it here. 
 
 General Agents
 ---------------
@@ -51,7 +51,7 @@ Lower in the same file, in the ``AgentDefinition`` class, there is a dictionary 
 C++ Portion
 ~~~~~~~~~~~~~~~~~
 
-Next, open up ``holodeck/engine`` in UE4. Then go to File->Open Visual Studio (or open your project files in your C++ editor of choice). You'll need to duplicate 4 TurtleAgent files, and rename them accordingly: TurtleAgent.cpp, TurtleAgent.h, TurtleAgentController.cpp, and TurtleAgentController.h should be duplicated to CustomAgent.cpp, CustomAgent.h, CustomAgentController.cpp, and CustomAgentController.h. Make sure they stay in the same folder as the files they're duplicates of (should be in some combination of public/private folders). 
+Next, open up ``holodeck/engine`` in UE5. Then go to File->Open Visual Studio (or open your project files in your C++ editor of choice). You'll need to duplicate 4 TurtleAgent files, and rename them accordingly: TurtleAgent.cpp, TurtleAgent.h, TurtleAgentController.cpp, and TurtleAgentController.h should be duplicated to CustomAgent.cpp, CustomAgent.h, CustomAgentController.cpp, and CustomAgentController.h. Make sure they stay in the same folder as the files they're duplicates of (should be in some combination of public/private folders). 
 
 Next, we'll make edits to CustomAgent.h. Do the following:
 
@@ -80,12 +80,12 @@ In CustomAgentController.cpp, change all of the following
 
 That covers the C++ portion.
 
-Unreal Engine 4
+Unreal Engine 5
 ~~~~~~~~~~~~~~~~~
 
-This is the one where things can be a little hidden. In UE4, click the compile button on the top toolbar. This will load our new C++ code into UE4. If you get errors, you likely did something wrong in the previous step and will have to go back to debug. Once compiling happens successfully, navigate to ``Content/HolodeckContent/Agents`` in the content browser. Create a new folder for your agent, and go into it. Right click and select to create a blueprint class. You'll now get a dialog asking you to choose your parent class. Choose your C++ class (``CustomAgent``) from the previous step, and name your new blueprint something like CustomAgentBp. Here is where you'll want to insert any meshes, weight, etc to make your agent look/weigh what you want. This is a little tricky sometimes, but there's a bunch of UE4 tutorials online on making custom pawns.
+This is the one where things can be a little hidden. In UE5, click the compile button at the bottom right of the screen. This will load our new C++ code into UE5. If you get errors, you likely did something wrong in the previous step and will have to go back to debug. Once compiling happens successfully, navigate to ``Content/HolodeckContent/Agents`` in the content browser. Create a new folder for your agent, and go into it. Right click and select to create a blueprint class. You'll now get a dialog asking you to choose your parent class. Choose your C++ class (``CustomAgent``) from the previous step, and name your new blueprint something like CustomAgentBp. Here is where you'll want to insert any meshes, weight, etc to make your agent look/weigh what you want. This is a little tricky sometimes, but there's a bunch of UE5 tutorials online on making custom pawns.
 
-Finally, we'll need to connect our python class with our UE4/C++ code. Navigate to ``Content/`` in the content browser and open up HolodeckGameModeBP. You'll see an entry called Agent Bp Map on the right under the Default section. Expand it, and insert a new entry. On the left choose whatever you put as agent_type in your code before, and on the right, choose the blueprint (CustomAgentBp) that we just created.
+Finally, we'll need to connect our python class with our UE5/C++ code. Navigate to ``Content/`` in the content browser and open up HolodeckGameModeBP. You'll see an entry called Agent Bp Map on the right under the Default section. Expand it, and insert a new entry. On the left choose whatever you put as agent_type in your code before, and on the right, choose the blueprint (CustomAgentBp) that we just created.
 
 That's it! If you find anything unclear/wrong here, feel free to edit it and clarify things for a future reader. You'll need to repackage your environment (see above) and then should be able to use your new agent!
 
@@ -119,7 +119,7 @@ Extra Variables
 .. note:: 
     All these variables are stored with respect to to correct origin (without the OffsetToOrigin and CenterVehicle added into them) EXCEPT ``SurfacePoints``.
 
-These variables can be set to customize various aspects of how surface buoyancy is used, although all of them will be calculated if you don't. Surface Buoyancy is calculated by random sampling points inside of the "Bounding Box" of your vehicle, then checking how many of them are above the surface in real time. You can see this bounding box by opening your static mesh in UE4 and clicking "Bounding Box". This will obviously be a poor approximation if your robot isn't a box, but works for our more boxy vehicles. Alternatively, if you want to sample offline and store the points, you can set them explicitly by hand.
+These variables can be set to customize various aspects of how surface buoyancy is used, although all of them will be calculated if you don't. Surface Buoyancy is calculated by random sampling points inside of the "Bounding Box" of your vehicle, then checking how many of them are above the surface in real time. You can see this bounding box by opening your static mesh in UE5 and clicking "Bounding Box". This will obviously be a poor approximation if your robot isn't a box, but works for our more boxy vehicles. Alternatively, if you want to sample offline and store the points, you can set them explicitly by hand.
 
 .. code:: c++
 

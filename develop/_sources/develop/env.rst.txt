@@ -18,7 +18,7 @@ Adding HoloOcean Worlds
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The finished package will only contain the worlds (called "levels" in the editor) that are added into the project. The ``holoocean`` repo only contains the example level. You can 
-create new worlds by simply making a new level in unreal engine editor. See the `Unreal Engine documentation <https://docs.unrealengine.com/4.27/en-US/Basics/Levels/HowTo/WorkWithLevelAssets/>`_ for
+create new worlds by simply making a new level in unreal engine editor. See the `Unreal Engine documentation <https://dev.epicgames.com/documentation/en-us/unreal-engine/levels-in-unreal-engine?application_version=5.3>`_ for
 more information.
 
 
@@ -34,14 +34,14 @@ the content to "refresh" the assets, levels, and blueprints that
 
 **From Unreal Editor:**
 
-File ➡ Cook Content for Windows/Linux
+Platforms ➡ Windows/Linux ➡ Cook Content
 
 Packaging holodeck-engine
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **From Unreal Editor:**
 
-1. File ➡ Package Project ➡ Windows x64/Linux
+1. Platforms ➡ Windows/Linux ➡ Package Project
 
 .. image:: images/package-project.png
 
@@ -67,8 +67,8 @@ Make sure the version in the path matches the output of the
     |--+ PackageName
         |-- config.json
         |-- WorldName-ScenarioName.json
-        |--+ LinuxNoEditor (output from dist folder)
-            | UE4 build output
+        |--+ Linux (output from dist folder)
+            | UE5 build output
 
 2. Copy configurations from ``holodeck-configs`` following the file structure above.
    

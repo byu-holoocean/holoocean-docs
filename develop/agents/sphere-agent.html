@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>SphereAgent — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../_static/jquery.js?v=5d32c60e"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=8d563738"></script>
-<script src="../_static/doctools.js?v=9a2dae69"></script>
-<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -34,7 +34,7 @@
 <a class="icon icon-home" href="../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -53,7 +53,8 @@
 <li class="toctree-l2"><a class="reference internal" href="hovering-auv-agent.html">HoveringAUV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="surface-vessel-agent.html">SurfaceVessel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torpedo-auv-agent.html">TorpedoAUV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="blue-rov-agent.html">BlueRov2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coug-uv-agent.html">CougUV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blue-rov-agent.html">BlueROV2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="turtle-agent.html">TurtleAgent</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SphereAgent</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#images">Images</a></li>
@@ -63,6 +64,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uav-agent.html">UavAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fixed-wing-agent.html">FixedWing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
@@ -80,6 +82,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
@@ -108,20 +112,20 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="sphereagent">
-<span id="sphere-agent"></span><h1>SphereAgent<a class="headerlink" href="#sphereagent" title="Link to this heading"></a></h1>
+<span id="sphere-agent"></span><h1>SphereAgent<a class="headerlink" href="#sphereagent" title="Permalink to this heading"></a></h1>
 <section id="images">
-<h2>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h2>
+<h2>Images<a class="headerlink" href="#images" title="Permalink to this heading"></a></h2>
 <a class="reference internal image-reference" href="../_images/sphere.png"><img alt="../_images/sphere.png" src="../_images/sphere.png" style="width: 157.5px; height: 157.79999999999998px;"/></a>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>A basic sphere robot that moves along a plane. The SphereAgent does not have
 physics - it simply computes its next location and teleports there, as
 compared to the <a class="reference internal" href="turtle-agent.html#turtle-agent"><span class="std std-ref">TurtleAgent</span></a> which has mass and momentum.</p>
 <p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">SphereAgent</span></code> for more details.</p>
 </section>
 <section id="control-schemes">
-<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h2>
+<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt><strong>Sphere discrete</strong> (<code class="docutils literal notranslate"><span class="pre">0</span></code>)</dt><dd><p>A single-length integer vector that accepts 1 of four
 possible numbers; 0: move forward, 1: move backward,
@@ -133,7 +137,7 @@ the agent’s forward speed (index 0) and rotation speed (index 1).</p>
 </dl>
 </section>
 <section id="sockets">
-<h2>Sockets<a class="headerlink" href="#sockets" title="Link to this heading"></a></h2>
+<h2>Sockets<a class="headerlink" href="#sockets" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CameraSocket</span></code> located at the front of the sphere body</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Viewport</span></code> located behind the agent</p></li>

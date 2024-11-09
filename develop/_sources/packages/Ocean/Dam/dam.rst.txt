@@ -15,3 +15,11 @@ inspected as well as the dam itself.
 
 
 .. image:: dam_close.png
+
+HoloOcean coordinates differ from coordinates listed within the Unreal Engine editor. The following images include coordinates 
+from HoloOcean for the dam level.
+
+.. image:: dam_boundaries.png
+.. image:: dam_water_level.png
+.. image:: dam_landmarks.png
+.. image:: dam_depth.png
