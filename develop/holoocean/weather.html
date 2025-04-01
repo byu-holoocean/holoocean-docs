@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Weather Controller — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../_static/jquery.js?v=5d32c60e"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=8d563738"></script>
-<script src="../_static/doctools.js?v=9a2dae69"></script>
-<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -33,7 +33,7 @@
 <a class="icon icon-home" href="../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -64,20 +64,12 @@
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Weather Controller</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.weather.WeatherController"><code class="docutils literal notranslate"><span class="pre">WeatherController</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#holoocean.weather.WeatherController.set_day_time"><code class="docutils literal notranslate"><span class="pre">WeatherController.set_day_time()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#holoocean.weather.WeatherController.set_fog_density"><code class="docutils literal notranslate"><span class="pre">WeatherController.set_fog_density()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#holoocean.weather.WeatherController.set_weather"><code class="docutils literal notranslate"><span class="pre">WeatherController.set_weather()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#holoocean.weather.WeatherController.start_day_cycle"><code class="docutils literal notranslate"><span class="pre">WeatherController.start_day_cycle()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#holoocean.weather.WeatherController.stop_day_cycle"><code class="docutils literal notranslate"><span class="pre">WeatherController.stop_day_cycle()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Weather Controller</a></li>
 </ul>
 </div>
 </div>
@@ -101,7 +93,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="module-holoocean.weather">
-<span id="weather-controller"></span><h1>Weather Controller<a class="headerlink" href="#module-holoocean.weather" title="Link to this heading"></a></h1>
+<span id="weather-controller"></span><h1>Weather Controller<a class="headerlink" href="#module-holoocean.weather" title="Permalink to this heading"></a></h1>
 <p>Weather/time controller for environments</p>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -113,7 +105,7 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.weather.</span></span><span class="sig-name descname"><span class="pre">WeatherController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send_world_command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.weather.</span></span><span class="sig-name descname"><span class="pre">WeatherController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send_world_command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController" title="Permalink to this definition"></a></dt>
 <dd><p>Controller for dynamically changing weather and time in an environment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -142,7 +134,7 @@
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController.set_day_time">
-<span class="sig-name descname"><span class="pre">set_day_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hour</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.set_day_time" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_day_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hour</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.set_day_time" title="Permalink to this definition"></a></dt>
 <dd><p>Change the time of day.</p>
 <p>Daytime will change when <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> is called next.</p>
 <p>By the next tick, the lighting and the skysphere will be updated with the new hour.</p>
@@ -156,7 +148,7 @@ will exit the environment.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController.set_fog_density">
-<span class="sig-name descname"><span class="pre">set_fog_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.set_fog_density" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_fog_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.set_fog_density" title="Permalink to this definition"></a></dt>
 <dd><p>Change the fog density.</p>
 <p>The change will occur when <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> is called next.</p>
 <p>By the next tick, the exponential height fog in the world will have the new density. If
@@ -170,7 +162,7 @@ sent if the given density is invalid.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController.set_weather">
-<span class="sig-name descname"><span class="pre">set_weather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.set_weather" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_weather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.set_weather" title="Permalink to this definition"></a></dt>
 <dd><p>Set the world’s weather.</p>
 <p>The new weather will be applied when <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> is called next.</p>
 <p>By the next tick, the lighting, skysphere, fog, and relevant particle systems will be
@@ -191,14 +183,14 @@ apply your specific changes.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>weather_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The type of weather, which can be <code class="docutils literal notranslate"><span class="pre">rain</span></code>, <code class="docutils literal notranslate"><span class="pre">cloudy</span></code>, or</p></li>
-<li><p><strong>sunny.</strong></p></li>
+<li><p><strong>sunny.</strong> – </p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController.start_day_cycle">
-<span class="sig-name descname"><span class="pre">start_day_cycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.start_day_cycle" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">start_day_cycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.start_day_cycle" title="Permalink to this definition"></a></dt>
 <dd><p>Start the day cycle.</p>
 <p>The cycle will start when <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> is called next.</p>
 <p>The sky sphere will then update each tick with an updated sun angle as it moves about the
@@ -213,7 +205,7 @@ will exit the environment.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController.stop_day_cycle">
-<span class="sig-name descname"><span class="pre">stop_day_cycle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.stop_day_cycle" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">stop_day_cycle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.stop_day_cycle" title="Permalink to this definition"></a></dt>
 <dd><p>Stop the day cycle.</p>
 <p>The cycle will stop when <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> is called next.</p>
 <p>By the next tick, day cycle will stop where it is.</p>

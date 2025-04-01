@@ -19,11 +19,9 @@ Features
 #. High performance - simulation speeds of up to 2x real time are possible. Performance penalty only for what you need
 #. Run headless or watch your agents learn
 #. Linux and Windows support
-
 Attribution and Relevent Publications
 """""""""""""""""""""""""""""""""""""
 If you use HoloOcean in your research, please cite the following publications depending on the features you use as outlined below:
-
 General HoloOcean use:
 ::
       
@@ -37,8 +35,8 @@ General HoloOcean use:
    }
 
 Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
+
 ::
-   
    @inproceedings{Potokar22iros,
       author = {E. Potokar and K. Lay and K. Norman and D. Benham and T. Neilsen and M. Kaess and J. Mangelson},
       title = {Holo{O}cean: Realistic Sonar Simulation},
@@ -73,6 +71,8 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    holoocean/packagemanager
    holoocean/sensors
    holoocean/lcm
+   holoocean/dynamics
+   holoocean/ros2
    holoocean/shmem
    holoocean/util
    holoocean/exceptions

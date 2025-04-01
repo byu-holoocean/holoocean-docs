@@ -52,7 +52,7 @@ manipulated as follows:
 Opening Console
 ---------------
 
-Pressing ``~`` will open Unreal Engine 4's developer console, which has a few useful 
+Pressing ``~`` will open Unreal Engine 5's developer console, which has a few useful 
 commands. See `the Unreal Docs <https://api.unrealengine.com/udk/Three/ConsoleCommands.html>`_
 for a complete list of commands.
 

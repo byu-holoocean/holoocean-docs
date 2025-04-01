@@ -5,6 +5,8 @@ Units and Coordinates in HoloOcean
 HoloOcean uses **meters** for units and a **right-handed coordinate system** for
 all locations, distances, and offsets.
 
+HoloOcean coordinates differ from coordinates within the Unreal Engine Editor. To see specific coordinates for HoloOcean in a level, please refer to the Ocean Packages page.
+
 
 .. _`coordinate-system`:
 

@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BlueRov2 — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<title>BlueROV2 — HoloOcean 1.0.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../_static/jquery.js?v=5d32c60e"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=8d563738"></script>
-<script src="../_static/doctools.js?v=9a2dae69"></script>
-<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
 <link href="turtle-agent.html" rel="next" title="TurtleAgent"/>
-<link href="torpedo-auv-agent.html" rel="prev" title="TorpedoAUV"/>
+<link href="coug-uv-agent.html" rel="prev" title="CougUV"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -34,7 +34,7 @@
 <a class="icon icon-home" href="../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -53,7 +53,8 @@
 <li class="toctree-l2"><a class="reference internal" href="hovering-auv-agent.html">HoveringAUV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="surface-vessel-agent.html">SurfaceVessel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torpedo-auv-agent.html">TorpedoAUV</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">BlueRov2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coug-uv-agent.html">CougUV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BlueROV2</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#images">Images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-schemes">Control Schemes</a></li>
@@ -63,6 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="turtle-agent.html">TurtleAgent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sphere-agent.html">SphereAgent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uav-agent.html">UavAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fixed-wing-agent.html">FixedWing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
@@ -80,6 +82,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
@@ -98,7 +102,7 @@
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
 <li class="breadcrumb-item"><a href="agents.html">HoloOcean Agents</a></li>
-<li class="breadcrumb-item active">BlueRov2</li>
+<li class="breadcrumb-item active">BlueROV2</li>
 <li class="wy-breadcrumbs-aside">
 <a href="../_sources/agents/blue-rov-agent.rst.txt" rel="nofollow"> View page source</a>
 </li>
@@ -108,18 +112,18 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="bluerov2">
-<span id="blue-rov-agent"></span><h1>BlueRov2<a class="headerlink" href="#bluerov2" title="Link to this heading"></a></h1>
+<span id="blue-rov-agent"></span><h1>BlueROV2<a class="headerlink" href="#bluerov2" title="Permalink to this heading"></a></h1>
 <section id="images">
-<h2>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h2>
-<a class="reference internal image-reference" href="../_images/blue-rov.PNG"><img alt="../_images/blue-rov.PNG" src="../_images/blue-rov.PNG" style="width: 380.0px; height: 268.0px;"/></a>
+<h2>Images<a class="headerlink" href="#images" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="agents/images/blue-rov.PNG"><img alt="agents/images/blue-rov.PNG" src="agents/images/blue-rov.PNG"/></a>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>An implementation of the BlueRov2.</p>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>An implementation of the BlueROV2.</p>
 <p>See the <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.BlueROV2" title="holoocean.agents.BlueROV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlueROV2</span></code></a>.</p>
 </section>
 <section id="control-schemes">
-<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h2>
+<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt><strong>AUV Thrusters (``0``)</strong></dt><dd><p>An 8-length floating point vector used to specify the control on each thruster. They begin with the front right vertical thrusters, then goes around counter-clockwise, then repeat the last four with the sideways thrusters.</p>
 </dd>
@@ -130,23 +134,23 @@
 </dl>
 </section>
 <section id="sockets">
-<h2>Sockets<a class="headerlink" href="#sockets" title="Link to this heading"></a></h2>
+<h2>Sockets<a class="headerlink" href="#sockets" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">COM</span></code> Center of mass</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SonarSocket</span></code> A socket on the top of the AUV.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CameraSocket</span></code> Location of the camera sensor.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Socket</span></code> A socket on the bottom of the AUV.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/blue-rov-sockets.PNG"><img alt="../_images/blue-rov-sockets.PNG" src="../_images/blue-rov-sockets.PNG" style="width: 184.5px; height: 136.0px;"/></a>
-<a class="reference internal image-reference" href="../_images/blue-rov-sockets-top.PNG"><img alt="../_images/blue-rov-sockets-top.PNG" src="../_images/blue-rov-sockets-top.PNG" style="width: 163.56px; height: 136.76999999999998px;"/></a>
-<a class="reference internal image-reference" href="../_images/blue-rov-sockets-left.PNG"><img alt="../_images/blue-rov-sockets-left.PNG" src="../_images/blue-rov-sockets-left.PNG" style="width: 194.35px; height: 135.85px;"/></a>
-<a class="reference internal image-reference" href="../_images/blue-rov-sockets-front.PNG"><img alt="../_images/blue-rov-sockets-front.PNG" src="../_images/blue-rov-sockets-front.PNG" style="width: 183.33px; height: 136.08px;"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets.PNG"><img alt="agents/images/blue-rov-sockets.PNG" src="agents/images/blue-rov-sockets.PNG"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets-top.PNG"><img alt="agents/images/blue-rov-sockets-top.PNG" src="agents/images/blue-rov-sockets-top.PNG"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets-left.PNG"><img alt="agents/images/blue-rov-sockets-left.PNG" src="agents/images/blue-rov-sockets-left.PNG"/></a>
+<a class="reference internal image-reference" href="agents/images/blue-rov-sockets-front.PNG"><img alt="agents/images/blue-rov-sockets-front.PNG" src="agents/images/blue-rov-sockets-front.PNG"/></a>
 </section>
 </section>
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
-<a accesskey="p" class="btn btn-neutral float-left" href="torpedo-auv-agent.html" rel="prev" title="TorpedoAUV"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="p" class="btn btn-neutral float-left" href="coug-uv-agent.html" rel="prev" title="CougUV"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
 <a accesskey="n" class="btn btn-neutral float-right" href="turtle-agent.html" rel="next" title="TurtleAgent">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>

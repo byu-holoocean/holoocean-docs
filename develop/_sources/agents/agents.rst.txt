@@ -12,7 +12,10 @@ Documentation on specific agents available in HoloOcean:
    hovering-auv-agent
    surface-vessel-agent
    torpedo-auv-agent
+   coug-uv-agent
    blue-rov-agent
    turtle-agent
    sphere-agent
    uav-agent
+   fixed-wing-agent
+

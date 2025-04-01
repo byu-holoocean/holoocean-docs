@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>LCM — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../_static/jquery.js?v=5d32c60e"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=8d563738"></script>
-<script src="../_static/doctools.js?v=9a2dae69"></script>
-<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
-<link href="shmem.html" rel="next" title="Shared Memory"/>
+<link href="dynamics.html" rel="next" title="Dynamics"/>
 <link href="sensors.html" rel="prev" title="Sensors"/>
 </head>
 <body class="wy-body-for-nav">
@@ -34,7 +34,7 @@
 <a class="icon icon-home" href="../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -64,14 +64,9 @@
 <li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">LCM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.lcm.SensorData"><code class="docutils literal notranslate"><span class="pre">SensorData</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#holoocean.lcm.SensorData.set_value"><code class="docutils literal notranslate"><span class="pre">SensorData.set_value()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.lcm.gen"><code class="docutils literal notranslate"><span class="pre">gen()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
@@ -99,7 +94,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="module-holoocean.lcm">
-<span id="lcm"></span><h1>LCM<a class="headerlink" href="#module-holoocean.lcm" title="Link to this heading"></a></h1>
+<span id="lcm"></span><h1>LCM<a class="headerlink" href="#module-holoocean.lcm" title="Permalink to this heading"></a></h1>
 <p>LCM package __init__.py file
 This file automatically generated by lcm-gen.
 DO NOT MODIFY BY HAND!!!!</p>
@@ -121,7 +116,7 @@ DO NOT MODIFY BY HAND!!!!</p>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.lcm.SensorData">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.lcm.</span></span><span class="sig-name descname"><span class="pre">SensorData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.SensorData" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.lcm.</span></span><span class="sig-name descname"><span class="pre">SensorData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.SensorData" title="Permalink to this definition"></a></dt>
 <dd><p>Wrapper class for the various types of publishable sensor data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -141,7 +136,7 @@ DO NOT MODIFY BY HAND!!!!</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.lcm.SensorData.set_value">
-<span class="sig-name descname"><span class="pre">set_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.SensorData.set_value" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.SensorData.set_value" title="Permalink to this definition"></a></dt>
 <dd><p>Set value in respective sensor class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -155,7 +150,7 @@ DO NOT MODIFY BY HAND!!!!</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="holoocean.lcm.gen">
-<span class="sig-prename descclassname"><span class="pre">holoocean.lcm.</span></span><span class="sig-name descname"><span class="pre">gen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.gen" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holoocean.lcm.</span></span><span class="sig-name descname"><span class="pre">gen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.gen" title="Permalink to this definition"></a></dt>
 <dd><p>Generates LCM files for sensors in whatever language requested.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -172,7 +167,7 @@ DO NOT MODIFY BY HAND!!!!</p>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
 <a accesskey="p" class="btn btn-neutral float-left" href="sensors.html" rel="prev" title="Sensors"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="shmem.html" rel="next" title="Shared Memory">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="n" class="btn btn-neutral float-right" href="dynamics.html" rel="next" title="Dynamics">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

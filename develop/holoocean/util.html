@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Util — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../_static/jquery.js?v=5d32c60e"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=8d563738"></script>
-<script src="../_static/doctools.js?v=9a2dae69"></script>
-<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -34,7 +34,7 @@
 <a class="icon icon-home" href="../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -65,15 +65,10 @@
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Util</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.util.convert_unicode"><code class="docutils literal notranslate"><span class="pre">convert_unicode()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.util.get_holoocean_path"><code class="docutils literal notranslate"><span class="pre">get_holoocean_path()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.util.get_holoocean_version"><code class="docutils literal notranslate"><span class="pre">get_holoocean_version()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.util.get_os_key"><code class="docutils literal notranslate"><span class="pre">get_os_key()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean.util.human_readable_size"><code class="docutils literal notranslate"><span class="pre">human_readable_size()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Controller</a></li>
 </ul>
@@ -99,7 +94,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="module-holoocean.util">
-<span id="util"></span><h1>Util<a class="headerlink" href="#module-holoocean.util" title="Link to this heading"></a></h1>
+<span id="util"></span><h1>Util<a class="headerlink" href="#module-holoocean.util" title="Permalink to this heading"></a></h1>
 <p>Helpful Utilities</p>
 <p><strong>Functions:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -123,7 +118,7 @@
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="holoocean.util.convert_unicode">
-<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">convert_unicode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.convert_unicode" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">convert_unicode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.convert_unicode" title="Permalink to this definition"></a></dt>
 <dd><p>Resolves python 2 issue with json loading in unicode instead of string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -139,7 +134,7 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="holoocean.util.get_holoocean_path">
-<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_holoocean_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_holoocean_path" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_holoocean_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_holoocean_path" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the path of the holoocean environment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -152,7 +147,7 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="holoocean.util.get_holoocean_version">
-<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_holoocean_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_holoocean_version" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_holoocean_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_holoocean_version" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the current version of holoocean</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -165,7 +160,7 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="holoocean.util.get_os_key">
-<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_os_key</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_os_key" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_os_key</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_os_key" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the key for the OS.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -178,7 +173,7 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="holoocean.util.human_readable_size">
-<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">human_readable_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_bytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.human_readable_size" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">human_readable_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_bytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.human_readable_size" title="Permalink to this definition"></a></dt>
 <dd><p>Gets a number of bytes as a human readable string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

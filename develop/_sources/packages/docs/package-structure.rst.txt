@@ -38,7 +38,7 @@ scenario files must follow the format ``{WorldName}-{ScenarioName}.json``.
    +-- materials.csv
    +-- WorldName-ScenarioName.json
    +-- LinuxNoEditor
-       + UE4 build output
+       + UE5 build output
 
 config.json
 -----------
@@ -85,7 +85,7 @@ computation of the sonar images. Below is the format the config file is expected
 
 At the start of each simulation, this file is read so that it can be edited without needing to recompile the entire unreal binary.
 The first line is ignored, and is just used for reference when editing the file. The first column
-is the name of the material in UE4, the second is the material density in kg/m^3, and the third
+is the name of the material in UE5, the second is the material density in kg/m^3, and the third
 is the speed of sound in m/s. These are used to compute the acoustic intensity of the various materials
 found in the environment.
 

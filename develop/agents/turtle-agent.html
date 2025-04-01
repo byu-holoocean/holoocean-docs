@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>TurtleAgent — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../_static/jquery.js?v=5d32c60e"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=8d563738"></script>
-<script src="../_static/doctools.js?v=9a2dae69"></script>
-<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
 <link href="sphere-agent.html" rel="next" title="SphereAgent"/>
-<link href="blue-rov-agent.html" rel="prev" title="BlueRov2"/>
+<link href="blue-rov-agent.html" rel="prev" title="BlueROV2"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -34,7 +34,7 @@
 <a class="icon icon-home" href="../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -53,7 +53,8 @@
 <li class="toctree-l2"><a class="reference internal" href="hovering-auv-agent.html">HoveringAUV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="surface-vessel-agent.html">SurfaceVessel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="torpedo-auv-agent.html">TorpedoAUV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="blue-rov-agent.html">BlueRov2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coug-uv-agent.html">CougUV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blue-rov-agent.html">BlueROV2</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">TurtleAgent</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#control-schemes">Control Schemes</a></li>
@@ -62,6 +63,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sphere-agent.html">SphereAgent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uav-agent.html">UavAgent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fixed-wing-agent.html">FixedWing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
@@ -79,6 +81,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
@@ -107,10 +111,10 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="turtleagent">
-<span id="turtle-agent"></span><h1>TurtleAgent<a class="headerlink" href="#turtleagent" title="Link to this heading"></a></h1>
+<span id="turtle-agent"></span><h1>TurtleAgent<a class="headerlink" href="#turtleagent" title="Permalink to this heading"></a></h1>
 <a class="reference internal image-reference" href="../_images/turtle.png"><img alt="../_images/turtle.png" src="../_images/turtle.png" style="width: 103.2px; height: 76.5px;"/></a>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>A simple turtle-bot agent with an arrow pointing forwards. Its radius is
 approximately 25cm and is approximately 10cm high.</p>
 <p>The TurtleAgent moves when forces are applied to it - so it has momentum and
@@ -119,7 +123,7 @@ TurtleAgent is subject to gravity and can climb ramps and slopes.</p>
 <p>See <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.TurtleAgent" title="holoocean.agents.TurtleAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">TurtleAgent</span></code></a> for more details.</p>
 </section>
 <section id="control-schemes">
-<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h2>
+<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt><strong>Sphere continuous</strong> (<code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>A 2-length floating point vector used to specify
 the agent’s forward force (index 0) and rotation force (index 1).</p>
@@ -127,7 +131,7 @@ the agent’s forward force (index 0) and rotation force (index 1).</p>
 </dl>
 </section>
 <section id="sockets">
-<h2>Sockets<a class="headerlink" href="#sockets" title="Link to this heading"></a></h2>
+<h2>Sockets<a class="headerlink" href="#sockets" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CameraSocket</span></code> located at the front of the body</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Viewport</span></code> located behind the agent</p></li>
@@ -138,7 +142,7 @@ the agent’s forward force (index 0) and rotation force (index 1).</p>
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
-<a accesskey="p" class="btn btn-neutral float-left" href="blue-rov-agent.html" rel="prev" title="BlueRov2"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="p" class="btn btn-neutral float-left" href="blue-rov-agent.html" rel="prev" title="BlueROV2"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
 <a accesskey="n" class="btn btn-neutral float-right" href="sphere-agent.html" rel="next" title="SphereAgent">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>

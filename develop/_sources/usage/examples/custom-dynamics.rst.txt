@@ -1,11 +1,13 @@
 Manually Defining Dynamics
 ===========================
 
-Many times, it may be useful for research to easily be able to implement custom dynamics. For this purpose, we have created controllers for the :ref:`hovering-auv-agent` that take in linear and angular acceleration and integrate them for custom dynamics. Besides collisions, no other accelerations are applied to the vehicle in the simulator, allowing full custom dynamics to be implemented *in python*. The possibilities for this are endless and include complex hydrodynamics, water currents, and more.
+It may be useful for research to implement custom dynamics for a vehicle. For this purpose, most vehicles have an option in their control schemes for "Custom Dynamics" that take in linear and angular acceleration and integrate them to generate motion. Besides collisions, no other accelerations are applied to the vehicle in the simulator, allowing full custom dynamics to be implemented *in python*. The possibilities for this include complex hydrodynamics, water currents, and more.
 
 In addition, the :class:`~holoocean.sensors.DynamicsSensor` was made to provide all necessary current state information for computing dynamics including, accelerations, velocities, and current pose information.
 
-Here is an example of this in action, implementing gravity, buoyancy, and damping by hand..
+Custom dynamics can be defined manually, as shown in the example below. For torpedo vehicles, we have implemented Fossen's dynamic models (see :ref:`fossen-dynamics`). Other models developed by Thor Fossen could be implemented using this framework. 
+
+Here is an example of manually defining a vehicle's dynamics where we implementing gravity, buoyancy, and damping by hand.
 
 ::
 
@@ -31,7 +33,7 @@ Here is an example of this in action, implementing gravity, buoyancy, and dampin
                         }
                     },
                 ],
-                "control_scheme": 2, # this is the custom dynamics control scheme
+                "control_scheme": 1, # this is the custom dynamics control scheme
                 "location": [0,0,-10],
                 "rotation": [20,20,90]
             }
@@ -69,14 +71,15 @@ Here is an example of this in action, implementing gravity, buoyancy, and dampin
         # Convert force & torque to accelerations
         lin_accel = force / HoveringAUV.mass
         ang_accel = np.linalg.inv(HoveringAUV.I)@torque
+
         return np.append(lin_accel, ang_accel)
 
-    u = np.zeros(6)
+    accels = np.zeros(6)
     # Make environment
     with holoocean.make(scenario_cfg=scenario) as env:
         for i in range(500):
             # Step simulation
-            state = env.step(u)
+            state = env.step(accels)
             # Get accelerations to pass to HoloOcean
-            u = f(state["DynamicsSensor"])
+            accels = f(state["DynamicsSensor"])
             

@@ -55,6 +55,6 @@ Below are some snippets that show how to use different aspects of HoloOcean.
 There is also an `examples.py`_ in the root of the `holoocean repo`_ with more 
 example code.
 
-.. _`examples.py`: https://bitbucket.org/frostlab/holoocean/src/master/example.py
+.. _`examples.py`: https://github.com/byu-holoocean/HoloOcean/blob/release/client/example.py
 
 .. _`holoocean repo`: https://github.com/byu-holoocean/HoloOcean

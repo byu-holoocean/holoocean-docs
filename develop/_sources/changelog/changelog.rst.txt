@@ -11,6 +11,13 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+
+HoloOcean 2.0.0 PreRelease
+----------------------------
+*11/8/2024*
+
+Updating from Unreal Engine 4.27 to 5.3
+
 HoloOcean 1.0.0
 ----------------
 *4/29/2024*

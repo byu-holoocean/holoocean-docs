@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" data-content_root="../" lang="en">
+<html class="writer-html5" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Developing Sensors — HoloOcean 1.0.0 documentation</title>
-<link href="../_static/pygments.css?v=80d5e7a1" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css?v=5c43dafc" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script src="../_static/jquery.js?v=5d32c60e"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=8d563738"></script>
-<script src="../_static/doctools.js?v=9a2dae69"></script>
-<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-<script src="../_static/copybutton.js?v=f281be69"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -34,7 +34,7 @@
 <a class="icon icon-home" href="../index.html">
             HoloOcean
           </a>
-<div class="version"><a href="../../versionList.html" style="color: inherit">Develop</a></div>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">Develop</a></div>
 <div role="search">
 <form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
 <input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
@@ -81,6 +81,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
@@ -109,14 +111,14 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="developing-sensors">
-<span id="develop-sensor"></span><h1>Developing Sensors<a class="headerlink" href="#developing-sensors" title="Link to this heading"></a></h1>
+<span id="develop-sensor"></span><h1>Developing Sensors<a class="headerlink" href="#developing-sensors" title="Permalink to this heading"></a></h1>
 <p>Similar to agents, the sensors are built on both the C++ and Python sides.</p>
 <section id="c">
-<h2>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h2>
+<h2>C++<a class="headerlink" href="#c" title="Permalink to this heading"></a></h2>
 <p>Each sensor will need a ‘.h’ and ‘.cpp’ file, as is standard practice for C++.</p>
 <p>These will both be placed in the holoocean-engine repository. Most likely your .h file should be placed in <code class="docutils literal notranslate"><span class="pre">holoocean/engine/Source/Holodeck/Sensors/Public</span></code>, while your .cpp file should then go in <code class="docutils literal notranslate"><span class="pre">holoocean/engine/Source/Holodeck/Sensors/Private</span></code></p>
 <section id="h-file">
-<h3>.h file<a class="headerlink" href="#h-file" title="Link to this heading"></a></h3>
+<h3>.h file<a class="headerlink" href="#h-file" title="Permalink to this heading"></a></h3>
 <p>You will want to start by including the following in your ‘.h’ file:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"Holodeck.h"</span>
@@ -162,7 +164,7 @@
 <p>You may also want to include some helper functions and some class variables, however, the above should be the bare essentials you need for your custom sensor.</p>
 </section>
 <section id="cpp-file">
-<h3>.cpp file<a class="headerlink" href="#cpp-file" title="Link to this heading"></a></h3>
+<h3>.cpp file<a class="headerlink" href="#cpp-file" title="Permalink to this heading"></a></h3>
 <p>Now that you are working in the .cpp file, you will want to make sure to include the matching header file along with <code class="docutils literal notranslate"><span class="pre">holodeck.h</span></code> and any other libraries you need.  At this point we can start defining the functions.
 Let’s start with the constructor first. It should look something like the following:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">UExampleSensor</span><span class="o">::</span><span class="n">UExampleSensor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -190,7 +192,7 @@ Let’s start with the constructor first. It should look something like the foll
 </section>
 </section>
 <section id="python">
-<h2>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h2>
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading"></a></h2>
 <p>Now that we have our C++ files, we don’t actually need to create a new python file for the sensor.  Instead, you will want to open up sensors.py (Found in the holoocean repository at holoocean/src/holoocean/sensors.py) and add a class for your new sensor.  Make sure you set the sensor type as follows as that will be important later.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleSensor</span><span class="p">(</span><span class="n">HolodeckSensor</span><span class="p">):</span>
     <span class="n">sensor_type</span> <span class="o">=</span> <span class="s2">"ExampleSensor"</span>
@@ -215,7 +217,7 @@ Let’s start with the constructor first. It should look something like the foll
 <p>(Note that the data_shape can store a multi-dimensional array if necessary, so for a 2x2 array return [2, 2].)</p>
 </section>
 <section id="allowing-your-sensor-to-be-used-in-holoocean">
-<h2>Allowing Your Sensor to Be Used In Holoocean<a class="headerlink" href="#allowing-your-sensor-to-be-used-in-holoocean" title="Link to this heading"></a></h2>
+<h2>Allowing Your Sensor to Be Used In Holoocean<a class="headerlink" href="#allowing-your-sensor-to-be-used-in-holoocean" title="Permalink to this heading"></a></h2>
 <p>At this point you have the main body of the sensor mostly figured out.  But there are a couple things we need to modify as well.
 First of all, towards the bottom of the sensors.py file there should be a _sensor_keys_ dictionary in the SensorDefinition class.  You will need to add a line to the dictionary so that certain functions can pull the sensor type if given the proper string.  In our case we simply add the following line to the end of the dictionary:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">"ExampleSensor"</span><span class="p">:</span><span class="n">ExampleSensor</span><span class="p">,</span>
