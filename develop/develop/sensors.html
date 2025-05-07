@@ -194,23 +194,23 @@ Let’s start with the constructor first. It should look something like the foll
 <section id="python">
 <h2>Python<a class="headerlink" href="#python" title="Permalink to this heading"></a></h2>
 <p>Now that we have our C++ files, we don’t actually need to create a new python file for the sensor.  Instead, you will want to open up sensors.py (Found in the holoocean repository at holoocean/src/holoocean/sensors.py) and add a class for your new sensor.  Make sure you set the sensor type as follows as that will be important later.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleSensor</span><span class="p">(</span><span class="n">HolodeckSensor</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleSensor</span><span class="p">(</span><span class="n">HolodeckSensor</span><span class="p">):</span>
     <span class="n">sensor_type</span> <span class="o">=</span> <span class="s2">"ExampleSensor"</span>
 </pre></div>
 </div>
 <p>At this point you will also want to initialize anything you need to, but everything not specific to you sensor can be initialized by the super class.  If you have items that need to be initialized, at the very least, you will probably want something that looks like the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">,</span> <span class="n">agent_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"OpticalModemSensor"</span><span class="p">,</span>  <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">,</span> <span class="n">agent_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"OpticalModemSensor"</span><span class="p">,</span>  <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ExampleSensor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">,</span> <span class="n">agent_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note that the above is not always necessary, but can be useful in some cases.</p>
 <p>The only other things that are required are the data type (dtype) and data shape (data_shape).  These let the client know how what kind of data it should be expecting to receive from the buffer.  Recall that in the .cpp file we set the tick function to return the float 2.0.  We also only returned the single float, not several.  With that in mind we know that the dtype should be a float and the data_shape should be 1.  It should look like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@property</span>
-<span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span> <span class="c1">#Note that we are using numpy's data types to get the right size for the python data.</span>
 
 <span class="nd">@property</span>
-<span class="k">def</span> <span class="nf">data_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">data_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>

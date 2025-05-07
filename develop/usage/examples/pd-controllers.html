@@ -112,8 +112,8 @@
 <h1>PD Controller<a class="headerlink" href="#pd-controller" title="Permalink to this heading"></a></h1>
 <p>A number of built in agents have simple PD controllers built in to allow for easy navigating when data is being generated, namely the <a class="reference internal" href="../../holoocean/agents.html#holoocean.agents.HoveringAUV" title="holoocean.agents.HoveringAUV"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoveringAUV</span></code></a> and <a class="reference internal" href="../../holoocean/agents.html#holoocean.agents.SurfaceVessel" title="holoocean.agents.SurfaceVessel"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfaceVessel</span></code></a>. When the the PD control scheme is selected, the control passed to holoocean will be the desired
 state to navigate to. Below is an example of this for the Surface Vessel where it navigates to a number of predefined waypoint on the surface.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">holoocean</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"SurfaceNavigator"</span><span class="p">,</span>

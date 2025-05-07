@@ -129,7 +129,7 @@
 <li><p>Anything related to the controls. This includes all the constants, and <code class="docutils literal notranslate"><span class="pre">control_schemes()</span></code>. Make sure you put the number of inputs your agent will have in <code class="docutils literal notranslate"><span class="pre">ContinuousActionSpace</span></code> in the return</p></li>
 </ul>
 <p>That should be about it for the python portion, you should end up with something like this</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomAgent</span><span class="p">(</span><span class="n">HoloOceanAgent</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CustomAgent</span><span class="p">(</span><span class="n">HoloOceanAgent</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""A simple custom bot.</span>
 
 <span class="sd">    Inherits from :class:`HoloOceanAgent`."""</span>
@@ -140,18 +140,18 @@
     <span class="n">agent_type</span> <span class="o">=</span> <span class="s2">"CustomAgent"</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">control_schemes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">control_schemes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">low</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__MIN</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span>
         <span class="n">high</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__MAX</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span>
         <span class="k">return</span> <span class="p">[(</span><span class="s2">"[first, second, third, fourth]"</span><span class="p">,</span> <span class="n">ContinuousActionSpace</span><span class="p">([</span><span class="mi">4</span><span class="p">],</span> <span class="n">low</span><span class="o">=</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">high</span><span class="p">))]</span>
 
-    <span class="k">def</span> <span class="nf">get_joint_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joint_name</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_joint_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joint_name</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">"CustomAgent "</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
-    <span class="k">def</span> <span class="nf">__act__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__act__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
         <span class="n">np</span><span class="o">.</span><span class="n">copyto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_action_buffer</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
         <span class="n">np</span><span class="o">.</span><span class="n">copyto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_action_buffer</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
 </pre></div>

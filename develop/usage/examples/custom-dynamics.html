@@ -114,10 +114,10 @@
 <p>In addition, the <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.DynamicsSensor" title="holoocean.sensors.DynamicsSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a> was made to provide all necessary current state information for computing dynamics including, accelerations, velocities, and current pose information.</p>
 <p>Custom dynamics can be defined manually, as shown in the example below. For torpedo vehicles, we have implemented Fossen’s dynamic models (see <a class="reference internal" href="fossen-based-dynamics.html#fossen-dynamics"><span class="std std-ref">Fossen-Based Dynamics</span></a>). Other models developed by Thor Fossen could be implemented using this framework.</p>
 <p>Here is an example of manually defining a vehicle’s dynamics where we implementing gravity, buoyancy, and damping by hand.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">holoocean</span>
-<span class="kn">from</span> <span class="nn">holoocean.agents</span> <span class="kn">import</span> <span class="n">HoveringAUV</span>
-<span class="kn">from</span> <span class="nn">scipy.spatial.transform</span> <span class="kn">import</span> <span class="n">Rotation</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">holoocean.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">HoveringAUV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
 
 <span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"hovering_dynamics"</span><span class="p">,</span>
@@ -148,7 +148,7 @@
 <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># angular damping</span>
 <span class="c1"># HoveringAUV.mass += 1 # alternatively make it sink</span>
 
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># Extract all info from state</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
