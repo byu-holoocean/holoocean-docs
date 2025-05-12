@@ -4,7 +4,7 @@
 BlueROV2
 ========
 
-.. image:: images/blue-rov.PNG
+.. image:: images/blue-rov.png
    :scale: 100%
 
 
@@ -53,14 +53,14 @@ Socket Definitions
 
 Socket Frames
 -------------
-.. image:: images/blue-rov-sockets.PNG
+.. image:: images/blue-rov-sockets.png
    :scale: 120%
 
-.. image:: images/blue-rov-sockets-top.PNG
+.. image:: images/blue-rov-sockets-top.png
    :scale: 40%
 
-.. image:: images/blue-rov-sockets-left.PNG
+.. image:: images/blue-rov-sockets-left.png
    :scale: 65%
 
-.. image:: images/blue-rov-sockets-front.PNG
+.. image:: images/blue-rov-sockets-front.png
    :scale: 73%
