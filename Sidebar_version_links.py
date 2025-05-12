@@ -70,11 +70,14 @@ def main():
                 update_version_header(file)
 
     path0 = os.path.join(path, "changelog")
+
     path1 = os.path.join(path, "agents")
     path2 = os.path.join(path, "develop")
+    path4 = os.path.join(path, "sensors")
+
     path3 = os.path.join(path, "holoocean")
     
-    paths = [path1, path3]
+    paths = [path1, path2, path4]
     for path in paths:
         os.chdir(path)
         for file in os.listdir():
@@ -82,9 +85,17 @@ def main():
                 if isDevelop:
                     update_version_header(file)
                 update_sidebar(file, 1)
+            elif os.path.isdir(file):
+                os.chdir(file)
+                for file in os.listdir():
+                    if file.endswith(".html"):
+                        if isDevelop:
+                            update_version_header(file)
+                        update_sidebar(file, 2)
+                os.chdir("..")
     os.chdir(path)
 
-    paths = [path0, path2]
+    paths = [path0, path3]
     for path in paths:
         os.chdir(path)
         for file in os.listdir():
@@ -97,13 +108,26 @@ def main():
     path = os.getcwd()
     
     pathu = os.path.join(path, "usage")
+    pathe = os.path.join(path, "examples")
     os.chdir(pathu)
     for file in os.listdir():
         if file.endswith(".html"):
             if isDevelop:
                 update_version_header(file)
             update_sidebar(file, 1)
-    os.chdir("examples")
+    os.chdir(pathe)
+    for file in os.listdir():
+        if file.endswith(".html"):
+            if isDevelop:
+                update_version_header(file)
+            update_sidebar(file, 1)
+    pathe = os.path.join(pathe, "examples")
+    os.chdir(pathe)
+    for file in os.listdir():
+        if file.endswith(".html"):
+            if isDevelop:
+                update_version_header(file)
+            update_sidebar(file, 2)
     for file in os.listdir():
         if file.endswith(".html"):
             if isDevelop:
