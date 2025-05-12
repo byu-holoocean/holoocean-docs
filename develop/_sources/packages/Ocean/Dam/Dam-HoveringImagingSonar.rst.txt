@@ -1,5 +1,6 @@
+========================
 Dam-HoveringImagingSonar
-=============================
+========================
 
 This scenario starts with a HoveringAUV near the actual dam. This is identical to the base version, only with a sonar mounted.
 Octree leaf size is 2cm. Unless otherwise specified, all sensors are named the same as their class name, ie IMUSensor is named "IMUSensor".

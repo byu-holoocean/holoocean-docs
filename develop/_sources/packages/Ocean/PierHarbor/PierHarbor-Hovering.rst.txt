@@ -1,5 +1,6 @@
+===================
 PierHarbor-Hovering
-=============================
+===================
 
 This scenario starts with a HoveringAUV near one of the larger docks. Unless otherwise specified,
 all sensors are named the same as their class name, ie IMUSensor is named "IMUSensor".

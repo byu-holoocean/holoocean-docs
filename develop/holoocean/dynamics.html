@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Dynamics — HoloOcean 1.0.0 documentation</title>
+<title>Fossen Dynamics — HoloOcean 1.0.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -23,7 +23,7 @@
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
-<link href="ros2.html" rel="next" title="ROS2 Wrapper"/>
+<link href="shmem.html" rel="next" title="Shared Memory"/>
 <link href="lcm.html" rel="prev" title="LCM"/>
 </head>
 <body class="wy-body-for-nav">
@@ -46,30 +46,31 @@
 <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agents.html">Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Action Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Dynamics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-holoocean.vehicle_dynamics.torpedo">Torpedo Dynamics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fossen Dynamics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-holoocean.fossen_dynamics.torpedo">Torpedo Dynamics</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
@@ -87,7 +88,7 @@
 <div aria-label="Page navigation" role="navigation">
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
-<li class="breadcrumb-item active">Dynamics</li>
+<li class="breadcrumb-item active">Fossen Dynamics</li>
 <li class="wy-breadcrumbs-aside">
 <a href="../_sources/holoocean/dynamics.rst.txt" rel="nofollow"> View page source</a>
 </li>
@@ -96,46 +97,45 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
-<section id="module-holoocean.dynamics">
-<span id="dynamics"></span><h1>Dynamics<a class="headerlink" href="#module-holoocean.dynamics" title="Permalink to this heading"></a></h1>
-<p>Used for attaching Fossen Dynamics to Holocean
-Conversion between the two coordinate systems</p>
+<section id="module-holoocean.fossen_dynamics.dynamics">
+<span id="fossen-dynamics"></span><h1>Fossen Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.dynamics" title="Permalink to this heading"></a></h1>
+<p>Used for attaching Fossen dynamics to a HoloOcean agent.</p>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.dynamics.FossenDynamics" title="holoocean.dynamics.FossenDynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FossenDynamics</span></code></a>(vehicle, sample_period[, ...])</p></td>
-<td><p>Class for handling the connection between a holocean agent and the fossen dynamic model to control the motion of the vehicle</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics" title="holoocean.fossen_dynamics.dynamics.FossenDynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FossenDynamics</span></code></a>(vehicle[, initial_u_actual])</p></td>
+<td><p>Class for handling the connection between a HoloOcean agent and the Fossen model to control the motion of the vehicle.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt class="sig sig-object py" id="holoocean.dynamics.FossenDynamics">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.dynamics.</span></span><span class="sig-name descname"><span class="pre">FossenDynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_u_actual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.dynamics.FossenDynamics" title="Permalink to this definition"></a></dt>
-<dd><p>Class for handling the connection between a holocean agent and
-the fossen dynamic model to control the motion of the vehicle</p>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.dynamics.FossenDynamics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.fossen_dynamics.dynamics.</span></span><span class="sig-name descname"><span class="pre">FossenDynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_u_actual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics" title="Permalink to this definition"></a></dt>
+<dd><p>Class for handling the connection between a HoloOcean agent and the Fossen model to control the
+motion of the vehicle.</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.dynamics.FossenDynamics.R2euler" title="holoocean.dynamics.FossenDynamics.R2euler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R2euler</span></code></a>(R)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.R2euler" title="holoocean.fossen_dynamics.dynamics.FossenDynamics.R2euler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R2euler</span></code></a>(R)</p></td>
 <td><p>Computes the Euler angles from the rotation matrix R.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.dynamics.FossenDynamics.convert_NED_to_NWU" title="holoocean.dynamics.FossenDynamics.convert_NED_to_NWU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_NED_to_NWU</span></code></a>(x, accel)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_accel_NED_to_NWU" title="holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_accel_NED_to_NWU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_accel_NED_to_NWU</span></code></a>(x, accel)</p></td>
 <td><p>Calculates rotation to world frame and changes the coordinate system from NED to NWU Rotates linear and angular accelaration from body to world</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.dynamics.FossenDynamics.convert_NWU_to_NED" title="holoocean.dynamics.FossenDynamics.convert_NWU_to_NED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_NWU_to_NED</span></code></a>(x)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_state_NWU_to_NED" title="holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_state_NWU_to_NED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_state_NWU_to_NED</span></code></a>(x)</p></td>
 <td><p>Converts position and velocity from NWU to NED and world frame velocities to body frame</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.dynamics.FossenDynamics.set_u_control_rad" title="holoocean.dynamics.FossenDynamics.set_u_control_rad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_u_control_rad</span></code></a>(u_control)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.set_u_control_rad" title="holoocean.fossen_dynamics.dynamics.FossenDynamics.set_u_control_rad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_u_control_rad</span></code></a>(u_control)</p></td>
 <td><p>Set the control surface commands for the vehicle control surfaces with angles in radians</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.dynamics.FossenDynamics.update" title="holoocean.dynamics.FossenDynamics.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(state)</p></td>
-<td><p>Update state of the vehicle to return the acceleartion of the vehicle in holoocean world frame</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.update" title="holoocean.fossen_dynamics.dynamics.FossenDynamics.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(state)</p></td>
+<td><p>Update state of the vehicle to return the acceleration of the vehicle in holoocean world frame</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.dynamics.FossenDynamics.R2euler">
-<span class="sig-name descname"><span class="pre">R2euler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.dynamics.FossenDynamics.R2euler" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.dynamics.FossenDynamics.R2euler">
+<span class="sig-name descname"><span class="pre">R2euler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.R2euler" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the Euler angles from the rotation matrix R.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -150,8 +150,8 @@ the fossen dynamic model to control the motion of the vehicle</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.dynamics.FossenDynamics.convert_NED_to_NWU">
-<span class="sig-name descname"><span class="pre">convert_NED_to_NWU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.dynamics.FossenDynamics.convert_NED_to_NWU" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_accel_NED_to_NWU">
+<span class="sig-name descname"><span class="pre">convert_accel_NED_to_NWU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_accel_NED_to_NWU" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates rotation to world frame and changes the coordinate system from NED to NWU
 Rotates linear and angular accelaration from body to world</p>
 <dl class="field-list simple">
@@ -170,8 +170,8 @@ Rotates linear and angular accelaration from body to world</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.dynamics.FossenDynamics.convert_NWU_to_NED">
-<span class="sig-name descname"><span class="pre">convert_NWU_to_NED</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.dynamics.FossenDynamics.convert_NWU_to_NED" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_state_NWU_to_NED">
+<span class="sig-name descname"><span class="pre">convert_state_NWU_to_NED</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.convert_state_NWU_to_NED" title="Permalink to this definition"></a></dt>
 <dd><p>Converts position and velocity from NWU to NED and world frame velocities to body frame</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -186,38 +186,38 @@ Rotates linear and angular accelaration from body to world</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.dynamics.FossenDynamics.set_u_control_rad">
-<span class="sig-name descname"><span class="pre">set_u_control_rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.dynamics.FossenDynamics.set_u_control_rad" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.dynamics.FossenDynamics.set_u_control_rad">
+<span class="sig-name descname"><span class="pre">set_u_control_rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.set_u_control_rad" title="Permalink to this definition"></a></dt>
 <dd><p>Set the control surface commands for the vehicle control surfaces with angles in radians</p>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.dynamics.FossenDynamics.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.dynamics.FossenDynamics.update" title="Permalink to this definition"></a></dt>
-<dd><p>Update state of the vehicle to return the acceleartion of the vehicle in holoocean world frame</p>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.dynamics.FossenDynamics.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.dynamics.FossenDynamics.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update state of the vehicle to return the acceleration of the vehicle in holoocean world frame</p>
 </dd></dl>
 </dd></dl>
-<section id="module-holoocean.vehicle_dynamics.torpedo">
-<span id="torpedo-dynamics"></span><h2>Torpedo Dynamics<a class="headerlink" href="#module-holoocean.vehicle_dynamics.torpedo" title="Permalink to this heading"></a></h2>
+<section id="module-holoocean.fossen_dynamics.torpedo">
+<span id="torpedo-dynamics"></span><h2>Torpedo Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.torpedo" title="Permalink to this heading"></a></h2>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV" title="holoocean.vehicle_dynamics.torpedo.TAUV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TAUV</span></code></a>([scenario, vehicle_name, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV" title="holoocean.fossen_dynamics.torpedo.TAUV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TAUV</span></code></a>([scenario, vehicle_name, ...])</p></td>
 <td><p>Parent class of the torpedo-shaped vehicle.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep" title="holoocean.vehicle_dynamics.torpedo.fourFinDep"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fourFinDep</span></code></a>([scenario, vehicle_name, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinDep" title="holoocean.fossen_dynamics.torpedo.fourFinDep"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fourFinDep</span></code></a>([scenario, vehicle_name, ...])</p></td>
 <td><p>Torpedo Vehicle with four fins where two fins move together on same plane (Rudder, Stern)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd" title="holoocean.vehicle_dynamics.torpedo.fourFinInd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fourFinInd</span></code></a>([scenario, vehicle_name, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinInd" title="holoocean.fossen_dynamics.torpedo.fourFinInd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fourFinInd</span></code></a>([scenario, vehicle_name, ...])</p></td>
 <td><p>Torpedo vehicle with four independetly controlled fins (Rudder Top, Rudder Bottom, Stern left, Stern Right)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd" title="holoocean.vehicle_dynamics.torpedo.threeFinInd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">threeFinInd</span></code></a>([scenario, vehicle_name, ...])</p></td>
-<td><p>Torpedo vehicle with four independetly controlled fins (Rudder Top, Rudder Bottom, Stern left, Stern Right)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.threeFinInd" title="holoocean.fossen_dynamics.torpedo.threeFinInd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">threeFinInd</span></code></a>([scenario, vehicle_name, ...])</p></td>
+<td><p>Torpedo vehicle with four independently controlled fins (Rudder Top, Rudder Bottom, Stern left, Stern Right)</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.vehicle_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">TAUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_surge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.fossen_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">TAUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_surge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV" title="Permalink to this definition"></a></dt>
 <dd><p>Parent class of the torpedo-shaped vehicle. General parameters and
 calculations for all torpedo vehicles. Actuator parameters and calculations
 are implemented in subclasses.</p>
@@ -239,97 +239,133 @@ are implemented in subclasses.</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.actuator_dynamics" title="holoocean.vehicle_dynamics.torpedo.TAUV.actuator_dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actuator_dynamics</span></code></a>(u_actual, nu_r)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.actuator_dynamics" title="holoocean.fossen_dynamics.torpedo.TAUV.actuator_dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actuator_dynamics</span></code></a>(u_control)</p></td>
 <td><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.calculate_additional_parameters" title="holoocean.vehicle_dynamics.torpedo.TAUV.calculate_additional_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_additional_parameters</span></code></a>()</p></td>
-<td><p>After updating the vehicle parameters calculations will be run to update other variables related to these parameters</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.calculate_additional_parameters" title="holoocean.fossen_dynamics.torpedo.TAUV.calculate_additional_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_additional_parameters</span></code></a>()</p></td>
+<td><p>After updating the vehicle parameters, calculations will be run to update other variables related to these parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.configure_from_scenario" title="holoocean.vehicle_dynamics.torpedo.TAUV.configure_from_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure_from_scenario</span></code></a>(scenario, vehicle_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.configure_from_scenario" title="holoocean.fossen_dynamics.torpedo.TAUV.configure_from_scenario"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure_from_scenario</span></code></a>(scenario, vehicle_name)</p></td>
 <td><p>Dynamics Parameters:</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.depthHeadingAutopilot" title="holoocean.vehicle_dynamics.torpedo.TAUV.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu, sampleTime[, imu])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.depthHeadingAutopilot" title="holoocean.fossen_dynamics.torpedo.TAUV.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu[, imu])</p></td>
 <td><p>Simultaneously control the heading and depth of the AUV using control laws of PID type.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.dynamics" title="holoocean.vehicle_dynamics.torpedo.TAUV.dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamics</span></code></a>(eta, nu, u_actual, u_control, ...)</p></td>
-<td><p>Integrates the AUV equations of motion using Euler's method.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.dynamics" title="holoocean.fossen_dynamics.torpedo.TAUV.dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamics</span></code></a>(eta, nu, u_control)</p></td>
+<td><p>Calculates vehicle and actuator accelerations based on the current state and control inputs.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_actuator_parameters" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_actuator_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_actuator_parameters</span></code></a>(actuator_parameters)</p></td>
-<td><p>Set fin area limits, time constants, and lift coefficients for control surfaces</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.fin_forces" title="holoocean.fossen_dynamics.torpedo.TAUV.fin_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fin_forces</span></code></a>(nu_r, U)</p></td>
+<td><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_autopilot_parameters" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_autopilot_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_autopilot_parameters</span></code></a>(autopilot)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_actuator_parameters" title="holoocean.fossen_dynamics.torpedo.TAUV.set_actuator_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_actuator_parameters</span></code></a>(actuator_parameters)</p></td>
+<td><p>Set fin area limits, time constants, and lift coefficients for control surfaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_autopilot_parameters" title="holoocean.fossen_dynamics.torpedo.TAUV.set_autopilot_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_autopilot_parameters</span></code></a>(autopilot)</p></td>
 <td><p>Set depth and heading parameters from a configuration dictionary.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_control_mode" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_control_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_mode</span></code></a>(controlSystem[, init_depth])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_control_mode" title="holoocean.fossen_dynamics.torpedo.TAUV.set_control_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_mode</span></code></a>(controlSystem[, init_depth])</p></td>
 <td><p>Sets the control mode for the vehicle.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_depth_goal" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_depth_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_depth_goal</span></code></a>(depth)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_depth_goal" title="holoocean.fossen_dynamics.torpedo.TAUV.set_depth_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_depth_goal</span></code></a>(depth)</p></td>
 <td><p>Set the depth goals for the autopilot.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_goal" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_goal</span></code></a>([depth, heading, rpm, surge])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_goal" title="holoocean.fossen_dynamics.torpedo.TAUV.set_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_goal</span></code></a>([depth, heading, rpm, surge])</p></td>
 <td><p>Set the goals for the autopilot.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_heading_goal" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_heading_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_heading_goal</span></code></a>(heading)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_heading_goal" title="holoocean.fossen_dynamics.torpedo.TAUV.set_heading_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_heading_goal</span></code></a>(heading)</p></td>
 <td><p>Set the heading goals for the autopilot.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_rpm_goal" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_rpm_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rpm_goal</span></code></a>(rpm)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_rpm_goal" title="holoocean.fossen_dynamics.torpedo.TAUV.set_rpm_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rpm_goal</span></code></a>(rpm)</p></td>
 <td><p>Set the rpm goals for the autopilot.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_surge_goal" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_surge_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_surge_goal</span></code></a>(surge)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_surge_goal" title="holoocean.fossen_dynamics.torpedo.TAUV.set_surge_goal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_surge_goal</span></code></a>(surge)</p></td>
 <td><p>Set the surge goals for the autopilot.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_vehicle_parameters" title="holoocean.vehicle_dynamics.torpedo.TAUV.set_vehicle_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_vehicle_parameters</span></code></a>(dynamics)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_vehicle_parameters" title="holoocean.fossen_dynamics.torpedo.TAUV.set_vehicle_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_vehicle_parameters</span></code></a>(dynamics)</p></td>
 <td><p>Set vehicle dynamics parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.TAUV.stepInput" title="holoocean.vehicle_dynamics.torpedo.TAUV.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
-<td><p>Generates step inputs.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.TAUV.stepInput" title="holoocean.fossen_dynamics.torpedo.TAUV.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
+<td><p>Generates a pre-defined step input to the actuators for testing purposes.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.actuator_dynamics">
-<span class="sig-name descname"><span class="pre">actuator_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.actuator_dynamics" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.actuator_dynamics">
+<span class="sig-name descname"><span class="pre">actuator_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.actuator_dynamics" title="Permalink to this definition"></a></dt>
 <dd><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p>
 <p>Note: For Torpedo Vehicles, positive fin deflection will pitch the vehicle up and yaw to the starboard side.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
+<li><p><strong>self.u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
 <li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>two arrays: forces and moments</p>
+<dd class="field-even"><p>array of actuator velocities/accelerations</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.calculate_additional_parameters">
-<span class="sig-name descname"><span class="pre">calculate_additional_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.calculate_additional_parameters" title="Permalink to this definition"></a></dt>
-<dd><p>After updating the vehicle parameters calculations will be run
-to update other variables related to these parameters</p>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.calculate_additional_parameters">
+<span class="sig-name descname"><span class="pre">calculate_additional_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.calculate_additional_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>After updating the vehicle parameters, calculations will be run
+to update other variables related to these parameters.</p>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.configure_from_scenario">
-<span class="sig-name descname"><span class="pre">configure_from_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.configure_from_scenario" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.configure_from_scenario">
+<span class="sig-name descname"><span class="pre">configure_from_scenario</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.configure_from_scenario" title="Permalink to this definition"></a></dt>
 <dd><p>Dynamics Parameters:</p>
+<ul class="simple">
+<li><p>Environment Parameters</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rho</strong> (<em>float</em>) – Density of water in kg/m^3</p></li>
+<li><p><strong>sampleTime</strong> (<em>float</em>) – Sample time for the dynamics manager (s)</p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Vehicle Physical Parameters</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mass</strong> (<em>float</em>) – Mass of vehicle in kilograms</p></li>
-<li><p><strong>length</strong> (<em>float</em>) – length of vehicle in meters</p></li>
-<li><p><strong>rho</strong> (<em>float</em>) – density of water in kg/m^3</p></li>
-<li><p><strong>diam</strong> (<em>float</em>) – diameter of vehicle in m</p></li>
+<li><p><strong>length</strong> (<em>float</em>) – Length of vehicle in meters</p></li>
+<li><p><strong>diam</strong> (<em>float</em>) – Diameter of vehicle in m</p></li>
 <li><p><strong>r_bg</strong> (<em>float</em>) – Center of gravity of the vehicle (x, y, z) in body frame x forward, y right, z down</p></li>
 <li><p><strong>r_bb</strong> (<em>float</em>) – Center of boyancy of the vehicle (x, y, z) in body frame x forward, y right, z down</p></li>
-<li><p><strong>r44</strong> (<em>float</em>) – </p></li>
-<li><p><strong>Cd</strong> (<em>float</em>) – Coefficient of drag</p></li>
-<li><p><strong>T_surge</strong> (<em>float</em>) – </p></li>
-<li><p><strong>T_sway</strong> (<em>float</em>) – </p></li>
-<li><p><strong>T_yaw</strong> (<em>float</em>) – </p></li>
-<li><p><strong>zeta_roll</strong> (<em>float</em>) – </p></li>
-<li><p><strong>zeta_ptich</strong> (<em>float</em>) – </p></li>
+<li><p><strong>area_fraction</strong> (<em>float</em>) – relates vehicle effective area to length and width. pi/4 for a spheroid</p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Low-Speed Linear Damping Matrix Parameters:</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T_surge</strong> (<em>float</em>) – Time constant in surge (s)</p></li>
+<li><p><strong>T_sway</strong> (<em>float</em>) – Time constant in sway (s)</p></li>
+<li><p><strong>T_yaw</strong> (<em>float</em>) – Time constant in yaw (s)</p></li>
+<li><p><strong>zeta_roll</strong> (<em>float</em>) – Relative damping ratio in roll</p></li>
+<li><p><strong>zeta_ptich</strong> (<em>float</em>) – Relative damping ratio in pitch</p></li>
 <li><p><strong>K_nomoto</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Other Damping Parameters</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r44</strong> (<em>float</em>) – Added moment of inertia in roll: A44 = r44 * Ix</p></li>
+<li><p><strong>Cd</strong> (<em>float</em>) – Coefficient of drag</p></li>
+<li><p><strong>e</strong> (<em>float</em>) – Oswald efficiency factor for vehicle drag</p></li>
 </ul>
 </dd>
 </dl>
@@ -340,7 +376,7 @@ to update other variables related to these parameters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>wn_d_z</strong> (<em>float</em>) – damped natural frequency for low pass filter for depth commands</p></li>
+<li><p><strong>wn_d_z</strong> (<em>float</em>) – Damped natural frequency for low pass filter for depth commands</p></li>
 <li><p><strong>Kp_z</strong> (<em>float</em>) – Portional gain for depth controller</p></li>
 <li><p><strong>T_z</strong> (<em>float</em>) – </p></li>
 <li><p><strong>Kp_theta</strong> (<em>float</em>) – Porportional gain for pitch angle for depth controller</p></li>
@@ -359,11 +395,11 @@ to update other variables related to these parameters</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>wn_d</strong> (<em>float</em>) – Damped natural frequency of input commands for low pass filter</p></li>
 <li><p><strong>zeta_d</strong> – Damping coefficient</p></li>
-<li><p><strong>r_max</strong> – </p></li>
+<li><p><strong>r_max</strong> – (?) Maximum yaw rate</p></li>
 <li><p><strong>lam</strong> – </p></li>
 <li><p><strong>phi_b</strong> – </p></li>
-<li><p><strong>K_d</strong> – </p></li>
-<li><p><strong>K_sigma</strong> – </p></li>
+<li><p><strong>K_d</strong> – (?) Derivative gain</p></li>
+<li><p><strong>K_sigma</strong> – (?) SMC switching gain</p></li>
 </ul>
 </dd>
 </dl>
@@ -379,25 +415,47 @@ to update other variables related to these parameters</p>
 </ul>
 </dd>
 </dl>
-<p>Acutator Parameters:</p>
+<p>Actuator parameters:</p>
+<ul class="simple">
+<li><p>Fins</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fin_area</strong> – Surface area of one side of a fin</p></li>
-<li><p><strong>fin_center</strong> – Positive Z distance from center of mass to center of pressure</p></li>
-<li><p><strong>deltaMax_fin_deg</strong> – Max deflection of the fin (degrees)</p></li>
-<li><p><strong>nMax</strong> – Max rpm of the thruster</p></li>
-<li><p><strong>T_delta</strong> – Time constant for fin actuation. (s)</p></li>
-<li><p><strong>T_n</strong> – Time constant for thruster actuation. (s)</p></li>
+<li><p><strong>x_fin</strong> – Positive x distance from center of mass to actuation distance</p></li>
+<li><p><strong>z_fin</strong> – Positive Z distance from center of mass to fin center of pressure</p></li>
 <li><p><strong>CL_delta_r</strong> – Coefficient of lift for rudder</p></li>
-<li><p><strong>CL_delta_r</strong> – Coefficient of lift for stern</p></li>
+<li><p><strong>CL_delta_s</strong> – Coefficient of lift for stern</p></li>
+<li><p><strong>deltaMax_fin_deg</strong> – Max deflection of the fin (degrees)</p></li>
+<li><p><strong>fin_speed_max</strong> – Max angular speed of the fin (rad/s)</p></li>
+<li><p><strong>T_delta</strong> – Time constant for fin actuation. (s)</p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Propellor</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>D_prop</strong> – Propeller diameter</p></li>
+<li><p><strong>t_prop</strong> – Propeller pitch</p></li>
+<li><p><strong>KT_0</strong> – Thrust coefficient at zero rpm</p></li>
+<li><p><strong>KQ_0</strong> – Torque coefficient at zero rpm</p></li>
+<li><p><strong>KT_max</strong> – Max thrust coefficient</p></li>
+<li><p><strong>KQ_max</strong> – Max torque coefficient</p></li>
+<li><p><strong>w</strong> – Wake fraction number</p></li>
+<li><p><strong>Ja_max</strong> – Max advance ratio</p></li>
+<li><p><strong>nMax</strong> – Max rpm of the thruster</p></li>
+<li><p><strong>T_n</strong> – Time constant for thruster actuation. (s)</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.depthHeadingAutopilot">
-<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.depthHeadingAutopilot">
+<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
 <dd><p>Simultaneously control the heading and depth of the AUV using control laws of PID type.
 Propeller rpm is given as a step command.</p>
 <dl class="field-list simple">
@@ -405,7 +463,6 @@ Propeller rpm is given as a step command.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>eta</strong> (<em>array-like</em>) – State/pose of the vehicle in the world frame. (RPY - Euler angle order zyx in radians)</p></li>
 <li><p><strong>nu</strong> (<em>array-like</em>) – Velocity of the vehicle in the body frame.</p></li>
-<li><p><strong>sampleTime</strong> (<em>float</em>) – Time since the last step.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -414,33 +471,54 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.dynamics">
-<span class="sig-name descname"><span class="pre">dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.dynamics" title="Permalink to this definition"></a></dt>
-<dd><p>Integrates the AUV equations of motion using Euler’s method.</p>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.dynamics">
+<span class="sig-name descname"><span class="pre">dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_control</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.dynamics" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates vehicle and actuator accelerations based on the current state and control inputs.
+Acelerations are integrated in the step function to update the state.</p>
+<p>Inputs:
+:param array-like eta:       Current state/pose of the vehicle in the world frame.
+:param array-like nu:        Current velocity of the vehicle in the body frame.
+:param array-like u_control: Commanded control surface position.</p>
+<p>Outputs:
+:param array-like nu_dot:       Acceleration of the vehicle in the body frame.
+:param array-like u_actual_dot: Acceleration of the control surfaces.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>eta</strong> (<em>array-like</em>) – State/pose of the vehicle in the world frame.</p></li>
-<li><p><strong>nu</strong> (<em>array-like</em>) – Velocity of the vehicle in the body frame.</p></li>
-<li><p><strong>nu_dot</strong> (<em>array-like</em>) – Acceleration of the vehicle in the body frame.</p></li>
-<li><p><strong>u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
-<li><p><strong>u_control</strong> (<em>array-like</em>) – Commanded control surface position.</p></li>
-<li><p><strong>sampleTime</strong> (<em>float</em>) – Time since the last step.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Three arrays: nu, u_actual, and nu_dot.</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Two arrays: nu_dot, u_actual_dot.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_actuator_parameters">
-<span class="sig-name descname"><span class="pre">set_actuator_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actuator_parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_actuator_parameters" title="Permalink to this definition"></a></dt>
-<dd><p>Set fin area limits, time constants, and lift coefficients for control surfaces</p>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.fin_forces">
+<span class="sig-name descname"><span class="pre">fin_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.fin_forces" title="Permalink to this definition"></a></dt>
+<dd><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).
+Placeholder funtion, to be overridden by subclasses.</p>
+<p>NOTE:
+- For rudder, positive command turns the rudder CCW. Yaws vehicle right, negative roll.
+- For left stern, positive command turns the stern CCW. Pitches vehicle up in coordination, negative roll.
+- For right stern, positive command turns the stern CW.  Pitches vehicle up in coordination, positive roll.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self.u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
+<li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
+<li><p><strong>U</strong> (<em>float</em>) – forward speed of the vehicle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(6,) numpy array of forces and moments</p>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_autopilot_parameters">
-<span class="sig-name descname"><span class="pre">set_autopilot_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">autopilot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_autopilot_parameters" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_actuator_parameters">
+<span class="sig-name descname"><span class="pre">set_actuator_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actuator_parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_actuator_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Set fin area limits, time constants, and lift coefficients for control surfaces.
+Placeholder funtion, to be overridden by subclasses.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_autopilot_parameters">
+<span class="sig-name descname"><span class="pre">set_autopilot_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">autopilot</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_autopilot_parameters" title="Permalink to this definition"></a></dt>
 <dd><p>Set depth and heading parameters from a configuration dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -449,8 +527,8 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_control_mode">
-<span class="sig-name descname"><span class="pre">set_control_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_control_mode" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_control_mode">
+<span class="sig-name descname"><span class="pre">set_control_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_control_mode" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the control mode for the vehicle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -473,8 +551,8 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_depth_goal">
-<span class="sig-name descname"><span class="pre">set_depth_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_depth_goal" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_depth_goal">
+<span class="sig-name descname"><span class="pre">set_depth_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_depth_goal" title="Permalink to this definition"></a></dt>
 <dd><p>Set the depth goals for the autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -486,8 +564,8 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_goal">
-<span class="sig-name descname"><span class="pre">set_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_goal" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_goal">
+<span class="sig-name descname"><span class="pre">set_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heading</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_goal" title="Permalink to this definition"></a></dt>
 <dd><p>Set the goals for the autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -504,8 +582,8 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_heading_goal">
-<span class="sig-name descname"><span class="pre">set_heading_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heading</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_heading_goal" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_heading_goal">
+<span class="sig-name descname"><span class="pre">set_heading_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heading</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_heading_goal" title="Permalink to this definition"></a></dt>
 <dd><p>Set the heading goals for the autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -517,8 +595,8 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_rpm_goal">
-<span class="sig-name descname"><span class="pre">set_rpm_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_rpm_goal" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_rpm_goal">
+<span class="sig-name descname"><span class="pre">set_rpm_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_rpm_goal" title="Permalink to this definition"></a></dt>
 <dd><p>Set the rpm goals for the autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -530,8 +608,8 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_surge_goal">
-<span class="sig-name descname"><span class="pre">set_surge_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_surge_goal" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_surge_goal">
+<span class="sig-name descname"><span class="pre">set_surge_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_surge_goal" title="Permalink to this definition"></a></dt>
 <dd><p>Set the surge goals for the autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -543,14 +621,15 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.set_vehicle_parameters">
-<span class="sig-name descname"><span class="pre">set_vehicle_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.set_vehicle_parameters" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.set_vehicle_parameters">
+<span class="sig-name descname"><span class="pre">set_vehicle_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.set_vehicle_parameters" title="Permalink to this definition"></a></dt>
 <dd><p>Set vehicle dynamics parameters. If not provided, will default to previous value</p>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.TAUV.stepInput">
-<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.TAUV.stepInput" title="Permalink to this definition"></a></dt>
-<dd><p>Generates step inputs.</p>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.TAUV.stepInput">
+<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.TAUV.stepInput" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a pre-defined step input to the actuators for testing purposes.
+Placeholder funtion, to be overridden by subclasses.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>t</strong> (<em>float</em>) – Time parameter.</p>
@@ -562,16 +641,13 @@ Propeller rpm is given as a step command.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinDep">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.vehicle_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">fourFinDep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinDep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.fossen_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">fourFinDep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinDep" title="Permalink to this definition"></a></dt>
 <dd><p>Torpedo Vehicle with four fins where two fins move together on same plane (Rudder, Stern)</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep.actuator_dynamics" title="holoocean.vehicle_dynamics.torpedo.fourFinDep.actuator_dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actuator_dynamics</span></code></a>(u_actual, nu_r)</p></td>
-<td><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep.depthHeadingAutopilot" title="holoocean.vehicle_dynamics.torpedo.fourFinDep.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu, sampleTime[, imu])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinDep.depthHeadingAutopilot" title="holoocean.fossen_dynamics.torpedo.fourFinDep.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu[, imu])</p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The control input u_control as a list: [delta_r, delta_s, n], where:</p>
@@ -579,36 +655,17 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep.stepInput" title="holoocean.vehicle_dynamics.torpedo.fourFinDep.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The control input u_control as a list: [delta_r, delta_s, n], where:</p>
-</dd>
-</dl>
-</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinDep.fin_forces" title="holoocean.fossen_dynamics.torpedo.fourFinDep.fin_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fin_forces</span></code></a>(nu_r)</p></td>
+<td><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinDep.stepInput" title="holoocean.fossen_dynamics.torpedo.fourFinDep.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
+<td><p>A pre-defined step input to the vehicle controls for testing purposes.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinDep.actuator_dynamics">
-<span class="sig-name descname"><span class="pre">actuator_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep.actuator_dynamics" title="Permalink to this definition"></a></dt>
-<dd><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p>
-<p>Note: For Torpedo Vehicles, positive fin deflection will pitch the vehicle up and yaw to the starboard side.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
-<li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>two arrays: forces and moments</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinDep.depthHeadingAutopilot">
-<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinDep.depthHeadingAutopilot">
+<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinDep.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p>The control input u_control as a list: [delta_r, delta_s, n], where:</p>
@@ -625,9 +682,27 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinDep.stepInput">
-<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinDep.stepInput" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinDep.fin_forces">
+<span class="sig-name descname"><span class="pre">fin_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinDep.fin_forces" title="Permalink to this definition"></a></dt>
+<dd><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self.u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
+<li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
+<li><p><strong>U</strong> (<em>float</em>) – forward speed of the vehicle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(6,) numpy array of forces and moments</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinDep.stepInput">
+<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinDep.stepInput" title="Permalink to this definition"></a></dt>
+<dd><p>A pre-defined step input to the vehicle controls for testing purposes.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p>The control input u_control as a list: [delta_r, delta_s, n], where:</p>
 <ul class="simple">
@@ -644,16 +719,13 @@ Propeller rpm is given as a step command.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinInd">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.vehicle_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">fourFinInd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinInd">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.fossen_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">fourFinInd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinInd" title="Permalink to this definition"></a></dt>
 <dd><p>Torpedo vehicle with four independetly controlled fins (Rudder Top, Rudder Bottom, Stern left, Stern Right)</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd.actuator_dynamics" title="holoocean.vehicle_dynamics.torpedo.fourFinInd.actuator_dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actuator_dynamics</span></code></a>(u_actual, nu_r)</p></td>
-<td><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd.depthHeadingAutopilot" title="holoocean.vehicle_dynamics.torpedo.fourFinInd.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu, sampleTime[, imu])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinInd.depthHeadingAutopilot" title="holoocean.fossen_dynamics.torpedo.fourFinInd.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu[, imu])</p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The control input u_control as a list: [delta_rt, delta_rb, delta_sl, delta_sr, n], where:</p>
@@ -661,36 +733,17 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd.stepInput" title="holoocean.vehicle_dynamics.torpedo.fourFinInd.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The control input u_control as a list: [delta_rt, delta_rb, delta_sl, delta_sr, n], where:</p>
-</dd>
-</dl>
-</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinInd.fin_forces" title="holoocean.fossen_dynamics.torpedo.fourFinInd.fin_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fin_forces</span></code></a>(nu_r)</p></td>
+<td><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.fourFinInd.stepInput" title="holoocean.fossen_dynamics.torpedo.fourFinInd.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
+<td><p>A pre-defined step input to the vehicle controls for testing purposes.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinInd.actuator_dynamics">
-<span class="sig-name descname"><span class="pre">actuator_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd.actuator_dynamics" title="Permalink to this definition"></a></dt>
-<dd><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p>
-<p>Note: For Torpedo Vehicles, positive fin deflection will pitch the vehicle up and yaw to the starboard side.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
-<li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>two arrays: forces and moments</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinInd.depthHeadingAutopilot">
-<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinInd.depthHeadingAutopilot">
+<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinInd.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p>The control input u_control as a list: [delta_rt, delta_rb, delta_sl, delta_sr, n], where:</p>
@@ -709,9 +762,31 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.fourFinInd.stepInput">
-<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.fourFinInd.stepInput" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinInd.fin_forces">
+<span class="sig-name descname"><span class="pre">fin_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinInd.fin_forces" title="Permalink to this definition"></a></dt>
+<dd><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).
+The implementation below is for a three-fin vehicle.
+NOTE:
+- For rudder, positive command turns the rudder CCW. Yaws vehicle starboard, negative roll.
+- For left stern, positive command turns the stern CCW. Pitches vehicle up in coordination, negative roll.
+- For right stern, positive command turns the stern CW. Pitches vehicle up in coordination, positive roll.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
+<li><p><strong>U</strong> (<em>float</em>) – forward speed of the vehicle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(6,) numpy array of forces and moments</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.fourFinInd.stepInput">
+<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.fourFinInd.stepInput" title="Permalink to this definition"></a></dt>
+<dd><p>A pre-defined step input to the vehicle controls for testing purposes.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p>The control input u_control as a list: [delta_rt, delta_rb, delta_sl, delta_sr, n], where:</p>
 <ul class="simple">
@@ -730,16 +805,13 @@ Propeller rpm is given as a step command.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.threeFinInd">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.vehicle_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">threeFinInd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd" title="Permalink to this definition"></a></dt>
-<dd><p>Torpedo vehicle with four independetly controlled fins (Rudder Top, Rudder Bottom, Stern left, Stern Right)</p>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.threeFinInd">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.fossen_dynamics.torpedo.</span></span><span class="sig-name descname"><span class="pre">threeFinInd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stepInput'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_psi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_rpm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_current</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.threeFinInd" title="Permalink to this definition"></a></dt>
+<dd><p>Torpedo vehicle with four independently controlled fins (Rudder Top, Rudder Bottom, Stern left, Stern Right)</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd.actuator_dynamics" title="holoocean.vehicle_dynamics.torpedo.threeFinInd.actuator_dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">actuator_dynamics</span></code></a>(u_actual, nu_r)</p></td>
-<td><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd.depthHeadingAutopilot" title="holoocean.vehicle_dynamics.torpedo.threeFinInd.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu, sampleTime[, imu])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.threeFinInd.depthHeadingAutopilot" title="holoocean.fossen_dynamics.torpedo.threeFinInd.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu[, imu])</p></td>
 <td><p><dl class="field-list simple">
 <dt class="field-odd">returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>[delta_r, delta_rb, delta_sl, delta_sr, n], where:</p>
@@ -747,43 +819,24 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd.stepInput" title="holoocean.vehicle_dynamics.torpedo.threeFinInd.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>[delta_r, delta_rb, delta_sl, delta_sr, n], where:</p>
-</dd>
-</dl>
-</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.threeFinInd.fin_forces" title="holoocean.fossen_dynamics.torpedo.threeFinInd.fin_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fin_forces</span></code></a>(nu_r)</p></td>
+<td><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.threeFinInd.stepInput" title="holoocean.fossen_dynamics.torpedo.threeFinInd.stepInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stepInput</span></code></a>(t)</p></td>
+<td><p>A pre-defined step input to the vehicle controls for testing purposes.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.threeFinInd.actuator_dynamics">
-<span class="sig-name descname"><span class="pre">actuator_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd.actuator_dynamics" title="Permalink to this definition"></a></dt>
-<dd><p>Vehicle-specific calculations for dynamics of the actuators (fins and thruster).</p>
-<p>Note: For Torpedo Vehicles, positive fin deflection will pitch the vehicle up and yaw to the starboard side.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>u_actual</strong> (<em>array-like</em>) – Current control surface position.</p></li>
-<li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>two arrays: forces and moments</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.threeFinInd.depthHeadingAutopilot">
-<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.threeFinInd.depthHeadingAutopilot">
+<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.threeFinInd.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p>[delta_r, delta_rb, delta_sl, delta_sr, n], where:</p>
 <ul class="simple">
 <li><p>delta_r: Rudder top angle (rad).</p></li>
-<li><p>delta_re: right elevator angle (rad).</p></li>
-<li><p>delta_le: left elevator angle (rad).</p></li>
+<li><p>delta_re: right stern angle (rad).</p></li>
+<li><p>delta_le: left stern angle (rad).</p></li>
 <li><p>n: Propeller revolution (rpm).</p></li>
 </ul>
 </p>
@@ -794,15 +847,37 @@ Propeller rpm is given as a step command.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="holoocean.vehicle_dynamics.torpedo.threeFinInd.stepInput">
-<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.vehicle_dynamics.torpedo.threeFinInd.stepInput" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.threeFinInd.fin_forces">
+<span class="sig-name descname"><span class="pre">fin_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.threeFinInd.fin_forces" title="Permalink to this definition"></a></dt>
+<dd><p>Vehicle-specific calculations for forces of the actuators (fins and thruster).
+The implementation below is for a three-fin vehicle.
+NOTE:
+- For rudder, positive command turns the rudder CCW. Yaws vehicle starboard, negative roll.
+- For left stern, positive command turns the stern CCW. Pitches vehicle up in coordination, negative roll.
+- For right stern, positive command turns the stern CW. Pitches vehicle up in coordination, positive roll.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nu_r</strong> (<em>array-like</em>) – Reference velocity of the vehicle in the body frame.</p></li>
+<li><p><strong>U</strong> (<em>float</em>) – forward speed of the vehicle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(6,) numpy array of forces and moments</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.threeFinInd.stepInput">
+<span class="sig-name descname"><span class="pre">stepInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.threeFinInd.stepInput" title="Permalink to this definition"></a></dt>
+<dd><p>A pre-defined step input to the vehicle controls for testing purposes.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p>[delta_r, delta_rb, delta_sl, delta_sr, n], where:</p>
 <ul class="simple">
 <li><p>delta_r: Rudder top angle (rad).</p></li>
-<li><p>delta_re: right elevator angle (rad).</p></li>
-<li><p>delta_le: left elevator angle (rad).</p></li>
+<li><p>delta_re: right stern angle (rad).</p></li>
+<li><p>delta_le: left stern angle (rad).</p></li>
 <li><p>n: Propeller revolution (rpm).</p></li>
 </ul>
 </p>
@@ -819,7 +894,7 @@ Propeller rpm is given as a step command.</p>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
 <a accesskey="p" class="btn btn-neutral float-left" href="lcm.html" rel="prev" title="LCM"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="ros2.html" rel="next" title="ROS2 Wrapper">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="n" class="btn btn-neutral float-right" href="shmem.html" rel="next" title="Shared Memory">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

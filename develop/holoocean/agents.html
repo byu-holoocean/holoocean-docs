@@ -46,27 +46,28 @@
 <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Action Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
@@ -107,7 +108,7 @@
 <td><p>Creates an agent object</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.BlueROV2" title="holoocean.agents.BlueROV2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BlueROV2</span></code></a>(client[, name])</p></td>
-<td><p>BlueROV2 import based on HoveringAUV A simple autonomous underwater vehicle.</p></td>
+<td><p>An implementation of the BlueROV2 Heavy vehicle from Blue Robotics.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.ControlSchemes" title="holoocean.agents.ControlSchemes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ControlSchemes</span></code></a>()</p></td>
 <td><p>All allowed control schemes.</p></td>
@@ -116,7 +117,7 @@
 <td><p>CougUV is based off the torpedo, a simple foward motion autonomous underwater vehicle.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.FixedWing" title="holoocean.agents.FixedWing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedWing</span></code></a>(client[, name])</p></td>
-<td><p>Fixed Wing agent</p></td>
+<td><p>Fixed Wing Agent</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent" title="holoocean.agents.HoloOceanAgent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HoloOceanAgent</span></code></a>(client[, name])</p></td>
 <td><p>A learning agent in HoloOcean</p></td>
@@ -125,7 +126,7 @@
 <td><p>A simple autonomous underwater vehicle.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.ScubaDiver" title="holoocean.agents.ScubaDiver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScubaDiver</span></code></a>(client[, name])</p></td>
-<td><p>A copy of HoveringAUV with scuba diver mesh</p></td>
+<td><p>A copy of HoveringAUV with scuba diver mesh.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.SphereAgent" title="holoocean.agents.SphereAgent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SphereAgent</span></code></a>(client[, name])</p></td>
 <td><p>A basic sphere robot.</p></td>
@@ -196,10 +197,8 @@ associated with</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.BlueROV2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">BlueROV2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.BlueROV2" title="Permalink to this definition"></a></dt>
-<dd><p>BlueROV2 import based on HoveringAUV A simple autonomous underwater vehicle. All variables are not actually used in simulation,
-modifying them will have no effect on results. They are exposed for convenience in implementing custom
-dynamics.
-<strong>Action Space</strong>
+<dd><p>An implementation of the BlueROV2 Heavy vehicle from Blue Robotics.</p>
+<p><strong>Action Space</strong>
 Has three possible control schemes, as follows
 #. Thruster Forces: <code class="docutils literal notranslate"><span class="pre">[Vertical</span> <span class="pre">Front</span> <span class="pre">Starboard,</span> <span class="pre">Vertical</span> <span class="pre">Front</span> <span class="pre">Port,</span> <span class="pre">Vertical</span> <span class="pre">Back</span> <span class="pre">Port,</span> <span class="pre">Vertical</span> <span class="pre">Back</span> <span class="pre">Starboard,</span> <span class="pre">Angled</span> <span class="pre">Front</span> <span class="pre">Starboard,</span> <span class="pre">Angled</span> <span class="pre">Front</span> <span class="pre">Port,</span> <span class="pre">Angled</span> <span class="pre">Back</span> <span class="pre">Port,</span> <span class="pre">Angled</span> <span class="pre">Back</span> <span class="pre">Starboard]</span></code>
 #. PD Controller: <code class="docutils literal notranslate"><span class="pre">[des_pos_x,</span> <span class="pre">des_pos_y,</span> <span class="pre">des_pos_z,</span> <span class="pre">roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code>
@@ -424,9 +423,7 @@ buoyancy, gravity, and damping. Specify 6-vector of linear and angular accelerat
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.CougUV">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">CougUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.CougUV" title="Permalink to this definition"></a></dt>
-<dd><p>CougUV is based off the torpedo, a simple foward motion autonomous underwater vehicle. All variables are not actually used in simulation,
-modifying them will have no effect on results. They are exposed for convenience in implementing custom
-dynamics.</p>
+<dd><p>CougUV is based off the torpedo, a simple foward motion autonomous underwater vehicle.</p>
 <p><strong>Action Space</strong></p>
 <p>Has two possible action spaces, as follows:</p>
 <ol class="arabic simple">
@@ -491,7 +488,8 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.FixedWing">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">FixedWing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.FixedWing" title="Permalink to this definition"></a></dt>
-<dd><p>Fixed Wing agent</p>
+<dd><p>Fixed Wing Agent</p>
+<p>This agent is a WIP and is currently just a copy of the Hovering AUV agent. It is not yet ready for public use.</p>
 <p><strong>Action Space</strong></p>
 <p>Has three possible control schemes, as follows</p>
 <ol class="arabic simple">
@@ -503,19 +501,14 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <p><strong>These variables are the constants used in the C++ for “Thruster” and “PD” control schemes. Editing them in python will not change the vehicle behavior.</strong>
 <strong>If using the “custom dynamics” control scheme, these values are ignored, and any desired dynamics parameters must be defined separately in your dynamics implementation.</strong>
 <strong>Instructions for implemeting parameters for Thor Fossen dynamics are given in the corresponding fossen dynamics documentation.</strong></p>
-<dl class="field-list simple">
-<dt class="field-odd">Variables<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mass</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Mass of the vehicle in kg.</p></li>
-<li><p><strong>water_density</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Water density in kg / m^3.</p></li>
-<li><p><strong>volume</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Volume of vehicle in m^3.</p></li>
-<li><p><strong>cob</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3-vecter Center of buoyancy from the center of mass in m.</p></li>
-<li><p><strong>I</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3x3 Inertia matrix.</p></li>
-<li><p><strong>thruster_d</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of unit vectors in the direction of thruster propulsion</p></li>
-<li><p><strong>thruster_p</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of positions in local frame of thrusters positions in m.</p></li>
-</ul>
-</dd>
-</dl>
+<p>The following parameters are defined in the C++ code and are not used in the python code. They are provided here for convenience in implementing custom dynamics.
+:cvar mass: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Mass of the vehicle in kg.
+:cvar water_density: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Water density in kg / m^3.
+:cvar volume: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Volume of vehicle in m^3.
+:cvar cob: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3-vecter Center of buoyancy from the center of mass in m.
+:cvar I: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3x3 Inertia matrix.
+:cvar thruster_d: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of unit vectors in the direction of thruster propulsion
+:cvar thruster_p: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of positions in local frame of thrusters positions in m.</p>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -804,19 +797,14 @@ dynamics.</p>
 <p>Inherits from <a class="reference internal" href="#holoocean.agents.HoloOceanAgent" title="holoocean.agents.HoloOceanAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanAgent</span></code></a>.</p>
 <p><strong>These variables are the constants used in the C++ for “Thruster” and “PD” control schemes. Editing them in python will not change the vehicle behavior.</strong>
 <strong>If using the “custom dynamics” control scheme, these values are ignored, and any desired dynamics parameters must be defined separately in your dynamics implementation.</strong></p>
-<dl class="field-list simple">
-<dt class="field-odd">Variables<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mass</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Mass of the vehicle in kg.</p></li>
-<li><p><strong>water_density</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Water density in kg / m^3.</p></li>
-<li><p><strong>volume</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Volume of vehicle in m^3.</p></li>
-<li><p><strong>cob</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3-vecter Center of buoyancy from the center of mass in m.</p></li>
-<li><p><strong>I</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3x3 Inertia matrix.</p></li>
-<li><p><strong>thruster_d</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of unit vectors in the direction of thruster propulsion</p></li>
-<li><p><strong>thruster_p</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of positions in local frame of thrusters positions in m.</p></li>
-</ul>
-</dd>
-</dl>
+<p>The following parameters are defined in the C++ code and are not used in the python code. They are provided here for convenience in implementing custom dynamics.
+:cvar mass: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Mass of the vehicle in kg.
+:cvar water_density: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Water density in kg / m^3.
+:cvar volume: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Volume of vehicle in m^3.
+:cvar cob: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3-vecter Center of buoyancy from the center of mass in m.
+:cvar I: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3x3 Inertia matrix.
+:cvar thruster_d: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of unit vectors in the direction of thruster propulsion
+:cvar thruster_p: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 8x3 matrix of positions in local frame of thrusters positions in m.</p>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -858,7 +846,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.ScubaDiver">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">ScubaDiver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.ScubaDiver" title="Permalink to this definition"></a></dt>
-<dd><p>A copy of HoveringAUV with scuba diver mesh</p>
+<dd><p>A copy of HoveringAUV with scuba diver mesh.</p>
 <p><strong>Action Space</strong></p>
 <p>Has three possible control schemes, as follows</p>
 <ol class="arabic simple">
@@ -924,7 +912,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dt class="sig sig-object py" id="holoocean.agents.SphereAgent">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">SphereAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SphereAgent" title="Permalink to this definition"></a></dt>
 <dd><p>A basic sphere robot.</p>
-<p>See <a class="reference internal" href="../agents/sphere-agent.html#sphere-agent"><span class="std std-ref">SphereAgent</span></a> for more details.</p>
+<p>See <a class="reference internal" href="../agents/agents/sphere-agent.html#sphere-agent"><span class="std std-ref">SphereAgent</span></a> for more details.</p>
 <p><strong>Action Space:</strong></p>
 <p>Has two possible control schemes, one discrete and one continuous:</p>
 <table class="docutils align-default">
@@ -993,9 +981,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.SurfaceVessel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">SurfaceVessel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.SurfaceVessel" title="Permalink to this definition"></a></dt>
-<dd><p>A simple surface vessel. All variables are not actually used in simulation,
-modifying them will have no effect on results. They are exposed for convenience in implementing custom
-dynamics.</p>
+<dd><p>A simple surface vessel.</p>
 <p><strong>Action Space</strong></p>
 <p>Has three possible control schemes, as follows</p>
 <ol class="arabic simple">
@@ -1059,32 +1045,24 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.TorpedoAUV">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">TorpedoAUV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultAgent'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.TorpedoAUV" title="Permalink to this definition"></a></dt>
-<dd><p>A simple foward motion autonomous underwater vehicle. All variables are not actually used in simulation,
-modifying them will have no effect on results. They are exposed for convenience in implementing custom
-dynamics.</p>
+<dd><p>A simple foward motion autonomous underwater vehicle.</p>
 <p><strong>Action Space</strong></p>
 <p>Has two possible action spaces, as follows:</p>
 <ol class="arabic simple">
 <li><p>Fins &amp; Propeller: <code class="docutils literal notranslate"><span class="pre">[left_fin,</span> <span class="pre">top_fin,</span> <span class="pre">right_fin,</span> <span class="pre">bottom_fin,</span> <span class="pre">thrust]</span></code></p></li>
 <li><p>Accelerations, in global frame: <code class="docutils literal notranslate"><span class="pre">[lin_accel_x,</span> <span class="pre">lin_accel_y,</span> <span class="pre">lin_accel_z,</span> <span class="pre">ang_accel_x,</span> <span class="pre">ang_accel_y,</span> <span class="pre">ang_accel_x]</span></code></p></li>
 </ol>
+<p>Inherits from <a class="reference internal" href="#holoocean.agents.HoloOceanAgent" title="holoocean.agents.HoloOceanAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanAgent</span></code></a>.</p>
 <p><strong>These variables are the constants used in the C++ for “Thruster” and “PD” control schemes. Editing them in python will not change the vehicle behavior.</strong>
 <strong>If using the “custom dynamics” control scheme, these values are ignored, and any desired dynamics parameters must be defined separately in your dynamics implementation.</strong>
-<strong>Instructions for implemeting parameters for Thor Fossen dynamics are given in the corresponding fossen dynamics documentation.</strong></p>
-<p>Inherits from <a class="reference internal" href="#holoocean.agents.HoloOceanAgent" title="holoocean.agents.HoloOceanAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanAgent</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Variables<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>mass</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Mass of the vehicle in kg.</p></li>
-<li><p><strong>water_density</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Water density in kg / m^3.</p></li>
-<li><p><strong>volume</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Volume of vehicle in m^3.</p></li>
-<li><p><strong>cob</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3-vecter Center of buoyancy from the center of mass in m.</p></li>
-<li><p><strong>I</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3x3 Inertia matrix.</p></li>
-<li><p><strong>thruster_p</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3 matrix of positions in local frame of propeller position in m.</p></li>
-<li><p><strong>fin_p</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 4x3 matrix of positions in local frame of fin positions in m.</p></li>
-</ul>
-</dd>
-</dl>
+<strong>Instructions for implemeting parameters for Thor Fossen dynamics are given in the corresponding fossen dynamics documentation.</strong>
+:cvar mass: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Mass of the vehicle in kg.
+:cvar water_density: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Water density in kg / m^3.
+:cvar volume: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Volume of vehicle in m^3.
+:cvar cob: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3-vecter Center of buoyancy from the center of mass in m.
+:cvar I: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3x3 Inertia matrix.
+:cvar thruster_p: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 3 matrix of positions in local frame of propeller position in m.
+:cvar fin_p: (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): 4x3 matrix of positions in local frame of fin positions in m.</p>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -1182,7 +1160,7 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <li><p>[pitch_torque, roll_torque, yaw_torque, thrust] and</p></li>
 <li><p>[pitch_target, roll_target, yaw_rate_target, altitude_target]</p></li>
 </ol>
-<p>See <a class="reference internal" href="../agents/uav-agent.html#uav-agent"><span class="std std-ref">UavAgent</span></a> for more details.</p>
+<p>See <a class="reference internal" href="../agents/agents/uav-agent.html#uav-agent"><span class="std std-ref">UAV Agent</span></a> for more details.</p>
 <p>Inherits from <a class="reference internal" href="#holoocean.agents.HoloOceanAgent" title="holoocean.agents.HoloOceanAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanAgent</span></code></a>.</p>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Package Installation Location — HoloOcean 1.0.0 documentation</title>
+<title>Installing &amp; Managing Packages — HoloOcean 1.0.0 documentation</title>
 <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -23,7 +23,7 @@
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="../../agents/agents.html" rel="next" title="HoloOcean Agents"/>
+<link href="../Ocean/Ocean.html" rel="next" title="Ocean Package"/>
 <link href="package-structure.html" rel="prev" title="Package Structure"/>
 </head>
 <body class="wy-body-for-nav">
@@ -46,35 +46,40 @@
 <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../packages.html">HoloOcean Packages</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../Ocean/Ocean.html">Ocean Package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="package-structure.html">Package Structure</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Package Installation Location</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overriding-location">Overriding Location</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../packages.html#package-documentation">Package Documentation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="package-structure.html">Package Structure</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installing &amp; Managing Packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#package-installation-location">Package Installation Location</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-world-packages">Managing World Packages</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../packages.html#all-packages">HoloOcean Packages</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
@@ -93,7 +98,7 @@
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
 <li class="breadcrumb-item"><a href="../packages.html">HoloOcean Packages</a></li>
-<li class="breadcrumb-item active">Package Installation Location</li>
+<li class="breadcrumb-item active">Installing &amp; Managing Packages</li>
 <li class="wy-breadcrumbs-aside">
 <a href="../../_sources/packages/docs/installation.rst.txt" rel="nofollow"> View page source</a>
 </li>
@@ -102,8 +107,10 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
+<section id="installing-managing-packages">
+<h1>Installing &amp; Managing Packages<a class="headerlink" href="#installing-managing-packages" title="Permalink to this heading"></a></h1>
 <section id="package-installation-location">
-<span id="package-locations"></span><h1>Package Installation Location<a class="headerlink" href="#package-installation-location" title="Permalink to this heading"></a></h1>
+<span id="package-locations"></span><h2>Package Installation Location<a class="headerlink" href="#package-installation-location" title="Permalink to this heading"></a></h2>
 <p>HoloOcean packages are by default saved in the current user profile, depending
 on the platform.</p>
 <table class="docutils align-default">
@@ -128,22 +135,138 @@ causing version incompatibility conflicts.</p>
 <p>Each folder inside the worlds folder is considered a seperate package, so it
 must match the format of the archive described in <a class="reference internal" href="package-structure.html#package-contents"><span class="std std-ref">Package Contents</span></a>.</p>
 <section id="overriding-location">
-<h2>Overriding Location<a class="headerlink" href="#overriding-location" title="Permalink to this heading"></a></h2>
+<h3>Overriding Location<a class="headerlink" href="#overriding-location" title="Permalink to this heading"></a></h3>
 <p>The environment variable <code class="docutils literal notranslate"><span class="pre">HOLODECKPATH</span></code> can be set to override the default
 location given above.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">HOLODECKPATH</span></code> is used, it will override
 this version partitioning, so ensure that <code class="docutils literal notranslate"><span class="pre">HOLODECKPATH</span></code> only points to
-packages that are compatible with your version of Holodeck.</p>
+packages that are compatible with your version of HoloOcean.</p>
 </div>
+</section>
+</section>
+<section id="managing-world-packages">
+<h2>Managing World Packages<a class="headerlink" href="#managing-world-packages" title="Permalink to this heading"></a></h2>
+<p>The default option for managing packages is to use <code class="docutils literal notranslate"><span class="pre">holoocean.install()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">holoocean.remove()</span></code>. These functions can be used to install and remove any packages
+managed by the HoloOcean team (currently only the Ocean package).</p>
+<section id="install-a-package-automatically">
+<h3>Install a Package Automatically<a class="headerlink" href="#install-a-package-automatically" title="Permalink to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">holoocean</span></code> python package includes a <a class="reference internal" href="../../holoocean/packagemanager.html#packagemanager"><span class="std std-ref">Package Manager</span></a> that can be used independently.
+Below are some example usages, but see <a class="reference internal" href="../../holoocean/packagemanager.html#packagemanager"><span class="std std-ref">Package Manager</span></a> for complete documentation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">holoocean</span><span class="w"> </span><span class="kn">import</span> <span class="n">packagemanager</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">installed_packages</span><span class="p">()</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">available_packages</span><span class="p">()</span>
+<span class="go">['Ocean']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>
+<span class="go">Installing Ocean ver. 0.1.0 from https://robots.et.byu.edu/holo/Ocean/v0.1.0/Linux.zip</span>
+<span class="go">File size: 1.55 GB</span>
+<span class="go">|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 100%</span>
+<span class="go">Unpacking worlds...</span>
+<span class="go">Finished.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">installed_packages</span><span class="p">()</span>
+<span class="go">['Ocean']</span>
+</pre></div>
+</div>
+</section>
+<section id="manually-installing-a-package">
+<h3>Manually Installing a Package<a class="headerlink" href="#manually-installing-a-package" title="Permalink to this heading"></a></h3>
+<p>Packages developed by users can be installed for use with the HoloOcean library. To manually
+install a package, you will be provided a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file. Extract it into the <code class="docutils literal notranslate"><span class="pre">worlds</span></code> folder
+in your HoloOcean installation location.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensure that the file structure is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">worlds</span>
+<span class="o">+--</span> <span class="n">YourManuallyInstalledPackage</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span>
+<span class="o">|</span>    <span class="o">+--</span> <span class="n">etc</span><span class="o">...</span>
+<span class="o">+--</span> <span class="n">AnotherPackage</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">etc</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Not</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">worlds</span>
+<span class="o">+--</span> <span class="n">YourManuallyInstalledPackage</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">YourManuallyInstalledPackage</span>
+<span class="o">|</span>       <span class="o">+--</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">etc</span><span class="o">...</span>
+<span class="o">+--</span> <span class="n">AnotherPackage</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span>
+<span class="o">|</span>   <span class="o">+--</span> <span class="n">etc</span><span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="print-information">
+<h3>Print Information<a class="headerlink" href="#print-information" title="Permalink to this heading"></a></h3>
+<p>There are several convenience functions provided to allow packages, worlds,
+and scenarios to be easily inspected.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">package_info</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>
+<span class="go">Package: Ocean</span>
+<span class="go">   Platform: Linux</span>
+<span class="go">   Version: 0.1.0</span>
+<span class="go">   Path: Linux/Holodeck/Binaries/Linux/Holodeck</span>
+<span class="go">   Worlds:</span>
+<span class="go">   Rooms</span>
+<span class="go">         Scenarios:</span>
+<span class="go">         Rooms-DataGen:</span>
+<span class="go">            Agents:</span>
+<span class="go">               Name: turtle0</span>
+<span class="go">               Type: TurtleAgent</span>
+<span class="go">               Sensors:</span>
+<span class="go">                  LocationSensor</span>
+<span class="go">                     lcm_channel: POSITION</span>
+<span class="go">                  RotationSensor</span>
+<span class="go">                     lcm_channel: ROTATION</span>
+<span class="go">                  RangeFinderSensor</span>
+<span class="go">                     lcm_channel: LIDAR</span>
+<span class="go">                     configuration</span>
+<span class="go">                        LaserCount: 64</span>
+<span class="go">                        LaserMaxDistance: 20</span>
+<span class="go">                        LaserAngle: 0</span>
+<span class="go">                        LaserDebug: True</span>
+<span class="go">         Rooms-IEKF:</span>
+<span class="go">            Agents:</span>
+<span class="go">               Name: uav0</span>
+<span class="go">               Type: UavAgent</span>
+<span class="go">               Sensors:</span>
+<span class="go">                  PoseSensor</span>
+<span class="go">                  VelocitySensor</span>
+<span class="go">                  IMUSensor</span>
+<span class="go">   SimpleUnderwater</span>
+<span class="go">         Scenarios:</span>
+<span class="go">         SimpleUnderwater-AUV:</span>
+<span class="go">            Agents:</span>
+<span class="go">               Name: auv0</span>
+<span class="go">               Type: HoveringAUV</span>
+<span class="go">               Sensors:</span>
+<span class="go">                  PoseSensor</span>
+<span class="go">                     socket: IMUSocket</span>
+<span class="go">                  VelocitySensor</span>
+<span class="go">                     socket: IMUSocket</span>
+<span class="go">                  IMUSensor</span>
+<span class="go">                     socket: IMUSocket</span>
+<span class="go">                  DVLSensor</span>
+<span class="go">                     socket: DVLSocket</span>
+</pre></div>
+</div>
+<p>You can also look for information for a specific world or scenario</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">packagemanager</span><span class="o">.</span><span class="n">world_info</span><span class="p">(</span><span class="s2">"SimpleUnderwater"</span><span class="p">)</span>
+<span class="n">packagemanager</span><span class="o">.</span><span class="n">scenario_info</span><span class="p">(</span><span class="s2">"Rooms-DataGen"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
 <a accesskey="p" class="btn btn-neutral float-left" href="package-structure.html" rel="prev" title="Package Structure"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="../../agents/agents.html" rel="next" title="HoloOcean Agents">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="n" class="btn btn-neutral float-right" href="../Ocean/Ocean.html" rel="next" title="Ocean Package">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

@@ -1,5 +1,6 @@
+========================
 OpenWater-HoveringCamera
-=============================
+========================
 
 This scenario starts with a HoveringAUV near a submarine. This is identical to the base version, only with cameras mounted.
 Unless otherwise specified, all sensors are named the same as their class name, ie IMUSensor is named "IMUSensor".
