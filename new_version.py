@@ -61,8 +61,8 @@ def main():
     path = os.getcwd()
     print("path is: ", path)
     if not os.path.exists(version):
-        os.mkdir(version)
-        print("folder not found and created")
+        # os.mkdir(version)
+        print("folder not found, will be created by the mv command")
     else:
         print("folder was found")
         print("Folder already exists. Delete it and try again.")
