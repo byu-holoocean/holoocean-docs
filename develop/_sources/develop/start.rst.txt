@@ -99,7 +99,10 @@ in standalone". This is a multi-step process, as follows.
 
 .. note::
    If developing a sonar module, in UE5 click the 3 dots next to the "Play" button in the top toolbar, and click "Advanced Settings". Add the following line to "Additional Launch Parameters"
+   
    .. image:: images/standalone-game.png
+   
+   
    .. code::
 
       -EnvMinX=-1000 -EnvMinY=-1000 -EnvMinZ=-1000 -EnvMaxX=1000 -EnvMaxY=1000 -EnvMinZ=1000 -OctreeMin=0.02 OctreeMax=5
