@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Units and Coordinates in HoloOcean — HoloOcean 1.0.0 documentation</title>
+<title>Units and Coordinates in HoloOcean — HoloOcean 2.0.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -23,8 +23,8 @@
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
-<link href="performance.html" rel="next" title="Improving HoloOcean Performance"/>
-<link href="lcm.html" rel="prev" title="Publishing Sensor Data"/>
+<link href="semaphores.html" rel="next" title="HoloOcean Client-Server Communication"/>
+<link href="performance.html" rel="prev" title="Improving Performance"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -46,40 +46,41 @@
 <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="usage.html">Using HoloOcean</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hotkeys.html">Viewport Hotkeys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lcm.html">Publishing Sensor Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewport.html">Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Improving Performance</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Units and Coordinates in HoloOcean</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#coordinate-system">Coordinate System</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotations">Rotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agent-socket-sensor-frames">Agent, Socket, &amp; Sensor Frames</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="performance.html">Improving HoloOcean Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running-headless.html">Using HoloOcean Headless</a></li>
-<li class="toctree-l2"><a class="reference internal" href="octree.html">Octree Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semaphores.html">HoloOcean Client-Server Communication</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
@@ -108,41 +109,52 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="units-and-coordinates-in-holoocean">
-<h1>Units and Coordinates in HoloOcean<a class="headerlink" href="#units-and-coordinates-in-holoocean" title="Permalink to this heading"></a></h1>
-<p>HoloOcean uses <strong>meters</strong> for units and a <strong>right-handed coordinate system</strong> for
-all locations, distances, and offsets.</p>
-<p>HoloOcean coordinates differ from coordinates within the Unreal Engine Editor. To see specific coordinates for HoloOcean in a level, please refer to the Ocean Packages page.</p>
+<span id="units-and-coordinates"></span><h1>Units and Coordinates in HoloOcean<a class="headerlink" href="#units-and-coordinates-in-holoocean" title="Permalink to this heading"></a></h1>
+<p>HoloOcean uses <strong>meters</strong> for units and a <strong>right-handed coordinate system</strong> for all locations,
+distances, and offsets.</p>
+<p>HoloOcean coordinates differ from coordinates within the Unreal Engine Editor. To see specific
+coordinates for HoloOcean levels, please refer to the <a class="reference internal" href="../packages/Ocean/Ocean.html#ocean"><span class="std std-ref">Ocean Package</span></a> page.</p>
 <section id="coordinate-system">
 <span id="id1"></span><h2>Coordinate System<a class="headerlink" href="#coordinate-system" title="Permalink to this heading"></a></h2>
-<p>Unreal Engine uses a left handed coordinate system by default, however
-to keep with general robotics conventions, we use a right handed coordinate
-system with positive <code class="docutils literal notranslate"><span class="pre">z</span></code> being up.</p>
-<p>So, when you need to specify a location in HoloOcean, the format is as follows</p>
-<p><code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> where:</p>
+<p>Unreal Engine uses a left handed coordinate system by default. However, to keep with general robotics
+conventions, we use a right handed coordinate system, with positive <code class="docutils literal notranslate"><span class="pre">z</span></code> being up.</p>
+<p>Locations and translations in HoloOcean worlds are specified as <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> where:</p>
 <ul class="simple">
 <li><p>Positive <code class="docutils literal notranslate"><span class="pre">x</span></code> is <strong>forward</strong></p></li>
 <li><p>Positive <code class="docutils literal notranslate"><span class="pre">y</span></code> is <strong>left</strong></p></li>
 <li><p>Positive <code class="docutils literal notranslate"><span class="pre">z</span></code> is <strong>up</strong></p></li>
 </ul>
-<p>Remember that the units for <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> are in meters (Unreal Engine
-defaults to centimeters, we’ve changed this to make things a bit easier).</p>
+<p>Remember that the units for <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> are in meters (Unreal Engine defaults to centimeters).</p>
 </section>
 <section id="rotations">
 <span id="id2"></span><h2>Rotations<a class="headerlink" href="#rotations" title="Permalink to this heading"></a></h2>
-<p>Rotations are specified in <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> / <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format, in degrees (usually). This means</p>
+<p>Rotations are specified in <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> / <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format, in degrees.</p>
 <ul class="simple">
 <li><p><strong>Roll</strong>: Rotation around the fixed forward (<code class="docutils literal notranslate"><span class="pre">x</span></code>) axis</p></li>
 <li><p><strong>Pitch</strong>: Rotation around the fixed right (<code class="docutils literal notranslate"><span class="pre">y</span></code>) axis</p></li>
 <li><p><strong>Yaw</strong>: Rotation around the fixed up (<code class="docutils literal notranslate"><span class="pre">z</span></code>) axis</p></li>
 </ul>
-<p>In that order.</p>
+</section>
+<section id="agent-socket-sensor-frames">
+<h2>Agent, Socket, &amp; Sensor Frames<a class="headerlink" href="#agent-socket-sensor-frames" title="Permalink to this heading"></a></h2>
+<p>Agents each have a coordinate frame located at their center (usually the center of mass, rarely the
+center of the mesh if different). This coordinate frame is always aligned with the agent’s forward,
+left, and up directions in a right handed coordinate system.</p>
+<p>Agents are equiped with sockets to hold sensors. Each socket has its own coordinate frame that is
+usually in the same orientation as the agent frame. See the individual Agent pages in <a class="reference internal" href="../agents/agents.html#agents"><span class="std std-ref">HoloOcean Agents</span></a>
+for details on the location and orientation of sockets for each agent.</p>
+<p>Sensors can be placed in sockets with an offset in position or orientation. With some rare exceptions,
+sensors return their data in the coordinate frame defined by this offset from the socket frame. Users
+are responsible for keeping track of the coordinate frame in which sensor data is reported. See the
+individual sensor pages in <a class="reference internal" href="../sensors/sensors.html#sensors"><span class="std std-ref">HoloOcean Sensors</span></a> for details on the coordinate frame in which each sensor
+returns data.</p>
 </section>
 </section>
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
-<a accesskey="p" class="btn btn-neutral float-left" href="lcm.html" rel="prev" title="Publishing Sensor Data"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="performance.html" rel="next" title="Improving HoloOcean Performance">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="performance.html" rel="prev" title="Improving Performance"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="semaphores.html" rel="next" title="HoloOcean Client-Server Communication">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

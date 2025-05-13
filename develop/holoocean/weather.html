@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Weather Controller — HoloOcean 1.0.0 documentation</title>
+<title>Weather Controller — HoloOcean 2.0.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -45,27 +45,28 @@
 <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agents.html">Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Action Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
@@ -99,17 +100,17 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.weather.WeatherController" title="holoocean.weather.WeatherController"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WeatherController</span></code></a>(send_world_command)</p></td>
-<td><p>Controller for dynamically changing weather and time in an environment</p></td>
+<td><p>Controller for dynamically changing weather and time in an environment.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.weather.</span></span><span class="sig-name descname"><span class="pre">WeatherController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send_world_command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController" title="Permalink to this definition"></a></dt>
-<dd><p>Controller for dynamically changing weather and time in an environment</p>
+<dd><p>Controller for dynamically changing weather and time in an environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>send_world_command</strong> (<em>function</em>) – Callback for sending commands to a world</p>
+<dd class="field-odd"><p><strong>send_world_command</strong> (<em>function</em>) – Callback for sending commands to a world.</p>
 </dd>
 </dl>
 <p><strong>Methods:</strong></p>
@@ -149,7 +150,7 @@ will exit the environment.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.weather.WeatherController.set_fog_density">
 <span class="sig-name descname"><span class="pre">set_fog_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.weather.WeatherController.set_fog_density" title="Permalink to this definition"></a></dt>
-<dd><p>Change the fog density.</p>
+<dd><p>Change the fog density. This controls the VolumetricFog object in Unreal.</p>
 <p>The change will occur when <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> is called next.</p>
 <p>By the next tick, the exponential height fog in the world will have the new density. If
 there is no fog in the world, it will be created with the given density.</p>
@@ -166,15 +167,14 @@ sent if the given density is invalid.</p>
 <dd><p>Set the world’s weather.</p>
 <p>The new weather will be applied when <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> is called next.</p>
 <p>By the next tick, the lighting, skysphere, fog, and relevant particle systems will be
-updated and/or spawned
-to the given weather.</p>
+updated and/or spawned to the given weather.</p>
 <p>If there is no skysphere, skylight, or directional source light in the world, this command
 will exit the environment.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Because this command can affect the fog density, any changes made by a
-<code class="docutils literal notranslate"><span class="pre">change_fog_density</span></code> command before a set_weather command called will be undone. It is
-recommended to call <code class="docutils literal notranslate"><span class="pre">change_fog_density</span></code> after calling set weather if you wish to
+<code class="docutils literal notranslate"><span class="pre">set_fog_density</span></code> command before a set_weather command called will be undone. It is
+recommended to call <code class="docutils literal notranslate"><span class="pre">set_fog_density</span></code> after calling <code class="docutils literal notranslate"><span class="pre">set_weather</span></code> if you wish to
 apply your specific changes.</p>
 </div>
 <p>In all downloadable worlds, the weather is sunny by default.</p>

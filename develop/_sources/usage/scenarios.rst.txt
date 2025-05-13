@@ -1,294 +1,293 @@
 .. _scenarios:
 
+=========
 Scenarios
-===================
-
-What is a scenario?
--------------------
-
-A scenario tells HoloOcean which world to load, which agents to place in the
-world, and which sensors they need.
-
-It defines:
-
-- Which world to load
-- Agent Definitions
-
-  - What type of agent they are
-  - Where they are
-  - What sensors they have
-
-.. tip::
-   You can think of scenarios like a map or gametype variant from Halo:
-   the world or map itself doesn't change, but the things in the world
-   and your objective can change.
-
-Scenarios allow the same world to be used for many different purposes,
-and allows you to extend and customize the scenarios we provide to
-suit your needs without repackaging the engine.
+=========
 
 When you call ``holoocean.make()`` to create an environment, you pass in the
-name of a scenario, eg ``holoocean.make("Pier-Hovering")``. This tells
-HoloOcean which world to load and where to place agents.
+name of a scenario, eg. ``holoocean.make("Pier-Hovering")``. A scenario tells 
+HoloOcean:
+
+* Which world to load
+* What agents are present
+* Where they are
+* What sensors they have
+
+HoloOcean worlds are meant to be configurable by changing out the scenario. 
+Scenarios allow the same world to be used for different purposes. For different 
+senarios using the same world, the world or map itself doesn't change, but the 
+things in the world and your objective can change.
+
+We provide several pre-built scenarios in :ref:`all-packages` for common underwater 
+robotics tasks, distributed as ``.json`` files. 
+
+HoloOcean is intended to be used with user-created scenarios as well. Custom scenarios 
+can be created using a dictionary in a Python script or by creating a ``.json`` file. 
+Both methods follow the same format, described below. 
+
 
 .. _`scenario-files`:
 
 Scenario File Format
---------------------
+====================
 
-Scenario ``.json`` files are distributed in packages (see
-:ref:`package-contents`), and must be named
-``{WorldName}-{ScenarioName}.json``. By default they are stored in the
-``worlds/{PackageName}`` directory, but they can be loaded from a
-Python dictionary as well.
+Scenario ``.json`` files are distributed in packages (see :ref:`package-contents`), and 
+must be named ``{WorldName}-{ScenarioName}.json``. By default they are stored in the
+``worlds/{PackageName}`` directory (see :ref:`package-locations`). 
 
-Scenario File
-~~~~~~~~~~~~~
+Scenarios can be defined using a ``.json`` file or in a python script using a dictionary. 
+Both methods follow the same format using key-value pairs. An example dictionary is given below: 
 
 .. code-block:: json
 
    {
       "name": "{Scenario Name}",
       "world": "{world it is associated with}",
-      "lcm_provider": "{Optional, where to publish lcm to}",
+      "package_name": "{package it is associated with}",
+      "agents":[
+         "array of agent objects"
+      ],
       "ticks_per_sec": 30,
       "frames_per_sec": 30,
       "env_min": [-10, -10, -10],
       "env_max": [10, 10, 10],
       "octree_min": 0.1,
       "octree_max": 5,
-      "agents":[
-         "array of agent objects"
-      ],
-      "weather": {
-         "hour": 12,
-         "type": "'sunny' or 'cloudy' or 'rain'",
-         "fog_density": 0,
-         "day_cycle_length": 86400
-      },
       "window_width":  1280,
-      "window_height": 720
+      "window_height": 720,
+      "lcm_provider": "provider name"
    }
 
-``window_width/height`` control the size of the window opened when an
-environment is created.
-
 .. note::
-   The first agent in the ``agents`` array is the "main agent"
+
+   At a minimum, a scenario must contain ``name``, ``world``, and ``package_name`` keys, and at 
+   least one agent object. All other keys are optional and will default to a set value if not 
+   provided.
+
+Below is a description of some of the keys in the scenario dictionary. 
+
+
+Name and World
+--------------
+- ``name`` is a string that specifies the name of the scenario.
+   This name is part of the string passed to ``holoocean.make()`` to create an environment.
+- ``world`` is a string that specifies the world to load.
+   It must match the name of the world file in the package folder (see :ref:`packages`).
+- ``package_name`` is a string that specifies the package the world is associated with.
+
+
+Agent Objects
+-------------
+HoloOcean agents are declared in a list in the scenario dictionary. Each agent is defined using a
+new dictionary in the list. 
+
+Below is an example of an agent configuration. For detailed descriptions of the keys and values, 
+see :ref:`agent-configuration`. 
+
+.. code-block:: json
+
+   "agents":[
+      {
+         "agent_name": "uav0",
+         "agent_type": "{agent types}",
+         "sensors": [
+            "array of sensor objects"
+         ],
+         "control_scheme": "{control scheme type}",
+         "location": [1.0, 2.0, 3.0],
+         "rotation": [1.0, 2.0, 3.0],
+         "location_randomization": [1, 2, 3],
+         "rotation_randomization": [10, 10, 10]
+      }
+   ]
+
+
+Sensor Objects
+--------------
+Each agent can be equipped with one or more sensors, including cameras and sonar. Sensor definition
+happens within each agent definition. 
+
+Below is an example of a sensor definition. For detailed descriptions of the keys and values, see
+:ref:`sensor-configuration`.
+
+.. code-block:: json
+
+   "sensors":[
+      {
+         "sensor_type": "RGBCamera",
+         "sensor_name": "FrontCamera",
+         "socket": "socket name",
+         "location": [1.0, 2.0, 3.0],
+         "rotation": [1.0, 2.0, 3.0],
+         "Hz": 5,
+         "lcm_channel": "channel_name",
+         "configuration": {
+            "array of sensor configurations"
+         }
+      }
+   ]
+   
 
 .. _`configure-framerate`:
 
 Frame Rates
-~~~~~~~~~~~
-There's two parameters you can configure that'll handle frame rate changes: ``ticks_per_sec`` and ``frames_per_sec``.
+-----------
+The frame rate in HoloOcean is controlled using two parameters: ``ticks_per_sec`` and 
+``frames_per_sec``.
 
-``ticks_per_sec`` changes how many ticks in a simulation second. This must be higher than any "Hz" sampling rate of the sensors used. Defaults to 30.
+- ``ticks_per_sec`` changes how many ticks are in a simulation second.
+   This must be higher than any "Hz" sampling rate used by any sensors. Defaults to 30.
 
-``frames_per_sec`` is the max FPS the environment can run at. If `true`, it will match ``ticks_per_sec``. If `false`, FPS will not be capped,
-and the environment will run as fast as possible. If a number, that'll be the frame rate cap.
+- ``frames_per_sec`` is the max FPS the environment can run at.
 
-For a few examples of how you might want to configure these. If you're manually controlling the robot(s), you'll likely want it to run at realtime,
-thus you'll want to set ``frames_per_sec`` to true. When using a quality GPU, simulations can run much faster than realtime, making things difficult to control otherwise.
-If you're running headless/autonomous, you'll likely want the simulation to run as fast as possible,
-thus a good ``frames_per_sec`` would be false. 
+   - If ``true``, it will match ``ticks_per_sec``.
+   - If ``false``, FPS will not be capped, and the environment will run as fast as possible.
+   - If a number is given, the simulation will attempt to reach that frame rate, but no higher. 
+   - Defaults to `true`.
+
+For running the simulation in real time (for example, when :ref:`manual-control`), set 
+``frames_per_sec`` to true. For running HoloOcean :ref:`headless<headless>`, you'll likely want the 
+simulation to run as fast as possible, so ``frames_per_sec`` should be set to false. When using a 
+GPU, simulations can run much faster than realtime, making things difficult to control when the 
+framerate is unlimited. In this case, capping ``frames_per_sec`` at a specific value can be useful.
+
 
 .. _`configure-octree`:
 
-Configuring Octree
-~~~~~~~~~~~~~~~~~~
-
+Octree Configuration
+--------------------
 When using a form of sonar sensor and initializing the world, an Octree will either be
 created or loaded from a cache. The parameters of these can be set using the ``env_min``,
-``env_max``, ``octree_min``, and ``octree_max``. The octrees are cached in the ``LinuxNoEditor/Holodeck/Octrees`` folder
-in the worlds folder. See :ref:`package-locations`.
+``env_max``, ``octree_min``, and ``octree_max``. The octrees are cached in the ``Linux/Holodeck/Octrees`` folder
+in the worlds folder (see :ref:`package-locations`).
 
 ``env_min``/``env_max`` are used to set the upper/lower bounds of the environment. They should 
 be set in :ref:`package-structure`, but the values set here will override it.
 
 ``octree_min``/``octree_max`` are used to set the minimum/mid-level size of the octree. ``octree_min``
-can go as low as .01 (1cm), and then the octree will double in size till it reaches ``octree_max``.
+can go as low as .01 (1cm), and then the octree will double in size until it reaches ``octree_max``.
+
+For more information about Octrees, see :ref:`octree`.
 
 
+Other Scenario Parameters
+-------------------------
 
-Agent objects
-~~~~~~~~~~~~~
-
-.. code-block:: json
-
-   {
-      "agent_name": "uav0",
-      "agent_type": "{agent types}",
-      "sensors": [
-         "array of sensor objects"
-      ],
-      "control_scheme": "{control scheme type}",
-      "location": [1.0, 2.0, 3.0],
-      "rotation": [1.0, 2.0, 3.0],
-      "location_randomization": [1, 2, 3],
-      "rotation_randomization": [10, 10, 10]
-   }
-
-.. note::
-   HoloOcean coordinates are **right handed** in meters. See :ref:`coordinate-system`
-
-.. _`location-randomization`:
-
-Location Randomization
-**********************
-
-``location_randomization`` and ``rotation_randomization`` are optional. If
-provided, the agent's start location and/or rotation will vary by a
-random amount between the negative and the positive values of the
-provided randomization values as sampled from a uniform distribution.
-
-The location value is measured in meters, in the format ``[dx, dy, dz]``
-and the rotation is ``[roll, pitch, yaw]``, rotated about XYZ fixed axes,
-ie R_z R_y R_x.
-
-Agent Types
-***********
-
-Here are valid ``agent_type`` s:
-
-========================= ========================
-Agent Type                String in agent_type
-========================= ========================
-:ref:`hovering-auv-agent`  ``HoveringAUV``
-:ref:`Torpedo-auv-agent`   ``TorpedoAUV``
-:ref:`turtle-agent`        ``TurtleAgent``
-:ref:`uav-agent`           ``UAV``
-========================= ========================
-
-Control Schemes
-***************
-
-Control schemes are represented as an integer. For valid values and a
-description of how each scheme works, see the documentation pages for each
-agent.
-
-.. _`configure-sensors`:
-
-Sensor Objects
-~~~~~~~~~~~~~~
-
-.. code-block:: json
-
-   {
-      "sensor_type": "RGBCamera",
-      "sensor_name": "FrontCamera",
-      "location": [1.0, 2.0, 3.0],
-      "rotation": [1.0, 2.0, 3.0],
-      "socket": "socket name or \"\"",
-      "Hz": 5,
-      "lcm_channel": "channel_name",
-      "configuration": {
-
-      }
-   }
-
-Sensors have a couple options for placement.
-
-1. **Provide a socket name**
-
-   This will place the sensor in the given socket
-
-   .. code-block:: json
-
-      {
-         "sensor_type": "RGBCamera",
-         "socket": "CameraSocket"
-      }
-
-2. **Provide a socket, location and/or rotation**
-
-   The sensor will be placed offset to the socket by the location and rotation. 
-   The rotation is ``[roll, pitch, yaw]`` in degrees, rotated about XYZ fixed axes,
-   ie R_z R_y R_x.
+- ``window_width/height`` control the size of the viewport window opened when an environment is created. 
+   Sizes are in pixels. 
+- ``lcm_provider`` is an optional parameter that specifies where to publish LCM messages. 
+   For more detail, see :ref:`lcm`.
 
 
-   .. code-block:: json
+Accessing and Modifying Pre-Built Scenarios
+===========================================
 
-      {
-         "sensor_type": "RGBCamera",
-         "location": [1.0, 2.0, 3.0],
-         "rotation": [1.0, 2.0, 3.0],
-         "socket": "CameraSocket"
-      }
+Configurations for pre-built scenarios can be found by reading the associated ``.json`` file. 
+These are located in the worlds package folder (see :ref:`package-locations`). 
 
-3. **Provide just a location and/or rotation**
+Sometimes it is helpful to extract specific parameters from a pre-made scenario for use within 
+a python script (ex. for plotting data). Rather than having to copy data manually from the 
+``.json``, you can use the HoloOcean :ref:`packagemanager` to extract the scenario configuration. 
 
-   The sensor will be placed at the given coordinates, offset from the root of
-   the agent.
+For example, the following code extracts the azimuth angle from the sidescan sonar sensor in the 
+``OpenWater-TorpedoSidescanSonar`` scenario.
 
-   .. code-block:: json
+.. code-block:: python
 
-      {
-         "sensor_type": "RGBCamera",
-         "location": [1.0, 2.0, 3.0],
-         "rotation": [1.0, 2.0, 3.0]
-      }
+   import holoocean
 
-4. **Provide a sensor sample rate**
+   scenario = holoocean.packagemanager.get_scenario("OpenWater-TorpedoSidescanSonar")
+   sidescan_config = scenario['agents'][0]['sensors'][-1]["configuration"]
+   azi = sidescan_config['Azimuth']
 
-   The sensor will be sampled at this rate. Note this must be less then ``ticks_per_sec``, and
-   preferably a divisor of ``ticks_per_sec`` as well. See :ref:`configure-framerate` for more info
-   on ``ticks_per_sec``.
+You may find that the provided pre-built scenarios in the :ref:`Ocean package <all-packages>` 
+meet some but not all of your needs. Rather than create a new scenario from scratch, you can 
+modify the pre-built scenarios to adjust specific parameters using a similar method as above. 
 
-   .. code-block:: json
+The code below demonstrates how to modify the ``ticks_per_sec`` parameter in the ``Pier-Hovering``
+scenario:
 
-      {
-         "sensor_type": "RGBCamera",
-         "Hz": 20
-      }
+.. code-block:: python
 
-5. **Publish Message**
+   import holoocean
 
-   Currently, HoloOcean supports publishing mesages to LCM (with possible ROS package coming).
-   To publish sensor data to LCM, specify the type to publish.
+   scenario = holoocean.packagemanager.get_scenario("Pier-Hovering")
+   scenario["ticks_per_sec"] = 60
 
-   .. code-block:: json
+   env = holoocean.make(scenario_cfg=scenario)
 
-      {
-         "sensor_type": "RGBCamera",
-         "lcm_channel": "CAMERA"
-      }
 
-   The channel parameter specifies which channel to publish the sensor data to.
+.. _`custom-scenarios`:
 
-The only keys that are required in a sensor object is ``"sensor_type"``, the
-rest will default as shown below
+Making Custom Scenarios
+=======================
 
-.. code-block:: json
+You can create custom scenarios in two ways: with a dictionary in a Python script, or by
+creating a ``.json`` file. Both methods follow the same format as described in the section above.
 
-   {
-      "sensor_name": "sensor_type",
-      "location": [0, 0, 0],
-      "rotation": [0, 0, 0],
-      "socket": "",
-      "publish": "",
-      "lcm_channel": "",
-      "configuration": {}
-   }
+Using a Dictionary for a Scenario Config
+----------------------------------------
 
-.. _`configuration-block`:
+Create a dictionary in Python that matches the structure specified in :ref:`scenario-files`, 
+and pass it in to :func:`holoocean.make` using the ``scenario_cfg`` variable.
 
-Configuration Block
-~~~~~~~~~~~~~~~~~~~
+An example is given below: 
 
-The contents of the ``configuration`` block are sensor-specific. That block is
-passed verbatim to the sensor itself, which parses it.
+.. code-block:: python
 
-For example, the docstring for :class:`~holoocean.sensors.RGBCamera` states that
-it accepts ``CaptureWidth`` and ``CaptureHeight`` parameters, so an example
-sensor configuration would be:
+    import holoocean
 
-.. code-block:: json
+    scenario = {
+        "name": "test_rgb_camera",
+        "world": "SimpleUnderwater",
+        "package_name": "Ocean",
+        "main_agent": "auv0",
+        "ticks_per_sec": 60,
+        "agents": [
+            {
+                "agent_name": "auv0",
+                "agent_type": "HoveringAUV",
+                "sensors": [
+                    {
+                        "sensor_type": "RGBCamera",
+                        "socket": "CameraSocket",
+                        "configuration": {
+                            "CaptureWidth": 512,
+                            "CaptureHeight": 512
+                        }
+                    }
+                ],
+                "control_scheme": 0,
+                "location": [0, 0, -10]
+            }
+        ]
+    }
 
-   {
-      "sensor_name": "RBGCamera",
-      "socket": "CameraSocket",
-      "configuration": {
-         "CaptureHeight": 1920,
-         "CaptureWidth": 1080
-      }
-   }
+    with holoocean.make(scenario_cfg=scenario) as env:
+        for _ in range(200):
+            env.tick()
+
+
+Using a ``.json`` file for a Scenario Config
+--------------------------------------------
+
+You can specify a custom scenario by creating a ``.json`` file that follows
+the format given in :ref:`scenario-files` and either:
+
+1. Loading it yourself in a Python script and parsing it into a dictionary, then 
+   using that dictionary as described above. 
+2. Placing it in HoloOcean's scenario search path.
+
+When you give a scenario name to :func:`holoocean.make`, HoloOcean will search 
+each package folder (see :ref:`package-locations`) until it finds a
+``.json`` file that matches the scenario name. 
+
+To use custom scenario ``.json`` files, place them in the Oceans package folder 
+(or the package folder that contains the world your scenario uses). For details 
+on package folder locations, see :ref:`package-locations`. HoloOcean 
+will automatically find and use ``.json`` scenario files in the package folder.
+
+.. warning::
+   If you remove and reinstall a package, HoloOcean will clear the contents of
+   that folder. Be sure to remove any custom scenario ``.json`` files from the 
+   package folder before uninstalling and reinstalling a package.

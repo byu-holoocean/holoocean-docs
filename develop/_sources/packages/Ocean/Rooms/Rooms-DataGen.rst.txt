@@ -1,8 +1,9 @@
+=============
 Rooms-DataGen
-=============================
+=============
 
-This scenario starts with an TurtleAgent equipped with Location, Rotation and RangeFinder sensors. No
-noise is included in any of the sensors.
+This scenario starts with a TurtleAgent equipped with Location, Rotation and RangeFinder sensors. 
+No noise is included in any of the sensors.
 
 - ``turtle0``: Main :ref:`Turtle <turtle-agent>` agent
     - :class:`~holoocean.sensors.LocationSensor` 

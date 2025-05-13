@@ -3,7 +3,7 @@ Welcome to HoloOcean's documentation!
 .. image:: images/inspect_plane.jpg
 
 HoloOcean is a high-fidelity simulator develped by the `Field Robotic Systems Lab (FRoStLab) <https://frostlab.byu.edu>`_
-at `Brigham Young University <https://www.byu.edu>`_ .
+at `Brigham Young University <https://www.byu.edu>`_.
 
 Built upon Unreal Engine (by Epic Games) and Holodeck (developed by the BYU PCCL Lab), HoloOcean enables easy simulation of marine robotics and autonomy with a wide variety of sensors, agents, and features.
 
@@ -19,6 +19,7 @@ Features
 #. High performance - simulation speeds of up to 2x real time are possible. Performance penalty only for what you need
 #. Run headless or watch your agents learn
 #. Linux and Windows support
+
 Attribution and Relevent Publications
 """""""""""""""""""""""""""""""""""""
 If you use HoloOcean in your research, please cite the following publications depending on the features you use as outlined below:
@@ -35,8 +36,8 @@ General HoloOcean use:
    }
 
 Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
-
 ::
+   
    @inproceedings{Potokar22iros,
       author = {E. Potokar and K. Lay and K. Norman and D. Benham and T. Neilsen and M. Kaess and J. Mangelson},
       title = {Holo{O}cean: Realistic Sonar Simulation},
@@ -55,6 +56,8 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    usage/usage
    packages/packages
    agents/agents
+   sensors/sensors
+   examples/examples
    develop/develop
    changelog/changelog
 
@@ -72,7 +75,6 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    holoocean/sensors
    holoocean/lcm
    holoocean/dynamics
-   holoocean/ros2
    holoocean/shmem
    holoocean/util
    holoocean/exceptions

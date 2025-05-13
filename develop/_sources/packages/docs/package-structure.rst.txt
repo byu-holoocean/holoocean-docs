@@ -1,31 +1,32 @@
+=================
 Package Structure
 =================
 
-A holoocean package is a ``.zip`` file containing a build of `holoocean-engine`_
-that contains worlds and :ref:`scenarios` for those worlds.
-
-.. _`holoocean-engine`: https://bitbucket.org/frostlab/holoocean-engine
+A holoocean package is a ``.zip`` file containing a build of the HoloOcean engine 
+that contains :ref:`Worlds <packages>` and :ref:`scenarios` for those worlds.
 
 A package file is platform specific, since it contains a compiled binary of
 HoloOcean.
 
+
 .. _`package-contents`:
 
 Package Contents
-----------------
+================
 
-The ``.zip`` file must contain the following elements
+The ``.zip`` file must contain the following elements:
 
-1. A build of `holoocean-engine`_
+1. A build of the HoloOcean engine binaries.
 
-2. A ``config.json`` file that defines the worlds present in the package
+2. A ``config.json`` file that defines the worlds present in the package.
 
-3. Scenario configs for those worlds
+3. Scenario configs for those worlds.
+
 
 .. _`package-structure`:
 
 Package Structure
------------------
+=================
 
 The package.zip contains a ``config.json`` file at the root of the archive, as
 well as all of the scenarios for every world included in the package. The
@@ -37,11 +38,17 @@ scenario files must follow the format ``{WorldName}-{ScenarioName}.json``.
    +-- config.json
    +-- materials.csv
    +-- WorldName-ScenarioName.json
-   +-- LinuxNoEditor
-       + UE5 build output
+   +-- Linux
+       + Unreal Engine build output
+
+.. note::
+
+   The ``Linux`` directory is only present in Linux builds. Windows builds
+   will have a ``Windows`` directory instead.
+
 
 config.json
------------
+===========
 
 This configuration file contains the package-level configuration. Below is 
 the format the config file is expected to follow:
@@ -68,14 +75,19 @@ the format the config file is expected to follow:
 The ``"pre_start_steps"`` attribute for a world defines how many ticks should 
 occur before starting the simulation, to work around world idiosyncrasies.
 
-The ``env_min``/``env_max`` attributes are used to set the upper/lower bounds of the environment,
-used when an octree is made for a sonar sensor.
+The ``env_min``/``env_max`` attributes are used to set the upper/lower bounds 
+of the environment, used when an octree is made for a sonar sensor.
 
 materials.csv
---------------
+=============
 
-This file contains acoustic properties of the materials found in the environments, used for
-computation of the sonar images. Below is the format the config file is expected to follow:
+.. warning::
+
+   In HoloOcean 2.0, material dependancy is temporarily unavailable.
+
+This file contains acoustic properties of the materials found in the environments, 
+used for computation of the sonar images. Below is the format the config file is 
+expected to follow:
 
 .. code-block::
 
@@ -83,11 +95,15 @@ computation of the sonar images. Below is the format the config file is expected
    M_Landscape, 3200, 4500
    M_URockA, 3000, 5000
 
-At the start of each simulation, this file is read so that it can be edited without needing to recompile the entire unreal binary.
-The first line is ignored, and is just used for reference when editing the file. The first column
-is the name of the material in UE5, the second is the material density in kg/m^3, and the third
-is the speed of sound in m/s. These are used to compute the acoustic intensity of the various materials
-found in the environment.
+At the start of each simulation, this file is read so that it can be edited without 
+needing to recompile the entire Unreal Engine binary. The first line is ignored, and 
+is just used for reference when editing the file. The first column is the name of the 
+material in UE5, the second is the material density in kg/m^3, and the third is the 
+speed of sound in m/s. These are used to compute the acoustic intensity of the various 
+materials found in the environment.
 
-Note if a material is found in the environment that isn't found in the ``.csv`` file, it will be appended
-to the csv file with a default density and speed of sound of 10,000 (which results in full acoustic reflection).
+.. note::
+   
+   If a material is found in the environment that isn't found in the ``.csv`` file, it 
+   will be appended to the csv file with a default density and speed of sound of 10,000 
+   (which results in full acoustic reflection).

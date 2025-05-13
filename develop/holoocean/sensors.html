@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sensors — HoloOcean 1.0.0 documentation</title>
+<title>Sensors — HoloOcean 2.0.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -46,27 +46,28 @@
 <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agents.html">Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Action Spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ros2.html">ROS2 Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
@@ -148,22 +149,22 @@
 <td><p>Captures agent's view.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBDCamera" title="holoocean.sensors.RGBDCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RGBDCamera</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
-<td><p><strong>*WIP: need to fully test this sensor*</strong></p></td>
+<td><p><strong>*WIP: need to fully test this sensor*</strong> Captures agent's view.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor" title="holoocean.sensors.RangeFinderSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeFinderSensor</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Returns distances to nearest collisions in the directions specified by the parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastLidar" title="holoocean.sensors.RaycastLidar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastLidar</span></code></a>(client, agent_name, agent_type)</p></td>
-<td><p><strong>*WIP: need to fully test this senssor*</strong> Runs Agent's Lidar</p></td>
+<td><p><strong>*WIP: need to fully test this sensor*</strong> Runs Agent's Lidar</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar" title="holoocean.sensors.RaycastSemanticLidar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastSemanticLidar</span></code></a>(client, agent_name, ...)</p></td>
-<td><p><strong>*WIP: need to fully test this senssor*</strong> Runs Agent's Lidar</p></td>
+<td><p><strong>*WIP: need to fully test this sensor*</strong> Runs Agent's Lidar</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RotationSensor" title="holoocean.sensors.RotationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotationSensor</span></code></a>(client[, agent_name, ...])</p></td>
 <td><p>Gets the rotation of the agent in the world, with rotation XYZ about the fixed frame, in degrees.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SemanticSegmentationCamera" title="holoocean.sensors.SemanticSegmentationCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticSegmentationCamera</span></code></a>(client, ...[, ...])</p></td>
-<td><p><strong>*WIP: need to fully test this senssor*</strong> Captures agent's view.</p></td>
+<td><p><strong>*WIP: need to fully test this sensor*</strong> Captures agent's view.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a>(agent_name, agent_type, ...)</p></td>
 <td><p>A class for new sensors and their parameters, to be used for adding new sensors.</p></td>
@@ -207,7 +208,7 @@ elevation, r range, and d depth in water,</p>
 </ul>
 <p>These messages types are based on the <a class="reference external" href="https://www.blueprintsubsea.com/pages/product.php?PN=BP00795">Blueprint Subsea SeaTrac X150</a></p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor. If not given, they are numbered sequentially.</p></li>
@@ -276,7 +277,7 @@ following options:</p>
 <p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
 The resolution can be increased, but will significantly impact performance.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code> (int): Width of captured image</p></li>
@@ -298,11 +299,11 @@ options:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">FilmShoulder</span></code> (float): Overrides the base Film Shoulder (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FilmBlackClip</span></code> (float): Overrides the baseFilm Black Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FilmWhiteClip</span></code> (float): Overrides the baseFile White Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>ExposureMinBrightness (float): Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
-<li><p><a href="#id3"><span class="problematic" id="id4">``</span></a>ExposureMaxBrightness (float):  Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMinBrightness</span></code> (float): Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMaxBrightness</span></code> (float):  Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedDown</span></code> (float): Overrides base auto exposure speed down (default: disabled, min: 0.02, max: 20.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedUp</span></code> (float): Overrides base auto exposure speed up (default: disabled, min: 0.02, max: 20.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurIntensity</span></code> (float): /** Strength of motion blur, 0:off <a href="#id5"><span class="problematic" id="id6">*</span></a>/ (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurIntensity</span></code> (float): <strong>Strength of motion blur, 0:off</strong> (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMaxDistortion</span></code> (float): max distortion caused by motion blur, in percent of the screen width, 0:off  (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMinObjectScreenSize</span></code> (float): The minimum projected screen radius for a primitive to be drawn in the velocity pass, percentage of screen width. smaller numbers cause more draw calls, default: 4% (default: 2, min: 0.0, max: 100.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LensFlareIntensity</span></code> (float): Brightness scale of the image cased lens flares (linear) (default: disabled, min: 0.0, max: 16.0)</p></li>
@@ -381,7 +382,7 @@ options:</p>
 </div>
 <p>With the range potentially not returning if <code class="docutils literal notranslate"><span class="pre">ReturnRange</span></code> is set to false.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Angle of each acoustic beam off z-axis pointing down. Only used for noise/visualization. Defaults to 22.5 degrees =&gt; 45 field of view.</p></li>
@@ -438,7 +439,7 @@ following options:</p>
 </pre></div>
 </div>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std to be applied, a scalar. Defaults to 0 =&gt; no noise.</p></li>
@@ -492,7 +493,7 @@ following options:</p>
 doesn’t operate in its socket, but rather in the COM. This is mostly for convenience since 99% of the
 time when doing custom dynamics the information is wanted at the COM.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">UseCOM</span></code>: Whether to return data relative to the COM or the specified socket. Defaults to true.</p></li>
@@ -542,7 +543,7 @@ following options:</p>
 <dd><p>Gets the location of the agent in the world if the agent is close enough to the surface.</p>
 <p>Returns coordinates in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std of measurement. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
@@ -672,7 +673,8 @@ attached to a sensor</p></li>
 <span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.rotate" title="Permalink to this definition"></a></dt>
 <dd><p>Rotate the sensor. It will be applied in approximately three ticks.
 <a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> or
-<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code></a>.)</p>
+<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code></a>.)
+Multiple rotations do not accumulate.</p>
 <p>This will not persist after a call to reset(). If you want a persistent rotation for a sensor,
 specify it in your scenario configuration.</p>
 <dl class="field-list simple">
@@ -708,7 +710,7 @@ specify it in your scenario configuration.</p>
 </div>
 <p>where the accleration components are in m/s and the angular velocity is in rad/s.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AccelSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AccelCov</span></code>: Covariance/Std for acceleration component. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
@@ -758,9 +760,10 @@ following options:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.ImagingSonar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ImagingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ImagingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ImagingSonar" title="Permalink to this definition"></a></dt>
-<dd><p>Simulates an imaging sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
+<dd><p>Simulates an imaging sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Octree Configuration</span></a> for more on
 how to configure the octree that is used.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
 the options in the following sections.</p>
 <p><strong>Basic Configuration</strong></p>
 <ul class="simple">
@@ -837,7 +840,7 @@ the options in the following sections.</p>
 <dd><p>Gets the location of the agent in the world.</p>
 <p>Returns coordinates in <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
@@ -885,7 +888,7 @@ following options:</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">MagnetometerSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MagnetometerSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.MagnetometerSensor" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the global x-axis (or given vector) in the local frame.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Sigma</span></code>/<code class="docutils literal notranslate"><span class="pre">Cov</span></code>: Covariance/Std of measurement. Can be scalar, 3-vector or 3x3-matrix. Set one or the other. Defaults to 0 =&gt; no noise.</p></li>
@@ -934,7 +937,7 @@ following options:</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">OpticalModemSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OpticalModemSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.OpticalModemSensor" title="Permalink to this definition"></a></dt>
 <dd><p>Handles communication between agents using an optical modem. Can send message to other modem from the <code class="xref py py-meth docutils literal notranslate"><span class="pre">send_optical_message()</span></code> command.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor. If not given, they are numbered sequentially.</p></li>
@@ -1103,8 +1106,9 @@ it will be NED, and in COM socket it will NWU. Our provided configurations have 
 <dt class="sig sig-object py" id="holoocean.sensors.ProfilingSonar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">ProfilingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ProfilingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.ProfilingSonar" title="Permalink to this definition"></a></dt>
 <dd><p>Simulates a multibeam profiling sonar. This is largely based off of the imaging sonar (<a class="reference internal" href="#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a>), just with
-different defaults. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on how to configure the octree that is used.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+different defaults. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Octree Configuration</span></a> for more on how to configure the octree that is used.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
 the options in the following sections.</p>
 <p><strong>Basic Configuration</strong></p>
 <ul class="simple">
@@ -1123,6 +1127,7 @@ the options in the following sections.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ClusterSize</span></code>: Size of cluster when multipath is enabled. Defaults to 5.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ScaleNoise</span></code>: Whether to scale the returned intensities or not. Defaults to False.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">AzimuthStreaks</span></code>: What sort of azimuth artifacts to introduce. -1 is a removal artifact, 0 is no artifact, and 1 is increased gain artifact. Defaults to 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeSigma</span></code>: Additive noise std from an exponential distribution that will be added to the range measurements, and the intensities will be scaled by the pdf. Needs to be a float. Defaults to 0, or off.</p></li>
 </ul>
 <p><strong>Advanced Configuration</strong></p>
 <ul class="simple">
@@ -1144,7 +1149,7 @@ the options in the following sections.</p>
 <p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
 The resolution can be increased, but will significantly impact performance.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code>: Width of captured image</p></li>
@@ -1211,18 +1216,15 @@ options:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RGBDCamera">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RGBDCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RGBDCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBDCamera" title="Permalink to this definition"></a></dt>
-<dd><dl>
-<dt><strong>*WIP: need to fully test this sensor*</strong></dt><dd><p>Captures agent’s view.</p>
+<dd><p><strong>*WIP: need to fully test this sensor*</strong>
+Captures agent’s view.</p>
 <p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
 The resolution can be increased, but will significantly impact performance.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
-</dd>
-</dl>
 <ul class="simple">
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code> (int): Width of captured image</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code> (int): Width of captured image</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CaptureHeight</span></code> (int): Height of captured image</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FovAngle</span></code> (float): FOV of the Camera (default: 90, min: 0.001, max: 360.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TargetGamma</span></code> (float): Target Gamma of the Camera (default: 1.0)</p></li>
@@ -1241,11 +1243,11 @@ options:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">FilmShoulder</span></code> (float): Overrides the base Film Shoulder (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FilmBlackClip</span></code> (float): Overrides the baseFilm Black Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">FilmWhiteClip</span></code> (float): Overrides the baseFile White Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><a href="#id7"><span class="problematic" id="id8">``</span></a>ExposureMinBrightness (float): Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
-<li><p><a href="#id9"><span class="problematic" id="id10">``</span></a>ExposureMaxBrightness (float):  Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMinBrightness</span></code> (float): Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMaxBrightness</span></code> (float):  Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedDown</span></code> (float): Overrides base auto exposure speed down (default: disabled, min: 0.02, max: 20.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedUp</span></code> (float): Overrides base auto exposure speed up (default: disabled, min: 0.02, max: 20.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurIntensity</span></code> (float): /** Strength of motion blur, 0:off <a href="#id11"><span class="problematic" id="id12">*</span></a>/ (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurIntensity</span></code> (float): <strong>Strength of motion blur, 0:off</strong> (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMaxDistortion</span></code> (float): max distortion caused by motion blur, in percent of the screen width, 0:off  (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMinObjectScreenSize</span></code> (float): The minimum projected screen radius for a primitive to be drawn in the velocity pass, percentage of screen width. smaller numbers cause more draw calls, default: 4% (default: 2, min: 0.0, max: 100.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LensFlareIntensity</span></code> (float): Brightness scale of the image cased lens flares (linear) (default: disabled, min: 0.0, max: 16.0)</p></li>
@@ -1255,10 +1257,6 @@ options:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ChromAberrIntensity</span></code> (float): in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners. (default: disabled, min: 0.0, max: 5.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ChromAberrOffset</span></code> (float): A normalized distance to the center of the framebuffer where the effect takes place. (default: disabled, min: 0.0, max: 1.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MaxViewDistanceOverride</span></code> (float): if &gt; 0, sets a maximum render distance override.  Can be used to cull distant objects from a reflection if the reflecting plane is in an enclosed area like a hallway or room (default: disabled, min: 100, max: 10000)</p></li>
-</ul>
-</dd>
-</dl>
-</li>
 </ul>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -1338,15 +1336,9 @@ options:</p>
 <dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RangeFinderSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RangeFinderSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor" title="Permalink to this definition"></a></dt>
 <dd><p>Returns distances to nearest collisions in the directions specified by
-the parameters. For example, if an agent had two range sensors at different
-angles with 24 lasers each, the LaserDebug traces would look something like
-this:</p>
-<img alt="../_images/UAVRangeFinder.PNG" src="../_images/UAVRangeFinder.PNG"/>
-<p>That is, for 1 laser, you’d have 1 laser facing forward, for 3, you’d have one forward,
-with the other 2 distributed evenly along the circle, at 120 degree intervals, and for
-24, you’d have a laser spaced every 15 degrees.</p>
+the parameters.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">LaserMaxDistance</span></code>: Max Distance in meters of RangeFinder. (default 10)</p></li>
@@ -1395,10 +1387,10 @@ following options:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RaycastLidar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastLidar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastLidar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastLidar" title="Permalink to this definition"></a></dt>
-<dd><p><strong>*WIP: need to fully test this senssor*</strong>
+<dd><p><strong>*WIP: need to fully test this sensor*</strong>
 Runs Agent’s Lidar</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Channels</span></code> (int): Number of lasers (default: 32)</p></li>
@@ -1474,10 +1466,10 @@ options:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RaycastSemanticLidar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastSemanticLidar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastSemanticLidar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastSemanticLidar" title="Permalink to this definition"></a></dt>
-<dd><p><strong>*WIP: need to fully test this senssor*</strong>
+<dd><p><strong>*WIP: need to fully test this sensor*</strong>
 Runs Agent’s Lidar</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Channels</span></code> (int): Number of lasers (default: 32)</p></li>
@@ -1596,12 +1588,12 @@ options:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SemanticSegmentationCamera">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SemanticSegmentationCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SemanticSegmentationCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SemanticSegmentationCamera" title="Permalink to this definition"></a></dt>
-<dd><p><strong>*WIP: need to fully test this senssor*</strong>
+<dd><p><strong>*WIP: need to fully test this sensor*</strong>
 Captures agent’s view.</p>
 <p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
 The resolution can be increased, but will significantly impact performance.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code>: Width of captured image</p></li>
@@ -1737,9 +1729,10 @@ relative to agent (see <a class="reference internal" href="../usage/units-and-co
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SidescanSonar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SidescanSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SidescanSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SidescanSonar" title="Permalink to this definition"></a></dt>
-<dd><p>Simulates a sidescan sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
+<dd><p>Simulates a sidescan sonar. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Octree Configuration</span></a> for more on
 how to configure the octree that is used.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
 the options in the following sections.</p>
 <p><strong>Basic Configuration</strong></p>
 <ul class="simple">
@@ -1808,13 +1801,11 @@ the options in the following sections.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SinglebeamSonar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SinglebeamSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SinglebeamSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SinglebeamSonar" title="Permalink to this definition"></a></dt>
-<dd><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Configuring Octree</span></a> for more on
+<dd><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam. See <a class="reference internal" href="../usage/scenarios.html#configure-octree"><span class="std std-ref">Octree Configuration</span></a> for more on
 how to configure the octree that is used.</p>
 <p>Returns a 1D numpy array of the average intensities held in each range bin of the sensor. The length of the array is specified by the number of range bins chosen for the sensor.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
-options:</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
 the options in the following sections.</p>
 <p><strong>Basic Configuration</strong></p>
 <ul class="simple">
@@ -1931,9 +1922,9 @@ and it must capture what the viewport is capturing. If performance is
 critical, consider this camera instead of the RGBCamera.</p>
 <p>It may be useful
 to position the camera with
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">teleport_camera()</span></code>.</p>
+<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.move_viewport" title="holoocean.environments.HoloOceanEnvironment.move_viewport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">move_viewport()</span></code></a>.</p>
 <p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../usage/scenarios.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code>: Width of captured image</p></li>

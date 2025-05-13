@@ -1,6 +1,6 @@
+=========
 OpenWater
-=================
-
+=========
 .. image:: open_far.png
 
 
@@ -16,3 +16,12 @@ and plant life that can be inspected.
 
 
 .. image:: open_close.png
+
+HoloOcean coordinates differ from coordinates listed within the Unreal Engine editor. The following images include coordinates 
+from HoloOcean for the Open Water level.
+
+.. image:: open_coordinates.png
+.. image:: open_depth.png
+.. image:: open_landmark1.png
+.. image:: open_landmark2.png
+.. image:: open_landmark3.png

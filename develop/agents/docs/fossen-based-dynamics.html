@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fossen-Based Dynamics — HoloOcean 2.0.0 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../agents/hovering-auv-agent.html" rel="next" title="HoveringAUV"/>
+<link href="control-schemes.html" rel="prev" title="Control Schemes"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">Develop</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../agents.html">HoloOcean Agents</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../agents.html#using-agents">Using Agents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="agent-config.html">Agent Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="control-schemes.html">Control Schemes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Fossen-Based Dynamics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fossen-vehicle-classes">Fossen Vehicle Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fossen-dynamics-example">Fossen Dynamics Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../agents.html#agent-pages">HoloOcean Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../agents.html">HoloOcean Agents</a></li>
+<li class="breadcrumb-item active">Fossen-Based Dynamics</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/agents/docs/fossen-based-dynamics.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="fossen-based-dynamics">
+<span id="fossen-dynamics"></span><h1>Fossen-Based Dynamics<a class="headerlink" href="#fossen-based-dynamics" title="Permalink to this heading"></a></h1>
+<p>Dynamics for underwater and surface vehicles can be modeled using equations of motion derived in
+Thor Fossen’s <em>Handbook of Marine Craft Hydrodynamics and Motion Control</em>. Implementations of these
+dynamics are conveniently provided by Fossen at his
+<a class="reference external" href="https://github.com/cybergalactic/PythonVehicleSimulator">GitHub repository</a>. We have ported some
+of Fossen’s implementations into HoloOcean to enable accurate vehicle dynamics simulations.</p>
+<p>Using Fossen-based dynamics in HoloOcean is an extension of the Custom Dynamics control scheme. It
+requires defining two objects in python when creating a simulation:</p>
+<ol class="arabic simple">
+<li><p>A vehicle controller of one of the classes described below. This implements the Fossen dynamics
+for that vehicle.</p></li>
+<li><p>A dynamics manager of the class <cite>FossenDynamics</cite>. This handles the connection between the
+HoloOcean agent and the dynamics controller by associating the dynamics with a specific agent.
+It also handles coordinate frame changes from NED to NWU, as HoloOcean does not currently have
+a defined North or West direction world coordinate frame (see <a class="reference internal" href="../../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>).</p></li>
+</ol>
+<p>These classes are implemented in <cite>client/src/vehicle_dynamics</cite>. The dynamics manager is located in
+<cite>client/src/dynamics.py</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fossen dynamics does not currently support multiple agents. A multi-agent implementation is
+planned for a future release.</p>
+</div>
+<section id="fossen-vehicle-classes">
+<h2>Fossen Vehicle Classes<a class="headerlink" href="#fossen-vehicle-classes" title="Permalink to this heading"></a></h2>
+<p>Currently, we have implemented the dynamics models for one vehicle class and several child classes:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Torpedo Vehicle Parent class (<a class="reference internal" href="../../holoocean/dynamics.html#holoocean.fossen_dynamics.torpedo.TAUV" title="holoocean.fossen_dynamics.torpedo.TAUV"><code class="xref py py-class docutils literal notranslate"><span class="pre">TAUV</span></code></a>)</dt><dd><ul>
+<li><p>Three Independent Fins - Torpedo-shaped vehicle (<a class="reference internal" href="../../holoocean/dynamics.html#holoocean.fossen_dynamics.torpedo.threeFinInd" title="holoocean.fossen_dynamics.torpedo.threeFinInd"><code class="xref py py-class docutils literal notranslate"><span class="pre">threeFinInd</span></code></a>)</p></li>
+<li><p>Four Dependent Fins - Torpedo-shaped vehicle (<a class="reference internal" href="../../holoocean/dynamics.html#holoocean.fossen_dynamics.torpedo.fourFinDep" title="holoocean.fossen_dynamics.torpedo.fourFinDep"><code class="xref py py-class docutils literal notranslate"><span class="pre">fourFinDep</span></code></a>)</p></li>
+<li><p>Four Independent Fins - Torpedo-shaped vehicle (<a class="reference internal" href="../../holoocean/dynamics.html#holoocean.fossen_dynamics.torpedo.fourFinInd" title="holoocean.fossen_dynamics.torpedo.fourFinInd"><code class="xref py py-class docutils literal notranslate"><span class="pre">fourFinInd</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Default Fossen vehicle parameters are currently tuned for the REMUS100 vehicle provided by
+Thor Fossen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Unreal Engine graphics asset is the same across all three classes of torpedo dynamics.
+The number of fins shown on the vehicle will not change in Unreal Engine when changing between
+child classes.</p>
+<p>Implementing Fossen dynamics does not change the asset, so the fins will not visibly move when
+the simulation is running.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mass and other default vehicle parameters set in the HoloOcean engine are ignored when using
+the “Custom Dynamics” control scheme. The Fossen models account for these separately.</p>
+</div>
+<section id="adding-custom-fossen-dynamics">
+<h3>Adding Custom Fossen Dynamics<a class="headerlink" href="#adding-custom-fossen-dynamics" title="Permalink to this heading"></a></h3>
+<p>Users can add their own custom Fossen dynamics models for different types of vehicles by creating a
+new class.</p>
+<p>Dynamics model classes must have the following methods and attributes:</p>
+<ul class="simple">
+<li><p><cite>__init__</cite>: This method should initialize the vehicle parameters and set up the dynamics model.</p></li>
+<li><p><cite>dynamics</cite>: This method should implement the dynamics equations for the vehicle. It should take in
+the current state of the vehicle (eta, nu) and the control input, and return the accelerations in
+the NWU frame.</p></li>
+</ul>
+<p>The model can also implement other functions as desired, such as controllers and plotting functions.
+We recommend using a <cite>controlMode</cite> attribute to define the control scheme for the vehicle.</p>
+<p>See the <cite>TAUV</cite> class for an example of how to implement a custom dynamics model.</p>
+</section>
+<section id="importing-models-from-pythonvehiclesimulator">
+<h3>Importing Models from PythonVehicleSimulator<a class="headerlink" href="#importing-models-from-pythonvehiclesimulator" title="Permalink to this heading"></a></h3>
+<p>If a user has developed a dynamics model class using Thor Fossen’s PythonVehicleSimulator and would
+like to use it in HoloOcean, they must make the following changes:</p>
+<ul class="simple">
+<li><p>The <cite>dynamics</cite> method must be changed to only take in the state of the vehicle (eta, nu) and control input vector as inputs and return only NWU accelerations.</p></li>
+<li><p><cite>sampleTime</cite> must be made a class attribute instead of a passed-in parameter.</p></li>
+<li><p><cite>u_actual</cite> must be made a class attribute tracked by the vehicle class instead of a passed-in parameter. The FossenDynamics manager relies on the vehicle class to track its own current actuator positions.</p></li>
+</ul>
+<p>Be sure that all other methods and attributes are implemented as expected by the FossenDynamics
+manager.</p>
+</section>
+</section>
+<section id="fossen-dynamics-example">
+<h2>Fossen Dynamics Example<a class="headerlink" href="#fossen-dynamics-example" title="Permalink to this heading"></a></h2>
+<p>In this section we will step through the key elements of our Fossen dynamics implementation and give
+an example of using Fossen dynamics in HoloOcean. The full code can be found in <cite>client/example.py</cite>.</p>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h3>
+<p>Setting up a HoloOcean simulation that uses Fossen dynamics begins with the scenario configuration.
+The scenario configuration is similar to other HoloOcean examples, but with some key differences:</p>
+<ol class="arabic simple">
+<li><p>When configuring the main agent, you must include the Dynamics Sensor in the list of sensors.
+The configuration block should include <cite>UseRPY: False</cite> (default is True; this forces the
+dynamics to use quaternions instead of Euler angles) and <cite>UseCOM: True</cite> (default is True).</p></li>
+<li><p>The extra parameters <cite>dynamics</cite>, <cite>actuator</cite>, and <cite>autopilot`</cite> must be added to the agent
+configuration. Each of these is a dictionary that defines further vehicle parameters.
+See <code class="xref py py-func docutils literal notranslate"><span class="pre">holoocean.fossen_dynamics.torpedo.configure_from_scenario()</span></code> for definitions of each
+dynamics parameter.</p></li>
+</ol>
+<p>Below is an example scenario configuration that fully defines all the parameters for the Fossen
+dynamics. A full description of each parameter can be found in the API documentation for the
+Fossen dynamics classes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">"name"</span><span class="p">:</span> <span class="s2">"torpedo_dynamics"</span><span class="p">,</span>
+<span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Oceans"</span><span class="p">,</span>
+<span class="s2">"world"</span><span class="p">:</span> <span class="s2">"SimpleUnderwater"</span><span class="p">,</span>
+<span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+<span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="n">ticks_per_sec</span><span class="p">,</span>
+<span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+        <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+        <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"TorpedoAUV"</span><span class="p">,</span>
+        <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"DynamicsSensor"</span><span class="p">,</span>
+                <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"UseCOM"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s2">"UseRPY"</span><span class="p">:</span> <span class="kc">False</span>  <span class="c1"># Use quaternion for dynamics</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+        <span class="p">],</span>
+        <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># Control scheme 1 is how custom dynamics are applied to TAUV</span>
+        <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span>  <span class="c1"># Represented in NWU coordinate system</span>
+        <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="c1"># Roll, pitch, yaw in Euler angle order ZYX and in degrees NWU coordinate system</span>
+        <span class="s2">"dynamics"</span><span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">"sampleTime"</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span>
+                <span class="s2">"rho"</span><span class="p">:</span> <span class="mi">1026</span><span class="p">,</span>
+                <span class="s2">"mass"</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+                <span class="s2">"length"</span><span class="p">:</span> <span class="mf">1.6</span><span class="p">,</span>
+                <span class="s2">"diam"</span><span class="p">:</span> <span class="mf">0.19</span><span class="p">,</span>
+                <span class="s2">"r_bg"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">],</span>
+                <span class="s2">"r_bb"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="s2">"r44"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+                <span class="s2">"Cd"</span><span class="p">:</span> <span class="mf">0.42</span><span class="p">,</span>
+                <span class="s2">"T_surge"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                <span class="s2">"T_sway"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                <span class="s2">"zeta_roll"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+                <span class="s2">"zeta_pitch"</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+                <span class="s2">"T_yaw"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">"K_nomoto"</span><span class="p">:</span> <span class="mf">0.25</span>
+            <span class="p">},</span>
+        <span class="s2">"actuator"</span><span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s2">"fin_area"</span><span class="p">:</span> <span class="mf">0.00665</span><span class="p">,</span>
+                <span class="s2">"deltaMax_fin_deg"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+                <span class="s2">"nMax"</span><span class="p">:</span> <span class="mi">1525</span><span class="p">,</span>
+                <span class="s2">"T_delta"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                <span class="s2">"T_n"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                <span class="s2">"CL_delta_r"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s2">"CL_delta_s"</span><span class="p">:</span> <span class="mf">0.7</span>
+            <span class="p">},</span>
+        <span class="s2">"autopilot"</span><span class="p">:</span>
+            <span class="p">{</span>
+                <span class="s1">'depth'</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">'wn_d_z'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+                    <span class="s1">'Kp_z'</span><span class="p">:</span> <span class="mf">0.08</span><span class="p">,</span>
+                    <span class="s1">'T_z'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+                    <span class="s1">'Kp_theta'</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+                    <span class="s1">'Kd_theta'</span><span class="p">:</span> <span class="mf">2.3</span><span class="p">,</span>
+                    <span class="s1">'Ki_theta'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+                    <span class="s1">'K_w'</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="s1">'heading'</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">'wn_d'</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+                    <span class="s1">'zeta_d'</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+                    <span class="s1">'r_max'</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+                    <span class="s1">'lam'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="s1">'phi_b'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="s1">'K_d'</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="s1">'K_sigma'</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="simulation-setup">
+<h3>Simulation Setup<a class="headerlink" href="#simulation-setup" title="Permalink to this heading"></a></h3>
+<p>The setup for the simulation is similar to other HoloOcean <a class="reference internal" href="../../examples/examples.html#examples"><span class="std std-ref">Examples</span></a>.</p>
+<p>Simulation setup proceeds first by setting up an environment. We pass the vehicle parameters defined
+in the scenario configuration to a Fossen vehicle object, which specifies a target HoloOcean agent
+(e.g., <cite>‘auv0’</cite>). Next we create a dynamics manager, passing the vehicle and simulation time period
+(1/ticks_per_sec), to attach the parameters to the agent. Finally we initialize a numpy array with a
+length of 6 for accelerations in x, y, z (global frame) and angular accelerations around the x, y,
+and z axes (global frame).</p>
+<p>In this example we select the <cite>fourFinDep</cite> vehicle, which has 3 control inputs (Rudder Fins, Stern
+Fins, Thruster).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">holoocean.fossen_dynamics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">numSteps</span> <span class="o">=</span> <span class="mi">600</span>   <span class="c1"># The total simulation time can be calculated by (numSteps/ticks_per_sec).</span>
+<span class="n">period</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">ticks_per_sec</span>
+
+<span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span> <span class="c1"># See above for scenario configuration</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">scenario</span><span class="p">)</span>
+
+<span class="n">fossen_vehicle</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">torpedo</span><span class="o">.</span><span class="n">fourFinDep</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s1">'auv0'</span><span class="p">)</span>
+<span class="n">fossen_manager</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">FossenDynamics</span><span class="p">(</span><span class="n">fossen_vehicle</span><span class="p">)</span>
+<span class="n">accel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>  <span class="c1"># Initialize HoloOcean parameter input</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are running the simulation live with the Unreal Editor in Standalone mode, be sure to
+change the additional launch parameters as described in <a class="reference internal" href="../../develop/start.html#develop-start"><span class="std std-ref">Getting Started</span></a>. Add the launch
+parameter <cite>-TicksPerSec</cite> to match what is in the Python script for consistent timing.</p>
+</div>
+</section>
+<section id="manual-control-example">
+<h3>Manual Control Example<a class="headerlink" href="#manual-control-example" title="Permalink to this heading"></a></h3>
+<p>To use the manual control method, set the vehicle object to “manualControl” mode. The fin angles can
+be passed directly to the vehicle dynamics, and an acceleration array will be returned to the
+HoloOcean agent given the state of the agent in the HoloOcean world.</p>
+<p>The length of the <cite>u_control</cite> array is defined in the dynamic model class. It represents the number
+of command inputs.</p>
+<ul class="simple">
+<li><p>Fin angles should be given in radians. The example below shows how to convert fin angles from
+degrees to radians using numpy.</p></li>
+<li><p>A positive fin deflection of a rudder fin will result in a yaw moment to the starboard side.</p></li>
+<li><p>A positive fin deflection of a stern/elevator fin will result in a pitch moment to pitch the
+vehicle up.</p></li>
+</ul>
+<p>A custom controller can be used with this manual control method to input specific fin commands.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fossen_vehicle</span><span class="o">.</span><span class="n">set_control_mode</span><span class="p">(</span><span class="s1">'manualControl'</span><span class="p">)</span>
+<span class="n">fins_degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span>  <span class="c1"># Rudder and Stern Fin Deflection (degrees)</span>
+<span class="n">fin_radians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">fins_degrees</span><span class="p">)</span>
+<span class="n">thruster_rpm</span> <span class="o">=</span> <span class="mi">800</span> <span class="c1"># not a percent: check the vehicle dynamics for the max RPM</span>
+<span class="n">u_control</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_radians</span><span class="p">,</span> <span class="n">thruster_rpm</span><span class="p">)</span>  <span class="c1"># [RudderAngle, SternAngle, Thruster]</span>
+</pre></div>
+</div>
+<p>To tick the environment, call the <cite>step</cite> function and pass it a list of accelerations. Next, send a
+command to the control surfaces with the <cite>set_u_control_rad</cite> function on the FossenDynamics
+object. It is not required to set the <cite>u_control</cite> every tick. If you want to change the control
+surfaces every tick, set the control command before updating the dynamics.</p>
+<p>The <cite>FossenDynamics.update</cite> function takes in the state returned from HoloOcean and parses the data
+from the Dynamics Sensor. Given the state of the vehicle and control surface inputs, it calculates
+an output of accelerations in the HoloOcean frame (NWU).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numSteps</span><span class="p">):</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accel</span><span class="p">)</span>
+    <span class="n">torpedo_dynamics</span><span class="o">.</span><span class="n">set_u_control_rad</span><span class="p">(</span><span class="n">u_control</span><span class="p">)</span>  <span class="c1"># If desired, you can change the control command here</span>
+    <span class="n">accel</span> <span class="o">=</span> <span class="n">torpedo_dynamics</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>  <span class="c1"># Calculate accelerations to be applied to HoloOcean agent</span>
+
+    <span class="c1"># For Plotting the state of the vehicle</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'DynamicsSensor'</span><span class="p">][</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>  <span class="c1"># [x, y, z]</span>
+    <span class="n">pos_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+    <span class="n">time_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'t'</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="depth-and-heading-control-example">
+<h3>Depth and Heading Control Example<a class="headerlink" href="#depth-and-heading-control-example" title="Permalink to this heading"></a></h3>
+<p>A common control strategy for underwater vehicles is to control depth and heading separately. This
+can be done by setting the control mode to <cite>depthHeadingAutopilot</cite> and setting the goal depth,
+heading, and thruster RPM.</p>
+<p>The depth goal is defined in meters. A positive depth corresponds to a negative z location, with
+depth increasing the further the vehicle descends.</p>
+<p>The heading goal is given in the global frame. It ranges from -180 to 180 degrees, with 0 degrees
+being north (along the positive x-axis) and 90 degress being East (along the negative y axis). This
+makes <cite>heading = -yaw</cite> for yaw values in NWU coordinate systems.</p>
+<p>The thruster goal is given directly as RPM, not as a percentage of the maximum RPM. Be sure to
+check the max RPM in the Fossen vehicle configuration to ensur ethe command is below the maximum.</p>
+<p>Surge control of the vehicle is also supported when specified. This is not enabled by default.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Every time <cite>set_control_mode</cite> is called, the controller integral values and Low Pass filter
+is reset. Calling <cite>set_control_mode</cite> should only be done when switching control modes and should
+not be placed in the for loop.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">depth_goal</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1"># meters</span>
+<span class="n">heading_goal</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># degrees</span>
+<span class="n">thruster_goal</span> <span class="o">=</span> <span class="mi">1525</span> <span class="c1"># RPM</span>
+
+<span class="n">vehicle</span><span class="o">.</span><span class="n">set_control_mode</span><span class="p">(</span><span class="s1">'depthHeadingAutopilot'</span><span class="p">)</span> <span class="c1"># In this mode, PID controller calculates control commands (u_control)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">set_goal</span><span class="p">(</span><span class="n">depth_goal</span><span class="p">,</span> <span class="n">heading_goal</span><span class="p">,</span> <span class="n">thruster_goal</span><span class="p">)</span> <span class="c1"># Changes depth (positive), heading, thruster RPM goals for controller</span>
+
+<span class="c1"># Run simulation</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numSteps</span><span class="p">):</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accel</span><span class="p">)</span>
+    <span class="n">accel</span> <span class="o">=</span> <span class="n">torpedo_dynamics</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+    <span class="c1"># For plotting and arrows</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'DynamicsSensor'</span><span class="p">][</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>  <span class="c1"># [x, y, z]</span>
+    <span class="n">x_end</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">heading</span><span class="p">))</span>
+    <span class="n">y_end</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">heading</span><span class="p">))</span>
+    <span class="n">pos_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+    <span class="n">time_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'t'</span><span class="p">])</span>
+
+    <span class="c1"># Change color if within 2 meters</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">depth</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mf">2.0</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">env</span><span class="o">.</span><span class="n">draw_arrow</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="p">[</span><span class="n">x_end</span><span class="p">,</span> <span class="n">y_end</span><span class="p">,</span> <span class="o">-</span><span class="n">depth</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">lifetime</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-vehicle-state">
+<h3>Plotting Vehicle State<a class="headerlink" href="#plotting-vehicle-state" title="Permalink to this heading"></a></h3>
+<p>The following code can be used to plot the vehicle’s state over time. This code is placed after the
+simulation loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="c1"># Convert position list to a numpy array for easier slicing</span>
+    <span class="n">pos_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pos_list</span><span class="p">)</span>
+
+    <span class="c1"># Extract x, y, and z positions</span>
+    <span class="n">x_positions</span> <span class="o">=</span> <span class="n">pos_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># North Position</span>
+    <span class="n">y_positions</span> <span class="o">=</span> <span class="n">pos_array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># West Position</span>
+    <span class="n">east_positions</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_positions</span><span class="p">]</span> <span class="c1"># Convert from west to east</span>
+    <span class="n">z_positions</span> <span class="o">=</span> <span class="n">pos_array</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># Z positions (Z up)</span>
+
+    <span class="c1"># Plot x and y positions</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">east_positions</span><span class="p">,</span><span class="n">x_positions</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'X and Y Positions'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'East (meters)'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'North (meters)'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Plot z positions over time</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_list</span><span class="p">,</span> <span class="n">z_positions</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Z Position over Time'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time Step'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Z Position'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Show the plots</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="control-schemes.html" rel="prev" title="Control Schemes"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="../agents/hovering-auv-agent.html" rel="next" title="HoveringAUV">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

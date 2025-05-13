@@ -1,10 +1,11 @@
+==================
 PierHarbor-Torpedo
-=============================
+==================
 
-This scenario starts with a HoveringAUV near one of the larger docks. Unless otherwise specified,
+This scenario starts with a TorpedoAUV near one of the larger docks. Unless otherwise specified,
 all sensors are named the same as their class name, ie IMUSensor is named "IMUSensor".
 
-- ``auv0``: Main :ref:`HoveringAUV <hovering-auv-agent>` agent
+- ``auv0``: Main :ref:`TorpedoAUV <torpedo-auv-agent>` agent
     - :class:`~holoocean.sensors.IMUSensor` configured with noise, bias, and returns bias.
     - :class:`~holoocean.sensors.GPSSensor` gets measurements with N(1, 0.25) of the surface, actual measurement also has noise.
     - :class:`~holoocean.sensors.DVLSensor` configured with an elevation of 22.5 degrees, noise, and returns 4 range measurements.

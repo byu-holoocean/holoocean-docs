@@ -1,27 +1,54 @@
 .. _`improving-performance`:
 
-================================
-Improving HoloOcean Performance
-================================
+=====================
+Improving Performance
+=====================
 
-HoloOcean is fairly performant by default, but you can also sacrifice
-features to increase your frames per second.
+HoloOcean is fairly performant by default, but you can also sacrifice features to increase your 
+frames per second.
 
-.. contents::
-   :local:
+Frame Rate
+==========
+The frame rate can have a large impact on performance. The frame rate is set in the scenario 
+configuration. See :ref:`configure-framerate` for details on how to set the ``ticks_per_sec`` and 
+``frames_per_sec`` to optimize performance for your specific task. 
 
-RGBCamera
----------
+Sonar Sensors
+=============
 
-By far, the biggest single thing you can do to improve performance is to
-disable the ``RGBCamera``. Rendering the camera every frame causes a
-context switch deep in the rendering code of the engine, which has a 
-significant performance penalty.
+The sonar sensors can be taxing on performance. There's a number of things that can be done to help 
+improve their performance as well.
 
-This chart shows how much performance you can expect to gain or loose 
-adjusting the RGBCamera (left column is frame time in milleseconds). Note
-all these tests were done in the original Holodeck, but the results should be
-the same.
+Lowering Octree Resolution
+--------------------------
+
+The Octree resolution has a large impact on sonar performance. The higher ``octree_min`` is, the less 
+leaves there are to search through, and the faster it'll run. This will have an impact on image 
+quality, especially at close distances. If most objects that are being inspected are a ways away, 
+this parameter can be safely increased quite a bit.
+
+See :ref:`configure-octree` for info on how to do that.
+
+Changing Ticks-Per-Capture
+--------------------------
+
+The sonar sample rate can be reduced to increase the average frames per second.
+See :ref:`sensor-configuration` and the ``Hz`` parameter for more info.
+
+
+Camera Sensors
+==============
+
+If using a ``Camera`` or ``RGBCamera`` sensor, rendering the camera frames each tick will 
+significantly impact performance. Rendering the camera every frame causes a context switch deep in 
+the rendering code of the engine, which has a significant performance penalty. 
+
+This chart shows how much performance you can expect to gain or lose by adjusting or disabling the 
+Camera (left column is frame time in milleseconds). 
+
+.. note::
+    The following tests were performed in the original Holodeck, but the results should be similar 
+    for HoloOcean.
 
 +------------+----------+---------+-----------+---------+----------+---------+
 | Resolution | UrbanCity          | MazeWorld           | AndroidPlayground  |
@@ -41,77 +68,56 @@ the same.
 | 2048       | 410  ms  | 2  fps  | 383   ms  | 3  fps  | 366   ms | 3  fps  |
 +------------+----------+---------+-----------+---------+----------+---------+
 
-Disabling the ``RGBCamera``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Remove the ``RGBCamera`` entry from the scenario configuration file you are
-using. 
+Removing the Camera
+--------------------
+Removing the camera entirely will significantly improve performance. For custom scenarios, simply 
+remove the camera from the scenario configuration file you are using. To modify pre-made scenarios,
+the easiest method is simply to create a new custom scenario based on the one you want to use, and 
+remove the camera from the configuration.
 
 See :ref:`custom-scenarios`.
 
-Lowering the ``RGBCamera`` resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Lowering the Camera Resolution
+------------------------------
 
-Lowering the resolution of the ``RGBCamera`` can also help speed things up.
-Create a :ref:`custom scenario <custom-scenarios>` and in the 
-:ref:`configuration block <configuration-block>` for the ``RGBCamera`` set the
+Lowering the resolution of the ``RGBCamera`` or ``Camera`` can also help speed things up. 
+Create a :ref:`custom scenario <custom-scenarios>`, and in the 
+:ref:`configuration block <configuration-block>` for the ``RGBCamera`` or ``Camera``, set the
 ``CaptureWidth`` and ``CaptureHeight``.
 
-See :class:`~holoocean.sensors.RGBCamera` for more details.
+See :class:`~holoocean.sensors.RGBCamera` and :class:`~holoocean.sensors.Camera` for more details.
 
-Changing ticks per capture
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The camera sample rate can be reduced to increase the average frames per second.
-See :ref:`configure-sensors` and the ``Hz`` parameter for more info.
-
-Sonar Sensors
+Changing Ticks-Per-Capture
 --------------------------
 
-The sonar sensors can also be taxing on performance. There's a number of things that can be
-done to help improve their performance as well.
-
-Lowering Octree Resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The Octree resolution has a large impact on sonar performance. The higher ``octree_min``
-is, the less leaves there are to search through, and the faster it'll run. This will have an
-impact on image quality, especially at close distances. If most objects that are being
-inspected are a ways away, this parameter can be safely increased quite a bit.
-
-See :ref:`configure-octree` for info on how to do that.
-
-Changing ticks per capture
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The sonar sample rate can be reduced to increase the average frames per second.
-See :ref:`configure-sensors` and the ``Hz`` parameter for more info.
+The camera sample rate can be reduced to increase the average frames per second.
+See :ref:`sensor-configuration` and the ``Hz`` parameter for more info.
 
 
 Disable Viewport Rendering
---------------------------
+==========================
 
-Rendering the viewport window can be unnecessary during training. You can 
-disable the viewport with the 
-:meth:`~holoocean.environments.HoloOceanEnvironment.should_render_viewport` 
-method.
+Rendering the viewport window can be unnecessary when running simulations sequentially, 
+such as when using HoloOcean for reinforcement learning. You can disable the viewport with 
+the :meth:`~holoocean.environments.HoloOceanEnvironment.should_render_viewport` method (see 
+:ref:`headless` for details).
 
-At lower ``RGBCamera`` resolutions, you can expect a ~40% frame time reduction.
+At lower camera resolutions, disabling the viewport can improve framerates by up to 40%.
 
 Change Render Quality
----------------------
+=====================
 
 You can adjust HoloOcean to render at a lower (or higher) quality to improve
 performance. See the 
-:meth:`~holoocean.environments.HoloOceanEnvironment.set_render_quality` method
+:meth:`~holoocean.environments.HoloOceanEnvironment.set_render_quality` method.
 
-Below is a comparison of render qualities and the frame time in ms
+Below is a comparison of render qualities and the frame time in ms.
 
-========= =========== =========== ===================
+========= =========== =========== ==================
  Quality   MazeWorld   UrbanCity   AndroidPlayground
-========= =========== =========== ===================
+========= =========== =========== ==================
  ``0``       10.34       12.33       6.63
  ``1``       10.53       15.06       6.84
  ``2``       14.81       19.19       8.66
  ``3``       15.58       21.78       9.2
-========= =========== =========== ===================
+========= =========== =========== ==================

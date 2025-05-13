@@ -1,5 +1,6 @@
+================
 SimpleUnderwater
-=================
+================
 
 .. image:: simple_underwater.png
 
@@ -13,3 +14,8 @@ can be used when you need a lightweight environment and imagery doesn't matter.
    :glob:
 
    SimpleUnderwater-*
+
+HoloOcean coordinates differ from coordinates listed within the Unreal Engine editor. The following image include coordinates 
+from HoloOcean for the Simple Underwater level.
+
+.. image:: simple_coordinates.png

@@ -1,11 +1,11 @@
-Dynamics
-========
+Fossen Dynamics
+===============
 
-.. automodule:: holoocean.dynamics
+.. automodule:: holoocean.fossen_dynamics.dynamics
    :members:
 
 Torpedo Dynamics
 ----------------
 
-.. automodule:: holoocean.vehicle_dynamics.torpedo
+.. automodule:: holoocean.fossen_dynamics.torpedo
    :members:
