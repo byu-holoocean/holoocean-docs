@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Environments — HoloOcean 2.0.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="spaces.html" rel="next" title="Action Spaces"/>
+<link href="agents.html" rel="prev" title="Agents"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.0.0</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">Agents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">Environments</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/holoocean/environments.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="module-holoocean.environments">
+<span id="environments"></span><h1>Environments<a class="headerlink" href="#module-holoocean.environments" title="Permalink to this heading"></a></h1>
+<p>Module containing the environment interface for HoloOcean.
+An environment contains all elements required to communicate with a world binary or HoloOceanCore
+editor.</p>
+<p>It specifies an environment, which contains a number of agents, and the interface for communicating
+with the agents.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment" title="holoocean.environments.HoloOceanEnvironment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code></a>([agent_definitions, ...])</p></td>
+<td><p>Proxy for communicating with a HoloOcean world</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.environments.</span></span><span class="sig-name descname"><span class="pre">HoloOceanEnvironment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_definitions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_world</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gl_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_start_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_viewport</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticks_per_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames_per_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment" title="Permalink to this definition"></a></dt>
+<dd><p>Proxy for communicating with a HoloOcean world</p>
+<p>Instantiate this object using <a class="reference internal" href="index.html#holoocean.holoocean.make" title="holoocean.holoocean.make"><code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.holoocean.make()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_definitions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">AgentDefinition</span></code>) – Which agents are already in the environment</p></li>
+<li><p><strong>binary_path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – The path to the binary to load the world from. Defaults to None.</p></li>
+<li><p><strong>window_size</strong> ((<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>,:obj:<cite>int</cite>)) – height, width of the window to open</p></li>
+<li><p><strong>start_world</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – Whether to load a binary or not. Defaults to True.</p></li>
+<li><p><strong>uuid</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – A unique identifier, used when running multiple instances of holoocean. Defaults to “”.</p></li>
+<li><p><strong>gl_version</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The version of OpenGL to use for Linux. Defaults to 4.</p></li>
+<li><p><strong>verbose</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If engine log output should be printed to stdout</p></li>
+<li><p><strong>pre_start_steps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of ticks to call after initializing the world, allows the level to load and settle.</p></li>
+<li><p><strong>show_viewport</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – If the viewport should be shown (Linux only) Defaults to True.</p></li>
+<li><p><strong>ticks_per_sec</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The number of frame ticks per unreal seconds. This will override whatever is
+in the configuration json. Defaults to 30.</p></li>
+<li><p><strong>frames_per_sec</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – The max number of frames ticks per real seconds. This will override whatever is
+in the configuration json. If True, will match ticks_per_sec. If False, will not be
+turned on. If an integer, will set to that value. Defaults to true.</p></li>
+<li><p><strong>copy_state</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – If the state should be copied or returned as a reference. Defaults to True.</p></li>
+<li><p><strong>scenario</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>) – The scenario that is to be loaded. See <a class="reference internal" href="../usage/scenarios.html#scenario-files"><span class="std std-ref">Scenario File Format</span></a> for the schema.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.act" title="holoocean.environments.HoloOceanEnvironment.act"><code class="xref py py-obj docutils literal notranslate"><span class="pre">act</span></code></a>(agent_name, action)</p></td>
+<td><p>Supplies an action to a particular agent, but doesn't tick the environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.add_agent" title="holoocean.environments.HoloOceanEnvironment.add_agent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_agent</span></code></a>(agent_def[, is_main_agent])</p></td>
+<td><p>Add an agent in the world.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_arrow" title="holoocean.environments.HoloOceanEnvironment.draw_arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_arrow</span></code></a>(start, end[, color, thickness, ...])</p></td>
+<td><p>Draws a debug arrow in the world</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_box" title="holoocean.environments.HoloOceanEnvironment.draw_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_box</span></code></a>(center, extent[, color, thickness, ...])</p></td>
+<td><p>Draws a debug box in the world</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_line" title="holoocean.environments.HoloOceanEnvironment.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(start, end[, color, thickness, ...])</p></td>
+<td><p>Draws a debug line in the world</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_point" title="holoocean.environments.HoloOceanEnvironment.draw_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_point</span></code></a>(loc[, color, thickness, lifetime])</p></td>
+<td><p>Draws a debug point in the world</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_joint_constraints" title="holoocean.environments.HoloOceanEnvironment.get_joint_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_joint_constraints</span></code></a>(agent_name, joint_name)</p></td>
+<td><p>Returns the corresponding swing1, swing2 and twist limit values for the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reward_terminal</span></code></a>()</p></td>
+<td><p>Returns the reward and terminal state</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.info" title="holoocean.environments.HoloOceanEnvironment.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>()</p></td>
+<td><p>Returns a string with specific information about the environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.move_viewport" title="holoocean.environments.HoloOceanEnvironment.move_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_viewport</span></code></a>(location, rotation)</p></td>
+<td><p>Teleport the camera to the given location</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.reset" title="holoocean.environments.HoloOceanEnvironment.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<td><p>Resets the environment, and returns the state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_acoustic_message</span></code></a>(id_from, id_to, ...)</p></td>
+<td><p>Send a message from one beacon to another.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_optical_message</span></code></a>(id_from, id_to, msg_data)</p></td>
+<td><p>Sends data between various instances of OpticalModemSensor</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_world_command" title="holoocean.environments.HoloOceanEnvironment.send_world_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_world_command</span></code></a>(name[, num_params, ...])</p></td>
+<td><p>Send a world command.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_control_scheme" title="holoocean.environments.HoloOceanEnvironment.set_control_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_scheme</span></code></a>(agent_name, control_scheme)</p></td>
+<td><p>Set the control scheme for a specific agent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_render_quality</span></code></a>(render_quality)</p></td>
+<td><p>Adjusts the rendering quality of HoloOcean.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">should_render_viewport</span></code></a>(render_viewport)</p></td>
+<td><p>Controls whether the viewport is rendered or not</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.spawn_prop" title="holoocean.environments.HoloOceanEnvironment.spawn_prop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spawn_prop</span></code></a>(prop_type[, location, rotation, ...])</p></td>
+<td><p>Spawns a basic prop object in the world like a box or sphere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">step</span></code></a>(action[, ticks, publish])</p></td>
+<td><p>Supplies an action to the main agent and tells the environment to tick once.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish, tick_clock])</p></td>
+<td><p>Ticks the environment once.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.action_space" title="holoocean.environments.HoloOceanEnvironment.action_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">action_space</span></code></a></p></td>
+<td><p>Gives the action space for the main agent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.beacons" title="holoocean.environments.HoloOceanEnvironment.beacons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beacons</span></code></a></p></td>
+<td><p>Gets all instances of AcousticBeaconSensor in the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.beacons_id" title="holoocean.environments.HoloOceanEnvironment.beacons_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beacons_id</span></code></a></p></td>
+<td><p>Gets all ids of AcousticBeaconSensor in the environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.beacons_status" title="holoocean.environments.HoloOceanEnvironment.beacons_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">beacons_status</span></code></a></p></td>
+<td><p>Gets all status of AcousticBeaconSensor in the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.modems" title="holoocean.environments.HoloOceanEnvironment.modems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modems</span></code></a></p></td>
+<td><p>Gets all instances of OpticalModemSensor in the environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.modems_id" title="holoocean.environments.HoloOceanEnvironment.modems_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modems_id</span></code></a></p></td>
+<td><p>Gets all ids of OpticalModemSensor in the environment.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.act">
+<span class="sig-name descname"><span class="pre">act</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.act" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Supplies an action to a particular agent, but doesn’t tick the environment.</dt><dd><p>Primary mode of interaction for multi-agent environments. After all agent commands are
+supplied, they can be applied with a call to <cite>tick</cite>.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the agent to supply an action for.</p></li>
+<li><p><strong>action</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – The action to apply to the agent. This
+action will be applied every time <cite>tick</cite> is called, until a new action is supplied
+with another call to act.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.action_space">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_space</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.action_space" title="Permalink to this definition"></a></dt>
+<dd><p>Gives the action space for the main agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The action space for the main agent.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.add_agent">
+<span class="sig-name descname"><span class="pre">add_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_def</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_main_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.add_agent" title="Permalink to this definition"></a></dt>
+<dd><p>Add an agent in the world.</p>
+<p>It will be spawn when <a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code></a> or <a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> is called next.</p>
+<p>The agent won’t be able to be used until the next frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_def</strong> (<a class="reference internal" href="agents.html#holoocean.agents.AgentDefinition" title="holoocean.agents.AgentDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentDefinition</span></code></a>) – The definition of the agent to</p></li>
+<li><p><strong>spawn.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.beacons">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">beacons</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.beacons" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all instances of AcousticBeaconSensor in the environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all AcousticBeaconSensor in environment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.beacons_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">beacons_id</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.beacons_id" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all ids of AcousticBeaconSensor in the environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all AcousticBeaconSensor ids in environment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.beacons_status">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">beacons_status</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.beacons_status" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all status of AcousticBeaconSensor in the environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all AcousticBeaconSensor status in environment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.draw_arrow">
+<span class="sig-name descname"><span class="pre">draw_arrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.draw_arrow" title="Permalink to this definition"></a></dt>
+<dd><p>Draws a debug arrow in the world</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The start <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location in meters of the line.
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>end</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The end <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location in meters of the arrow</p></li>
+<li><p><strong>color</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">g,</span> <span class="pre">b]</span></code> color value (from 0 to 255). Defaults to [255, 0, 0] (red).</p></li>
+<li><p><strong>thickness</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Thickness of the arrow. Defaults to 10.</p></li>
+<li><p><strong>lifetime</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Number of simulation seconds the object should persist. If 0, makes persistent. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.draw_box">
+<span class="sig-name descname"><span class="pre">draw_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.draw_box" title="Permalink to this definition"></a></dt>
+<dd><p>Draws a debug box in the world</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The start <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location in meters of the box.
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>extent</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> extent of the box</p></li>
+<li><p><strong>color</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">g,</span> <span class="pre">b]</span></code> color value (from 0 to 255). Defaults to [255, 0, 0] (red).</p></li>
+<li><p><strong>thickness</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Thickness of the lines. Defaults to 10.</p></li>
+<li><p><strong>lifetime</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Number of simulation seconds the object should persist. If 0, makes persistent. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.draw_line">
+<span class="sig-name descname"><span class="pre">draw_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.draw_line" title="Permalink to this definition"></a></dt>
+<dd><p>Draws a debug line in the world</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The start <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location in meters of the line.
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>end</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The end <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location in meters of the line</p></li>
+<li><p><strong>color</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list`</span></code>) – <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">g,</span> <span class="pre">b]</span></code> color value (from 0 to 255). Defaults to [255, 0, 0] (red).</p></li>
+<li><p><strong>thickness</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Thickness of the line. Defaults to 10.</p></li>
+<li><p><strong>lifetime</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Number of simulation seconds the object should persist. If 0, makes persistent. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.draw_point">
+<span class="sig-name descname"><span class="pre">draw_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.draw_point" title="Permalink to this definition"></a></dt>
+<dd><p>Draws a debug point in the world</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loc</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> start of the box.
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>color</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">g,</span> <span class="pre">b]</span></code> color value (from 0 to 255). Defaults to [255, 0, 0] (red).</p></li>
+<li><p><strong>thickness</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Thickness of the point. Defaults to 10.</p></li>
+<li><p><strong>lifetime</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Number of simulation seconds the object should persist. If 0, makes persistent. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.get_joint_constraints">
+<span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.get_joint_constraints" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Returns the corresponding swing1, swing2 and twist limit values for the</dt><dd><p>specified agent and joint. Will return None if the joint does not exist for the agent.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.get_reward_terminal">
+<span class="sig-name descname"><span class="pre">get_reward_terminal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the reward and terminal state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>A 2tuple:</p>
+<ul class="simple">
+<li><p>Reward (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Reward returned by the environment.</p></li>
+<li><p>Terminal: The bool terminal signal returned by the environment.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.info" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a string with specific information about the environment.
+This information includes which agents are in the environment and which sensors they have.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Information in a string format.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.modems">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">modems</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.modems" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all instances of OpticalModemSensor in the environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all OpticalModemSensor in environment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.modems_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">modems_id</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.modems_id" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all ids of OpticalModemSensor in the environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of all OpticalModemSensor ids in environment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.move_viewport">
+<span class="sig-name descname"><span class="pre">move_viewport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.move_viewport" title="Permalink to this definition"></a></dt>
+<dd><p>Teleport the camera to the given location</p>
+<p>By the next tick, the camera’s location and rotation will be updated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location to give the camera
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>rotation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The x-axis that the camera should look down. Other 2 axes are formed
+by a horizontal y-aixs, and then the corresponding z-axis.
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Resets the environment, and returns the state.
+If it is a single agent environment, it returns that state for that agent. Otherwise, it
+returns a dict from agent name to state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the same as <cite>tick</cite>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.send_acoustic_message">
+<span class="sig-name descname"><span class="pre">send_acoustic_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_from</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_to</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="Permalink to this definition"></a></dt>
+<dd><p>Send a message from one beacon to another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_from</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The integer ID of the transmitting modem.</p></li>
+<li><p><strong>id_to</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The integer ID of the receiving modem.</p></li>
+<li><p><strong>msg_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The message type. See <a class="reference internal" href="sensors.html#holoocean.sensors.AcousticBeaconSensor" title="holoocean.sensors.AcousticBeaconSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.sensors.AcousticBeaconSensor</span></code></a> for a list.</p></li>
+<li><p><strong>msg_data</strong> – The message to be transmitted. Currently can be any python object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.send_optical_message">
+<span class="sig-name descname"><span class="pre">send_optical_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_from</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_to</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="Permalink to this definition"></a></dt>
+<dd><p>Sends data between various instances of OpticalModemSensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_from</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The integer ID of the transmitting modem.</p></li>
+<li><p><strong>id_to</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The integer ID of the receiving modem.</p></li>
+<li><p><strong>msg_data</strong> – The message to be transmitted. Currently can be any python object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.send_world_command">
+<span class="sig-name descname"><span class="pre">send_world_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.send_world_command" title="Permalink to this definition"></a></dt>
+<dd><p>Send a world command.</p>
+<p>A world command sends an abitrary command that may only exist in a specific world or
+package. It is given a name and any amount of string and number parameters that allow it to
+alter the state of the world.</p>
+<p>If a command is sent that does not exist in the world, the environment will exit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the command, ex “OpenDoor”</p></li>
+<li><p><strong>(</strong><strong>obj</strong> (<em>string_params</em>) – <cite>list</cite> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): List of arbitrary number parameters</p></li>
+<li><p><strong>(</strong><strong>obj</strong> – <cite>list</cite> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>): List of arbitrary string parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_control_scheme">
+<span class="sig-name descname"><span class="pre">set_control_scheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_scheme</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_control_scheme" title="Permalink to this definition"></a></dt>
+<dd><p>Set the control scheme for a specific agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the agent to set the control scheme for.</p></li>
+<li><p><strong>control_scheme</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – A control scheme value
+(see <a class="reference internal" href="agents.html#holoocean.agents.ControlSchemes" title="holoocean.agents.ControlSchemes"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlSchemes</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_render_quality">
+<span class="sig-name descname"><span class="pre">set_render_quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">render_quality</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="Permalink to this definition"></a></dt>
+<dd><p>Adjusts the rendering quality of HoloOcean.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>render_quality</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – An integer between 0 = Low Quality and 3 = Epic quality.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.should_render_viewport">
+<span class="sig-name descname"><span class="pre">should_render_viewport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">render_viewport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="Permalink to this definition"></a></dt>
+<dd><p>Controls whether the viewport is rendered or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>render_viewport</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>) – If the viewport should be rendered</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.spawn_prop">
+<span class="sig-name descname"><span class="pre">spawn_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim_physics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.spawn_prop" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a basic prop object in the world like a box or sphere.</p>
+<p>Prop will not persist after environment reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prop_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – The type of prop to spawn. Can be <code class="docutils literal notranslate"><span class="pre">box</span></code>, <code class="docutils literal notranslate"><span class="pre">sphere</span></code>, <code class="docutils literal notranslate"><span class="pre">cylinder</span></code>, or <code class="docutils literal notranslate"><span class="pre">cone</span></code>.</p></li>
+<li><p><strong>location</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location of the prop.</p></li>
+<li><p><strong>rotation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> rotation of the prop.</p></li>
+<li><p><strong>scale</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) or (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> scalars to the prop size, where the default size is 1 meter.
+If given a single float value, then every dimension will be scaled to that value.</p></li>
+<li><p><strong>sim_physics</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>) – Whether the object is mobile and is affected by gravity.</p></li>
+<li><p><strong>material</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – The type of material (texture) to apply to the prop. Can be <code class="docutils literal notranslate"><span class="pre">white</span></code>, <code class="docutils literal notranslate"><span class="pre">gold</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cobblestone</span></code>, <code class="docutils literal notranslate"><span class="pre">brick</span></code>, <code class="docutils literal notranslate"><span class="pre">wood</span></code>, <code class="docutils literal notranslate"><span class="pre">grass</span></code>, <code class="docutils literal notranslate"><span class="pre">steel</span></code>, or <code class="docutils literal notranslate"><span class="pre">black</span></code>. If left
+empty, the prop will have the a simple checkered gray material.</p></li>
+<li><p><strong>tag</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – The tag to apply to the prop. Useful for task references.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publish</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.step" title="Permalink to this definition"></a></dt>
+<dd><p>Supplies an action to the main agent and tells the environment to tick once.
+Primary mode of interaction for single agent environments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>) – An action for the main agent to carry out on the next tick.</p></li>
+<li><p><strong>ticks</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of times to step the environment with this action.
+If ticks &gt; 1, this function returns the last state generated.</p></li>
+<li><p><strong>publish</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – Whether or not to publish as defined by scenario. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A dictionary from agent name to its full state. The full state is another
+dictionary from <code class="xref py py-obj docutils literal notranslate"><span class="pre">holoocean.sensors.Sensors</span></code> enum to np.ndarray, containing the
+sensors information for each sensor. The sensors always include the reward and
+terminal sensors. Reward and terminals can also be gotten through <a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_reward_terminal()</span></code></a>.</p>
+<p>Will return the state from the last tick executed.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.tick">
+<span class="sig-name descname"><span class="pre">tick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publish</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_clock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tick" title="Permalink to this definition"></a></dt>
+<dd><p>Ticks the environment once. Normally used for multi-agent environments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_ticks</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of ticks to perform. Defaults to 1.</p></li>
+<li><p><strong>publish</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – Whether or not to publish as defined by scenario. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A dictionary from agent name to its full state. The full state is another
+dictionary from <code class="xref py py-obj docutils literal notranslate"><span class="pre">holoocean.sensors.Sensors</span></code> enum to np.ndarray, containing the
+sensors information for each sensor. The sensors always include the reward and
+terminal sensors. Reward and terminals can also be gotten through <a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_reward_terminal()</span></code></a>.</p>
+<p>Will return the state from the last tick executed.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="agents.html" rel="prev" title="Agents"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="spaces.html" rel="next" title="Action Spaces">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
