@@ -128,11 +128,6 @@ def main():
             if isDevelop:
                 update_version_header(file)
             update_sidebar(file, 2)
-    for file in os.listdir():
-        if file.endswith(".html"):
-            if isDevelop:
-                update_version_header(file)
-            update_sidebar(file, 2)
     os.chdir("..")
     os.chdir("..")
     path = os.getcwd()
