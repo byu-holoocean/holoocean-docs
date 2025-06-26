@@ -6,7 +6,7 @@ A simulaiton of a profiling sonar using octrees.
 
 See :ref:`visualizing_profiling_sonar` for an example of how to use this sensor.
 
-See :py:class:`~holoocean.sensors.ProfilingSonar` for the python API.
+See :py:class:`~holoocean.sensors.ProfilingSonar` for the Python API.
 
 Example sensor definition::
     

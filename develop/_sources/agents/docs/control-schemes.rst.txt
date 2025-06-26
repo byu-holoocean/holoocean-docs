@@ -39,7 +39,7 @@ Thusters & Fins (Control Scheme 0)
 Control scheme 0 is the default control scheme for most agents in HoloOcean. Most underwater and 
 surface agents in HoloOcean are equipped with thrusters for propulsion, and the torpedo-style agents
 use fins to steer. Aerial agents use propellors and control surfaces. This control scheme provides 
-commands directly to an agent's proplsion and control actuators. Each agent's 
+commands directly to an agent's propulsion and control actuators. Each agent's 
 :ref:`documentation page<agents>` provides details on the format of the command list for this 
 control scheme.
 
@@ -88,7 +88,7 @@ the user to start with a clean slate and implement their own forces and torques.
 still enabled to ensure that the agent interacts with the environment in a realistic manner.
 
 Dynamics should be implemented in Python, or in a package that can interface correctly with the 
-HoloOcean python package. For an example demonstrating how to use the Custom Dynamics control scheme, 
+HoloOcean Python package. For an example demonstrating how to use the Custom Dynamics control scheme, 
 see :ref:`here<custom-dynamics-example>`.
 
 To aid in implementing dynamics, HoloOcean comes with several "sensors" designed to provide ground-truth 

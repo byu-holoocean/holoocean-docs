@@ -68,6 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="env.html">Developing Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agents.html">Developing Agents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
@@ -83,7 +84,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
@@ -145,7 +145,7 @@ HoloOcean you are using.</p>
 </div>
 <section id="cloning">
 <h2>Cloning<a class="headerlink" href="#cloning" title="Permalink to this heading"></a></h2>
-<p>For running holoocean live, you’ll need to setup both the C++ and python portions of HoloOcean.</p>
+<p>For running holoocean live, you’ll need to setup both the C++ and Python portions of HoloOcean.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Clone <a class="reference external" href="https://github.com/byu-holoocean/HoloOcean">holoocean</a>.</p></li>
@@ -159,7 +159,7 @@ through <code class="docutils literal notranslate"><span class="pre">git</span> 
 </li>
 </ul>
 </div></blockquote>
-<p>You can now install the python package by running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">client/</span></code> (or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code>).
+<p>You can now install the Python package by running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">client/</span></code> (or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code>).
 Make sure not to skip this step - reinstalling the package is necessary to apply the changes from
 switching branches.</p>
 </section>
@@ -170,10 +170,11 @@ switching branches.</p>
 opens up. Alternatively, open the Unreal Editor and select “Open Project” from the main menu.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you get a dialog that says “The project was built with a different version of the engine”,
+<p>If you get a dialog that says “The following modules are missing or built with a different engine version”,
 click “yes” to rebuild the project. This will take a few minutes, and you may get a few errors.
-If you do, click “yes” to all of them. This is a normal part of the process, and the project
-should open up.</p>
+If you do, click “yes” to all of them.</p>
+<img alt="../_images/the-build-error.png" src="../_images/the-build-error.png"/>
+<p>If you continue to get errors, please reference <a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">Troubleshooting</span></a>.</p>
 </div>
 <p>In the Unreal Editor, go to Platforms -&gt; &lt;your operating system&gt; -&gt; Cook Content. After a few minutes
 you should get a success popup in the lower right.</p>
@@ -190,7 +191,7 @@ you should get a success popup in the lower right.</p>
 </ul>
 </section>
 <section id="compiling">
-<h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this heading"></a></h2>
+<span id="develop-compiling"></span><h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this heading"></a></h2>
 <p>You need to recompile the project after making any changes to the C++ code.</p>
 <p>Generally you can compile by clicking the “Compile” button in Unreal Editor at the bottom-right
 corner of the screen. It might be hidden if your screen isn’t wide enough. To ensure it compiles
@@ -201,14 +202,15 @@ is turned off.</p>
 by right clicking on the <code class="docutils literal notranslate"><span class="pre">holodeck.uproject</span></code> file within the engine folder, and then clicking on
 “Generate Visual Studio Project Files”. If you are using Windows 11, after right clicking on the
 uproject file, you will need to click “Show more options” in order to find the right option.</p>
+<img alt="../_images/generate-vs-files.png" src="../_images/generate-vs-files.png"/>
 <p>Double click the generated .sln file to open it within Visual Studio. From there, you can right click
 on the Solution on the right hand side of the screen and select “Build Solution”.</p>
 <img alt="../_images/build-in-visual-studio.png" src="../_images/build-in-visual-studio.png"/>
 </section>
 <section id="launching-game-live">
-<h2>Launching Game Live<a class="headerlink" href="#launching-game-live" title="Permalink to this heading"></a></h2>
+<span id="live-game"></span><h2>Launching Game Live<a class="headerlink" href="#launching-game-live" title="Permalink to this heading"></a></h2>
 <p>To avoid having to package the project anytime you want to see changes to your code, you can play the
-game live from Unreal Editor and then attached your python code to it. This is referred to as “running
+game live from Unreal Editor and then attached your Python code to it. This is referred to as “running
 in standalone”. This is a multi-step process, as follows.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -228,8 +230,8 @@ as for seeing log messages for debugging purposes.</p>
 expect. The -FramesPerSec=&lt;val&gt; command controls how fast it runs on your computer. See
 <a class="reference internal" href="../usage/scenarios.html#configure-framerate"><span class="std std-ref">Frame Rates</span></a>.</p>
 </div>
-<p>Open and prep a python script similar to the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<p>Open and prep a Python script similar to the following:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 
 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
       <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
@@ -256,22 +258,22 @@ expect. The -FramesPerSec=&lt;val&gt; command controls how fast it runs on your 
       <span class="n">state</span><span class="p">,</span> <span class="n">reward</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">start_world=False</span></code> is important. This tells the python script not to launch a new game
+<p>Note that <code class="docutils literal notranslate"><span class="pre">start_world=False</span></code> is important. This tells the Python script not to launch a new game
 window. It will attach to the game window you launched in Unreal Editor.</p>
 <p>Tweak the code above to put the sensors/agents you need in as you see fit.</p>
 <ul class="simple">
-<li><p>Have some way to run this python file open and ready (for example. VS Code).</p></li>
+<li><p>Have some way to run this Python file open and ready (for example. VS Code).</p></li>
 <li><p>Back in Unreal Editor, click the arrow next to the “Play” button in the top toolbar, and select
 “Standalone Game”. A seperate window should pop open with the unreal game.</p></li>
-<li><p>Once this window pops open, wait a few seconds for the game to fully load, then run your python
+<li><p>Once this window pops open, wait a few seconds for the game to fully load, then run your Python
 script. It will attach to the new open Unreal game window and proceed as a normal HoloOcean
 simulation.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you close the Unreal game window before exiting the python script, your terminal will freeze
+<p>If you close the Unreal game window before exiting the Python script, your terminal will freeze
 and you’ll have to open a new one. One way to avoid this is to write a small .bat script that runs
-the python file. Alternatively, VSCode’s play button works rather smoothly as well for quickly
+the Python file. Alternatively, VSCode’s play button works rather smoothly as well for quickly
 opening/closing terminals with the correct conda environment.</p>
 </div>
 </section>

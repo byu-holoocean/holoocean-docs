@@ -25,7 +25,7 @@ Control Schemes
 
 **PD Controller (``1``)**
    A 6-length floating point vector of desired position in the global frame and roll, pitch, and yaw. 
-   A basic PD controller has been implementing to move the vehicle to that position and orientation 
+   A basic PD controller is implemented to move the vehicle to that position and orientation 
    using the needed forces and torques.
 
 **Custom Dynamics (``2``)**

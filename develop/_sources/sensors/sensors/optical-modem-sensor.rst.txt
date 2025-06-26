@@ -7,7 +7,7 @@ An optical modem for communications for aerial or surface agents.
 The command :meth:`holoocean.environments.HoloOceanEnvironment.send_optical_message` is used to send 
 messages between optical modems.
 
-..note::
+.. note::
     In order for a message to be transmitted, the 2 sensors must be aligned.
 
 Further, a few helper functions exist if needed:
@@ -17,7 +17,7 @@ Further, a few helper functions exist if needed:
 
 See :ref:`multi-agent_example` for an example of how to use this sensor.
 
-See :py:class:`~holoocean.sensors.OpticalModemSensor` for the python API.
+See :py:class:`~holoocean.sensors.OpticalModemSensor` for the Python API.
 
 Example sensor definition::
 

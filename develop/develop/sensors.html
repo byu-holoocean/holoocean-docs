@@ -23,7 +23,7 @@
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
-<link href="../changelog/changelog.html" rel="next" title="Changelog"/>
+<link href="troubleshooting.html" rel="next" title="Troubleshooting"/>
 <link href="agents.html" rel="prev" title="Developing Agents"/>
 </head>
 <body class="wy-body-for-nav">
@@ -69,6 +69,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#allowing-your-sensor-to-be-used-in-holoocean">Allowing Your Sensor to Be Used In Holoocean</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
@@ -84,7 +85,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
@@ -230,7 +230,7 @@ only returned a single float. With that in mind, we know that the dtype should b
 data_shape should be 1. It should look like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@property</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span> <span class="c1"># Note that we are using numpy's data types to get the right size for the python data.</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span> <span class="c1"># Note that we are using numpy's data types to get the right size for the Python data.</span>
 
 <span class="nd">@property</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">data_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -251,6 +251,8 @@ available to the HoloOcean client.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">"ExampleSensor"</span><span class="p">:</span><span class="n">ExampleSensor</span><span class="p">,</span>
 </pre></div>
 </div>
+<p>Additionally, if your sensor is computationally expensive and you expect the <code class="docutils literal notranslate"><span class="pre">Hz</span></code> parameter to be set, and affect
+the run speed, you will need to add it to the list of _heavy_sensors or _sonar_sensors in the <code class="docutils literal notranslate"><span class="pre">SensorDefinition</span></code> class.</p>
 <p>Next, in <code class="docutils literal notranslate"><span class="pre">engine/Source/Holodeck/ClientCommands/Public/AddSensorCommand.h</span></code>, add an include statement
 for your sensor’s .h file:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ExampleSensor.h"</span>
@@ -268,7 +270,7 @@ dictionary:</p>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
 <a accesskey="p" class="btn btn-neutral float-left" href="agents.html" rel="prev" title="Developing Agents"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="../changelog/changelog.html" rel="next" title="Changelog">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="n" class="btn btn-neutral float-right" href="troubleshooting.html" rel="next" title="Troubleshooting">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

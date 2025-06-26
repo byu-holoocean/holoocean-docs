@@ -84,7 +84,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
@@ -144,7 +143,7 @@ are available and how they are numbered.</p>
 <p>Control scheme 0 is the default control scheme for most agents in HoloOcean. Most underwater and
 surface agents in HoloOcean are equipped with thrusters for propulsion, and the torpedo-style agents
 use fins to steer. Aerial agents use propellors and control surfaces. This control scheme provides
-commands directly to an agent’s proplsion and control actuators. Each agent’s
+commands directly to an agent’s propulsion and control actuators. Each agent’s
 <a class="reference internal" href="../agents.html#agents"><span class="std std-ref">documentation page</span></a> provides details on the format of the command list for this
 control scheme.</p>
 <p>Controlling an agent using the Thrusters &amp; Fins control scheme involves generating commands for each
@@ -185,7 +184,7 @@ damping) are disabled in the simulator when using the Custom Dynamics control sc
 the user to start with a clean slate and implement their own forces and torques. Collisions are
 still enabled to ensure that the agent interacts with the environment in a realistic manner.</p>
 <p>Dynamics should be implemented in Python, or in a package that can interface correctly with the
-HoloOcean python package. For an example demonstrating how to use the Custom Dynamics control scheme,
+HoloOcean Python package. For an example demonstrating how to use the Custom Dynamics control scheme,
 see <a class="reference internal" href="../../examples/examples/custom-dynamics.html#custom-dynamics-example"><span class="std std-ref">here</span></a>.</p>
 <p>To aid in implementing dynamics, HoloOcean comes with several “sensors” designed to provide ground-truth
 state information from the simulation. In particular, the <a class="reference internal" href="../../sensors/sensors/dynamics-sensor.html#dynamics-sensor"><span class="std std-ref">Dynamics Sensor</span></a> was made to

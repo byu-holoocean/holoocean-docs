@@ -83,7 +83,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
@@ -122,10 +121,10 @@
 <section id="control-schemes">
 <h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
 <dl class="simple">
-<dt><strong>Thrusters (``0``)</strong></dt><dd><p>An 2-length floating point vector specifying the force on each thruster. The vector is in the
+<dt><strong>Thrusters (``0``)</strong></dt><dd><p>A 2-length floating point vector specifying the force on each thruster. The vector is in the
 format [Left Thruster, Right Thruster].</p>
 </dd>
-<dt><strong>PD Controller (``1``)</strong></dt><dd><p>A 2-length floating point vector of desired x- and y-position in the global frame. A basic PD
+<dt><strong>PD Controller (``1``)</strong></dt><dd><p>A 2-length floating point vector of desired x and y coordinates in the global frame. A basic PD
 controller has been implemented to move the vehicle to that position.</p>
 </dd>
 <dt><strong>Custom Dynamics (``2``)</strong></dt><dd><p>A 6-length floating point vector of linear and angular accelerations in the global frame. This

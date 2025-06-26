@@ -20,3 +20,4 @@ Engine, and how to add new environments, agents, and sensors.
    env
    agents
    sensors
+   troubleshooting

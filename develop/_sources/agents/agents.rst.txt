@@ -38,7 +38,7 @@ interpreted by the agent's control scheme.
 
 
 HoloOcean provides a variety of agents, each with different capabilities. The three primary 
-agents in HoloOcean representing the three most common water vehicles are the 
+agents in HoloOcean, representing the three most common water vehicles, are the 
 :ref:`HoveringAUV<hovering-auv-agent>`, :ref:`SurfaceVessel<surface-vessel-agent>`, and 
 :ref:`TorpedoAUV<torpedo-auv-agent>`. These three agents can perform the majority of navigation and 
 sensing tasks. Other agents representing aerial vehicles and specific real-world vehicles are also 

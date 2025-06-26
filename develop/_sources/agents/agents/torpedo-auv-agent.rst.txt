@@ -20,7 +20,7 @@ Control Schemes
 
 **AUV Fins (``0``)**
   Takes in a 5 length vector of four fin angles and a thruster value. The format is 
-  [Right Fin, Top Fin, Left Fin, Bottom Fin] Fins have a range of -45 to 45 degrees, and the 
+  [Right Fin, Top Fin, Left Fin, Bottom Fin, Thruster]. Fins have a range of -45 to 45 degrees, and the 
   thruster has a range of -100 to 100 (percent of max thrust).
 
 **Custom Dynamics (``1``)**
@@ -32,7 +32,7 @@ Control Schemes
 .. note::
 
    Dynamics models from Thor Fossen are available for the TorpedoAUV to enable more realistic 
-   simulations. To use Fossen dynmics, use the Custom Dynamics control scheme, then create a Fossen 
+   simulations. To use Fossen dynamics, use the Custom Dynamics control scheme, then create a Fossen 
    vehicle controller and a Fossen dynamics manager. For details, see :ref:`fossen-dynamics`.
 
 Sockets

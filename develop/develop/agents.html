@@ -74,6 +74,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
@@ -89,7 +90,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
@@ -120,7 +120,7 @@
 <div itemprop="articleBody">
 <section id="developing-agents">
 <span id="develop-agents"></span><h1>Developing Agents<a class="headerlink" href="#developing-agents" title="Permalink to this heading"></a></h1>
-<p>Because agents have components in python, C++, and UE5, creating agents is a rather involved process.
+<p>Because agents have components in Python, C++, and UE5, creating agents is a rather involved process.
 This guide will walk you through each step of creating a new agent for HoloOcean.</p>
 <section id="general-agents">
 <h2>General Agents<a class="headerlink" href="#general-agents" title="Permalink to this heading"></a></h2>
@@ -133,7 +133,7 @@ class and edit it to reflect your new agent. You’ll need to edit the following
 <ul class="simple">
 <li><p>Class name</p></li>
 <li><p>agent_type</p></li>
-<li><p>Anything related to the controls. This includes all the constants, and <code class="docutils literal notranslate"><span class="pre">control_schemes()</span></code>.</p></li>
+<li><p>Anything related to the controls. This includes all the constants, and <code class="docutils literal notranslate"><span class="pre">control_schemes()</span></code></p></li>
 </ul>
 <p>Make sure you put the number of inputs your agent will have in <code class="docutils literal notranslate"><span class="pre">ContinuousActionSpace</span></code> in the
 return.</p>
@@ -165,7 +165,7 @@ return.</p>
 </pre></div>
 </div>
 <p>Lower in the same agents.py file, in the <code class="docutils literal notranslate"><span class="pre">AgentDefinition</span></code> class, there is a dictionary mapping
-names to python classes. Add an entry for your new class, something like
+names to Python classes. Add an entry for your new class, something like
 <code class="docutils literal notranslate"><span class="pre">"CustomAgent":</span> <span class="pre">CustomAgent,</span></code>. The name should match <code class="docutils literal notranslate"><span class="pre">agent_type</span></code> set in your class.</p>
 </section>
 <section id="c">
@@ -181,21 +181,21 @@ Duplicate the following four TurtleAgent files listed below, and rename them acc
 <p>Make sure the .cpp files are created in the Private folder, and .h files are made in the public folder.</p>
 <p>In CustomAgent.h, do the following:</p>
 <ul class="simple">
-<li><p>Change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgent.generated.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgent.generated.h"</span></code>.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgent.generated.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgent.generated.h"</span></code></p></li>
 <li><p>Change <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">HOLODECK_API</span> <span class="pre">ATurtleAgent</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">AHolodeckAgent</span></code> to
-<code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">HOLODECK_API</span> <span class="pre">ACustomAgent</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">AHolodeckAgent</span></code>.</p></li>
-<li><p>Change <code class="docutils literal notranslate"><span class="pre">ATurtleAgent();</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgent();</span></code>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">HOLODECK_API</span> <span class="pre">ACustomAgent</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">AHolodeckAgent</span></code></p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">ATurtleAgent();</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgent();</span></code></p></li>
 <li><p>In the line, <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">GetRawActionSizeInBytes()</span> <span class="pre">const</span> <span class="pre">override</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">sizeof(float);</span> <span class="pre">};</span></code>,
-change the number 2 to however many inputs your agent has.</p></li>
-<li><p>In the line <code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">CommandArray[2];</span></code> change the 2 to however many inputs your agent has.</p></li>
+change the number 2 to however many inputs your agent has</p></li>
+<li><p>In the line <code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">CommandArray[2];</span></code> change the 2 to however many inputs your agent has</p></li>
 </ul>
 <p>CustomAgent.cpp is where the bulk of an agent’s behavior is defined, including custom dynamics,
 reactions to inputs, and so on. Change the following for CustomAgent.cpp:</p>
 <ul class="simple">
-<li><p>Change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgent.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgent.h"</span></code>.</p></li>
-<li><p>Change all instances of <code class="docutils literal notranslate"><span class="pre">ATurtleAgent</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgent</span></code>.</p></li>
-<li><p>Add code for anything you want your agent to do and how it responde to inputs in the
-<code class="docutils literal notranslate"><span class="pre">Tick(float</span> <span class="pre">DeltaSeconds)</span></code> function.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"TurtleAgent.h"</span></code> to <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"CustomAgent.h"</span></code></p></li>
+<li><p>Change all instances of <code class="docutils literal notranslate"><span class="pre">ATurtleAgent</span></code> to <code class="docutils literal notranslate"><span class="pre">ACustomAgent</span></code></p></li>
+<li><p>Add code for anything you want your agent to do and how it responds to inputs in the
+<code class="docutils literal notranslate"><span class="pre">Tick(float</span> <span class="pre">DeltaSeconds)</span></code> function</p></li>
 </ul>
 <p>In CustomAgentController.h, do the following:</p>
 <ul class="simple">
@@ -215,15 +215,38 @@ screen. Fix any errors until the code compiles successfully.</p>
 <section id="unreal-engine">
 <h3>Unreal Engine<a class="headerlink" href="#unreal-engine" title="Permalink to this heading"></a></h3>
 <p>Navigate to <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents</span></code> in the content browser. Create a new folder for your
-agent, and go into it. Right click and select to create a blueprint class. You’ll now get a dialog
-asking you to choose your parent class. Choose your C++ class (<code class="docutils literal notranslate"><span class="pre">CustomAgent</span></code>) from the previous
-step, and name your new blueprint something like CustomAgentBp. Insert any custom meshes for your
-agent. For help with this step, find tutorials online for making custom pawns in UE.</p>
-<p>Finally, connect your python class and C++ code to the UE pawn. Navigate to <code class="docutils literal notranslate"><span class="pre">Content/</span></code> in the
-content browser and open up HolodeckGameModeBP. You’ll see an entry called “Agent Bp Map” on the
-right under the Default section. Expand it, and insert a new entry. On the left choose whatever you
-put as agent_type in your code before, and on the right, choose the blueprint (CustomAgentBp) that we
-just created.</p>
+agent, and go into it. You will need a static mesh and a blueprint for your agent.</p>
+<p>For your agent static mesh, do the following:</p>
+<ul class="simple">
+<li><p>Import your mesh into your new folder</p></li>
+<li><p>Edit the mesh to add a socket named “Viewport” so that the camera can spawn correctly. If you wish to use other sensors,
+add other sockets for the location of those sensors.</p></li>
+</ul>
+<img alt="../_images/viewport-socket.png" src="../_images/viewport-socket.png"/>
+<p>For your agent blueprint, do the following:</p>
+<ul class="simple">
+<li><p>Right click and select to create a blueprint class. You will get a dialog asking you to choose your parent class.
+Choose your C++ class (<code class="docutils literal notranslate"><span class="pre">CustomAgent</span></code>) from the previous step, and name your new blueprint something like CustomAgentBp</p></li>
+<li><p>Insert any custom meshes for your agent. For help with this step, find tutorials online for making custom pawns in UE</p></li>
+<li><p>Make sure the “Agent Name” matches what you listed in Python</p></li>
+<li><p>Connect your controller to the “AI Controller Class”</p></li>
+</ul>
+<img alt="../_images/blueprint-settings.png" src="../_images/blueprint-settings.png"/>
+<ul class="simple">
+<li><p>Check “Simulate Physics” and uncheck “Enable Gravity”</p></li>
+</ul>
+<img alt="../_images/blueprint-physics.png" src="../_images/blueprint-physics.png"/>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have any issues with connecting your agent, please compare against other agent meshes and blueprints found in the <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents</span></code> folder.</p>
+</div>
+<p>Finally, you need to connect your Python class and C++ code to the UE pawn.</p>
+<ul class="simple">
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">Content/</span></code> in the content browser and open up HolodeckGameModeBP</p></li>
+<li><p>Find the entry called “Agent Bp Map” on the right under the Default section. Expand it, and insert a new entry</p></li>
+<li><p>On the left choose whatever you put as agent_type in your code before, and on the right, choose the blueprint (CustomAgentBp) that we just created</p></li>
+</ul>
+<img alt="../_images/gamemode-blueprint.png" src="../_images/gamemode-blueprint.png"/>
 <p>Repackage your environment (see <a class="reference internal" href="env.html#develop-env"><span class="std std-ref">Developing Environments</span></a>). You should now be able to use your new
 agent!</p>
 </section>
@@ -250,6 +273,8 @@ constructor or in the <code class="docutils literal notranslate"><span class="pr
 buoyancy of the vehicles. They are defined relative to the origin of the <em>UE asset mesh origin</em> in
 <em>left-handed coordinates</em>. If the mesh frame is located at the center of mass, the CenterMass
 variable can be set to all zeros.</p>
+<p>Within your agent blueprint, make make sure you enable “Perfect” for the Buoyancy Setting.</p>
+<img alt="../_images/blueprint-settings-buoyant.png" src="../_images/blueprint-settings-buoyant.png"/>
 </section>
 <section id="extra-variables">
 <h3>Extra Variables<a class="headerlink" href="#extra-variables" title="Permalink to this heading"></a></h3>

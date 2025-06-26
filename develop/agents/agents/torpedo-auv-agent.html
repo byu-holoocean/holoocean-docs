@@ -86,7 +86,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
@@ -126,7 +125,7 @@
 <h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
 <dl class="simple">
 <dt><strong>AUV Fins (``0``)</strong></dt><dd><p>Takes in a 5 length vector of four fin angles and a thruster value. The format is
-[Right Fin, Top Fin, Left Fin, Bottom Fin] Fins have a range of -45 to 45 degrees, and the
+[Right Fin, Top Fin, Left Fin, Bottom Fin, Thruster]. Fins have a range of -45 to 45 degrees, and the
 thruster has a range of -100 to 100 (percent of max thrust).</p>
 </dd>
 <dt><strong>Custom Dynamics (``1``)</strong></dt><dd><p>A 6-length floating point vector of linear and angular accelerations in the global frame. This
@@ -138,7 +137,7 @@ clean slate for custom dynamics.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Dynamics models from Thor Fossen are available for the TorpedoAUV to enable more realistic
-simulations. To use Fossen dynmics, use the Custom Dynamics control scheme, then create a Fossen
+simulations. To use Fossen dynamics, use the Custom Dynamics control scheme, then create a Fossen
 vehicle controller and a Fossen dynamics manager. For details, see <a class="reference internal" href="../docs/fossen-based-dynamics.html#fossen-dynamics"><span class="std std-ref">Fossen-Based Dynamics</span></a>.</p>
 </div>
 </section>

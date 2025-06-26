@@ -16,8 +16,8 @@ coordinates for HoloOcean levels, please refer to the :ref:`ocean` page.
 Coordinate System
 =================
 
-Unreal Engine uses a left handed coordinate system by default. However, to keep with general robotics 
-conventions, we use a right handed coordinate system, with positive ``z`` being up. 
+Unreal Engine uses a left-handed coordinate system by default. However, to keep with general robotics 
+conventions, we use a right-handed coordinate system, with positive ``z`` being up. 
 
 Locations and translations in HoloOcean worlds are specified as ``[x, y, z]`` where:
 
@@ -43,7 +43,7 @@ Agent, Socket, & Sensor Frames
 ==============================
 Agents each have a coordinate frame located at their center (usually the center of mass, rarely the 
 center of the mesh if different). This coordinate frame is always aligned with the agent's forward, 
-left, and up directions in a right handed coordinate system. 
+left, and up directions in a right-handed coordinate system. 
 
 Agents are equiped with sockets to hold sensors. Each socket has its own coordinate frame that is 
 usually in the same orientation as the agent frame. See the individual Agent pages in :ref:`agents`

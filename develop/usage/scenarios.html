@@ -71,6 +71,7 @@
 <li class="toctree-l2"><a class="reference internal" href="performance.html">Improving Performance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="units-and-coordinates.html">Units and Coordinates in HoloOcean</a></li>
 <li class="toctree-l2"><a class="reference internal" href="semaphores.html">HoloOcean Client-Server Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ROS2.html">ROS2 Bridge</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
@@ -94,7 +95,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
@@ -148,7 +148,7 @@ Both methods follow the same format, described below.</p>
 <p>Scenario <code class="docutils literal notranslate"><span class="pre">.json</span></code> files are distributed in packages (see <a class="reference internal" href="../packages/docs/package-structure.html#package-contents"><span class="std std-ref">Package Contents</span></a>), and
 must be named <code class="docutils literal notranslate"><span class="pre">{WorldName}-{ScenarioName}.json</span></code>. By default they are stored in the
 <code class="docutils literal notranslate"><span class="pre">worlds/{PackageName}</span></code> directory (see <a class="reference internal" href="../packages/docs/installation.html#package-locations"><span class="std std-ref">Package Installation Location</span></a>).</p>
-<p>Scenarios can be defined using a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file or in a python script using a dictionary.
+<p>Scenarios can be defined using a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file or in a Python script using a dictionary.
 Both methods follow the same format using key-value pairs. An example dictionary is given below:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{Scenario Name}"</span><span class="p">,</span>
@@ -298,7 +298,7 @@ can go as low as .01 (1cm), and then the octree will double in size until it rea
 <p>Configurations for pre-built scenarios can be found by reading the associated <code class="docutils literal notranslate"><span class="pre">.json</span></code> file.
 These are located in the worlds package folder (see <a class="reference internal" href="../packages/docs/installation.html#package-locations"><span class="std std-ref">Package Installation Location</span></a>).</p>
 <p>Sometimes it is helpful to extract specific parameters from a pre-made scenario for use within
-a python script (ex. for plotting data). Rather than having to copy data manually from the
+a Python script (ex. for plotting data). Rather than having to copy data manually from the
 <code class="docutils literal notranslate"><span class="pre">.json</span></code>, you can use the HoloOcean <a class="reference internal" href="../holoocean/packagemanager.html#packagemanager"><span class="std std-ref">Package Manager</span></a> to extract the scenario configuration.</p>
 <p>For example, the following code extracts the azimuth angle from the sidescan sonar sensor in the
 <code class="docutils literal notranslate"><span class="pre">OpenWater-TorpedoSidescanSonar</span></code> scenario.</p>

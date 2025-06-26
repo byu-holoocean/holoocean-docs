@@ -146,7 +146,7 @@ data_shape should be 1. It should look like this:
     
     @property
     def dtype(self):
-        return np.float32 # Note that we are using numpy's data types to get the right size for the python data.
+        return np.float32 # Note that we are using numpy's data types to get the right size for the Python data.
 
     @property
     def data_shape(self):
@@ -167,6 +167,10 @@ First, towards the bottom of the ``sensors.py`` file there should be a _sensor_k
 .. code:: python
 
     "ExampleSensor":ExampleSensor,
+
+    
+Additionally, if your sensor is computationally expensive and you expect the ``Hz`` parameter to be set, and affect
+the run speed, you will need to add it to the list of _heavy_sensors or _sonar_sensors in the ``SensorDefinition`` class.
 
 Next, in ``engine/Source/Holodeck/ClientCommands/Public/AddSensorCommand.h``, add an include statement 
 for your sensor's .h file:

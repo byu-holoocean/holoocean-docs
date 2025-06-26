@@ -4,7 +4,7 @@ Magnetometer
 
 Returns the global x-axis (or configuration vector) in the local frame.
 
-See :py:class:`~holoocean.sensors.MagnetometerSensor` for the python API and more details.
+See :py:class:`~holoocean.sensors.MagnetometerSensor` for the Python API and more details.
 
 Example sensor definition::
     

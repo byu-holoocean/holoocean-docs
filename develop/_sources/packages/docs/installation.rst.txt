@@ -47,7 +47,7 @@ managed by the HoloOcean team (currently only the Ocean package).
 
 Install a Package Automatically
 -------------------------------
-The ``holoocean`` python package includes a :ref:`packagemanager` that can be used independently. 
+The ``holoocean`` Python package includes a :ref:`packagemanager` that can be used independently. 
 Below are some example usages, but see :ref:`packagemanager` for complete documentation.
 ::
 

@@ -31,7 +31,7 @@ Developing in HoloOcean requires the following additional dependencies:
 
 Cloning 
 =======
-For running holoocean live, you'll need to setup both the C++ and python portions of HoloOcean. 
+For running holoocean live, you'll need to setup both the C++ and Python portions of HoloOcean. 
 
  * Clone `holoocean <https://github.com/byu-holoocean/HoloOcean>`_.
  * Navigate into the local repository.
@@ -41,7 +41,7 @@ For running holoocean live, you'll need to setup both the C++ and python portion
    * Alternatively, create your own new branch for the feature or addition through 
      ``git checkout -b [your branch name] [the branch you want to branch off of]``
  
-You can now install the python package by running ``pip install -e client/`` (or ``pip install .``). 
+You can now install the Python package by running ``pip install -e client/`` (or ``pip install .``). 
 Make sure not to skip this step - reinstalling the package is necessary to apply the changes from 
 switching branches. 
 
@@ -52,10 +52,14 @@ To open the HoloOcean project in the Unreal Editor, find the ``holodeck.uproject
 opens up. Alternatively, open the Unreal Editor and select "Open Project" from the main menu.
 
 .. note:: 
-   If you get a dialog that says "The project was built with a different version of the engine",
+   If you get a dialog that says "The following modules are missing or built with a different engine version",
    click "yes" to rebuild the project. This will take a few minutes, and you may get a few errors.
-   If you do, click "yes" to all of them. This is a normal part of the process, and the project
-   should open up.
+   If you do, click "yes" to all of them. 
+
+   .. image:: images/the-build-error.png
+
+   
+   If you continue to get errors, please reference :ref:`troubleshooting`. 
 
 In the Unreal Editor, go to Platforms -> <your operating system> -> Cook Content. After a few minutes 
 you should get a success popup in the lower right.
@@ -69,6 +73,8 @@ If you would like to use VSCode instead of Visual Studio for HoloOcean, you can 
 * Once this is done you should now be able to generate a new Visual Studio Code project using File 
   -> Generate Visual Studio Code Project
 * To open up Visual Studio Code go to File -> Open Visual Studio Code
+
+.. _develop-compiling:
 
 Compiling 
 =========
@@ -86,15 +92,19 @@ by right clicking on the ``holodeck.uproject`` file within the engine folder, an
 "Generate Visual Studio Project Files". If you are using Windows 11, after right clicking on the 
 uproject file, you will need to click "Show more options" in order to find the right option.
 
+.. image:: images/generate-vs-files.png
+
 Double click the generated .sln file to open it within Visual Studio. From there, you can right click 
 on the Solution on the right hand side of the screen and select "Build Solution". 
 
 .. image:: images/build-in-visual-studio.png
 
+.. _live-game:
+
 Launching Game Live 
 ===================
 To avoid having to package the project anytime you want to see changes to your code, you can play the 
-game live from Unreal Editor and then attached your python code to it. This is referred to as "running 
+game live from Unreal Editor and then attached your Python code to it. This is referred to as "running 
 in standalone". This is a multi-step process, as follows.
 
 .. note::
@@ -118,9 +128,9 @@ in standalone". This is a multi-step process, as follows.
    expect. The -FramesPerSec=<val> command controls how fast it runs on your computer. See 
    :ref:`configure-framerate`. 
       
-Open and prep a python script similar to the following:
+Open and prep a Python script similar to the following:
 
-.. code:: python
+.. code:: Python
 
    import holoocean
 
@@ -148,22 +158,22 @@ Open and prep a python script similar to the following:
       for _ in range(1000):
          state, reward = env.step(command)
 
-Note that ``start_world=False`` is important. This tells the python script not to launch a new game 
+Note that ``start_world=False`` is important. This tells the Python script not to launch a new game 
 window. It will attach to the game window you launched in Unreal Editor.
 
 Tweak the code above to put the sensors/agents you need in as you see fit.
 
-* Have some way to run this python file open and ready (for example. VS Code).
+* Have some way to run this Python file open and ready (for example. VS Code).
 * Back in Unreal Editor, click the arrow next to the "Play" button in the top toolbar, and select 
   "Standalone Game". A seperate window should pop open with the unreal game.
-* Once this window pops open, wait a few seconds for the game to fully load, then run your python 
+* Once this window pops open, wait a few seconds for the game to fully load, then run your Python 
   script. It will attach to the new open Unreal game window and proceed as a normal HoloOcean 
   simulation.
 
 .. note::
-   If you close the Unreal game window before exiting the python script, your terminal will freeze 
+   If you close the Unreal game window before exiting the Python script, your terminal will freeze 
    and you'll have to open a new one. One way to avoid this is to write a small .bat script that runs 
-   the python file. Alternatively, VSCode's play button works rather smoothly as well for quickly 
+   the Python file. Alternatively, VSCode's play button works rather smoothly as well for quickly 
    opening/closing terminals with the correct conda environment.
 
 Logging 

@@ -23,7 +23,7 @@ See :class:`~holoocean.agents.TurtleAgent` for more details.
 Control Schemes
 ===============
 
-**Sphere continuous** (``0``)
+**Sphere Continuous** (``0``)
   A 2-length floating point vector used to specify
   the agent's forward force (index 0) and rotation force (index 1).
 

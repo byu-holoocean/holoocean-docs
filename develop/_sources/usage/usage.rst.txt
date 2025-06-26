@@ -14,3 +14,4 @@ The following pages explain the basic concepts and usage of HoloOcean.
    performance
    units-and-coordinates
    semaphores
+   ROS2

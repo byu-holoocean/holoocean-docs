@@ -5,7 +5,7 @@ Multi-Agent Communications
 ============================
 
 Many times it's necessary to communicate between agents. This can be done using the 
-``AcousticBeaconSensor`` or the ``OpticalModemSensor``. Below are some examples of these
+``AcousticBeaconSensor`` or the ``OpticalModemSensor``. Below are some examples of these.
 
 Sending Acoustic Messages
 =========================

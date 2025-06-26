@@ -114,6 +114,6 @@ not open a window. This will happen automatically if HoloOcean is run from a
 SSH session.
 
 .. note::
-   This will not disable viewport rendering, meaning the simulaito nwill still be generating the 
+   This will not disable viewport rendering, meaning the simulation will still be generating the 
    displayed images, but they will not be displayed. When running over an SSH session, 
    be sure to manually disable viewport rendering to avoid wasting resources.

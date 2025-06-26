@@ -19,11 +19,11 @@ Control Schemes
 ===============
 
 **Thrusters (``0``)**
-  An 2-length floating point vector specifying the force on each thruster. The vector is in the 
+  A 2-length floating point vector specifying the force on each thruster. The vector is in the 
   format [Left Thruster, Right Thruster].
 
 **PD Controller (``1``)**
-   A 2-length floating point vector of desired x- and y-position in the global frame. A basic PD 
+   A 2-length floating point vector of desired x and y coordinates in the global frame. A basic PD 
    controller has been implemented to move the vehicle to that position.
 
 **Custom Dynamics (``2``)**

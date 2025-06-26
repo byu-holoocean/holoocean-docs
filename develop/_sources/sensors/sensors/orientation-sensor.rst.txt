@@ -11,7 +11,7 @@ offset from vehicle to the socket used).
     In our provided configurations that use this sensor, the sensor is in the IMU socket, which is 
     oriented NED. 
 
-See :py:class:`~holoocean.sensors.OrientationSensor` for the python API and more details.
+See :py:class:`~holoocean.sensors.OrientationSensor` for the Python API and more details.
 
 Example sensor definition::
     

@@ -35,8 +35,8 @@ Control Schemes
 
 .. note::
 
-   Dynmics models from Thor Fossen are available for the CougUV to enable more realistic simulations. 
-   To use Fossen dynmics, use the Custom Dynamics control scheme, then create a Fossen vehicle 
+   Dynamics models from Thor Fossen are available for the CougUV to enable more realistic simulations. 
+   To use Fossen dynamics, use the Custom Dynamics control scheme, then create a Fossen vehicle 
    controller and a Fossen dynamics manager. For details, see :ref:`fossen-dynamics`.
 
 Sockets

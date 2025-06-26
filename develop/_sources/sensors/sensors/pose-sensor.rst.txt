@@ -16,7 +16,7 @@ The 4x4 matrix is in the following form:
 
 Where R is a 3x3 rotation matrix and p is a 3x1 position vector. The last row is always [0, 0, 0, 1].
 
-See :py:class:`~holoocean.sensors.PoseSensor` for the python API and more details.
+See :py:class:`~holoocean.sensors.PoseSensor` for the Python API and more details.
 
 Example sensor definition::
     

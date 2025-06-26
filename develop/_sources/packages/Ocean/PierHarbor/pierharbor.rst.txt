@@ -1,3 +1,5 @@
+.. _pierharbor:
+
 ==========
 PierHarbor
 ==========

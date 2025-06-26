@@ -21,7 +21,7 @@ HoloOcean is made up of two halves, the "client" and the "engine".
 
 Client
 ------
-- Known as the "python side" or "client"
+- Known as the "Python side" or "client"
 - Starts the "server"
 - User interacts with this exclusively
 - Mostly moves information to and from the engine
@@ -259,6 +259,6 @@ Some interesting things to note.
    data.
 
 2. The engine's default UUID is ``""``. This means that if you launch the engine
-   from the editor or Visual Studio, you can attach to it with a python client
+   from the editor or Visual Studio, you can attach to it with a Python client
    if you specify the UUID is ``""`` when creating the ``HoloOceanEnvironment`` 
    object.

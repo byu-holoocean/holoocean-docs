@@ -4,7 +4,7 @@ Global Positioning System (GPS)
 
 A simulated GPS sensor, including that signal caughts out under water. 
 
-See :py:class:`~holoocean.sensors.GPSSensor` for the python API.
+See :py:class:`~holoocean.sensors.GPSSensor` for the Python API.
 
 Example sensor definition::
     

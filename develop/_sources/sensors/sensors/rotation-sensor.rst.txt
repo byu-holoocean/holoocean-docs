@@ -8,7 +8,7 @@ it is placed in (the rotation of the vehicle plus the rotation offset from vehic
 
 Angles are in degrees.
 
-See :py:class:`~holoocean.sensors.RotationSensor` for the python API.
+See :py:class:`~holoocean.sensors.RotationSensor` for the Python API.
 
 Example sensor definition::
     

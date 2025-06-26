@@ -6,7 +6,7 @@ Returns the [x,y,z] position of the **sensor** in the **global frame**. If the s
 than the COM socket, it will return the global position of the socket it is placed in (the location 
 of the vehicle plus the offset from vehicle COM to socket).
 
-See :py:class:`~holoocean.sensors.LocationSensor` for the python API.
+See :py:class:`~holoocean.sensors.LocationSensor` for the Python API.
 
 Example sensor definition::
 

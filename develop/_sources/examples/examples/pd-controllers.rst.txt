@@ -10,7 +10,7 @@ navigating using a simple PD controller.
 
 When the the PD control scheme is selected, the command passed to holoocean specifies the desired
 state to navigate to. Below is an example of using the PD control scheme to navigate the Surface 
-Vessel to a number of predefined waypoint on the surface.
+Vessel to a number of predefined waypoints on the surface.
 
 ::
 

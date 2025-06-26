@@ -59,6 +59,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="semaphores.html">HoloOcean Client-Server Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ROS2.html">ROS2 Bridge</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
@@ -82,7 +83,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
@@ -119,8 +119,8 @@ distances, and offsets.</p>
 coordinates for HoloOcean levels, please refer to the <a class="reference internal" href="../packages/Ocean/Ocean.html#ocean"><span class="std std-ref">Ocean Package</span></a> page.</p>
 <section id="coordinate-system">
 <span id="id1"></span><h2>Coordinate System<a class="headerlink" href="#coordinate-system" title="Permalink to this heading"></a></h2>
-<p>Unreal Engine uses a left handed coordinate system by default. However, to keep with general robotics
-conventions, we use a right handed coordinate system, with positive <code class="docutils literal notranslate"><span class="pre">z</span></code> being up.</p>
+<p>Unreal Engine uses a left-handed coordinate system by default. However, to keep with general robotics
+conventions, we use a right-handed coordinate system, with positive <code class="docutils literal notranslate"><span class="pre">z</span></code> being up.</p>
 <p>Locations and translations in HoloOcean worlds are specified as <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> where:</p>
 <ul class="simple">
 <li><p>Positive <code class="docutils literal notranslate"><span class="pre">x</span></code> is <strong>forward</strong></p></li>
@@ -142,7 +142,7 @@ conventions, we use a right handed coordinate system, with positive <code class=
 <h2>Agent, Socket, &amp; Sensor Frames<a class="headerlink" href="#agent-socket-sensor-frames" title="Permalink to this heading"></a></h2>
 <p>Agents each have a coordinate frame located at their center (usually the center of mass, rarely the
 center of the mesh if different). This coordinate frame is always aligned with the agent’s forward,
-left, and up directions in a right handed coordinate system.</p>
+left, and up directions in a right-handed coordinate system.</p>
 <p>Agents are equiped with sockets to hold sensors. Each socket has its own coordinate frame that is
 usually in the same orientation as the agent frame. See the individual Agent pages in <a class="reference internal" href="../agents/agents.html#agents"><span class="std std-ref">HoloOcean Agents</span></a>
 for details on the location and orientation of sockets for each agent.</p>

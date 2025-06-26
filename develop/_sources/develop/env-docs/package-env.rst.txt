@@ -1,3 +1,4 @@
+.. _packaging-environments:
 ======================
 Packaging Environments
 ======================

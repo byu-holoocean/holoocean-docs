@@ -6,7 +6,7 @@ An accoustic modem for communications between underwater agents.
 
 The command :meth:`holoocean.environments.HoloOceanEnvironment.send_acoustic_message` is used to send 
 messages between acoustic beacons. There's a number of message types that can be sent, all with 
-varying functionality, see :class:`holoocean.sensors.AcousticBeaconSensor` for details.
+varying functionality. See :class:`holoocean.sensors.AcousticBeaconSensor` for details.
 
 Further, a few helper functions exist if needed:
 
@@ -17,7 +17,7 @@ Further, a few helper functions exist if needed:
 
 See :ref:`multi-agent-comms_example` for an example of how to use this sensor.
 
-See :py:class:`~holoocean.sensors.AcousticBeaconSensor` for the python API.
+See :py:class:`~holoocean.sensors.AcousticBeaconSensor` for the Python API.
 
 .. TO DO: Add a bunch of detail on message types, etc. 
 

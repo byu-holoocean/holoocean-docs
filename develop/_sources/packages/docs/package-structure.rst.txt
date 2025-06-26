@@ -83,7 +83,7 @@ materials.csv
 
 .. warning::
 
-   In HoloOcean 2.0, material dependancy is temporarily unavailable.
+   In HoloOcean 2.0, material dependency is temporarily unavailable.
 
 This file contains acoustic properties of the materials found in the environments, 
 used for computation of the sonar images. Below is the format the config file is 

@@ -83,7 +83,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
@@ -126,8 +125,8 @@ sensors, etc. using Unreal, you will need to download Unreal Engine 5.3 to devel
 current release and develop branches. Unreal Engine 4.27 usage is still available using previous
 releases of HoloOcean.</p>
 </div>
-<p>HoloOcean is installed in two portions: a client python library (<code class="docutils literal notranslate"><span class="pre">holoocean</span></code>) is installed first,
-which then downloads world packages. The python portion is very small, while the world packages
+<p>HoloOcean is installed in two portions: a client Python library (<code class="docutils literal notranslate"><span class="pre">holoocean</span></code>) is installed first,
+which then downloads world packages. The Python portion is very small, while the world packages
 (“binaries”) can be several gigabytes.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
@@ -172,12 +171,12 @@ linked your GitHub account to your Epic Games account. Please refer to the instr
 <p>The Ocean package is the only package currently available. Users can create custom worlds and
 packages if desired.</p>
 </div>
-<p>To install the most recent version of the Ocean worlds package, open a python shell by typing the
+<p>To install the most recent version of the Ocean worlds package, open a Python shell by typing the
 following and hit enter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 </pre></div>
 </div>
-<p>Install the package by running the following python commands:</p>
+<p>Install the package by running the following Python commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 <span class="n">holoocean</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>
 </pre></div>
@@ -190,7 +189,7 @@ following and hit enter:</p>
 </section>
 <section id="installation-for-development">
 <h2>Installation for Development<a class="headerlink" href="#installation-for-development" title="Permalink to this heading"></a></h2>
-<p>Both the python library and the available worlds of HoloOcean are actively being developed.
+<p>Both the Python library and the available worlds of HoloOcean are actively being developed.
 These instructions describe how to access the most recent development updates.</p>
 <p>For more detailed instructions on installation for development, see <a class="reference internal" href="../develop/develop.html#develop"><span class="std std-ref">Developing HoloOcean</span></a>.</p>
 <section id="id3">
@@ -211,14 +210,14 @@ the develop branch and rebuild the package:</p>
 <p class="admonition-title">Note</p>
 <p>Development versions of the HoloOcean worlds are auto-generated for Linux machines, but not for
 Windows. Windows binaries are currently compiled manually and may not be up-to-date with the
-latest changes. To get development versions of the Windows worlds, please reach out to the
+latest changes. To get the packaged binaries of the development versions of the Windows worlds, please reach out to the
 HoloOcean team.</p>
 </div>
 <p>It is advised that you use the development versions of the Ocean package when on the develop branch
 of the library. These will contain the latest updates to the worlds that may be necessary to use
 some features on the develop branch. Using the develop branch with the release version of the worlds
 may result in unexpected behavior.</p>
-<p>To install the development version of the Ocean package, open a python shell and remove any previous
+<p>To install the development version of the Ocean package, open a Python shell and remove any previous
 versions of the binaries by running the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 <span class="n">holoocean</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>

@@ -52,7 +52,7 @@ Agent Type                  String in agent_type
 :ref:`surface-vessel-agent` ``SurfaceVessel``
 :ref:`torpedo-auv-agent`    ``TorpedoAUV``
 :ref:`coug-uv-agent`        ``CougUV``
-:ref:`blue-rov-agent`       ``BlueROV``
+:ref:`blue-rov-agent`       ``BlueROV2``
 :ref:`sphere-agent`         ``Sphere``
 :ref:`turtle-agent`         ``TurtleAgent``
 :ref:`fixed-wing-agent`     ``FixedWing``
@@ -88,7 +88,7 @@ Location Randomization
 ======================
 ``location_randomization`` and ``rotation_randomization`` are optional. If provided, the agent's 
 start location and/or rotation will vary by a random amount sampled uniformly from the specified 
-range. Ranndomization in each direction is sampled independently. 
+range. Randomization in each direction is sampled independently. 
 
 The location randomization value is measured in meters, in the format ``[dx, dy, dz]``. The rotation 
 randomization is in the format ``[roll, pitch, yaw]``, rotated about the XYZ fixed axes (i.e. 

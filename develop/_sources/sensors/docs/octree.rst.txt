@@ -8,12 +8,12 @@ When running an environment with a sonar sensor, octrees must be generated. Thes
 several gigabytes of storage, thus aren't feasible as part of the downloaded package.
 
 Upon startup, all octrees within the ``InitOctreeRange`` parameter are created, then more are made as 
-the agent moves throughout the environment. This can cause pausesin the simulation the first time it 
+the agent moves throughout the environment. This can cause pauses in the simulation the first time it 
 is ran. A warning will appear onscreen about this and can be disabled with the ``ShowWarning`` 
 parameter. All subsequent simulation runs will use the cached octrees and run much faster. 
 
 One option to avoid waiting times, is to run the simulation without the viewport, and let it generate 
-octrees in the background. Here's an example script that does exactly that, just change the scenario 
+octrees in the background. Here's an example script that does exactly that; just change the scenario 
 to the one that you would like to create octrees for.
 
 ::

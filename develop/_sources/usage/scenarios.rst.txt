@@ -35,7 +35,7 @@ Scenario ``.json`` files are distributed in packages (see :ref:`package-contents
 must be named ``{WorldName}-{ScenarioName}.json``. By default they are stored in the
 ``worlds/{PackageName}`` directory (see :ref:`package-locations`). 
 
-Scenarios can be defined using a ``.json`` file or in a python script using a dictionary. 
+Scenarios can be defined using a ``.json`` file or in a Python script using a dictionary. 
 Both methods follow the same format using key-value pairs. An example dictionary is given below: 
 
 .. code-block:: json
@@ -186,7 +186,7 @@ Configurations for pre-built scenarios can be found by reading the associated ``
 These are located in the worlds package folder (see :ref:`package-locations`). 
 
 Sometimes it is helpful to extract specific parameters from a pre-made scenario for use within 
-a python script (ex. for plotting data). Rather than having to copy data manually from the 
+a Python script (ex. for plotting data). Rather than having to copy data manually from the 
 ``.json``, you can use the HoloOcean :ref:`packagemanager` to extract the scenario configuration. 
 
 For example, the following code extracts the azimuth angle from the sidescan sonar sensor in the 

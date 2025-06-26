@@ -2,9 +2,9 @@
 Doppler Velocity Log (DVL)
 ==============================
 
-A Doppler Velocity Log Sensor. 
+A Doppler Velocity Log Sensor, which simulates the emitting of sound waves to calculate relative vehicle velocity to the seafloor or other objects that the sound waves bounce off of. 
 
-See :py:class:`~holoocean.sensors.DVLSensor` for the python API.
+See :py:class:`~holoocean.sensors.DVLSensor` for the Python API.
 
 Example sensor definition::
 

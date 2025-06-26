@@ -61,7 +61,9 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Creating a Custom Level</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#landscape">Landscape</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#water">Water</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-objects">Adding Objects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#note-on-collision-settings-for-objects-and-sonar">Note on Collision Settings for Objects and Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-your-custom-level">Testing Your Custom Level</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="package-env.html">Packaging Environments</a></li>
@@ -69,6 +71,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../agents.html">Developing Agents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
@@ -84,7 +87,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
@@ -154,16 +156,105 @@ Blue to green colors are best, and the Dam environment has the “Scene Color Ti
 <img alt="../../_images/water_w_postprocess.png" src="../../_images/water_w_postprocess.png"/>
 </section>
 </section>
+<section id="adding-objects">
+<h2>Adding Objects<a class="headerlink" href="#adding-objects" title="Permalink to this heading"></a></h2>
+<section id="obtaining-assets">
+<h3>Obtaining Assets<a class="headerlink" href="#obtaining-assets" title="Permalink to this heading"></a></h3>
+<p>To populate your level with assets, you will either need to import your own assets or find assets on <a class="reference external" href="https://www.fab.com/">Fab</a>.</p>
+<p>To replicate similar levels as HoloOcean, we use the following asset packs:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="../../packages/Ocean/Dam/dam.html#dam"><span class="std std-ref">Dam</span></a>:</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.fab.com/listings/0c40a773-c71b-4c51-9286-721126fd9b0f">Ocean Floor Environment</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../../packages/Ocean/OpenWater/openwater.html#openwater"><span class="std std-ref">OpenWater</span></a>:</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.fab.com/listings/f6ff3c58-7fcd-43b8-bc0a-55ab6c405e1b">Modular Dam Environment</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../../packages/Ocean/PierHarbor/pierharbor.html#pierharbor"><span class="std std-ref">PierHarbor</span></a>:</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.fab.com/listings/d15bb4d9-e292-4bc0-a058-14aee645f69e">Container Ships</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/7e671469-af0a-4516-88a4-dfffefdbc640">Boat Pack Vol_1</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/4a89aaec-7b13-46b6-957e-667262149c12">Pier Set</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/aeed2616-24b1-4bb9-8fde-cd268602dfcc">Modular Harbor Building Kit</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="importing-assets">
+<h3>Importing Assets<a class="headerlink" href="#importing-assets" title="Permalink to this heading"></a></h3>
+<p>If you have purchased or obtained free assets from Fab, you can view them in the Epic Games Launcher under the Unreal Engine Library tab.
+Under the “Fab Library” section, you can click on “Add To Project” and select your project to add the assets.</p>
+<p>If you are importing your own models, it is best to save them as FBX files. From there, you can click on the “Import” button from within the Unreal Engine editor and select your FBX file.
+Please reference <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/importing-assets-directly-into-unreal-engine?application_version=5.3">Unreal Engine’s Documentation</a>
+for further help with importing assets.</p>
+</section>
+<section id="placing-assets">
+<h3>Placing Assets<a class="headerlink" href="#placing-assets" title="Permalink to this heading"></a></h3>
+<p>From the Content Drawer, you can drag and drop your assets into your custom level. Or, you can select the icon of the cube with the green plus symbol to quickly add actors such as basic shapes to your level.</p>
+<img alt="../../_images/place-actor.png" src="../../_images/place-actor.png"/>
+<p>It is simple to move, rotate, and scale objects within your level. You can either directly edit these values within the Details panel or use keyboard shortcuts.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%"/>
+<col style="width: 58%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>W</p></td>
+<td><p>Selects the Move tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>E</p></td>
+<td><p>Selects the Rotate tool</p></td>
+</tr>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>Selects the Scale tool</p></td>
+</tr>
+</tbody>
+</table>
+<p>For more information please reference <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/transforming-actors-in-unreal-engine">Unreal Engine’s Documentation</a>.</p>
+</section>
+</section>
 <section id="note-on-collision-settings-for-objects-and-sonar">
-<h2>Note on Collision Settings for Objects and Sonar<a class="headerlink" href="#note-on-collision-settings-for-objects-and-sonar" title="Permalink to this heading"></a></h2>
-<p>Sonar simulation relies upon the collision mesh for objects when generating the octree. If
-the collision mesh of an object is coarser than the visual mesh then the representation of
+<span id="object-collision"></span><h2>Note on Collision Settings for Objects and Sonar<a class="headerlink" href="#note-on-collision-settings-for-objects-and-sonar" title="Permalink to this heading"></a></h2>
+<p>Sonar simulation relies upon the collision mesh for objects when generating the octree.</p>
+<p>First, make sure to set the environment boundaries to have the environment min and max.
+In standalone through Unreal Engine, this would be done by setting the Additional Launch Parameters as seen here: <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a>.
+If you have packaged your worlds, this would be set in the config file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Octrees must be regenerated for a level whenever an object is changed or moved. To regenerate the octrees, delete the octree folder and rerun your simulation. Please see <a class="reference internal" href="../../sensors/docs/octree.html#octree"><span class="std std-ref">Octree Generation</span></a> for the octree location.</p>
+</div>
+<p>If the collision mesh of an object is coarser than the visual mesh then the representation of
 that object in a sonar image will be inaccurate. This issue can be addressed for the objects
 by using the Unreal Engine editor and setting the “Collision Complexity” option in the
 details section of the static mesh editor to “use complex collision as simple”.</p>
 <img alt="../../_images/collision_setting.png" src="../../_images/collision_setting.png"/>
+<p>If you still have issues with your collision mesh, it is often helpful to enable “Double Sided Geometry” in the details panel of the static mesh editor.</p>
+<img alt="../../_images/static_mesh_double_sided.png" src="../../_images/static_mesh_double_sided.png"/>
+<p>Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable “Simulation Generates Hit Events”.</p>
+<img alt="../../_images/level_collision_settings.png" src="../../_images/level_collision_settings.png"/>
 <p>You can verify the shape of the collision mesh by changing the view mode to “Player Collision” in the level or in the static mesh editor.</p>
 <img alt="../../_images/check_collisions.png" src="../../_images/check_collisions.png"/>
+</section>
+<section id="testing-your-custom-level">
+<h2>Testing Your Custom Level<a class="headerlink" href="#testing-your-custom-level" title="Permalink to this heading"></a></h2>
+<p>For quick testing of your level, it is often easiest to run in standalone mode. This will allow you to
+quickly verify collision settings or visuals without having to package the level.
+Please reference <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a> to run your level from within the Unreal Engine Editor.</p>
+<p>Otherwise, you will have to package your level after each change. Please reference <a class="reference internal" href="package-env.html#packaging-environments"><span class="std std-ref">Packaging Environments</span></a> for information.</p>
 </section>
 </section>
 </div>

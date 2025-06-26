@@ -19,8 +19,8 @@ Installation
    current release and develop branches. Unreal Engine 4.27 usage is still available using previous 
    releases of HoloOcean. 
 
-HoloOcean is installed in two portions: a client python library (``holoocean``) is installed first, 
-which then downloads world packages. The python portion is very small, while the world packages 
+HoloOcean is installed in two portions: a client Python library (``holoocean``) is installed first, 
+which then downloads world packages. The Python portion is very small, while the world packages 
 ("binaries") can be several gigabytes.
 
 
@@ -68,13 +68,13 @@ Worlds Packages
    The Ocean package is the only package currently available. Users can create custom worlds and 
    packages if desired. 
 
-To install the most recent version of the Ocean worlds package, open a python shell by typing the 
+To install the most recent version of the Ocean worlds package, open a Python shell by typing the 
 following and hit enter:
 ::
 
    python
 
-Install the package by running the following python commands:
+Install the package by running the following Python commands:
 ::
 
    import holoocean
@@ -89,7 +89,7 @@ To do these steps in a single console command, use:
 Installation for Development
 ============================
 
-Both the python library and the available worlds of HoloOcean are actively being developed. 
+Both the Python library and the available worlds of HoloOcean are actively being developed. 
 These instructions describe how to access the most recent development updates. 
 
 For more detailed instructions on installation for development, see :ref:`develop`.
@@ -112,7 +112,7 @@ World Packages
 
    Development versions of the HoloOcean worlds are auto-generated for Linux machines, but not for
    Windows. Windows binaries are currently compiled manually and may not be up-to-date with the
-   latest changes. To get development versions of the Windows worlds, please reach out to the 
+   latest changes. To get the packaged binaries of the development versions of the Windows worlds, please reach out to the 
    HoloOcean team.
 
 It is advised that you use the development versions of the Ocean package when on the develop branch 
@@ -120,7 +120,7 @@ of the library. These will contain the latest updates to the worlds that may be 
 some features on the develop branch. Using the develop branch with the release version of the worlds 
 may result in unexpected behavior. 
 
-To install the development version of the Ocean package, open a python shell and remove any previous 
+To install the development version of the Ocean package, open a Python shell and remove any previous 
 versions of the binaries by running the following command:
 ::
    

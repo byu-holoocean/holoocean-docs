@@ -8,11 +8,11 @@ specified by the parameters. For example, if an agent had two range sensors at d
 
 .. image:: ../UAVRangeFinder.PNG
 
-That is, for 1 laser, you'd have 1 laser facing forward; for 3, you'd have one forward, with the 
-other 2 distributed evenly along the circle, at 120 degree intervals; and for 24, you'd have a laser 
+That is, for one laser, you'd have one laser facing forward; for three, you'd have one forward, with the 
+other two distributed evenly along the circle, at 120 degree intervals; and for 24, you'd have a laser 
 spaced every 15 degrees.
 
-See :py:class:`~holoocean.sensors.RangeFinderSensor` for the python API and more details.
+See :py:class:`~holoocean.sensors.RangeFinderSensor` for the Python API and more details.
 
 
 Example sensor definition::

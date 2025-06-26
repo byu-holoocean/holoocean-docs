@@ -87,7 +87,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
@@ -173,7 +172,7 @@ arguments for <code class="docutils literal notranslate"><span class="pre">agent
 <td><p><code class="docutils literal notranslate"><span class="pre">CougUV</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../agents/blue-rov-agent.html#blue-rov-agent"><span class="std std-ref">BlueROV2</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BlueROV</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BlueROV2</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../agents/sphere-agent.html#sphere-agent"><span class="std std-ref">SphereAgent</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Sphere</span></code></p></td>
@@ -216,7 +215,7 @@ degrees respectively. The location is in the format <code class="docutils litera
 <span id="id2"></span><h2>Location Randomization<a class="headerlink" href="#location-randomization" title="Permalink to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">location_randomization</span></code> and <code class="docutils literal notranslate"><span class="pre">rotation_randomization</span></code> are optional. If provided, the agent’s
 start location and/or rotation will vary by a random amount sampled uniformly from the specified
-range. Ranndomization in each direction is sampled independently.</p>
+range. Randomization in each direction is sampled independently.</p>
 <p>The location randomization value is measured in meters, in the format <code class="docutils literal notranslate"><span class="pre">[dx,</span> <span class="pre">dy,</span> <span class="pre">dz]</span></code>. The rotation
 randomization is in the format <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code>, rotated about the XYZ fixed axes (i.e.
 R_z*R_y*R_x).</p>

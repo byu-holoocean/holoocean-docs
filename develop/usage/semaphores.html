@@ -23,7 +23,7 @@
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
-<link href="../packages/packages.html" rel="next" title="HoloOcean Packages"/>
+<link href="ROS2.html" rel="next" title="ROS2 Bridge"/>
 <link href="units-and-coordinates.html" rel="prev" title="Units and Coordinates in HoloOcean"/>
 </head>
 <body class="wy-body-for-nav">
@@ -82,6 +82,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#remarks">Remarks</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="ROS2.html">ROS2 Bridge</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
@@ -105,7 +106,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
@@ -150,7 +150,7 @@ and <a class="reference external" href="https://en.wikipedia.org/wiki/Shared_mem
 <section id="client">
 <h3>Client<a class="headerlink" href="#client" title="Permalink to this heading"></a></h3>
 <ul class="simple">
-<li><p>Known as the “python side” or “client”</p></li>
+<li><p>Known as the “Python side” or “client”</p></li>
 <li><p>Starts the “server”</p></li>
 <li><p>User interacts with this exclusively</p></li>
 <li><p>Mostly moves information to and from the engine</p></li>
@@ -367,7 +367,7 @@ functions are called, after which all sensors are updated and their tick functio
 action will be executed until another action is written. Same with sensor
 data.</p></li>
 <li><p>The engine’s default UUID is <code class="docutils literal notranslate"><span class="pre">""</span></code>. This means that if you launch the engine
-from the editor or Visual Studio, you can attach to it with a python client
+from the editor or Visual Studio, you can attach to it with a Python client
 if you specify the UUID is <code class="docutils literal notranslate"><span class="pre">""</span></code> when creating the <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>
 object.</p></li>
 </ol>
@@ -377,7 +377,7 @@ object.</p></li>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
 <a accesskey="p" class="btn btn-neutral float-left" href="units-and-coordinates.html" rel="prev" title="Units and Coordinates in HoloOcean"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="../packages/packages.html" rel="next" title="HoloOcean Packages">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="n" class="btn btn-neutral float-right" href="ROS2.html" rel="next" title="ROS2 Bridge">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

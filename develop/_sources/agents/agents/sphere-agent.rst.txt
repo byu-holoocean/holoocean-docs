@@ -21,14 +21,14 @@ See :class:`~holoocean.agents.SphereAgent` for more details.
 Control Schemes
 ===============
 
-**Sphere discrete** (``0``)
-  A single-length integer vector that accepts 1 of four
+**Sphere Discrete** (``0``)
+  A single-length integer vector that accepts one of four
   possible numbers; 0: move forward, 1: move backward, 
-  2: turn right, 3: turn left
+  2: turn right, 3: turn left.
 
-**Sphere continuous** (``1``)
+**Sphere Continuous** (``1``)
   A 2-length floating point vector used to specify 
-  the agent's forward speed (index 0) and rotation speed (index 1).
+  the agent's forward speed (index 0) and rotational speed (index 1).
 
 Sockets
 =======
@@ -38,8 +38,8 @@ upwards.
 
 Socket Definitions
 ------------------
-- ``CameraSocket`` located at the front of the sphere body
-- ``Viewport`` located behind the agent
+- ``CameraSocket`` located at the front of the sphere body.
+- ``Viewport`` located behind the agent.
 
 
 Socket Frames

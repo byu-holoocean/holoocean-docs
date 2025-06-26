@@ -28,7 +28,7 @@ Control Schemes
   A 4-length floating point vector used to specify the pitch torque,
   roll torque, yaw torque and thrust with indices 0, 1, 2 and 3 respectively.
 
-**UAV Roll / Pitch / Yaw targets(``1``)**
+**UAV Roll / Pitch / Yaw Targets(``1``)**
   A 4-length floating point vector used to specify the pitch,
   roll, yaw, and altitude targets. The values are specified in
   indices 0, 1, 2, and 3 respectively.

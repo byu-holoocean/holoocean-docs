@@ -106,7 +106,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
@@ -137,14 +136,14 @@
 <section id="dynamics-sensor">
 <span id="id1"></span><h1>Dynamics Sensor<a class="headerlink" href="#dynamics-sensor" title="Permalink to this heading"></a></h1>
 <p>A sensor that returns ground truth values needed to implement custom dynamics. The dynamics sensor
-returns linear acceleration, velocity, and position, folowed by angular acceleration, velocity, and
+returns linear acceleration, velocity, and position, followed by angular acceleration, velocity, and
 position, in that order.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This sensor always returns values at the <strong>COM of the vehicle</strong>, with values given in the <strong>global
 frame</strong>, regardless of the socket it is placed in.</p>
 </div>
-<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.DynamicsSensor" title="holoocean.sensors.DynamicsSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a> for the python API and more details.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.DynamicsSensor" title="holoocean.sensors.DynamicsSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a> for the Python API and more details.</p>
 <p>Example sensor definition:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"DynamicsSensor"</span><span class="p">,</span>

@@ -12,7 +12,7 @@ streaks along the azimuth to the return, as those are common artifacts in sonar 
 
 See :ref:`visualizing_imaging_sonar` for an example of how to use this sensor.
 
-See :py:class:`~holoocean.sensors.ImagingSonar` for the python API.
+See :py:class:`~holoocean.sensors.ImagingSonar` for the Python API.
 
 Example sensor definition::
 

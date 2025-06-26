@@ -5,7 +5,7 @@ Inertial Measurement Unit (IMU)
 Simulates an IMU sensor, potentially with noise added but defaults to no noise. Return is in a 2D 
 numpy array of either 2x3 (default) or 4x3 (with biases).
 
-See :py:class:`~holoocean.sensors.IMUSensor` for the python API and more details.
+See :py:class:`~holoocean.sensors.IMUSensor` for the Python API and more details.
 
 Example sensor definition::
 

@@ -55,16 +55,98 @@ As seen in the Dam environment, the water plane is a separate landscape located 
 
 .. image:: images/water_w_postprocess.png
 
+Adding Objects
+==============
+
+Obtaining Assets
+----------------
+
+To populate your level with assets, you will either need to import your own assets or find assets on `Fab <https://www.fab.com/>`_. 
+
+To replicate similar levels as HoloOcean, we use the following asset packs:
+
+* :ref:`dam`: 
+    * `Ocean Floor Environment <https://www.fab.com/listings/0c40a773-c71b-4c51-9286-721126fd9b0f>`_ 
+* :ref:`openwater`: 
+    * `Modular Dam Environment <https://www.fab.com/listings/f6ff3c58-7fcd-43b8-bc0a-55ab6c405e1b>`_
+* :ref:`pierharbor`: 
+    * `Container Ships <https://www.fab.com/listings/d15bb4d9-e292-4bc0-a058-14aee645f69e>`_ 
+    * `Boat Pack Vol_1 <https://www.fab.com/listings/7e671469-af0a-4516-88a4-dfffefdbc640>`_
+    * `Pier Set <https://www.fab.com/listings/4a89aaec-7b13-46b6-957e-667262149c12>`_
+    * `Modular Harbor Building Kit <https://www.fab.com/listings/aeed2616-24b1-4bb9-8fde-cd268602dfcc>`_
+
+Importing Assets
+----------------
+If you have purchased or obtained free assets from Fab, you can view them in the Epic Games Launcher under the Unreal Engine Library tab. 
+Under the "Fab Library" section, you can click on "Add To Project" and select your project to add the assets. 
+
+If you are importing your own models, it is best to save them as FBX files. From there, you can click on the "Import" button from within the Unreal Engine editor and select your FBX file.
+Please reference `Unreal Engine's Documentation <https://dev.epicgames.com/documentation/en-us/unreal-engine/importing-assets-directly-into-unreal-engine?application_version=5.3>`_
+for further help with importing assets. 
+
+Placing Assets
+--------------
+From the Content Drawer, you can drag and drop your assets into your custom level. Or, you can select the icon of the cube with the green plus symbol to quickly add actors such as basic shapes to your level.
+
+.. image:: images/place-actor.png
+
+It is simple to move, rotate, and scale objects within your level. You can either directly edit these values within the Details panel or use keyboard shortcuts.
+
+.. list-table::
+   :widths: 25 35
+   :header-rows: 1
+
+   * - Key
+     - Action
+   * - W
+     - Selects the Move tool
+   * - E
+     - Selects the Rotate tool
+   * - R
+     - Selects the Scale tool
+
+::
+
+For more information please reference `Unreal Engine's Documentation <https://dev.epicgames.com/documentation/en-us/unreal-engine/transforming-actors-in-unreal-engine>`_.
+
+.. _object-collision:
+
 Note on Collision Settings for Objects and Sonar
 ================================================
-Sonar simulation relies upon the collision mesh for objects when generating the octree. If 
-the collision mesh of an object is coarser than the visual mesh then the representation of
+
+Sonar simulation relies upon the collision mesh for objects when generating the octree. 
+
+First, make sure to set the environment boundaries to have the environment min and max. 
+In standalone through Unreal Engine, this would be done by setting the Additional Launch Parameters as seen here: :ref:`live-game`.
+If you have packaged your worlds, this would be set in the config file. 
+
+.. warning::
+   Octrees must be regenerated for a level whenever an object is changed or moved. To regenerate the octrees, delete the octree folder and rerun your simulation. Please see :ref:`octree` for the octree location.
+ 
+If the collision mesh of an object is coarser than the visual mesh then the representation of
 that object in a sonar image will be inaccurate. This issue can be addressed for the objects
 by using the Unreal Engine editor and setting the “Collision Complexity” option in the 
 details section of the static mesh editor to “use complex collision as simple”.
 
 .. image:: images/collision_setting.png
 
+If you still have issues with your collision mesh, it is often helpful to enable "Double Sided Geometry" in the details panel of the static mesh editor.
+
+.. image:: images/static_mesh_double_sided.png
+
+Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable "Simulation Generates Hit Events".
+
+.. image:: images/level_collision_settings.png
+
 You can verify the shape of the collision mesh by changing the view mode to "Player Collision" in the level or in the static mesh editor.
 
 .. image:: images/check_collisions.png
+
+Testing Your Custom Level
+=========================
+
+For quick testing of your level, it is often easiest to run in standalone mode. This will allow you to 
+quickly verify collision settings or visuals without having to package the level. 
+Please reference :ref:`live-game` to run your level from within the Unreal Engine Editor. 
+
+Otherwise, you will have to package your level after each change. Please reference :ref:`packaging-environments` for information.
