@@ -12,6 +12,29 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean 2.0.1
+===============
+*6/27/2025*
+
+New Features
+------------
+
+- Updated Fossen based dynamics with new interface for easier use and multi-agent support, and expanded torpedo model with additional fin configurations.
+- Official Docker support for both runtime and development containers.
+
+Changes
+-------
+
+- Expanded documentation on creating environments and developing with the Unreal Editor.
+- Dropped support for Python 3.7 and 3.8; added support for Python 3.12 and 3.13.
+- Improved installation instructions, including a new Docker installation guide.
+- Grammar fixes throughout the documentation.
+
+Bug Fixes
+---------
+
+- Improved rise time and damping in the Torpedo depth controller when using Fossen based dynamics.
+
 
 HoloOcean 2.0.0
 ===============

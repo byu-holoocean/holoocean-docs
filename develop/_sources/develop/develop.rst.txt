@@ -4,6 +4,13 @@
 Developing HoloOcean
 ====================
 
+.. note::
+   
+   HoloOcean has updated from using Unreal Engine 4.27 to 5.3. If you are developing worlds, agents, 
+   sensors, etc. using Unreal, you will need to download Unreal Engine 5.3 to develop from the 
+   current release and develop branches. Unreal Engine 4.27 usage is still available using previous 
+   releases of HoloOcean. 
+
 For users that would like to add to or modify HoloOcean, this documentation will help you get started.
 
 The following guides go through how to set up your development environment, including Unreal 
