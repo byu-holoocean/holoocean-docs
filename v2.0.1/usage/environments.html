@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Environments — HoloOcean 2.0.1 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="viewport.html" rel="next" title="Viewport"/>
+<link href="scenarios.html" rel="prev" title="Scenarios"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.0.1</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usage.html">Using HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Environments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean-make">HoloOcean Make</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#act-tick-and-step">Act, Tick, and Step</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="viewport.html">Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Improving Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="units-and-coordinates.html">Units and Coordinates in HoloOcean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semaphores.html">HoloOcean Client-Server Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ROS2.html">ROS2 Bridge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/weather.html">Weather Controller</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="usage.html">Using HoloOcean</a></li>
+<li class="breadcrumb-item active">Environments</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/usage/environments.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="environments">
+<span id="id1"></span><h1>Environments<a class="headerlink" href="#environments" title="Permalink to this heading"></a></h1>
+<p>HoloOcean simulations defined by a scenario are run in an environment object. The environment
+object provides methods to interact with agents and progress the simulation, and returns the
+state of the simulation after each progression.</p>
+<section id="holoocean-make">
+<h2>HoloOcean Make<a class="headerlink" href="#holoocean-make" title="Permalink to this heading"></a></h2>
+<p>HoloOcean environments are created by calling <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code>. The function takes as input
+the name of a scenario, which defines the world, agents, sensors, and so on. If using pre-built
+scenarios, the name of the scenario is passed as a string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"PierHarbor-Hovering"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If using a custom scenario without a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file, the scenario object is passed directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"{Scenario Name}"</span><span class="p">,</span>
+  <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"{world it is associated with}"</span><span class="p">,</span>
+  <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"{package it is associated with}"</span><span class="p">,</span>
+  <span class="s2">"agents"</span><span class="p">:[</span><span class="s2">"array of agent objects"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">scenario</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code> returns an environment object that you can interact with.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code> is the easiest way to create an environment object and enables the use of
+pre-built scenarios. It builds the binary paths from the provided string and creates a
+<code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code> object. If you want to create an environment object without using
+pre-built scenarios, you can create a <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code> object directly, though this is
+not recommended for most users.</p>
+</div>
+<p>For a full list of inputs to <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code>, see the <a class="reference internal" href="../holoocean/index.html#holoocean-api-index"><span class="std std-ref">API documentation</span></a>.</p>
+</section>
+<section id="act-tick-and-step">
+<span id="step"></span><h2>Act, Tick, and Step<a class="headerlink" href="#act-tick-and-step" title="Permalink to this heading"></a></h2>
+<p>The simulation defined in an Environment object is progressed in two steps:</p>
+<p>1. <code class="docutils literal notranslate"><span class="pre">.act(command,</span> <span class="pre">agent)</span></code> takes as input a command and the name of a target agent, and provides that
+command to the agent. <code class="docutils literal notranslate"><span class="pre">act</span></code> does not progress the simulation, but rather queues the
+command to be executed on the next tick. For details on the formats of the commands and agent inputs,
+see <a class="reference internal" href="../agents/agents.html#agents"><span class="std std-ref">HoloOcean Agents</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After calling <code class="docutils literal notranslate"><span class="pre">.act()</span></code>, the same command will continue to be supplied to the designated agent
+at each tick of the simulation. To change the command, just call <code class="docutils literal notranslate"><span class="pre">.act()</span></code> again.</p>
+</div>
+<p>2. <code class="docutils literal notranslate"><span class="pre">.tick()</span></code> progresses the simulation by one step. Any queued commands from <code class="docutils literal notranslate"><span class="pre">act()</span></code>
+are executed, and the simulation is updated. <code class="docutils literal notranslate"><span class="pre">tick()</span></code> returns the state of the simulation.</p>
+<p>We provide a convenience function, <code class="docutils literal notranslate"><span class="pre">.step(command,</span> <span class="pre">agent)</span></code>, that combines <code class="docutils literal notranslate"><span class="pre">.act()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">.tick()</span></code>. It does the following:</p>
+<ul class="simple">
+<li><p>takes a command as input,</p></li>
+<li><p>provides that command to the <strong>main agent only</strong>,</p></li>
+<li><p>ticks the simulation, and</p></li>
+<li><p>returns the state of the simulation.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">.step()</span></code> is the primary mode of interaction for single-agent scenarios. For multi-agent
+scenarios, use <code class="docutils literal notranslate"><span class="pre">.act()</span></code> multiple times to provide commands to each agent, then call <code class="docutils literal notranslate"><span class="pre">.tick()</span></code>
+to progress the simulation.</p>
+<p>The state returned from <code class="docutils literal notranslate"><span class="pre">.tick()</span></code> and <code class="docutils literal notranslate"><span class="pre">.step()</span></code> is a dictionary from agent name to sensor
+dictionary. The sensor dictionary contains the sensor data for that agent.</p>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="scenarios.html" rel="prev" title="Scenarios"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="viewport.html" rel="next" title="Viewport">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
