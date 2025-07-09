@@ -146,11 +146,15 @@ The frame rate in HoloOcean is controlled using two parameters: ``ticks_per_sec`
    - Defaults to `true`.
 
 For running the simulation in real time (for example, when :ref:`manual-control`), set 
-``frames_per_sec`` to true. For running HoloOcean :ref:`headless<headless>`, you'll likely want the 
+``frames_per_sec`` to true and ensure that ``ticks_per_sec`` is small enough for your computer to 
+handle in real-time. For running HoloOcean :ref:`headless<headless>`, you'll likely want the 
 simulation to run as fast as possible, so ``frames_per_sec`` should be set to false. When using a 
 GPU, simulations can run much faster than realtime, making things difficult to control when the 
 framerate is unlimited. In this case, capping ``frames_per_sec`` at a specific value can be useful.
 
+You can adjust the simulation frames per second and ticks per second during runtime by calling the methods 
+``env.set_frames_per_sec`` and ``env.set_ticks_per_sec``. Each of these functions takes one argument: the 
+newly desired frames/ticks per second.
 
 .. _`configure-octree`:
 

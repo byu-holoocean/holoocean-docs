@@ -54,7 +54,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
 </ul>
@@ -142,6 +141,12 @@ worry about these.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.SendOpticalMessageCommand" title="holoocean.command.SendOpticalMessageCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SendOpticalMessageCommand</span></code></a>(from_agent_name, ...)</p></td>
 <td><p>Send information through OpticalModem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.SetFPSCommand" title="holoocean.command.SetFPSCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetFPSCommand</span></code></a>(fps)</p></td>
+<td><p>Set the frames per second of the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.SetTPSCommand" title="holoocean.command.SetTPSCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetTPSCommand</span></code></a>(tps)</p></td>
+<td><p>Set the ticks per second of the simulation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.SpawnAgentCommand" title="holoocean.command.SpawnAgentCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpawnAgentCommand</span></code></a>(location, rotation, name, ...)</p></td>
 <td><p>Spawn an agent in the world.</p></td>
@@ -478,6 +483,26 @@ it just prevents it from being updated.</p>
 <dt class="sig sig-object py" id="holoocean.command.SendOpticalMessageCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SendOpticalMessageCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_sensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_sensor_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SendOpticalMessageCommand" title="Permalink to this definition"></a></dt>
 <dd><p>Send information through OpticalModem.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SetFPSCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SetFPSCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SetFPSCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Set the frames per second of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The number of frames per second to set the simulation to.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SetTPSCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SetTPSCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SetTPSCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Set the ticks per second of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The number of ticks per second to set the simulation to.</p>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.command.SpawnAgentCommand">

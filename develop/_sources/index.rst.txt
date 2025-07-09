@@ -59,7 +59,6 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    sensors/sensors
    examples/examples
    sensors/sensors
-   examples/examples
    develop/develop
    changelog/changelog
 

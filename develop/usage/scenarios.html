@@ -80,7 +80,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
 </ul>
@@ -260,10 +259,14 @@ happens within each agent definition.</p>
 </li>
 </ul>
 <p>For running the simulation in real time (for example, when <a class="reference internal" href="../examples/examples/controller.html#manual-control"><span class="std std-ref">Manually Controlling an Agent</span></a>), set
-<code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code> to true. For running HoloOcean <a class="reference internal" href="viewport.html#headless"><span class="std std-ref">headless</span></a>, you’ll likely want the
+<code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code> to true and ensure that <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code> is small enough for your computer to
+handle in real-time. For running HoloOcean <a class="reference internal" href="viewport.html#headless"><span class="std std-ref">headless</span></a>, you’ll likely want the
 simulation to run as fast as possible, so <code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code> should be set to false. When using a
 GPU, simulations can run much faster than realtime, making things difficult to control when the
 framerate is unlimited. In this case, capping <code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code> at a specific value can be useful.</p>
+<p>You can adjust the simulation frames per second and ticks per second during runtime by calling the methods
+<code class="docutils literal notranslate"><span class="pre">env.set_frames_per_sec</span></code> and <code class="docutils literal notranslate"><span class="pre">env.set_ticks_per_sec</span></code>. Each of these functions takes one argument: the
+newly desired frames/ticks per second.</p>
 </section>
 <section id="octree-configuration">
 <span id="configure-octree"></span><h3>Octree Configuration<a class="headerlink" href="#octree-configuration" title="Permalink to this heading"></a></h3>
