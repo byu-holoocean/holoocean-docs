@@ -61,3 +61,18 @@ Socket Frames
 
 .. image:: images/torpedo-right.png
    :scale: 50%
+
+
+.. _torpedoauv-flashlights:
+
+Flashlights
+===========
+
+The TorpedoAUV comes with a single forward-facing flashlight mounted at the front of the vehicle for illumination.
+
+.. image:: images/torpedo_auv_flashlight.png
+   :scale: 60%
+
+* `flashlight1`: (105, 0, 0)
+
+Please refer to :ref:`flashlights<flashlight>` for information on available control commands.

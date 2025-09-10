@@ -9,14 +9,14 @@ BlueROV2
 
 
 Description
-===========
+~~~~~~~~~~~
 An implementation of the BlueROV2 Heavy vehicle from Blue Robotics. 
 
 See the :class:`~holoocean.agents.BlueROV2`.
 
 
 Control Schemes
-===============
+~~~~~~~~~~~~~~~
 
 **AUV Thrusters (``0``)**
   An 8-length floating point vector used to specify the control on each thruster. They begin with 
@@ -35,7 +35,7 @@ Control Schemes
    clean slate for custom dynamics.
 
 Sockets
-=======
+~~~~~~~
 All sockets have standard orientation unless stated otherwise. Standard orientation has the x-axis 
 pointing towards the front of the vehicle, the y-axis pointing starboard, and the z-axis pointing 
 upwards. 
@@ -64,3 +64,21 @@ Socket Frames
 
 .. image:: images/blue-rov-sockets-front.png
    :scale: 73%
+
+
+.. _bluerov2-flashlights:
+
+Flashlights
+~~~~~~~~~~~
+
+The BlueROV2 comes with four built-in flashlights positioned around the vehicle to provide illumination in various directions.
+
+.. image:: images/blue_rov2_flashlight.png
+   :scale: 70%
+
+* `flashlight1`: (22, 19, 11)
+* `flashlight2`: (22, -19, 11)
+* `flashlight3`: (22, 19, -6)
+* `flashlight4`: (22, -19, -6)
+
+Please refer to :ref:`flashlights<flashlight>` for information on available control commands.

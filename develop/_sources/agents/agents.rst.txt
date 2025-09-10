@@ -58,6 +58,7 @@ Documentation on how to use agents in HoloOcean:
    docs/agent-config
    docs/control-schemes
    docs/fossen-based-dynamics
+   docs/flashlight
 
 
 .. _`agent-pages`:

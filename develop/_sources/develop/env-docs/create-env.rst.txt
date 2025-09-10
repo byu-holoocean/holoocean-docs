@@ -142,6 +142,14 @@ You can verify the shape of the collision mesh by changing the view mode to "Pla
 
 .. image:: images/check_collisions.png
 
+Note on Flashlights
+===================
+
+For vehicle flashlights to function properly, your level must include the ``FlashlightManager``.  
+You can add it by dragging the manager from ``Content/HolodeckContent/Agents/FlashlightManager`` into your world.  
+
+The ``FlashlightManager`` does not alter the appearance or physics of the environment — it simply enables flashlight functionality.
+
 Testing Your Custom Level
 =========================
 

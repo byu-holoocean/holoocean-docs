@@ -48,3 +48,18 @@ Socket Frames
 -------------
 .. image:: images/surface-sockets.png
    :scale: 50%
+
+
+.. _surfacevessel-flashlights:
+
+Flashlights
+===========
+
+The SurfaceVessel comes with a single forward-facing flashlight mounted at the front of the vehicle for illumination.
+
+.. image:: images/surface_vessel_flashlight.png
+   :scale: 50%
+
+* `flashlight1`: (94, 0, 126)
+
+Please refer to :ref:`flashlights<flashlight>` for information on available control commands.

@@ -68,3 +68,18 @@ Socket Frames
 
 .. image:: images/coug-front.png
    :scale: 50%
+
+
+.. _couguv-flashlights:
+
+Flashlights
+===========
+
+The CougUV comes with a single forward-facing flashlight mounted at the front of the vehicle for illumination.
+
+.. image:: images/coug_uv_flashlight.png
+   :scale: 50% 
+
+* `flashlight1`: (62, -0.2, 8.5)
+
+Please refer to :ref:`flashlights<flashlight>` for information on available control commands.

@@ -57,10 +57,9 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    packages/packages
    agents/agents
    sensors/sensors
-   examples/examples
-   sensors/sensors
    develop/develop
    changelog/changelog
+   examples/examples
 
 .. toctree::
    :maxdepth: 3

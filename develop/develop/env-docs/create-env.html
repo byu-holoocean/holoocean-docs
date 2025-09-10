@@ -51,9 +51,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../develop.html">Developing HoloOcean</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../start.html">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../env.html">Developing Environments</a><ul class="current">
@@ -62,6 +59,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#water">Water</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-objects">Adding Objects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#note-on-collision-settings-for-objects-and-sonar">Note on Collision Settings for Objects and Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-on-flashlights">Note on Flashlights</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-your-custom-level">Testing Your Custom Level</a></li>
 </ul>
 </li>
@@ -73,7 +71,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
@@ -247,6 +247,12 @@ details section of the static mesh editor to “use complex collision as simple�
 <img alt="../../_images/level_collision_settings.png" src="../../_images/level_collision_settings.png"/>
 <p>You can verify the shape of the collision mesh by changing the view mode to “Player Collision” in the level or in the static mesh editor.</p>
 <img alt="../../_images/check_collisions.png" src="../../_images/check_collisions.png"/>
+</section>
+<section id="note-on-flashlights">
+<h2>Note on Flashlights<a class="headerlink" href="#note-on-flashlights" title="Permalink to this heading"></a></h2>
+<p>For vehicle flashlights to function properly, your level must include the <code class="docutils literal notranslate"><span class="pre">FlashlightManager</span></code>.
+You can add it by dragging the manager from <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents/FlashlightManager</span></code> into your world.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FlashlightManager</span></code> does not alter the appearance or physics of the environment — it simply enables flashlight functionality.</p>
 </section>
 <section id="testing-your-custom-level">
 <h2>Testing Your Custom Level<a class="headerlink" href="#testing-your-custom-level" title="Permalink to this heading"></a></h2>

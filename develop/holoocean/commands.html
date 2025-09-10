@@ -51,11 +51,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
@@ -153,6 +152,12 @@ worry about these.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.TeleportCameraCommand" title="holoocean.command.TeleportCameraCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TeleportCameraCommand</span></code></a>(location, rotation)</p></td>
 <td><p>Move the viewport camera (agent follower)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.TurnOffFlashlightCommand" title="holoocean.command.TurnOffFlashlightCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TurnOffFlashlightCommand</span></code></a>(flashlight_name)</p></td>
+<td><p>Turns off the vehicle's flashlight.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.TurnOnFlashlightCommand" title="holoocean.command.TurnOnFlashlightCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TurnOnFlashlightCommand</span></code></a>(flashlight_name[, ...])</p></td>
+<td><p>Turns on the vehicle's flashlight and sets its visual parameters.</p></td>
 </tr>
 </tbody>
 </table>
@@ -587,6 +592,38 @@ it just prevents it from being updated.</p>
 (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
 <li><p><strong>rotation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> rotation to give the camera
 (see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.TurnOffFlashlightCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">TurnOffFlashlightCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flashlight_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.TurnOffFlashlightCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Turns off the vehicle’s flashlight.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flashlight_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the flashlight to turn off. Vehicles have 4 flashlights (flashlight1-flashlight4)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.TurnOnFlashlightCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">TurnOnFlashlightCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flashlight_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_x_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_y_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_z_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_yaw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.TurnOnFlashlightCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Turns on the vehicle’s flashlight and sets its visual parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flashlight_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the flashlight to turn on. (e.g., flashlight1)</p></li>
+<li><p><strong>intensity</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The brightness of the flashlight. Recommended range: 0 to 100000. (Default = 5000)</p></li>
+<li><p><strong>beam_width</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The beam’s spread angle in degrees. Recommended range: 1 to 80. (Default = 45)</p></li>
+<li><p><strong>location_x_offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – x component of the flashlight location offset. (Default = 0)</p></li>
+<li><p><strong>location_y_offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – y component of the flashlight location offset. (Default = 0)</p></li>
+<li><p><strong>location_z_offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – z component of the flashlight location offset. (Default = 0)</p></li>
+<li><p><strong>angle_pitch</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The pitch angle (in degrees) for flashlight direction. Range: -70 to 70. (Default = -30)</p></li>
+<li><p><strong>angle_yaw</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The yaw angle (in degrees) for flashlight direction. Range: -70 to 70. (Default = 0)</p></li>
+<li><p><strong>color_R</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Red component of the flashlight color. Range: 0.0 to 1.0. (Default = 1)</p></li>
+<li><p><strong>color_G</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Green component of the flashlight color. Range: 0.0 to 1.0. (Default = 1)</p></li>
+<li><p><strong>color_B</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Blue component of the flashlight color. Range: 0.0 to 1.0. (Default = 1)</p></li>
 </ul>
 </dd>
 </dl>

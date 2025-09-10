@@ -65,3 +65,21 @@ Socket Frames
 
 .. image:: images/hovering-front.png
    :scale: 50%
+
+
+.. _hoveringauv-flashlights:
+
+Flashlights
+===========
+
+The HoveringAUV comes with four built-in flashlights positioned around the vehicle to provide illumination in various directions.
+
+.. image:: images/hovering_auv_flashlight.png
+   :scale: 60%
+
+* `flashlight1`: (31, -25, 14)
+* `flashlight2`: (31, 25, 14)
+* `flashlight3`: (31, -25, -15)
+* `flashlight4`: (31, 25, -15)
+
+Please refer to :ref:`flashlights<flashlight>` for information on available control commands.
