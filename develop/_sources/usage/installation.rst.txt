@@ -359,13 +359,6 @@ the develop branch and reinstall the holoocean package via pip using the command
 
 World Packages
 --------------
-.. note::
-
-   Development versions of the HoloOcean worlds are auto-generated for Linux. 
-   On Windows, binaries are compiled manually and may not always reflect the latest updates.
-   To get development versions of the Windows worlds, please reach out to the 
-   HoloOcean team.
-
 It is advised that you use the development versions of the Ocean package when on the develop branch 
 of the library. These will contain the latest updates to the worlds that may be necessary to use 
 some features on the develop branch. Using the develop branch with the release version of the worlds 
