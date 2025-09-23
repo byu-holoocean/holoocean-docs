@@ -28,7 +28,7 @@ Water
 =====
 
 **The Unreal Engine Water plugin is not compatible with HoloOcean and will not work.** Instead, to achieve an underwater appearance, 
-you will need to place a water plane, ExponentialHeightFog, and a PostProcessVolume within your environment. Please note the following are suggested settings, and there may be others you would want to consider adjusting for your level.
+you will need to place a water plane and two PostProcessVolumes within your environment. Please note the following are suggested settings, and there may be others you would want to consider adjusting for your level.
 
 Water Plane
 -----------
@@ -37,23 +37,56 @@ For the water plane, place a plane actor at z=0. Change the material to be any w
 
 .. image:: images/plane_settings.png
 
-Fog
----
+To make sure your water plane is compatible with our tide system, tag the water plane as "WaterSurface" and make the plane movable. 
 
-If you created a basic level, it should already come with an ExponentialHeightFog located in the Lighting folder in the level outliner. Otherwise, go to Window ➡ Env. Light Mixer ➡ Create Height Fog. 
-As a note, the other lighting options through the Env. Light Mixer should also be added to the level, although no changes to them need to be made.
+.. image:: images/water_plane.png
 
-Adjust the ExponentialHeightFog "Fog Distance", "Fog Height Fallout", and "Fog Inscattering Color" in the details panel until it fits your needs. For example, the Dam environment has a "Fog Density" of 0.4, "Fog Height Falloff" of 0.2, and "Fog Inscattering Color" of Hex sRGB B2D1FFFF. 
-
-PostProcessVolume
+Water Color (PostProcessVolume 1)
 -----------------
 
 For the PostProcessVolume, go to Place Actors ➡ Volumes ➡ Post Process Volume and drag it into your level. Adjust the scale of the volume to fit your entire underwater area. To adjust the color of the volume, go to the Details pannel ➡ Color Grading ➡ Misc ➡ "Scene Color Tint". 
 Blue to green colors are best, and the Dam environment has the "Scene Color Tint" set to Hex sRGB AAD9C8FF. 
 
-As seen in the Dam environment, the water plane is a separate landscape located at z=0. The red outline box that surrounds the environment is the PostProcessVolume. 
+As seen in the Dam environment, the water plane is a separate plane located at z=0. The red outline box that surrounds the environment is the PostProcessVolume. 
 
 .. image:: images/water_w_postprocess.png
+
+Make sure to tag the PostProcessVolume as ``WaterPPV`` so that the Water Fog Command and Tides Command function correctly.
+
+
+Water Fog (PostProcessVolume 2)
+-------------------------------
+
+To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the ``MM_Fog_Water`` material. 
+In the **Details** panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to **Asset Reference**, and select ``MM_Fog_Water``. 
+Alternatively, you can drag the material directly from ``Content/WeatherContent/Fog/MM_Fog_Water``.
+
+.. image:: images/water_fog_material.png
+
+After applying the material, you can tune its parameters to achieve the desired underwater effect. The most relevant parameters are:
+
+- **Fog_Depth** – controls how far the fog extends.  
+- **Fog_Opacity** – controls the density of the fog.  
+- **Fog_Color** – defines the fog color (normalized RGB, ``0.0 – 1.0``).  
+
+Although the **Fog_Transition** parameter can also be modified, it is generally recommended to leave it at its default value of ``0.1`` and adjust the other parameters first. Modify it only if you need finer control over how the fog blends with the scene.
+
+.. image:: images/fog_params.png
+
+Make sure to tag the PostProcessVolume as ``WaterPPV`` so that the Water Fog Command and Tides Command function correctly.
+
+
+Lighting
+=========
+
+If you created a Basic Level, the lighting should already be implemented automatically. Otherwise, go to Window ➡ Env. Light Mixer. From there, make sure to create all of the lighting options it gives you. 
+
+As a quick check, make sure your level has the following: DirectionalLight, ExponentialHeightFog, SkyAtmosphere, SkyLight, and VolumetricCloud.
+
+To make sure the Exponential Height Fog will work with our Day Cycle settings, set the "Fog Inscattering Color" and "Directional Inscattering Color" to black. The "Fog Density" and "Fog Height Falloff" can be adjusted until it fits your needs. 
+
+.. image:: images/exp_fog.png
+
 
 Adding Objects
 ==============
@@ -141,6 +174,56 @@ Finally, within the level, click on the object and go to the details panel. Go t
 You can verify the shape of the collision mesh by changing the view mode to "Player Collision" in the level or in the static mesh editor.
 
 .. image:: images/check_collisions.png
+
+Additional Tide Settings for Objects
+====================================
+
+In order to create compatible non-agent floatables that with move with the tide you must add the keyword Float in the actor tags and then go into the collision settings of the static mesh and make sure that customized collisions is checked.
+
+.. image:: images/tide_non-agent_collisions.png
+
+.. image:: images/tide_non-agent_tag.png
+
+Weather
+=======
+
+To add the weather feature to your custom level, you will first need to add the Weather Manager blueprint to your world. To do this, go to Content Browser ➡ Weather Content and drag BP_Weather_Manager into your level.
+
+Next, you need to add two different Volumetric Cloud actors. Go to Place Actors ➡ Visual Effects ➡ Volumetric Cloud and drag it into your level twice.
+
+After both actors are placed, assign a cloud material and tag each one:
+
+  1. Select the first Volumetric Cloud actor. 
+  2. In the Details panel, under Cloud Material ➡ Material, assign the material m_SimpleVolumetricCloud_Inst_Sunny, found in the Weather Content folder. You can also drag the material directly from the folder into the material field.
+  3. Tag the actor by going to Actor ➡ Advanced ➡ Tags, click + to add an element, and name the tag Sunny.
+
+Repeat the same process for the second Volumetric Cloud actor, but this time use the m_SimpleVolumetricCloud_Inst_Cloudy material and tag it as Cloudy.
+
+.. image:: images/volumetric_cloud.png
+
+Finally, you should also tag the water plane you created as "WaterSurface".
+
+Air Fog
+========
+
+For above-water simulations where you want to introduce air fog or mist, you can add a PostProcessVolume that covers the desired region and assign it the ``MM_Fog_Air`` material. 
+In the **Details** panel, navigate to *Rendering Features ➡ Post Process Materials*, add an element to the array, set it to **Asset Reference**, and select ``MM_Fog_Air``. 
+Alternatively, you can drag the material directly from ``Content/WeatherContent/Fog/MM_Fog_Air``.
+
+.. image:: images/air_fog_material.png
+
+Once applied, you can adjust the material parameters to achieve the desired atmospheric effect. The most relevant parameters are:
+
+- **Fog_Depth** – controls how far the fog extends.  
+- **Fog_Opacity** – controls the density of the fog.  
+- **Fog_Color** – defines the fog color (normalized RGB, ``0.0 – 1.0``).  
+
+Although the **Fog_Transition** parameter can also be modified, it is generally recommended to leave it at its default value of ``0.1`` and adjust the other parameters first. Modify it only if you need finer control over how the fog blends with the scene.
+
+.. image:: images/fog_params.png
+
+Make sure to tag the PostProcessVolume as ``AirPPV`` so that the Air Fog Command and Tides Command function correctly.
+
 
 Note on Flashlights
 ===================

@@ -51,10 +51,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul class="current">
@@ -71,7 +72,6 @@
 <li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="weather.html">Weather Controller</a></li>
 </ul>
 </div>
 </div>
@@ -145,47 +145,59 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.add_agent" title="holoocean.environments.HoloOceanEnvironment.add_agent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_agent</span></code></a>(agent_def[, is_main_agent])</p></td>
 <td><p>Add an agent in the world.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_arrow" title="holoocean.environments.HoloOceanEnvironment.draw_arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_arrow</span></code></a>(start, end[, color, thickness, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.air_fog" title="holoocean.environments.HoloOceanEnvironment.air_fog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">air_fog</span></code></a>(fogDensity[, fogDepth, color_R, ...])</p></td>
+<td><p>Changes the air fog density, depth, and color.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.change_time_of_day" title="holoocean.environments.HoloOceanEnvironment.change_time_of_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_time_of_day</span></code></a>(TimeOfDay)</p></td>
+<td><p>Changes the world's time of day.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.change_weather" title="holoocean.environments.HoloOceanEnvironment.change_weather"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_weather</span></code></a>(weather)</p></td>
+<td><p>Changes the weather in the world.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_arrow" title="holoocean.environments.HoloOceanEnvironment.draw_arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_arrow</span></code></a>(start, end[, color, thickness, ...])</p></td>
 <td><p>Draws a debug arrow in the world</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_box" title="holoocean.environments.HoloOceanEnvironment.draw_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_box</span></code></a>(center, extent[, color, thickness, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_box" title="holoocean.environments.HoloOceanEnvironment.draw_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_box</span></code></a>(center, extent[, color, thickness, ...])</p></td>
 <td><p>Draws a debug box in the world</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_line" title="holoocean.environments.HoloOceanEnvironment.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(start, end[, color, thickness, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_line" title="holoocean.environments.HoloOceanEnvironment.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(start, end[, color, thickness, ...])</p></td>
 <td><p>Draws a debug line in the world</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_point" title="holoocean.environments.HoloOceanEnvironment.draw_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_point</span></code></a>(loc[, color, thickness, lifetime])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_point" title="holoocean.environments.HoloOceanEnvironment.draw_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_point</span></code></a>(loc[, color, thickness, lifetime])</p></td>
 <td><p>Draws a debug point in the world</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_joint_constraints" title="holoocean.environments.HoloOceanEnvironment.get_joint_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_joint_constraints</span></code></a>(agent_name, joint_name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_joint_constraints" title="holoocean.environments.HoloOceanEnvironment.get_joint_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_joint_constraints</span></code></a>(agent_name, joint_name)</p></td>
 <td><p>Returns the corresponding swing1, swing2 and twist limit values for the</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reward_terminal</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.get_reward_terminal" title="holoocean.environments.HoloOceanEnvironment.get_reward_terminal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reward_terminal</span></code></a>()</p></td>
 <td><p>Returns the reward and terminal state</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.info" title="holoocean.environments.HoloOceanEnvironment.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.info" title="holoocean.environments.HoloOceanEnvironment.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a>()</p></td>
 <td><p>Returns a string with specific information about the environment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.move_viewport" title="holoocean.environments.HoloOceanEnvironment.move_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_viewport</span></code></a>(location, rotation)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.move_viewport" title="holoocean.environments.HoloOceanEnvironment.move_viewport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_viewport</span></code></a>(location, rotation)</p></td>
 <td><p>Teleport the camera to the given location</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.reset" title="holoocean.environments.HoloOceanEnvironment.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.reset" title="holoocean.environments.HoloOceanEnvironment.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset</span></code></a>()</p></td>
 <td><p>Resets the environment, and returns the state.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_acoustic_message</span></code></a>(id_from, id_to, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_acoustic_message</span></code></a>(id_from, id_to, ...)</p></td>
 <td><p>Send a message from one beacon to another.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_optical_message</span></code></a>(id_from, id_to, msg_data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_optical_message</span></code></a>(id_from, id_to, msg_data)</p></td>
 <td><p>Sends data between various instances of OpticalModemSensor</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_world_command" title="holoocean.environments.HoloOceanEnvironment.send_world_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_world_command</span></code></a>(name[, num_params, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.send_world_command" title="holoocean.environments.HoloOceanEnvironment.send_world_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_world_command</span></code></a>(name[, num_params, ...])</p></td>
 <td><p>Send a world command.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_control_scheme" title="holoocean.environments.HoloOceanEnvironment.set_control_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_scheme</span></code></a>(agent_name, control_scheme)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_control_scheme" title="holoocean.environments.HoloOceanEnvironment.set_control_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_scheme</span></code></a>(agent_name, control_scheme)</p></td>
 <td><p>Set the control scheme for a specific agent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_fps" title="holoocean.environments.HoloOceanEnvironment.set_fps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fps</span></code></a>(fps)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_fps" title="holoocean.environments.HoloOceanEnvironment.set_fps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fps</span></code></a>(fps)</p></td>
 <td><p>Sets the frames per second of the environment.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_rain_parameters" title="holoocean.environments.HoloOceanEnvironment.set_rain_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rain_parameters</span></code></a>(vel_x, vel_y, vel_z, ...)</p></td>
+<td><p>Changes the rain's velocity and spawn rate.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_render_quality</span></code></a>(render_quality[, ...])</p></td>
 <td><p>Adjusts the rendering quality of HoloOcean.</p></td>
@@ -205,11 +217,20 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish, tick_clock])</p></td>
 <td><p>Ticks the environment once.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_off_flashlight" title="holoocean.environments.HoloOceanEnvironment.turn_off_flashlight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_off_flashlight</span></code></a>(flashlight_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide" title="holoocean.environments.HoloOceanEnvironment.tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tide</span></code></a>(adjustment, bool)</p></td>
+<td><p>Changes the water level.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_off_flashlight" title="holoocean.environments.HoloOceanEnvironment.turn_off_flashlight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_off_flashlight</span></code></a>(flashlight_name)</p></td>
 <td><p>Turns off the vehicle's flashlight.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_on_flashlight" title="holoocean.environments.HoloOceanEnvironment.turn_on_flashlight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_on_flashlight</span></code></a>(flashlight_name[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_on_flashlight" title="holoocean.environments.HoloOceanEnvironment.turn_on_flashlight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_on_flashlight</span></code></a>(flashlight_name[, ...])</p></td>
 <td><p>Turns on the vehicle's flashlight and sets its visual parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.water_color" title="holoocean.environments.HoloOceanEnvironment.water_color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">water_color</span></code></a>(red, green, blue)</p></td>
+<td><p>Changes the color of the water.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.water_fog" title="holoocean.environments.HoloOceanEnvironment.water_fog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">water_fog</span></code></a>(fogDensity[, fogDepth, color_R, ...])</p></td>
+<td><p>Changes the water fog density, depth, and color.</p></td>
 </tr>
 </tbody>
 </table>
@@ -283,6 +304,21 @@ with another call to act.</p></li>
 </dd>
 </dl>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.air_fog">
+<span class="sig-name descname"><span class="pre">air_fog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fogDensity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fogDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.45</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.air_fog" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the air fog density, depth, and color.
+:param fogDensity: The density value for the fog. Range: 0.0 to 10.0.
+:type fogDensity: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param fogDepth: The distance at which the fog begins. Range: 0.0 to 10.0. (Default = 3)
+:type fogDepth: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param color_R: The red component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.45)
+:type color_R: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param color_G: The green component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.5)
+:type color_G: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param color_B: The blue component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.6)
+:type color_B: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.beacons">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">beacons</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.beacons" title="Permalink to this definition"></a></dt>
@@ -319,6 +355,26 @@ with another call to act.</p></li>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.change_time_of_day">
+<span class="sig-name descname"><span class="pre">change_time_of_day</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TimeOfDay</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.change_time_of_day" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the world’s time of day.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>TimeOfDay</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Time of day desired, a number between 0 and 23 inclusive.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.change_weather">
+<span class="sig-name descname"><span class="pre">change_weather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.change_weather" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the weather in the world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The weather wanted (0 - sunny, 1 - cloudy, 2 - rainy).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -564,6 +620,21 @@ alter the state of the world.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_rain_parameters">
+<span class="sig-name descname"><span class="pre">set_rain_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spawnRate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_rain_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the rain’s velocity and spawn rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vel_x</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Rain velocity on the x axis.</p></li>
+<li><p><strong>vel_y</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – VRain velocity on the y axis.</p></li>
+<li><p><strong>vel_z</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Rain velocity on the z axis. Should be a negative value.</p></li>
+<li><p><strong>spawnRate</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Rain’s spawn rate (number of particles).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_render_quality">
 <span class="sig-name descname"><span class="pre">set_render_quality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">render_quality</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_keep_fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="Permalink to this definition"></a></dt>
 <dd><p>Adjusts the rendering quality of HoloOcean.</p>
@@ -673,6 +744,19 @@ terminal sensors. Reward and terminals can also be gotten through <a class="refe
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.tide">
+<span class="sig-name descname"><span class="pre">tide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tide" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the water level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adjustment</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Any positive/negative number that you want to adjust/set the water level to.</p></li>
+<li><p><strong>bool</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – 0 if you want to adjust water level, and 1 if you want to set a new water level.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.turn_off_flashlight">
 <span class="sig-name descname"><span class="pre">turn_off_flashlight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flashlight_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.turn_off_flashlight" title="Permalink to this definition"></a></dt>
 <dd><p>Turns off the vehicle’s flashlight.</p>
@@ -703,6 +787,35 @@ terminal sensors. Reward and terminals can also be gotten through <a class="refe
 </ul>
 </dd>
 </dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.water_color">
+<span class="sig-name descname"><span class="pre">water_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.water_color" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the color of the water.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>red</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – A number between 0 and 1 to set the intensity of the red value.</p></li>
+<li><p><strong>green</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – A number between 0 and 1 to set the intensity of the green value.</p></li>
+<li><p><strong>blue</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – A number between 0 and 1 to set the intensity of the blue value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.water_fog">
+<span class="sig-name descname"><span class="pre">water_fog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fogDensity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fogDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.water_fog" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the water fog density, depth, and color.
+:param fogDensity: The density value for the fog. Range: 0.0 to 10.0.
+:type fogDensity: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param fogDepth: The distance at which the fog begins. Range: 0.0 to 10.0. (Default = 3)
+:type fogDepth: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param color_R: The red component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.4)
+:type color_R: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param color_G: The green component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.6)
+:type color_G: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>
+:param color_B: The blue component of the fog’s color. Range: 0.0 to 1.0. (Default = 1.0)tt
+:type color_B: <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></p>
 </dd></dl>
 </dd></dl>
 </section>

@@ -57,9 +57,10 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    packages/packages
    agents/agents
    sensors/sensors
+   env_appearance/env_appearance
+   examples/examples
    develop/develop
    changelog/changelog
-   examples/examples
 
 .. toctree::
    :maxdepth: 3
@@ -78,8 +79,6 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    holoocean/shmem
    holoocean/util
    holoocean/exceptions
-   holoocean/weather
-
 
 Indices and tables
 ==================
