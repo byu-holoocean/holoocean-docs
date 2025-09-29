@@ -12,6 +12,28 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean 2.1.0
+===============
+*9/29/2025*
+
+New Features
+------------
+
+- Added develop install for Windows, as we've automated the world build process.
+- Added Flashlight for underwater illumination.
+- Add weather commands, including rain, time of day and tide, air and water fog, water color.
+
+Changes
+-------
+
+- Updated Logo
+- Changed drone CI/CD steps for internal improvements.
+
+Bug Fixes
+---------
+
+- Fixed PID instability for the hovering and BlueROV vehicles.
+
 HoloOcean 2.0.1
 ===============
 *6/27/2025*

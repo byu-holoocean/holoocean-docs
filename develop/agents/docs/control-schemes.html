@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Control Schemes — HoloOcean 2.0.1 documentation</title>
+<title>Control Schemes — HoloOcean 2.1.0 documentation</title>
 <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -54,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="agent-config.html">Agent Configuration</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Control Schemes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#thusters-fins-control-scheme-0">Thusters &amp; Fins (Control Scheme 0)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pd-controller-control-scheme-1">PD Controller (Control Scheme 1)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pid-controller-control-scheme-1">PID Controller (Control Scheme 1)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#custom-dynamics-control-scheme-2">Custom Dynamics (Control Scheme 2)</a></li>
 </ul>
 </li>
@@ -68,6 +68,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
@@ -149,22 +151,22 @@ control scheme.</p>
 agent at each time step. <a class="reference internal" href="../../examples/examples/controller.html#manual-control"><span class="std std-ref">This example</span></a> demonstrates how to manually control
 an agent by converting keyboard inputs into commands.</p>
 </section>
-<section id="pd-controller-control-scheme-1">
-<h2>PD Controller (Control Scheme 1)<a class="headerlink" href="#pd-controller-control-scheme-1" title="Permalink to this heading"></a></h2>
-<p>The PD control scheme enables easy waypoint navigation by implementing position control. It uses a
-simple proportional-derivative controller to move the agent to a specified position in the global
+<section id="pid-controller-control-scheme-1">
+<h2>PID Controller (Control Scheme 1)<a class="headerlink" href="#pid-controller-control-scheme-1" title="Permalink to this heading"></a></h2>
+<p>The PID control scheme enables easy waypoint navigation by implementing position control. It uses a
+simple proportional-integral-derivative controller to move the agent to a specified position in the global
 frame.</p>
 <p>The command list for this control scheme specifies the desired position, in either [x, y] or
 [x, y, z, roll, pitch, yaw] format, depending on the agent.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The PD controller is a simple implementation that directly applies accelerations to an agent,
+<p>The PID controller is a simple implementation that directly applies accelerations to an agent,
 instead of achieving control through its thrusters or fins. As such, the agent’s movement may
 not be realistic.</p>
 <p>For more realistic movement, consider implementing a controller using the Thruster/Fin control
 scheme, or implement a controller using custom dynamics.</p>
 </div>
-<p>For an example demonstrating how to use the PD controller, see <a class="reference internal" href="../../examples/examples/pd-controllers.html#pd-controller-example"><span class="std std-ref">here</span></a>.</p>
+<p>For an example demonstrating how to use the PID controller, see <a class="reference internal" href="../../examples/examples/pd-controllers.html#pd-controller-example"><span class="std std-ref">here</span></a>.</p>
 </section>
 <section id="custom-dynamics-control-scheme-2">
 <h2>Custom Dynamics (Control Scheme 2)<a class="headerlink" href="#custom-dynamics-control-scheme-2" title="Permalink to this heading"></a></h2>

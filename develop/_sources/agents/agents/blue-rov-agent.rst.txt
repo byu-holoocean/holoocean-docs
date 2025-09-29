@@ -23,9 +23,9 @@ Control Schemes
   the front right vertical thrusters, then goes around counter-clockwise, then repeat the last four 
   with the sideways thrusters.
 
-**PD Controller (``1``)**
+**PID Controller (``1``)**
    A 6-length floating point vector of desired position in the global frame and roll, pitch, and yaw. 
-   A basic PD controller is implemented to move the vehicle to that position and orientation 
+   A basic PID controller is implemented to move the vehicle to that position and orientation 
    using the needed forces and torques.
 
 **Custom Dynamics (``2``)**

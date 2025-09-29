@@ -48,24 +48,24 @@ agent at each time step. :ref:`This example<manual-control>` demonstrates how to
 an agent by converting keyboard inputs into commands. 
 
 
-PD Controller (Control Scheme 1)
+PID Controller (Control Scheme 1)
 ================================
-The PD control scheme enables easy waypoint navigation by implementing position control. It uses a 
-simple proportional-derivative controller to move the agent to a specified position in the global 
+The PID control scheme enables easy waypoint navigation by implementing position control. It uses a 
+simple proportional-integral-derivative controller to move the agent to a specified position in the global 
 frame.
 
 The command list for this control scheme specifies the desired position, in either [x, y] or  
 [x, y, z, roll, pitch, yaw] format, depending on the agent. 
 
 .. note::
-    The PD controller is a simple implementation that directly applies accelerations to an agent, 
+    The PID controller is a simple implementation that directly applies accelerations to an agent, 
     instead of achieving control through its thrusters or fins. As such, the agent's movement may 
     not be realistic. 
     
     For more realistic movement, consider implementing a controller using the Thruster/Fin control 
     scheme, or implement a controller using custom dynamics.
 
-For an example demonstrating how to use the PD controller, see :ref:`here<pd-controller_example>`.
+For an example demonstrating how to use the PID controller, see :ref:`here<pd-controller_example>`.
 
 
 Custom Dynamics (Control Scheme 2)
