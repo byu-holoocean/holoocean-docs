@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HoloOcean Agents — HoloOcean 2.1.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="docs/agent-config.html" rel="next" title="Agent Configuration"/>
+<link href="../packages/Ocean/SimpleUnderwater/SimpleUnderwater-Torpedo.html" rel="prev" title="SimpleUnderwater-Torpedo"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.1.0</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HoloOcean Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-agents">Using Agents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docs/agent-config.html">Agent Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/control-schemes.html">Control Schemes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/fossen-based-dynamics.html">Fossen-Based Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docs/flashlight.html">Flashlight</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agent-pages">HoloOcean Agents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#underwater-agents">Underwater Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/hovering-auv-agent.html">HoveringAUV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/torpedo-auv-agent.html">TorpedoAUV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/blue-rov-agent.html">BlueROV2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/coug-uv-agent.html">CougUV</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#water-surface-agents">Water Surface Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/surface-vessel-agent.html">SurfaceVessel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#test-agents">Test Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/turtle-agent.html">TurtleAgent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/sphere-agent.html">SphereAgent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#aerial-agents">Aerial Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/uav-agent.html">UAV Agent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">HoloOcean Agents</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/agents/agents.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="holoocean-agents">
+<span id="agents"></span><h1>HoloOcean Agents<a class="headerlink" href="#holoocean-agents" title="Permalink to this heading"></a></h1>
+<p>Agents are the entities that interact with the environment in HoloOcean. They are defined in the
+scenario configuration file. Agents are equipped with sensors that collect data from the environment.
+Agents are controlled by passing commands using <code class="docutils literal notranslate"><span class="pre">env.act()</span></code> or <code class="docutils literal notranslate"><span class="pre">env.step()</span></code>, which are
+interpreted by the agent’s control scheme.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+
+<span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"{Scenario Name}"</span><span class="p">,</span>
+   <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"{world it is associated with}"</span><span class="p">,</span>
+   <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"{package it is associated with}"</span><span class="p">,</span>
+   <span class="s2">"agents"</span><span class="p">:[</span>
+      <span class="p">{</span>
+         <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"uav0"</span><span class="p">,</span>
+         <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"{agent types}"</span><span class="p">,</span>
+         <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span>
+         <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+         <span class="p">]</span>
+   <span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">scenario</span><span class="p">)</span>
+
+<span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+   <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>HoloOcean provides a variety of agents, each with different capabilities. The three primary
+agents in HoloOcean, representing the three most common water vehicles, are the
+<a class="reference internal" href="agents/hovering-auv-agent.html#hovering-auv-agent"><span class="std std-ref">HoveringAUV</span></a>, <a class="reference internal" href="agents/surface-vessel-agent.html#surface-vessel-agent"><span class="std std-ref">SurfaceVessel</span></a>, and
+<a class="reference internal" href="agents/torpedo-auv-agent.html#torpedo-auv-agent"><span class="std std-ref">TorpedoAUV</span></a>. These three agents can perform the majority of navigation and
+sensing tasks. Other agents representing aerial vehicles and specific real-world vehicles are also
+available.</p>
+<p>For information on developing custom agents in HoloOcean, see <a class="reference internal" href="../develop/agents.html#develop-agents"><span class="std std-ref">Developing Agents</span></a>.</p>
+<section id="using-agents">
+<h2>Using Agents<a class="headerlink" href="#using-agents" title="Permalink to this heading"></a></h2>
+<p>Documentation on how to use agents in HoloOcean:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs/agent-config.html">Agent Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/control-schemes.html">Control Schemes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/fossen-based-dynamics.html">Fossen-Based Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/flashlight.html">Flashlight</a></li>
+</ul>
+</div>
+</section>
+<section id="agent-pages">
+<span id="id1"></span><h2>HoloOcean Agents<a class="headerlink" href="#agent-pages" title="Permalink to this heading"></a></h2>
+<p>Documentation on specific agents available in HoloOcean. Note that the Test agents don’t apply gravity.</p>
+<section id="underwater-agents">
+<h3>Underwater Agents<a class="headerlink" href="#underwater-agents" title="Permalink to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="agents/hovering-auv-agent.html">HoveringAUV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents/torpedo-auv-agent.html">TorpedoAUV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents/blue-rov-agent.html">BlueROV2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents/coug-uv-agent.html">CougUV</a></li>
+</ul>
+</div>
+</section>
+<section id="water-surface-agents">
+<h3>Water Surface Agents<a class="headerlink" href="#water-surface-agents" title="Permalink to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="agents/surface-vessel-agent.html">SurfaceVessel</a></li>
+</ul>
+</div>
+</section>
+<section id="test-agents">
+<h3>Test Agents<a class="headerlink" href="#test-agents" title="Permalink to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="agents/turtle-agent.html">TurtleAgent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents/sphere-agent.html">SphereAgent</a></li>
+</ul>
+</div>
+</section>
+<section id="aerial-agents">
+<h3>Aerial Agents<a class="headerlink" href="#aerial-agents" title="Permalink to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="agents/uav-agent.html">UAV Agent</a></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="../packages/Ocean/SimpleUnderwater/SimpleUnderwater-Torpedo.html" rel="prev" title="SimpleUnderwater-Torpedo"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="docs/agent-config.html" rel="next" title="Agent Configuration">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
