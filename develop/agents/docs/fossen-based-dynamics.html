@@ -200,10 +200,8 @@ like to use it in HoloOcean, they must make the following changes:</p>
 </dl>
 </li>
 <li><p>The <cite>dynamics</cite> method must be changed to return nu_dot (body frame accelerations) instead of nu (body frame velocities).</p></li>
-<li><p>Add a class variable <code class="docutils literal notranslate"><span class="pre">config_fnc</span></code> that is either set to <code class="docutils literal notranslate"><span class="pre">None</span></code> or a function that takes a scenario configuration</p></li>
+<li><p>Add a class variable <code class="docutils literal notranslate"><span class="pre">config_fnc</span></code> that is either set to <code class="docutils literal notranslate"><span class="pre">None</span></code> or a function that takes a scenario configuration and modifies the class parameters based on the scenario configuration. See the <cite>client/src/holoocean/fossen_dynamics/torpedo.py</cite> <code class="docutils literal notranslate"><span class="pre">configure_torpedo_from_scenario</span></code> function for an example of how to implement this function.</p></li>
 </ul>
-<p>and modifies the class parameters based on the scenario configuration. See the <cite>client/src/holoocean/fossen_dynamics/torpedo.py</cite>
-<code class="docutils literal notranslate"><span class="pre">configure_torpedo_from_scenario</span></code> function for an example of how to implement this function.</p>
 </div></blockquote>
 </li>
 <li><p>In the <cite>client/src/holoocean/fossen_dynamics/fossen_interface.py</cite> file:</p>
@@ -579,6 +577,19 @@ are used instead of the <code class="docutils literal notranslate"><span class="
 <p>To set the control surface commands for the agent using the Fossen Interface the vehicle name is required.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">FossenInterface.update</span></code> function takes in the states for both agents returned from the <code class="docutils literal notranslate"><span class="pre">tick</span></code> function and calculates
 an output of accelerations. The update needs to be called for every agent in the list and then applied to the agent with the <code class="docutils literal notranslate"><span class="pre">act</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span> <span class="c1"># Get the inital states of the agent for the dynamics</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1500</span><span class="p">):</span>
+    <span class="n">fossen_interface</span><span class="o">.</span><span class="n">set_u_control</span><span class="p">(</span><span class="n">main_agent</span><span class="p">,</span> <span class="n">u_control_torpedo</span><span class="p">)</span> <span class="c1">#If desired you can change control command here</span>
+    <span class="n">fossen_interface</span><span class="o">.</span><span class="n">set_u_control</span><span class="p">(</span><span class="n">sv_agent</span><span class="p">,</span> <span class="n">u_control_otter</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="n">fossen_agents</span><span class="p">:</span>
+        <span class="n">accel</span> <span class="o">=</span> <span class="n">fossen_interface</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">states</span><span class="p">)</span> <span class="c1">#Calculate accelerations to be applied to HoloOcean agent</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">accel</span><span class="p">)</span>
+
+    <span class="n">states</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>

@@ -103,5 +103,5 @@ Aerial Agents
    :glob:
 
    agents/uav-agent
-   .. agents/fixed-wing-agent commenting out fixed wing for now
+   
 

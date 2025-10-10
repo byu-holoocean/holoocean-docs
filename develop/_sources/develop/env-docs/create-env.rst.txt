@@ -42,7 +42,7 @@ To make sure your water plane is compatible with our tide system, tag the water 
 .. image:: images/water_plane.png
 
 Water Color (PostProcessVolume 1)
------------------
+------------------------------------
 
 For the PostProcessVolume, go to Place Actors ➡ Volumes ➡ Post Process Volume and drag it into your level. Adjust the scale of the volume to fit your entire underwater area. To adjust the color of the volume, go to the Details pannel ➡ Color Grading ➡ Misc ➡ "Scene Color Tint". 
 Blue to green colors are best, and the Dam environment has the "Scene Color Tint" set to Hex sRGB AAD9C8FF. 

@@ -49,7 +49,7 @@ an agent by converting keyboard inputs into commands.
 
 
 PID Controller (Control Scheme 1)
-================================
+==================================
 The PID control scheme enables easy waypoint navigation by implementing position control. It uses a 
 simple proportional-integral-derivative controller to move the agent to a specified position in the global 
 frame.

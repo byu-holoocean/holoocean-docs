@@ -34,7 +34,7 @@ Refer to the Python API documentation for full usage details:
 - :py:class:`~holoocean.command.TurnOffFlashlightCommand`
 
 Usage Example (for a HoveringAUV/BlueROV2)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In a scenario
 ++++++++++++++

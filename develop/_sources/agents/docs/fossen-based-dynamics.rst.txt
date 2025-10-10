@@ -98,9 +98,7 @@ like to use it in HoloOcean, they must make the following changes:
 
     - The `dynamics` method must be changed to return nu_dot (body frame accelerations) instead of nu (body frame velocities). 
 
-    - Add a class variable ``config_fnc`` that is either set to ``None`` or a function that takes a scenario configuration
-    and modifies the class parameters based on the scenario configuration. See the `client/src/holoocean/fossen_dynamics/torpedo.py` 
-    ``configure_torpedo_from_scenario`` function for an example of how to implement this function.
+    - Add a class variable ``config_fnc`` that is either set to ``None`` or a function that takes a scenario configuration and modifies the class parameters based on the scenario configuration. See the `client/src/holoocean/fossen_dynamics/torpedo.py`  ``configure_torpedo_from_scenario`` function for an example of how to implement this function.
 
 -  In the `client/src/holoocean/fossen_dynamics/fossen_interface.py` file:
 
@@ -489,6 +487,7 @@ The ``FossenInterface.update`` function takes in the states for both agents retu
 an output of accelerations. The update needs to be called for every agent in the list and then applied to the agent with the ``act`` function.
 
 .. code-block:: python
+
     states = env.tick() # Get the inital states of the agent for the dynamics
 
     for i in range(1500):
