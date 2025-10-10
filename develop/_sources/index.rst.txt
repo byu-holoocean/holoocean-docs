@@ -64,8 +64,6 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
    sensors/sensors
    env_appearance/env_appearance
    examples/examples
-   sensors/sensors
-   examples/examples
    develop/develop
    changelog/changelog
 
