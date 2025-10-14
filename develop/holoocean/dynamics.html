@@ -317,8 +317,8 @@ beta_c: current direction (deg)</p>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot" title="holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu, sampleTime)</p></td>
-<td><p>[delta_r, delta_s, n] = depthHeadingAutopilot(eta,nu,sampleTime) simultaneously control the heading and depth of the AUV using control laws of PID type.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot" title="holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code></a>(eta, nu_r, sampleTime)</p></td>
+<td><p>[delta_r, delta_s, n] = depthHeadingAutopilot(eta,nu_r,sampleTime) simultaneously control the heading and depth of the AUV using control laws of PID type.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.fossen_dynamics.torpedo.Torpedo.dynamics" title="holoocean.fossen_dynamics.torpedo.Torpedo.dynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynamics</span></code></a>(eta, nu, u_actual, u_control, ...)</p></td>
 <td><p>[nu_dot,u_actual] = dynamics(eta,nu,u_actual,u_control,sampleTime) integrates the AUV equations of motion using Euler's method.</p></td>
@@ -330,8 +330,8 @@ beta_c: current direction (deg)</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot">
-<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
-<dd><p>[delta_r, delta_s, n] = depthHeadingAutopilot(eta,nu,sampleTime)
+<span class="sig-name descname"><span class="pre">depthHeadingAutopilot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleTime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot" title="Permalink to this definition"></a></dt>
+<dd><p>[delta_r, delta_s, n] = depthHeadingAutopilot(eta,nu_r,sampleTime)
 simultaneously control the heading and depth of the AUV using control
 laws of PID type. Propeller rpm is given as a step command.</p>
 <dl class="field-list simple">

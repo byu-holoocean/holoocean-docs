@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ocean Currents Controller — HoloOcean 2.1.0 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="control-schemes.html" rel="next" title="Control Schemes"/>
+<link href="agent-config.html" rel="prev" title="Agent Configuration"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">Develop</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../agents.html">HoloOcean Agents</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../agents.html#using-agents">Using Agents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="agent-config.html">Agent Configuration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Ocean Currents Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-scenario-for-currents">Configuring Scenario for Currents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-current">Change Current</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-currents">Custom Currents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drawing-vector-fields">Drawing Vector Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="control-schemes.html">Control Schemes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fossen-based-dynamics.html">Fossen-Based Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flashlight.html">Flashlight</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../agents.html#agent-pages">HoloOcean Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../agents.html">HoloOcean Agents</a></li>
+<li class="breadcrumb-item active">Ocean Currents Controller</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/agents/docs/currents.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="ocean-currents-controller">
+<span id="currents"></span><h1>Ocean Currents Controller<a class="headerlink" href="#ocean-currents-controller" title="Permalink to this heading"></a></h1>
+<p>HoloOcean worlds can optionally simulate the dynamic effects of real ocean currents on your
+vehicle. This allows for the testing of more rigorous vehicle navigation or the difficulties
+that currents could pose to completing a vehicle mission.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of now, ocean currents do not work when using Fossen Dynamics for the vehicle controllers.</p>
+</div>
+<section id="configuring-scenario-for-currents">
+<h2>Configuring Scenario for Currents<a class="headerlink" href="#configuring-scenario-for-currents" title="Permalink to this heading"></a></h2>
+<p>Currents are defined as velocity vectors that are applied to the vehicle.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This ocean currents vector is in the global frame.</p>
+</div>
+<p>Currents are always active, and naturally default to a velocity of [0, 0, 0] for everywhere in the world.
+There are optional debugging lines that can be turned on within the config by adding the following to the outermost layer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">"current"</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">"vehicle_debugging"</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Turning on debug lines will generate three debugging lines per vehicle, indicating gravity force, buoyancy force,
+and ocean current velocity, all at the center of mass of the vehicle. The image below demonstrates this:</p>
+<img alt="../../_images/CurrentDebugLines.png" src="../../_images/CurrentDebugLines.png"/>
+</section>
+<section id="change-current">
+<h2>Change Current<a class="headerlink" href="#change-current" title="Permalink to this heading"></a></h2>
+<p>To change the current during a live game, call set_ocean_currents() from your environment object and
+pass in the name of the vehicle that you would like to apply the new current vector to, along with that vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">set_ocean_current</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-currents">
+<h2>Custom Currents<a class="headerlink" href="#custom-currents" title="Permalink to this heading"></a></h2>
+<p>HoloOcean provides a lot of freedom for creating custom ocean current dynamics in your simulation.
+If you wish to simulate location-dependent currents, it can be accomplished by creating a simple
+vector field function that takes in location and outputs a vector at that location. Then, by adding
+a location sensor to each vehicle you wish to apply the currents to, you can pull vehicle location
+at each tick, pass that into your vector field function to get current velocity at each location,
+and apply that to each vehicle individually. Here’s a short example of what that might look like
+(This assumes that “env” is your environment object variable):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vector_field</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+   <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">location</span>
+   <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="n">z</span><span class="p">]</span>
+
+<span class="n">vehicles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="s2">"auv1"</span><span class="p">,</span> <span class="s2">"auv2"</span><span class="p">]</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+   <span class="n">tick_info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+
+   <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">vehicles</span><span class="p">:</span>
+      <span class="n">location</span> <span class="o">=</span> <span class="n">tick_info</span><span class="p">[</span><span class="n">vehicle</span><span class="p">][</span><span class="s2">"LocationSensor"</span><span class="p">]</span>
+      <span class="n">ocean_current_velocity</span> <span class="o">=</span> <span class="n">vector_field</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">set_ocean_currents</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">ocean_current_velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you wish to implement time dependent currents, you can create a new vector field function that takes
+in time as a parameter and outputs a vector for ocean currents at that time. You can also try adding location
+to the mix as well to simulate time and location dependency. Then, loop through the different vehicles
+and apply that current to each. Here’s an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vector_field</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+   <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+   <span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mf">.5</span>
+   <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">vehicles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="s2">"auv1"</span><span class="p">,</span> <span class="s2">"auv2"</span><span class="p">]</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+   <span class="n">tick_info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+   <span class="n">ocean_current_velocity</span> <span class="o">=</span> <span class="n">vector_field</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+   <span class="n">time</span> <span class="o">+=</span> <span class="mi">1</span>
+
+   <span class="k">for</span> <span class="n">vehicle</span> <span class="ow">in</span> <span class="n">vehicles</span><span class="p">:</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">set_ocean_currents</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">ocean_current_velocity</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="drawing-vector-fields">
+<h2>Drawing Vector Fields<a class="headerlink" href="#drawing-vector-fields" title="Permalink to this heading"></a></h2>
+<img alt="../../_images/DrawDebugVectorField.png" src="../../_images/DrawDebugVectorField.png"/>
+<p>There is an additional environment command called <code class="docutils literal notranslate"><span class="pre">draw_debug_vector_field</span></code> that allows you to render a 3D matrix of
+vectors to get a better feel for your current field. Just make sure that your function takes in a location vector
+and outputs a current velocity vector. Required parameters for this command are a vector field function to simulate
+the current flow and a location vector around which to generate the vector field. Other optional parameters include
+the dimensions of the vector field generated, the spacing between the vectors, vector thickness, arrow size scale,
+and the lifetime of the vector field generated. For more info on all function parameters, see the API documentation:
+<a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_debug_vector_field" title="holoocean.environments.HoloOceanEnvironment.draw_debug_vector_field"><code class="xref py py-class docutils literal notranslate"><span class="pre">draw_debug_vector_field</span></code></a>.</p>
+<p>If you want to see an example of this in action, take a look at the <a class="reference internal" href="../../examples/examples/ocean-currents.html#ocean-currents-example"><span class="std std-ref">ocean-currents</span></a>
+example.</p>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="agent-config.html" rel="prev" title="Agent Configuration"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="control-schemes.html" rel="next" title="Control Schemes">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

@@ -95,7 +95,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="module-holoocean.environments">
-<span id="environments"></span><h1>Environments<a class="headerlink" href="#module-holoocean.environments" title="Permalink to this heading"></a></h1>
+<span id="environments"></span><span id="environment-api"></span><h1>Environments<a class="headerlink" href="#module-holoocean.environments" title="Permalink to this heading"></a></h1>
 <p>Module containing the environment interface for HoloOcean.
 An environment contains all elements required to communicate with a world binary or HoloOceanCore
 editor.</p>
@@ -148,17 +148,23 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.air_fog" title="holoocean.environments.HoloOceanEnvironment.air_fog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">air_fog</span></code></a>(fogDensity[, fogDepth, color_R, ...])</p></td>
 <td><p>Changes the air fog density, depth, and color.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.change_time_of_day" title="holoocean.environments.HoloOceanEnvironment.change_time_of_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_time_of_day</span></code></a>(TimeOfDay)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.centered_range" title="holoocean.environments.HoloOceanEnvironment.centered_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">centered_range</span></code></a>(num_points[, spacing])</p></td>
+<td><p>Creates a symmetric range around 0, such that 0 is exactly included, even if num_points is even.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.change_time_of_day" title="holoocean.environments.HoloOceanEnvironment.change_time_of_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_time_of_day</span></code></a>(TimeOfDay)</p></td>
 <td><p>Changes the world's time of day.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.change_weather" title="holoocean.environments.HoloOceanEnvironment.change_weather"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_weather</span></code></a>(weather)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.change_weather" title="holoocean.environments.HoloOceanEnvironment.change_weather"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_weather</span></code></a>(weather)</p></td>
 <td><p>Changes the weather in the world.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_arrow" title="holoocean.environments.HoloOceanEnvironment.draw_arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_arrow</span></code></a>(start, end[, color, thickness, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_arrow" title="holoocean.environments.HoloOceanEnvironment.draw_arrow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_arrow</span></code></a>(start, end[, color, thickness, ...])</p></td>
 <td><p>Draws a debug arrow in the world</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_box" title="holoocean.environments.HoloOceanEnvironment.draw_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_box</span></code></a>(center, extent[, color, thickness, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_box" title="holoocean.environments.HoloOceanEnvironment.draw_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_box</span></code></a>(center, extent[, color, thickness, ...])</p></td>
 <td><p>Draws a debug box in the world</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_debug_vector_field" title="holoocean.environments.HoloOceanEnvironment.draw_debug_vector_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_debug_vector_field</span></code></a>(currents_function, ...)</p></td>
+<td><p>Create a temporary vector field by drawing vectors at points within a 3D matrix to help demonstrate flow of ocean currents</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.draw_line" title="holoocean.environments.HoloOceanEnvironment.draw_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_line</span></code></a>(start, end[, color, thickness, ...])</p></td>
 <td><p>Draws a debug line in the world</p></td>
@@ -196,11 +202,17 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_fps" title="holoocean.environments.HoloOceanEnvironment.set_fps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_fps</span></code></a>(fps)</p></td>
 <td><p>Sets the frames per second of the environment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_rain_parameters" title="holoocean.environments.HoloOceanEnvironment.set_rain_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rain_parameters</span></code></a>(vel_x, vel_y, vel_z, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_currents" title="holoocean.environments.HoloOceanEnvironment.set_ocean_currents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ocean_currents</span></code></a>(agent_name, velocity)</p></td>
+<td><p>Send the ocean current velocity at the location of the vehicle to the server to be transformed into a force vector and applied to the vehicle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_rain_parameters" title="holoocean.environments.HoloOceanEnvironment.set_rain_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rain_parameters</span></code></a>(vel_x, vel_y, vel_z, ...)</p></td>
 <td><p>Changes the rain's velocity and spawn rate.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_render_quality</span></code></a>(render_quality[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_render_quality</span></code></a>(render_quality[, ...])</p></td>
 <td><p>Adjusts the rendering quality of HoloOcean.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name" title="holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_show_vector_field_name</span></code></a>(state)</p></td>
+<td><p>Set whether to show the vector field name in the viewport.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ticks_per_sec" title="holoocean.environments.HoloOceanEnvironment.set_ticks_per_sec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ticks_per_sec</span></code></a>(ticks_per_sec)</p></td>
 <td><p>Sets the ticks per second of the environment.</p></td>
@@ -359,6 +371,12 @@ with another call to act.</p></li>
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.centered_range">
+<span class="sig-name descname"><span class="pre">centered_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.centered_range" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a symmetric range around 0, such that 0 is exactly included,
+even if num_points is even.</p>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.change_time_of_day">
 <span class="sig-name descname"><span class="pre">change_time_of_day</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TimeOfDay</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.change_time_of_day" title="Permalink to this definition"></a></dt>
 <dd><p>Changes the world’s time of day.</p>
@@ -408,6 +426,24 @@ with another call to act.</p></li>
 <li><p><strong>color</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">g,</span> <span class="pre">b]</span></code> color value (from 0 to 255). Defaults to [255, 0, 0] (red).</p></li>
 <li><p><strong>thickness</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Thickness of the lines. Defaults to 10.</p></li>
 <li><p><strong>lifetime</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Number of simulation seconds the object should persist. If 0, makes persistent. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.draw_debug_vector_field">
+<span class="sig-name descname"><span class="pre">draw_debug_vector_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currents_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector_field_dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[30,</span> <span class="pre">30,</span> <span class="pre">30]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.draw_debug_vector_field" title="Permalink to this definition"></a></dt>
+<dd><p>Create a temporary vector field by drawing vectors at points within a 3D matrix to help demonstrate flow of ocean currents</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>currents_function</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Callable</span></code>) – A vector field function that takes in a 3 element location vector [x,y,z] and outputs a 3D currents velocity vector [x,y,z]</p></li>
+<li><p><strong>location</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – A 3D vector [x,y,z] that represents where you want to draw the center of the vector field</p></li>
+<li><p><strong>vector_field_dimensions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – A 3 element vector that represents the dimensions [x,y,z] of the vector field generated</p></li>
+<li><p><strong>spacing</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – How much space is in between each vector in meters (defaults to 20)</p></li>
+<li><p><strong>arrow_thickness</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – A measure of how thick each of the debug vectors are (defaults to 10)</p></li>
+<li><p><strong>arrow_size</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – A scalar that affects length of each debug arrow at different strengths (defaults to 1)</p></li>
+<li><p><strong>lifetime</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – A scalar to determine the length of time that the arrows persist in the simulation (defaults to 40)</p></li>
 </ul>
 </dd>
 </dl>
@@ -620,6 +656,22 @@ alter the state of the world.</p>
 </dl>
 </dd></dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_ocean_currents">
+<span class="sig-name descname"><span class="pre">set_ocean_currents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_ocean_currents" title="Permalink to this definition"></a></dt>
+<dd><p>Send the ocean current velocity at the location of the vehicle to the server to be transformed into a force vector and applied to the vehicle.
+Note that if the following config parameter is set, three debugging lines will be graphed at the location of all vehicles
+that current is applied to. Of the debugging lines, blue will be the buoyancy force, green will be the gravity force, and
+red will be the ocean currents velocity applied to the center of mass of the vehicle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – The name of the vehicle you want the current to affect (ex: “auv0”)</p></li>
+<li><p><strong>velocity</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – A 3 element vector [x, y, z] that represents the velocity of the current to be applied to the vehicle</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_rain_parameters">
 <span class="sig-name descname"><span class="pre">set_rain_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spawnRate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_rain_parameters" title="Permalink to this definition"></a></dt>
 <dd><p>Changes the rain’s velocity and spawn rate.</p>
@@ -649,6 +701,13 @@ alter the state of the world.</p>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name">
+<span class="sig-name descname"><span class="pre">set_show_vector_field_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name" title="Permalink to this definition"></a></dt>
+<dd><p>Set whether to show the vector field name in the viewport.
+:param state: Whether to show the vector field name in the viewport.
+:type state: <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_ticks_per_sec">

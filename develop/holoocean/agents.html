@@ -611,22 +611,19 @@ HoloOceanSensors on this agent.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.get_joint_constraints" title="holoocean.agents.HoloOceanAgent.get_joint_constraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_joint_constraints</span></code></a>(joint_name)</p></td>
 <td><p>Returns the corresponding swing1, swing2 and twist limit values for the specified joint.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.get_ocean_current_velocity" title="holoocean.agents.HoloOceanAgent.get_ocean_current_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ocean_current_velocity</span></code></a>()</p></td>
-<td><p>Returns the current ocean current velocity for the agent.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.has_camera" title="holoocean.agents.HoloOceanAgent.has_camera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_camera</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.has_camera" title="holoocean.agents.HoloOceanAgent.has_camera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_camera</span></code></a>()</p></td>
 <td><p>Indicatates whether this agent has a camera or not.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.remove_sensors" title="holoocean.agents.HoloOceanAgent.remove_sensors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_sensors</span></code></a>(sensor_defs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.remove_sensors" title="holoocean.agents.HoloOceanAgent.remove_sensors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_sensors</span></code></a>(sensor_defs)</p></td>
 <td><p>Removes a sensor from a particular agent object and detaches it from the agent in the world.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.set_control_scheme" title="holoocean.agents.HoloOceanAgent.set_control_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_scheme</span></code></a>(index)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.set_control_scheme" title="holoocean.agents.HoloOceanAgent.set_control_scheme"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_control_scheme</span></code></a>(index)</p></td>
 <td><p>Sets the control scheme for the agent.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.set_physics_state" title="holoocean.agents.HoloOceanAgent.set_physics_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_physics_state</span></code></a>(location, rotation, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.set_physics_state" title="holoocean.agents.HoloOceanAgent.set_physics_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_physics_state</span></code></a>(location, rotation, ...)</p></td>
 <td><p>Sets the location, rotation, velocity and angular velocity of an agent.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.teleport" title="holoocean.agents.HoloOceanAgent.teleport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">teleport</span></code></a>([location, rotation])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.agents.HoloOceanAgent.teleport" title="holoocean.agents.HoloOceanAgent.teleport"><code class="xref py py-obj docutils literal notranslate"><span class="pre">teleport</span></code></a>([location, rotation])</p></td>
 <td><p>Teleports the agent to a specific location, with a specific rotation.</p></td>
 </tr>
 </tbody>
@@ -705,11 +702,6 @@ element containing the <code class="xref py py-obj docutils literal notranslate"
 <span class="sig-name descname"><span class="pre">get_joint_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.get_joint_constraints" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the corresponding swing1, swing2 and twist limit values for the
 specified joint. Will return None if the joint does not exist for the agent.</p>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.get_ocean_current_velocity">
-<span class="sig-name descname"><span class="pre">get_ocean_current_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.get_ocean_current_velocity" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the current ocean current velocity for the agent.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.has_camera">

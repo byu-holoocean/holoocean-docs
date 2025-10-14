@@ -56,6 +56,7 @@ Documentation on how to use agents in HoloOcean:
    :maxdepth: 1
 
    docs/agent-config
+   docs/currents
    docs/control-schemes
    docs/fossen-based-dynamics
    docs/flashlight
