@@ -44,6 +44,7 @@ Perception Sensors
    sensors/gps-sensor
    sensors/magnetometer-sensor
    sensors/range-finder-sensor
+   sensors/bst-sensor
 
 Communication Sensors
 ---------------------

@@ -65,6 +65,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ocean-currents.html">Ocean Currents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pd-controllers.html">Example: PD Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sampling_bst.html">Sampling Biomass, Salinity, Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_imaging.html">Visualizing Imaging Sonar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_profiling.html">Visualizing Profiling Sonar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_sidescan.html">Visualizing Sidescan Sonar</a></li>
@@ -118,14 +119,14 @@
 <code class="docutils literal notranslate"><span class="pre">AcousticBeaconSensor</span></code> or the <code class="docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code>. Below are some examples of these.</p>
 <section id="sending-acoustic-messages">
 <h2>Sending Acoustic Messages<a class="headerlink" href="#sending-acoustic-messages" title="Permalink to this heading"></a></h2>
-<p>The command <a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.send_acoustic_message" title="holoocean.environments.HoloOceanEnvironment.send_acoustic_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_acoustic_message()</span></code></a> is used to send messages between acoustic beacons.
+<p>The command <code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_acoustic_message()</span></code> is used to send messages between acoustic beacons.
 There’s a number of message types that can be sent, all with varying functionality, see <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.AcousticBeaconSensor" title="holoocean.sensors.AcousticBeaconSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.sensors.AcousticBeaconSensor</span></code></a>
 for details.</p>
 <p>Further, a few helper functions exist if needed,</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.beacons" title="holoocean.environments.HoloOceanEnvironment.beacons"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons</span></code></a> returns all beacons.</p></li>
-<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.beacons_id" title="holoocean.environments.HoloOceanEnvironment.beacons_id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons_id</span></code></a> returns all beacons’ ids.</p></li>
-<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.beacons_status" title="holoocean.environments.HoloOceanEnvironment.beacons_status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons_status</span></code></a> returns all beacons’ status (whether it’s transmitting or not).</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons</span></code> returns all beacons.</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons_id</span></code> returns all beacons’ ids.</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.beacons_status</span></code> returns all beacons’ status (whether it’s transmitting or not).</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 
@@ -190,13 +191,13 @@ for details.</p>
 </section>
 <section id="sending-optical-messages">
 <h2>Sending Optical Messages<a class="headerlink" href="#sending-optical-messages" title="Permalink to this heading"></a></h2>
-<p>The command <a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.send_optical_message" title="holoocean.environments.HoloOceanEnvironment.send_optical_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_optical_message()</span></code></a> is used to send messages between optical modems.
+<p>The command <code class="xref py py-meth docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.send_optical_message()</span></code> is used to send messages between optical modems.
 See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.OpticalModemSensor" title="holoocean.sensors.OpticalModemSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.sensors.OpticalModemSensor</span></code></a> for configuration details. Note in order for a message to be transmitted,
 the 2 sensors must be aligned.</p>
 <p>Further, a few helper functions exist if needed,</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.modems" title="holoocean.environments.HoloOceanEnvironment.modems"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.modems</span></code></a> returns all modems.</p></li>
-<li><p><a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.modems_id" title="holoocean.environments.HoloOceanEnvironment.modems_id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.modems_id</span></code></a> returns all modems’ ids.</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.modems</span></code> returns all modems.</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">holoocean.environments.HoloOceanEnvironment.modems_id</span></code> returns all modems’ ids.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 

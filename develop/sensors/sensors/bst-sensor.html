@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BST Sensor — HoloOcean 2.1.0 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="acoustic-beacon-sensor.html" rel="next" title="Acoustic Beacon"/>
+<link href="range-finder-sensor.html" rel="prev" title="Range Finder Sensor"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">Develop</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imaging-sonar-sensor.html">Imaging Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="profiling-sonar-sensor.html">Profiling Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="depth-sensor.html">Depth Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rgb-camera-sensor.html">RGB Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera-sensor.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gps-sensor.html">Global Positioning System (GPS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magnetometer-sensor.html">Magnetometer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="range-finder-sensor.html">Range Finder Sensor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">BST Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#communication-sensors">Communication Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#state-sensors">State Sensors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../sensors.html">HoloOcean Sensors</a></li>
+<li class="breadcrumb-item active">BST Sensor</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/sensors/sensors/bst-sensor.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="bst-sensor">
+<h1>BST Sensor<a class="headerlink" href="#bst-sensor" title="Permalink to this heading"></a></h1>
+<p>Simulates the distribution and sampling of biomass, salinity, and temperature throughout a world based on real data.</p>
+<p>See <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> for an example of how to use this sensor.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.BSTSensor" title="holoocean.sensors.BSTSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BSTSensor</span></code></a> for the Python API.</p>
+<p>In order to pass a custom function into the BST sensor for biomass, salinity, or temperature, call the following command at
+the beginning of your script. More info on customizing the BST sensor found in the example configuration below, the example script linked above,
+and the API docs:
+<code class="docutils literal notranslate"><span class="pre">set_temperature_function(new_function)</span></code> where “new_function” is a pointer to your custom function that takes in only the parameter “location” (3 element array)</p>
+<section id="graphing">
+<h2>Graphing<a class="headerlink" href="#graphing" title="Permalink to this heading"></a></h2>
+<p>There is an implementation for graphing BST data live by calling the following commands:
+<code class="docutils literal notranslate"><span class="pre">visualizer</span> <span class="pre">=</span> <span class="pre">env.initialize_bst_graphs()</span></code>, with different graphing parameters found in the API docs and in the example
+<code class="docutils literal notranslate"><span class="pre">visualizer.update(location)</span></code>, where location is the live location taken from the location sensor</p>
+<p>Note: In order to simplify the coordinate system BST sampling and graphing is based upon world coordinates. As such, changing the surface level of the
+world will not transform the sampling from the sensor or the graphs. If you wish to incorporate a dynamic surface level, simply upload your custom
+BST functions incorporating those dynamics.</p>
+<p>Below is an example of what the live graphing looks like when ran. Note that the distributions of the graphs themselves differ from the example config
+below in that each is the standard, default distribution models. The only additionaly parameters that went into the distribution models were a couple
+biomass clusters to display how they appear on the heat maps.</p>
+<img alt="sensors/BSTGraph.PNG" src="sensors/BSTGraph.PNG"/>
+<p>Example sensor definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"BSTSensor"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"max_biomass"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="s2">"max_concentration_depth"</span><span class="p">:</span> <span class="mf">150.0</span><span class="p">,</span>
+        <span class="s2">"attenuation_exponent"</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+        <span class="s2">"biomass_clusters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">15</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">20</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"surface_psu"</span><span class="p">:</span> <span class="mf">31.0</span><span class="p">,</span>
+        <span class="s2">"deep_psu"</span><span class="p">:</span> <span class="mf">35.5</span><span class="p">,</span>
+        <span class="s2">"halocline_depth"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+        <span class="s2">"halocline_thickness"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="s2">"salinity_clusters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">10</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"surface_temp"</span><span class="p">:</span> <span class="mf">26.0</span><span class="p">,</span>
+        <span class="s2">"deep_temp"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="s2">"thermocline_depth"</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span>
+        <span class="s2">"thermocline_thickness"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">"thermo_clusters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">12</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">25</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="range-finder-sensor.html" rel="prev" title="Range Finder Sensor"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="acoustic-beacon-sensor.html" rel="next" title="Acoustic Beacon">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

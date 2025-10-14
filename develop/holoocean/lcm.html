@@ -119,12 +119,9 @@ DO NOT MODIFY BY HAND!!!!</p>
 <dt class="sig sig-object py" id="holoocean.lcm.SensorData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.lcm.</span></span><span class="sig-name descname"><span class="pre">SensorData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.SensorData" title="Permalink to this definition"></a></dt>
 <dd><p>Wrapper class for the various types of publishable sensor data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sensor_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Type of sensor to be imported</p></li>
-<li><p><strong>channel</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of channel to publish to.</p></li>
-</ul>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>sensor_type (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): Type of sensor to be imported
+channel (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): Name of channel to publish to.</p>
 </dd>
 </dl>
 <p><strong>Methods:</strong></p>
@@ -139,12 +136,9 @@ DO NOT MODIFY BY HAND!!!!</p>
 <dt class="sig sig-object py" id="holoocean.lcm.SensorData.set_value">
 <span class="sig-name descname"><span class="pre">set_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.SensorData.set_value" title="Permalink to this definition"></a></dt>
 <dd><p>Set value in respective sensor class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>timestamp</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of milliseconds since last data was published</p></li>
-<li><p><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – List of sensor data to put into LCM sensor class</p></li>
-</ul>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>timestamp (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): Number of milliseconds since last data was published
+value (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>): List of sensor data to put into LCM sensor class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -153,13 +147,10 @@ DO NOT MODIFY BY HAND!!!!</p>
 <dt class="sig sig-object py" id="holoocean.lcm.gen">
 <span class="sig-prename descclassname"><span class="pre">holoocean.lcm.</span></span><span class="sig-name descname"><span class="pre">gen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.lcm.gen" title="Permalink to this definition"></a></dt>
 <dd><p>Generates LCM files for sensors in whatever language requested.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lang</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – One of “cpp”, “c”, “java”, “python”, “lua”, “csharp”, “go”</p></li>
-<li><p><strong>path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – Location to save files in. Defaults to current directory.</p></li>
-<li><p><strong>headers</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – Where to store .h files for C . Defaults to same as c files, given by path arg.</p></li>
-</ul>
+<dl class="simple">
+<dt>Args:</dt><dd><p>lang (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): One of “cpp”, “c”, “java”, “python”, “lua”, “csharp”, “go”
+path (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional): Location to save files in. Defaults to current directory.
+headers (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional): Where to store .h files for C . Defaults to same as c files, given by path arg.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -115,15 +115,13 @@
 <dt class="sig sig-object py" id="holoocean.spaces.ActionSpace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.spaces.</span></span><span class="sig-name descname"><span class="pre">ActionSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ActionSpace" title="Permalink to this definition"></a></dt>
 <dd><p>Abstract ActionSpace class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The shape of data that should be input to step or tick.</p></li>
-<li><p><strong>buffer_shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – <p>The shape of the data that will be
-written to the shared memory.</p>
+<dl>
+<dt>Parameters:</dt><dd><p>shape (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The shape of data that should be input to step or tick.
+buffer_shape (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional): The shape of the data that will be</p>
+<blockquote>
+<div><p>written to the shared memory.</p>
 <p>Only use this when it is different from shape.</p>
-</p></li>
-</ul>
+</div></blockquote>
 </dd>
 </dl>
 <p><strong>Methods:</strong></p>
@@ -152,12 +150,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ActionSpace.get_high">
 <span class="sig-name descname"><span class="pre">get_high</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ActionSpace.get_high" title="Permalink to this definition"></a></dt>
 <dd><p>The maximum value(s) for the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the action space’s maximum value(s)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the action space’s maximum value(s)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -165,12 +159,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ActionSpace.get_low">
 <span class="sig-name descname"><span class="pre">get_low</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ActionSpace.get_low" title="Permalink to this definition"></a></dt>
 <dd><p>The minimum value(s) for the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the action space’s minimum value(s)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the action space’s minimum value(s)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -178,12 +168,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ActionSpace.sample">
 <span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ActionSpace.sample" title="Permalink to this definition"></a></dt>
 <dd><p>Sample from the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A valid command to be input to step or tick.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): A valid command to be input to step or tick.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -191,12 +177,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ActionSpace.shape">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#holoocean.spaces.ActionSpace.shape" title="Permalink to this definition"></a></dt>
 <dd><p>Get the shape of the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The shape of the action space.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The shape of the action space.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -205,21 +187,22 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ContinuousActionSpace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.spaces.</span></span><span class="sig-name descname"><span class="pre">ContinuousActionSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ContinuousActionSpace" title="Permalink to this definition"></a></dt>
 <dd><p>Action space that takes floating point inputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The shape of data that should be input to step or tick.</p></li>
-<li><p><strong>sample_fn</strong> (<em>function</em><em>, </em><em>optional</em>) – A function that takes a shape parameter and outputs a
-sampled command.</p></li>
-<li><p><strong>low</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – the low value(s) for the action space. Can be a scalar or an array</p></li>
-<li><p><strong>high</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – <p>the high value(s) for the action space. Cand be a scalar or an array</p>
-<p>If this is not given, it will default to sampling from a unit gaussian.</p>
-</p></li>
-<li><p><strong>buffer_shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – <p>The shape of the data that will be
-written to the shared memory.</p>
+<dl>
+<dt>Parameters:</dt><dd><p>shape (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The shape of data that should be input to step or tick.
+sample_fn (function, optional): A function that takes a shape parameter and outputs a</p>
+<blockquote>
+<div><p>sampled command.</p>
+</div></blockquote>
+<p>low (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the low value(s) for the action space. Can be a scalar or an array
+high (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the high value(s) for the action space. Cand be a scalar or an array</p>
+<blockquote>
+<div><p>If this is not given, it will default to sampling from a unit gaussian.</p>
+</div></blockquote>
+<dl>
+<dt>buffer_shape (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional): The shape of the data that will be</dt><dd><p>written to the shared memory.</p>
 <p>Only use this when it is different from <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
-</p></li>
-</ul>
+</dd>
+</dl>
 </dd>
 </dl>
 <p><strong>Methods:</strong></p>
@@ -240,12 +223,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ContinuousActionSpace.get_high">
 <span class="sig-name descname"><span class="pre">get_high</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ContinuousActionSpace.get_high" title="Permalink to this definition"></a></dt>
 <dd><p>The maximum value(s) for the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the action space’s maximum value(s)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the action space’s maximum value(s)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -253,12 +232,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ContinuousActionSpace.get_low">
 <span class="sig-name descname"><span class="pre">get_low</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ContinuousActionSpace.get_low" title="Permalink to this definition"></a></dt>
 <dd><p>The minimum value(s) for the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the action space’s minimum value(s)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the action space’s minimum value(s)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -266,12 +241,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.ContinuousActionSpace.sample">
 <span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.ContinuousActionSpace.sample" title="Permalink to this definition"></a></dt>
 <dd><p>Sample from the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A valid command to be input to step or tick.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): A valid command to be input to step or tick.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -280,17 +251,15 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.DiscreteActionSpace">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.spaces.</span></span><span class="sig-name descname"><span class="pre">DiscreteActionSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.DiscreteActionSpace" title="Permalink to this definition"></a></dt>
 <dd><p>Action space that takes integer inputs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The shape of data that should be input to step or tick.</p></li>
-<li><p><strong>low</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The lowest value to sample.</p></li>
-<li><p><strong>high</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The highest value to sample.</p></li>
-<li><p><strong>buffer_shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – <p>The shape of the data that will be
-written to the shared memory.</p>
+<dl>
+<dt>Args:</dt><dd><p>shape (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The shape of data that should be input to step or tick.
+low (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The lowest value to sample.
+high (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The highest value to sample.
+buffer_shape (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional): The shape of the data that will be</p>
+<blockquote>
+<div><p>written to the shared memory.</p>
 <p>Only use this when it is different from shape.</p>
-</p></li>
-</ul>
+</div></blockquote>
 </dd>
 </dl>
 <p><strong>Methods:</strong></p>
@@ -311,12 +280,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.DiscreteActionSpace.get_high">
 <span class="sig-name descname"><span class="pre">get_high</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.DiscreteActionSpace.get_high" title="Permalink to this definition"></a></dt>
 <dd><p>The maximum value(s) for the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the action space’s maximum value(s)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the action space’s maximum value(s)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -324,12 +289,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.DiscreteActionSpace.get_low">
 <span class="sig-name descname"><span class="pre">get_low</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.DiscreteActionSpace.get_low" title="Permalink to this definition"></a></dt>
 <dd><p>The minimum value(s) for the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the action space’s minimum value(s)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): the action space’s minimum value(s)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -337,12 +298,8 @@ written to the shared memory.</p>
 <dt class="sig sig-object py" id="holoocean.spaces.DiscreteActionSpace.sample">
 <span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.spaces.DiscreteActionSpace.sample" title="Permalink to this definition"></a></dt>
 <dd><p>Sample from the action space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A valid command to be input to step or tick.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>)</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): A valid command to be input to step or tick.</p>
 </dd>
 </dl>
 </dd></dl>
