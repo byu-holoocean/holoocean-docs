@@ -1,5 +1,5 @@
 ===============
-BST Sensor
+Biomass, Salinity, and Temperature (BST) Sensor
 ===============
 
 Simulates the distribution and sampling of biomass, salinity, and temperature throughout a world based on real data.

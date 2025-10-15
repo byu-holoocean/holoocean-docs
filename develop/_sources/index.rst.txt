@@ -22,6 +22,9 @@ Features
 #. Easy installation and simple, OpenAI Gym-like Python interface
 #. High performance - simulation speeds of up to 2x real time are possible. Performance penalty only for what you need
 #. Run headless or watch your agents learn
+#. Environment appearance with weather and time of day commands
+#. ROS 2 integration
+#. High-fidelity Fossen vehicle dynamics
 #. Linux and Windows support
 
 Attribution and Relevent Publications
@@ -51,6 +54,18 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
       month = {Oct},
       year = {2022}
    }
+
+HoloOcean 2.0 features:
+::
+   @misc{romrell2025previewholoocean20,
+      title={A Preview of HoloOcean 2.0}, 
+      author={Blake Romrell and Abigail Austin and Braden Meyers and Ryan Anderson and Carter Noh and Joshua G. Mangelson},
+      year={2025},
+      eprint={2510.06160},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2510.06160}, 
+}
 
 .. toctree::
    :maxdepth: 2

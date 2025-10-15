@@ -12,6 +12,26 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean 2.2.0
+===============
+*10/16/2025*
+
+New Features
+------------
+
+- Added underwater currents
+- Added biomass, salinity, and temperature (BST) sensor
+
+Changes
+-------
+
+- Updated docs colors
+
+Bug Fixes
+---------
+
+- Fixed drone CI/CD issues
+
 HoloOcean 2.1.0
 ===============
 *9/29/2025*
