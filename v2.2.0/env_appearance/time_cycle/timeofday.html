@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time of Day Controller &mdash; HoloOcean 2.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/themes_override.css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Water Appearance Commands" href="../water_appearance/water_appearance.html" />
+    <link rel="prev" title="Tide Controller" href="../tides/tide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HoloOcean
+          </a>
+              <div class="version">
+                2.2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../env_appearance.html">Environment Appearance</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../env_appearance.html#environment-commands">Environment commands</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../tides/tide.html">Tide Controller</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Time of Day Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#time">Time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#day-cycle">Day cycle</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../water_appearance/water_appearance.html">Water Appearance Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../weather/weather.html">Weather Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../air_fog/air_fog.html">Air Fog Command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HoloOcean</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../env_appearance.html">Environment Appearance</a></li>
+      <li class="breadcrumb-item active">Time of Day Controller</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/env_appearance/time_cycle/timeofday.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="time-of-day-controller">
+<h1>Time of Day Controller<a class="headerlink" href="#time-of-day-controller" title="Permalink to this heading"></a></h1>
+<p>HoloOcean worlds support a configurable time-of-day setting, which can be set either
+through scenarios or programmatically in real time. Additionally, a day cycle frequency
+can be defined in the scenario.</p>
+<a class="reference internal image-reference" href="../../_images/time_cycle.gif"><img alt="../../_images/time_cycle.gif" src="../../_images/time_cycle.gif" style="width: 560.0px; height: 315.0px;" /></a>
+<section id="time">
+<h2>Time<a class="headerlink" href="#time" title="Permalink to this heading"></a></h2>
+<p>The time of day can be set using a floating-point number between <cite>0</cite> and <cite>24</cite>, representing the desired hour. For example, <cite>13.5</cite> corresponds to 1:30 PM.
+This system assumes a simplified day–night cycle: sunrise occurs at 6:00 AM and sunset at 6:00 PM.</p>
+<section id="in-a-scenario">
+<h3>In a scenario<a class="headerlink" href="#in-a-scenario" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;time_test&quot;</span><span class="p">,</span>
+   <span class="o">...</span>
+   <span class="s2">&quot;time_cycle&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s2">&quot;hour&quot;</span><span class="p">:</span> <span class="mi">12</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="programmatically">
+<h3>Programmatically<a class="headerlink" href="#programmatically" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+   <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">change_time_of_day</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># set time to 12 PM</span>
+      <span class="o">...</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="day-cycle">
+<h2>Day cycle<a class="headerlink" href="#day-cycle" title="Permalink to this heading"></a></h2>
+<p>The duration of the day cycle is defined in simulation ticks.
+For example, if <cite>ticks_per_sec = 60</cite> and the <cite>time_cycle</cite> frequency is set to 600, the full day cycle will last about 10 seconds (600 ticks ÷ 60 ticks per second).</p>
+<section id="id1">
+<h3>In a scenario<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;time_cycle_test&quot;</span><span class="p">,</span>
+   <span class="o">...</span>
+   <span class="s2">&quot;time_cycle&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="mi">600</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on how to use this command, please refer to the API Documentation:
+<a class="reference internal" href="../../holoocean/commands.html#holoocean.command.ChangeTimeOfDayCommand" title="holoocean.command.ChangeTimeOfDayCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeTimeOfDayCommand</span></code></a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tides/tide.html" class="btn btn-neutral float-left" title="Tide Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../water_appearance/water_appearance.html" class="btn btn-neutral float-right" title="Water Appearance Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BYU FRoStLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

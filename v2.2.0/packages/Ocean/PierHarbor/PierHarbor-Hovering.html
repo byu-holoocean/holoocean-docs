@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PierHarbor-Hovering — HoloOcean 2.2.0 documentation</title>
+<link href="../../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script>
+<script src="../../../_static/underscore.js"></script>
+<script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../../_static/doctools.js"></script>
+<script src="../../../_static/clipboard.min.js"></script>
+<script src="../../../_static/copybutton.js"></script>
+<script src="../../../_static/js/theme.js"></script>
+<link href="../../../genindex.html" rel="index" title="Index"/>
+<link href="../../../search.html" rel="search" title="Search"/>
+<link href="PierHarbor-HoveringCamera.html" rel="next" title="PierHarbor-HoveringCamera"/>
+<link href="pierharbor.html" rel="prev" title="PierHarbor"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../../versionList.html" style="color: inherit;">2.2.0</a></div>
+<div role="search">
+<form action="../../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../packages.html">HoloOcean Packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../packages.html#package-documentation">Package Documentation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../packages.html#all-packages">HoloOcean Packages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../Ocean.html">Ocean Package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../Dam/dam.html">Dam</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../OpenWater/openwater.html">OpenWater</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="pierharbor.html">PierHarbor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Rooms/rooms.html">Rooms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../SimpleUnderwater/simpleunderwater.html">SimpleUnderwater</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../../packages.html">HoloOcean Packages</a></li>
+<li class="breadcrumb-item"><a href="../Ocean.html">Ocean Package</a></li>
+<li class="breadcrumb-item"><a href="pierharbor.html">PierHarbor</a></li>
+<li class="breadcrumb-item active">PierHarbor-Hovering</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../../_sources/packages/Ocean/PierHarbor/PierHarbor-Hovering.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="pierharbor-hovering">
+<h1>PierHarbor-Hovering<a class="headerlink" href="#pierharbor-hovering" title="Permalink to this heading"></a></h1>
+<p>This scenario starts with a HoveringAUV near one of the larger docks. Unless otherwise specified,
+all sensors are named the same as their class name, ie IMUSensor is named “IMUSensor”.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">auv0</span></code>: Main <a class="reference internal" href="../../../agents/agents/hovering-auv-agent.html#hovering-auv-agent"><span class="std std-ref">HoveringAUV</span></a> agent</dt><dd><ul>
+<li><p><a class="reference internal" href="../../../holoocean/sensors.html#holoocean.sensors.IMUSensor" title="holoocean.sensors.IMUSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">IMUSensor</span></code></a> configured with noise, bias, and returns bias.</p></li>
+<li><p><a class="reference internal" href="../../../holoocean/sensors.html#holoocean.sensors.GPSSensor" title="holoocean.sensors.GPSSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPSSensor</span></code></a> gets measurements with N(1, 0.25) of the surface, actual measurement also has noise.</p></li>
+<li><p><a class="reference internal" href="../../../holoocean/sensors.html#holoocean.sensors.DVLSensor" title="holoocean.sensors.DVLSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DVLSensor</span></code></a> configured with an elevation of 22.5 degrees, noise, and returns 4 range measurements.</p></li>
+<li><p><a class="reference internal" href="../../../holoocean/sensors.html#holoocean.sensors.DepthSensor" title="holoocean.sensors.DepthSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">DepthSensor</span></code></a> configured with noise.</p></li>
+<li><p><a class="reference internal" href="../../../holoocean/sensors.html#holoocean.sensors.PoseSensor" title="holoocean.sensors.PoseSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoseSensor</span></code></a> for ground truth.</p></li>
+<li><p><a class="reference internal" href="../../../holoocean/sensors.html#holoocean.sensors.VelocitySensor" title="holoocean.sensors.VelocitySensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">VelocitySensor</span></code></a> for ground truth.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../../../_images/starting2.png" src="../../../_images/starting2.png"/>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="pierharbor.html" rel="prev" title="PierHarbor"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="PierHarbor-HoveringCamera.html" rel="next" title="PierHarbor-HoveringCamera">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

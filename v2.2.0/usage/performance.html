@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Improving Performance — HoloOcean 2.2.0 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="units-and-coordinates.html" rel="next" title="Units and Coordinates in HoloOcean"/>
+<link href="viewport.html" rel="prev" title="Viewport"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.2.0</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usage.html">Using HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewport.html">Viewport</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Improving Performance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#frame-rate">Frame Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sonar-sensors">Sonar Sensors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lowering-octree-resolution">Lowering Octree Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-ticks-per-capture">Changing Ticks-Per-Capture</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-sensors">Camera Sensors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#removing-the-camera">Removing the Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lowering-the-camera-resolution">Lowering the Camera Resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Changing Ticks-Per-Capture</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-viewport-rendering">Disable Viewport Rendering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-render-quality">Change Render Quality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="units-and-coordinates.html">Units and Coordinates in HoloOcean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semaphores.html">HoloOcean Client-Server Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ROS2.html">ROS2 Bridge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="usage.html">Using HoloOcean</a></li>
+<li class="breadcrumb-item active">Improving Performance</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/usage/performance.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="improving-performance">
+<span id="id1"></span><h1>Improving Performance<a class="headerlink" href="#improving-performance" title="Permalink to this heading"></a></h1>
+<p>HoloOcean is fairly performant by default, but you can also sacrifice features to increase your
+frames per second.</p>
+<section id="frame-rate">
+<h2>Frame Rate<a class="headerlink" href="#frame-rate" title="Permalink to this heading"></a></h2>
+<p>The frame rate can have a large impact on performance. The frame rate is set in the scenario
+configuration. See <a class="reference internal" href="scenarios.html#configure-framerate"><span class="std std-ref">Frame Rates</span></a> for details on how to set the <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code> and
+<code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code> to optimize performance for your specific task.</p>
+</section>
+<section id="sonar-sensors">
+<h2>Sonar Sensors<a class="headerlink" href="#sonar-sensors" title="Permalink to this heading"></a></h2>
+<p>The sonar sensors can be taxing on performance. There’s a number of things that can be done to help
+improve their performance as well.</p>
+<section id="lowering-octree-resolution">
+<h3>Lowering Octree Resolution<a class="headerlink" href="#lowering-octree-resolution" title="Permalink to this heading"></a></h3>
+<p>The Octree resolution has a large impact on sonar performance. The higher <code class="docutils literal notranslate"><span class="pre">octree_min</span></code> is, the less
+leaves there are to search through, and the faster it’ll run. This will have an impact on image
+quality, especially at close distances. If most objects that are being inspected are a ways away,
+this parameter can be safely increased quite a bit.</p>
+<p>See <a class="reference internal" href="scenarios.html#configure-octree"><span class="std std-ref">Octree Configuration</span></a> for info on how to do that.</p>
+</section>
+<section id="changing-ticks-per-capture">
+<h3>Changing Ticks-Per-Capture<a class="headerlink" href="#changing-ticks-per-capture" title="Permalink to this heading"></a></h3>
+<p>The sonar sample rate can be reduced to increase the average frames per second.
+See <a class="reference internal" href="../sensors/docs/sensor-config.html#sensor-configuration"><span class="std std-ref">Sensor Configuration</span></a> and the <code class="docutils literal notranslate"><span class="pre">Hz</span></code> parameter for more info.</p>
+</section>
+</section>
+<section id="camera-sensors">
+<h2>Camera Sensors<a class="headerlink" href="#camera-sensors" title="Permalink to this heading"></a></h2>
+<p>If using a <code class="docutils literal notranslate"><span class="pre">Camera</span></code> or <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> sensor, rendering the camera frames each tick will
+significantly impact performance. Rendering the camera every frame causes a context switch deep in
+the rendering code of the engine, which has a significant performance penalty.</p>
+<p>This chart shows how much performance you can expect to gain or lose by adjusting or disabling the
+Camera (left column is frame time in milleseconds).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following tests were performed in the original Holodeck, but the results should be similar
+for HoloOcean.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Resolution</p></th>
+<th class="head" colspan="2"><p>UrbanCity</p></th>
+<th class="head" colspan="2"><p>MazeWorld</p></th>
+<th class="head" colspan="2"><p>AndroidPlayground</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>No Camera</p></td>
+<td><p>8.55 ms</p></td>
+<td><p>117 fps</p></td>
+<td><p>4.69  ms</p></td>
+<td><p>213 fps</p></td>
+<td><p>2.47 ms</p></td>
+<td><p>405 fps</p></td>
+</tr>
+<tr class="row-odd"><td><p>64</p></td>
+<td><p>17   ms</p></td>
+<td><p>59 fps</p></td>
+<td><p>11    ms</p></td>
+<td><p>91 fps</p></td>
+<td><p>4.87 ms</p></td>
+<td><p>205 fps</p></td>
+</tr>
+<tr class="row-even"><td><p>128</p></td>
+<td><p>20   ms</p></td>
+<td><p>50 fps</p></td>
+<td><p>11.6  ms</p></td>
+<td><p>86 fps</p></td>
+<td><p>5.59 ms</p></td>
+<td><p>179 fps</p></td>
+</tr>
+<tr class="row-odd"><td><p>256</p></td>
+<td><p>22   ms</p></td>
+<td><p>45 fps</p></td>
+<td><p>14.71 ms</p></td>
+<td><p>68 fps</p></td>
+<td><p>9.02 ms</p></td>
+<td><p>111 fps</p></td>
+</tr>
+<tr class="row-even"><td><p>512</p></td>
+<td><p>35   ms</p></td>
+<td><p>29 fps</p></td>
+<td><p>30.8  ms</p></td>
+<td><p>32 fps</p></td>
+<td><p>24.81 ms</p></td>
+<td><p>40 fps</p></td>
+</tr>
+<tr class="row-odd"><td><p>1024</p></td>
+<td><p>89   ms</p></td>
+<td><p>11 fps</p></td>
+<td><p>84.2  ms</p></td>
+<td><p>12 fps</p></td>
+<td><p>94.55 ms</p></td>
+<td><p>11 fps</p></td>
+</tr>
+<tr class="row-even"><td><p>2048</p></td>
+<td><p>410  ms</p></td>
+<td><p>2  fps</p></td>
+<td><p>383   ms</p></td>
+<td><p>3  fps</p></td>
+<td><p>366   ms</p></td>
+<td><p>3  fps</p></td>
+</tr>
+</tbody>
+</table>
+<section id="removing-the-camera">
+<h3>Removing the Camera<a class="headerlink" href="#removing-the-camera" title="Permalink to this heading"></a></h3>
+<p>Removing the camera entirely will significantly improve performance. For custom scenarios, simply
+remove the camera from the scenario configuration file you are using. To modify pre-made scenarios,
+the easiest method is simply to create a new custom scenario based on the one you want to use, and
+remove the camera from the configuration.</p>
+<p>See <a class="reference internal" href="scenarios.html#custom-scenarios"><span class="std std-ref">Making Custom Scenarios</span></a>.</p>
+</section>
+<section id="lowering-the-camera-resolution">
+<h3>Lowering the Camera Resolution<a class="headerlink" href="#lowering-the-camera-resolution" title="Permalink to this heading"></a></h3>
+<p>Lowering the resolution of the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> or <code class="docutils literal notranslate"><span class="pre">Camera</span></code> can also help speed things up.
+Create a <a class="reference internal" href="scenarios.html#custom-scenarios"><span class="std std-ref">custom scenario</span></a>, and in the
+<a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">configuration block</span></a> for the <code class="docutils literal notranslate"><span class="pre">RGBCamera</span></code> or <code class="docutils literal notranslate"><span class="pre">Camera</span></code>, set the
+<code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code> and <code class="docutils literal notranslate"><span class="pre">CaptureHeight</span></code>.</p>
+<p>See <a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.RGBCamera" title="holoocean.sensors.RGBCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">RGBCamera</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Camera</span></code> for more details.</p>
+</section>
+<section id="id2">
+<h3>Changing Ticks-Per-Capture<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>The camera sample rate can be reduced to increase the average frames per second.
+See <a class="reference internal" href="../sensors/docs/sensor-config.html#sensor-configuration"><span class="std std-ref">Sensor Configuration</span></a> and the <code class="docutils literal notranslate"><span class="pre">Hz</span></code> parameter for more info.</p>
+</section>
+</section>
+<section id="disable-viewport-rendering">
+<h2>Disable Viewport Rendering<a class="headerlink" href="#disable-viewport-rendering" title="Permalink to this heading"></a></h2>
+<p>Rendering the viewport window can be unnecessary when running simulations sequentially,
+such as when using HoloOcean for reinforcement learning. You can disable the viewport with
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code> method (see
+<a class="reference internal" href="viewport.html#headless"><span class="std std-ref">Using HoloOcean Headless</span></a> for details).</p>
+<p>At lower camera resolutions, disabling the viewport can improve framerates by up to 40%.</p>
+</section>
+<section id="change-render-quality">
+<h2>Change Render Quality<a class="headerlink" href="#change-render-quality" title="Permalink to this heading"></a></h2>
+<p>You can adjust HoloOcean to render at a lower (or higher) quality to improve
+performance. See the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_render_quality()</span></code> method.</p>
+<p>Below is a comparison of render qualities and the frame time in ms.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quality</p></th>
+<th class="head"><p>MazeWorld</p></th>
+<th class="head"><p>UrbanCity</p></th>
+<th class="head"><p>AndroidPlayground</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>10.34</p></td>
+<td><p>12.33</p></td>
+<td><p>6.63</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>10.53</p></td>
+<td><p>15.06</p></td>
+<td><p>6.84</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>14.81</p></td>
+<td><p>19.19</p></td>
+<td><p>8.66</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p>15.58</p></td>
+<td><p>21.78</p></td>
+<td><p>9.2</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="viewport.html" rel="prev" title="Viewport"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="units-and-coordinates.html" rel="next" title="Units and Coordinates in HoloOcean">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
