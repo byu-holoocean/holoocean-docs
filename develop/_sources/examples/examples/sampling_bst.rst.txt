@@ -137,9 +137,9 @@ is your custom function that takes in at least a 1D, 3-element array and outputs
             queue.put(scenario["agents"][0]["location"])
             p = Process(target=plot_process, args=(queue, scenario, temp_fx))
             p.start()
+            env.set_temperature_function("auv0", temp_fx)
             while True:
                 # We need to pass the same custom function into the BST sensor to get accurate readings in the terminal
-                env.set_temperature_function("auv0", temp_fx)
                 sensor_data = env.tick()
                 location = sensor_data["LocationSensor"]
                 queue.put(location)

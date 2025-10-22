@@ -133,63 +133,175 @@ and the API docs:
 <p>There is an implementation for graphing BST data live by calling the following commands:
 <code class="docutils literal notranslate"><span class="pre">visualizer</span> <span class="pre">=</span> <span class="pre">env.initialize_bst_graphs()</span></code>, with different graphing parameters found in the API docs and in the example
 <code class="docutils literal notranslate"><span class="pre">visualizer.update(location)</span></code>, where location is the live location taken from the location sensor</p>
-<p>Note: In order to simplify the coordinate system BST sampling and graphing is based upon world coordinates. As such, changing the surface level of the
-world will not transform the sampling from the sensor or the graphs. If you wish to incorporate a dynamic surface level, simply upload your custom
-BST functions incorporating those dynamics.</p>
-<p>Below is an example of what the live graphing looks like when ran. Note that the distributions of the graphs themselves differ from the example config
-below in that each is the standard, default distribution models. The only additionaly parameters that went into the distribution models were a couple
-biomass clusters to display how they appear on the heat maps.</p>
-<img alt="sensors/BSTGraph.PNG" src="sensors/BSTGraph.PNG"/>
-<p>Example sensor definition:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since implementing biomass, salinity, and temperature sampling, we’ve implemented dynamic tides. The default biomass, salinity, and temperature functions
+don’t take dynamic tides and a dynamic surface level into account, so if you wish to incorporate these dynamic models into your calculations, you can set custom biomass, salinity,
+and temperature function that use data from the dynamic tides.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It has been noted that the live updating heatmaps can cause delay and have a noticable neative impact on simulation runtime. The <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> example page demonstrates how to use Python multiprocessing
+to dramatically improve simulation performance while updating the heatmap plots live. We highly recommend using multiprocessing if you wish to use the graphing feature of the BST sensor.</p>
+</div>
+<p>Below are examples of the default configuration, and two different methods of configuration for Biomass, salinity, and temperature distributions throughout the simulation. The default
+configuration demonstrates what the distributions would look like if no additional parameters were altered. Then, the second example demonstrates customization that can be accomplished just
+by altering the environment scenario configuration. Finally, the last example demonstrates how custom functions can be designed and set as the new distribution models for biomass, salinity,
+and temperature.</p>
+</section>
+<section id="default-biomass-salinity-and-temperature">
+<h2>Default Biomass, Salinity, and Temperature<a class="headerlink" href="#default-biomass-salinity-and-temperature" title="Permalink to this heading"></a></h2>
+<img alt="../../_images/DefaultBST.PNG" src="../../_images/DefaultBST.PNG"/>
+<p>Default Configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_currents"</span><span class="p">,</span>
+<span class="s2">"world"</span><span class="p">:</span> <span class="s2">"PierHarbor"</span><span class="p">,</span>
+<span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+<span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+<span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+<span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+<span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"BSTSensor"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span><span class="p">,</span>
+                    <span class="s2">"configuration"</span><span class="p">:{}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"LocationSensor"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="customized-configuration">
+<h2>Customized Configuration<a class="headerlink" href="#customized-configuration" title="Permalink to this heading"></a></h2>
+<img alt="../../_images/CustomConfigBST.PNG" src="../../_images/CustomConfigBST.PNG"/>
+<p>Customized Configuration Parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"BSTSensor"</span><span class="p">,</span>
     <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span><span class="p">,</span>
     <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"max_biomass"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-        <span class="s2">"max_concentration_depth"</span><span class="p">:</span> <span class="mf">150.0</span><span class="p">,</span>
-        <span class="s2">"attenuation_exponent"</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+        <span class="s2">"max_biomass"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">"biomass_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="s2">"peak_depth"</span><span class="p">:</span> <span class="mf">110.0</span><span class="p">,</span>
         <span class="s2">"biomass_clusters"</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
-                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">],</span>
-                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
                 <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">15</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">],</span>
-                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
-                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">20</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="s2">"surface_psu"</span><span class="p">:</span> <span class="mf">31.0</span><span class="p">,</span>
-        <span class="s2">"deep_psu"</span><span class="p">:</span> <span class="mf">35.5</span><span class="p">,</span>
-        <span class="s2">"halocline_depth"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
-        <span class="s2">"halocline_thickness"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-        <span class="s2">"salinity_clusters"</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span>
-                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
                 <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">10</span>
             <span class="p">}</span>
         <span class="p">],</span>
-        <span class="s2">"surface_temp"</span><span class="p">:</span> <span class="mf">26.0</span><span class="p">,</span>
-        <span class="s2">"deep_temp"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-        <span class="s2">"thermocline_depth"</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span>
-        <span class="s2">"thermocline_thickness"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-        <span class="s2">"thermo_clusters"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"surface_psu"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="s2">"deep_psu"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">"halocline_depth"</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+        <span class="s2">"halocline_thickness"</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+        <span class="s2">"salinity_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">41</span><span class="p">),</span>
+        <span class="s2">"salinity_clusters"</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
-                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">],</span>
-                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">85</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">10</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"surface_temp"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"deep_temp"</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+        <span class="s2">"thermocline_depth"</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span>
+        <span class="s2">"thermocline_thickness"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="s2">"temperature_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+        <span class="s2">"temperature_clusters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
                 <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">12</span>
             <span class="p">},</span>
             <span class="p">{</span>
-                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">],</span>
-                <span class="s2">"strength"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">95</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
                 <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">25</span>
             <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-functions">
+<h2>Custom Functions<a class="headerlink" href="#custom-functions" title="Permalink to this heading"></a></h2>
+<p>Because implementing custom functions involves more than just changing config parameters, we’ve only included the
+custom functions that were passed into our <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.initialize_bst_graphs</span></code> function call. If you’d
+like to see the full implementation for custom functions, see the <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> example.</p>
+<img alt="../../_images/CustomFunctionsBST.PNG" src="../../_images/CustomFunctionsBST.PNG"/>
+<p>Custom Functions and Configuration Parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">biomass_fx</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+    <span class="c1"># NOTE: It's required that we name this parameter "location"</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">location</span>
+    <span class="n">x_fade</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>  <span class="c1"># fades from 0 at x=0.5 to 5.5 at x=100, then stays at 5.5</span>
+    <span class="k">return</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">x_fade</span> <span class="o">+</span> <span class="mf">0.5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">salinity_fx</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+    <span class="c1"># This function creates decaying oscillations that originate from a single point</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">location</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">]</span>
+    <span class="c1"># The zip() function in Python pairs corresponding values in two iterables together in tuples</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">center</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">34</span>  <span class="c1"># base salinity</span>
+    <span class="n">amplitude</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">dist</span><span class="o">/</span><span class="mi">80</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">34</span> <span class="o">+</span> <span class="n">amplitude</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">dist</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">temperature_fx</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+    <span class="c1"># This function creates a checkerboard-type pattern across the world</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">location</span>
+    <span class="n">square_size</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">checks</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">coord</span> <span class="o">//</span> <span class="n">square_size</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="k">if</span> <span class="n">checks</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">20</span>  <span class="c1"># alternate between two temps</span>
+
+<span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"BST Custom Functions"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+                <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+                <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"BSTSensor"</span><span class="p">,</span>
+                        <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span><span class="p">,</span>
+                        <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">"biomass_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                            <span class="s2">"salinity_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span>
+                            <span class="s2">"temperature_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"LocationSensor"</span><span class="p">,</span>
+                        <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </section>

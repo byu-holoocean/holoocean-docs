@@ -22,15 +22,9 @@ New Features
 - Added underwater currents
 - Added biomass, salinity, and temperature (BST) sensor
 
-Changes
--------
-
-- Updated docs colors
-
 Bug Fixes
 ---------
 
-- Fixed drone CI/CD issues
 - Fixed RangeFinder sensor returning max range value when nothing was in range of the sensor. Now it returns -1 if nothing is in range of the sensor.
 
 HoloOcean 2.1.0
