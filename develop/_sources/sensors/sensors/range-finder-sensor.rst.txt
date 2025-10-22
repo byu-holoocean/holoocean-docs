@@ -3,8 +3,9 @@ Range Finder Sensor
 ====================
 
 The Range Finder is a laser sensor. It returns distances to nearest collisions in the directions 
-specified by the parameters. For example, if an agent had two range sensors at different angles with 
-24 lasers each, the RangeFinder debug traces would look something like this:
+specified by the parameters. Or if the sensor does not detect anything whithin the operational range, 
+a negative value is returned. As an example, if an agent had two range sensors at different 
+angles with 24 lasers each, the RangeFinder debug traces would look something like this:
 
 .. image:: ../UAVRangeFinder.PNG
 

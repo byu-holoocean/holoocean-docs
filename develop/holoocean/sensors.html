@@ -1307,7 +1307,7 @@ options:</p>
 <dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RangeFinderSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RangeFinderSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor" title="Permalink to this definition"></a></dt>
 <dd><p>Returns distances to nearest collisions in the directions specified by
-the parameters.</p>
+the parameters. If no hit is detected by the laser, a negative value is returned.</p>
 <p><strong>Configuration</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>

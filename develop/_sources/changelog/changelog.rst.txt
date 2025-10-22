@@ -14,7 +14,7 @@ Changelog
 
 HoloOcean 2.2.0
 ===============
-*10/16/2025*
+*10/22/2025*
 
 New Features
 ------------
@@ -31,6 +31,7 @@ Bug Fixes
 ---------
 
 - Fixed drone CI/CD issues
+- Fixed RangeFinder sensor returning max range value when nothing was in range of the sensor. Now it returns -1 if nothing is in range of the sensor.
 
 HoloOcean 2.1.0
 ===============
