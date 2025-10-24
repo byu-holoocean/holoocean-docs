@@ -149,21 +149,20 @@
 <dt class="sig sig-object py" id="holoocean.agents.AgentDefinition">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">AgentDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_rot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_main_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.AgentDefinition" title="Permalink to this definition"></a></dt>
 <dd><p>Represents information needed to initialize agent.</p>
-<dl>
-<dt>Args:</dt><dd><p>agent_name (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): The name of the agent to control.
-agent_type (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or type): The type of HoloOceanAgent to control, string or class</p>
-<blockquote>
-<div><p>reference.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>sensors (<a class="reference internal" href="sensors.html#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a> or class type (if no duplicate sensors)): A list of</dt><dd><p>HoloOceanSensors to read from this agent.</p>
-</dd>
-<dt>starting_loc (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Starting <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location for agent </dt><dd><p>(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
-</dd>
-<dt>starting_rot (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>): Starting <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> rotation for agent </dt><dd><p>(see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p>
-</dd>
-</dl>
-<p>existing (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>): If the agent exists in the world or not (deprecated)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the agent to control.</p></li>
+<li><p><strong>agent_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or type) – The type of HoloOceanAgent to control, string or class
+reference.</p></li>
+<li><p><strong>sensors</strong> (<a class="reference internal" href="sensors.html#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a> or class type (if no duplicate sensors)) – A list of
+HoloOceanSensors to read from this agent.</p></li>
+<li><p><strong>starting_loc</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Starting <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location for agent
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>starting_rot</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Starting <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> rotation for agent
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p></li>
+<li><p><strong>existing</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If the agent exists in the world or not (deprecated)</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -183,12 +182,13 @@ agent_type (<code class="xref py py-obj docutils literal notranslate"><span clas
 <dt class="sig sig-object py" id="holoocean.agents.AgentFactory.build_agent">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_def</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.AgentFactory.build_agent" title="Permalink to this definition"></a></dt>
 <dd><p>Constructs an agent</p>
-<dl>
-<dt>Args:</dt><dd><dl class="simple">
-<dt>client (<a class="reference internal" href="holooceanclient.html#holoocean.holooceanclient.HoloOceanClient" title="holoocean.holooceanclient.HoloOceanClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.holooceanclient.HoloOceanClient</span></code></a>): HoloOceanClient agent is</dt><dd><p>associated with</p>
-</dd>
-</dl>
-<p>agent_def (<a class="reference internal" href="#holoocean.agents.AgentDefinition" title="holoocean.agents.AgentDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentDefinition</span></code></a>): Definition of the agent to instantiate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<a class="reference internal" href="holooceanclient.html#holoocean.holooceanclient.HoloOceanClient" title="holoocean.holooceanclient.HoloOceanClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">holoocean.holooceanclient.HoloOceanClient</span></code></a>) – HoloOceanClient agent is
+associated with</p></li>
+<li><p><strong>agent_def</strong> (<a class="reference internal" href="#holoocean.agents.AgentDefinition" title="holoocean.agents.AgentDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentDefinition</span></code></a>) – Definition of the agent to instantiate</p></li>
+</ul>
 </dd>
 </dl>
 <p>Returns:</p>
@@ -242,11 +242,12 @@ Inherits from <a class="reference internal" href="#holoocean.agents.HoloOceanAge
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -261,45 +262,163 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dt class="sig sig-object py" id="holoocean.agents.ControlSchemes">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.agents.</span></span><span class="sig-name descname"><span class="pre">ControlSchemes</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes" title="Permalink to this definition"></a></dt>
 <dd><p>All allowed control schemes.</p>
-<dl>
-<dt>Attributes:</dt><dd><p>ANDROID_TORQUES (int): Default Android control scheme. Specify a torque for each joint.
-CONTINUOUS_SPHERE_DEFAULT (int): Default ContinuousSphere control scheme.</p>
-<blockquote>
-<div><p>Takes two commands, [forward_delta, turn_delta].</p>
-</div></blockquote>
-<dl class="simple">
-<dt>DISCRETE_SPHERE_DEFAULT (int): Default DiscreteSphere control scheme. Takes a value, 0-4,</dt><dd><p>which corresponds with forward, backward, right, and left.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.ANDROID_TORQUES">
+<span class="sig-name descname"><span class="pre">ANDROID_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.ANDROID_TORQUES" title="Permalink to this definition"></a></dt>
+<dd><p>Default Android control scheme. Specify a torque for each joint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
-<p>NAV_TARGET_LOCATION (int): Default NavAgent control scheme. Takes a target xyz coordinate.
-UAV_TORQUES (int): Default UAV control scheme. Takes torques for roll, pitch, and yaw, as</p>
-<blockquote>
-<div><p>well as thrust.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>UAV_ROLL_PITCH_YAW_RATE_ALT (int): Control scheme for UAV. Takes roll, pitch, yaw rate, and</dt><dd><p>altitude targets.</p>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.CONTINUOUS_SPHERE_DEFAULT">
+<span class="sig-name descname"><span class="pre">CONTINUOUS_SPHERE_DEFAULT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.CONTINUOUS_SPHERE_DEFAULT" title="Permalink to this definition"></a></dt>
+<dd><p>Default ContinuousSphere control scheme.
+Takes two commands, [forward_delta, turn_delta].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
-<p>HAND_AGENT_MAX_TORQUES (int): Default Android control scheme. Specify a torque for each joint.
-AUV_THRUSTERS (int): Default HoveringAUV control scheme. Specify 8-vector of forces for each thruster.
-AUV_CONTROL (int): Implemented PD controller. Specify 6-vector of position and roll,pitch,yaw to go too.
-AUV_FORCES (int): Used for custom dynamics. All internal dynamics (except collisions) are turned off including</p>
-<blockquote>
-<div><p>buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
-</div></blockquote>
-<p>TAUV_FINS (int): Default TorpedoAUV control scheme. Specify 5-vector of fin rotations in degrees and propeller value in Newtons.
-TAUV_FORCES (int): Used for custom dynamics. All internal dynamics (except collisions) are turned off including</p>
-<blockquote>
-<div><p>buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
-</div></blockquote>
-<p>SV_THRUSTERS (int): Default SurfaceVessel control scheme. Specify 2-vector of forces for left and right thruster.
-SV_CONTROL (int): Implemented PD controller. Specify 2-vector of x and y position to go too.
-SV_FORCES (int): Used for custom dynamics. All internal dynamics (except collisions) are turned off including</p>
-<blockquote>
-<div><p>buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
-</div></blockquote>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.DISCRETE_SPHERE_DEFAULT">
+<span class="sig-name descname"><span class="pre">DISCRETE_SPHERE_DEFAULT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.DISCRETE_SPHERE_DEFAULT" title="Permalink to this definition"></a></dt>
+<dd><p>Default DiscreteSphere control scheme. Takes a value, 0-4,
+which corresponds with forward, backward, right, and left.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.NAV_TARGET_LOCATION">
+<span class="sig-name descname"><span class="pre">NAV_TARGET_LOCATION</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.NAV_TARGET_LOCATION" title="Permalink to this definition"></a></dt>
+<dd><p>Default NavAgent control scheme. Takes a target xyz coordinate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.UAV_TORQUES">
+<span class="sig-name descname"><span class="pre">UAV_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.UAV_TORQUES" title="Permalink to this definition"></a></dt>
+<dd><p>Default UAV control scheme. Takes torques for roll, pitch, and yaw, as
+well as thrust.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.UAV_ROLL_PITCH_YAW_RATE_ALT">
+<span class="sig-name descname"><span class="pre">UAV_ROLL_PITCH_YAW_RATE_ALT</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.UAV_ROLL_PITCH_YAW_RATE_ALT" title="Permalink to this definition"></a></dt>
+<dd><p>Control scheme for UAV. Takes roll, pitch, yaw rate, and
+altitude targets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.HAND_AGENT_MAX_TORQUES">
+<span class="sig-name descname"><span class="pre">HAND_AGENT_MAX_TORQUES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.HAND_AGENT_MAX_TORQUES" title="Permalink to this definition"></a></dt>
+<dd><p>Default Android control scheme. Specify a torque for each joint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.AUV_THRUSTERS">
+<span class="sig-name descname"><span class="pre">AUV_THRUSTERS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_THRUSTERS" title="Permalink to this definition"></a></dt>
+<dd><p>Default HoveringAUV control scheme. Specify 8-vector of forces for each thruster.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.AUV_CONTROL">
+<span class="sig-name descname"><span class="pre">AUV_CONTROL</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_CONTROL" title="Permalink to this definition"></a></dt>
+<dd><p>Implemented PD controller. Specify 6-vector of position and roll,pitch,yaw to go too.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.AUV_FORCES">
+<span class="sig-name descname"><span class="pre">AUV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.AUV_FORCES" title="Permalink to this definition"></a></dt>
+<dd><p>Used for custom dynamics. All internal dynamics (except collisions) are turned off including
+buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.TAUV_FINS">
+<span class="sig-name descname"><span class="pre">TAUV_FINS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.TAUV_FINS" title="Permalink to this definition"></a></dt>
+<dd><p>Default TorpedoAUV control scheme. Specify 5-vector of fin rotations in degrees and propeller value in Newtons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.TAUV_FORCES">
+<span class="sig-name descname"><span class="pre">TAUV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.TAUV_FORCES" title="Permalink to this definition"></a></dt>
+<dd><p>Used for custom dynamics. All internal dynamics (except collisions) are turned off including
+buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.SV_THRUSTERS">
+<span class="sig-name descname"><span class="pre">SV_THRUSTERS</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_THRUSTERS" title="Permalink to this definition"></a></dt>
+<dd><p>Default SurfaceVessel control scheme. Specify 2-vector of forces for left and right thruster.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.SV_CONTROL">
+<span class="sig-name descname"><span class="pre">SV_CONTROL</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_CONTROL" title="Permalink to this definition"></a></dt>
+<dd><p>Implemented PD controller. Specify 2-vector of x and y position to go too.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.ControlSchemes.SV_FORCES">
+<span class="sig-name descname"><span class="pre">SV_FORCES</span></span><a class="headerlink" href="#holoocean.agents.ControlSchemes.SV_FORCES" title="Permalink to this definition"></a></dt>
+<dd><p>Used for custom dynamics. All internal dynamics (except collisions) are turned off including
+buoyancy, gravity, and damping. Specify 6-vector of linear and angular acceleration in the global frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.agents.CougUV">
@@ -350,11 +469,12 @@ SV_FORCES (int): Used for custom dynamics. All internal dynamics (except collisi
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -411,11 +531,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -432,24 +553,49 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A learning agent in HoloOcean</p>
 <p>Agents can act, receive rewards, and receive observations from their sensors.
 Examples include the Android, UAV, and SphereRobot.</p>
-<dl>
-<dt>Args:</dt><dd><dl class="simple">
-<dt>client (<a class="reference internal" href="holooceanclient.html#holoocean.holooceanclient.HoloOceanClient" title="holoocean.holooceanclient.HoloOceanClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanClient</span></code></a>): The HoloOceanClient that this</dt><dd><p>agent belongs with.</p>
-</dd>
-<dt>name (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional): The name of the agent. Must be unique from other agents in</dt><dd><p>the same environment.</p>
-</dd>
-<dt>sensors (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>)): A list</dt><dd><p>of HoloOceanSensors to read from this agent.</p>
-</dd>
-</dl>
-</dd>
-<dt>Attributes:</dt><dd><p>name (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): The name of the agent.
-sensors (dict of (string, <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>)): List of</p>
-<blockquote>
-<div><p>HoloOceanSensors on this agent.</p>
-</div></blockquote>
-<p>agent_state_dict (dict): A dictionary that maps sensor names to sensor observation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<a class="reference internal" href="holooceanclient.html#holoocean.holooceanclient.HoloOceanClient" title="holoocean.holooceanclient.HoloOceanClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanClient</span></code></a>) – The HoloOceanClient that this
+agent belongs with.</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – The name of the agent. Must be unique from other agents in
+the same environment.</p></li>
+<li><p><strong>sensors</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> of (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>)) – A list
+of HoloOceanSensors to read from this agent.</p></li>
+</ul>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.name" title="Permalink to this definition"></a></dt>
+<dd><p>The name of the agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.sensors">
+<span class="sig-name descname"><span class="pre">sensors</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.sensors" title="Permalink to this definition"></a></dt>
+<dd><p>List of
+HoloOceanSensors on this agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict of (string, <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.agent_state_dict">
+<span class="sig-name descname"><span class="pre">agent_state_dict</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.agent_state_dict" title="Permalink to this definition"></a></dt>
+<dd><p>A dictionary that maps sensor names to sensor observation data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 <p><strong>Methods:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -498,8 +644,9 @@ sensors (dict of (string, <a class="reference internal" href="sensors.html#holoo
 <span class="sig-name descname"><span class="pre">act</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.act" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the command for the agent. Action depends on the agent type and current control
 scheme.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>action(<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>): The action to take.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>) – The action to take.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -507,11 +654,16 @@ scheme.</p>
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.action_space">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_space</span></span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.action_space" title="Permalink to this definition"></a></dt>
 <dd><p>Gets the action space for the current agent and control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt><a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>: The action space for this agent and control</dt><dd><p>scheme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>The action space for this agent and control</dt><dd><p>scheme.</p>
 </dd>
 </dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -520,14 +672,8 @@ scheme.</p>
 <span class="sig-name descname"><span class="pre">add_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_defs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.add_sensors" title="Permalink to this definition"></a></dt>
 <dd><p>Adds a sensor to a particular agent object and attaches an instance of the sensor to the
 agent in the world.</p>
-<dl>
-<dt>Args:</dt><dd><dl>
-<dt>sensor_defs (<a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a> or</dt><dd><blockquote>
-<div><p>list of <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>):</p>
-</div></blockquote>
-<p>Sensors to add to the agent.</p>
-</dd>
-</dl>
+<dl class="simple">
+<dt>:param sensor_defs (<a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a> or:          list of <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>):</dt><dd><p>Sensors to add to the agent.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -542,11 +688,12 @@ agent in the world.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -560,8 +707,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.has_camera">
 <span class="sig-name descname"><span class="pre">has_camera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.has_camera" title="Permalink to this definition"></a></dt>
 <dd><p>Indicatates whether this agent has a camera or not.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>: If the agent has a sensor or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>If the agent has a sensor or not</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -570,14 +721,8 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <span class="sig-name descname"><span class="pre">remove_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_defs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.remove_sensors" title="Permalink to this definition"></a></dt>
 <dd><p>Removes a sensor from a particular agent object and detaches it from the agent in the
 world.</p>
-<dl>
-<dt>Args:</dt><dd><dl>
-<dt>sensor_defs (<a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a> or</dt><dd><blockquote>
-<div><p>list of <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>):</p>
-</div></blockquote>
-<p>Sensors to remove from the agent.</p>
-</dd>
-</dl>
+<dl class="simple">
+<dt>:param sensor_defs (<a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a> or:          list of <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>):</dt><dd><p>Sensors to remove from the agent.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -585,11 +730,10 @@ world.</p>
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.set_control_scheme">
 <span class="sig-name descname"><span class="pre">set_control_scheme</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.set_control_scheme" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the control scheme for the agent. See <a class="reference internal" href="#holoocean.agents.ControlSchemes" title="holoocean.agents.ControlSchemes"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlSchemes</span></code></a>.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><dl class="simple">
-<dt>index (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The control scheme to use. Should be set with an enum from</dt><dd><p><a class="reference internal" href="#holoocean.agents.ControlSchemes" title="holoocean.agents.ControlSchemes"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlSchemes</span></code></a>.</p>
-</dd>
-</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The control scheme to use. Should be set with an enum from
+<a class="reference internal" href="#holoocean.agents.ControlSchemes" title="holoocean.agents.ControlSchemes"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlSchemes</span></code></a>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -597,14 +741,15 @@ world.</p>
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.set_physics_state">
 <span class="sig-name descname"><span class="pre">set_physics_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angular_velocity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.set_physics_state" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the location, rotation, velocity and angular velocity of an agent.</p>
-<dl>
-<dt>Args:</dt><dd><p>location (np.ndarray): New location (<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>))
-rotation (np.ndarray): New rotation (<code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code>, see (see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>))
-velocity (np.ndarray): New velocity (<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>))
-angular_velocity (np.ndarray): New angular velocity (<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> in <strong>degrees</strong></p>
-<blockquote>
-<div><p>(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>))</p>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<em>np.ndarray</em>) – New location (<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>))</p></li>
+<li><p><strong>rotation</strong> (<em>np.ndarray</em>) – New rotation (<code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code>, see (see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>))</p></li>
+<li><p><strong>velocity</strong> (<em>np.ndarray</em>) – New velocity (<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>))</p></li>
+<li><p><strong>angular_velocity</strong> (<em>np.ndarray</em>) – New angular velocity (<code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> in <strong>degrees</strong>
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>))</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -612,15 +757,18 @@ angular_velocity (np.ndarray): New angular velocity (<code class="docutils liter
 <dt class="sig sig-object py" id="holoocean.agents.HoloOceanAgent.teleport">
 <span class="sig-name descname"><span class="pre">teleport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.teleport" title="Permalink to this definition"></a></dt>
 <dd><p>Teleports the agent to a specific location, with a specific rotation.</p>
-<dl>
-<dt>Args:</dt><dd><dl>
-<dt>location (np.ndarray, optional): An array with three elements specifying the target</dt><dd><p>world coordinates <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> in meters (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – <p>An array with three elements specifying the target
+world coordinates <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> in meters (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>).</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), keeps the current location.</p>
-</dd>
-<dt>rotation (np.ndarray, optional): An array with three elements specifying roll, pitch,</dt><dd><p>and yaw in degrees of the agent.</p>
+</p></li>
+<li><p><strong>rotation</strong> (<em>np.ndarray</em><em>, </em><em>optional</em>) – <p>An array with three elements specifying roll, pitch,
+and yaw in degrees of the agent.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), keeps the current rotation.</p>
-</dd>
-</dl>
+</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -671,11 +819,12 @@ dynamics.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -735,11 +884,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -804,11 +954,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -867,11 +1018,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -925,11 +1077,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -973,11 +1126,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1022,11 +1176,12 @@ specified joint. Will return None if the joint does not exist for the agent.</p>
 <dd><p>A list of all control schemes for the agent. Each list element is a 2-tuple, with the
 first element containing a short description of the control scheme, and the second
 element containing the <code class="xref py py-obj docutils literal notranslate"><span class="pre">ActionSpace</span></code> for the control scheme.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><dl class="simple">
-<dt>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>):</dt><dd><p>Each tuple contains a short description and the ActionSpace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Each tuple contains a short description and the ActionSpace</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="spaces.html#holoocean.spaces.ActionSpace" title="holoocean.spaces.ActionSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionSpace</span></code></a>)</p>
 </dd>
 </dl>
 </dd></dl>

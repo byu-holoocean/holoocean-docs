@@ -109,11 +109,10 @@
 <dt class="sig sig-object py" id="holoocean.holooceanclient.HoloOceanClient">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.holooceanclient.</span></span><span class="sig-name descname"><span class="pre">HoloOceanClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient" title="Permalink to this definition"></a></dt>
 <dd><p>HoloOceanClient for controlling a shared memory session.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><dl class="simple">
-<dt>uuid (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional): A UUID to indicate which server this client is associated with.</dt><dd><p>The same UUID should be passed to the world through a command line flag. Defaults to “”.</p>
-</dd>
-</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uuid</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>, optional) – A UUID to indicate which server this client is associated with.
+The same UUID should be passed to the world through a command line flag. Defaults to “”.</p>
 </dd>
 </dl>
 <p><strong>Methods:</strong></p>
@@ -140,12 +139,19 @@
 <span class="sig-name descname"><span class="pre">malloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.malloc" title="Permalink to this definition"></a></dt>
 <dd><p>Allocates a block of shared memory, and returns a numpy array whose data corresponds
 with that block.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>key (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>): The key to identify the block.
-shape (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): The shape of the numpy array to allocate.
-dtype (type): The numpy data type (e.g. np.float32).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The key to identify the block.</p></li>
+<li><p><strong>shape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The shape of the numpy array to allocate.</p></li>
+<li><p><strong>dtype</strong> (<em>type</em>) – The numpy data type (e.g. np.float32).</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>: The numpy array that is positioned on the shared memory.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The numpy array that is positioned on the shared memory.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code></p>
 </dd>
 </dl>
 </dd></dl>
