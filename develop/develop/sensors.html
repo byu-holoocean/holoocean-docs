@@ -120,17 +120,18 @@ This is a very simple sensor, but it will give you the basic structure of how to
 <section id="c">
 <h2>C++<a class="headerlink" href="#c" title="Permalink to this heading"></a></h2>
 <p>Each sensor will need a ‘.h’ and ‘.cpp’ file, as is standard practice for C++.</p>
-<p>These will both be placed in <code class="docutils literal notranslate"><span class="pre">engine/Source/Holodeck/Sensors</span></code>, with the <code class="docutils literal notranslate"><span class="pre">.h</span></code> in Public and the
-<code class="docutils literal notranslate"><span class="pre">.cpp</span></code> in Private.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.h</span></code> file should be placed in <code class="docutils literal notranslate"><span class="pre">engine/Source/Holodeck/Sensors/Public</span></code>, while the <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> file should be placed in <code class="docutils literal notranslate"><span class="pre">engine/Source/Holodeck/Sensors/Private</span></code>.</p>
 <section id="h-file">
 <h3>.h file<a class="headerlink" href="#h-file" title="Permalink to this heading"></a></h3>
-<p>Start by including the following in your <code class="docutils literal notranslate"><span class="pre">.h</span></code> file:</p>
+<p>Start by including the following in your <code class="docutils literal notranslate"><span class="pre">.h</span></code> file, where for this example we assume a file name of <code class="docutils literal notranslate"><span class="pre">ExampleSensor.h</span></code>:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"Holodeck.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">"HolodeckSensor.h"</span>
 </pre></div>
 </div>
-<p>Next, set up the class for the sensor:</p>
+<p>Next, in that same file, set up the class for the sensor.
+In this example we use the name of <code class="docutils literal notranslate"><span class="pre">ExampleSensor</span></code> for our sensor.
+For your sensor please replace that with your own sensor name.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ExampleSensor.generated.h"</span>
 
 <span class="n">UCLASS</span><span class="p">(</span><span class="n">ClassGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Custom</span><span class="p">),</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintSpawnableComponent</span><span class="p">))</span>
@@ -149,8 +150,9 @@ This is a very simple sensor, but it will give you the basic structure of how to
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>The name of the sensor needs to have the character “U” before it.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"ExampleSensor.generated.h"</span></code> is necessary for Unreal Engine to generate the proper
-code for the sensor. This is a requirement for all classes that are derived from UObjects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">"[your</span> <span class="pre">.h</span> <span class="pre">file</span> <span class="pre">name</span> <span class="pre">here].generated.h"</span></code> is necessary for Unreal Engine to generate the proper
+code for the sensor. This is a requirement for all classes that are derived from UObjects.
+Please make sure that you use the name of your <code class="docutils literal notranslate"><span class="pre">.h</span></code> file, which ideally matches the name of your sensor.</p></li>
 </ul>
 </div>
 <p>Now let’s go over a few of the main necessary functions to put into the .h file. First, make sure
@@ -167,11 +169,32 @@ of the sensor every time the simulation ticks.</p>
 </div>
 <p>Finally, the last item that is essential for a sensor is the pointer to the parent agent in the
 <code class="docutils literal notranslate"><span class="pre">private</span></code> section. This simply stores a reference to whatever object the sensor is attached to:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">Parent</span><span class="p">;</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">TUniquePtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Parent</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>You may also want to include some helper functions and some class variables. We suggest a function
 that defines your sensor model.</p>
+<p>As a simple template, here is our complete file for <code class="docutils literal notranslate"><span class="pre">ExampleSensor.h</span></code></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"Holodeck.h"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"HolodeckSensor.h"</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"ExampleSensor.generated.h"</span>
+
+<span class="n">UCLASS</span><span class="p">(</span><span class="n">ClassGroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Custom</span><span class="p">),</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintSpawnableComponent</span><span class="p">))</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HOLODECK_API</span><span class="w"> </span><span class="n">UExampleSensor</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UHolodeckSensor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">        </span><span class="n">UExampleSensor</span><span class="p">();</span>
+<span class="w">        </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">InitializeSensor</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="k">protected</span><span class="o">:</span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="n">TickSensorComponent</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">,</span><span class="w"> </span><span class="n">ELevelTick</span><span class="w"> </span><span class="n">TickType</span><span class="p">,</span><span class="w"> </span><span class="n">FActorComponentTickFunction</span><span class="o">*</span><span class="w"> </span><span class="n">ThisTickFunction</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span>
+<span class="w">        </span><span class="n">TUniquePtr</span><span class="o">&lt;</span><span class="n">AActor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Parent</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The existing sensor implementations can also serve as a great starting point and we encourage that you review the existing files in the <code class="docutils literal notranslate"><span class="pre">engine/Source/Holodeck/Sensors/Public</span></code> directory of our code base.</p>
 </section>
 <section id="cpp-file">
 <h3>.cpp file<a class="headerlink" href="#cpp-file" title="Permalink to this heading"></a></h3>

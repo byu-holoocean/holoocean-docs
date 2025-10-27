@@ -14,12 +14,11 @@ C++
 ===
 Each sensor will need a '.h' and '.cpp' file, as is standard practice for C++. 
 
-These will both be placed in ``engine/Source/Holodeck/Sensors``, with the ``.h`` in Public and the 
-``.cpp`` in Private.
+The ``.h`` file should be placed in ``engine/Source/Holodeck/Sensors/Public``, while the ``.cpp`` file should be placed in ``engine/Source/Holodeck/Sensors/Private``.
 
 .h file
 -------
-Start by including the following in your ``.h`` file:
+Start by including the following in your ``.h`` file, where for this example we assume a file name of ``ExampleSensor.h``:
 
 .. code:: c++
 
@@ -27,7 +26,9 @@ Start by including the following in your ``.h`` file:
     #include "Holodeck.h"
     #include "HolodeckSensor.h"
 
-Next, set up the class for the sensor:
+Next, in that same file, set up the class for the sensor.
+In this example we use the name of ``ExampleSensor`` for our sensor. 
+For your sensor please replace that with your own sensor name.
 
 .. code:: c++
 
@@ -46,8 +47,9 @@ Next, set up the class for the sensor:
 .. note::
 
     * The name of the sensor needs to have the character "U" before it.
-    * ``#include "ExampleSensor.generated.h"`` is necessary for Unreal Engine to generate the proper 
-      code for the sensor. This is a requirement for all classes that are derived from UObjects.
+    * ``#include "[your .h file name here].generated.h"`` is necessary for Unreal Engine to generate the proper 
+      code for the sensor. This is a requirement for all classes that are derived from UObjects. 
+      Please make sure that you use the name of your ``.h`` file, which ideally matches the name of your sensor.
 
 Now let's go over a few of the main necessary functions to put into the .h file. First, make sure 
 your sensor has a constructor and an InitializeSensor() override like this one (note that these 
@@ -70,10 +72,34 @@ Finally, the last item that is essential for a sensor is the pointer to the pare
 
 .. code:: c++
     
-    AActor* Parent;
+    TUniquePtr<AActor> Parent;
 
 You may also want to include some helper functions and some class variables. We suggest a function 
 that defines your sensor model. 
+
+As a simple template, here is our complete file for ``ExampleSensor.h``
+
+.. code:: c++
+
+    #pragma once
+    #include "Holodeck.h"
+    #include "HolodeckSensor.h"
+
+    #include "ExampleSensor.generated.h"
+
+    UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+    class HOLODECK_API UExampleSensor : public UHolodeckSensor {
+        GENERATED_BODY()
+        public:
+            UExampleSensor();
+            virtual void InitializeSensor() override;
+        protected:
+            void TickSensorComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+        private:
+            TUniquePtr<AActor> Parent;
+    };
+
+The existing sensor implementations can also serve as a great starting point and we encourage that you review the existing files in the ``engine/Source/Holodeck/Sensors/Public`` directory of our code base.
 
 .cpp file
 ---------
