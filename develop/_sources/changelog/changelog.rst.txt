@@ -12,6 +12,22 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean 2.2.1
+===============
+*10/31/2025*
+
+New Features
+------------
+
+- Added delete octree command to delete all octrees for worlds or one specific world
+
+Bug Fixes
+---------
+
+- Fixed Torpedo AUV and CougUV fin control bug that prevented vehicle from turning
+- API docs Fixed
+- Edge case for Octree sidescan range binning fixed.
+
 HoloOcean 2.2.0
 ===============
 *10/22/2025*
