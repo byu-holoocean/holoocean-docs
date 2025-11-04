@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flashlight — HoloOcean 2.2.1 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../agents/hovering-auv-agent.html" rel="next" title="HoveringAUV"/>
+<link href="fossen-based-dynamics.html" rel="prev" title="Fossen-Based Dynamics"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">2.2.1</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../agents.html">HoloOcean Agents</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../agents.html#using-agents">Using Agents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="agent-config.html">Agent Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="currents.html">Ocean Currents Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="control-schemes.html">Control Schemes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fossen-based-dynamics.html">Fossen-Based Dynamics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Flashlight</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#location">Location</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commands">Commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../agents.html#agent-pages">HoloOcean Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../agents.html">HoloOcean Agents</a></li>
+<li class="breadcrumb-item active">Flashlight</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/agents/docs/flashlight.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="flashlight">
+<span id="id1"></span><h1>Flashlight<a class="headerlink" href="#flashlight" title="Permalink to this heading"></a></h1>
+<p>HoloOcean vehicles have one or more built-in flashlights that are <strong>off by default</strong>.</p>
+<section id="location">
+<h2>Location<a class="headerlink" href="#location" title="Permalink to this heading"></a></h2>
+<p>The location and number of flashlights vary by vehicle:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../agents/blue-rov-agent.html#bluerov2-flashlights"><span class="std std-ref">BlueROV2 Flashlights</span></a></p></li>
+<li><p><a class="reference internal" href="../agents/hovering-auv-agent.html#hoveringauv-flashlights"><span class="std std-ref">HoveringAUV Flashlights</span></a></p></li>
+<li><p><a class="reference internal" href="../agents/coug-uv-agent.html#couguv-flashlights"><span class="std std-ref">CougUV Flashlights</span></a></p></li>
+<li><p><a class="reference internal" href="../agents/torpedo-auv-agent.html#torpedoauv-flashlights"><span class="std std-ref">TorpedoAUV Flashlights</span></a></p></li>
+<li><p><a class="reference internal" href="../agents/surface-vessel-agent.html#surfacevessel-flashlights"><span class="std std-ref">SurfaceVessel Flashlights</span></a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/flashlights_hov.gif"><img alt="../../_images/flashlights_hov.gif" src="../../_images/flashlights_hov.gif" style="width: 768.0px; height: 432.0px;"/></a>
+<p>There are two commands available to control the flashlights, <cite>TurnOnFlashlightCommand</cite> and <cite>TurnOffFlashlightCommand</cite>. The <cite>TurnOnFlashlightCommand</cite> allows you to optionally customize several parameters, such as: intensity, beam width, location, rotation, and color.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Flashlight color values use normalized RGB in the range <strong>0.0 – 1.0</strong>, not the standard 0 – 255 scale.</p>
+</div>
+<p>Refer to the Python API documentation for full usage details:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../holoocean/commands.html#holoocean.command.TurnOnFlashlightCommand" title="holoocean.command.TurnOnFlashlightCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TurnOnFlashlightCommand</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../holoocean/commands.html#holoocean.command.TurnOffFlashlightCommand" title="holoocean.command.TurnOffFlashlightCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TurnOffFlashlightCommand</span></code></a></p></li>
+</ul>
+<section id="usage-example-for-a-hoveringauv-bluerov2">
+<h3>Usage Example (for a HoveringAUV/BlueROV2)<a class="headerlink" href="#usage-example-for-a-hoveringauv-bluerov2" title="Permalink to this heading"></a></h3>
+<section id="in-a-scenario">
+<h4>In a scenario<a class="headerlink" href="#in-a-scenario" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_flashlight"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="s2">"flashlight"</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="s2">"flashlight_name"</span><span class="p">:</span> <span class="s2">"flashlight1"</span><span class="p">,</span>
+            <span class="s2">"intensity"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+            <span class="s2">"beam_width"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"flashlight_name"</span><span class="p">:</span> <span class="s2">"flashlight4"</span><span class="p">,</span>
+            <span class="s2">"intensity"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+            <span class="s2">"color_G"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"angle_pitch"</span><span class="p">:</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="programmatically">
+<h4>Programmatically<a class="headerlink" href="#programmatically" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">'o'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_on_flashlight</span><span class="p">(</span><span class="s2">"flashlight1"</span><span class="p">)</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_on_flashlight</span><span class="p">(</span><span class="s2">"flashlight4"</span><span class="p">,</span> <span class="n">beam_width</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">color_B</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#Turning on flashlight 4 with a beam width of 80 degrees and turning the blue color component to zero</span>
+
+        <span class="k">if</span> <span class="s1">'p'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_off_flashlight</span><span class="p">(</span><span class="s2">"flashlight1"</span><span class="p">)</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_off_flashlight</span><span class="p">(</span><span class="s2">"flashlight4"</span><span class="p">)</span>
+
+        <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When calling <code class="docutils literal notranslate"><span class="pre">turn_on_flashlight("flashlight_number")</span></code> without specifying additional parameters, the system will first look for values defined in the scenario config. If the flashlight was configured there, those values become its defaults. Only if no config values are found will the command fall back to its built-in default parameters.</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="fossen-based-dynamics.html" rel="prev" title="Fossen-Based Dynamics"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="../agents/hovering-auv-agent.html" rel="next" title="HoveringAUV">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

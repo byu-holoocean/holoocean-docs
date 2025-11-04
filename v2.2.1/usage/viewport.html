@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Viewport — HoloOcean 2.2.1 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="performance.html" rel="next" title="Improving Performance"/>
+<link href="environments.html" rel="prev" title="Environments"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.2.1</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usage.html">Using HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Environments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Viewport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hotkeys">Hotkeys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#opening-console">Opening Console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-holoocean-headless">Using HoloOcean Headless</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#headless-mode-vs-disabling-viewport-rendering">Headless Mode vs Disabling Viewport Rendering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#forcing-headless-mode">Forcing Headless Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-headless-mode">Automatic Headless Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Improving Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="units-and-coordinates.html">Units and Coordinates in HoloOcean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semaphores.html">HoloOcean Client-Server Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ROS2.html">ROS2 Bridge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="usage.html">Using HoloOcean</a></li>
+<li class="breadcrumb-item active">Viewport</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/usage/viewport.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="viewport">
+<span id="id1"></span><h1>Viewport<a class="headerlink" href="#viewport" title="Permalink to this heading"></a></h1>
+<p>HoloOcean simulations are run in a pop-up window known as the “viewport”.</p>
+<section id="hotkeys">
+<span id="id2"></span><h2>Hotkeys<a class="headerlink" href="#hotkeys" title="Permalink to this heading"></a></h2>
+<p>There are a few hotkeys you can use to control the viewport when the window is open and the
+environment is being ticked (with calls to <code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code>
+or <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code>).</p>
+<p>The “AgentFollower”, or the camera that the viewport displays, can be
+manipulated as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<td><p>Toggle camera mode</p></td>
+<td><p>Toggles the camera from a chase camera
+and perspective camera, which shows what
+the agent’s camera sensor sees.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">v</span></code></p></td>
+<td><p>Toggle spectator mode</p></td>
+<td><p>Toggles spectator mode, which allows you
+to free-cam around the world with the
+mouse or WASD commands.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">w</span></code>
+<code class="docutils literal notranslate"><span class="pre">a</span></code>
+<code class="docutils literal notranslate"><span class="pre">s</span></code>
+<code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p>Move camera</p></td>
+<td><p>Move the viewport camera around when in
+spectator/free-cam mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code>
+<code class="docutils literal notranslate"><span class="pre">ctrl</span></code></p></td>
+<td><p>Descend</p></td>
+<td><p>For spectator/free-cam mode</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">e</span></code>
+<code class="docutils literal notranslate"><span class="pre">space</span></code></p></td>
+<td><p>Ascend</p></td>
+<td><p>For spectator/free-cam mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shift</span></code></p></td>
+<td><p>Turbo</p></td>
+<td><p>Move faster when in spectator/free-cam</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tab</span></code></p></td>
+<td><p>Cycle through agents</p></td>
+<td><p>When not in spectator/free-cam mode,
+cycles through the agents in the world</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<td><p>Toggle HUD</p></td>
+<td><p>The HUD displays the name and location
+of the agent the viewport is following,
+or the location of the camera if the
+viewport is detached (spectator mode)</p>
+<p>Note that this will interfere with the
+ViewportCapture sensor</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="opening-console">
+<h2>Opening Console<a class="headerlink" href="#opening-console" title="Permalink to this heading"></a></h2>
+<p>Pressing <code class="docutils literal notranslate"><span class="pre">~</span></code> will open Unreal Engine 5’s developer console, which has a few useful
+commands. See <a class="reference external" href="https://api.unrealengine.com/udk/Three/ConsoleCommands.html">the Unreal Docs</a>
+for a complete list of commands.</p>
+<p><strong>Useful Commands</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stat</span> <span class="pre">fps</span></code>
+Prints the frames per second on the screen.</p></li>
+</ul>
+</section>
+<section id="using-holoocean-headless">
+<span id="headless"></span><h2>Using HoloOcean Headless<a class="headerlink" href="#using-holoocean-headless" title="Permalink to this heading"></a></h2>
+<p>On Linux, HoloOcean can run headless without opening a viewport window. This
+can happen automatically, or you can force it to not appear.</p>
+<section id="headless-mode-vs-disabling-viewport-rendering">
+<h3>Headless Mode vs Disabling Viewport Rendering<a class="headerlink" href="#headless-mode-vs-disabling-viewport-rendering" title="Permalink to this heading"></a></h3>
+<p>These are two different features.</p>
+<p><strong>Disabling Viewport Rendering</strong> is calling the
+(<code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code>)
+method on a <code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>. This can be
+done at runtime. It will appear as if the image being rendered in the viewport
+has frozen, but cameras other sensors will still update correctly.</p>
+<p><strong>Headless Mode</strong> is when the viewport window does not appear. If Headless
+Mode is manually enabled, it will also disable viewport rendering
+automatically.</p>
+</section>
+<section id="forcing-headless-mode">
+<h3>Forcing Headless Mode<a class="headerlink" href="#forcing-headless-mode" title="Permalink to this heading"></a></h3>
+<p>In <code class="xref py py-func docutils literal notranslate"><span class="pre">holoocean.make()</span></code>, set <code class="docutils literal notranslate"><span class="pre">show_viewport</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will also
+disable viewport rendering
+(<code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code>)</p>
+<p>If you still want to render the viewport (ie for the
+<a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.ViewportCapture" title="holoocean.sensors.ViewportCapture"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewportCapture</span></code></a>) when running headless,
+simply set
+(<code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code>)
+to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</div>
+</section>
+<section id="automatic-headless-mode">
+<h3>Automatic Headless Mode<a class="headerlink" href="#automatic-headless-mode" title="Permalink to this heading"></a></h3>
+<p>If the engine does not detect the <code class="docutils literal notranslate"><span class="pre">DISPLAY</span></code> environment variable, it will
+not open a window. This will happen automatically if HoloOcean is run from a
+SSH session.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will not disable viewport rendering, meaning the simulation will still be generating the
+displayed images, but they will not be displayed. When running over an SSH session,
+be sure to manually disable viewport rendering to avoid wasting resources.</p>
+</div>
+</section>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="environments.html" rel="prev" title="Environments"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="performance.html" rel="next" title="Improving Performance">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

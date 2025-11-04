@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Developing HoloOcean — HoloOcean 2.2.1 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="start.html" rel="next" title="Getting Started"/>
+<link href="../examples/examples/sonar_singlebeam.html" rel="prev" title="Visualizing Singlebeam Sonar"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.2.1</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developing HoloOcean</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env.html">Developing Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agents.html">Developing Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">Developing HoloOcean</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/develop/develop.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="developing-holoocean">
+<span id="develop"></span><h1>Developing HoloOcean<a class="headerlink" href="#developing-holoocean" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>HoloOcean has updated from using Unreal Engine 4.27 to 5.3. If you are developing worlds, agents,
+sensors, etc. using Unreal, you will need to download Unreal Engine 5.3 to develop from the
+current release and develop branches. Unreal Engine 4.27 usage is still available using previous
+releases of HoloOcean.</p>
+</div>
+<p>For users that would like to add to or modify HoloOcean, this documentation will help you get started.</p>
+<p>The following guides go through how to set up your development environment, including Unreal
+Engine, and how to add new environments, agents, and sensors.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#cloning">Cloning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#opening-prepping-project">Opening &amp; Prepping Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#setting-up-vscode">Setting up VSCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#compiling">Compiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#launching-game-live">Launching Game Live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="env.html">Developing Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="env-docs/create-env.html">Creating a Custom Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="env-docs/package-env.html">Packaging Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">Developing Agents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="agents.html#general-agents">General Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agents.html#buoyant-agents">Buoyant Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Developing Sensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#c">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#allowing-your-sensor-to-be-used-in-holoocean">Allowing Your Sensor to Be Used In Holoocean</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#i-can-t-open-holoocean-in-unreal-engine-on-windows">I can’t open HoloOcean in Unreal Engine on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#none-of-my-changes-to-code-are-showing-up-when-i-run-holoocean">None of my changes to code are showing up when I run HoloOcean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#i-added-new-objects-to-my-level-but-they-don-t-show-up-on-sonar">I added new objects to my level but they don’t show up on sonar</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="../examples/examples/sonar_singlebeam.html" rel="prev" title="Visualizing Singlebeam Sonar"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="start.html" rel="next" title="Getting Started">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
