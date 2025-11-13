@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Improving Performance — HoloOcean 2.2.1 documentation</title>
+<title>Improving Performance — HoloOcean 2.2.2 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -253,7 +253,7 @@ See <a class="reference internal" href="../sensors/docs/sensor-config.html#senso
 <h2>Disable Viewport Rendering<a class="headerlink" href="#disable-viewport-rendering" title="Permalink to this heading"></a></h2>
 <p>Rendering the viewport window can be unnecessary when running simulations sequentially,
 such as when using HoloOcean for reinforcement learning. You can disable the viewport with
-the <code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code> method (see
+the <a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code></a> method (see
 <a class="reference internal" href="viewport.html#headless"><span class="std std-ref">Using HoloOcean Headless</span></a> for details).</p>
 <p>At lower camera resolutions, disabling the viewport can improve framerates by up to 40%.</p>
 </section>
@@ -261,7 +261,7 @@ the <code class="xref py py-meth docutils literal notranslate"><span class="pre"
 <h2>Change Render Quality<a class="headerlink" href="#change-render-quality" title="Permalink to this heading"></a></h2>
 <p>You can adjust HoloOcean to render at a lower (or higher) quality to improve
 performance. See the
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_render_quality()</span></code> method.</p>
+<a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_render_quality" title="holoocean.environments.HoloOceanEnvironment.set_render_quality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_render_quality()</span></code></a> method.</p>
 <p>Below is a comparison of render qualities and the frame time in ms.</p>
 <table class="docutils align-default">
 <thead>

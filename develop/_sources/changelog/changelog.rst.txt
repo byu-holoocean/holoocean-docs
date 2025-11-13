@@ -12,6 +12,21 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean 2.2.2
+===============
+*11/12/2025*
+
+Changes
+-------
+
+- Added credit page for HoloOcean Developers
+- Removed debug statements from Fossen code
+
+Bug Fixes
+---------
+
+- Fixed CougUV fin control bug that prevented vehicle from turning
+
 
 HoloOcean 2.2.1
 ===============
@@ -25,7 +40,7 @@ New Features
 Bug Fixes
 ---------
 
-- Fixed Torpedo AUV and CougUV fin control bug that prevented vehicle from turning
+- Fixed Torpedo AUV control bug that prevented vehicle from turning
 - API docs Fixed
 - Edge case for Octree sidescan range binning fixed.
 

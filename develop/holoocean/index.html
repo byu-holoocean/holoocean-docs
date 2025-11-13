@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>HoloOcean — HoloOcean 2.2.1 documentation</title>
+<title>HoloOcean — HoloOcean 2.2.2 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -94,8 +94,108 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
-<section id="holoocean">
-<span id="holoocean-api-index"></span><h1>HoloOcean<a class="headerlink" href="#holoocean" title="Permalink to this heading"></a></h1>
+<section id="module-holoocean.holoocean">
+<span id="holoocean"></span><span id="holoocean-api-index"></span><h1>HoloOcean<a class="headerlink" href="#module-holoocean.holoocean" title="Permalink to this heading"></a></h1>
+<p>Module containing high level interface for loading environments.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.holoocean.GL_VERSION" title="holoocean.holoocean.GL_VERSION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GL_VERSION</span></code></a>()</p></td>
+<td><p>OpenGL Version enum.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.holoocean.delete_all_octrees" title="holoocean.holoocean.delete_all_octrees"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all_octrees</span></code></a>()</p></td>
+<td><p>Deletes the octree from the world.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.holoocean.delete_world_octrees" title="holoocean.holoocean.delete_world_octrees"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_world_octrees</span></code></a>(world_name)</p></td>
+<td><p>Deletes the octree from the specified world.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.holoocean.make" title="holoocean.holoocean.make"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make</span></code></a>([scenario_name, scenario_cfg, ...])</p></td>
+<td><p>Creates a HoloOcean environment</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.holoocean.GL_VERSION">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.holoocean.</span></span><span class="sig-name descname"><span class="pre">GL_VERSION</span></span><a class="headerlink" href="#holoocean.holoocean.GL_VERSION" title="Permalink to this definition"></a></dt>
+<dd><p>OpenGL Version enum.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.holoocean.GL_VERSION.OPENGL3">
+<span class="sig-name descname"><span class="pre">OPENGL3</span></span><a class="headerlink" href="#holoocean.holoocean.GL_VERSION.OPENGL3" title="Permalink to this definition"></a></dt>
+<dd><p>The value for OpenGL3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="holoocean.holoocean.GL_VERSION.OPENGL4">
+<span class="sig-name descname"><span class="pre">OPENGL4</span></span><a class="headerlink" href="#holoocean.holoocean.GL_VERSION.OPENGL4" title="Permalink to this definition"></a></dt>
+<dd><p>The value for OpenGL4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.holoocean.delete_all_octrees">
+<span class="sig-prename descclassname"><span class="pre">holoocean.holoocean.</span></span><span class="sig-name descname"><span class="pre">delete_all_octrees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holoocean.delete_all_octrees" title="Permalink to this definition"></a></dt>
+<dd><p>Deletes the octree from the world.
+If this fails, it will raise a HoloOceanException.
+If it succeeds, it will print the amount of space freed up.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.holoocean.delete_world_octrees">
+<span class="sig-prename descclassname"><span class="pre">holoocean.holoocean.</span></span><span class="sig-name descname"><span class="pre">delete_world_octrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holoocean.delete_world_octrees" title="Permalink to this definition"></a></dt>
+<dd><p>Deletes the octree from the specified world.
+If this fails, it will raise a HoloOceanException.
+If it succeeds, it will print the amount of space freed up.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.holoocean.make">
+<span class="sig-prename descclassname"><span class="pre">holoocean.holoocean.</span></span><span class="sig-name descname"><span class="pre">make</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scenario_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scenario_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gl_version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_viewport</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticks_per_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames_per_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_world</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holoocean.make" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a HoloOcean environment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>world_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the world to load as an environment. Must match the name of a world in an
+installed package.</p></li>
+<li><p><strong>scenario_cfg</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>) – Dictionary containing scenario configuration, instead of loading a scenario
+from the installed packages. Dictionary should match the format of the JSON configuration files</p></li>
+<li><p><strong>gl_version</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The OpenGL version to use (Linux only). Defaults to GL_VERSION.OPENGL4.</p></li>
+<li><p><strong>window_res</strong> ((<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>), optional) – The (height, width) to load the engine window at. Overrides the (optional) resolution in the
+scenario config file</p></li>
+<li><p><strong>verbose</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – Whether to run in verbose mode. Defaults to False.</p></li>
+<li><p><strong>show_viewport</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – If the viewport window should be shown on-screen (Linux only). Defaults to True</p></li>
+<li><p><strong>ticks_per_sec</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – The number of frame ticks per unreal seconds. This will override whatever is
+in the configuration json. Defaults to 30.</p></li>
+<li><p><strong>frames_per_sec</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – The max number of frames ticks per real seconds. This will override whatever is
+in the configuration json. If True, will match ticks_per_sec. If False, will not be
+turned on. If an integer, will set to that value. Defaults to True.</p></li>
+<li><p><strong>copy_state</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – If the state should be copied or passed as a reference when returned. Defaults to True</p></li>
+<li><p><strong>start_world</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, optional) – If the world should be started immediately. Defaults to True
+Set to false if you are running the environment in the editor as play as standalone.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A holoocean environment instantiated</dt><dd><p>with all the settings necessary for the specified world, and other supplied arguments.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment" title="holoocean.environments.HoloOceanEnvironment"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
 </section>
 </div>
 </div>

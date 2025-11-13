@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Util — HoloOcean 2.2.1 documentation</title>
+<title>Util — HoloOcean 2.2.2 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -94,8 +94,100 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
-<section id="util">
-<h1>Util<a class="headerlink" href="#util" title="Permalink to this heading"></a></h1>
+<section id="module-holoocean.util">
+<span id="util"></span><h1>Util<a class="headerlink" href="#module-holoocean.util" title="Permalink to this heading"></a></h1>
+<p>Helpful Utilities</p>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.util.convert_unicode" title="holoocean.util.convert_unicode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_unicode</span></code></a>(value)</p></td>
+<td><p>Resolves python 2 issue with json loading in unicode instead of string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.util.get_holoocean_path" title="holoocean.util.get_holoocean_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_holoocean_path</span></code></a>()</p></td>
+<td><p>Gets the path of the holoocean environment</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.util.get_holoocean_version" title="holoocean.util.get_holoocean_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_holoocean_version</span></code></a>()</p></td>
+<td><p>Gets the current version of holoocean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.util.get_os_key" title="holoocean.util.get_os_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_os_key</span></code></a>()</p></td>
+<td><p>Gets the key for the OS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.util.human_readable_size" title="holoocean.util.human_readable_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">human_readable_size</span></code></a>(size_bytes)</p></td>
+<td><p>Gets a number of bytes as a human readable string.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.util.convert_unicode">
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">convert_unicode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.convert_unicode" title="Permalink to this definition"></a></dt>
+<dd><p>Resolves python 2 issue with json loading in unicode instead of string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Unicode value to be converted</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Converted string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.util.get_holoocean_path">
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_holoocean_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_holoocean_path" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the path of the holoocean environment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>path to the current holoocean environment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.util.get_holoocean_version">
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_holoocean_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_holoocean_version" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the current version of holoocean</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the current version</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.util.get_os_key">
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">get_os_key</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.get_os_key" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the key for the OS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Linux</span></code> or <code class="docutils literal notranslate"><span class="pre">Windows</span></code>. Throws <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> for other systems.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="holoocean.util.human_readable_size">
+<span class="sig-prename descclassname"><span class="pre">holoocean.util.</span></span><span class="sig-name descname"><span class="pre">human_readable_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_bytes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.util.human_readable_size" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a number of bytes as a human readable string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size_bytes</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The number of bytes to get as human readable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The number of bytes in a human readable form.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 </section>
 </div>
 </div>

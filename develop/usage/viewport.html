@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Viewport — HoloOcean 2.2.1 documentation</title>
+<title>Viewport — HoloOcean 2.2.2 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -203,8 +203,8 @@ can happen automatically, or you can force it to not appear.</p>
 <h3>Headless Mode vs Disabling Viewport Rendering<a class="headerlink" href="#headless-mode-vs-disabling-viewport-rendering" title="Permalink to this heading"></a></h3>
 <p>These are two different features.</p>
 <p><strong>Disabling Viewport Rendering</strong> is calling the
-(<code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code>)
-method on a <code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>. This can be
+(<a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code></a>)
+method on a <a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment" title="holoocean.environments.HoloOceanEnvironment"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code></a>. This can be
 done at runtime. It will appear as if the image being rendered in the viewport
 has frozen, but cameras other sensors will still update correctly.</p>
 <p><strong>Headless Mode</strong> is when the viewport window does not appear. If Headless
@@ -218,11 +218,11 @@ automatically.</p>
 <p class="admonition-title">Note</p>
 <p>This will also
 disable viewport rendering
-(<code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code>)</p>
+(<a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code></a>)</p>
 <p>If you still want to render the viewport (ie for the
 <a class="reference internal" href="../holoocean/sensors.html#holoocean.sensors.ViewportCapture" title="holoocean.sensors.ViewportCapture"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewportCapture</span></code></a>) when running headless,
 simply set
-(<code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code>)
+(<a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.should_render_viewport" title="holoocean.environments.HoloOceanEnvironment.should_render_viewport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">should_render_viewport()</span></code></a>)
 to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 </div>
 </section>

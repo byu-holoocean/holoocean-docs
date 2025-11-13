@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sensors — HoloOcean 2.2.1 documentation</title>
+<title>Sensors — HoloOcean 2.2.2 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -808,8 +808,8 @@ attached to a sensor</p></li>
 <dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor.rotate">
 <span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor.rotate" title="Permalink to this definition"></a></dt>
 <dd><p>Rotate the sensor. It will be applied in approximately three ticks.
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> or
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code>.)
+<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.step" title="holoocean.environments.HoloOceanEnvironment.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> or
+<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tick()</span></code></a>.)
 Multiple rotations do not accumulate.</p>
 <p>This will not persist after a call to reset(). If you want a persistent rotation for a sensor,
 specify it in your scenario configuration.</p>
@@ -2058,7 +2058,7 @@ and it must capture what the viewport is capturing. If performance is
 critical, consider this camera instead of the RGBCamera.</p>
 <p>It may be useful
 to position the camera with
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">move_viewport()</span></code>.</p>
+<a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment.move_viewport" title="holoocean.environments.HoloOceanEnvironment.move_viewport"><code class="xref py py-meth docutils literal notranslate"><span class="pre">move_viewport()</span></code></a>.</p>
 <p><strong>Configuration</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
