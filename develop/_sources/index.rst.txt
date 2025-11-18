@@ -121,7 +121,7 @@ Other Contributions
 
 Kylie Lay (Logo Design)
 
-Indices and tables
+Indices and Tables
 ==================
 
 * :ref:`genindex`
