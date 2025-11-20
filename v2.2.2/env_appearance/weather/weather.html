@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Controller &mdash; HoloOcean 2.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/themes_override.css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Air Fog Command" href="../air_fog/air_fog.html" />
+    <link rel="prev" title="Water Appearance Commands" href="../water_appearance/water_appearance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HoloOcean
+          </a>
+              <div class="version">
+                2.2.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../env_appearance.html">Environment Appearance</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../env_appearance.html#environment-commands">Environment commands</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../tides/tide.html">Tide Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_cycle/timeofday.html">Time of Day Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../water_appearance/water_appearance.html">Water Appearance Commands</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Weather Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#weather-options">Weather Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rain-parameters">Rain parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../air_fog/air_fog.html">Air Fog Command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HoloOcean</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../env_appearance.html">Environment Appearance</a></li>
+      <li class="breadcrumb-item active">Weather Controller</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/env_appearance/weather/weather.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="weather-controller">
+<h1>Weather Controller<a class="headerlink" href="#weather-controller" title="Permalink to this heading"></a></h1>
+<p>HoloOcean worlds have weather settings that can be configured, either with scenarios or programmatically in real time.
+Weather is purely a visual effect; it does not impact vehicle movement or sensor data input.</p>
+<section id="weather-options">
+<h2>Weather Options<a class="headerlink" href="#weather-options" title="Permalink to this heading"></a></h2>
+<section id="type">
+<h3>Type<a class="headerlink" href="#type" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/weather.gif"><img alt="../../_images/weather.gif" src="../../_images/weather.gif" style="width: 768.0px; height: 432.0px;" /></a>
+<p>HoloOcean worlds have three possible types of weather: <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">-</span> <span class="pre">sunny</span></code>,
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">cloudy</span></code>, and <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">rainy</span></code>.</p>
+<section id="in-a-scenario">
+<h4>In a scenario<a class="headerlink" href="#in-a-scenario" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;weather_test&quot;</span><span class="p">,</span>
+   <span class="o">...</span>
+   <span class="s2">&quot;weather&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">0</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="programmatically">
+<h4>Programmatically<a class="headerlink" href="#programmatically" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+   <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">change_weather</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+      <span class="o">...</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="rain-parameters">
+<h2>Rain parameters<a class="headerlink" href="#rain-parameters" title="Permalink to this heading"></a></h2>
+<p>In rainy weather, you can programmatically customize the rain’s velocity and spawn rate (the number of rain particles). This feature is only available during simulation and <strong>not</strong> through scenario configuration.</p>
+<a class="reference internal image-reference" href="../../_images/rain_spawn_rate.gif"><img alt="../../_images/rain_spawn_rate.gif" src="../../_images/rain_spawn_rate.gif" style="width: 768.0px; height: 432.0px;" /></a>
+<section id="velocity">
+<h3>Velocity<a class="headerlink" href="#velocity" title="Permalink to this heading"></a></h3>
+<p>Rain velocity is defined by three components: <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">z</span></code>, corresponding to movement along each axis. These can be used to simulate wind:</p>
+<ul class="simple">
+<li><p><strong>x</strong> component: Controls horizontal tilt (left/right) relative to the world frame.</p></li>
+<li><p><strong>y</strong> component: Controls horizontal tilt (forward/backward) relative to the world frame.</p></li>
+<li><p><strong>z</strong> component: Controls vertical speed. This value <strong>must be negative</strong> for the rain to fall downward. A positive <code class="docutils literal notranslate"><span class="pre">z</span></code> will make the rain rise, effectively making it invisible around the vehicle.</p></li>
+</ul>
+<p>A good starting point for mildly tilted rain is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">velocity</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="spawn-rate">
+<h3>Spawn Rate<a class="headerlink" href="#spawn-rate" title="Permalink to this heading"></a></h3>
+<p>This parameter defines how many rain particles are generated. Typical values for realistic rain effects range from <strong>1000 to 4000</strong>. You can adjust this to simulate light or heavy rain as needed.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Setting the spawn rate too high (e.g., in the millions) can severely affect performance or crash the simulation.</p>
+</div>
+<section id="usage">
+<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h4>
+<p>To set rain parameters, use the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">set_rain_parameters</span><span class="p">(</span><span class="n">vel_x</span><span class="p">,</span> <span class="n">vel_y</span><span class="p">,</span> <span class="n">vel_z</span><span class="p">,</span> <span class="n">spawn_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If not explicitly set, the default rain settings are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">velocity</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">spawn_rate</span> <span class="o">=</span> <span class="mi">3000</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h4>Programmatically<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+   <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">change_weather</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Set weather to rain here or in the config</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">set_rain_parameters</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>  <span class="c1"># Custom rain behavior</span>
+      <span class="o">...</span>
+      <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on how to use these commands, please refer to the API Documentation:
+<a class="reference internal" href="../../holoocean/commands.html#holoocean.command.ChangeWeatherCommand" title="holoocean.command.ChangeWeatherCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChangeWeatherCommand</span></code></a> and <a class="reference internal" href="../../holoocean/commands.html#holoocean.command.SetRainParametersCommand" title="holoocean.command.SetRainParametersCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">SetRainParametersCommand</span></code></a>.</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../water_appearance/water_appearance.html" class="btn btn-neutral float-left" title="Water Appearance Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../air_fog/air_fog.html" class="btn btn-neutral float-right" title="Air Fog Command" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BYU FRoStLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

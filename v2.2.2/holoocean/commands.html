@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Commands — HoloOcean 2.2.2 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="holooceanclient.html" rel="next" title="HoloOcean Client"/>
+<link href="spaces.html" rel="prev" title="Action Spaces"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.2.2</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Action Spaces</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">Commands</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/holoocean/commands.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="module-holoocean.command">
+<span id="commands"></span><h1>Commands<a class="headerlink" href="#module-holoocean.command" title="Permalink to this heading"></a></h1>
+<p>This module contains the classes used for formatting and sending commands to the HoloOcean
+backend. Most of these commands are just used internally by HoloOcean, regular users do not need to
+worry about these.</p>
+<p><strong>Classes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.AddSensorCommand" title="holoocean.command.AddSensorCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AddSensorCommand</span></code></a>(sensor_definition)</p></td>
+<td><p>Add a sensor to an agent</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.AirFogCommand" title="holoocean.command.AirFogCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AirFogCommand</span></code></a>(fogDensity[, fogDepth, ...])</p></td>
+<td><p>Changes the air fog density, depth, and color.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.ChangeTimeOfDayCommand" title="holoocean.command.ChangeTimeOfDayCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChangeTimeOfDayCommand</span></code></a>(TimeOfDay)</p></td>
+<td><p>Changes the world's time of day.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.ChangeWeatherCommand" title="holoocean.command.ChangeWeatherCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChangeWeatherCommand</span></code></a>(weather)</p></td>
+<td><p>Changes the weather in the world.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.Command" title="holoocean.command.Command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Command</span></code></a>()</p></td>
+<td><p>Base class for Command objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.CommandCenter" title="holoocean.command.CommandCenter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandCenter</span></code></a>(client)</p></td>
+<td><p>Manages pending commands to send to the client (the engine).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.CommandsGroup" title="holoocean.command.CommandsGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommandsGroup</span></code></a>()</p></td>
+<td><p>Represents a list of commands</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.CustomCommand" title="holoocean.command.CustomCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomCommand</span></code></a>(name[, num_params, string_params])</p></td>
+<td><p>Send a custom command to the currently loaded world.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.DebugDrawCommand" title="holoocean.command.DebugDrawCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DebugDrawCommand</span></code></a>(draw_type, start, end, ...)</p></td>
+<td><p>Draw debug geometry in the world.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.OceanCurrentsCommand" title="holoocean.command.OceanCurrentsCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OceanCurrentsCommand</span></code></a>(name, x, y, z, ...)</p></td>
+<td><p>Share individual current velocities for each agent</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.RGBCameraRateCommand" title="holoocean.command.RGBCameraRateCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RGBCameraRateCommand</span></code></a>(agent_name, ...)</p></td>
+<td><p>Set the number of ticks between captures of the RGB camera.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.RemoveSensorCommand" title="holoocean.command.RemoveSensorCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RemoveSensorCommand</span></code></a>(agent, sensor)</p></td>
+<td><p>Remove a sensor from an agent</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.RenderQualityCommand" title="holoocean.command.RenderQualityCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RenderQualityCommand</span></code></a>(render_quality)</p></td>
+<td><p>Adjust the rendering quality of HoloOcean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.RenderViewportCommand" title="holoocean.command.RenderViewportCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RenderViewportCommand</span></code></a>(render_viewport)</p></td>
+<td><p>Enable or disable the viewport.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.RotateSensorCommand" title="holoocean.command.RotateSensorCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotateSensorCommand</span></code></a>(agent, sensor, rotation)</p></td>
+<td><p>Rotate a sensor on the agent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.SendAcousticMessageCommand" title="holoocean.command.SendAcousticMessageCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SendAcousticMessageCommand</span></code></a>(from_agent_name, ...)</p></td>
+<td><p>Set the number of ticks between captures of the RGB camera.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.SendOpticalMessageCommand" title="holoocean.command.SendOpticalMessageCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SendOpticalMessageCommand</span></code></a>(from_agent_name, ...)</p></td>
+<td><p>Send information through OpticalModem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.SetFPSCommand" title="holoocean.command.SetFPSCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetFPSCommand</span></code></a>(fps)</p></td>
+<td><p>Set the frames per second of the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.SetRainParametersCommand" title="holoocean.command.SetRainParametersCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetRainParametersCommand</span></code></a>(vel_x, vel_y, ...)</p></td>
+<td><p>Changes the rain's velocity and spawn rate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.SetTPSCommand" title="holoocean.command.SetTPSCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SetTPSCommand</span></code></a>(tps)</p></td>
+<td><p>Set the ticks per second of the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.SpawnAgentCommand" title="holoocean.command.SpawnAgentCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpawnAgentCommand</span></code></a>(location, rotation, name, ...)</p></td>
+<td><p>Spawn an agent in the world.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.TeleportCameraCommand" title="holoocean.command.TeleportCameraCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TeleportCameraCommand</span></code></a>(location, rotation)</p></td>
+<td><p>Move the viewport camera (agent follower)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.TideCommand" title="holoocean.command.TideCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TideCommand</span></code></a>(adjustment, absolute)</p></td>
+<td><p>Changes the water level in the current world.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.TurnOffFlashlightCommand" title="holoocean.command.TurnOffFlashlightCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TurnOffFlashlightCommand</span></code></a>(flashlight_name)</p></td>
+<td><p>Turns off the vehicle's flashlight.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.TurnOnFlashlightCommand" title="holoocean.command.TurnOnFlashlightCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TurnOnFlashlightCommand</span></code></a>(flashlight_name[, ...])</p></td>
+<td><p>Turns on the vehicle's flashlight and sets its visual parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.WaterColorCommand" title="holoocean.command.WaterColorCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WaterColorCommand</span></code></a>(red, green, blue)</p></td>
+<td><p>Changes the water color in the current world.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.WaterFogCommand" title="holoocean.command.WaterFogCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WaterFogCommand</span></code></a>(fogDensity[, fogDepth, ...])</p></td>
+<td><p>Changes the water fog density, depth, and color.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.AddSensorCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">AddSensorCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_definition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.AddSensorCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Add a sensor to an agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sensor_definition</strong> (<a class="reference internal" href="sensors.html#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><em>SensorDefinition</em></a>) – Sensor to add</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.AirFogCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">AirFogCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fogDensity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fogDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.45</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.AirFogCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the air fog density, depth, and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fogDensity</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The density value for the fog. Range: 0.0 to 10.0.</p></li>
+<li><p><strong>fogDepth</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The distance at which the fog begins. Range: 0.0 to 10.0. (Default = 3).</p></li>
+<li><p><strong>color_R</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The red component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.45).</p></li>
+<li><p><strong>color_G</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The green component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.5).</p></li>
+<li><p><strong>color_B</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The blue component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.6).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.ChangeTimeOfDayCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">ChangeTimeOfDayCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TimeOfDay</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.ChangeTimeOfDayCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the world’s time of day.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>TimeOfDay</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – time of day desired, a number between 0 and 23 inclusive.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.ChangeWeatherCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">ChangeWeatherCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.ChangeWeatherCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the weather in the world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The weather wanted (0 - sunny, 1 - cloudy, 2 - rainy).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.Command">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><a class="headerlink" href="#holoocean.command.Command" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for Command objects.</p>
+<p>Commands are used for IPC between the holoocean python bindings and holoocean
+binaries.</p>
+<p>Derived classes must set the <code class="docutils literal notranslate"><span class="pre">_command_type</span></code>.</p>
+<p>The order in which <a class="reference internal" href="#holoocean.command.Command.add_number_parameters" title="holoocean.command.Command.add_number_parameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_number_parameters()</span></code></a> and <a class="reference internal" href="#holoocean.command.Command.add_string_parameters" title="holoocean.command.Command.add_string_parameters"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_string_parameters()</span></code></a> are called
+is significant, they are added to an ordered list. Ensure that you are adding parameters in
+the order the client expects them.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.Command.add_number_parameters" title="holoocean.command.Command.add_number_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_number_parameters</span></code></a>(number)</p></td>
+<td><p>Add given number parameters to the internal list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.Command.add_string_parameters" title="holoocean.command.Command.add_string_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_string_parameters</span></code></a>(string)</p></td>
+<td><p>Add given string parameters to the internal list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.Command.set_command_type" title="holoocean.command.Command.set_command_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_command_type</span></code></a>(command_type)</p></td>
+<td><p>Set the type of the command.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.Command.to_json" title="holoocean.command.Command.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>()</p></td>
+<td><p>Converts to json.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.Command.add_number_parameters">
+<span class="sig-name descname"><span class="pre">add_number_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.Command.add_number_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Add given number parameters to the internal list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>/<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, or singular <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>/<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – A number or list of numbers to add to the parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.Command.add_string_parameters">
+<span class="sig-name descname"><span class="pre">add_string_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.Command.add_string_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Add given string parameters to the internal list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – A string or list of strings to add to the parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.Command.set_command_type">
+<span class="sig-name descname"><span class="pre">set_command_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.Command.set_command_type" title="Permalink to this definition"></a></dt>
+<dd><p>Set the type of the command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>command_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – This is the name of the command that it will be set to.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.Command.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.Command.to_json" title="Permalink to this definition"></a></dt>
+<dd><p>Converts to json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>This object as a json string.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.CommandCenter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">CommandCenter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CommandCenter" title="Permalink to this definition"></a></dt>
+<dd><p>Manages pending commands to send to the client (the engine).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client</strong> (<a class="reference internal" href="holooceanclient.html#holoocean.holooceanclient.HoloOceanClient" title="holoocean.holooceanclient.HoloOceanClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanClient</span></code></a>) – Client to send commands to</p>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.CommandCenter.clear" title="holoocean.command.CommandCenter.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p>Clears pending commands</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.CommandCenter.enqueue_command" title="holoocean.command.CommandCenter.enqueue_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enqueue_command</span></code></a>(command_to_send)</p></td>
+<td><p>Adds command to outgoing queue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.CommandCenter.handle_buffer" title="holoocean.command.CommandCenter.handle_buffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_buffer</span></code></a>()</p></td>
+<td><p>Writes the list of commands into the command buffer, if needed.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.CommandCenter.queue_size" title="holoocean.command.CommandCenter.queue_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">queue_size</span></code></a></p></td>
+<td><p>Returns: int: Size of commands queue</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.CommandCenter.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CommandCenter.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Clears pending commands</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.CommandCenter.enqueue_command">
+<span class="sig-name descname"><span class="pre">enqueue_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_to_send</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CommandCenter.enqueue_command" title="Permalink to this definition"></a></dt>
+<dd><p>Adds command to outgoing queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>command_to_send</strong> (<a class="reference internal" href="#holoocean.command.Command" title="holoocean.command.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a>) – Command to add to queue</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.CommandCenter.handle_buffer">
+<span class="sig-name descname"><span class="pre">handle_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CommandCenter.handle_buffer" title="Permalink to this definition"></a></dt>
+<dd><p>Writes the list of commands into the command buffer, if needed.</p>
+<p>Checks if we should write to the command buffer, writes all of the queued commands to the
+buffer, and then clears the contents of the self._commands list</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.command.CommandCenter.queue_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">queue_size</span></span><a class="headerlink" href="#holoocean.command.CommandCenter.queue_size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns:
+int: Size of commands queue</p>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.CommandsGroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">CommandsGroup</span></span><a class="headerlink" href="#holoocean.command.CommandsGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a list of commands</p>
+<p>Can convert list of commands to json.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.CommandsGroup.add_command" title="holoocean.command.CommandsGroup.add_command"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_command</span></code></a>(command)</p></td>
+<td><p>Adds a command to the list</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.CommandsGroup.clear" title="holoocean.command.CommandsGroup.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<td><p>Clear the list of commands.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.CommandsGroup.to_json" title="holoocean.command.CommandsGroup.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>()</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Json for commands array object and all of the commands inside the array.</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.CommandsGroup.size" title="holoocean.command.CommandsGroup.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a></p></td>
+<td><p>Returns: int: Size of commands group</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.CommandsGroup.add_command">
+<span class="sig-name descname"><span class="pre">add_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CommandsGroup.add_command" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a command to the list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>command</strong> (<a class="reference internal" href="#holoocean.command.Command" title="holoocean.command.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a>) – A command to add.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.CommandsGroup.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CommandsGroup.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Clear the list of commands.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.command.CommandsGroup.size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#holoocean.command.CommandsGroup.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns:
+int: Size of commands group</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.CommandsGroup.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CommandsGroup.to_json" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Json for commands array object and all of the commands inside the array.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.CustomCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">CustomCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.CustomCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Send a custom command to the currently loaded world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the command, ex “OpenDoor”</p></li>
+<li><p><strong>(</strong><strong>obj</strong> (<em>string_params</em>) – <cite>list</cite> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): List of arbitrary number parameters</p></li>
+<li><p><strong>(</strong><strong>obj</strong> – <cite>list</cite> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): List of arbitrary string parameters</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.DebugDrawCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">DebugDrawCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">draw_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.DebugDrawCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Draw debug geometry in the world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>draw_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – <p>The type of object to draw</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code>: line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: arrow</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>: box</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code>: point</p></li>
+</ul>
+</p></li>
+<li><p><strong>start</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The start  <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location in meters of the object.
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>end</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The end <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location in meters of the object
+(not used for point, and extent for box)</p></li>
+<li><p><strong>color</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">g,</span> <span class="pre">b]</span></code> color value (from 0 to 255).</p></li>
+<li><p><strong>thickness</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – thickness of the line/object</p></li>
+<li><p><strong>lifetime</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Number of simulation seconds the object should persist. If 0, makes persistent</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.OceanCurrentsCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">OceanCurrentsCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_debugging</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.OceanCurrentsCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Share individual current velocities for each agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ocean_currents</strong> – current velocity per agent</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.RGBCameraRateCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">RGBCameraRateCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.RGBCameraRateCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Set the number of ticks between captures of the RGB camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – name of the agent to modify</p></li>
+<li><p><strong>sensor_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – name of the sensor to modify</p></li>
+<li><p><strong>ticks_per_capture</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – number of ticks between captures</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.RemoveSensorCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">RemoveSensorCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.RemoveSensorCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a sensor from an agent</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of agent to modify</p></li>
+<li><p><strong>sensor</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of the sensor to remove</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.RenderQualityCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">RenderQualityCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">render_quality</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.RenderQualityCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Adjust the rendering quality of HoloOcean</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>render_quality</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – 0 = low, 1 = medium, 3 = high, 3 = epic</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.RenderViewportCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">RenderViewportCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">render_viewport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.RenderViewportCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Enable or disable the viewport. Note that this does not prevent the viewport from being shown,
+it just prevents it from being updated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>render_viewport</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If viewport should be rendered</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.RotateSensorCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">RotateSensorCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.RotateSensorCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Rotate a sensor on the agent. Multiple rotations do not accumulate, but rather sets to the last rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of agent</p></li>
+<li><p><strong>sensor</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Name of the sensor to rotate</p></li>
+<li><p><strong>rotation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> rotation for sensor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SendAcousticMessageCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SendAcousticMessageCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_sensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_sensor_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SendAcousticMessageCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Set the number of ticks between captures of the RGB camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – name of the agent to modify</p></li>
+<li><p><strong>sensor_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – name of the sensor to modify</p></li>
+<li><p><strong>num</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – number of ticks between captures</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SendOpticalMessageCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SendOpticalMessageCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_sensor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_sensor_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SendOpticalMessageCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Send information through OpticalModem.</p>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SetFPSCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SetFPSCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SetFPSCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Set the frames per second of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The number of frames per second to set the simulation to.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SetRainParametersCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SetRainParametersCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vel_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vel_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spawnRate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SetRainParametersCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the rain’s velocity and spawn rate.
+You must first activate weather and set it to <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">-</span> <span class="pre">rainy</span></code> using the Change Weather Command
+before this will have any visible effect.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vel_x</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Rain velocity on the x axis.</p></li>
+<li><p><strong>vel_y</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – VRain velocity on the y axis.</p></li>
+<li><p><strong>vel_z</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Rain velocity on the z axis. Should be a negative value.</p></li>
+<li><p><strong>spawnRate</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Rain’s spawn rate (number of particles).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SetTPSCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SetTPSCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SetTPSCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Set the ticks per second of the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The number of ticks per second to set the simulation to.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.SpawnAgentCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">SpawnAgentCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_main_agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SpawnAgentCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Spawn an agent in the world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location to spawn agent (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the agent.</p></li>
+<li><p><strong>agent_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or type) – The type of agent to spawn (UAVAgent, NavAgent, …)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.SpawnAgentCommand.set_location" title="holoocean.command.SpawnAgentCommand.set_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_location</span></code></a>(location)</p></td>
+<td><p>Set where agent will be spawned.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.SpawnAgentCommand.set_name" title="holoocean.command.SpawnAgentCommand.set_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_name</span></code></a>(name)</p></td>
+<td><p>Set agents name</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.SpawnAgentCommand.set_rotation" title="holoocean.command.SpawnAgentCommand.set_rotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rotation</span></code></a>(rotation)</p></td>
+<td><p>Set where agent will be spawned.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.SpawnAgentCommand.set_type" title="holoocean.command.SpawnAgentCommand.set_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_type</span></code></a>(agent_type)</p></td>
+<td><p>Set the type of agent.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.SpawnAgentCommand.set_location">
+<span class="sig-name descname"><span class="pre">set_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SpawnAgentCommand.set_location" title="Permalink to this definition"></a></dt>
+<dd><p>Set where agent will be spawned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location to spawn agent (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.SpawnAgentCommand.set_name">
+<span class="sig-name descname"><span class="pre">set_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SpawnAgentCommand.set_name" title="Permalink to this definition"></a></dt>
+<dd><p>Set agents name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name to set the agent to.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.SpawnAgentCommand.set_rotation">
+<span class="sig-name descname"><span class="pre">set_rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SpawnAgentCommand.set_rotation" title="Permalink to this definition"></a></dt>
+<dd><p>Set where agent will be spawned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rotation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> rotation for agent.
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.command.SpawnAgentCommand.set_type">
+<span class="sig-name descname"><span class="pre">set_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.SpawnAgentCommand.set_type" title="Permalink to this definition"></a></dt>
+<dd><p>Set the type of agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code>) – The type of agent to spawn.</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.TeleportCameraCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">TeleportCameraCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.TeleportCameraCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Move the viewport camera (agent follower)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> location to give the camera
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><strong>rotation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> rotation to give the camera
+(see <a class="reference internal" href="../usage/units-and-coordinates.html#rotations"><span class="std std-ref">Rotations</span></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.TideCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">TideCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.TideCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the water level in the current world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adjustment</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The amount in meters you want to adjust the water level by or the level you want to set the water at.</p></li>
+<li><p><strong>absolute</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – True if you want to set a new surface level and False if you want to adjust the tides by an offset.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.TurnOffFlashlightCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">TurnOffFlashlightCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flashlight_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.TurnOffFlashlightCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Turns off the vehicle’s flashlight.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flashlight_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the flashlight to turn off. Vehicles have 4 flashlights (flashlight1-flashlight4)</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.TurnOnFlashlightCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">TurnOnFlashlightCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flashlight_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beam_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_x_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_y_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location_z_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_pitch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_yaw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.TurnOnFlashlightCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Turns on the vehicle’s flashlight and sets its visual parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flashlight_name</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The name of the flashlight to turn on. (e.g., flashlight1)</p></li>
+<li><p><strong>intensity</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The brightness of the flashlight. Recommended range: 0 to 100000. (Default = 5000)</p></li>
+<li><p><strong>beam_width</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The beam’s spread angle in degrees. Recommended range: 1 to 80. (Default = 45)</p></li>
+<li><p><strong>location_x_offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – x component of the flashlight location offset. (Default = 0)</p></li>
+<li><p><strong>location_y_offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – y component of the flashlight location offset. (Default = 0)</p></li>
+<li><p><strong>location_z_offset</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – z component of the flashlight location offset. (Default = 0)</p></li>
+<li><p><strong>angle_pitch</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The pitch angle (in degrees) for flashlight direction. Range: -70 to 70. (Default = -30)</p></li>
+<li><p><strong>angle_yaw</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The yaw angle (in degrees) for flashlight direction. Range: -70 to 70. (Default = 0)</p></li>
+<li><p><strong>color_R</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Red component of the flashlight color. Range: 0.0 to 1.0. (Default = 1)</p></li>
+<li><p><strong>color_G</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Green component of the flashlight color. Range: 0.0 to 1.0. (Default = 1)</p></li>
+<li><p><strong>color_B</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Blue component of the flashlight color. Range: 0.0 to 1.0. (Default = 1)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.WaterColorCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">WaterColorCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.WaterColorCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the water color in the current world.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>red</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The red intensity value of the new water, between 0 and 1.</p></li>
+<li><p><strong>green</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The green intensity value of the new water, between 0 and 1.</p></li>
+<li><p><strong>blue</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The blue intensity value of the new water, between 0 and 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.command.WaterFogCommand">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">WaterFogCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fogDensity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fogDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.WaterFogCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Changes the water fog density, depth, and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fogDensity</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The density value for the fog. Range: 0.0 to 10.0.</p></li>
+<li><p><strong>fogDepth</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The distance at which the fog begins. Range: 0.0 to 10.0. (Default = 3).</p></li>
+<li><p><strong>color_R</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The red component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.4).</p></li>
+<li><p><strong>color_G</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The green component of the fog’s color. Range: 0.0 to 1.0. (Default = 0.6).</p></li>
+<li><p><strong>color_B</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The blue component of the fog’s color. Range: 0.0 to 1.0. (Default = 1.0).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="spaces.html" rel="prev" title="Action Spaces"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="holooceanclient.html" rel="next" title="HoloOcean Client">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

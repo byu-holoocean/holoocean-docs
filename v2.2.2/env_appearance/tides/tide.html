@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tide Controller &mdash; HoloOcean 2.2.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/themes_override.css" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Time of Day Controller" href="../time_cycle/timeofday.html" />
+    <link rel="prev" title="Environment Appearance" href="../env_appearance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HoloOcean
+          </a>
+              <div class="version">
+                2.2.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../env_appearance.html">Environment Appearance</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../env_appearance.html#environment-commands">Environment commands</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tide Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tide-options">Tide Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../time_cycle/timeofday.html">Time of Day Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../water_appearance/water_appearance.html">Water Appearance Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../weather/weather.html">Weather Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../air_fog/air_fog.html">Air Fog Command</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HoloOcean</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../env_appearance.html">Environment Appearance</a></li>
+      <li class="breadcrumb-item active">Tide Controller</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/env_appearance/tides/tide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tide-controller">
+<h1>Tide Controller<a class="headerlink" href="#tide-controller" title="Permalink to this heading"></a></h1>
+<p>HoloOcean worlds have tide settings that can be configured, either with the scenario or real time with commands during simulation.</p>
+<img alt="../../_images/tidesinaction.gif" src="../../_images/tidesinaction.gif" />
+<section id="tide-options">
+<h2>Tide Options<a class="headerlink" href="#tide-options" title="Permalink to this heading"></a></h2>
+<p>Holoocean worlds have a tide configuration and command. This allows you to set either a consistent tide cycle
+in your world or use env.tide() commands to set or adjust the tide to whatever you want at any point. With the command,
+you can either set the tide water level by setting the absolute parameter to be True, or you can offset the current tide level
+by setting absolute to be False.</p>
+<section id="in-a-scenario">
+<h3>In a scenario<a class="headerlink" href="#in-a-scenario" title="Permalink to this heading"></a></h3>
+<p>Amplitude is in cm and frequency is in ticks.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;tide_cycle&quot;</span><span class="p">:{</span>
+         <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+         <span class="s2">&quot;amplitude&quot;</span><span class="p">:</span> <span class="c1">###,</span>
+         <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="c1">###,</span>
+      <span class="p">},</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="programmatically">
+<h3>Programmatically<a class="headerlink" href="#programmatically" title="Permalink to this heading"></a></h3>
+<p>Usage of commands.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+<span class="c1">#This would set the tide to 1 meter</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1">#This would adjust the tide by -2 meters relative to its current position - setting the tide to -1 meter</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tide</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example of pushing a button to raise tide by 10cm.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+   <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+      <span class="k">if</span> <span class="s1">&#39;t&#39;</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+         <span class="c1">#Raise tide by 10cm</span>
+         <span class="n">env</span><span class="o">.</span><span class="n">tide</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on how to use this command, please refer to the API Documentation:
+<a class="reference internal" href="../../holoocean/commands.html#holoocean.command.TideCommand" title="holoocean.command.TideCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TideCommand</span></code></a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../env_appearance.html" class="btn btn-neutral float-left" title="Environment Appearance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../time_cycle/timeofday.html" class="btn btn-neutral float-right" title="Time of Day Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BYU FRoStLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

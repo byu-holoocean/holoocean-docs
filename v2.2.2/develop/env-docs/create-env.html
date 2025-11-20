@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Creating a Custom Level — HoloOcean 2.2.2 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="package-env.html" rel="next" title="Packaging Environments"/>
+<link href="../env.html" rel="prev" title="Developing Environments"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">2.2.2</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../develop.html">Developing HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../env.html">Developing Environments</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating a Custom Level</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#landscape">Landscape</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#water">Water</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lighting">Lighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-objects">Adding Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-on-collision-settings-for-objects-and-sonar">Note on Collision Settings for Objects and Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-tide-settings-for-objects">Additional Tide Settings for Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#weather">Weather</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#air-fog">Air Fog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-on-flashlights">Note on Flashlights</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-your-custom-level">Testing Your Custom Level</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="package-env.html">Packaging Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../agents.html">Developing Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../develop.html">Developing HoloOcean</a></li>
+<li class="breadcrumb-item"><a href="../env.html">Developing Environments</a></li>
+<li class="breadcrumb-item active">Creating a Custom Level</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/develop/env-docs/create-env.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="creating-a-custom-level">
+<span id="create-env"></span><h1>Creating a Custom Level<a class="headerlink" href="#creating-a-custom-level" title="Permalink to this heading"></a></h1>
+<p>For a custom level in HoloOcean, you must make a level using Unreal Engine. See the <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/levels-in-unreal-engine?application_version=5.3">Unreal Engine documentation</a> for
+more information on saving and creating a new level.</p>
+<p>There are 2 main aspects to our HoloOcean levels: the landscape, and the water.</p>
+<section id="landscape">
+<h2>Landscape<a class="headerlink" href="#landscape" title="Permalink to this heading"></a></h2>
+<p>For help creating your own landscape, please reference <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/landscape-quick-start-guide-in-unreal-engine">Unreal Engine’s landscape documentation</a>.
+The documentation explains how to use the Landscape Mode within the editor, as well as how to apply and create materials for your landscape.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As you create a landscape, please note that the water level is at z=0. The landscape must be below z=0 in order for our underwater agents to work as expected.</p>
+</div>
+<p>To aquire materials or assets for your landscape, you can purchase materials or find some free ones at <a class="reference external" href="https://www.fab.com/">Fab</a>. <a class="reference external" href="https://www.fab.com/sellers/Quixel">Quixel</a> offers many free assets and materials.</p>
+<p>If you wish to enclose the sides of your environment, you can either place assets like walls or sculpt the edges of the landscape to be taller. Both examples can be seen in the SimpleUnderwater environment.</p>
+<img alt="../../_images/landscape-example.png" src="../../_images/landscape-example.png"/>
+</section>
+<section id="water">
+<h2>Water<a class="headerlink" href="#water" title="Permalink to this heading"></a></h2>
+<p><strong>The Unreal Engine Water plugin is not compatible with HoloOcean and will not work.</strong> Instead, to achieve an underwater appearance,
+you will need to place a water plane and two PostProcessVolumes within your environment. Please note the following are suggested settings, and there may be others you would want to consider adjusting for your level.</p>
+<section id="water-plane">
+<h3>Water Plane<a class="headerlink" href="#water-plane" title="Permalink to this heading"></a></h3>
+<p>For the water plane, place a plane actor at z=0. Change the material to be any water-like material. You will also need to change the collision settings so that vehicles can pass through the plane. In the Details panel, search for “collision” and set custom collision presets to ignore all options.</p>
+<img alt="../../_images/plane_settings.png" src="../../_images/plane_settings.png"/>
+<p>To make sure your water plane is compatible with our tide system, tag the water plane as “WaterSurface” and make the plane movable.</p>
+<img alt="../../_images/water_plane.png" src="../../_images/water_plane.png"/>
+</section>
+<section id="water-color-postprocessvolume-1">
+<h3>Water Color (PostProcessVolume 1)<a class="headerlink" href="#water-color-postprocessvolume-1" title="Permalink to this heading"></a></h3>
+<p>For the PostProcessVolume, go to Place Actors ➡ Volumes ➡ Post Process Volume and drag it into your level. Adjust the scale of the volume to fit your entire underwater area. To adjust the color of the volume, go to the Details pannel ➡ Color Grading ➡ Misc ➡ “Scene Color Tint”.
+Blue to green colors are best, and the Dam environment has the “Scene Color Tint” set to Hex sRGB AAD9C8FF.</p>
+<p>As seen in the Dam environment, the water plane is a separate plane located at z=0. The red outline box that surrounds the environment is the PostProcessVolume.</p>
+<img alt="../../_images/water_w_postprocess.png" src="../../_images/water_w_postprocess.png"/>
+<p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">WaterPPV</span></code> so that the Water Fog Command and Tides Command function correctly.</p>
+</section>
+<section id="water-fog-postprocessvolume-2">
+<h3>Water Fog (PostProcessVolume 2)<a class="headerlink" href="#water-fog-postprocessvolume-2" title="Permalink to this heading"></a></h3>
+<p>To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water</span></code> material.
+In the <strong>Details</strong> panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to <strong>Asset Reference</strong>, and select <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water</span></code>.
+Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Water</span></code>.</p>
+<img alt="../../_images/water_fog_material.png" src="../../_images/water_fog_material.png"/>
+<p>After applying the material, you can tune its parameters to achieve the desired underwater effect. The most relevant parameters are:</p>
+<ul class="simple">
+<li><p><strong>Fog_Depth</strong> – controls how far the fog extends.</p></li>
+<li><p><strong>Fog_Opacity</strong> – controls the density of the fog.</p></li>
+<li><p><strong>Fog_Color</strong> – defines the fog color (normalized RGB, <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">1.0</span></code>).</p></li>
+</ul>
+<p>Although the <strong>Fog_Transition</strong> parameter can also be modified, it is generally recommended to leave it at its default value of <code class="docutils literal notranslate"><span class="pre">0.1</span></code> and adjust the other parameters first. Modify it only if you need finer control over how the fog blends with the scene.</p>
+<img alt="../../_images/fog_params.png" src="../../_images/fog_params.png"/>
+<p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">WaterPPV</span></code> so that the Water Fog Command and Tides Command function correctly.</p>
+</section>
+</section>
+<section id="lighting">
+<h2>Lighting<a class="headerlink" href="#lighting" title="Permalink to this heading"></a></h2>
+<p>If you created a Basic Level, the lighting should already be implemented automatically. Otherwise, go to Window ➡ Env. Light Mixer. From there, make sure to create all of the lighting options it gives you.</p>
+<p>As a quick check, make sure your level has the following: DirectionalLight, ExponentialHeightFog, SkyAtmosphere, SkyLight, and VolumetricCloud.</p>
+<p>To make sure the Exponential Height Fog will work with our Day Cycle settings, set the “Fog Inscattering Color” and “Directional Inscattering Color” to black. The “Fog Density” and “Fog Height Falloff” can be adjusted until it fits your needs.</p>
+<img alt="../../_images/exp_fog.png" src="../../_images/exp_fog.png"/>
+</section>
+<section id="adding-objects">
+<h2>Adding Objects<a class="headerlink" href="#adding-objects" title="Permalink to this heading"></a></h2>
+<section id="obtaining-assets">
+<h3>Obtaining Assets<a class="headerlink" href="#obtaining-assets" title="Permalink to this heading"></a></h3>
+<p>To populate your level with assets, you will either need to import your own assets or find assets on <a class="reference external" href="https://www.fab.com/">Fab</a>.</p>
+<p>To replicate similar levels as HoloOcean, we use the following asset packs:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference internal" href="../../packages/Ocean/Dam/dam.html#dam"><span class="std std-ref">Dam</span></a>:</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.fab.com/listings/0c40a773-c71b-4c51-9286-721126fd9b0f">Ocean Floor Environment</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../../packages/Ocean/OpenWater/openwater.html#openwater"><span class="std std-ref">OpenWater</span></a>:</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.fab.com/listings/f6ff3c58-7fcd-43b8-bc0a-55ab6c405e1b">Modular Dam Environment</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="../../packages/Ocean/PierHarbor/pierharbor.html#pierharbor"><span class="std std-ref">PierHarbor</span></a>:</dt><dd><ul>
+<li><p><a class="reference external" href="https://www.fab.com/listings/d15bb4d9-e292-4bc0-a058-14aee645f69e">Container Ships</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/7e671469-af0a-4516-88a4-dfffefdbc640">Boat Pack Vol_1</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/4a89aaec-7b13-46b6-957e-667262149c12">Pier Set</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/aeed2616-24b1-4bb9-8fde-cd268602dfcc">Modular Harbor Building Kit</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="importing-assets">
+<h3>Importing Assets<a class="headerlink" href="#importing-assets" title="Permalink to this heading"></a></h3>
+<p>If you have purchased or obtained free assets from Fab, you can view them in the Epic Games Launcher under the Unreal Engine Library tab.
+Under the “Fab Library” section, you can click on “Add To Project” and select your project to add the assets.</p>
+<p>If you are importing your own models, it is best to save them as FBX files. From there, you can click on the “Import” button from within the Unreal Engine editor and select your FBX file.
+Please reference <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/importing-assets-directly-into-unreal-engine?application_version=5.3">Unreal Engine’s Documentation</a>
+for further help with importing assets.</p>
+</section>
+<section id="placing-assets">
+<h3>Placing Assets<a class="headerlink" href="#placing-assets" title="Permalink to this heading"></a></h3>
+<p>From the Content Drawer, you can drag and drop your assets into your custom level. Or, you can select the icon of the cube with the green plus symbol to quickly add actors such as basic shapes to your level.</p>
+<img alt="../../_images/place-actor.png" src="../../_images/place-actor.png"/>
+<p>It is simple to move, rotate, and scale objects within your level. You can either directly edit these values within the Details panel or use keyboard shortcuts.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%"/>
+<col style="width: 58%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>W</p></td>
+<td><p>Selects the Move tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>E</p></td>
+<td><p>Selects the Rotate tool</p></td>
+</tr>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>Selects the Scale tool</p></td>
+</tr>
+</tbody>
+</table>
+<p>For more information please reference <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/transforming-actors-in-unreal-engine">Unreal Engine’s Documentation</a>.</p>
+</section>
+</section>
+<section id="note-on-collision-settings-for-objects-and-sonar">
+<span id="object-collision"></span><h2>Note on Collision Settings for Objects and Sonar<a class="headerlink" href="#note-on-collision-settings-for-objects-and-sonar" title="Permalink to this heading"></a></h2>
+<p>Sonar simulation relies upon the collision mesh for objects when generating the octree.</p>
+<p>First, make sure to set the environment boundaries to have the environment min and max.
+In standalone through Unreal Engine, this would be done by setting the Additional Launch Parameters as seen here: <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a>.
+If you have packaged your worlds, this would be set in the config file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Octrees must be regenerated for a level whenever an object is changed or moved. To regenerate the octrees, delete the octree folder and rerun your simulation. Please see <a class="reference internal" href="../../sensors/docs/octree.html#octree"><span class="std std-ref">Octree Generation</span></a> for the octree location.</p>
+</div>
+<p>If the collision mesh of an object is coarser than the visual mesh then the representation of
+that object in a sonar image will be inaccurate. This issue can be addressed for the objects
+by using the Unreal Engine editor and setting the “Collision Complexity” option in the
+details section of the static mesh editor to “use complex collision as simple”.</p>
+<img alt="../../_images/collision_setting.png" src="../../_images/collision_setting.png"/>
+<p>If you still have issues with your collision mesh, it is often helpful to enable “Double Sided Geometry” in the details panel of the static mesh editor.</p>
+<img alt="../../_images/static_mesh_double_sided.png" src="../../_images/static_mesh_double_sided.png"/>
+<p>Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable “Simulation Generates Hit Events”.</p>
+<img alt="../../_images/level_collision_settings.png" src="../../_images/level_collision_settings.png"/>
+<p>You can verify the shape of the collision mesh by changing the view mode to “Player Collision” in the level or in the static mesh editor.</p>
+<img alt="../../_images/check_collisions.png" src="../../_images/check_collisions.png"/>
+</section>
+<section id="additional-tide-settings-for-objects">
+<h2>Additional Tide Settings for Objects<a class="headerlink" href="#additional-tide-settings-for-objects" title="Permalink to this heading"></a></h2>
+<p>In order to create compatible non-agent floatables that with move with the tide you must add the keyword Float in the actor tags and then go into the collision settings of the static mesh and make sure that customized collisions is checked.</p>
+<img alt="../../_images/tide_non-agent_collisions.png" src="../../_images/tide_non-agent_collisions.png"/>
+<img alt="../../_images/tide_non-agent_tag.png" src="../../_images/tide_non-agent_tag.png"/>
+</section>
+<section id="weather">
+<h2>Weather<a class="headerlink" href="#weather" title="Permalink to this heading"></a></h2>
+<p>To add the weather feature to your custom level, you will first need to add the Weather Manager blueprint to your world. To do this, go to Content Browser ➡ Weather Content and drag BP_Weather_Manager into your level.</p>
+<p>Next, you need to add two different Volumetric Cloud actors. Go to Place Actors ➡ Visual Effects ➡ Volumetric Cloud and drag it into your level twice.</p>
+<p>After both actors are placed, assign a cloud material and tag each one:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Select the first Volumetric Cloud actor.</p></li>
+<li><p>In the Details panel, under Cloud Material ➡ Material, assign the material m_SimpleVolumetricCloud_Inst_Sunny, found in the Weather Content folder. You can also drag the material directly from the folder into the material field.</p></li>
+<li><p>Tag the actor by going to Actor ➡ Advanced ➡ Tags, click + to add an element, and name the tag Sunny.</p></li>
+</ol>
+</div></blockquote>
+<p>Repeat the same process for the second Volumetric Cloud actor, but this time use the m_SimpleVolumetricCloud_Inst_Cloudy material and tag it as Cloudy.</p>
+<img alt="../../_images/volumetric_cloud.png" src="../../_images/volumetric_cloud.png"/>
+<p>Finally, you should also tag the water plane you created as “WaterSurface”.</p>
+</section>
+<section id="air-fog">
+<h2>Air Fog<a class="headerlink" href="#air-fog" title="Permalink to this heading"></a></h2>
+<p>For above-water simulations where you want to introduce air fog or mist, you can add a PostProcessVolume that covers the desired region and assign it the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Air</span></code> material.
+In the <strong>Details</strong> panel, navigate to <em>Rendering Features ➡ Post Process Materials</em>, add an element to the array, set it to <strong>Asset Reference</strong>, and select <code class="docutils literal notranslate"><span class="pre">MM_Fog_Air</span></code>.
+Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Air</span></code>.</p>
+<img alt="../../_images/air_fog_material.png" src="../../_images/air_fog_material.png"/>
+<p>Once applied, you can adjust the material parameters to achieve the desired atmospheric effect. The most relevant parameters are:</p>
+<ul class="simple">
+<li><p><strong>Fog_Depth</strong> – controls how far the fog extends.</p></li>
+<li><p><strong>Fog_Opacity</strong> – controls the density of the fog.</p></li>
+<li><p><strong>Fog_Color</strong> – defines the fog color (normalized RGB, <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">1.0</span></code>).</p></li>
+</ul>
+<p>Although the <strong>Fog_Transition</strong> parameter can also be modified, it is generally recommended to leave it at its default value of <code class="docutils literal notranslate"><span class="pre">0.1</span></code> and adjust the other parameters first. Modify it only if you need finer control over how the fog blends with the scene.</p>
+<img alt="../../_images/fog_params.png" src="../../_images/fog_params.png"/>
+<p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">AirPPV</span></code> so that the Air Fog Command and Tides Command function correctly.</p>
+</section>
+<section id="note-on-flashlights">
+<h2>Note on Flashlights<a class="headerlink" href="#note-on-flashlights" title="Permalink to this heading"></a></h2>
+<p>For vehicle flashlights to function properly, your level must include the <code class="docutils literal notranslate"><span class="pre">FlashlightManager</span></code>.
+You can add it by dragging the manager from <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents/FlashlightManager</span></code> into your world.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FlashlightManager</span></code> does not alter the appearance or physics of the environment — it simply enables flashlight functionality.</p>
+</section>
+<section id="testing-your-custom-level">
+<h2>Testing Your Custom Level<a class="headerlink" href="#testing-your-custom-level" title="Permalink to this heading"></a></h2>
+<p>For quick testing of your level, it is often easiest to run in standalone mode. This will allow you to
+quickly verify collision settings or visuals without having to package the level.
+Please reference <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a> to run your level from within the Unreal Engine Editor.</p>
+<p>Otherwise, you will have to package your level after each change. Please reference <a class="reference internal" href="package-env.html#packaging-environments"><span class="std std-ref">Packaging Environments</span></a> for information.</p>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="../env.html" rel="prev" title="Developing Environments"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="package-env.html" rel="next" title="Packaging Environments">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HoloOcean Client-Server Communication — HoloOcean 2.2.2 documentation</title>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/clipboard.min.js"></script>
+<script src="../_static/copybutton.js"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="ROS2.html" rel="next" title="ROS2 Bridge"/>
+<link href="units-and-coordinates.html" rel="prev" title="Units and Coordinates in HoloOcean"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.2.2</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="usage.html">Using HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html">Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="viewport.html">Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Improving Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="units-and-coordinates.html">Units and Coordinates in HoloOcean</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HoloOcean Client-Server Communication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisite-reading">Prerequisite Reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-two-halves-of-holoocean">The Two Halves of HoloOcean</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#client">Client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#engine">Engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-usage-example">Simple Usage Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#part-1-holoocean-make">Part 1: <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-loading-semaphore">Creating Loading Semaphore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starting-subprocess">Starting Subprocess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#waiting-for-engine-to-load">Waiting For Engine To Load</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#engine-is-done-loading">Engine Is Done Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#main-synchronization-semaphores">Main Synchronization Semaphores</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-memory-buffers">Shared Memory Buffers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#part-2-step">Part 2: <code class="docutils literal notranslate"><span class="pre">.step()</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#action-for-agent">1. Action for Agent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#signal-server">2. Signal Server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#client-waits-server-processes">3. Client waits, server processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#server-samples-sensor-data-copies-it-into-buffers">4. Server samples sensor data, copies it into buffers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wake-up-client">5. Wake up client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#server-blocks-and-waits-for-client-to-signal-it-again">6. Server blocks and waits for client to signal it again</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#remarks">Remarks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ROS2.html">ROS2 Bridge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item"><a href="usage.html">Using HoloOcean</a></li>
+<li class="breadcrumb-item active">HoloOcean Client-Server Communication</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/usage/semaphores.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="holoocean-client-server-communication">
+<span id="develop-sem"></span><h1>HoloOcean Client-Server Communication<a class="headerlink" href="#holoocean-client-server-communication" title="Permalink to this heading"></a></h1>
+<p>(This article is based on the original Holodeck wiki page, located
+<a class="reference external" href="https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Communication-Protocol">here</a>.)</p>
+<p>In this page we will discuss how the HoloOcean client and engine communicate.</p>
+<section id="prerequisite-reading">
+<h2>Prerequisite Reading<a class="headerlink" href="#prerequisite-reading" title="Permalink to this heading"></a></h2>
+<p>Brush up on <a class="reference external" href="https://en.wikipedia.org/wiki/Semaphore_(programming)">semaphores</a>
+and <a class="reference external" href="https://en.wikipedia.org/wiki/Shared_memory">shared memory</a>.</p>
+</section>
+<section id="the-two-halves-of-holoocean">
+<h2>The Two Halves of HoloOcean<a class="headerlink" href="#the-two-halves-of-holoocean" title="Permalink to this heading"></a></h2>
+<p>HoloOcean is made up of two halves, the “client” and the “engine”.</p>
+<section id="client">
+<h3>Client<a class="headerlink" href="#client" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Known as the “Python side” or “client”</p></li>
+<li><p>Starts the “server”</p></li>
+<li><p>User interacts with this exclusively</p></li>
+<li><p>Mostly moves information to and from the engine</p></li>
+<li><p>Responsible for initializing the engine and training scenarios</p></li>
+</ul>
+</section>
+<section id="engine">
+<h3>Engine<a class="headerlink" href="#engine" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Known as the “C++ side”, “engine”, or “server”</p></li>
+<li><p>Unreal Engine project (<code class="docutils literal notranslate"><span class="pre">.uproject</span></code>)</p></li>
+<li><p>Compiled binaries are downloaded and installed by the client</p></li>
+<li><p>Requires Unreal Developer account to install Unreal Editor and build/package
+(see <a class="reference external" href="https://www.unrealengine.com/">https://www.unrealengine.com/</a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="simple-usage-example">
+<h2>Simple Usage Example<a class="headerlink" href="#simple-usage-example" title="Permalink to this heading"></a></h2>
+<p>In this walkthrough, we are going to explain how communication between the client and engine works
+through a simple example. Consider the following code that runs a HoloOcean simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+
+<span class="c1"># (1). Start up the engine</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"SimpleUnderwater-Hovering"</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="c1"># Initialize the level and the main agent inside of it</span>
+  <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+  <span class="c1"># prepare a command to be sent to the main agent</span>
+  <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="c1"># (2). Send the command to the agent, step the simulation, and return information from the engine</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="part-1-holoocean-make">
+<h2>Part 1: <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code><a class="headerlink" href="#part-1-holoocean-make" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code> function is mostly a helper function to instantiate a
+<code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code> object. <code class="docutils literal notranslate"><span class="pre">.make()</span></code> loads a configuration file and passes
+the appropriate paramaters to the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> of <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> function does three main things:</p>
+<ol class="arabic simple">
+<li><p>Starts a process on the engine and tells it the minimum it needs to load</p></li>
+<li><p>Creates HoloOceanClient instance</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Creates synchronization semaphores</p></li>
+<li><p>Provides malloc() function for allocating shared memory on the client</p></li>
+<li><p>Sensors, agents, etc. use this function</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Instantiates agents and sensors, which use malloc() to allocate buffers</p></li>
+</ol>
+<section id="creating-loading-semaphore">
+<h3>Creating Loading Semaphore<a class="headerlink" href="#creating-loading-semaphore" title="Permalink to this heading"></a></h3>
+<p>A “loading semaphore” is created by the client and signaled by the engine.</p>
+<p>After starting the server process, the client will wait for the server to
+signal it so that the client knows the server has initialized.</p>
+<img alt="../_images/loading-1.svg" src="../_images/loading-1.svg"/></section>
+<section id="starting-subprocess">
+<h3>Starting Subprocess<a class="headerlink" href="#starting-subprocess" title="Permalink to this heading"></a></h3>
+<p>Next, the client will create the engine subprocess. It will pass a UUID on the
+engine’s command line that will be used to create unique semaphore names.</p>
+<img alt="../_images/loading-2.svg" src="../_images/loading-2.svg"/><section id="a-note-on-uuids">
+<h4>A Note on UUIDs<a class="headerlink" href="#a-note-on-uuids" title="Permalink to this heading"></a></h4>
+<p>The names for semaphores and shared memory (eg  <code class="docutils literal notranslate"><span class="pre">/HOLODECK_LOADING_SEM</span></code>) are
+global for all processes in the entire operating system.</p>
+<p>To avoid collisions between different instances of HoloOcean, <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code>
+generates a UUID for each environment it makes and sends it to the engine as
+command line argument, eg</p>
+<p><code class="docutils literal notranslate"><span class="pre">holodeck.exe</span> <span class="pre">--HolodeckUUID=8ac7059c-fb71-48fb-a0b1-a1ea8a4c6c10</span></code></p>
+<p>The UUID is appended to semaphore/shared memory names to allow multiple
+instances to run, eg</p>
+<p><code class="docutils literal notranslate"><span class="pre">/HOLODECK_LOADING_SEM8ac7059c-fb71-48fb-a0b1-a1ea8a4c6c10</span></code></p>
+<p>If no <code class="docutils literal notranslate"><span class="pre">--HolodeckUUID</span></code> is provided, it defaults to <code class="docutils literal notranslate"><span class="pre">""</span></code>
+This proves very useful for debugging.</p>
+</section>
+</section>
+<section id="waiting-for-engine-to-load">
+<h3>Waiting For Engine To Load<a class="headerlink" href="#waiting-for-engine-to-load" title="Permalink to this heading"></a></h3>
+<p>Now that the engine is initializing itself, the client waits on the
+<code class="docutils literal notranslate"><span class="pre">/HOLODECK_LOADING_SEM</span></code>.</p>
+<img alt="../_images/loading-3.svg" src="../_images/loading-3.svg"/></section>
+<section id="engine-is-done-loading">
+<h3>Engine Is Done Loading<a class="headerlink" href="#engine-is-done-loading" title="Permalink to this heading"></a></h3>
+<p>Once the engine finishes loading, the engine will wait on another semaphore
+while the client does more stuff.</p>
+<img alt="../_images/loading-4.svg" src="../_images/loading-4.svg"/><p>At this point, the client spawns agents, sensors, tasks, by sending a series of
+commands.</p>
+<p>This isn’t covered in this page, but for our purposes, the important part is
+that each agent and sensor allocates shared memory buffers to allow
+communication between the engine and the client.</p>
+</section>
+<section id="main-synchronization-semaphores">
+<h3>Main Synchronization Semaphores<a class="headerlink" href="#main-synchronization-semaphores" title="Permalink to this heading"></a></h3>
+<p>At this point of the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> of <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>, it creates a
+<code class="docutils literal notranslate"><span class="pre">HoloOceanClient</span></code> object, which makes two important synchronization semaphores.
+These semaphores allow the engine and the client to work in lock-step and
+alternate back and forth (see HolodeckServer.cpp / holooceanclient.py)</p>
+<section id="holodeck-semaphore-server">
+<h4><code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_SERVER</span></code><a class="headerlink" href="#holodeck-semaphore-server" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p>Known as <code class="docutils literal notranslate"><span class="pre">semaphore</span></code></p></li>
+<li><p>The <strong>engine</strong> waits on this semaphore while the <strong>client</strong> does whatever it
+wants to do</p></li>
+<li><p><strong>Blocks the main simulation loop!</strong></p>
+<ul>
+<li><p>The engine window will appear to be locked up while it is waiting on this semaphore</p></li>
+<li><p>You can’t close the window, resize, or move it</p></li>
+<li><p><a class="reference external" href="https://github.com/BYU-PCCL/holodeck/issues/18">https://github.com/BYU-PCCL/holodeck/issues/18</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="holodeck-semaphore-client">
+<h4><code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_CLIENT</span></code><a class="headerlink" href="#holodeck-semaphore-client" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p>Known as <code class="docutils literal notranslate"><span class="pre">semaphore2</span></code></p></li>
+<li><p>The <strong>client</strong> waits on this semaphore while the <strong>engine</strong> simulates a tick</p></li>
+<li><p>When the <strong>client</strong> is ready for the <strong>engine</strong> to simulate another tick, the
+<strong>client</strong> will signal <code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_SERVER</span></code></p></li>
+</ul>
+<p>We will see how these semaphores are used below.</p>
+</section>
+</section>
+<section id="shared-memory-buffers">
+<h3>Shared Memory Buffers<a class="headerlink" href="#shared-memory-buffers" title="Permalink to this heading"></a></h3>
+<p>Shared memory buffers are used for a lot in Holoocean.</p>
+<ol class="arabic simple">
+<li><p>Sending commands back and forth</p>
+<ul class="simple">
+<li><p>ie spawning agents, moving viewport, etc</p></li>
+</ul>
+</li>
+<li><p>Agents</p>
+<ul class="simple">
+<li><p>Action buffer (<code class="docutils literal notranslate"><span class="pre">uuid</span></code> + agent name)</p>
+<ul>
+<li><p>Tells the agent what input the client is providing each tick</p></li>
+</ul>
+</li>
+<li><p>Teleport flag (<code class="docutils literal notranslate"><span class="pre">_teleport_flag</span></code>), teleport buffer (<code class="docutils literal notranslate"><span class="pre">_teleport_command</span></code>)
+buffer</p>
+<ul>
+<li><p>Tells if and where the agent should be teleported to</p></li>
+</ul>
+</li>
+<li><p>Control Scheme (<code class="docutils literal notranslate"><span class="pre">_control_scheme</span></code>)</p>
+<ul>
+<li><p>Tells the engine which control scheme the agent is using (how to
+interpret action buffer)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Sensors</p>
+<ul class="simple">
+<li><p>Sensor data buffer (agent_name <code class="docutils literal notranslate"><span class="pre">_</span></code> + sensor name)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="part-2-step">
+<h2>Part 2: <code class="docutils literal notranslate"><span class="pre">.step()</span></code><a class="headerlink" href="#part-2-step" title="Permalink to this heading"></a></h2>
+<p>Now that we have a running environment, how do we get data back and forth?</p>
+<p>We will analyze what happens for</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>to execute.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">step()</span></code> function calls the <code class="docutils literal notranslate"><span class="pre">act()</span></code> function followed by the <code class="docutils literal notranslate"><span class="pre">tick()</span></code> function for a
+single agent.</p>
+</div>
+<section id="action-for-agent">
+<h3>1. Action for Agent<a class="headerlink" href="#action-for-agent" title="Permalink to this heading"></a></h3>
+<p>First, we copy the provided action (<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">1000]</span></code>) into the agent’s action
+buffer:</p>
+<img alt="../_images/step-1.svg" src="../_images/step-1.svg"/></section>
+<section id="signal-server">
+<h3>2. Signal Server<a class="headerlink" href="#signal-server" title="Permalink to this heading"></a></h3>
+<p>Next, the client signals <code class="docutils literal notranslate"><span class="pre">/HOLODECK_SEMAPHORE_SERVER</span></code> and wakes the server up.</p>
+<img alt="../_images/step-2.svg" src="../_images/step-2.svg"/></section>
+<section id="client-waits-server-processes">
+<h3>3. Client waits, server processes<a class="headerlink" href="#client-waits-server-processes" title="Permalink to this heading"></a></h3>
+<img alt="../_images/step-3.svg" src="../_images/step-3.svg"/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the tick happens on the server, first all agents are updated and their respective tick
+functions are called, after which all sensors are updated and their tick functions are called.</p>
+</div>
+</section>
+<section id="server-samples-sensor-data-copies-it-into-buffers">
+<h3>4. Server samples sensor data, copies it into buffers<a class="headerlink" href="#server-samples-sensor-data-copies-it-into-buffers" title="Permalink to this heading"></a></h3>
+<img alt="../_images/step-4.svg" src="../_images/step-4.svg"/></section>
+<section id="wake-up-client">
+<h3>5. Wake up client<a class="headerlink" href="#wake-up-client" title="Permalink to this heading"></a></h3>
+<img alt="../_images/step-5.svg" src="../_images/step-5.svg"/></section>
+<section id="server-blocks-and-waits-for-client-to-signal-it-again">
+<h3>6. Server blocks and waits for client to signal it again<a class="headerlink" href="#server-blocks-and-waits-for-client-to-signal-it-again" title="Permalink to this heading"></a></h3>
+<img alt="../_images/step-6.svg" src="../_images/step-6.svg"/></section>
+</section>
+<section id="remarks">
+<h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading"></a></h2>
+<p>Some interesting things to note.</p>
+<ol class="arabic simple">
+<li><p>Data copied into shared buffer persists. If an action is written, that same
+action will be executed until another action is written. Same with sensor
+data.</p></li>
+<li><p>The engine’s default UUID is <code class="docutils literal notranslate"><span class="pre">""</span></code>. This means that if you launch the engine
+from the editor or Visual Studio, you can attach to it with a Python client
+if you specify the UUID is <code class="docutils literal notranslate"><span class="pre">""</span></code> when creating the <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code>
+object.</p></li>
+</ol>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="units-and-coordinates.html" rel="prev" title="Units and Coordinates in HoloOcean"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="ROS2.html" rel="next" title="ROS2 Bridge">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
