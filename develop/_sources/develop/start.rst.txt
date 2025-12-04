@@ -187,3 +187,10 @@ in the Unreal Editor, go to Window -> Output Log.
 
 See `Unreal's documentation <https://dev.epicgames.com/documentation/en-us/unreal-engine/logging-in-unreal-engine>`_ 
 for more information on logging in Unreal Engine.
+
+Code Formatting
+===============
+If you are going to pull request changes to the C++ or Python code, please ensure that your code is properly
+formatted.
+Python code should be formatted using `black <https://black.readthedocs.io/en/stable/>`_ and C++ code should be
+formatted using the provided clang-format configuration, based on the UE style guide.
