@@ -157,9 +157,9 @@ Blue to green colors are best, and the Dam environment has the “Scene Color Ti
 </section>
 <section id="water-fog-postprocessvolume-2">
 <h3>Water Fog (PostProcessVolume 2)<a class="headerlink" href="#water-fog-postprocessvolume-2" title="Permalink to this heading"></a></h3>
-<p>To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water</span></code> material.
-In the <strong>Details</strong> panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to <strong>Asset Reference</strong>, and select <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water</span></code>.
-Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Water</span></code>.</p>
+<p>To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code> material.
+In the <strong>Details</strong> panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to <strong>Asset Reference</strong>, and select <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code>.
+Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Water_Simple</span></code>. .</p>
 <img alt="../../_images/water_fog_material.png" src="../../_images/water_fog_material.png"/>
 <p>After applying the material, you can tune its parameters to achieve the desired underwater effect. The most relevant parameters are:</p>
 <ul class="simple">
@@ -170,6 +170,8 @@ Alternatively, you can drag the material directly from <code class="docutils lit
 <p>Although the <strong>Fog_Transition</strong> parameter can also be modified, it is generally recommended to leave it at its default value of <code class="docutils literal notranslate"><span class="pre">0.1</span></code> and adjust the other parameters first. Modify it only if you need finer control over how the fog blends with the scene.</p>
 <img alt="../../_images/fog_params.png" src="../../_images/fog_params.png"/>
 <p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">WaterPPV</span></code> so that the Water Fog Command and Tides Command function correctly.</p>
+<p>If desired, you can also perform the previous steps with a copy of the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code> material that you then modify to your needs and save to its own material name.
+This keeps the original material’s settings intact for future use.</p>
 </section>
 </section>
 <section id="lighting">

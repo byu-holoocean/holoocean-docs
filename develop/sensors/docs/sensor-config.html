@@ -53,7 +53,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Sensor Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sensor-placement">Sensor Placement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor-placement-sockets">Sensor Placement &amp; Sockets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sensor-sample-rate">Sensor Sample Rate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#publish-message">Publish Message</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configuration-block">Configuration Block</a></li>
@@ -131,9 +131,10 @@ dictionary in the list.</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<section id="sensor-placement">
-<h2>Sensor Placement<a class="headerlink" href="#sensor-placement" title="Permalink to this heading"></a></h2>
-<p>Sensor placement can be defined in several ways:</p>
+<section id="sensor-placement-sockets">
+<span id="sockets"></span><h2>Sensor Placement &amp; Sockets<a class="headerlink" href="#sensor-placement-sockets" title="Permalink to this heading"></a></h2>
+<p>Sensors are placed on agents using sockets, locations, and rotations. Sensor placement
+can be defined in several ways:</p>
 <ol class="arabic">
 <li><p><strong>Provide a socket name</strong></p>
 <p>This will place the sensor in the given socket.</p>
@@ -169,6 +170,17 @@ the agent.</p>
 </div>
 </li>
 </ol>
+<p>All sockets have standard orientation in the vehicle’s frame unless stated otherwise in the agent’s
+documentation. Standard orientation has the x-axis pointing towards the front of the vehicle, the
+y-axis pointing to the left, and the z-axis pointing upwards. See <a class="reference internal" href="../../agents/agents.html#agents"><span class="std std-ref">HoloOcean Agents</span></a> for each vehicle’s
+available sockets, locations, and orientations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When viewing sockets in the Unreal Editor, the coordinate frame is left-handed, with the y-axis
+pointing to the right instead of left. HoloOcean handles the conversion between Unreal’s left-handed
+coordinates and the standard right-handed coordinates. When specifying locations and rotations in the
+scenario configuration, and when handling sensor returns, be sure to use right-handed coordinates.</p>
+</div>
 </section>
 <section id="sensor-sample-rate">
 <h2>Sensor Sample Rate<a class="headerlink" href="#sensor-sample-rate" title="Permalink to this heading"></a></h2>

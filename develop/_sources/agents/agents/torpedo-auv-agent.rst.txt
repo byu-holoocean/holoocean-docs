@@ -37,18 +37,18 @@ Control Schemes
 
 Sockets
 =======
-All sockets have standard orientation unless stated otherwise. Standard orientation has the x-axis 
-pointing towards the front of the vehicle, the y-axis pointing starboard, and the z-axis pointing 
-upwards.
+All sockets are oriented in the agent's body frame (right-handed NWU, with the x-axis pointing forward, 
+the y-axis pointing to the left, and the z-axis pointing upward) unless stated otherwise. See 
+:ref:`sockets` for details. 
 
 Socket Definitions
 ------------------
 - ``COM`` Center of mass.
-- ``CameraSocket`` Location of camera, rotated -90 on y-axis.
+- ``CameraSocket`` Location of camera, rotated +90 degrees on y-axis (x points down, y points left, z points forward).
 - ``DVLSocket`` Location of the DVL
 - ``IMUSocket`` Location of the IMU.
 - ``DepthSocket`` Location of the depth sensor.
-- ``SonarSocket`` Location of the sonar sensor, rotated -90 on y-axis.
+- ``SonarSocket`` Location of the sonar sensor, rotated +90 degrees on y-axis (x points down, y points left, z points forward).
 - ``Viewport`` where the robot is viewed from.
 
 Socket Frames

@@ -57,9 +57,9 @@ Make sure to tag the PostProcessVolume as ``WaterPPV`` so that the Water Fog Com
 Water Fog (PostProcessVolume 2)
 -------------------------------
 
-To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the ``MM_Fog_Water`` material. 
-In the **Details** panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to **Asset Reference**, and select ``MM_Fog_Water``. 
-Alternatively, you can drag the material directly from ``Content/WeatherContent/Fog/MM_Fog_Water``.
+To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the ``MM_Fog_Water_Simple`` material.
+In the **Details** panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to **Asset Reference**, and select ``MM_Fog_Water_Simple``. 
+Alternatively, you can drag the material directly from ``Content/WeatherContent/Fog/MM_Fog_Water_Simple``. .
 
 .. image:: images/water_fog_material.png
 
@@ -74,6 +74,9 @@ Although the **Fog_Transition** parameter can also be modified, it is generally 
 .. image:: images/fog_params.png
 
 Make sure to tag the PostProcessVolume as ``WaterPPV`` so that the Water Fog Command and Tides Command function correctly.
+
+If desired, you can also perform the previous steps with a copy of the ``MM_Fog_Water_Simple`` material that you then modify to your needs and save to its own material name. 
+This keeps the original material's settings intact for future use.
 
 
 Lighting

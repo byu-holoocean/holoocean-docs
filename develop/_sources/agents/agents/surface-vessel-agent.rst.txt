@@ -34,13 +34,13 @@ Control Schemes
 
 Sockets
 =======
-All sockets have standard orientation unless stated otherwise. Standard orientation has the x-axis 
-pointing towards the front of the vehicle, the y-axis pointing starboard, and the z-axis pointing 
-upwards. 
+All sockets are oriented in the agent's body frame (right-handed NWU, with the x-axis pointing forward, 
+the y-axis pointing to the left, and the z-axis pointing upward) unless stated otherwise. See 
+:ref:`sockets` for details. 
 
 Socket Definitions
 ------------------
-- ``Payload`` where the payload with sensors will be in the water. Rotated 270 on y-axis, so x pointed downward.
+- ``Payload`` where the payload with sensors will be in the water. Rotated 90 degrees on y-axis (x points down, y points left, z points forward).
 - ``Platform`` sensors placed on platform.
 - ``Viewport`` where the robot is viewed from.
 

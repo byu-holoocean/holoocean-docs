@@ -45,7 +45,7 @@ Agents each have a coordinate frame located at their center (usually the center 
 center of the mesh if different). This coordinate frame is always aligned with the agent's forward, 
 left, and up directions in a right-handed coordinate system. 
 
-Agents are equiped with sockets to hold sensors. Each socket has its own coordinate frame that is 
+Agents are equipped with sockets to hold sensors. Each socket has its own coordinate frame that is 
 usually in the same orientation as the agent frame. See the individual Agent pages in :ref:`agents`
 for details on the location and orientation of sockets for each agent.  
 

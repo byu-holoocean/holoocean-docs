@@ -24,11 +24,13 @@ dictionary in the list.
       }
    ]
 
+.. _`sockets`:
 
-Sensor Placement
-================
+Sensor Placement & Sockets
+==========================
 
-Sensor placement can be defined in several ways:
+Sensors are placed on agents using sockets, locations, and rotations. Sensor placement 
+can be defined in several ways:
 
 1. **Provide a socket name**
 
@@ -70,6 +72,16 @@ Sensor placement can be defined in several ways:
          "rotation": [1.0, 2.0, 3.0]
       }
 
+All sockets have standard orientation in the vehicle's frame unless stated otherwise in the agent's 
+documentation. Standard orientation has the x-axis pointing towards the front of the vehicle, the 
+y-axis pointing to the left, and the z-axis pointing upwards. See :ref:`agents` for each vehicle's 
+available sockets, locations, and orientations.
+
+.. note::
+   When viewing sockets in the Unreal Editor, the coordinate frame is left-handed, with the y-axis 
+   pointing to the right instead of left. HoloOcean handles the conversion between Unreal's left-handed 
+   coordinates and the standard right-handed coordinates. When specifying locations and rotations in the 
+   scenario configuration, and when handling sensor returns, be sure to use right-handed coordinates. 
 
 Sensor Sample Rate
 ==================

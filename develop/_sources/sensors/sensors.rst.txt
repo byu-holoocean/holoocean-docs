@@ -5,9 +5,9 @@ HoloOcean Sensors
 =================
 
 HoloOcean sensors are used to gather data from the environment. Sensors are attached to agents at 
-specific locations called "sockets" (see :ref:`agents` for socket locations on each agent). Sensors 
-publish data to the simulation state, which can be accessed as the return value of the environment's 
-``.tick()`` and ``.step()`` functions.
+specific locations called "sockets" (see :ref:`sockets` for more information). Sensors publish data 
+to the simulation state, which can be accessed as the return value of the environment's ``.tick()`` 
+and ``.step()`` functions.
 
 Using Sensors
 =============
