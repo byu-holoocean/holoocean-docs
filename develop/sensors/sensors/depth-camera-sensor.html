@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Semantic Segmentation Raycast Lidar — HoloOcean 2.2.2 documentation</title>
+<title>Depth Camera — HoloOcean 2.3.0 documentation</title>
 <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -23,6 +23,8 @@
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
+<link href="rgb-camera-sensor.html" rel="next" title="RGB Camera"/>
+<link href="depth-sensor.html" rel="prev" title="Depth Sensor"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -42,13 +44,41 @@
 </div>
 </div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
 <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imaging-sonar-sensor.html">Imaging Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="profiling-sonar-sensor.html">Profiling Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="depth-sensor.html">Depth Sensor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Depth Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rgb-camera-sensor.html">RGB Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera-sensor.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gps-sensor.html">Global Positioning System (GPS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magnetometer-sensor.html">Magnetometer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="range-finder-sensor.html">Range Finder Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="raycast-lidar-sensor.html">Raycast LIDAR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bst-sensor.html">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#communication-sensors">Communication Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#state-sensors">State Sensors</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
@@ -83,22 +113,44 @@
 <div aria-label="Page navigation" role="navigation">
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
-<li class="breadcrumb-item active">Semantic Segmentation Raycast Lidar</li>
+<li class="breadcrumb-item"><a href="../sensors.html">HoloOcean Sensors</a></li>
+<li class="breadcrumb-item active">Depth Camera</li>
 <li class="wy-breadcrumbs-aside">
-<a href="../../_sources/sensors/sensors/rayast-semantic-lidar-sensor.rst.txt" rel="nofollow"> View page source</a>
+<a href="../../_sources/sensors/sensors/depth-camera-sensor.rst.txt" rel="nofollow"> View page source</a>
 </li>
 </ul>
 <hr/>
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
-<section id="semantic-segmentation-raycast-lidar">
-<h1>Semantic Segmentation Raycast Lidar<a class="headerlink" href="#semantic-segmentation-raycast-lidar" title="Permalink to this heading"></a></h1>
-<p>A work in progress sensor for getting semantically labelled lidar data.</p>
+<section id="depth-camera">
+<h1>Depth Camera<a class="headerlink" href="#depth-camera" title="Permalink to this heading"></a></h1>
+<p>Capture a depth image from the camera.</p>
+<p>The image below shows the comparison between the RGB camera output with the corresponding Depth Camera output.</p>
+<img alt="../../_images/depth_camera_w_comparison.png" src="../../_images/depth_camera_w_comparison.png"/>
+<p>See <a class="reference internal" href="../../examples/examples/camera.html#visualizing-depthcamera-output"><span class="std std-ref">Visualizing Depth Camera Output</span></a> for an example of how to use this sensor.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.DepthCamera" title="holoocean.sensors.DepthCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">DepthCamera</span></code></a> for the Python API.
+Example sensor definition (from a BlueROV2):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"DepthCamera"</span><span class="p">,</span>
+    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"DepthForwardCamera"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"CameraSocket"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"CaptureWidth"</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="s2">"CaptureHeight"</span><span class="p">:</span> <span class="mi">512</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you would like use the Depth Camera in a custom level, please reference <a class="reference internal" href="../../develop/env-docs/create-env.html#depth-camera-custom"><span class="std std-ref">Enabling the Depth Camera</span></a>.</p>
 </section>
 </div>
 </div>
-<footer>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="depth-sensor.html" rel="prev" title="Depth Sensor"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="rgb-camera-sensor.html" rel="next" title="RGB Camera">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
 <hr/>
 <div role="contentinfo">
 <p>© Copyright BYU FRoStLab.</p>

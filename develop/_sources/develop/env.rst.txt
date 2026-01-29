@@ -11,3 +11,4 @@ The following pages document how to create and use custom environments in HoloOc
 
    env-docs/create-env
    env-docs/package-env
+   env-docs/custom-semantics

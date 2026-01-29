@@ -128,7 +128,7 @@ Installation with Docker
 ========================
 
 Holoocean Docker Containers
---------------------------
+---------------------------
 
 The `docker` directory contains resources to build and run Docker containers for 
 the HoloOcean project, which integrates Unreal Engine 5 (UE5) and the HoloOcean client. 

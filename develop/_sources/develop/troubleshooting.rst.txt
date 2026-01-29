@@ -34,6 +34,6 @@ If you changed any python files, you must go to ``holoocean/client`` and run ``p
 I added new objects to my level but they don't show up on sonar
 ---------------------------------------------------------------
 
-First, make sure the proper collision settings are enabled. Please see :ref:`object-collision`.
+First, make sure the proper collision settings are enabled. Please see :ref:`object-collision` .
 
 Also make sure to delete any octrees previously made for your level. Octrees need to be regenerated whenever new objects are added to an environment.

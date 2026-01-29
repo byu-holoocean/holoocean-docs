@@ -25,6 +25,7 @@ Features
 #. Environment appearance with weather and time of day commands
 #. ROS 2 integration
 #. High-fidelity Fossen vehicle dynamics
+#. Raycast and semantic raycast LiDAR
 #. Linux and Windows support
 
 Attribution and Relevent Publications
@@ -57,6 +58,7 @@ Simulation of Sonar (Imaging, Profiling, Sidescan) sensors:
 
 HoloOcean 2.0 features:
 ::
+   
    @misc{romrell2025previewholoocean20,
       title={A Preview of HoloOcean 2.0}, 
       author={Blake Romrell and Abigail Austin and Braden Meyers and Ryan Anderson and Carter Noh and Joshua G. Mangelson},
@@ -114,7 +116,7 @@ Nathan Hill, Sarahí Ortega, Gabe Slade
 Pull Request Developers
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Eli Shafer
+Eli Shafer, Nolan Cain
 
 Other Contributions
 ~~~~~~~~~~~~~~~~~~~

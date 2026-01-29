@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Changelog — HoloOcean 2.2.2 documentation</title>
+<title>Changelog — HoloOcean 2.3.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -56,62 +56,68 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-2-2">HoloOcean 2.2.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-3-0">HoloOcean 2.3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changes">Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-2-2">HoloOcean 2.2.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Bug Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-2-2-1">HoloOcean 2.2.1</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-2-2-0">HoloOcean 2.2.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Bug Fixes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-1-0">HoloOcean 2.1.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">Bug Fixes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-0-1">HoloOcean 2.0.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-1-0">HoloOcean 2.1.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id7">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id8">Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id9">Bug Fixes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-0-0">HoloOcean 2.0.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-0-1">HoloOcean 2.0.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id10">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">Bug Fixes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean-2-0-0">HoloOcean 2.0.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Bug Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-2-0-0-prerelease">HoloOcean 2.0.0 PreRelease</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-1-0-0">HoloOcean 1.0.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-0-5-8">HoloOcean 0.5.8</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id13">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Changes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-0-5-0">HoloOcean 0.5.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#highlights">Highlights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-0-4-1">HoloOcean 0.4.1</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id18">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean-0-4-0">HoloOcean 0.4.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id19">Highlights</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Highlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Bug Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pre-holoocean">Pre-HoloOcean</a></li>
@@ -157,18 +163,47 @@
 <div itemprop="articleBody">
 <section id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading"></a></h1>
+<section id="holoocean-2-3-0">
+<h2>HoloOcean 2.3.0<a class="headerlink" href="#holoocean-2-3-0" title="Permalink to this heading"></a></h2>
+<p><em>1/29/2026</em></p>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Added raycasting and semantic raycasting lidar sensor</p></li>
+<li><p>Added depth camera sensor</p></li>
+<li><p>Added semantic segmentation camera sensor</p></li>
+<li><p>Added BusinessCampus world package</p></li>
+</ul>
+</section>
+<section id="changes">
+<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>C++ and Python formatter enforcer</p></li>
+<li><p>Documentation for custom worlds with semantic labels</p></li>
+<li><p>Update currents tests</p></li>
+<li><p>Update vehicle control tests</p></li>
+</ul>
+</section>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fixed GPS sensor to account for tides</p></li>
+<li><p>Fixed main agent declaration bug for viewport positioning</p></li>
+</ul>
+</section>
+</section>
 <section id="holoocean-2-2-2">
 <h2>HoloOcean 2.2.2<a class="headerlink" href="#holoocean-2-2-2" title="Permalink to this heading"></a></h2>
 <p><em>11/12/2025</em></p>
-<section id="changes">
-<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this heading"></a></h3>
+<section id="id1">
+<h3>Changes<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added credit page for HoloOcean Developers</p></li>
 <li><p>Removed debug statements from Fossen code</p></li>
 </ul>
 </section>
-<section id="bug-fixes">
-<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this heading"></a></h3>
+<section id="id2">
+<h3>Bug Fixes<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed CougUV fin control bug that prevented vehicle from turning</p></li>
 </ul>
@@ -177,14 +212,14 @@
 <section id="holoocean-2-2-1">
 <h2>HoloOcean 2.2.1<a class="headerlink" href="#holoocean-2-2-1" title="Permalink to this heading"></a></h2>
 <p><em>10/31/2025</em></p>
-<section id="new-features">
-<h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this heading"></a></h3>
+<section id="id3">
+<h3>New Features<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added delete octree command to delete all octrees for worlds or one specific world</p></li>
 </ul>
 </section>
-<section id="id1">
-<h3>Bug Fixes<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<section id="id4">
+<h3>Bug Fixes<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed Torpedo AUV control bug that prevented vehicle from turning</p></li>
 <li><p>API docs Fixed</p></li>
@@ -195,15 +230,15 @@
 <section id="holoocean-2-2-0">
 <h2>HoloOcean 2.2.0<a class="headerlink" href="#holoocean-2-2-0" title="Permalink to this heading"></a></h2>
 <p><em>10/22/2025</em></p>
-<section id="id2">
-<h3>New Features<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<section id="id5">
+<h3>New Features<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added underwater currents</p></li>
 <li><p>Added biomass, salinity, and temperature (BST) sensor</p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>Bug Fixes<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<section id="id6">
+<h3>Bug Fixes<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed RangeFinder sensor returning max range value when nothing was in range of the sensor. Now it returns -1 if nothing is in range of the sensor.</p></li>
 </ul>
@@ -212,23 +247,23 @@
 <section id="holoocean-2-1-0">
 <h2>HoloOcean 2.1.0<a class="headerlink" href="#holoocean-2-1-0" title="Permalink to this heading"></a></h2>
 <p><em>9/29/2025</em></p>
-<section id="id4">
-<h3>New Features<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<section id="id7">
+<h3>New Features<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added develop install for Windows, as we’ve automated the world build process.</p></li>
 <li><p>Added Flashlight for underwater illumination.</p></li>
 <li><p>Add weather commands, including rain, time of day and tide, air and water fog, water color.</p></li>
 </ul>
 </section>
-<section id="id5">
-<h3>Changes<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<section id="id8">
+<h3>Changes<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Updated Logo</p></li>
 <li><p>Changed drone CI/CD steps for internal improvements.</p></li>
 </ul>
 </section>
-<section id="id6">
-<h3>Bug Fixes<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<section id="id9">
+<h3>Bug Fixes<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed PID instability for the hovering and BlueROV vehicles.</p></li>
 </ul>
@@ -237,15 +272,15 @@
 <section id="holoocean-2-0-1">
 <h2>HoloOcean 2.0.1<a class="headerlink" href="#holoocean-2-0-1" title="Permalink to this heading"></a></h2>
 <p><em>6/27/2025</em></p>
-<section id="id7">
-<h3>New Features<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<section id="id10">
+<h3>New Features<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Updated Fossen based dynamics with new interface for easier use and multi-agent support, and expanded torpedo model with additional fin configurations.</p></li>
 <li><p>Official Docker support for both runtime and development containers.</p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>Changes<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<section id="id11">
+<h3>Changes<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Expanded documentation on creating environments and developing with the Unreal Editor.</p></li>
 <li><p>Dropped support for Python 3.7 and 3.8; added support for Python 3.12 and 3.13.</p></li>
@@ -253,8 +288,8 @@
 <li><p>Grammar fixes throughout the documentation.</p></li>
 </ul>
 </section>
-<section id="id9">
-<h3>Bug Fixes<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<section id="id12">
+<h3>Bug Fixes<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Improved rise time and damping in the Torpedo depth controller when using Fossen based dynamics.</p></li>
 </ul>
@@ -263,8 +298,8 @@
 <section id="holoocean-2-0-0">
 <h2>HoloOcean 2.0.0<a class="headerlink" href="#holoocean-2-0-0" title="Permalink to this heading"></a></h2>
 <p><em>5/10/2025</em></p>
-<section id="id10">
-<h3>New Features<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<section id="id13">
+<h3>New Features<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Improved rendering with Unreal Engine 5.3</p></li>
 <li><p>Advanced vehicle dynamics using models from Fossen</p></li>
@@ -272,16 +307,16 @@
 <li><p>New vehicles: BlueROV Heavy, CougUV</p></li>
 </ul>
 </section>
-<section id="id11">
-<h3>Changes<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<section id="id14">
+<h3>Changes<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Huge update to documentation to improve overall readability and clarity</p></li>
 <li><p>Updated numpy to v2.0.0 to work with UE 5.3</p></li>
 <li><p>Added extra test cases to several sensors to improve coverage</p></li>
 </ul>
 </section>
-<section id="id12">
-<h3>Bug Fixes<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<section id="id15">
+<h3>Bug Fixes<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Temporarily disabled materials in worlds to prevent sonar issue in Linux</strong></p></li>
 <li><p>Fixed bugs in some world files that caused incorrect sonar data</p></li>
@@ -306,8 +341,8 @@ now turns properly, no issues with uncontrollable spinning)</p></li>
 <section id="holoocean-0-5-8">
 <h2>HoloOcean 0.5.8<a class="headerlink" href="#holoocean-0-5-8" title="Permalink to this heading"></a></h2>
 <p><em>4/3/2024</em></p>
-<section id="id13">
-<h3>New Features<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<section id="id16">
+<h3>New Features<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added custom dynamics for vehicles</p></li>
 <li><p>Added magnetometer</p></li>
@@ -316,8 +351,8 @@ now turns properly, no issues with uncontrollable spinning)</p></li>
 <li><p>Added SurfaceVessel agent</p></li>
 </ul>
 </section>
-<section id="id14">
-<h3>Changes<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<section id="id17">
+<h3>Changes<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Updated installation instructions to comply with Unreal Engine EULA</p></li>
 <li><p>Misc bug fixes and documentation improvements</p></li>
@@ -339,8 +374,8 @@ PyPI package. 0.5.8 is the first release after 0.5.0.)</p>
 <li><p>Upgrade to Unreal Engine 4.27</p></li>
 </ul>
 </section>
-<section id="id15">
-<h3>New Features<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<section id="id18">
+<h3>New Features<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added many new sonar sensors, including</p>
 <ul>
@@ -355,8 +390,8 @@ PyPI package. 0.5.8 is the first release after 0.5.0.)</p>
 <li><p>Now based on Unreal Engine 4.27</p></li>
 </ul>
 </section>
-<section id="id16">
-<h3>Changes<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
+<section id="id19">
+<h3>Changes<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>SonarSensor is now ImagingSonar</p></li>
 <li><p>Rotations are now a correct [roll, pitch, yaw]</p></li>
@@ -364,8 +399,8 @@ PyPI package. 0.5.8 is the first release after 0.5.0.)</p>
 <li><p>Environments no longer publish over lcm in pre-start ticks</p></li>
 </ul>
 </section>
-<section id="id17">
-<h3>Bug Fixes<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<section id="id20">
+<h3>Bug Fixes<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Timeouts are turned off for sonars to prevent premature termination of the simulation</p></li>
 <li><p>Specifying a number of ticks to execute at once now ticks for all of them</p></li>
@@ -375,8 +410,8 @@ PyPI package. 0.5.8 is the first release after 0.5.0.)</p>
 <section id="holoocean-0-4-1">
 <h2>HoloOcean 0.4.1<a class="headerlink" href="#holoocean-0-4-1" title="Permalink to this heading"></a></h2>
 <p><em>9/21/2021</em></p>
-<section id="id18">
-<h3>Bug Fixes<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<section id="id21">
+<h3>Bug Fixes<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Required pywin32 &lt;= 228 for easier Windows install</p></li>
 </ul>
@@ -386,16 +421,16 @@ PyPI package. 0.5.8 is the first release after 0.5.0.)</p>
 <h2>HoloOcean 0.4.0<a class="headerlink" href="#holoocean-0-4-0" title="Permalink to this heading"></a></h2>
 <p><em>9/17/2021</em></p>
 <p>First official release!</p>
-<section id="id19">
-<h3>Highlights<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
+<section id="id22">
+<h3>Highlights<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>New Ocean environment package</p></li>
 <li><p>2 new agents and 7 new sensors, along with updating of all previous sensors</p></li>
 <li><p>Complete rebranding to HoloOcean</p></li>
 </ul>
 </section>
-<section id="id20">
-<h3>New Features<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h3>
+<section id="id23">
+<h3>New Features<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added agents <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.HoveringAUV" title="holoocean.agents.HoveringAUV"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoveringAUV</span></code></a> and <a class="reference internal" href="../holoocean/agents.html#holoocean.agents.TorpedoAUV" title="holoocean.agents.TorpedoAUV"><code class="xref py py-class docutils literal notranslate"><span class="pre">TorpedoAUV</span></code></a></p></li>
 <li><p>Added a plethora of new sensors, all with optional noise configurations</p>
@@ -414,14 +449,14 @@ PyPI package. 0.5.8 is the first release after 0.5.0.)</p>
 <li><p>Added ticks_per_sec and frames_per_sec to scenario config, see <a class="reference internal" href="../usage/scenarios.html#configure-framerate"><span class="std std-ref">Frame Rates</span></a></p></li>
 </ul>
 </section>
-<section id="id21">
-<h3>Changes<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
+<section id="id24">
+<h3>Changes<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Everything is now rebranded from Holodeck -&gt; HoloOcean</p></li>
 </ul>
 </section>
-<section id="id22">
-<h3>Bug Fixes<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
+<section id="id25">
+<h3>Bug Fixes<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Sensors now return values from their location, not the agent location</p></li>
 <li><p>IMU now returns angular velocity instead of linear velocity</p></li>

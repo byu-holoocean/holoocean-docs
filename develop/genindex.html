@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Index — HoloOcean 2.2.2 documentation</title>
+<title>Index — HoloOcean 2.3.0 documentation</title>
 <link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -273,6 +273,8 @@
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.CameraSensor.data_shape">(holoocean.sensors.CameraSensor property)</a>
 </li>
+<li><a href="holoocean/sensors.html#holoocean.sensors.DepthCamera.data_shape">(holoocean.sensors.DepthCamera property)</a>
+</li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.DepthSensor.data_shape">(holoocean.sensors.DepthSensor property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.DVLSensor.data_shape">(holoocean.sensors.DVLSensor property)</a>
@@ -305,8 +307,6 @@
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RGBCamera.data_shape">(holoocean.sensors.RGBCamera property)</a>
 </li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RGBDCamera.data_shape">(holoocean.sensors.RGBDCamera property)</a>
-</li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RotationSensor.data_shape">(holoocean.sensors.RotationSensor property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.SemanticSegmentationCamera.data_shape">(holoocean.sensors.SemanticSegmentationCamera property)</a>
@@ -328,6 +328,8 @@
 </li>
 <li><a href="holoocean/index.html#holoocean.holoocean.delete_world_octrees">delete_world_octrees() (in module holoocean.holoocean)</a>
 </li>
+<li><a href="holoocean/sensors.html#holoocean.sensors.DepthCamera">DepthCamera (class in holoocean.sensors)</a>
+</li>
 <li><a href="holoocean/dynamics.html#holoocean.fossen_dynamics.torpedo.Torpedo.depthHeadingAutopilot">depthHeadingAutopilot() (holoocean.fossen_dynamics.torpedo.Torpedo method)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.DepthSensor">DepthSensor (class in holoocean.sensors)</a>
@@ -336,10 +338,10 @@
 </li>
 <li><a href="holoocean/spaces.html#holoocean.spaces.DiscreteActionSpace">DiscreteActionSpace (class in holoocean.spaces)</a>
 </li>
-<li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_arrow">draw_arrow() (holoocean.environments.HoloOceanEnvironment method)</a>
-</li>
 </ul></td>
 <td style="width: 33%; vertical-align: top;"><ul>
+<li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_arrow">draw_arrow() (holoocean.environments.HoloOceanEnvironment method)</a>
+</li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_box">draw_box() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.draw_debug_vector_field">draw_debug_vector_field() (holoocean.environments.HoloOceanEnvironment method)</a>
@@ -353,6 +355,8 @@
 <li><a href="holoocean/sensors.html#holoocean.sensors.BSTSensor.dtype">(holoocean.sensors.BSTSensor property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.CameraSensor.dtype">(holoocean.sensors.CameraSensor property)</a>
+</li>
+<li><a href="holoocean/sensors.html#holoocean.sensors.DepthCamera.dtype">(holoocean.sensors.DepthCamera property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.DepthSensor.dtype">(holoocean.sensors.DepthSensor property)</a>
 </li>
@@ -385,8 +389,6 @@
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastSemanticLidar.dtype">(holoocean.sensors.RaycastSemanticLidar property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RGBCamera.dtype">(holoocean.sensors.RGBCamera property)</a>
-</li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RGBDCamera.dtype">(holoocean.sensors.RGBDCamera property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RotationSensor.dtype">(holoocean.sensors.RotationSensor property)</a>
 </li>
@@ -787,6 +789,8 @@
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastLidar">RaycastLidar (class in holoocean.sensors)</a>
 </li>
+<li><a href="holoocean/commands.html#holoocean.command.RaycastLidarRateCommand">RaycastLidarRateCommand (class in holoocean.command)</a>
+</li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastSemanticLidar">RaycastSemanticLidar (class in holoocean.sensors)</a>
 </li>
 <li><a href="holoocean/holooceanclient.html#holoocean.holooceanclient.HoloOceanClient.release">release() (holoocean.holooceanclient.HoloOceanClient method)</a>
@@ -797,10 +801,10 @@
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.remove_sensors">remove_sensors() (holoocean.agents.HoloOceanAgent method)</a>
 </li>
-<li><a href="holoocean/commands.html#holoocean.command.RemoveSensorCommand">RemoveSensorCommand (class in holoocean.command)</a>
-</li>
 </ul></td>
 <td style="width: 33%; vertical-align: top;"><ul>
+<li><a href="holoocean/commands.html#holoocean.command.RemoveSensorCommand">RemoveSensorCommand (class in holoocean.command)</a>
+</li>
 <li><a href="holoocean/commands.html#holoocean.command.RenderQualityCommand">RenderQualityCommand (class in holoocean.command)</a>
 </li>
 <li><a href="holoocean/commands.html#holoocean.command.RenderViewportCommand">RenderViewportCommand (class in holoocean.command)</a>
@@ -810,8 +814,6 @@
 <li><a href="holoocean/sensors.html#holoocean.sensors.RGBCamera">RGBCamera (class in holoocean.sensors)</a>
 </li>
 <li><a href="holoocean/commands.html#holoocean.command.RGBCameraRateCommand">RGBCameraRateCommand (class in holoocean.command)</a>
-</li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RGBDCamera">RGBDCamera (class in holoocean.sensors)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.HoloOceanSensor.rotate">rotate() (holoocean.sensors.HoloOceanSensor method)</a>
 </li>
@@ -853,6 +855,8 @@
 <ul>
 <li><a href="holoocean/sensors.html#holoocean.sensors.BSTSensor.sensor_data">(holoocean.sensors.BSTSensor property)</a>
 </li>
+<li><a href="holoocean/sensors.html#holoocean.sensors.DepthCamera.sensor_data">(holoocean.sensors.DepthCamera property)</a>
+</li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.GPSSensor.sensor_data">(holoocean.sensors.GPSSensor property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.HoloOceanSensor.sensor_data">(holoocean.sensors.HoloOceanSensor property)</a>
@@ -862,8 +866,6 @@
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastLidar.sensor_data">(holoocean.sensors.RaycastLidar property)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastSemanticLidar.sensor_data">(holoocean.sensors.RaycastSemanticLidar property)</a>
-</li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RGBDCamera.sensor_data">(holoocean.sensors.RGBDCamera property)</a>
 </li>
 </ul></li>
 <li><a href="holoocean/lcm.html#holoocean.lcm.SensorData">SensorData (class in holoocean.lcm)</a>
@@ -901,10 +903,10 @@
 </li>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.set_physics_state">set_physics_state() (holoocean.agents.HoloOceanAgent method)</a>
 </li>
-</ul></td>
-<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_rain_parameters">set_rain_parameters() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
+</ul></td>
+<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_render_quality">set_render_quality() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
 <li><a href="holoocean/commands.html#holoocean.command.SpawnAgentCommand.set_rotation">set_rotation() (holoocean.command.SpawnAgentCommand method)</a>
@@ -919,9 +921,13 @@
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.CameraSensor.set_ticks_per_capture">set_ticks_per_capture() (holoocean.sensors.CameraSensor method)</a>
 <ul>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RGBCamera.set_ticks_per_capture">(holoocean.sensors.RGBCamera method)</a>
+<li><a href="holoocean/sensors.html#holoocean.sensors.DepthCamera.set_ticks_per_capture">(holoocean.sensors.DepthCamera method)</a>
 </li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RGBDCamera.set_ticks_per_capture">(holoocean.sensors.RGBDCamera method)</a>
+<li><a href="holoocean/sensors.html#holoocean.sensors.RaycastLidar.set_ticks_per_capture">(holoocean.sensors.RaycastLidar method)</a>
+</li>
+<li><a href="holoocean/sensors.html#holoocean.sensors.RaycastSemanticLidar.set_ticks_per_capture">(holoocean.sensors.RaycastSemanticLidar method)</a>
+</li>
+<li><a href="holoocean/sensors.html#holoocean.sensors.RGBCamera.set_ticks_per_capture">(holoocean.sensors.RGBCamera method)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.SemanticSegmentationCamera.set_ticks_per_capture">(holoocean.sensors.SemanticSegmentationCamera method)</a>
 </li>

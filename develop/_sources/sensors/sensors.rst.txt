@@ -38,12 +38,16 @@ Perception Sensors
    sensors/profiling-sonar-sensor
    sensors/dvl-sensor
    sensors/depth-sensor
+   sensors/depth-camera-sensor
    sensors/rgb-camera-sensor  
    sensors/camera-sensor
+   sensors/semantic-segmentation-camera-sensor
    sensors/imu-sensor
    sensors/gps-sensor
    sensors/magnetometer-sensor
    sensors/range-finder-sensor
+   sensors/raycast-lidar-sensor
+   sensors/raycast-semantic-lidar-sensor
    sensors/bst-sensor
 
 Communication Sensors
@@ -80,19 +84,4 @@ other, but are provided for convenience for different use cases.
 
    The dynamics sensor always returns values for the COM of the agent, with values given in the 
    **global frame**, regardless of the socket it is placed in.
-
-
-.. Note: We are not yet including semantic segmentation camera, raycast lidar, or raycast semantic 
-   lidar, as they are not fully tested yet. 
-
-   Sensor pages that exist but aren't in a tree yet:
-    
-   sensors/rgbd-camera-sensor 
-   sensors/semantic-segmentation-camera-sensor
-   sensors/raycast-lidar-sensor
-   sensors/raycast-semantic-lidar-sensor
-
-  
-
-
 

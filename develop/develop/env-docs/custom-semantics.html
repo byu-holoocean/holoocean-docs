@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adding Custom Semantic Labels — HoloOcean 2.3.0 documentation</title>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="../agents.html" rel="next" title="Developing Agents"/>
+<link href="package-env.html" rel="prev" title="Packaging Environments"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">Develop</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../develop.html">Developing HoloOcean</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../env.html">Developing Environments</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="create-env.html">Creating a Custom Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="package-env.html">Packaging Environments</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding Custom Semantic Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-custom-labels">Setting up Custom Labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#labeling-assets">Labeling Assets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualize-tags-in-editor">Visualize Tags in Editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#available-semantic-labels">Available Semantic Labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../agents.html">Developing Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html">Developing Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../develop.html">Developing HoloOcean</a></li>
+<li class="breadcrumb-item"><a href="../env.html">Developing Environments</a></li>
+<li class="breadcrumb-item active">Adding Custom Semantic Labels</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/develop/env-docs/custom-semantics.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="adding-custom-semantic-labels">
+<span id="semantic-segmentation"></span><h1>Adding Custom Semantic Labels<a class="headerlink" href="#adding-custom-semantic-labels" title="Permalink to this heading"></a></h1>
+<p>For semantic labels to be seen by HoloOcean, each asset in a level must be tagged and have rendering settings changed.
+These changes must be done within the Unreal Editor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>HoloOcean’s semantic implementation uses Stencil Values as labels, which limits labels to values 0-255.</p>
+</div>
+<p>To assist with this, HoloOcean provides a Tagger class that can automatically apply labels based on the folder title of the objects.
+If you don’t need any custom labels, you can reference HoloOcean’s list of labels found at <a class="reference internal" href="#semantic-labels"><span class="std std-ref">Available Semantic Labels</span></a> and continue with <a class="reference internal" href="#automatic-labels"><span class="std std-ref">Automatic Labels Using the Tagger</span></a>.</p>
+<section id="setting-up-custom-labels">
+<h2>Setting up Custom Labels<a class="headerlink" href="#setting-up-custom-labels" title="Permalink to this heading"></a></h2>
+<p>To add new labels to HoloOcean, you will need to add them to a few C++ files and choose a color to associate with your label.</p>
+<section id="custom-labels">
+<h3>Custom Labels<a class="headerlink" href="#custom-labels" title="Permalink to this heading"></a></h3>
+<p>To add custom labels, add your tag names to the GetLabelByFolderName function in Tagger.cpp and to the ObjectLabel enum in ObjectLabel.h.</p>
+<img alt="../../_images/tagger_label.png" src="../../_images/tagger_label.png"/>
+<p>Example of folder titles included in “GetLabelByFolderName”</p>
+<img alt="../../_images/object_label.png" src="../../_images/object_label.png"/>
+<p>Example of numbers associated with folder titles in “ObjectLabel”</p>
+</section>
+<section id="change-label-colors">
+<h3>Change Label Colors<a class="headerlink" href="#change-label-colors" title="Permalink to this heading"></a></h3>
+<p>To change the colors associated with each label, you can alter the RGB values listed in engine/source/Holodeck/Utils/Public/HolooceanPallete.h.</p>
+<img alt="../../_images/holoocean_pallete.png" src="../../_images/holoocean_pallete.png"/>
+</section>
+</section>
+<section id="labeling-assets">
+<h2>Labeling Assets<a class="headerlink" href="#labeling-assets" title="Permalink to this heading"></a></h2>
+<section id="automatic-labels-using-the-tagger">
+<span id="automatic-labels"></span><h3>Automatic Labels Using the Tagger<a class="headerlink" href="#automatic-labels-using-the-tagger" title="Permalink to this heading"></a></h3>
+<p>To let the Tagger automatically add labels, you need to make sure that your assets are placed in folders that coordinate with their label.
+For example, all bus assets placed in a folder “Bus” will be labeled with the StencilValue that coordinates with “Bus”.</p>
+<img alt="../../_images/folder_structure.png" src="../../_images/folder_structure.png"/>
+<p>Next, enable the Tagger. From within the Unreal Editor, locate C++ Classes and navigate to Holodeck/Utils/Public/Tagger to find the Tagger c++ file.</p>
+<img alt="../../_images/tagger_location.png" src="../../_images/tagger_location.png"/>
+<p>Drag the Tagger C++ file into your level. From within the Details panel, click on tha Tagger and enable “Should Tag for Semantic Segemtation”</p>
+<img alt="../../_images/tagger_enabled.png" src="../../_images/tagger_enabled.png"/>
+<p>Then, click on “Trigger Tag Objects” to automatically apply labels.</p>
+<img alt="../../_images/tagger_triggered.png" src="../../_images/tagger_triggered.png"/>
+</section>
+<section id="manual-labels">
+<h3>Manual Labels<a class="headerlink" href="#manual-labels" title="Permalink to this heading"></a></h3>
+<p>To set tags manually, in the Details panel select the asset you wish to tag. For that asset, search “tag” to find Actor tags. Add your tag to the Actor Tags list.</p>
+<img alt="../../_images/manual_tag.png" src="../../_images/manual_tag.png"/>
+<p>Then, search “depth” and enable “Render CustomDepth Pass” And set the “CustomDepth Stencil Value” to the value that associates with your tag.
+Do this for each asset you with to tag. Adittionally, enable “Render CustomDepth Pass” for the landscape to ensure it is visible in depth outputs.</p>
+<img alt="../../_images/manual_stencil.png" src="../../_images/manual_stencil.png"/>
+</section>
+</section>
+<section id="visualize-tags-in-editor">
+<h2>Visualize Tags in Editor<a class="headerlink" href="#visualize-tags-in-editor" title="Permalink to this heading"></a></h2>
+<p>To visualize your level and make sure objects were labeled correctly, change the View Mode from “Lit” to “Custom Stencil”</p>
+<img alt="../../_images/custom_stencil_view.png" src="../../_images/custom_stencil_view.png"/>
+</section>
+<section id="available-semantic-labels">
+<span id="semantic-labels"></span><h2>Available Semantic Labels<a class="headerlink" href="#available-semantic-labels" title="Permalink to this heading"></a></h2>
+<p>Below is the list of all labels currently implemented in HoloOcean. Each world in the Ocean and BusinessCampus packages uses a subset of these labels, depending on the
+assets in that world (see <a class="reference internal" href="../../packages/BusinessCampus/BusinessCampus.html#business-campus"><span class="std std-ref">BusinessCampus</span></a> and the world subpages in <a class="reference internal" href="../../packages/Ocean/Ocean.html#ocean"><span class="std std-ref">Ocean Package</span></a> ).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%"/>
+<col style="width: 31%"/>
+<col style="width: 38%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Folder Title</p></th>
+<th class="head"><p>Stencil Value</p></th>
+<th class="head"><p>RGB Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>None</p></td>
+<td><p>0</p></td>
+<td><p>{0, 0, 0}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cube</p></td>
+<td><p>1</p></td>
+<td><p>{240, 29, 219}</p></td>
+</tr>
+<tr class="row-even"><td><p>Sphere</p></td>
+<td><p>2</p></td>
+<td><p>{29, 89, 240}</p></td>
+</tr>
+<tr class="row-odd"><td><p>BaseShape</p></td>
+<td><p>3</p></td>
+<td><p>{29, 240, 89}</p></td>
+</tr>
+<tr class="row-even"><td><p>Landscape</p></td>
+<td><p>4</p></td>
+<td><p>{153, 153, 153}</p></td>
+</tr>
+<tr class="row-odd"><td><p>GroundGrass</p></td>
+<td><p>5</p></td>
+<td><p>{91, 235, 52}</p></td>
+</tr>
+<tr class="row-even"><td><p>GroundRock</p></td>
+<td><p>6</p></td>
+<td><p>{196, 101, 6}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ground</p></td>
+<td><p>7</p></td>
+<td><p>{194, 164, 159}</p></td>
+</tr>
+<tr class="row-even"><td><p>GroundPath</p></td>
+<td><p>8</p></td>
+<td><p>{76, 117, 252}</p></td>
+</tr>
+<tr class="row-odd"><td><p>WaterPlane</p></td>
+<td><p>9</p></td>
+<td><p>{66, 135, 245}</p></td>
+</tr>
+<tr class="row-even"><td><p>Boat</p></td>
+<td><p>10</p></td>
+<td><p>{128, 64, 128}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yacht</p></td>
+<td><p>11</p></td>
+<td><p>{70, 70, 70}</p></td>
+</tr>
+<tr class="row-even"><td><p>ContainerBoat</p></td>
+<td><p>12</p></td>
+<td><p>{102, 102, 156}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Concrete</p></td>
+<td><p>13</p></td>
+<td><p>{214, 138, 230}</p></td>
+</tr>
+<tr class="row-even"><td><p>Pipe</p></td>
+<td><p>14</p></td>
+<td><p>{73, 227, 78}</p></td>
+</tr>
+<tr class="row-odd"><td><p>PipeCover</p></td>
+<td><p>15</p></td>
+<td><p>{85, 166, 3}</p></td>
+</tr>
+<tr class="row-even"><td><p>VentCover</p></td>
+<td><p>16</p></td>
+<td><p>{245, 215, 66}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rock</p></td>
+<td><p>17</p></td>
+<td><p>{153, 115, 9}</p></td>
+</tr>
+<tr class="row-even"><td><p>Seaweed</p></td>
+<td><p>18</p></td>
+<td><p>{75, 166, 5}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Coral</p></td>
+<td><p>19</p></td>
+<td><p>{235, 64, 52}</p></td>
+</tr>
+<tr class="row-even"><td><p>Plane</p></td>
+<td><p>20</p></td>
+<td><p>{176, 165, 146}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sub</p></td>
+<td><p>21</p></td>
+<td><p>{146, 161, 176}</p></td>
+</tr>
+<tr class="row-even"><td><p>Pier</p></td>
+<td><p>22</p></td>
+<td><p>{186, 76, 2}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Buoy</p></td>
+<td><p>23</p></td>
+<td><p>{237, 53, 7}</p></td>
+</tr>
+<tr class="row-even"><td><p>Trash</p></td>
+<td><p>24</p></td>
+<td><p>{107, 156, 137}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Grass</p></td>
+<td><p>25</p></td>
+<td><p>{91, 235, 52}</p></td>
+</tr>
+<tr class="row-even"><td><p>Asphalt</p></td>
+<td><p>26</p></td>
+<td><p>{79, 82, 77}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bench</p></td>
+<td><p>27</p></td>
+<td><p>{212, 191, 125}</p></td>
+</tr>
+<tr class="row-even"><td><p>BikeRack</p></td>
+<td><p>28</p></td>
+<td><p>{209, 208, 203}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Building</p></td>
+<td><p>29</p></td>
+<td><p>{31, 240, 205}</p></td>
+</tr>
+<tr class="row-even"><td><p>Bus</p></td>
+<td><p>30</p></td>
+<td><p>{240, 220, 43}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bush</p></td>
+<td><p>31</p></td>
+<td><p>{177, 247, 124}</p></td>
+</tr>
+<tr class="row-even"><td><p>Car</p></td>
+<td><p>32</p></td>
+<td><p>{224, 109, 237}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ceiling</p></td>
+<td><p>33</p></td>
+<td><p>{161, 247, 233}</p></td>
+</tr>
+<tr class="row-even"><td><p>Chair</p></td>
+<td><p>34</p></td>
+<td><p>{65, 13, 255}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cone</p></td>
+<td><p>35</p></td>
+<td><p>{255, 169, 10}</p></td>
+</tr>
+<tr class="row-even"><td><p>Crate</p></td>
+<td><p>36</p></td>
+<td><p>{140, 86, 0}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Desk</p></td>
+<td><p>37</p></td>
+<td><p>{242, 65, 224}</p></td>
+</tr>
+<tr class="row-even"><td><p>Dumpster</p></td>
+<td><p>38</p></td>
+<td><p>{0, 138, 14}</p></td>
+</tr>
+<tr class="row-odd"><td><p>FireHydrant</p></td>
+<td><p>39</p></td>
+<td><p>{255, 0, 0}</p></td>
+</tr>
+<tr class="row-even"><td><p>Floor</p></td>
+<td><p>40</p></td>
+<td><p>{2, 125, 104}</p></td>
+</tr>
+<tr class="row-odd"><td><p>GarbageCan</p></td>
+<td><p>41</p></td>
+<td><p>{0, 184, 92}</p></td>
+</tr>
+<tr class="row-even"><td><p>Pallet</p></td>
+<td><p>42</p></td>
+<td><p>{143, 129, 6}</p></td>
+</tr>
+<tr class="row-odd"><td><p>ParkingGate</p></td>
+<td><p>43</p></td>
+<td><p>{222, 164, 177}</p></td>
+</tr>
+<tr class="row-even"><td><p>PatioUmbrella</p></td>
+<td><p>44</p></td>
+<td><p>{195, 0, 255}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Railing</p></td>
+<td><p>45</p></td>
+<td><p>{242, 97, 130}</p></td>
+</tr>
+<tr class="row-even"><td><p>SemiTruck</p></td>
+<td><p>46</p></td>
+<td><p>{124, 6, 138}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sidewalk</p></td>
+<td><p>47</p></td>
+<td><p>{232, 232, 232}</p></td>
+</tr>
+<tr class="row-even"><td><p>SpeedLimitSign</p></td>
+<td><p>48</p></td>
+<td><p>{222, 218, 245}</p></td>
+</tr>
+<tr class="row-odd"><td><p>StopSign</p></td>
+<td><p>49</p></td>
+<td><p>{250, 37, 62}</p></td>
+</tr>
+<tr class="row-even"><td><p>StreetLamps</p></td>
+<td><p>50</p></td>
+<td><p>{255, 149, 10}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Table</p></td>
+<td><p>51</p></td>
+<td><p>{186, 17, 169}</p></td>
+</tr>
+<tr class="row-even"><td><p>Tree</p></td>
+<td><p>52</p></td>
+<td><p>{69, 99, 46}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wall</p></td>
+<td><p>53</p></td>
+<td><p>{126, 60, 250}</p></td>
+</tr>
+<tr class="row-even"><td><p>Unlabeled</p></td>
+<td><p>54</p></td>
+<td><p>{0, 0, 0}</p></td>
+</tr>
+<tr class="row-odd"><td><p>Any</p></td>
+<td><p>255</p></td>
+<td><p>{255, 255, 255}</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="package-env.html" rel="prev" title="Packaging Environments"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="../agents.html" rel="next" title="Developing Agents">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

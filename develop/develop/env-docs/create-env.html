@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Creating a Custom Level — HoloOcean 2.2.2 documentation</title>
+<title>Creating a Custom Level — HoloOcean 2.3.0 documentation</title>
 <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -62,6 +62,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#water">Water</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lighting">Lighting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-objects">Adding Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-semantic-labels">Enabling Semantic Labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-the-depth-camera">Enabling the Depth Camera</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#note-on-collision-settings-for-objects-and-sonar">Note on Collision Settings for Objects and Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-tide-settings-for-objects">Additional Tide Settings for Objects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#weather">Weather</a></li>
@@ -71,6 +73,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="package-env.html">Packaging Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom-semantics.html">Adding Custom Semantic Labels</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../agents.html">Developing Agents</a></li>
@@ -251,6 +254,22 @@ for further help with importing assets.</p>
 </table>
 <p>For more information please reference <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/transforming-actors-in-unreal-engine">Unreal Engine’s Documentation</a>.</p>
 </section>
+</section>
+<section id="enabling-semantic-labels">
+<h2>Enabling Semantic Labels<a class="headerlink" href="#enabling-semantic-labels" title="Permalink to this heading"></a></h2>
+<p>HoloOcean allows world assets to be assigned a label. Sensors such as the Semantic Segmentation Camera use these labels to return semantic information to the agent for tasks such as image segmentation.</p>
+<p>To set up semantic labeling, please reference our tutorial here: <a class="reference internal" href="custom-semantics.html#semantic-segmentation"><span class="std std-ref">Adding Custom Semantic Labels</span></a>.</p>
+</section>
+<section id="enabling-the-depth-camera">
+<span id="depth-camera-custom"></span><h2>Enabling the Depth Camera<a class="headerlink" href="#enabling-the-depth-camera" title="Permalink to this heading"></a></h2>
+<p>HoloOcean includes a Depth camera sensor that returns depth information to agents. To enable this sensor, you must change a setting in the environment and for each asset you wish to be detected by the depth camera.
+In the Details panel of the Unreal Editor, navigate to each asset you wish to be visible with the depth camera. For each asset, search “depth” and enable “Render CustomDepth Pass”. Do this for the landscape as well.</p>
+<p>If you already set up your world for semantic labeling, you will have already done the steps necessary for the Depth Camera to work.</p>
+<img alt="../../_images/depth_camera_settings.png" src="../../_images/depth_camera_settings.png"/>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Following the steps to set up semantic labels in your world will enable “Render CustomDepth Pass” for the assets that recieve semantic tags. Be sure to repeat the process above for all remaining assets in your world without semantic labels, including the landscape.</p>
+</div>
 </section>
 <section id="note-on-collision-settings-for-objects-and-sonar">
 <span id="object-collision"></span><h2>Note on Collision Settings for Objects and Sonar<a class="headerlink" href="#note-on-collision-settings-for-objects-and-sonar" title="Permalink to this heading"></a></h2>

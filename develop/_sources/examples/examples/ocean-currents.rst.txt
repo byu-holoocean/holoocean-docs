@@ -119,7 +119,7 @@ in the simulation, and the user can control one of the vehicles using keyboard i
     vehicles = ['auv0', 'auv1']
     map_dimensions = [100, 100, 35]
 
-    with holoocean.make(scenario_cfg=scenario) as env:
+    with holoocean.make(scenario_cfg=scenario, start_world=False) as env:
         clock = 0
         while True:
             clock += 1

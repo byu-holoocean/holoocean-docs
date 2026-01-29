@@ -1,7 +1,7 @@
 .. _sampling_bst:
 
 Sampling Biomass, Salinity, Temperature
-============================
+=======================================
 
 It can be useful to model more complex distributions of biomass, salinity, and temperature by utilizing clusters. 
 Clusters allow us to place concentrations of biomass, salinity, or temperature at any point in the map that may not always 

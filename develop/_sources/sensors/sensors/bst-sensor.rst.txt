@@ -1,6 +1,6 @@
-===============
+===============================================
 Biomass, Salinity, and Temperature (BST) Sensor
-===============
+===============================================
 
 Simulates the distribution and sampling of biomass, salinity, and temperature throughout a world based on real data.
 
@@ -13,9 +13,9 @@ the beginning of your script. More info on customizing the BST sensor found in t
 and the API docs:
 ``set_temperature_function(new_function)`` where "new_function" is a pointer to your custom function that takes in only the parameter "location" (3 element array)
 
----------------
+---------
 Graphing
----------------
+---------
 There is an implementation for graphing BST data live by calling the following commands:
 ``visualizer = env.initialize_bst_graphs()``, with different graphing parameters found in the API docs and in the example
 ``visualizer.update(location)``, where location is the live location taken from the location sensor
@@ -35,9 +35,9 @@ configuration demonstrates what the distributions would look like if no addition
 by altering the environment scenario configuration. Finally, the last example demonstrates how custom functions can be designed and set as the new distribution models for biomass, salinity, 
 and temperature.
 
----------------
+------------------------------------------
 Default Biomass, Salinity, and Temperature
----------------
+------------------------------------------
 
 .. IMAGE:: ../images/DefaultBST.PNG
 
@@ -71,9 +71,9 @@ Default Configuration::
         ],
     }
 
----------------
+------------------------
 Customized Configuration
----------------
+------------------------
 
 .. IMAGE:: ../images/CustomConfigBST.PNG
 
@@ -131,9 +131,9 @@ Customized Configuration Parameters::
         }
     }
 
----------------
+----------------
 Custom Functions
----------------
+----------------
 
 Because implementing custom functions involves more than just changing config parameters, we've only included the 
 custom functions that were passed into our ``HoloOceanEnvironment.initialize_bst_graphs`` function call. If you'd 

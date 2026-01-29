@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Environments — HoloOcean 2.2.2 documentation</title>
+<title>Environments — HoloOcean 2.3.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -218,13 +218,13 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <td><p>Adjusts the rendering quality of HoloOcean.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_salinity_function" title="holoocean.environments.HoloOceanEnvironment.set_salinity_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_salinity_function</span></code></a>(agent_name, new_fx)</p></td>
-<td><p>Change the default salinity function to your own custom function :param agent_name: The name of the agent that you want to change biomass function for :type agent_name: <code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code> :param new_fx: The new function that takes in atleast the argument "location" :type new_fx: <code class="xref py py-obj docutils literal notranslate"><span class="pre">callable</span></code></p></td>
+<td><p>Change the default salinity function to your own custom function :param agent_name: The name of the agent that you want to change salinity function for :type agent_name: <code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code> :param new_fx: The new function that takes in atleast the argument "location" :type new_fx: <code class="xref py py-obj docutils literal notranslate"><span class="pre">callable</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name" title="holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_show_vector_field_name</span></code></a>(state)</p></td>
 <td><p>Set whether to show the vector field name in the viewport.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_temperature_function" title="holoocean.environments.HoloOceanEnvironment.set_temperature_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_temperature_function</span></code></a>(agent_name, new_fx)</p></td>
-<td><p>Change the default temperature function to your own custom function :param agent_name: The name of the agent that you want to change biomass function for :type agent_name: <code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code> :param new_fx: The new function that takes in atleast the argument "location" :type new_fx: <code class="xref py py-obj docutils literal notranslate"><span class="pre">callable</span></code></p></td>
+<td><p>Change the default temperature function to your own custom function :param agent_name: The name of the agent that you want to change temperature function for :type agent_name: <code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code> :param new_fx: The new function that takes in atleast the argument "location" :type new_fx: <code class="xref py py-obj docutils literal notranslate"><span class="pre">callable</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.set_ticks_per_sec" title="holoocean.environments.HoloOceanEnvironment.set_ticks_per_sec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ticks_per_sec</span></code></a>(ticks_per_sec)</p></td>
 <td><p>Sets the ticks per second of the environment.</p></td>
@@ -547,8 +547,8 @@ to call graph_instance.update_position(x, y, z) to update the graph periodically
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>biomass_func</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">Callable()</span></code>) – An optional, custom biomass function parameter that takes in a 3D array called “location” and outputs the biomass metric at that location.</p></li>
-<li><p><strong>salinity_func</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">Callable()</span></code>) – An optional, custom salinity function parameter that takes in a 3D array called “location” and outputs the biomass metric at that location.</p></li>
-<li><p><strong>temperature_func</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">Callable()</span></code>) – An optional, custom temperature function parameter that takes in a 3D array called “location” and outputs the biomass metric at that location.a</p></li>
+<li><p><strong>salinity_func</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">Callable()</span></code>) – An optional, custom salinity function parameter that takes in a 3D array called “location” and outputs the salinity metric at that location.</p></li>
+<li><p><strong>temperature_func</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">Callable()</span></code>) – An optional, custom temperature function parameter that takes in a 3D array called “location” and outputs the temperature metric at that location.</p></li>
 <li><p><strong>NOTE</strong> – when designing these custom functions, you must name the location parameter as “location”</p></li>
 <li><p><strong>agent</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – the name of the agent that you want to sample biomass, salinity, and temperature from (defaults to main agent)</p></li>
 <li><p><strong>biomass_range</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code>) – the scale range of biomass for the heatmap (defaults to (0, 3))</p></li>
@@ -747,7 +747,7 @@ red will be the ocean currents velocity applied to the center of mass of the veh
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_salinity_function">
 <span class="sig-name descname"><span class="pre">set_salinity_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_fx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_salinity_function" title="Permalink to this definition"></a></dt>
 <dd><p>Change the default salinity function to your own custom function
-:param agent_name: The name of the agent that you want to change biomass function for
+:param agent_name: The name of the agent that you want to change salinity function for
 :type agent_name: <code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>
 :param new_fx: The new function that takes in atleast the argument “location”
 :type new_fx: <code class="xref py py-obj docutils literal notranslate"><span class="pre">callable</span></code></p>
@@ -763,7 +763,7 @@ red will be the ocean currents velocity applied to the center of mass of the veh
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.set_temperature_function">
 <span class="sig-name descname"><span class="pre">set_temperature_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_fx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.set_temperature_function" title="Permalink to this definition"></a></dt>
 <dd><p>Change the default temperature function to your own custom function
-:param agent_name: The name of the agent that you want to change biomass function for
+:param agent_name: The name of the agent that you want to change temperature function for
 :type agent_name: <code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>
 :param new_fx: The new function that takes in atleast the argument “location”
 :type new_fx: <code class="xref py py-obj docutils literal notranslate"><span class="pre">callable</span></code></p>

@@ -2,7 +2,7 @@
 Package Structure
 =================
 
-A holoocean package is a ``.zip`` file containing a build of the HoloOcean engine 
+A HoloOcean package is a ``.zip`` file containing a build of the HoloOcean engine 
 that contains :ref:`Worlds <packages>` and :ref:`scenarios` for those worlds.
 
 A package file is platform specific, since it contains a compiled binary of
@@ -83,7 +83,7 @@ materials.csv
 
 .. warning::
 
-   In HoloOcean 2.0, material dependency is temporarily unavailable.
+   In HoloOcean 2.0-2.3, sonar material dependency is temporarily unavailable.
 
 This file contains acoustic properties of the materials found in the environments, 
 used for computation of the sonar images. Below is the format the config file is 

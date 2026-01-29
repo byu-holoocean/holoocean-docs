@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sensors — HoloOcean 2.2.2 documentation</title>
+<title>Sensors — HoloOcean 2.3.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -113,62 +113,62 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DVLSensor" title="holoocean.sensors.DVLSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DVLSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
 <td><p>Doppler Velocity Log Sensor.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DepthSensor" title="holoocean.sensors.DepthSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DepthSensor</span></code></a>(client, agent_name, agent_type)</p></td>
-<td><p>Pressure/Depth Sensor.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DynamicsSensor" title="holoocean.sensors.DynamicsSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a>(client, agent_name, agent_type)</p></td>
-<td><p>Gives all relevant information needed for implementing custom dynamics.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPSSensor" title="holoocean.sensors.GPSSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPSSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
-<td><p>Gets the location of the agent in the world if the agent is close enough to the surface.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>(client[, agent_name, ...])</p></td>
-<td><p>Base class for a sensor</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.IMUSensor" title="holoocean.sensors.IMUSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IMUSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
-<td><p>Inertial Measurement Unit sensor.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
-<td><p>Simulates an imaging sonar.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.LocationSensor" title="holoocean.sensors.LocationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocationSensor</span></code></a>(client, agent_name, agent_type)</p></td>
-<td><p>Gets the location of the agent in the world.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor" title="holoocean.sensors.MagnetometerSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MagnetometerSensor</span></code></a>(client, agent_name, ...)</p></td>
-<td><p>Gets the global x-axis (or given vector) in the local frame.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor" title="holoocean.sensors.OpticalModemSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code></a>(client, agent_name, ...)</p></td>
-<td><p>Handles communication between agents using an optical modem.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.OrientationSensor" title="holoocean.sensors.OrientationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrientationSensor</span></code></a>(client[, agent_name, ...])</p></td>
-<td><p>Gets the forward, right, and up vector for the agent.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.PoseSensor" title="holoocean.sensors.PoseSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoseSensor</span></code></a>(client[, agent_name, agent_type, ...])</p></td>
-<td><p>Gets the forward, right, and up vector for the agent.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.ProfilingSonar" title="holoocean.sensors.ProfilingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
-<td><p>Simulates a multibeam profiling sonar.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBCamera" title="holoocean.sensors.RGBCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RGBCamera</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DepthCamera" title="holoocean.sensors.DepthCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DepthCamera</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Captures agent's view.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RGBDCamera" title="holoocean.sensors.RGBDCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RGBDCamera</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
-<td><p><strong>*WIP: need to fully test this sensor*</strong> Captures agent's view.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DepthSensor" title="holoocean.sensors.DepthSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DepthSensor</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Pressure/Depth Sensor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DynamicsSensor" title="holoocean.sensors.DynamicsSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DynamicsSensor</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Gives all relevant information needed for implementing custom dynamics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPSSensor" title="holoocean.sensors.GPSSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPSSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<td><p>Gets the location of the agent in the world if the agent is close enough to the surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>(client[, agent_name, ...])</p></td>
+<td><p>Base class for a sensor</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.IMUSensor" title="holoocean.sensors.IMUSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IMUSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<td><p>Inertial Measurement Unit sensor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates an imaging sonar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.LocationSensor" title="holoocean.sensors.LocationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocationSensor</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Gets the location of the agent in the world.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.MagnetometerSensor" title="holoocean.sensors.MagnetometerSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MagnetometerSensor</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Gets the global x-axis (or given vector) in the local frame.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.OpticalModemSensor" title="holoocean.sensors.OpticalModemSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OpticalModemSensor</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Handles communication between agents using an optical modem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.OrientationSensor" title="holoocean.sensors.OrientationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrientationSensor</span></code></a>(client[, agent_name, ...])</p></td>
+<td><p>Gets the forward, right, and up vector for the agent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.PoseSensor" title="holoocean.sensors.PoseSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoseSensor</span></code></a>(client[, agent_name, agent_type, ...])</p></td>
+<td><p>Gets the forward, right, and up vector for the agent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.ProfilingSonar" title="holoocean.sensors.ProfilingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates a multibeam profiling sonar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RGBCamera" title="holoocean.sensors.RGBCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RGBCamera</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
+<td><p>Captures agent's view.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor" title="holoocean.sensors.RangeFinderSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeFinderSensor</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Returns distances to nearest collisions in the directions specified by the parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastLidar" title="holoocean.sensors.RaycastLidar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastLidar</span></code></a>(client, agent_name, agent_type)</p></td>
-<td><p><strong>*WIP: need to fully test this sensor*</strong> Runs Agent's Lidar</p></td>
+<td><p>Runs Agent's Lidar</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar" title="holoocean.sensors.RaycastSemanticLidar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastSemanticLidar</span></code></a>(client, agent_name, ...)</p></td>
-<td><p><strong>*WIP: need to fully test this sensor*</strong> Runs Agent's Lidar</p></td>
+<td><p>Runs Agent's Semantic Lidar</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RotationSensor" title="holoocean.sensors.RotationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotationSensor</span></code></a>(client[, agent_name, ...])</p></td>
 <td><p>Gets the rotation of the agent in the world, with rotation XYZ about the fixed frame, in degrees.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SemanticSegmentationCamera" title="holoocean.sensors.SemanticSegmentationCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticSegmentationCamera</span></code></a>(client, ...[, ...])</p></td>
-<td><p><strong>*WIP: need to fully test this sensor*</strong> Captures agent's view.</p></td>
+<td><p>Captures agent's view.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a>(agent_name, agent_type, ...)</p></td>
 <td><p>A class for new sensors and their parameters, to be used for adding new sensors.</p></td>
@@ -562,6 +562,124 @@ following options:</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthCamera">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">DepthCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DepthCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DepthCamera" title="Permalink to this definition"></a></dt>
+<dd><p>Captures agent’s view.</p>
+<p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
+The resolution can be increased, but will significantly impact performance.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code> (int): Width of captured image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CaptureHeight</span></code> (int): Height of captured image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FovAngle</span></code> (float): FOV of the Camera (default: 90, min: 0.001, max: 360.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetGamma</span></code> (float): Target Gamma of the Camera (default: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMethod</span></code> (string): Luminance computation method. Four options: <code class="docutils literal notranslate"><span class="pre">AEM_Histogram</span></code>, <code class="docutils literal notranslate"><span class="pre">AEM_Basic</span></code>, <code class="docutils literal notranslate"><span class="pre">AEM_Manual</span></code>, and <code class="docutils literal notranslate"><span class="pre">AEM_MAX</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureCompensation</span></code> (float): Logarithmic adjustment for the exposure. Only used if a tonemapper is specified.  Exposure compensation. Pretested worlds we decided that 4 looked the best (default: 4, min: -15.0, max: 15.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShutterSpeed</span></code> (float): The camera shutter in seconds. In Unreal, this only affects exposure. (default: 60, min: 1.0, max: 2000.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ISO</span></code> (float): The camera sensor sensitivity in ISO. (default: 100.0, min: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Aperature</span></code> (float): Defines the opening of the camera lens, Aperture is 1/fstop, typical lens go down to f/1.2 (large opening), larger numbers reduce the DOF effect (default: 4.0, min: 1.0, max: 32.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FocalDistance</span></code> (float): Distance in which the Depth of Field effect should be sharp, in unreal units (cm) (default: disabled (i.e. 0.0 in Unreal), min: 0.0, max: 10000.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DepthBlurAmount</span></code> (float): Depth Blur km for 50% (default: disabled (but set to 1.0), min: 0.000001, max: 100.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DepthBlurRadius</span></code> (float): CircleDOF only: Depth blur radius in pixels at 1920x  (default: 0.0. min: 0.0, max: 4.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BladeCount</span></code> (int): Depth of Field Blade Count.  Defines the number of blades of the diaphragm within the lens (min: 4, max: 16)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DepthOfFieldMinFstop</span></code> (float): Defines the maximum opening of the camera lens to control the curvature of blades of the diaphragm. Set it to 0 to get straight blades. (min: 0.0, max: 32.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FilmSlope</span></code> (float): Film Slope (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FilmToe</span></code> (float): Film Toe (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FilmShoulder</span></code> (float): Overrides the base Film Shoulder (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FilmBlackClip</span></code> (float): Overrides the baseFilm Black Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FilmWhiteClip</span></code> (float): Overrides the baseFile White Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMinBrightness</span></code> (float): Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMaxBrightness</span></code> (float):  Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedDown</span></code> (float): Overrides base auto exposure speed down (default: disabled, min: 0.02, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedUp</span></code> (float): Overrides base auto exposure speed up (default: disabled, min: 0.02, max: 20.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurIntensity</span></code> (float): <strong>Strength of motion blur, 0:off</strong> (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMaxDistortion</span></code> (float): max distortion caused by motion blur, in percent of the screen width, 0:off  (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMinObjectScreenSize</span></code> (float): The minimum projected screen radius for a primitive to be drawn in the velocity pass, percentage of screen width. smaller numbers cause more draw calls, default: 4% (default: 2, min: 0.0, max: 100.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LensFlareIntensity</span></code> (float): Brightness scale of the image cased lens flares (linear) (default: disabled, min: 0.0, max: 16.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BloomIntensity</span></code> (float): Multiplier for all bloom contributions &gt;=0: off, 1(default), &gt;1 brighter (default: 1.0, min: 0.0, max: 8.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WhiteTemp</span></code> (float): Color Grading Temperature (default: disabled, min: 1500.0, max: 15000.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WhiteTint</span></code> (float): Color Grading Tint (default: disabled, min: -1.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChromAberrIntensity</span></code> (float): in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners. (default: disabled, min: 0.0, max: 5.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChromAberrOffset</span></code> (float): A normalized distance to the center of the framebuffer where the effect takes place. (default: disabled, min: 0.0, max: 1.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MaxViewDistanceOverride</span></code> (float): if &gt; 0, sets a maximum render distance override.  Can be used to cull distant objects from a reflection if the reflecting plane is in an enclosed area like a hallway or room (default: disabled, min: 100, max: 10000)</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DepthCamera.data_shape" title="holoocean.sensors.DepthCamera.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.DepthCamera.dtype" title="holoocean.sensors.DepthCamera.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DepthCamera.sensor_data" title="holoocean.sensors.DepthCamera.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
+<td><p>Get the sensor data buffer</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.DepthCamera.set_ticks_per_capture" title="holoocean.sensors.DepthCamera.set_ticks_per_capture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ticks_per_capture</span></code></a>(ticks_per_capture)</p></td>
+<td><p>Sets this DepthCamera to capture a new frame every ticks_per_capture.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthCamera.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.DepthCamera.data_shape" title="Permalink to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthCamera.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.DepthCamera.dtype" title="Permalink to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthCamera.sensor_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.DepthCamera.sensor_data" title="Permalink to this definition"></a></dt>
+<dd><p>Get the sensor data buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> of size <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.data_shape</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.sensors.DepthCamera.set_ticks_per_capture">
+<span class="sig-name descname"><span class="pre">set_ticks_per_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.DepthCamera.set_ticks_per_capture" title="Permalink to this definition"></a></dt>
+<dd><p>Sets this DepthCamera to capture a new frame every ticks_per_capture.</p>
+<p>The sensor’s image will remain unchanged between captures.</p>
+<p>This method must be called after every call to env.reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ticks_per_capture</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The amount of ticks to wait between camera captures.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1350,125 +1468,6 @@ options:</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
-<dt class="sig sig-object py" id="holoocean.sensors.RGBDCamera">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RGBDCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RGBDCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBDCamera" title="Permalink to this definition"></a></dt>
-<dd><p><strong>*WIP: need to fully test this sensor*</strong>
-Captures agent’s view.</p>
-<p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
-The resolution can be increased, but will significantly impact performance.</p>
-<p><strong>Configuration</strong></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
-options:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CaptureWidth</span></code> (int): Width of captured image</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CaptureHeight</span></code> (int): Height of captured image</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FovAngle</span></code> (float): FOV of the Camera (default: 90, min: 0.001, max: 360.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TargetGamma</span></code> (float): Target Gamma of the Camera (default: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMethod</span></code> (string): Luminance computation method. Four options: <code class="docutils literal notranslate"><span class="pre">AEM_Histogram</span></code>, <code class="docutils literal notranslate"><span class="pre">AEM_Basic</span></code>, <code class="docutils literal notranslate"><span class="pre">AEM_Manual</span></code>, and <code class="docutils literal notranslate"><span class="pre">AEM_MAX</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ExposureCompensation</span></code> (float): Logarithmic adjustment for the exposure. Only used if a tonemapper is specified.  Exposure compensation. Pretested worlds we decided that 4 looked the best (default: 4, min: -15.0, max: 15.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ShutterSpeed</span></code> (float): The camera shutter in seconds. In Unreal, this only affects exposure. (default: 60, min: 1.0, max: 2000.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ISO</span></code> (float): The camera sensor sensitivity in ISO. (default: 100.0, min: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Aperature</span></code> (float): Defines the opening of the camera lens, Aperture is 1/fstop, typical lens go down to f/1.2 (large opening), larger numbers reduce the DOF effect (default: 4.0, min: 1.0, max: 32.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FocalDistance</span></code> (float): Distance in which the Depth of Field effect should be sharp, in unreal units (cm) (default: disabled (i.e. 0.0 in Unreal), min: 0.0, max: 10000.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DepthBlurAmount</span></code> (float): Depth Blur km for 50% (default: disabled (but set to 1.0), min: 0.000001, max: 100.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DepthBlurRadius</span></code> (float): CircleDOF only: Depth blur radius in pixels at 1920x  (default: 0.0. min: 0.0, max: 4.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">BladeCount</span></code> (int): Depth of Field Blade Count.  Defines the number of blades of the diaphragm within the lens (min: 4, max: 16)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DepthOfFieldMinFstop</span></code> (float): Defines the maximum opening of the camera lens to control the curvature of blades of the diaphragm. Set it to 0 to get straight blades. (min: 0.0, max: 32.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FilmSlope</span></code> (float): Film Slope (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FilmToe</span></code> (float): Film Toe (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FilmShoulder</span></code> (float): Overrides the base Film Shoulder (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FilmBlackClip</span></code> (float): Overrides the baseFilm Black Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FilmWhiteClip</span></code> (float): Overrides the baseFile White Clip (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMinBrightness</span></code> (float): Auto-Exposure minimum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ExposureMaxBrightness</span></code> (float):  Auto-Exposure maximum adaptation. Eye Adaptation is disabled if Min = Max. (default: disabled, min: -10.0, max: 20.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedDown</span></code> (float): Overrides base auto exposure speed down (default: disabled, min: 0.02, max: 20.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ExposureSpeedUp</span></code> (float): Overrides base auto exposure speed up (default: disabled, min: 0.02, max: 20.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurIntensity</span></code> (float): <strong>Strength of motion blur, 0:off</strong> (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMaxDistortion</span></code> (float): max distortion caused by motion blur, in percent of the screen width, 0:off  (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MotionBlurMinObjectScreenSize</span></code> (float): The minimum projected screen radius for a primitive to be drawn in the velocity pass, percentage of screen width. smaller numbers cause more draw calls, default: 4% (default: 2, min: 0.0, max: 100.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LensFlareIntensity</span></code> (float): Brightness scale of the image cased lens flares (linear) (default: disabled, min: 0.0, max: 16.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">BloomIntensity</span></code> (float): Multiplier for all bloom contributions &gt;=0: off, 1(default), &gt;1 brighter (default: 1.0, min: 0.0, max: 8.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">WhiteTemp</span></code> (float): Color Grading Temperature (default: disabled, min: 1500.0, max: 15000.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">WhiteTint</span></code> (float): Color Grading Tint (default: disabled, min: -1.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChromAberrIntensity</span></code> (float): in percent, Scene chromatic aberration / color fringe (camera imperfection) to simulate an artifact that happens in real-world lens, mostly visible in the image corners. (default: disabled, min: 0.0, max: 5.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChromAberrOffset</span></code> (float): A normalized distance to the center of the framebuffer where the effect takes place. (default: disabled, min: 0.0, max: 1.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MaxViewDistanceOverride</span></code> (float): if &gt; 0, sets a maximum render distance override.  Can be used to cull distant objects from a reflection if the reflecting plane is in an enclosed area like a hallway or room (default: disabled, min: 100, max: 10000)</p></li>
-</ul>
-<p><strong>Attributes:</strong></p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBDCamera.data_shape" title="holoocean.sensors.RGBDCamera.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
-<td><p>The shape of the sensor data</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RGBDCamera.dtype" title="holoocean.sensors.RGBDCamera.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
-<td><p>The type of data in the sensor</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBDCamera.sensor_data" title="holoocean.sensors.RGBDCamera.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
-<td><p>Get the sensor data buffer</p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Methods:</strong></p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RGBDCamera.set_ticks_per_capture" title="holoocean.sensors.RGBDCamera.set_ticks_per_capture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ticks_per_capture</span></code></a>(ticks_per_capture)</p></td>
-<td><p>Sets this RGBDCamera to capture a new frame every ticks_per_capture.</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py property">
-<dt class="sig sig-object py" id="holoocean.sensors.RGBDCamera.data_shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RGBDCamera.data_shape" title="Permalink to this definition"></a></dt>
-<dd><p>The shape of the sensor data</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Sensor data shape</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py property">
-<dt class="sig sig-object py" id="holoocean.sensors.RGBDCamera.dtype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RGBDCamera.dtype" title="Permalink to this definition"></a></dt>
-<dd><p>The type of data in the sensor</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Type of sensor data</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>numpy dtype</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py property">
-<dt class="sig sig-object py" id="holoocean.sensors.RGBDCamera.sensor_data">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sensor_data</span></span><a class="headerlink" href="#holoocean.sensors.RGBDCamera.sensor_data" title="Permalink to this definition"></a></dt>
-<dd><p>Get the sensor data buffer</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Current sensor data</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> of size <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.data_shape</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="holoocean.sensors.RGBDCamera.set_ticks_per_capture">
-<span class="sig-name descname"><span class="pre">set_ticks_per_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RGBDCamera.set_ticks_per_capture" title="Permalink to this definition"></a></dt>
-<dd><p>Sets this RGBDCamera to capture a new frame every ticks_per_capture.</p>
-<p>The sensor’s image will remain unchanged between captures.</p>
-<p>This method must be called after every call to env.reset.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ticks_per_capture</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The amount of ticks to wait between camera captures.</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
-<dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RangeFinderSensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RangeFinderSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RangeFinderSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RangeFinderSensor" title="Permalink to this definition"></a></dt>
 <dd><p>Returns distances to nearest collisions in the directions specified by
@@ -1523,27 +1522,31 @@ following options:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RaycastLidar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastLidar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastLidar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastLidar" title="Permalink to this definition"></a></dt>
-<dd><p><strong>*WIP: need to fully test this sensor*</strong>
-Runs Agent’s Lidar</p>
+<dd><p>Runs Agent’s Lidar</p>
+<p>Returns a 2D numpy array of shape <code class="docutils literal notranslate"><span class="pre">[num_points,</span> <span class="pre">5]</span></code> where the rows contain:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>: 3D coordinates of the point in the world in meters (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intensity</span></code>: Intensity of the point (a float between 0 and 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ring</span></code>: Ring index or channel of the point (0 to number of channels-1)</p></li>
+</ul>
 <p><strong>Configuration</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Channels</span></code> (int): Number of lasers (default: 32)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Range</span></code> (float): How far each of the lasers can go (default: 500.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Range</span></code> (float): How far each of the lasers can go in meters (default: 500.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PointsPerSecond</span></code> (int): Number of points per second (default: 56000)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RotationFrequency</span></code> (float): Lidar rotation frequency (default: 10.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UpperFovLimit</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 10.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LowerFovLimit</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: -30.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">HorizontalFov</span></code> (float): Horizontal field of view (default: 360.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AtmospAttenRate</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0.004)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RandomSeed</span></code> (int): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UpperFovLimit</span></code> (float): Upper laser angle in degrees, counts from horizontal, positive values mean above horizontal line (default: 10.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LowerFovLimit</span></code> (float): Lower laser angle in degrees, counts from horizontal, negative values mean below horizontal line (default: -30.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HorizontalFov</span></code> (float): Horizontal field of view in degrees (default: 360.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AtmospAttenRate</span></code> (float): Atmospheric attenuation rate in m^-1. Used to calculate atmospheric effects on intensity based on the equation I = e^(-AtmospAttenRate * d) (default: 0.4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RandomSeed</span></code> (int): Random seed for noise/drop-off generation (default: 0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DropOffGenRate</span></code> (float): General drop off rate (default: 0.45)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DropOffGenRate</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0.45)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DropOffIntensityLimit</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0.8)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DropOffAtZeroIntensity</span></code> (float): General drop off rate. (default: 0.4)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ShowDebugPoints</span></code> (bool): Whether to show debug points of laser hits in simulator. (default: false)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NoiseStdDev</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DropOffIntensityLimit</span></code> (float): Intensity value below which intensity-based-drop-off starts. Between 0 and 1 (default: 0.8)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DropOffAtZeroIntensity</span></code> (float): Drop-off rate at zero intensity. Between 0 and 1 (default: 0.4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShowDebugPoints</span></code> (bool): Whether to show debug points of laser hits in simulator (default: false)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NoiseStdDev</span></code> (float): Standard deviation of the zero mean gaussian noise applied to each point in m (default: 0)</p></li>
 </ul>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -1556,6 +1559,14 @@ options:</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastLidar.sensor_data" title="holoocean.sensors.RaycastLidar.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
 <td><p>Get the sensor data buffer</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastLidar.set_ticks_per_capture" title="holoocean.sensors.RaycastLidar.set_ticks_per_capture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ticks_per_capture</span></code></a>(ticks_per_capture)</p></td>
+<td><p>Sets this RaycastLidar to capture a new frame every ticks_per_capture.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1598,31 +1609,49 @@ options:</p>
 </dd>
 </dl>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastLidar.set_ticks_per_capture">
+<span class="sig-name descname"><span class="pre">set_ticks_per_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastLidar.set_ticks_per_capture" title="Permalink to this definition"></a></dt>
+<dd><p>Sets this RaycastLidar to capture a new frame every ticks_per_capture.</p>
+<p>The sensor’s image will remain unchanged between captures.</p>
+<p>This method must be called after every call to env.reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ticks_per_capture</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The amount of ticks to wait between camera captures.</p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RaycastSemanticLidar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastSemanticLidar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastSemanticLidar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastSemanticLidar" title="Permalink to this definition"></a></dt>
-<dd><p><strong>*WIP: need to fully test this sensor*</strong>
-Runs Agent’s Lidar</p>
+<dd><p>Runs Agent’s Semantic Lidar</p>
+<p>Returns a 2D numpy array of shape <code class="docutils literal notranslate"><span class="pre">[num_points,</span> <span class="pre">7]</span></code> where the rows contain:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code>: 3D coordinates of the point in the world in meters (see <a class="reference internal" href="../usage/units-and-coordinates.html#coordinate-system"><span class="std std-ref">Coordinate System</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intensity</span></code>: Intensity of the point (a float between 0 and 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ring</span></code>: Ring index or channel of the point (0 to Channels-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">objectID</span></code>: ID of the object the point belongs to (int)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">objectTag</span></code>: Tag of the object the point belongs to (int)</p></li>
+</ul>
 <p><strong>Configuration</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
 options:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Channels</span></code> (int): Number of lasers (default: 32)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Range</span></code> (float): How far each of the lasers can go (default: 500.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Range</span></code> (float): How far each of the lasers can go in meters (default: 500.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PointsPerSecond</span></code> (int): Number of points per second (default: 56000)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RotationFrequency</span></code> (float): Lidar rotation frequency (default: 10.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">UpperFovLimit</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 10.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LowerFovLimit</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: -30.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UpperFovLimit</span></code> (float): Upper laser angle in degrees, counts from horizontal, positive values mean above horizontal line (default: 10.0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LowerFovLimit</span></code> (float): Lower laser angle in degrees, counts from horizontal, negative values mean below horizontal line (default: -30.0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">HorizontalFov</span></code> (float): Horizontal field of view (default: 360.0)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AtmospAttenRate</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0.004)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RandomSeed</span></code> (int): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AtmospAttenRate</span></code> (float): Atmospheric attenuation rate in m^-1. Used to calculate atmospheric effects on intensity based on the equation I = e^(-AtmospAttenRate * d) (default: 0.4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RandomSeed</span></code> (int): Random seed for noise/drop-off generation (default: 0)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DropOffGenRate</span></code> (float): General drop off rate (default: 0.45)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DropOffGenRate</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0.45)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DropOffIntensityLimit</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0.8)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DropOffAtZeroIntensity</span></code> (float): General drop off rate. (default: 0.4)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ShowDebugPoints</span></code> (bool): Whether to show debug points of laser hits in simulator. (default: false)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NoiseStdDev</span></code> (float): Upper laser angle, counts from horizontal, positive values means above horizontal line (default: 0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DropOffIntensityLimit</span></code> (float): Intensity value below which intensity-based-drop-off starts. Between 0 and 1 (default: 0.8)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DropOffAtZeroIntensity</span></code> (float): Drop-off rate at zero intensity. Between 0 and 1 (default: 0.4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ShowDebugPoints</span></code> (bool): Whether to show debug points of laser hits in simulator (default: false)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NoiseStdDev</span></code> (float): Standard deviation of the zero mean gaussian noise applied to each point in meters (default: 0)</p></li>
 </ul>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
@@ -1635,6 +1664,14 @@ options:</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar.sensor_data" title="holoocean.sensors.RaycastSemanticLidar.sensor_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensor_data</span></code></a></p></td>
 <td><p>Get the sensor data buffer</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar.set_ticks_per_capture" title="holoocean.sensors.RaycastSemanticLidar.set_ticks_per_capture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ticks_per_capture</span></code></a>(ticks_per_capture)</p></td>
+<td><p>Sets this RaycastSemanticLidar to capture a new frame every ticks_per_capture.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1674,6 +1711,18 @@ options:</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code> of size <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.data_shape</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastSemanticLidar.set_ticks_per_capture">
+<span class="sig-name descname"><span class="pre">set_ticks_per_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks_per_capture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastSemanticLidar.set_ticks_per_capture" title="Permalink to this definition"></a></dt>
+<dd><p>Sets this RaycastSemanticLidar to capture a new frame every ticks_per_capture.</p>
+<p>The sensor’s image will remain unchanged between captures.</p>
+<p>This method must be called after every call to env.reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ticks_per_capture</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The amount of ticks to wait between camera captures.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1724,8 +1773,7 @@ options:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.SemanticSegmentationCamera">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SemanticSegmentationCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SemanticSegmentationCamera'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SemanticSegmentationCamera" title="Permalink to this definition"></a></dt>
-<dd><p><strong>*WIP: need to fully test this sensor*</strong>
-Captures agent’s view.</p>
+<dd><p>Captures agent’s view.</p>
 <p>The default capture resolution is 256x256x256x4, corresponding to the RGBA channels.
 The resolution can be increased, but will significantly impact performance.</p>
 <p><strong>Configuration</strong></p>

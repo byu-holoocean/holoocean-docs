@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Getting Started — HoloOcean 2.2.2 documentation</title>
+<title>Getting Started — HoloOcean 2.3.0 documentation</title>
 <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
@@ -289,8 +289,12 @@ for more information on logging in Unreal Engine.</p>
 <h2>Code Formatting<a class="headerlink" href="#code-formatting" title="Permalink to this heading"></a></h2>
 <p>If you are going to pull request changes to the C++ or Python code, please ensure that your code is properly
 formatted.
-Python code should be formatted using <a class="reference external" href="https://black.readthedocs.io/en/stable/">black</a> and C++ code should be
-formatted using the provided clang-format configuration, based on the UE style guide.</p>
+Python code should be formatted using <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> and C++ code should be
+formatted using the provided clang-format configuration, based on the UE style guide.
+To format with c++, you can run the following command from engine/ue5-clang-format-file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>../Source<span class="w"> </span>-iname<span class="w"> </span><span class="s2">"*.h"</span><span class="w"> </span>-o<span class="w"> </span>-iname<span class="w"> </span><span class="s2">"*.cpp"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>clang-format<span class="w"> </span>-style<span class="o">=</span>file<span class="w"> </span>-i
+</pre></div>
+</div>
 </section>
 </section>
 </div>

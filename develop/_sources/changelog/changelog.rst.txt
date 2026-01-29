@@ -12,6 +12,33 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean 2.3.0
+===============
+*1/29/2026*
+
+New Features
+------------
+
+- Added raycasting and semantic raycasting lidar sensor
+- Added depth camera sensor
+- Added semantic segmentation camera sensor
+- Added BusinessCampus world package
+
+Changes
+-------
+
+- C++ and Python formatter enforcer
+- Documentation for custom worlds with semantic labels
+- Update currents tests
+- Update vehicle control tests
+
+Bug Fixes
+---------
+
+- Fixed GPS sensor to account for tides
+- Fixed main agent declaration bug for viewport positioning 
+
+
 HoloOcean 2.2.2
 ===============
 *11/12/2025*
