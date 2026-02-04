@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Scenarios — HoloOcean 2.3.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../_static/doctools.js?v=9a2dae69"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -122,7 +122,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="scenarios">
-<span id="id1"></span><h1>Scenarios<a class="headerlink" href="#scenarios" title="Permalink to this heading"></a></h1>
+<span id="id1"></span><h1>Scenarios<a class="headerlink" href="#scenarios" title="Link to this heading"></a></h1>
 <p>When you call <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code> to create an environment, you pass in the
 name of a scenario, eg. <code class="docutils literal notranslate"><span class="pre">holoocean.make("Pier-Hovering")</span></code>. A scenario tells
 HoloOcean:</p>
@@ -142,7 +142,7 @@ robotics tasks, distributed as <code class="docutils literal notranslate"><span 
 can be created using a dictionary in a Python script or by creating a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file.
 Both methods follow the same format, described below.</p>
 <section id="scenario-file-format">
-<span id="scenario-files"></span><h2>Scenario File Format<a class="headerlink" href="#scenario-file-format" title="Permalink to this heading"></a></h2>
+<span id="scenario-files"></span><h2>Scenario File Format<a class="headerlink" href="#scenario-file-format" title="Link to this heading"></a></h2>
 <p>Scenario <code class="docutils literal notranslate"><span class="pre">.json</span></code> files are distributed in packages (see <a class="reference internal" href="../packages/docs/package-structure.html#package-contents"><span class="std std-ref">Package Contents</span></a>), and
 must be named <code class="docutils literal notranslate"><span class="pre">{WorldName}-{ScenarioName}.json</span></code>. By default they are stored in the
 <code class="docutils literal notranslate"><span class="pre">worlds/{PackageName}</span></code> directory (see <a class="reference internal" href="../packages/docs/installation.html#package-locations"><span class="std std-ref">Package Installation Location</span></a>).</p>
@@ -175,7 +175,7 @@ provided.</p>
 </div>
 <p>Below is a description of some of the keys in the scenario dictionary.</p>
 <section id="name-and-world">
-<h3>Name and World<a class="headerlink" href="#name-and-world" title="Permalink to this heading"></a></h3>
+<h3>Name and World<a class="headerlink" href="#name-and-world" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">name</span></code> is a string that specifies the name of the scenario.</dt><dd><p>This name is part of the string passed to <code class="docutils literal notranslate"><span class="pre">holoocean.make()</span></code> to create an environment.</p>
@@ -191,7 +191,7 @@ provided.</p>
 </ul>
 </section>
 <section id="agent-objects">
-<h3>Agent Objects<a class="headerlink" href="#agent-objects" title="Permalink to this heading"></a></h3>
+<h3>Agent Objects<a class="headerlink" href="#agent-objects" title="Link to this heading"></a></h3>
 <p>HoloOcean agents are declared in a list in the scenario dictionary. Each agent is defined using a
 new dictionary in the list.</p>
 <p>Below is an example of an agent configuration. For detailed descriptions of the keys and values,
@@ -214,7 +214,7 @@ see <a class="reference internal" href="../agents/docs/agent-config.html#agent-c
 </div>
 </section>
 <section id="sensor-objects">
-<h3>Sensor Objects<a class="headerlink" href="#sensor-objects" title="Permalink to this heading"></a></h3>
+<h3>Sensor Objects<a class="headerlink" href="#sensor-objects" title="Link to this heading"></a></h3>
 <p>Each agent can be equipped with one or more sensors, including cameras and sonar. Sensor definition
 happens within each agent definition.</p>
 <p>Below is an example of a sensor definition. For detailed descriptions of the keys and values, see
@@ -237,7 +237,7 @@ happens within each agent definition.</p>
 </div>
 </section>
 <section id="frame-rates">
-<span id="configure-framerate"></span><h3>Frame Rates<a class="headerlink" href="#frame-rates" title="Permalink to this heading"></a></h3>
+<span id="configure-framerate"></span><h3>Frame Rates<a class="headerlink" href="#frame-rates" title="Link to this heading"></a></h3>
 <p>The frame rate in HoloOcean is controlled using two parameters: <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code> and
 <code class="docutils literal notranslate"><span class="pre">frames_per_sec</span></code>.</p>
 <ul>
@@ -268,7 +268,7 @@ framerate is unlimited. In this case, capping <code class="docutils literal notr
 newly desired frames/ticks per second.</p>
 </section>
 <section id="octree-configuration">
-<span id="configure-octree"></span><h3>Octree Configuration<a class="headerlink" href="#octree-configuration" title="Permalink to this heading"></a></h3>
+<span id="configure-octree"></span><h3>Octree Configuration<a class="headerlink" href="#octree-configuration" title="Link to this heading"></a></h3>
 <p>When using a form of sonar sensor and initializing the world, an Octree will either be
 created or loaded from a cache. The parameters of these can be set using the <code class="docutils literal notranslate"><span class="pre">env_min</span></code>,
 <code class="docutils literal notranslate"><span class="pre">env_max</span></code>, <code class="docutils literal notranslate"><span class="pre">octree_min</span></code>, and <code class="docutils literal notranslate"><span class="pre">octree_max</span></code>. The octrees are cached in the <code class="docutils literal notranslate"><span class="pre">Linux/Holodeck/Octrees</span></code> folder
@@ -280,7 +280,7 @@ can go as low as .01 (1cm), and then the octree will double in size until it rea
 <p>For more information about Octrees, see <a class="reference internal" href="../sensors/docs/octree.html#octree"><span class="std std-ref">Octree Generation</span></a>.</p>
 </section>
 <section id="other-scenario-parameters">
-<h3>Other Scenario Parameters<a class="headerlink" href="#other-scenario-parameters" title="Permalink to this heading"></a></h3>
+<h3>Other Scenario Parameters<a class="headerlink" href="#other-scenario-parameters" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">window_width/height</span></code> control the size of the viewport window opened when an environment is created.</dt><dd><p>Sizes are in pixels.</p>
@@ -296,7 +296,7 @@ can go as low as .01 (1cm), and then the octree will double in size until it rea
 </section>
 </section>
 <section id="accessing-and-modifying-pre-built-scenarios">
-<h2>Accessing and Modifying Pre-Built Scenarios<a class="headerlink" href="#accessing-and-modifying-pre-built-scenarios" title="Permalink to this heading"></a></h2>
+<h2>Accessing and Modifying Pre-Built Scenarios<a class="headerlink" href="#accessing-and-modifying-pre-built-scenarios" title="Link to this heading"></a></h2>
 <p>Configurations for pre-built scenarios can be found by reading the associated <code class="docutils literal notranslate"><span class="pre">.json</span></code> file.
 These are located in the worlds package folder (see <a class="reference internal" href="../packages/docs/installation.html#package-locations"><span class="std std-ref">Package Installation Location</span></a>).</p>
 <p>Sometimes it is helpful to extract specific parameters from a pre-made scenario for use within
@@ -326,11 +326,11 @@ scenario:</p>
 </div>
 </section>
 <section id="making-custom-scenarios">
-<span id="custom-scenarios"></span><h2>Making Custom Scenarios<a class="headerlink" href="#making-custom-scenarios" title="Permalink to this heading"></a></h2>
+<span id="custom-scenarios"></span><h2>Making Custom Scenarios<a class="headerlink" href="#making-custom-scenarios" title="Link to this heading"></a></h2>
 <p>You can create custom scenarios in two ways: with a dictionary in a Python script, or by
 creating a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file. Both methods follow the same format as described in the section above.</p>
 <section id="using-a-dictionary-for-a-scenario-config">
-<h3>Using a Dictionary for a Scenario Config<a class="headerlink" href="#using-a-dictionary-for-a-scenario-config" title="Permalink to this heading"></a></h3>
+<h3>Using a Dictionary for a Scenario Config<a class="headerlink" href="#using-a-dictionary-for-a-scenario-config" title="Link to this heading"></a></h3>
 <p>Create a dictionary in Python that matches the structure specified in <a class="reference internal" href="#scenario-files"><span class="std std-ref">Scenario File Format</span></a>,
 and pass it in to <code class="xref py py-func docutils literal notranslate"><span class="pre">holoocean.make()</span></code> using the <code class="docutils literal notranslate"><span class="pre">scenario_cfg</span></code> variable.</p>
 <p>An example is given below:</p>
@@ -369,7 +369,7 @@ and pass it in to <code class="xref py py-func docutils literal notranslate"><sp
 </div>
 </section>
 <section id="using-a-json-file-for-a-scenario-config">
-<h3>Using a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file for a Scenario Config<a class="headerlink" href="#using-a-json-file-for-a-scenario-config" title="Permalink to this heading"></a></h3>
+<h3>Using a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file for a Scenario Config<a class="headerlink" href="#using-a-json-file-for-a-scenario-config" title="Link to this heading"></a></h3>
 <p>You can specify a custom scenario by creating a <code class="docutils literal notranslate"><span class="pre">.json</span></code> file that follows
 the format given in <a class="reference internal" href="#scenario-files"><span class="std std-ref">Scenario File Format</span></a> and either:</p>
 <ol class="arabic simple">

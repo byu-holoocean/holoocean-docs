@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Biomass, Salinity, and Temperature (BST) Sensor — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -124,7 +124,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="biomass-salinity-and-temperature-bst-sensor">
-<h1>Biomass, Salinity, and Temperature (BST) Sensor<a class="headerlink" href="#biomass-salinity-and-temperature-bst-sensor" title="Permalink to this heading"></a></h1>
+<h1>Biomass, Salinity, and Temperature (BST) Sensor<a class="headerlink" href="#biomass-salinity-and-temperature-bst-sensor" title="Link to this heading"></a></h1>
 <p>Simulates the distribution and sampling of biomass, salinity, and temperature throughout a world based on real data.</p>
 <p>See <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> for an example of how to use this sensor.</p>
 <p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.BSTSensor" title="holoocean.sensors.BSTSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BSTSensor</span></code></a> for the Python API.</p>
@@ -133,7 +133,7 @@ the beginning of your script. More info on customizing the BST sensor found in t
 and the API docs:
 <code class="docutils literal notranslate"><span class="pre">set_temperature_function(new_function)</span></code> where “new_function” is a pointer to your custom function that takes in only the parameter “location” (3 element array)</p>
 <section id="graphing">
-<h2>Graphing<a class="headerlink" href="#graphing" title="Permalink to this heading"></a></h2>
+<h2>Graphing<a class="headerlink" href="#graphing" title="Link to this heading"></a></h2>
 <p>There is an implementation for graphing BST data live by calling the following commands:
 <code class="docutils literal notranslate"><span class="pre">visualizer</span> <span class="pre">=</span> <span class="pre">env.initialize_bst_graphs()</span></code>, with different graphing parameters found in the API docs and in the example
 <code class="docutils literal notranslate"><span class="pre">visualizer.update(location)</span></code>, where location is the live location taken from the location sensor</p>
@@ -154,7 +154,7 @@ by altering the environment scenario configuration. Finally, the last example de
 and temperature.</p>
 </section>
 <section id="default-biomass-salinity-and-temperature">
-<h2>Default Biomass, Salinity, and Temperature<a class="headerlink" href="#default-biomass-salinity-and-temperature" title="Permalink to this heading"></a></h2>
+<h2>Default Biomass, Salinity, and Temperature<a class="headerlink" href="#default-biomass-salinity-and-temperature" title="Link to this heading"></a></h2>
 <img alt="../../_images/DefaultBST.PNG" src="../../_images/DefaultBST.PNG"/>
 <p>Default Configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
@@ -188,7 +188,7 @@ and temperature.</p>
 </div>
 </section>
 <section id="customized-configuration">
-<h2>Customized Configuration<a class="headerlink" href="#customized-configuration" title="Permalink to this heading"></a></h2>
+<h2>Customized Configuration<a class="headerlink" href="#customized-configuration" title="Link to this heading"></a></h2>
 <img alt="../../_images/CustomConfigBST.PNG" src="../../_images/CustomConfigBST.PNG"/>
 <p>Customized Configuration Parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -246,7 +246,7 @@ and temperature.</p>
 </div>
 </section>
 <section id="custom-functions">
-<h2>Custom Functions<a class="headerlink" href="#custom-functions" title="Permalink to this heading"></a></h2>
+<h2>Custom Functions<a class="headerlink" href="#custom-functions" title="Link to this heading"></a></h2>
 <p>Because implementing custom functions involves more than just changing config parameters, we’ve only included the
 custom functions that were passed into our <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.initialize_bst_graphs</span></code> function call. If you’d
 like to see the full implementation for custom functions, see the <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> example.</p>

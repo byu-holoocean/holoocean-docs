@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Getting Started — HoloOcean 2.3.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../_static/doctools.js?v=9a2dae69"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -112,7 +112,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="getting-started">
-<span id="develop-start"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<span id="develop-start"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The steps in this page are only necessary if you want to change HoloOcean’s C++ code or if
@@ -143,7 +143,7 @@ numpy version 1. Please ensure you are using the version of numpy appropriate fo
 HoloOcean you are using.</p>
 </div>
 <section id="cloning">
-<h2>Cloning<a class="headerlink" href="#cloning" title="Permalink to this heading"></a></h2>
+<h2>Cloning<a class="headerlink" href="#cloning" title="Link to this heading"></a></h2>
 <p>For running holoocean live, you’ll need to setup both the C++ and Python portions of HoloOcean.</p>
 <blockquote>
 <div><ul class="simple">
@@ -163,7 +163,7 @@ Make sure not to skip this step - reinstalling the package is necessary to apply
 switching branches.</p>
 </section>
 <section id="opening-prepping-project">
-<h2>Opening &amp; Prepping Project<a class="headerlink" href="#opening-prepping-project" title="Permalink to this heading"></a></h2>
+<h2>Opening &amp; Prepping Project<a class="headerlink" href="#opening-prepping-project" title="Link to this heading"></a></h2>
 <p>To open the HoloOcean project in the Unreal Editor, find the <code class="docutils literal notranslate"><span class="pre">holodeck.uproject</span></code> file in the
 <code class="docutils literal notranslate"><span class="pre">holoocean/engine</span></code> directory. Double-click this file, and choose “5.3” if an engine version dialog
 opens up. Alternatively, open the Unreal Editor and select “Open Project” from the main menu.</p>
@@ -179,7 +179,7 @@ If you do, click “yes” to all of them.</p>
 you should get a success popup in the lower right.</p>
 </section>
 <section id="setting-up-vscode">
-<h2>Setting up VSCode<a class="headerlink" href="#setting-up-vscode" title="Permalink to this heading"></a></h2>
+<h2>Setting up VSCode<a class="headerlink" href="#setting-up-vscode" title="Link to this heading"></a></h2>
 <p>If you would like to use VSCode instead of Visual Studio for HoloOcean, you can do the following:</p>
 <ul class="simple">
 <li><p>In Unreal Editor, Go to Edit -&gt; Editor Preferences</p></li>
@@ -190,7 +190,7 @@ you should get a success popup in the lower right.</p>
 </ul>
 </section>
 <section id="compiling">
-<span id="develop-compiling"></span><h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this heading"></a></h2>
+<span id="develop-compiling"></span><h2>Compiling<a class="headerlink" href="#compiling" title="Link to this heading"></a></h2>
 <p>You need to recompile the project after making any changes to the C++ code.</p>
 <p>Generally you can compile by clicking the “Compile” button in Unreal Editor at the bottom-right
 corner of the screen. It might be hidden if your screen isn’t wide enough. To ensure it compiles
@@ -207,7 +207,7 @@ on the Solution on the right hand side of the screen and select “Build Solutio
 <img alt="../_images/build-in-visual-studio.png" src="../_images/build-in-visual-studio.png"/>
 </section>
 <section id="launching-game-live">
-<span id="live-game"></span><h2>Launching Game Live<a class="headerlink" href="#launching-game-live" title="Permalink to this heading"></a></h2>
+<span id="live-game"></span><h2>Launching Game Live<a class="headerlink" href="#launching-game-live" title="Link to this heading"></a></h2>
 <p>To avoid having to package the project anytime you want to see changes to your code, you can play the
 game live from Unreal Editor and then attached your Python code to it. This is referred to as “running
 in standalone”. This is a multi-step process, as follows.</p>
@@ -277,7 +277,7 @@ opening/closing terminals with the correct conda environment.</p>
 </div>
 </section>
 <section id="logging">
-<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading"></a></h2>
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
 <p>Using Unreal’s log functionality is a simple way to debug code at runtime. <a class="reference external" href="https://unrealcommunity.wiki/logging-lgpidy6i">Here</a> is a good tutorial on sending things to the Unreal
 log.</p>
 <p>This log will be saved in holoocean/engine/Saved/Logs if you want to see it later. To view the logs
@@ -286,7 +286,7 @@ in the Unreal Editor, go to Window -&gt; Output Log.</p>
 for more information on logging in Unreal Engine.</p>
 </section>
 <section id="code-formatting">
-<h2>Code Formatting<a class="headerlink" href="#code-formatting" title="Permalink to this heading"></a></h2>
+<h2>Code Formatting<a class="headerlink" href="#code-formatting" title="Link to this heading"></a></h2>
 <p>If you are going to pull request changes to the C++ or Python code, please ensure that your code is properly
 formatted.
 Python code should be formatted using <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> and C++ code should be

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Installing &amp; Managing Packages — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -108,9 +108,9 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="installing-managing-packages">
-<h1>Installing &amp; Managing Packages<a class="headerlink" href="#installing-managing-packages" title="Permalink to this heading"></a></h1>
+<h1>Installing &amp; Managing Packages<a class="headerlink" href="#installing-managing-packages" title="Link to this heading"></a></h1>
 <section id="package-installation-location">
-<span id="package-locations"></span><h2>Package Installation Location<a class="headerlink" href="#package-installation-location" title="Permalink to this heading"></a></h2>
+<span id="package-locations"></span><h2>Package Installation Location<a class="headerlink" href="#package-installation-location" title="Link to this heading"></a></h2>
 <p>HoloOcean packages are by default saved in the current user profile, depending
 on the platform.</p>
 <table class="docutils align-default">
@@ -135,7 +135,7 @@ causing version incompatibility conflicts.</p>
 <p>Each folder inside the worlds folder is considered a seperate package, so it
 must match the format of the archive described in <a class="reference internal" href="package-structure.html#package-contents"><span class="std std-ref">Package Contents</span></a>.</p>
 <section id="overriding-location">
-<h3>Overriding Location<a class="headerlink" href="#overriding-location" title="Permalink to this heading"></a></h3>
+<h3>Overriding Location<a class="headerlink" href="#overriding-location" title="Link to this heading"></a></h3>
 <p>The environment variable <code class="docutils literal notranslate"><span class="pre">HOLODECKPATH</span></code> can be set to override the default
 location given above.</p>
 <div class="admonition caution">
@@ -147,12 +147,12 @@ packages that are compatible with your version of HoloOcean.</p>
 </section>
 </section>
 <section id="managing-world-packages">
-<h2>Managing World Packages<a class="headerlink" href="#managing-world-packages" title="Permalink to this heading"></a></h2>
+<h2>Managing World Packages<a class="headerlink" href="#managing-world-packages" title="Link to this heading"></a></h2>
 <p>The default option for managing packages is to use <code class="docutils literal notranslate"><span class="pre">holoocean.install()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">holoocean.remove()</span></code>. These functions can be used to install and remove any packages
 managed by the HoloOcean team (currently only the Ocean package).</p>
 <section id="install-a-package-automatically">
-<h3>Install a Package Automatically<a class="headerlink" href="#install-a-package-automatically" title="Permalink to this heading"></a></h3>
+<h3>Install a Package Automatically<a class="headerlink" href="#install-a-package-automatically" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">holoocean</span></code> Python package includes a <a class="reference internal" href="../../holoocean/packagemanager.html#packagemanager"><span class="std std-ref">Package Manager</span></a> that can be used independently.
 Below are some example usages, but see <a class="reference internal" href="../../holoocean/packagemanager.html#packagemanager"><span class="std std-ref">Package Manager</span></a> for complete documentation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">holoocean</span><span class="w"> </span><span class="kn">import</span> <span class="n">packagemanager</span>
@@ -172,7 +172,7 @@ Below are some example usages, but see <a class="reference internal" href="../..
 </div>
 </section>
 <section id="manually-installing-a-package">
-<h3>Manually Installing a Package<a class="headerlink" href="#manually-installing-a-package" title="Permalink to this heading"></a></h3>
+<h3>Manually Installing a Package<a class="headerlink" href="#manually-installing-a-package" title="Link to this heading"></a></h3>
 <p>Packages developed by users can be installed for use with the HoloOcean library. To manually
 install a package, you will be provided a <code class="docutils literal notranslate"><span class="pre">.zip</span></code> file. Extract it into the <code class="docutils literal notranslate"><span class="pre">worlds</span></code> folder
 in your HoloOcean installation location.</p>
@@ -202,7 +202,7 @@ in your HoloOcean installation location.</p>
 </div>
 </section>
 <section id="print-information">
-<h3>Print Information<a class="headerlink" href="#print-information" title="Permalink to this heading"></a></h3>
+<h3>Print Information<a class="headerlink" href="#print-information" title="Link to this heading"></a></h3>
 <p>There are several convenience functions provided to allow packages, worlds,
 and scenarios to be easily inspected.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">packagemanager</span><span class="o">.</span><span class="n">package_info</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Creating a Custom Level — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -123,12 +123,12 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="creating-a-custom-level">
-<span id="create-env"></span><h1>Creating a Custom Level<a class="headerlink" href="#creating-a-custom-level" title="Permalink to this heading"></a></h1>
+<span id="create-env"></span><h1>Creating a Custom Level<a class="headerlink" href="#creating-a-custom-level" title="Link to this heading"></a></h1>
 <p>For a custom level in HoloOcean, you must make a level using Unreal Engine. See the <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/levels-in-unreal-engine?application_version=5.3">Unreal Engine documentation</a> for
 more information on saving and creating a new level.</p>
 <p>There are 2 main aspects to our HoloOcean levels: the landscape, and the water.</p>
 <section id="landscape">
-<h2>Landscape<a class="headerlink" href="#landscape" title="Permalink to this heading"></a></h2>
+<h2>Landscape<a class="headerlink" href="#landscape" title="Link to this heading"></a></h2>
 <p>For help creating your own landscape, please reference <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/landscape-quick-start-guide-in-unreal-engine">Unreal Engine’s landscape documentation</a>.
 The documentation explains how to use the Landscape Mode within the editor, as well as how to apply and create materials for your landscape.</p>
 <div class="admonition note">
@@ -140,18 +140,18 @@ The documentation explains how to use the Landscape Mode within the editor, as w
 <img alt="../../_images/landscape-example.png" src="../../_images/landscape-example.png"/>
 </section>
 <section id="water">
-<h2>Water<a class="headerlink" href="#water" title="Permalink to this heading"></a></h2>
+<h2>Water<a class="headerlink" href="#water" title="Link to this heading"></a></h2>
 <p><strong>The Unreal Engine Water plugin is not compatible with HoloOcean and will not work.</strong> Instead, to achieve an underwater appearance,
 you will need to place a water plane and two PostProcessVolumes within your environment. Please note the following are suggested settings, and there may be others you would want to consider adjusting for your level.</p>
 <section id="water-plane">
-<h3>Water Plane<a class="headerlink" href="#water-plane" title="Permalink to this heading"></a></h3>
+<h3>Water Plane<a class="headerlink" href="#water-plane" title="Link to this heading"></a></h3>
 <p>For the water plane, place a plane actor at z=0. Change the material to be any water-like material. You will also need to change the collision settings so that vehicles can pass through the plane. In the Details panel, search for “collision” and set custom collision presets to ignore all options.</p>
 <img alt="../../_images/plane_settings.png" src="../../_images/plane_settings.png"/>
 <p>To make sure your water plane is compatible with our tide system, tag the water plane as “WaterSurface” and make the plane movable.</p>
 <img alt="../../_images/water_plane.png" src="../../_images/water_plane.png"/>
 </section>
 <section id="water-color-postprocessvolume-1">
-<h3>Water Color (PostProcessVolume 1)<a class="headerlink" href="#water-color-postprocessvolume-1" title="Permalink to this heading"></a></h3>
+<h3>Water Color (PostProcessVolume 1)<a class="headerlink" href="#water-color-postprocessvolume-1" title="Link to this heading"></a></h3>
 <p>For the PostProcessVolume, go to Place Actors ➡ Volumes ➡ Post Process Volume and drag it into your level. Adjust the scale of the volume to fit your entire underwater area. To adjust the color of the volume, go to the Details pannel ➡ Color Grading ➡ Misc ➡ “Scene Color Tint”.
 Blue to green colors are best, and the Dam environment has the “Scene Color Tint” set to Hex sRGB AAD9C8FF.</p>
 <p>As seen in the Dam environment, the water plane is a separate plane located at z=0. The red outline box that surrounds the environment is the PostProcessVolume.</p>
@@ -159,7 +159,7 @@ Blue to green colors are best, and the Dam environment has the “Scene Color Ti
 <p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">WaterPPV</span></code> so that the Water Fog Command and Tides Command function correctly.</p>
 </section>
 <section id="water-fog-postprocessvolume-2">
-<h3>Water Fog (PostProcessVolume 2)<a class="headerlink" href="#water-fog-postprocessvolume-2" title="Permalink to this heading"></a></h3>
+<h3>Water Fog (PostProcessVolume 2)<a class="headerlink" href="#water-fog-postprocessvolume-2" title="Link to this heading"></a></h3>
 <p>To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code> material.
 In the <strong>Details</strong> panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to <strong>Asset Reference</strong>, and select <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code>.
 Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Water_Simple</span></code>. .</p>
@@ -178,16 +178,16 @@ This keeps the original material’s settings intact for future use.</p>
 </section>
 </section>
 <section id="lighting">
-<h2>Lighting<a class="headerlink" href="#lighting" title="Permalink to this heading"></a></h2>
+<h2>Lighting<a class="headerlink" href="#lighting" title="Link to this heading"></a></h2>
 <p>If you created a Basic Level, the lighting should already be implemented automatically. Otherwise, go to Window ➡ Env. Light Mixer. From there, make sure to create all of the lighting options it gives you.</p>
 <p>As a quick check, make sure your level has the following: DirectionalLight, ExponentialHeightFog, SkyAtmosphere, SkyLight, and VolumetricCloud.</p>
 <p>To make sure the Exponential Height Fog will work with our Day Cycle settings, set the “Fog Inscattering Color” and “Directional Inscattering Color” to black. The “Fog Density” and “Fog Height Falloff” can be adjusted until it fits your needs.</p>
 <img alt="../../_images/exp_fog.png" src="../../_images/exp_fog.png"/>
 </section>
 <section id="adding-objects">
-<h2>Adding Objects<a class="headerlink" href="#adding-objects" title="Permalink to this heading"></a></h2>
+<h2>Adding Objects<a class="headerlink" href="#adding-objects" title="Link to this heading"></a></h2>
 <section id="obtaining-assets">
-<h3>Obtaining Assets<a class="headerlink" href="#obtaining-assets" title="Permalink to this heading"></a></h3>
+<h3>Obtaining Assets<a class="headerlink" href="#obtaining-assets" title="Link to this heading"></a></h3>
 <p>To populate your level with assets, you will either need to import your own assets or find assets on <a class="reference external" href="https://www.fab.com/">Fab</a>.</p>
 <p>To replicate similar levels as HoloOcean, we use the following asset packs:</p>
 <ul class="simple">
@@ -218,7 +218,7 @@ This keeps the original material’s settings intact for future use.</p>
 </ul>
 </section>
 <section id="importing-assets">
-<h3>Importing Assets<a class="headerlink" href="#importing-assets" title="Permalink to this heading"></a></h3>
+<h3>Importing Assets<a class="headerlink" href="#importing-assets" title="Link to this heading"></a></h3>
 <p>If you have purchased or obtained free assets from Fab, you can view them in the Epic Games Launcher under the Unreal Engine Library tab.
 Under the “Fab Library” section, you can click on “Add To Project” and select your project to add the assets.</p>
 <p>If you are importing your own models, it is best to save them as FBX files. From there, you can click on the “Import” button from within the Unreal Engine editor and select your FBX file.
@@ -226,14 +226,14 @@ Please reference <a class="reference external" href="https://dev.epicgames.com/d
 for further help with importing assets.</p>
 </section>
 <section id="placing-assets">
-<h3>Placing Assets<a class="headerlink" href="#placing-assets" title="Permalink to this heading"></a></h3>
+<h3>Placing Assets<a class="headerlink" href="#placing-assets" title="Link to this heading"></a></h3>
 <p>From the Content Drawer, you can drag and drop your assets into your custom level. Or, you can select the icon of the cube with the green plus symbol to quickly add actors such as basic shapes to your level.</p>
 <img alt="../../_images/place-actor.png" src="../../_images/place-actor.png"/>
 <p>It is simple to move, rotate, and scale objects within your level. You can either directly edit these values within the Details panel or use keyboard shortcuts.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 42%"/>
-<col style="width: 58%"/>
+<col style="width: 41.7%"/>
+<col style="width: 58.3%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
@@ -256,12 +256,12 @@ for further help with importing assets.</p>
 </section>
 </section>
 <section id="enabling-semantic-labels">
-<h2>Enabling Semantic Labels<a class="headerlink" href="#enabling-semantic-labels" title="Permalink to this heading"></a></h2>
+<h2>Enabling Semantic Labels<a class="headerlink" href="#enabling-semantic-labels" title="Link to this heading"></a></h2>
 <p>HoloOcean allows world assets to be assigned a label. Sensors such as the Semantic Segmentation Camera use these labels to return semantic information to the agent for tasks such as image segmentation.</p>
 <p>To set up semantic labeling, please reference our tutorial here: <a class="reference internal" href="custom-semantics.html#semantic-segmentation"><span class="std std-ref">Adding Custom Semantic Labels</span></a>.</p>
 </section>
 <section id="enabling-the-depth-camera">
-<span id="depth-camera-custom"></span><h2>Enabling the Depth Camera<a class="headerlink" href="#enabling-the-depth-camera" title="Permalink to this heading"></a></h2>
+<span id="depth-camera-custom"></span><h2>Enabling the Depth Camera<a class="headerlink" href="#enabling-the-depth-camera" title="Link to this heading"></a></h2>
 <p>HoloOcean includes a Depth camera sensor that returns depth information to agents. To enable this sensor, you must change a setting in the environment and for each asset you wish to be detected by the depth camera.
 In the Details panel of the Unreal Editor, navigate to each asset you wish to be visible with the depth camera. For each asset, search “depth” and enable “Render CustomDepth Pass”. Do this for the landscape as well.</p>
 <p>If you already set up your world for semantic labeling, you will have already done the steps necessary for the Depth Camera to work.</p>
@@ -272,7 +272,7 @@ In the Details panel of the Unreal Editor, navigate to each asset you wish to be
 </div>
 </section>
 <section id="note-on-collision-settings-for-objects-and-sonar">
-<span id="object-collision"></span><h2>Note on Collision Settings for Objects and Sonar<a class="headerlink" href="#note-on-collision-settings-for-objects-and-sonar" title="Permalink to this heading"></a></h2>
+<span id="object-collision"></span><h2>Note on Collision Settings for Objects and Sonar<a class="headerlink" href="#note-on-collision-settings-for-objects-and-sonar" title="Link to this heading"></a></h2>
 <p>Sonar simulation relies upon the collision mesh for objects when generating the octree.</p>
 <p>First, make sure to set the environment boundaries to have the environment min and max.
 In standalone through Unreal Engine, this would be done by setting the Additional Launch Parameters as seen here: <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a>.
@@ -294,13 +294,13 @@ details section of the static mesh editor to “use complex collision as simple�
 <img alt="../../_images/check_collisions.png" src="../../_images/check_collisions.png"/>
 </section>
 <section id="additional-tide-settings-for-objects">
-<h2>Additional Tide Settings for Objects<a class="headerlink" href="#additional-tide-settings-for-objects" title="Permalink to this heading"></a></h2>
+<h2>Additional Tide Settings for Objects<a class="headerlink" href="#additional-tide-settings-for-objects" title="Link to this heading"></a></h2>
 <p>In order to create compatible non-agent floatables that with move with the tide you must add the keyword Float in the actor tags and then go into the collision settings of the static mesh and make sure that customized collisions is checked.</p>
 <img alt="../../_images/tide_non-agent_collisions.png" src="../../_images/tide_non-agent_collisions.png"/>
 <img alt="../../_images/tide_non-agent_tag.png" src="../../_images/tide_non-agent_tag.png"/>
 </section>
 <section id="weather">
-<h2>Weather<a class="headerlink" href="#weather" title="Permalink to this heading"></a></h2>
+<h2>Weather<a class="headerlink" href="#weather" title="Link to this heading"></a></h2>
 <p>To add the weather feature to your custom level, you will first need to add the Weather Manager blueprint to your world. To do this, go to Content Browser ➡ Weather Content and drag BP_Weather_Manager into your level.</p>
 <p>Next, you need to add two different Volumetric Cloud actors. Go to Place Actors ➡ Visual Effects ➡ Volumetric Cloud and drag it into your level twice.</p>
 <p>After both actors are placed, assign a cloud material and tag each one:</p>
@@ -316,7 +316,7 @@ details section of the static mesh editor to “use complex collision as simple�
 <p>Finally, you should also tag the water plane you created as “WaterSurface”.</p>
 </section>
 <section id="air-fog">
-<h2>Air Fog<a class="headerlink" href="#air-fog" title="Permalink to this heading"></a></h2>
+<h2>Air Fog<a class="headerlink" href="#air-fog" title="Link to this heading"></a></h2>
 <p>For above-water simulations where you want to introduce air fog or mist, you can add a PostProcessVolume that covers the desired region and assign it the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Air</span></code> material.
 In the <strong>Details</strong> panel, navigate to <em>Rendering Features ➡ Post Process Materials</em>, add an element to the array, set it to <strong>Asset Reference</strong>, and select <code class="docutils literal notranslate"><span class="pre">MM_Fog_Air</span></code>.
 Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Air</span></code>.</p>
@@ -332,13 +332,13 @@ Alternatively, you can drag the material directly from <code class="docutils lit
 <p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">AirPPV</span></code> so that the Air Fog Command and Tides Command function correctly.</p>
 </section>
 <section id="note-on-flashlights">
-<h2>Note on Flashlights<a class="headerlink" href="#note-on-flashlights" title="Permalink to this heading"></a></h2>
+<h2>Note on Flashlights<a class="headerlink" href="#note-on-flashlights" title="Link to this heading"></a></h2>
 <p>For vehicle flashlights to function properly, your level must include the <code class="docutils literal notranslate"><span class="pre">FlashlightManager</span></code>.
 You can add it by dragging the manager from <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents/FlashlightManager</span></code> into your world.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">FlashlightManager</span></code> does not alter the appearance or physics of the environment — it simply enables flashlight functionality.</p>
 </section>
 <section id="testing-your-custom-level">
-<h2>Testing Your Custom Level<a class="headerlink" href="#testing-your-custom-level" title="Permalink to this heading"></a></h2>
+<h2>Testing Your Custom Level<a class="headerlink" href="#testing-your-custom-level" title="Link to this heading"></a></h2>
 <p>For quick testing of your level, it is often easiest to run in standalone mode. This will allow you to
 quickly verify collision settings or visuals without having to package the level.
 Please reference <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a> to run your level from within the Unreal Engine Editor.</p>

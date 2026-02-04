@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Developing Agents — HoloOcean 2.3.0 documentation</title>
-<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-<script src="../_static/jquery.js"></script>
-<script src="../_static/underscore.js"></script>
-<script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../_static/doctools.js"></script>
-<script src="../_static/clipboard.min.js"></script>
-<script src="../_static/copybutton.js"></script>
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../_static/doctools.js?v=9a2dae69"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -117,15 +117,15 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="developing-agents">
-<span id="develop-agents"></span><h1>Developing Agents<a class="headerlink" href="#developing-agents" title="Permalink to this heading"></a></h1>
+<span id="develop-agents"></span><h1>Developing Agents<a class="headerlink" href="#developing-agents" title="Link to this heading"></a></h1>
 <p>Because agents have components in Python, C++, and UE5, creating agents is a rather involved process.
 This guide will walk you through each step of creating a new agent for HoloOcean.</p>
 <section id="general-agents">
-<h2>General Agents<a class="headerlink" href="#general-agents" title="Permalink to this heading"></a></h2>
+<h2>General Agents<a class="headerlink" href="#general-agents" title="Link to this heading"></a></h2>
 <p>General agents do not have buoyant properties. They are the simplest agents to create. We will walk
 you through the process of creating a new agent by copying and modifying the TurtleAgent.</p>
 <section id="python">
-<h3>Python<a class="headerlink" href="#python" title="Permalink to this heading"></a></h3>
+<h3>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h3>
 <p>First, open <code class="docutils literal notranslate"><span class="pre">holoocean/client/src/agents.py</span></code>. To create a new agent, copy the <code class="docutils literal notranslate"><span class="pre">TurtleAgent</span></code>
 class and edit it to reflect your new agent. You’ll need to edit the following:</p>
 <ul class="simple">
@@ -167,7 +167,7 @@ names to Python classes. Add an entry for your new class, something like
 <code class="docutils literal notranslate"><span class="pre">"CustomAgent":</span> <span class="pre">CustomAgent,</span></code>. The name should match <code class="docutils literal notranslate"><span class="pre">agent_type</span></code> set in your class.</p>
 </section>
 <section id="c">
-<h3>C++<a class="headerlink" href="#c" title="Permalink to this heading"></a></h3>
+<h3>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h3>
 <p>In <code class="docutils literal notranslate"><span class="pre">holoocean/engine/Source/HoloDeck/Agents</span></code>, you will need to create four new files for your agent.
 Duplicate the following four TurtleAgent files listed below, and rename them accordingly:</p>
 <ul class="simple">
@@ -211,7 +211,7 @@ reactions to inputs, and so on. Change the following for CustomAgent.cpp:</p>
 screen. Fix any errors until the code compiles successfully.</p>
 </section>
 <section id="unreal-engine">
-<h3>Unreal Engine<a class="headerlink" href="#unreal-engine" title="Permalink to this heading"></a></h3>
+<h3>Unreal Engine<a class="headerlink" href="#unreal-engine" title="Link to this heading"></a></h3>
 <p>Navigate to <code class="docutils literal notranslate"><span class="pre">Content/HolodeckContent/Agents</span></code> in the content browser. Create a new folder for your
 agent, and go into it. You will need a static mesh and a blueprint for your agent.</p>
 <p>For your agent static mesh, do the following:</p>
@@ -250,7 +250,7 @@ agent!</p>
 </section>
 </section>
 <section id="buoyant-agents">
-<h2>Buoyant Agents<a class="headerlink" href="#buoyant-agents" title="Permalink to this heading"></a></h2>
+<h2>Buoyant Agents<a class="headerlink" href="#buoyant-agents" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">AHolodeckBuoyantAgent</span></code> class was made to remove the need to re-implement buoyancy dynamics for
 each AUV in HoloOcean. We implement our buoyancy in C++ instead of in UE blueprints. Anything
 set in the blueprint (like mass or COM offset) will be overriden in C++.</p>
@@ -258,7 +258,7 @@ set in the blueprint (like mass or COM offset) will be overriden in C++.</p>
 class needs need to inherit from <code class="docutils literal notranslate"><span class="pre">AHolodeckBuoyantAgent</span></code> instead of <code class="docutils literal notranslate"><span class="pre">AHolodeckAgent</span></code>. It is useful
 to copy files from <code class="docutils literal notranslate"><span class="pre">AHoveringAUV</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ATurtleAgent</span></code>.</p>
 <section id="necessary-variables">
-<h3>Necessary Variables<a class="headerlink" href="#necessary-variables" title="Permalink to this heading"></a></h3>
+<h3>Necessary Variables<a class="headerlink" href="#necessary-variables" title="Link to this heading"></a></h3>
 <p>The following variables MUST be set in the C++ portion of your agent definition, either in your class
 constructor or in the <code class="docutils literal notranslate"><span class="pre">InitializeAgent</span></code> function before <code class="docutils literal notranslate"><span class="pre">Super::InitializeAgent()</span></code> is called.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">Volume</span><span class="p">;</span>
@@ -275,7 +275,7 @@ variable can be set to all zeros.</p>
 <img alt="../_images/blueprint-settings-buoyant.png" src="../_images/blueprint-settings-buoyant.png"/>
 </section>
 <section id="extra-variables">
-<h3>Extra Variables<a class="headerlink" href="#extra-variables" title="Permalink to this heading"></a></h3>
+<h3>Extra Variables<a class="headerlink" href="#extra-variables" title="Link to this heading"></a></h3>
 <p>These variables can be set to customize various aspects of how surface buoyancy is used, although all
 of them will be calculated if you don’t.</p>
 <p>Surface Buoyancy is calculated by random sampling points inside of the “Bounding Box” of your vehicle,
@@ -297,7 +297,7 @@ method. NOTE: These are stored with an offset for <code class="docutils literal 
 <p><code class="docutils literal notranslate"><span class="pre">SurfaceLevel</span></code> is the water level. For all of our environments, this has been set to 0.</p>
 </section>
 <section id="debugging-tools">
-<h3>Debugging Tools<a class="headerlink" href="#debugging-tools" title="Permalink to this heading"></a></h3>
+<h3>Debugging Tools<a class="headerlink" href="#debugging-tools" title="Link to this heading"></a></h3>
 <p>To be able to visualize the bounding box and surface points to make sure they’re placed currently,
 you can use the inherited functions <code class="docutils literal notranslate"><span class="pre">ShowBoundingBox()</span></code> and <code class="docutils literal notranslate"><span class="pre">ShowSurfacePoints()</span></code> functions in
 your agent’s tick method.</p>

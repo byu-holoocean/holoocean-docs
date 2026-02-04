@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Packaging Environments — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -114,14 +114,14 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="packaging-environments">
-<span id="id1"></span><h1>Packaging Environments<a class="headerlink" href="#packaging-environments" title="Permalink to this heading"></a></h1>
+<span id="id1"></span><h1>Packaging Environments<a class="headerlink" href="#packaging-environments" title="Link to this heading"></a></h1>
 <p>An Unreal project needs to be packaged before it can be distributed. This process produces the engine
 executables and bundles up all of the assets that are needed for the client to start up the engine by
 itself without starting it from the editor or Visual Studio.</p>
 <p>This process will compile the C++ code for HoloOcean and “cook” the <code class="docutils literal notranslate"><span class="pre">.uasset</span></code> files (including
 blueprints!) into one large <code class="docutils literal notranslate"><span class="pre">.pak</span></code> file, and create the directory structure needed.</p>
 <section id="adding-holoocean-worlds">
-<h2>Adding HoloOcean Worlds<a class="headerlink" href="#adding-holoocean-worlds" title="Permalink to this heading"></a></h2>
+<h2>Adding HoloOcean Worlds<a class="headerlink" href="#adding-holoocean-worlds" title="Link to this heading"></a></h2>
 <p>The finished package will only contain the worlds (called “levels” in the editor) that are added into
 the project. The <code class="docutils literal notranslate"><span class="pre">holoocean</span></code> repo only contains the example level. You can create new worlds by
 simply making a new level in the Unreal Engine editor. Please reference <a class="reference internal" href="create-env.html#create-env"><span class="std std-ref">Creating a Custom Level</span></a> for more
@@ -134,16 +134,16 @@ worlds in the HoloOcean repo.</p>
 </div>
 </section>
 <section id="cooking-content">
-<h2>Cooking Content<a class="headerlink" href="#cooking-content" title="Permalink to this heading"></a></h2>
+<h2>Cooking Content<a class="headerlink" href="#cooking-content" title="Link to this heading"></a></h2>
 <p>You may need to cook the content to “refresh” the assets, levels, and blueprints that
 <code class="docutils literal notranslate"><span class="pre">holoocean/engine</span></code> reads.</p>
 <p><strong>From Unreal Editor:</strong></p>
 <p>Platforms ➡ Windows/Linux ➡ Cook Content</p>
 </section>
 <section id="packaging-holoocean">
-<h2>Packaging HoloOcean<a class="headerlink" href="#packaging-holoocean" title="Permalink to this heading"></a></h2>
+<h2>Packaging HoloOcean<a class="headerlink" href="#packaging-holoocean" title="Link to this heading"></a></h2>
 <section id="operating-system">
-<h3>Operating System<a class="headerlink" href="#operating-system" title="Permalink to this heading"></a></h3>
+<h3>Operating System<a class="headerlink" href="#operating-system" title="Link to this heading"></a></h3>
 <p>It is best to package HoloOcean using the same operating system it will be run on. If you want to run
 your project for Windows, you should be using Unreal Engine in Windows to compile the project, and
 vice versa for Linux.</p>
@@ -176,7 +176,7 @@ the “Launch” button and select Options.</p>
 <p>With these changes, you should be able to compile for Linux from Windows.</p>
 </section>
 <section id="packaging">
-<span id="package-holoocean"></span><h3>Packaging<a class="headerlink" href="#packaging" title="Permalink to this heading"></a></h3>
+<span id="package-holoocean"></span><h3>Packaging<a class="headerlink" href="#packaging" title="Link to this heading"></a></h3>
 <ol class="arabic">
 <li><p>From within the Unreal Editor, select Platforms ➡ Windows/Linux ➡ Package Project</p>
 <blockquote>

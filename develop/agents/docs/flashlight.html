@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Flashlight — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -111,10 +111,10 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="flashlight">
-<span id="id1"></span><h1>Flashlight<a class="headerlink" href="#flashlight" title="Permalink to this heading"></a></h1>
+<span id="id1"></span><h1>Flashlight<a class="headerlink" href="#flashlight" title="Link to this heading"></a></h1>
 <p>HoloOcean vehicles have one or more built-in flashlights that are <strong>off by default</strong>.</p>
 <section id="location">
-<h2>Location<a class="headerlink" href="#location" title="Permalink to this heading"></a></h2>
+<h2>Location<a class="headerlink" href="#location" title="Link to this heading"></a></h2>
 <p>The location and number of flashlights vary by vehicle:</p>
 <blockquote>
 <div><ul class="simple">
@@ -127,7 +127,7 @@
 </div></blockquote>
 </section>
 <section id="commands">
-<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading"></a></h2>
+<h2>Commands<a class="headerlink" href="#commands" title="Link to this heading"></a></h2>
 <a class="reference internal image-reference" href="../../_images/flashlights_hov.gif"><img alt="../../_images/flashlights_hov.gif" src="../../_images/flashlights_hov.gif" style="width: 768.0px; height: 432.0px;"/></a>
 <p>There are two commands available to control the flashlights, <cite>TurnOnFlashlightCommand</cite> and <cite>TurnOffFlashlightCommand</cite>. The <cite>TurnOnFlashlightCommand</cite> allows you to optionally customize several parameters, such as: intensity, beam width, location, rotation, and color.</p>
 <div class="admonition note">
@@ -140,9 +140,9 @@
 <li><p><a class="reference internal" href="../../holoocean/commands.html#holoocean.command.TurnOffFlashlightCommand" title="holoocean.command.TurnOffFlashlightCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TurnOffFlashlightCommand</span></code></a></p></li>
 </ul>
 <section id="usage-example-for-a-hoveringauv-bluerov2">
-<h3>Usage Example (for a HoveringAUV/BlueROV2)<a class="headerlink" href="#usage-example-for-a-hoveringauv-bluerov2" title="Permalink to this heading"></a></h3>
+<h3>Usage Example (for a HoveringAUV/BlueROV2)<a class="headerlink" href="#usage-example-for-a-hoveringauv-bluerov2" title="Link to this heading"></a></h3>
 <section id="in-a-scenario">
-<h4>In a scenario<a class="headerlink" href="#in-a-scenario" title="Permalink to this heading"></a></h4>
+<h4>In a scenario<a class="headerlink" href="#in-a-scenario" title="Link to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_flashlight"</span><span class="p">,</span>
     <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
@@ -165,7 +165,7 @@
 </div>
 </section>
 <section id="programmatically">
-<h4>Programmatically<a class="headerlink" href="#programmatically" title="Permalink to this heading"></a></h4>
+<h4>Programmatically<a class="headerlink" href="#programmatically" title="Link to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="s1">'o'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>

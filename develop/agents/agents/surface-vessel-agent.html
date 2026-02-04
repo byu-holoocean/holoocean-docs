@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>SurfaceVessel — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -109,15 +109,15 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="surfacevessel">
-<span id="surface-vessel-agent"></span><h1>SurfaceVessel<a class="headerlink" href="#surfacevessel" title="Permalink to this heading"></a></h1>
+<span id="surface-vessel-agent"></span><h1>SurfaceVessel<a class="headerlink" href="#surfacevessel" title="Link to this heading"></a></h1>
 <a class="reference internal image-reference" href="../../_images/surface.png"><img alt="../../_images/surface.png" src="../../_images/surface.png" style="width: 355.20000000000005px; height: 157.60000000000002px;"/></a>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>A simple surface vessel with 2 thrusters in the rear for propulsion.</p>
 <p>See the <a class="reference internal" href="../../holoocean/agents.html#holoocean.agents.SurfaceVessel" title="holoocean.agents.SurfaceVessel"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfaceVessel</span></code></a>.</p>
 </section>
 <section id="control-schemes">
-<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
+<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt><strong>Thrusters (``0``)</strong></dt><dd><p>A 2-length floating point vector specifying the force on each thruster. The vector is in the
 format [Left Thruster, Right Thruster].</p>
@@ -133,12 +133,12 @@ clean slate for custom dynamics.</p>
 </dl>
 </section>
 <section id="sockets">
-<h2>Sockets<a class="headerlink" href="#sockets" title="Permalink to this heading"></a></h2>
+<h2>Sockets<a class="headerlink" href="#sockets" title="Link to this heading"></a></h2>
 <p>All sockets are oriented in the agent’s body frame (right-handed NWU, with the x-axis pointing forward,
 the y-axis pointing to the left, and the z-axis pointing upward) unless stated otherwise. See
 <a class="reference internal" href="../../sensors/docs/sensor-config.html#sockets"><span class="std std-ref">Sensor Placement &amp; Sockets</span></a> for details.</p>
 <section id="socket-definitions">
-<h3>Socket Definitions<a class="headerlink" href="#socket-definitions" title="Permalink to this heading"></a></h3>
+<h3>Socket Definitions<a class="headerlink" href="#socket-definitions" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Payload</span></code> where the payload with sensors will be in the water. Rotated 90 degrees on y-axis (x points down, y points left, z points forward).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Platform</span></code> sensors placed on platform.</p></li>
@@ -146,12 +146,12 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 </ul>
 </section>
 <section id="socket-frames">
-<h3>Socket Frames<a class="headerlink" href="#socket-frames" title="Permalink to this heading"></a></h3>
+<h3>Socket Frames<a class="headerlink" href="#socket-frames" title="Link to this heading"></a></h3>
 <a class="reference internal image-reference" href="../../_images/surface-sockets.png"><img alt="../../_images/surface-sockets.png" src="../../_images/surface-sockets.png" style="width: 498.0px; height: 346.5px;"/></a>
 </section>
 </section>
 <section id="flashlights">
-<span id="surfacevessel-flashlights"></span><h2>Flashlights<a class="headerlink" href="#flashlights" title="Permalink to this heading"></a></h2>
+<span id="surfacevessel-flashlights"></span><h2>Flashlights<a class="headerlink" href="#flashlights" title="Link to this heading"></a></h2>
 <p>The SurfaceVessel comes with a single forward-facing flashlight mounted at the front of the vehicle for illumination.</p>
 <a class="reference internal image-reference" href="../../_images/surface_vessel_flashlight.png"><img alt="../../_images/surface_vessel_flashlight.png" src="../../_images/surface_vessel_flashlight.png" style="width: 505.5px; height: 343.0px;"/></a>
 <ul class="simple">

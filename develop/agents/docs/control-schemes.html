@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Control Schemes — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -112,7 +112,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="control-schemes">
-<span id="id1"></span><h1>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h1>
+<span id="id1"></span><h1>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h1>
 <p>Agents in HoloOcean can be controlled using a variety of control schemes. Control schemes determine
 how commands given to the agent are interpreted. Control schemes are specified using an integer
 value in the agent configuration file:</p>
@@ -139,7 +139,7 @@ more control schemes available, and their numbering may be different. Be sure to
 are available and how they are numbered.</p>
 </div>
 <section id="thusters-fins-control-scheme-0">
-<h2>Thusters &amp; Fins (Control Scheme 0)<a class="headerlink" href="#thusters-fins-control-scheme-0" title="Permalink to this heading"></a></h2>
+<h2>Thusters &amp; Fins (Control Scheme 0)<a class="headerlink" href="#thusters-fins-control-scheme-0" title="Link to this heading"></a></h2>
 <p>Control scheme 0 is the default control scheme for most agents in HoloOcean. Most underwater and
 surface agents in HoloOcean are equipped with thrusters for propulsion, and the torpedo-style agents
 use fins to steer. Aerial agents use propellors and control surfaces. This control scheme provides
@@ -151,7 +151,7 @@ agent at each time step. <a class="reference internal" href="../../examples/exam
 an agent by converting keyboard inputs into commands.</p>
 </section>
 <section id="pid-controller-control-scheme-1">
-<h2>PID Controller (Control Scheme 1)<a class="headerlink" href="#pid-controller-control-scheme-1" title="Permalink to this heading"></a></h2>
+<h2>PID Controller (Control Scheme 1)<a class="headerlink" href="#pid-controller-control-scheme-1" title="Link to this heading"></a></h2>
 <p>The PID control scheme enables easy waypoint navigation by implementing position control. It uses a
 simple proportional-integral-derivative controller to move the agent to a specified position in the global
 frame.</p>
@@ -168,7 +168,7 @@ scheme, or implement a controller using custom dynamics.</p>
 <p>For an example demonstrating how to use the PID controller, see <a class="reference internal" href="../../examples/examples/pd-controllers.html#pd-controller-example"><span class="std std-ref">here</span></a>.</p>
 </section>
 <section id="custom-dynamics-control-scheme-2">
-<h2>Custom Dynamics (Control Scheme 2)<a class="headerlink" href="#custom-dynamics-control-scheme-2" title="Permalink to this heading"></a></h2>
+<h2>Custom Dynamics (Control Scheme 2)<a class="headerlink" href="#custom-dynamics-control-scheme-2" title="Link to this heading"></a></h2>
 <p>Because HoloOcean uses the Unreal physics engine, most agents move and respond to forces and torques
 in a realistic manner. However, if more specific control over an agent’s movement is needed, the
 Custom Dynamics control scheme allows for the implementation of custom dynamics and motion models.
@@ -192,7 +192,7 @@ return pose, velocity, and acceleration information for the agent. Other sensors
 <a class="reference internal" href="../../sensors/sensors/pose-sensor.html#pose-sensor"><span class="std std-ref">Pose Sensor</span></a> and <a class="reference internal" href="../../sensors/sensors/velocity-sensor.html#velocity-sensor"><span class="std std-ref">Velocity Sensor</span></a> can be used to return specific information. For more
 detail, visit the <a class="reference internal" href="../../sensors/sensors.html#sensors"><span class="std std-ref">HoloOcean Sensors</span></a>.</p>
 <section id="fossen-dynamics">
-<h3>Fossen Dynamics<a class="headerlink" href="#fossen-dynamics" title="Permalink to this heading"></a></h3>
+<h3>Fossen Dynamics<a class="headerlink" href="#fossen-dynamics" title="Link to this heading"></a></h3>
 <p>In “Marine Craft Hydrodynamics and Control” by Thor Fossen, several dynamics models are presented for
 different types of marine vehicles. HoloOcean has implemented the dynamics models for torpedo vehicles
 from Fossen’s book. These models can be used in conjunction with the Custom Dynamics control scheme

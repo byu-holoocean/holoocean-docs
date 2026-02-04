@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Water Appearance Commands &mdash; HoloOcean 2.3.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-      <link rel="stylesheet" type="text/css" href="../../_static/themes_override.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/themes_override.css?v=3297d54e" />
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
@@ -16,13 +16,13 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/clipboard.min.js"></script>
-        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -122,10 +122,10 @@
            <div itemprop="articleBody">
              
   <section id="water-appearance-commands">
-<h1>Water Appearance Commands<a class="headerlink" href="#water-appearance-commands" title="Permalink to this heading"></a></h1>
+<h1>Water Appearance Commands<a class="headerlink" href="#water-appearance-commands" title="Link to this heading"></a></h1>
 <p>HoloOcean worlds have a water color command that can be called to make the water suit your needs - whatever they may be.</p>
 <section id="water-color-command">
-<h2>Water Color Command<a class="headerlink" href="#water-color-command" title="Permalink to this heading"></a></h2>
+<h2>Water Color Command<a class="headerlink" href="#water-color-command" title="Link to this heading"></a></h2>
 <p>You can use water color command while the simulation is running to change the water color with full RGB range.</p>
 <img alt="../../_images/watercolor.png" src="../../_images/watercolor.png" />
 <p>Here are a couple of example water colors that can be configured:</p>
@@ -134,7 +134,7 @@
 <img alt="../../_images/water_color2.png" src="../../_images/water_color2.png" />
 <p>Color configuration = <code class="docutils literal notranslate"><span class="pre">(0.3,</span> <span class="pre">0.4,</span> <span class="pre">0.5)</span></code></p>
 <section id="programmatically">
-<h3>Programmatically<a class="headerlink" href="#programmatically" title="Permalink to this heading"></a></h3>
+<h3>Programmatically<a class="headerlink" href="#programmatically" title="Link to this heading"></a></h3>
 <p>Below is an example of using the water color command to change the water to red, green, or blue:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
       <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -159,7 +159,7 @@
 </section>
 </section>
 <section id="water-fog-command">
-<span id="id1"></span><h2>Water Fog Command<a class="headerlink" href="#water-fog-command" title="Permalink to this heading"></a></h2>
+<span id="id1"></span><h2>Water Fog Command<a class="headerlink" href="#water-fog-command" title="Link to this heading"></a></h2>
 <p>The water fog command controls underwater visibility by adjusting fog density, depth, and color.</p>
 <img alt="../../_images/water_fog.jpg" src="../../_images/water_fog.jpg" />
 <p>You can configure the following parameters:</p>
@@ -176,7 +176,7 @@
 <em>Range:</em> <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">1.0</span></code> (Default = 1.0)</p></li>
 </ul>
 <section id="id2">
-<h3>Programmatically<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>Programmatically<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>Here is an example of using the water fog command to achieve the visibility level shown in the middle of the image above:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
       <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>

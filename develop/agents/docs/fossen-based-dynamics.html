@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fossen-Based Dynamics — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -113,7 +113,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="fossen-based-dynamics">
-<span id="fossen-dynamics"></span><h1>Fossen-Based Dynamics<a class="headerlink" href="#fossen-based-dynamics" title="Permalink to this heading"></a></h1>
+<span id="fossen-dynamics"></span><h1>Fossen-Based Dynamics<a class="headerlink" href="#fossen-based-dynamics" title="Link to this heading"></a></h1>
 <p>Dynamics for underwater and surface vehicles can be modeled using equations of motion derived in
 Thor Fossen’s <em>Handbook of Marine Craft Hydrodynamics and Motion Control</em>. Implementations of these
 dynamics are conveniently provided by Fossen at his
@@ -136,7 +136,7 @@ settings. This is only supported for Fossen dynamic models with a defined config
 This class is implemented in <cite>client/src/fossen_dynamics/fossen_interface.py</cite>.</p></li>
 </ol>
 <section id="fossen-vehicle-classes">
-<h2>Fossen Vehicle Classes<a class="headerlink" href="#fossen-vehicle-classes" title="Permalink to this heading"></a></h2>
+<h2>Fossen Vehicle Classes<a class="headerlink" href="#fossen-vehicle-classes" title="Link to this heading"></a></h2>
 <p>Currently, we have implemented the dynamics models for two vehicle classes:</p>
 <p>There is a list of keys that are connected to the Fossen dynamics models. This is defined in the <code class="docutils literal notranslate"><span class="pre">FossenInterface</span></code> class.</p>
 <ul>
@@ -184,7 +184,7 @@ the “Custom Dynamics” control scheme. The Fossen models account for these se
 </div>
 </section>
 <section id="importing-models-from-pythonvehiclesimulator">
-<h2>Importing Models from PythonVehicleSimulator<a class="headerlink" href="#importing-models-from-pythonvehiclesimulator" title="Permalink to this heading"></a></h2>
+<h2>Importing Models from PythonVehicleSimulator<a class="headerlink" href="#importing-models-from-pythonvehiclesimulator" title="Link to this heading"></a></h2>
 <p>If a user has developed a dynamics model class using Thor Fossen’s PythonVehicleSimulator and would
 like to use it in HoloOcean, they must make the following changes:</p>
 <ul>
@@ -216,11 +216,11 @@ like to use it in HoloOcean, they must make the following changes:</p>
 manager.</p>
 </section>
 <section id="single-agent-fossen-dynamics-example">
-<h2>Single Agent Fossen Dynamics Example<a class="headerlink" href="#single-agent-fossen-dynamics-example" title="Permalink to this heading"></a></h2>
+<h2>Single Agent Fossen Dynamics Example<a class="headerlink" href="#single-agent-fossen-dynamics-example" title="Link to this heading"></a></h2>
 <p>In this section we will step through the key elements of our Fossen dynamics implementation and give
 an example of using Fossen dynamics in HoloOcean. The full code can be found in <cite>client/example.py</cite>.</p>
 <section id="configuration">
-<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h3>
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
 <p>Setting up a HoloOcean simulation that uses Fossen dynamics begins with the scenario configuration.
 The scenario configuration follows the standard HoloOcean format, with a few key differences for Fossen dynamics:</p>
 <ul class="simple">
@@ -363,7 +363,7 @@ Fossen dynamics classes.</p>
 </div>
 </section>
 <section id="simulation-setup">
-<h3>Simulation Setup<a class="headerlink" href="#simulation-setup" title="Permalink to this heading"></a></h3>
+<h3>Simulation Setup<a class="headerlink" href="#simulation-setup" title="Link to this heading"></a></h3>
 <p>The setup for the simulation is similar to other HoloOcean <a class="reference internal" href="../../examples/examples.html#examples"><span class="std std-ref">Examples</span></a>.</p>
 <p>Simulation setup proceeds first by setting up an environment. We create a list of the names of agents in our
 scenario that will be controlled by the Fossen dynamics. The list of
@@ -392,7 +392,7 @@ parameter <cite>-TicksPerSec</cite> to match what is in the Python script for co
 </div>
 </section>
 <section id="manual-control-example">
-<h3>Manual Control Example<a class="headerlink" href="#manual-control-example" title="Permalink to this heading"></a></h3>
+<h3>Manual Control Example<a class="headerlink" href="#manual-control-example" title="Link to this heading"></a></h3>
 <p>To use the manual control method, configure the vehicle mode with the fossen interface to “manualControl” mode.
 The commanded fin angles can also be set using the Fossen interface.</p>
 <p>The length of the <cite>u_control</cite> array is defined in the dynamic model class. It represents the number
@@ -426,7 +426,7 @@ an output of accelerations in the HoloOcean frame (NWU).</p>
 </div>
 </section>
 <section id="depth-and-heading-control-example">
-<h3>Depth and Heading Control Example<a class="headerlink" href="#depth-and-heading-control-example" title="Permalink to this heading"></a></h3>
+<h3>Depth and Heading Control Example<a class="headerlink" href="#depth-and-heading-control-example" title="Link to this heading"></a></h3>
 <p>A common control strategy for underwater vehicles is to control depth and heading separately. This
 can be done by setting the control mode to <cite>depthHeadingAutopilot</cite> and setting the goal depth,
 heading, and thruster RPM.</p>
@@ -466,12 +466,12 @@ and will be fixed in a future release.</p>
 </section>
 </section>
 <section id="multi-agent-fossen-dynamics-example">
-<h2>Multi Agent Fossen Dynamics Example<a class="headerlink" href="#multi-agent-fossen-dynamics-example" title="Permalink to this heading"></a></h2>
+<h2>Multi Agent Fossen Dynamics Example<a class="headerlink" href="#multi-agent-fossen-dynamics-example" title="Link to this heading"></a></h2>
 <p>In this section we will step through using fossen dynamics with multiple
 agents in HoloOcean. The full code can be found in <cite>client/example.py</cite>.
 This example is very similar to the above example but with two agents.</p>
 <section id="id1">
-<h3>Configuration<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Configuration<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>See the above example for specific instructions for setting up the configuration for the following items:</p>
 <ul class="simple">
 <li><p>Dynamics Sensor</p></li>
@@ -536,7 +536,7 @@ This example is very similar to the above example but with two agents.</p>
 </div>
 </section>
 <section id="id2">
-<h3>Simulation Setup<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>Simulation Setup<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>The setup is about the single agent example.</p>
 <p>The only difference is that you need to add the name of the surface vessel agent to the fossen_agents list</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
@@ -556,7 +556,7 @@ This example is very similar to the above example but with two agents.</p>
 </div>
 </section>
 <section id="id3">
-<h3>Manual Control Example<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>Manual Control Example<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>To use the manual control method, configure the vehicle mode with the fossen interface to “manualControl” mode.
 The commanded fin angles can also be set using the Fossen interface.</p>
 <p>The length of the <cite>u_control</cite> array is defined in the dynamic model class. It represents the number

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html class="writer-html5" lang="en">
+<html class="writer-html5" data-content_root="../../" lang="en">
 <head>
-<meta charset="utf-8"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>BlueROV2 — HoloOcean 2.3.0 documentation</title>
-<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/css/theme.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
-<link href="../../_static/themes_override.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
 <link href="../../_static/favicon.png" rel="shortcut icon"/>
 <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-<script src="../../_static/jquery.js"></script>
-<script src="../../_static/underscore.js"></script>
-<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-<script src="../../_static/doctools.js"></script>
-<script src="../../_static/clipboard.min.js"></script>
-<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -112,15 +112,15 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="bluerov2">
-<span id="blue-rov-agent"></span><h1>BlueROV2<a class="headerlink" href="#bluerov2" title="Permalink to this heading"></a></h1>
+<span id="blue-rov-agent"></span><h1>BlueROV2<a class="headerlink" href="#bluerov2" title="Link to this heading"></a></h1>
 <a class="reference internal image-reference" href="../../_images/blue-rov.png"><img alt="../../_images/blue-rov.png" src="../../_images/blue-rov.png" style="width: 584.0px; height: 347.0px;"/></a>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>An implementation of the BlueROV2 Heavy vehicle from Blue Robotics.</p>
 <p>See the <a class="reference internal" href="../../holoocean/agents.html#holoocean.agents.BlueROV2" title="holoocean.agents.BlueROV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlueROV2</span></code></a>.</p>
 </section>
 <section id="control-schemes">
-<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Permalink to this heading"></a></h2>
+<h2>Control Schemes<a class="headerlink" href="#control-schemes" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt><strong>AUV Thrusters (``0``)</strong></dt><dd><p>An 8-length floating point vector used to specify the control on each thruster. They begin with
 the front right vertical thrusters, then goes around counter-clockwise, then repeat the last four
@@ -138,12 +138,12 @@ clean slate for custom dynamics.</p>
 </dl>
 </section>
 <section id="sockets">
-<h2>Sockets<a class="headerlink" href="#sockets" title="Permalink to this heading"></a></h2>
+<h2>Sockets<a class="headerlink" href="#sockets" title="Link to this heading"></a></h2>
 <p>All sockets are oriented in the agent’s body frame (right-handed NWU, with the x-axis pointing forward,
 the y-axis pointing to the left, and the z-axis pointing upward) unless stated otherwise. See
 <a class="reference internal" href="../../sensors/docs/sensor-config.html#sockets"><span class="std std-ref">Sensor Placement &amp; Sockets</span></a> for details.</p>
 <section id="socket-definitions">
-<h3>Socket Definitions<a class="headerlink" href="#socket-definitions" title="Permalink to this heading"></a></h3>
+<h3>Socket Definitions<a class="headerlink" href="#socket-definitions" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">COM</span></code> Center of mass.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SonarSocket</span></code> Location of the sonar sensor.</p></li>
@@ -156,7 +156,7 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 </ul>
 </section>
 <section id="socket-frames">
-<h3>Socket Frames<a class="headerlink" href="#socket-frames" title="Permalink to this heading"></a></h3>
+<h3>Socket Frames<a class="headerlink" href="#socket-frames" title="Link to this heading"></a></h3>
 <a class="reference internal image-reference" href="../../_images/blue-rov-sockets.png"><img alt="../../_images/blue-rov-sockets.png" src="../../_images/blue-rov-sockets.png" style="width: 552.0px; height: 411.59999999999997px;"/></a>
 <a class="reference internal image-reference" href="../../_images/blue-rov-sockets-top.png"><img alt="../../_images/blue-rov-sockets-top.png" src="../../_images/blue-rov-sockets-top.png" style="width: 372.8px; height: 401.20000000000005px;"/></a>
 <a class="reference internal image-reference" href="../../_images/blue-rov-sockets-left.png"><img alt="../../_images/blue-rov-sockets-left.png" src="../../_images/blue-rov-sockets-left.png" style="width: 614.9px; height: 417.3px;"/></a>
@@ -164,7 +164,7 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 </section>
 </section>
 <section id="flashlights">
-<span id="bluerov2-flashlights"></span><h2>Flashlights<a class="headerlink" href="#flashlights" title="Permalink to this heading"></a></h2>
+<span id="bluerov2-flashlights"></span><h2>Flashlights<a class="headerlink" href="#flashlights" title="Link to this heading"></a></h2>
 <p>The BlueROV2 comes with four built-in flashlights positioned around the vehicle to provide illumination in various directions.</p>
 <a class="reference internal image-reference" href="../../_images/blue_rov2_flashlight.png"><img alt="../../_images/blue_rov2_flashlight.png" src="../../_images/blue_rov2_flashlight.png" style="width: 574.0px; height: 362.59999999999997px;"/></a>
 <ul class="simple">
