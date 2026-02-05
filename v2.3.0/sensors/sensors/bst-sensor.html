@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biomass, Salinity, and Temperature (BST) Sensor — HoloOcean 2.3.0 documentation</title>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="acoustic-beacon-sensor.html" rel="next" title="Acoustic Beacon"/>
+<link href="raycast-semantic-lidar-sensor.html" rel="prev" title="Raycast Semantic LIDAR Sensor"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">2.3.0</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imaging-sonar-sensor.html">Imaging Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="profiling-sonar-sensor.html">Profiling Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="depth-sensor.html">Depth Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="depth-camera-sensor.html">Depth Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rgb-camera-sensor.html">RGB Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera-sensor.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gps-sensor.html">Global Positioning System (GPS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magnetometer-sensor.html">Magnetometer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="range-finder-sensor.html">Range Finder Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="raycast-lidar-sensor.html">Raycast LIDAR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#communication-sensors">Communication Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#state-sensors">State Sensors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../sensors.html">HoloOcean Sensors</a></li>
+<li class="breadcrumb-item active">Biomass, Salinity, and Temperature (BST) Sensor</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/sensors/sensors/bst-sensor.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="biomass-salinity-and-temperature-bst-sensor">
+<h1>Biomass, Salinity, and Temperature (BST) Sensor<a class="headerlink" href="#biomass-salinity-and-temperature-bst-sensor" title="Link to this heading"></a></h1>
+<p>Simulates the distribution and sampling of biomass, salinity, and temperature throughout a world based on real data.</p>
+<p>See <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> for an example of how to use this sensor.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.BSTSensor" title="holoocean.sensors.BSTSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BSTSensor</span></code></a> for the Python API.</p>
+<p>In order to pass a custom function into the BST sensor for biomass, salinity, or temperature, call the following command at
+the beginning of your script. More info on customizing the BST sensor found in the example configuration below, the example script linked above,
+and the API docs:
+<code class="docutils literal notranslate"><span class="pre">set_temperature_function(new_function)</span></code> where “new_function” is a pointer to your custom function that takes in only the parameter “location” (3 element array)</p>
+<section id="graphing">
+<h2>Graphing<a class="headerlink" href="#graphing" title="Link to this heading"></a></h2>
+<p>There is an implementation for graphing BST data live by calling the following commands:
+<code class="docutils literal notranslate"><span class="pre">visualizer</span> <span class="pre">=</span> <span class="pre">env.initialize_bst_graphs()</span></code>, with different graphing parameters found in the API docs and in the example
+<code class="docutils literal notranslate"><span class="pre">visualizer.update(location)</span></code>, where location is the live location taken from the location sensor</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since implementing biomass, salinity, and temperature sampling, we’ve implemented dynamic tides. The default biomass, salinity, and temperature functions
+don’t take dynamic tides and a dynamic surface level into account, so if you wish to incorporate these dynamic models into your calculations, you can set custom biomass, salinity,
+and temperature function that use data from the dynamic tides.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It has been noted that the live updating heatmaps can cause delay and have a noticable neative impact on simulation runtime. The <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> example page demonstrates how to use Python multiprocessing
+to dramatically improve simulation performance while updating the heatmap plots live. We highly recommend using multiprocessing if you wish to use the graphing feature of the BST sensor.</p>
+</div>
+<p>Below are examples of the default configuration, and two different methods of configuration for Biomass, salinity, and temperature distributions throughout the simulation. The default
+configuration demonstrates what the distributions would look like if no additional parameters were altered. Then, the second example demonstrates customization that can be accomplished just
+by altering the environment scenario configuration. Finally, the last example demonstrates how custom functions can be designed and set as the new distribution models for biomass, salinity,
+and temperature.</p>
+</section>
+<section id="default-biomass-salinity-and-temperature">
+<h2>Default Biomass, Salinity, and Temperature<a class="headerlink" href="#default-biomass-salinity-and-temperature" title="Link to this heading"></a></h2>
+<img alt="../../_images/DefaultBST.PNG" src="../../_images/DefaultBST.PNG"/>
+<p>Default Configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_currents"</span><span class="p">,</span>
+<span class="s2">"world"</span><span class="p">:</span> <span class="s2">"PierHarbor"</span><span class="p">,</span>
+<span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+<span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+<span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+<span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+<span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"BSTSensor"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span><span class="p">,</span>
+                    <span class="s2">"configuration"</span><span class="p">:{}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"LocationSensor"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+        <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="customized-configuration">
+<h2>Customized Configuration<a class="headerlink" href="#customized-configuration" title="Link to this heading"></a></h2>
+<img alt="../../_images/CustomConfigBST.PNG" src="../../_images/CustomConfigBST.PNG"/>
+<p>Customized Configuration Parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"BSTSensor"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"max_biomass"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">"biomass_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="s2">"peak_depth"</span><span class="p">:</span> <span class="mf">110.0</span><span class="p">,</span>
+        <span class="s2">"biomass_clusters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">15</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">10</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"surface_psu"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="s2">"deep_psu"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s2">"halocline_depth"</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>
+        <span class="s2">"halocline_thickness"</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+        <span class="s2">"salinity_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">41</span><span class="p">),</span>
+        <span class="s2">"salinity_clusters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">85</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">10</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">"surface_temp"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"deep_temp"</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+        <span class="s2">"thermocline_depth"</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span>
+        <span class="s2">"thermocline_thickness"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="s2">"temperature_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+        <span class="s2">"temperature_clusters"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">12</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">"position"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">95</span><span class="p">],</span>
+                <span class="s2">"strength"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+                <span class="s2">"falloff"</span><span class="p">:</span> <span class="mi">25</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-functions">
+<h2>Custom Functions<a class="headerlink" href="#custom-functions" title="Link to this heading"></a></h2>
+<p>Because implementing custom functions involves more than just changing config parameters, we’ve only included the
+custom functions that were passed into our <code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.initialize_bst_graphs</span></code> function call. If you’d
+like to see the full implementation for custom functions, see the <a class="reference internal" href="../../examples/examples/sampling_bst.html#sampling-bst"><span class="std std-ref">Sampling Biomass, Salinity, Temperature</span></a> example.</p>
+<img alt="../../_images/CustomFunctionsBST.PNG" src="../../_images/CustomFunctionsBST.PNG"/>
+<p>Custom Functions and Configuration Parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">biomass_fx</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+    <span class="c1"># NOTE: It's required that we name this parameter "location"</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">location</span>
+    <span class="n">x_fade</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">100</span><span class="p">))</span>  <span class="c1"># fades from 0 at x=0.5 to 5.5 at x=100, then stays at 5.5</span>
+    <span class="k">return</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">x_fade</span> <span class="o">+</span> <span class="mf">0.5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">salinity_fx</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+    <span class="c1"># This function creates decaying oscillations that originate from a single point</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">location</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">]</span>
+    <span class="c1"># The zip() function in Python pairs corresponding values in two iterables together in tuples</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">center</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">34</span>  <span class="c1"># base salinity</span>
+    <span class="n">amplitude</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">dist</span><span class="o">/</span><span class="mi">80</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">34</span> <span class="o">+</span> <span class="n">amplitude</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">dist</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">temperature_fx</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+    <span class="c1"># This function creates a checkerboard-type pattern across the world</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">location</span>
+    <span class="n">square_size</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">checks</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">coord</span> <span class="o">//</span> <span class="n">square_size</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="k">if</span> <span class="n">checks</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">20</span>  <span class="c1"># alternate between two temps</span>
+
+<span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"BST Custom Functions"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+                <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HoveringAUV"</span><span class="p">,</span>
+                <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"BSTSensor"</span><span class="p">,</span>
+                        <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span><span class="p">,</span>
+                        <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">"biomass_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                            <span class="s2">"salinity_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span>
+                            <span class="s2">"temperature_range"</span><span class="p">:</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                        <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"LocationSensor"</span><span class="p">,</span>
+                        <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"COM"</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="raycast-semantic-lidar-sensor.html" rel="prev" title="Raycast Semantic LIDAR Sensor"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="acoustic-beacon-sensor.html" rel="next" title="Acoustic Beacon">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

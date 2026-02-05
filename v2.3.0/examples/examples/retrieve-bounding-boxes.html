@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Retriving Object Bounding Boxes — HoloOcean 2.3.0 documentation</title>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="sampling_bst.html" rel="next" title="Sampling Biomass, Salinity, Temperature"/>
+<link href="raycast-lidar.html" rel="prev" title="Visualizing Raycast LIDAR"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">2.3.0</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="camera.html">Camera Output Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Manually Controlling an Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom-dynamics.html">Manually Defining Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-agent.html">Multi Agent Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi-coms.html">Multi-Agent Communications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ocean-currents.html">Ocean Currents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pd-controllers.html">Example: PD Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raycast-lidar.html">Visualizing Raycast LIDAR</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Retriving Object Bounding Boxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sampling_bst.html">Sampling Biomass, Salinity, Temperature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_imaging.html">Visualizing Imaging Sonar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_profiling.html">Visualizing Profiling Sonar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_sidescan.html">Visualizing Sidescan Sonar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sonar_singlebeam.html">Visualizing Singlebeam Sonar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../examples.html">Examples</a></li>
+<li class="breadcrumb-item active">Retriving Object Bounding Boxes</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/examples/examples/retrieve-bounding-boxes.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="retriving-object-bounding-boxes">
+<span id="bounding-boxes"></span><h1>Retriving Object Bounding Boxes<a class="headerlink" href="#retriving-object-bounding-boxes" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to retrieve the bounding boxes of objects based on their semantic labels.
+This can only be done for custom levels since you need to run the python script from within the Unreal Editor.</p>
+<p>First, you will need to set up your Unreal Editor to use python.
+Please see Unreal’s guide on <a class="reference external" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/scripting-the-unreal-editor-using-python#set-up-your-project-to-use-python">how to set up python</a>.</p>
+<p>Make sure your custom level is set up with semantic labels. Please reference <a class="reference internal" href="../../develop/env-docs/custom-semantics.html#semantic-segmentation"><span class="std std-ref">Adding Custom Semantic Labels</span></a>.
+Then, you can update <code class="docutils literal notranslate"><span class="pre">map_label2id</span></code> with your semantic labels.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">unreal</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_id</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+    <span class="c1">#Fill in map_label2id with the labels and corresponding numbers for your world</span>
+    <span class="n">map_label2id</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"None"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>             <span class="c1"># None         = 0u</span>
+        <span class="s2">"Asphalt"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>          <span class="c1"># Asphalt      = 1u</span>
+        <span class="s2">"Bench"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>            <span class="c1"># Bench        = 2u</span>
+        <span class="o">...</span>                    <span class="c1"># add more labels here</span>
+        <span class="s2">"Any"</span><span class="p">:</span> <span class="mi">255</span>             <span class="c1"># Any          = 0xFF</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">map_label2id</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Returns -1 if label not found</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="c1"># Get the Editor Actor Subsystem</span>
+    <span class="n">actor_subsystem</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">get_editor_subsystem</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">EditorActorSubsystem</span><span class="p">)</span>
+
+    <span class="c1"># Get all actors in the current level</span>
+    <span class="n">actors</span> <span class="o">=</span> <span class="n">actor_subsystem</span><span class="o">.</span><span class="n">get_all_level_actors</span><span class="p">()</span>
+
+    <span class="c1"># Adjust the path to save CSV</span>
+    <span class="n">csv_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"/path/to/file.csv"</span><span class="p">)</span>
+
+    <span class="c1"># switch to False if you want oriented bounding boxes instead of axis aligned</span>
+    <span class="n">getAxisAligned</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Open CSV for writing</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"w"</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+        <span class="c1"># Write header</span>
+        <span class="c1"># writer.writerow(["UniqueID", "ClassName", "ClassID", "OriginX", "OriginY", "OriginZ", "ExtentX", "ExtentY", "ExtentZ"])</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span>
+            <span class="s2">"UniqueID"</span><span class="p">,</span> <span class="s2">"ClassName"</span><span class="p">,</span> <span class="s2">"ClassID"</span><span class="p">,</span>
+            <span class="s2">"OriginX"</span><span class="p">,</span> <span class="s2">"OriginY"</span><span class="p">,</span> <span class="s2">"OriginZ"</span><span class="p">,</span>
+            <span class="s2">"ExtentX"</span><span class="p">,</span> <span class="s2">"ExtentY"</span><span class="p">,</span> <span class="s2">"ExtentZ"</span><span class="p">,</span>
+            <span class="s2">"RotRoll_deg"</span><span class="p">,</span> <span class="s2">"RotPitch_deg"</span><span class="p">,</span> <span class="s2">"RotYaw_deg"</span>
+        <span class="p">])</span>
+        <span class="n">unique_id_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">actor</span> <span class="ow">in</span> <span class="n">actors</span><span class="p">:</span>
+            <span class="n">class_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor</span><span class="o">.</span><span class="n">get_folder_path</span><span class="p">())</span>
+            <span class="n">class_id</span> <span class="o">=</span> <span class="n">get_id</span><span class="p">(</span><span class="n">class_name</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">getAxisAligned</span><span class="p">:</span>
+                <span class="c1">################################################</span>
+                <span class="c1">## Option 1: Return axis-aligned bounding box ##</span>
+                <span class="c1">################################################</span>
+                <span class="n">origin</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">get_actor_bounds</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span>
+                    <span class="n">unique_id_counter</span><span class="p">,</span>
+                    <span class="n">class_name</span><span class="p">,</span>
+                    <span class="n">class_id</span><span class="p">,</span>
+                    <span class="n">origin</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">z</span><span class="p">,</span>
+                    <span class="n">extent</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">extent</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">extent</span><span class="o">.</span><span class="n">z</span>
+                <span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1">############################################</span>
+                <span class="c1">## Option 2: Return oriented bounding box ##</span>
+                <span class="c1">############################################</span>
+                <span class="n">origin</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">get_actor_bounds</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">rotation</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">get_actor_rotation</span><span class="p">()</span>  <span class="c1"># returns Unreal rotator: pitch, yaw, roll</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span>
+                    <span class="n">unique_id_counter</span><span class="p">,</span>
+                    <span class="n">class_name</span><span class="p">,</span>
+                    <span class="n">class_id</span><span class="p">,</span>
+                    <span class="n">origin</span><span class="o">.</span><span class="n">x</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="n">origin</span><span class="o">.</span><span class="n">y</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">origin</span><span class="o">.</span><span class="n">z</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span>
+                    <span class="n">extent</span><span class="o">.</span><span class="n">x</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">extent</span><span class="o">.</span><span class="n">y</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">extent</span><span class="o">.</span><span class="n">z</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span>
+                    <span class="n">rotation</span><span class="o">.</span><span class="n">roll</span><span class="p">,</span> <span class="n">rotation</span><span class="o">.</span><span class="n">pitch</span><span class="p">,</span> <span class="n">rotation</span><span class="o">.</span><span class="n">yaw</span><span class="p">,</span>
+                <span class="p">])</span>
+
+
+            <span class="n">unique_id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Saved actor bounds to </span><span class="si">{</span><span class="n">csv_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To run the python script, you can go to the Tools Execute Python script</p>
+<img alt="../../_images/how_to_run_python_script.png" src="../../_images/how_to_run_python_script.png"/>
+<p>Here is an example of what the bounding boxes look like on our Business Campus level.</p>
+<img alt="../../_images/perspective_bbox_results.png" src="../../_images/perspective_bbox_results.png"/>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="raycast-lidar.html" rel="prev" title="Visualizing Raycast LIDAR"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="sampling_bst.html" rel="next" title="Sampling Biomass, Salinity, Temperature">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

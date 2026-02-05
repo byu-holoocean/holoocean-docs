@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Air Fog Command &mdash; HoloOcean 2.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/themes_override.css?v=3297d54e" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Examples" href="../../examples/examples.html" />
+    <link rel="prev" title="Weather Controller" href="../weather/weather.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HoloOcean
+          </a>
+              <div class="version">
+                2.3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../env_appearance.html">Environment Appearance</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../env_appearance.html#environment-commands">Environment commands</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../tides/tide.html">Tide Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_cycle/timeofday.html">Time of Day Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../water_appearance/water_appearance.html">Water Appearance Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../weather/weather.html">Weather Controller</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Air Fog Command</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HoloOcean</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../env_appearance.html">Environment Appearance</a></li>
+      <li class="breadcrumb-item active">Air Fog Command</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/env_appearance/air_fog/air_fog.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="air-fog-command">
+<h1>Air Fog Command<a class="headerlink" href="#air-fog-command" title="Link to this heading"></a></h1>
+<p>The Air Fog command allows you to adjust the fog effect in the environment,
+changing how far and how clearly objects can be seen above water. This can be useful
+for simulating different air clarity conditions.</p>
+<img alt="../../_images/air_fog.jpg" src="../../_images/air_fog.jpg" />
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>You can configure the following parameters:</p>
+<ul class="simple">
+<li><p><strong>fogDensity</strong>: Controls the overall thickness of the fog.
+<em>Range:</em> <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">10.0</span></code></p></li>
+<li><p><strong>fogDepth</strong>: Distance from the camera at which the fog effect begins.
+<em>Range:</em> <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">10.0</span></code> (Default = 3.0)</p></li>
+<li><p><strong>color_R</strong>: Red channel of the fog color.
+<em>Range:</em> <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">1.0</span></code> (Default = 0.45)</p></li>
+<li><p><strong>color_G</strong>: Green channel of the fog color.
+<em>Range:</em> <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">1.0</span></code> (Default = 0.5)</p></li>
+<li><p><strong>color_B</strong>: Blue channel of the fog color.
+<em>Range:</em> <code class="docutils literal notranslate"><span class="pre">0.0</span> <span class="pre">–</span> <span class="pre">1.0</span></code> (Default = 0.6)</p></li>
+</ul>
+<section id="programmatically">
+<h3>Programmatically<a class="headerlink" href="#programmatically" title="Link to this heading"></a></h3>
+<p>Here is an example of using the air fog command to achieve the visibility level shown in the middle of the image above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+      <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">air_fog</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># sets the fog density to 1</span>
+</pre></div>
+</div>
+<p>Additionally, you can modify fog depth and color.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+      <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">air_fog</span><span class="p">(</span>
+                  <span class="mf">0.8</span><span class="p">,</span>
+                  <span class="n">fogDepth</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+                  <span class="n">color_R</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                  <span class="n">color_G</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                  <span class="n">color_B</span><span class="o">=</span><span class="mf">0.6</span>
+            <span class="p">)</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on how to use this command, please refer to the API Documentation:
+<a class="reference internal" href="../../holoocean/commands.html#holoocean.command.AirFogCommand" title="holoocean.command.AirFogCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">AirFogCommand</span></code></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To modify fog underwater, use the dedicated command instead.
+See <a class="reference internal" href="../water_appearance/water_appearance.html#water-fog-command"><span class="std std-ref">Water Fog Command</span></a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../weather/weather.html" class="btn btn-neutral float-left" title="Weather Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../examples/examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BYU FRoStLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

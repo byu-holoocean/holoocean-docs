@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Installation — HoloOcean 2.3.0 documentation</title>
+<link href="../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
+<link href="../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script src="../_static/jquery.js?v=5d32c60e"></script>
+<script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../_static/doctools.js?v=9a2dae69"></script>
+<script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../_static/copybutton.js?v=f281be69"></script>
+<script src="../_static/js/theme.js"></script>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="getting-started.html" rel="next" title="Getting Started"/>
+<link href="../index.html" rel="prev" title="Welcome to HoloOcean’s documentation!"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../versionList.html" style="color: inherit;">2.3.0</a></div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#base-requirements">Base Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-holoocean">Cloning HoloOcean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-options">Installation Options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#standard-packaged-installation">Standard Packaged Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#additional-requirements">Additional Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-library">Python Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#worlds-packages">Worlds Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-for-development-with-unreal-editor">Installation for Development with Unreal Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-with-docker">Installation with Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean-docker-containers">Holoocean Docker Containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#runtime-container">Runtime Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-client-development-container">Python/Client Development Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#develop-branch">Develop Branch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Python Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#world-packages">World Packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../index.html"></a></li>
+<li class="breadcrumb-item active">Installation</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../_sources/usage/installation.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<section id="base-requirements">
+<h2>Base Requirements<a class="headerlink" href="#base-requirements" title="Link to this heading"></a></h2>
+<p>Depending on your installation method, other requirements may be necessary, but these are prerequisites that apply to all installation methods.</p>
+<ul class="simple">
+<li><p>GitHub account that is linked to an Epic Games account – please <a class="reference external" href="https://www.unrealengine.com/en-US/ue-on-github">Follow the steps here</a> and remember to <strong>accept the email invitation from Epic Games.</strong></p></li>
+<li><p>64-bit Linux or Windows Operating System</p></li>
+</ul>
+<p>While we don’t have known minimal requirements, we recommend having:</p>
+<ul class="simple">
+<li><p>a dedicated GPU</p></li>
+<li><p>8 GB of RAM or more</p></li>
+<li><p>Quad-core Intel or AMD CPU, 2.5 GHz or faster</p></li>
+</ul>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<section id="cloning-holoocean">
+<h3>Cloning HoloOcean<a class="headerlink" href="#cloning-holoocean" title="Link to this heading"></a></h3>
+<p>For all installation methods the first step is to clone the repository.</p>
+<p>To get the most recent stable release of the HoloOcean library, download or clone our repo at:
+<a class="reference external" href="https://github.com/byu-holoocean/HoloOcean">https://github.com/byu-holoocean/HoloOcean</a>. We suggest cloning it with lowercase naming, as our
+example code uses, like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">byu</span><span class="o">-</span><span class="n">holoocean</span><span class="o">/</span><span class="n">HoloOcean</span><span class="o">.</span><span class="n">git</span> <span class="n">holoocean</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get a Page Not Found Error when trying to access the repository, it means you have not
+linked your GitHub account to your Epic Games account. Please refer to the instructions above.</p>
+</div>
+</section>
+<section id="installation-options">
+<h3>Installation Options<a class="headerlink" href="#installation-options" title="Link to this heading"></a></h3>
+<p>Depending on your use case, different installation methods may apply. Please refer to the following list and determine
+the instructions that are most appropriate for your purposes.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#install-packaged"><span class="std std-ref">Standard Packaged installation</span></a> – Simplest method for using HoloOcean out of the box.</p></li>
+<li><p><a class="reference internal" href="#install-dev"><span class="std std-ref">Development with Unreal Editor installation</span></a> – Method that should be used if you desire to customize the simulation such as developing custom worlds, agents, or sensors.</p></li>
+<li><p><a class="reference internal" href="#install-docker"><span class="std std-ref">Docker-based installation</span></a> – Alternate setup using preconfigured Docker containers.</p></li>
+</ul>
+<p>HoloOcean is installed in two parts:</p>
+<ol class="arabic simple">
+<li><p>The Python client library (<code class="docutils literal notranslate"><span class="pre">holoocean</span></code>), which is installed first.</p></li>
+<li><p>The world packages (binaries), which are downloaded by the Python package after installation.</p></li>
+</ol>
+<p>The Python portion is lightweight, but the world packages can be several gigabytes in size.</p>
+</section>
+</section>
+<section id="standard-packaged-installation">
+<span id="install-packaged"></span><h2>Standard Packaged Installation<a class="headerlink" href="#standard-packaged-installation" title="Link to this heading"></a></h2>
+<section id="additional-requirements">
+<h3>Additional Requirements<a class="headerlink" href="#additional-requirements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Python &gt;= 3.7</p></li>
+<li><p>pip3</p></li>
+<li><p>For Linux: OpenGL 3+, gcc (minimum build-essential package)</p></li>
+</ul>
+<p>For the build-essential package for Linux, you can run the following console command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span>
+</pre></div>
+</div>
+</section>
+<section id="python-library">
+<h3>Python Library<a class="headerlink" href="#python-library" title="Link to this heading"></a></h3>
+<p>From the cloned repository, install the Python package by doing the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">holoocean</span><span class="o">/</span><span class="n">client</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="worlds-packages">
+<h3>Worlds Packages<a class="headerlink" href="#worlds-packages" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Ocean package is the only package currently available. Users can create custom worlds and
+packages if desired.</p>
+</div>
+<p>To install the most recent version of the Ocean worlds package, open a Python shell by typing the
+following and hit enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
+</pre></div>
+</div>
+<p>Install the package by running the following Python commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<span class="n">holoocean</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To do these steps in a single console command, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"import holoocean; holoocean.install('Ocean')"</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="installation-for-development-with-unreal-editor">
+<span id="install-dev"></span><h2>Installation for Development with Unreal Editor<a class="headerlink" href="#installation-for-development-with-unreal-editor" title="Link to this heading"></a></h2>
+<p>If you desire to customize the simulation such as developing custom worlds, agents, or sensors,
+you will need to be able to modify C++ engine code that implements the simulation using Unreal Engine.
+This can be done in multiple ways:</p>
+<ul class="simple">
+<li><p>Standalone Live Editing using Unreal Editor Tools - Unreal provides tools that enable you to edit your own worlds and modify C++ engine code and then build and test your worlds in real-time.</p></li>
+<li><p>Packaged Custom Worlds - After developing HoloOcean using these tools, you can then package your own worlds for later use.</p></li>
+</ul>
+<p>For more detailed instructions on installation for development, see <a class="reference internal" href="../develop/develop.html#develop"><span class="std std-ref">Developing HoloOcean</span></a>.</p>
+</section>
+<section id="installation-with-docker">
+<span id="install-docker"></span><h2>Installation with Docker<a class="headerlink" href="#installation-with-docker" title="Link to this heading"></a></h2>
+<section id="holoocean-docker-containers">
+<h3>Holoocean Docker Containers<a class="headerlink" href="#holoocean-docker-containers" title="Link to this heading"></a></h3>
+<p>The <cite>docker</cite> directory contains resources to build and run Docker containers for
+the HoloOcean project, which integrates Unreal Engine 5 (UE5) and the HoloOcean client.
+The setup supports GPU-accelerated simulation and X11 display forwarding.</p>
+</section>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h3>
+<p>Before using the containers, ensure the following are installed and configured on your host system:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Running these containers on a Windows host machine may cause problems with GPU access.
+The instructions provided below are intended for a Linux host machine.</p>
+</div>
+<ul class="simple">
+<li><p><strong>CUDA and NVIDIA Drivers</strong></p>
+<ul>
+<li><p>Install CUDA and a compatible NVIDIA driver. CUDA version and NVIDIA driver version are dependent on system requirements.</p></li>
+<li><p>See the <a class="reference external" href="https://docs.nvidia.com/cuda/">official NVIDIA documentation</a> for installation instructions.</p></li>
+</ul>
+</li>
+<li><p><strong>NVIDIA Container Toolkit</strong></p>
+<ul>
+<li><p>Required for GPU passthrough to Docker containers.</p></li>
+<li><p>Follow the <a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">official installation guide</a> to set up the toolkit and configure Docker.</p></li>
+</ul>
+</li>
+<li><p><strong>Docker</strong></p>
+<ul>
+<li><p>Ensure Docker Engine is installed and the daemon is running. Issues may occur when running Docker Desktop with the NVIDIA Container Toolkit.</p></li>
+<li><p>See the <a class="reference external" href="https://docs.docker.com/engine/install/">official Docker installation guide</a>.</p></li>
+<li><p>Follow <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/">Post-installation steps</a> for Linux to run Docker without sudo.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h3>Overview<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>The provided Docker containers enable both development and runtime workflows for HoloOcean.
+The Python/client development container is designed for interactive development and compilation of HoloOcean, limited to changes of Python source code,
+whereas the runtime container is intended for executing pre-built HoloOcean applications
+in a minimal environment.</p>
+<p>For advanced Docker usage, consult the Docker and NVIDIA Container Toolkit documentation.</p>
+<p>This repository provides two main container types:</p>
+</section>
+<section id="runtime-container">
+<h3>Runtime Container<a class="headerlink" href="#runtime-container" title="Link to this heading"></a></h3>
+<ul>
+<li><p><strong>Purpose:</strong> For running pre-built HoloOcean applications and distributing HoloOcean internally.</p></li>
+<li><p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Minimal environment (no build tools).</p></li>
+<li><p>HoloOcean code is pre-installed.</p></li>
+<li><p>Intended for deployment and production.</p></li>
+</ul>
+</li>
+<li><p><strong>Availability:</strong></p>
+<ul class="simple">
+<li><p>Not distributed publicly online due to the Epic Games End User License Agreement (EULA).</p></li>
+</ul>
+</li>
+<li><p><strong>Building:</strong></p>
+<ul class="simple">
+<li><p>The Docker image must be built locally and cannot be pulled from Docker Hub.
+Build the image using the Dockerfile located in the <cite>docker/runtime</cite> directory.</p></li>
+</ul>
+</li>
+<li><p><strong>Usage</strong></p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Allow display access by running on the host machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xhost<span class="w"> </span>+local:docker
+</pre></div>
+</div>
+</li>
+<li><p>Navigate to the runtime directory inside the <code class="docutils literal notranslate"><span class="pre">docker</span></code> folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docker/runtime
+</pre></div>
+</div>
+</li>
+<li><p>To start a container, use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span></code> with the following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: Run the container in detached mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--build</span></code>: Build the Docker image before starting the container.</p></li>
+</ul>
+<p>To build the image and start the container in detached mode, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d
+</pre></div>
+</div>
+</li>
+<li><p>Test the example script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>cp<span class="w"> </span>../../client/example.py<span class="w"> </span>holoocean:/home/ue4<span class="w">  </span><span class="c1"># Copy the example script into the container</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>holoocean<span class="w"> </span>bash<span class="w">   </span><span class="c1"># Create bash terminal inside the container</span>
+</pre></div>
+</div>
+<p>Inside the container run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from example import *; torpedo_example()"</span>
+</pre></div>
+</div>
+</li>
+<li><p>To stop and remove the container, run from the same directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="python-client-development-container">
+<h3>Python/Client Development Container<a class="headerlink" href="#python-client-development-container" title="Link to this heading"></a></h3>
+<ul>
+<li><p><strong>Purpose:</strong> For active development and compilation of the HoloOcean Python client (non-engine code).</p></li>
+<li><p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Source code is volume-mounted for live editing.</p></li>
+<li><p>Includes all necessary build tools.</p></li>
+<li><p>Suitable for iterative testing and debugging HoloOcean Python client code.</p></li>
+</ul>
+</li>
+<li><p><strong>Availability:</strong></p>
+<ul class="simple">
+<li><p>Pre-built Docker images are available on Docker Hub.</p></li>
+<li><p>Docker containers can be built and modified locally.</p></li>
+</ul>
+</li>
+<li><p><strong>Usage</strong></p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Allow display access by running on the host machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xhost<span class="w"> </span>+local:docker
+</pre></div>
+</div>
+</li>
+<li><p>Navigate to the development directory inside the <code class="docutils literal notranslate"><span class="pre">docker</span></code> folder
+and change permissions of build cache for isolated pip installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docker/dev
+sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>a+w<span class="w"> </span>build_cache/
+</pre></div>
+</div>
+</li>
+<li><p>To start a container, use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span></code> with the following options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: Run the container in detached mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--build</span></code>: Build the Docker image before starting the container.</p></li>
+</ul>
+<p>To start a container in detached mode run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>If no local image is found, then the image will be attempted to be pulled from Docker Hub.</p>
+</li>
+<li><p>Test the example script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>holoocean<span class="w"> </span>bash<span class="w">   </span><span class="c1"># Create bash terminal inside the container</span>
+</pre></div>
+</div>
+<p>Inside the container run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>client
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from example import *; torpedo_example()"</span>
+</pre></div>
+</div>
+</li>
+<li><p>To stop and remove the container, run from the same directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<ul>
+<li><p><strong>Display Issues:</strong></p>
+<ul class="simple">
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">xhost</span> <span class="pre">+local:docker</span></code> has been run on the host.</p></li>
+<li><p>Confirm the <code class="docutils literal notranslate"><span class="pre">DISPLAY</span></code> environment variable is set.</p></li>
+<li><p>Make sure your X11 server is running and Docker has access.</p></li>
+</ul>
+</li>
+<li><p><strong>CUDA Version:</strong></p>
+<ul class="simple">
+<li><p>Ensure that the CUDA version used in the Docker container is:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Lower than or equal to your host CUDA installation</p></li>
+<li><p>Compatible with your NVIDIA Driver</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Change CUDA versions by modifying the Dockerfiles</p></li>
+</ul>
+</li>
+<li><p><strong>Verify GPU Access:</strong></p>
+<ul>
+<li><p>Inside the container, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Docker Not Found:</strong></p>
+<ul class="simple">
+<li><p>Ensure Docker is properly installed and the daemon is running.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="develop-branch">
+<h2>Develop Branch<a class="headerlink" href="#develop-branch" title="Link to this heading"></a></h2>
+<p>Both the Python library and the available worlds of HoloOcean are actively being developed.
+These instructions describe how to access the latest development updates.
+You can apply these steps to any of the installation methods described above.</p>
+<section id="id3">
+<h3>Python Library<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>The “release” branch of the GitHub repository contains the latest stable release of the client
+library, while the “develop” branch contains the latest features and bug fixes but may not be
+stable. To install the develop branch, clone the repository as described above, then check out
+the develop branch and reinstall the holoocean package via pip using the commands below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">develop</span>
+<span class="n">cd</span> <span class="n">holoocean</span><span class="o">/</span><span class="n">client</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="world-packages">
+<h3>World Packages<a class="headerlink" href="#world-packages" title="Link to this heading"></a></h3>
+<p>It is advised that you use the development versions of the Ocean package when on the develop branch
+of the library. These will contain the latest updates to the worlds that may be necessary to use
+some features on the develop branch. Using the develop branch with the release version of the worlds
+may result in unexpected behavior.</p>
+<p>To install the development version of the Ocean package, open a Python shell and remove any previous
+versions of the binaries by running the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<span class="n">holoocean</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then install the development version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">holoocean</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">"Ocean"</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="s2">"develop"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="../index.html" rel="prev" title="Welcome to HoloOcean’s documentation!"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="getting-started.html" rel="next" title="Getting Started">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>

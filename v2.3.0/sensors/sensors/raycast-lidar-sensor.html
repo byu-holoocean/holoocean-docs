@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Raycast LIDAR — HoloOcean 2.3.0 documentation</title>
+<link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/themes_override.css?v=3297d54e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/favicon.png" rel="shortcut icon"/>
+<!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+<script src="../../_static/jquery.js?v=5d32c60e"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/doctools.js?v=9a2dae69"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/js/theme.js"></script>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="raycast-semantic-lidar-sensor.html" rel="next" title="Raycast Semantic LIDAR Sensor"/>
+<link href="range-finder-sensor.html" rel="prev" title="Range Finder Sensor"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../../index.html">
+            HoloOcean
+          </a>
+<div class="version"><a href="../../../versionList.html" style="color: inherit;">2.3.0</a></div>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div><div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imaging-sonar-sensor.html">Imaging Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="profiling-sonar-sensor.html">Profiling Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="depth-sensor.html">Depth Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="depth-camera-sensor.html">Depth Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rgb-camera-sensor.html">RGB Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="camera-sensor.html">Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gps-sensor.html">Global Positioning System (GPS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magnetometer-sensor.html">Magnetometer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="range-finder-sensor.html">Range Finder Sensor</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Raycast LIDAR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bst-sensor.html">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#communication-sensors">Communication Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#state-sensors">State Sensors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../env_appearance/env_appearance.html">Environment Appearance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versionList.html">Other Versions Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift"><nav aria-label="Mobile navigation menu" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../../index.html">HoloOcean</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="Page navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
+<li class="breadcrumb-item"><a href="../sensors.html">HoloOcean Sensors</a></li>
+<li class="breadcrumb-item active">Raycast LIDAR</li>
+<li class="wy-breadcrumbs-aside">
+<a href="../../_sources/sensors/sensors/raycast-lidar-sensor.rst.txt" rel="nofollow"> View page source</a>
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<section id="raycast-lidar">
+<span id="raycast-lidar-sensor"></span><h1>Raycast LIDAR<a class="headerlink" href="#raycast-lidar" title="Link to this heading"></a></h1>
+<p>Simulates a LIDAR sensor using raycasting. Returns a point cloud of “hit” objects within the sensor’s
+range. Also returns the intensity and ring/channel for each point. The intensity is currently based
+only on atmospheric attenuation (set by the <code class="docutils literal notranslate"><span class="pre">AtmospAttenRate</span></code> parameter) and the distance to the
+object.</p>
+<p>A general drop off return rate for points can be set by changing the <code class="docutils literal notranslate"><span class="pre">DropOffGenRate</span></code> parameter.
+Additionally an intensity-based drop-off rate can be applied to the points based on the parameters
+<code class="docutils literal notranslate"><span class="pre">DropOffIntensityLimit</span></code> and <code class="docutils literal notranslate"><span class="pre">DropOffAtZeroIntensity</span></code>. These parameters create a linear drop-off
+between <code class="docutils literal notranslate"><span class="pre">DropOffIntensityLimit</span></code> (the intensity at which intensity-based drop off starts) and
+<code class="docutils literal notranslate"><span class="pre">DropOffAtZeroIntensity</span></code> (the drop off rate at which the intensity is zero). To disable all drop off,
+set <code class="docutils literal notranslate"><span class="pre">DropOffGenRate</span></code> to 0.0, and <code class="docutils literal notranslate"><span class="pre">DropOffIntensityLimit</span></code> to 0.0.</p>
+<p>Note that to get an entire 360 degree scan (or a full horizontal field of view as set by
+<code class="docutils literal notranslate"><span class="pre">HorizontalFov</span></code>), tuning of the <code class="docutils literal notranslate"><span class="pre">RotationFrequency</span></code> and <code class="docutils literal notranslate"><span class="pre">TicksPerSecond</span></code> parameters is required.
+Setting them equal to each other will result in a full 360 degree scan. Alternatively, if you do not
+wish your sensor to be running at the same frequency as your environment, you can change the ticks
+per capture (see Example sensor definition below at the parameter listed as Hz). The <code class="docutils literal notranslate"><span class="pre">Hz</span></code> parameter
+controls the ticks per capture rate at which the sensor captures and returns data. If <code class="docutils literal notranslate"><span class="pre">Hz</span></code> is set to
+the same value as <code class="docutils literal notranslate"><span class="pre">RotationFrequency</span></code>, the sensor will return a full 360 degree scan at each tick.</p>
+<p>See <a class="reference internal" href="../../examples/examples/raycast-lidar.html#visualizing-raycast-lidar"><span class="std std-ref">Visualizing Raycast LIDAR</span></a> for an example of how to use this sensor.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.RaycastLidar" title="holoocean.sensors.RaycastLidar"><code class="xref py py-class docutils literal notranslate"><span class="pre">RaycastLidar</span></code></a> for the python API.</p>
+<p>Example sensor definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"RaycastLidar"</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"CameraSocket"</span><span class="p">,</span>
+        <span class="s2">"Channels"</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+        <span class="s2">"Range"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="s2">"PointsPerSecond"</span><span class="p">:</span> <span class="mi">20000</span><span class="p">,</span>
+        <span class="s2">"RotationFrequency"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">"UpperFovLimit"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">"LowerFovLimit"</span><span class="p">:</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span>
+        <span class="s2">"HorizontalFov"</span><span class="p">:</span> <span class="mf">360.0</span><span class="p">,</span>
+        <span class="s2">"AtmospAttenRate"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="s2">"RandomSeed"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+        <span class="s2">"DropOffGenRate"</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">,</span>
+        <span class="s2">"DropOffIntensityLimit"</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+        <span class="s2">"DropOffAtZeroIntensity"</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="s2">"ShowDebugPoints"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">"NoiseStdDev"</span><span class="p">:</span> <span class="mf">0.0</span>
+    <span class="p">},</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span> <span class="c1">#TicksPerCapture</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div>
+</div>
+<footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
+<a accesskey="p" class="btn btn-neutral float-left" href="range-finder-sensor.html" rel="prev" title="Range Finder Sensor"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="raycast-semantic-lidar-sensor.html" rel="next" title="Raycast Semantic LIDAR Sensor">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>© Copyright BYU FRoStLab.</p>
+</div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</body>
+</html>
