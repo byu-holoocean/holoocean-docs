@@ -64,7 +64,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#adding-objects">Adding Objects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enabling-semantic-labels">Enabling Semantic Labels</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#enabling-the-depth-camera">Enabling the Depth Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#note-on-collision-settings-for-objects-and-sonar">Note on Collision Settings for Objects and Sonar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#collision-settings-for-objects-and-sonar">Collision Settings for Objects and Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-tide-settings-for-objects">Additional Tide Settings for Objects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#weather">Weather</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#air-fog">Air Fog</a></li>
@@ -271,8 +271,8 @@ In the Details panel of the Unreal Editor, navigate to each asset you wish to be
 <p>Following the steps to set up semantic labels in your world will enable “Render CustomDepth Pass” for the assets that recieve semantic tags. Be sure to repeat the process above for all remaining assets in your world without semantic labels, including the landscape.</p>
 </div>
 </section>
-<section id="note-on-collision-settings-for-objects-and-sonar">
-<span id="object-collision"></span><h2>Note on Collision Settings for Objects and Sonar<a class="headerlink" href="#note-on-collision-settings-for-objects-and-sonar" title="Link to this heading"></a></h2>
+<section id="collision-settings-for-objects-and-sonar">
+<span id="object-collision"></span><h2>Collision Settings for Objects and Sonar<a class="headerlink" href="#collision-settings-for-objects-and-sonar" title="Link to this heading"></a></h2>
 <p>Sonar simulation relies upon the collision mesh for objects when generating the octree.</p>
 <p>First, make sure to set the environment boundaries to have the environment min and max.
 In standalone through Unreal Engine, this would be done by setting the Additional Launch Parameters as seen here: <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a>.
@@ -286,6 +286,11 @@ that object in a sonar image will be inaccurate. This issue can be addressed for
 by using the Unreal Engine editor and setting the “Collision Complexity” option in the
 details section of the static mesh editor to “use complex collision as simple”.</p>
 <img alt="../../_images/collision_setting.png" src="../../_images/collision_setting.png"/>
+<p>Please note that even though you have “use complex collision as simple” enabled, it will still retain and use the simple collision mesh
+for physics simulation. To view both the simple and complex collision meshes, click on “Show” and enable either mesh type.</p>
+<img alt="../../_images/simple_and_complex_collisions.png" src="../../_images/simple_and_complex_collisions.png"/>
+<p>If you wish to remove the simple collision completely, click on the “Collision” tab and select “Remove Collision”. You can also edit the simple collision from this tab.</p>
+<img alt="../../_images/delete_collisions.png" src="../../_images/delete_collisions.png"/>
 <p>If you still have issues with your collision mesh, it is often helpful to enable “Double Sided Geometry” in the details panel of the static mesh editor.</p>
 <img alt="../../_images/static_mesh_double_sided.png" src="../../_images/static_mesh_double_sided.png"/>
 <p>Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable “Simulation Generates Hit Events”.</p>

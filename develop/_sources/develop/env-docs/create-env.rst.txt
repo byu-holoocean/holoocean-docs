@@ -170,8 +170,8 @@ If you already set up your world for semantic labeling, you will have already do
 
 .. _`object-collision`:
 
-Note on Collision Settings for Objects and Sonar
-================================================
+Collision Settings for Objects and Sonar
+========================================
 
 Sonar simulation relies upon the collision mesh for objects when generating the octree. 
 
@@ -188,6 +188,15 @@ by using the Unreal Engine editor and setting the “Collision Complexity” opt
 details section of the static mesh editor to “use complex collision as simple”.
 
 .. image:: images/collision_setting.png
+
+Please note that even though you have "use complex collision as simple" enabled, it will still retain and use the simple collision mesh 
+for physics simulation. To view both the simple and complex collision meshes, click on "Show" and enable either mesh type. 
+
+.. image:: images/simple_and_complex_collisions.png
+
+If you wish to remove the simple collision completely, click on the "Collision" tab and select "Remove Collision". You can also edit the simple collision from this tab.
+
+.. image:: images/delete_collisions.png
 
 If you still have issues with your collision mesh, it is often helpful to enable "Double Sided Geometry" in the details panel of the static mesh editor.
 
