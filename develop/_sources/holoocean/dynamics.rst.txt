@@ -1,17 +1,21 @@
+.. _`fossen_interface`:
+
 Fossen Dynamics
 ===============
 
 .. automodule:: holoocean.fossen_dynamics.fossen_interface
    :members:
 
+.. _`torpedo_fossen_interface`:
+
 Torpedo Dynamics
 ----------------
-
 .. automodule:: holoocean.fossen_dynamics.torpedo
    :members:
 
+.. _`otter_fossen_interface`:
+
 Otter Dynamics
 ----------------
-
 .. automodule:: holoocean.fossen_dynamics.otter
    :members:

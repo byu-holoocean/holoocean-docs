@@ -123,7 +123,7 @@ dictionary in the list.</p>
 <span class="w">      </span><span class="nt">"rotation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">],</span>
 <span class="w">      </span><span class="nt">"Hz"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"lcm_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"channel_name"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"ros_publish"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ros_publish"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"configuration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">         </span><span class="s2">"array of sensor configurations"</span>
 <span class="w">      </span><span class="p">}</span>
@@ -205,10 +205,12 @@ is also available.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To publish sensor data to ROS2, set <code class="docutils literal notranslate"><span class="pre">ros_publish</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<p>ROS2 publishing will only occur when the ROS2 bridge is running.
+To suppress the default publish of the sensor data to ROS2,
+set <code class="docutils literal notranslate"><span class="pre">ros_publish</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">"sensor_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RGBCamera"</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">"ros_publish"</span><span class="p">:</span><span class="w"> </span><span class="s2">"True"</span>
+<span class="w">   </span><span class="nt">"ros_publish"</span><span class="p">:</span><span class="w"> </span><span class="s2">"False"</span>
 <span class="p">}</span>
 </pre></div>
 </div>

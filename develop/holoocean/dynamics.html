@@ -132,7 +132,7 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
 <section id="module-holoocean.fossen_dynamics.fossen_interface">
-<span id="fossen-dynamics"></span><h1>Fossen Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.fossen_interface" title="Link to this heading"></a></h1>
+<span id="fossen-dynamics"></span><span id="fossen-interface"></span><h1>Fossen Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.fossen_interface" title="Link to this heading"></a></h1>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -211,7 +211,10 @@ the fossen dynamic model to control the motion of the vehicle</p>
 <dd><p>Sets the control mode for the vehicle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>controlSystem</strong> (<em>str</em>) – The control system to use. Possible values are:</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle_name</strong> (<em>str</em>) – The vehicle for which to set the control mode.</p></li>
+<li><p><strong>controlSystem</strong> (<em>str</em>) – The control system to use. Possible values are:</p></li>
+</ul>
 </dd>
 </dl>
 <ul class="simple">
@@ -232,7 +235,10 @@ the fossen dynamic model to control the motion of the vehicle</p>
 <dd><p>Set the depth goals for the autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>depth</strong> (<em>float</em>) – Desired depth (m), positive downward in world frame.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle_name</strong> (<em>str</em>) – The vehicle for which to set the depth goal.</p></li>
+<li><p><strong>depth</strong> (<em>float</em>) – Desired depth (m), positive downward in world frame.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -246,6 +252,7 @@ the fossen dynamic model to control the motion of the vehicle</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle_name</strong> (<em>str</em>) – The vehicle for which to set the goals.</p></li>
 <li><p><strong>depth</strong> (<em>float</em>) – Desired depth (m), positive downwards.</p></li>
 <li><p><strong>heading</strong> (<em>float</em>) – Desired yaw angle (deg). (-180 to 180)</p></li>
 <li><p><strong>rpm</strong> (<em>float</em>) – Desired propeller revolution (rpm).</p></li>
@@ -262,7 +269,10 @@ the fossen dynamic model to control the motion of the vehicle</p>
 <dd><p>Set the heading goals for the autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>depth</strong> (<em>float</em>) – Desired heading (deg), -180 to 180 in NWU frame</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle_name</strong> (<em>str</em>) – The vehicle for which to set the heading goal.</p></li>
+<li><p><strong>heading</strong> (<em>float</em>) – Desired heading (deg), -180 to 180 in HF (Z Up)</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -275,7 +285,10 @@ the fossen dynamic model to control the motion of the vehicle</p>
 <dd><p>Set the rpm goals for the torpedo autopilot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>depth</strong> (<em>float</em>) – Desired rpm for thruster</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle_name</strong> (<em>str</em>) – The vehicle for which to set the rpm goal.</p></li>
+<li><p><strong>rpm</strong> (<em>float</em>) – Desired rpm for thruster</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -295,7 +308,7 @@ return the accelerations of the vehicle in holoocean global frame</p>
 </dd></dl>
 </dd></dl>
 <section id="module-holoocean.fossen_dynamics.torpedo">
-<span id="torpedo-dynamics"></span><h2>Torpedo Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.torpedo" title="Link to this heading"></a></h2>
+<span id="torpedo-dynamics"></span><span id="torpedo-fossen-interface"></span><h2>Torpedo Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.torpedo" title="Link to this heading"></a></h2>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -553,7 +566,7 @@ Typical configurations will be: Fin Count - 4, Fin Offset - 0 Deg and Fin Count 
 </dd></dl>
 </section>
 <section id="module-holoocean.fossen_dynamics.otter">
-<span id="otter-dynamics"></span><h2>Otter Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.otter" title="Link to this heading"></a></h2>
+<span id="otter-dynamics"></span><span id="otter-fossen-interface"></span><h2>Otter Dynamics<a class="headerlink" href="#module-holoocean.fossen_dynamics.otter" title="Link to this heading"></a></h2>
 <p><strong>Classes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>

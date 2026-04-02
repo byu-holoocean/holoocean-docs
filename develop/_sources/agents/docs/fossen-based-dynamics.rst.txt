@@ -16,16 +16,17 @@ Here is a summary of the steps to set up Fossen dynamics in HoloOcean with
 a more detailed explanation and examples in the next sections:
 
 1. In the scenario configuration, in the agent dictionary, set the 'fossen_model' key to the matching 
-   Fossen dynamics class. The available Fossen dynamics classes are listed in the `Fossen Vehicle Classes` section below.
-2. In the agent dictionary, set the `control_scheme` key to the value for custom dynamics for the agent (see :ref:`control-schemes`)
+   Fossen dynamics class. The available Fossen dynamics classes are listed in the :ref:`fossen_vehicle_classes` section below.
+2. In the agent dictionary, set the ``control_scheme`` key to the value for `Custom Dynamics` for the agent (see :ref:`control-schemes`)
 3. Setup a Dynamics Sensor in the agent's sensors list. This sensor is required to read the vehicle state and 
    apply the dynamics model. 
 4. Optionally, you can set the `dynamics`, `actuator`, and `autopilot` parameters in the agent 
    configuration. These parameters define the vehicle's dynamics, control surfaces, and autopilot 
    settings. This is only supported for Fossen dynamic models with a defined configure_from_scenario function defined.
-5. Finally, create a FossenInterface manager object in your simulation script, passing the list of agent names and the scenario configuration.
-   This class is implemented in `client/src/fossen_dynamics/fossen_interface.py`.
+5. Finally, create a ``FossenInterface`` manager object in your simulation script, passing the list of agent names and the scenario configuration.
+   This class is implemented in :ref:`fossen_interface`.
 
+.. _`fossen_vehicle_classes`:
 
 Fossen Vehicle Classes
 ======================
@@ -34,7 +35,7 @@ Currently, we have implemented the dynamics models for two vehicle classes:
 There is a list of keys that are connected to the Fossen dynamics models. This is defined in the ``FossenInterface`` class.
 
 - Torpedo (``Torpedo: "torpedo"``)
-    This class implements the dynamics equations for a torpedo-like vehicle, including the necessary parameters and methods to 
+    This class, :ref:`torpedo_fossen_interface`, implements the dynamics equations for a torpedo-like vehicle, including the necessary parameters and methods to 
     calculate accelerations based on control inputs to fins and a single propellor. 
     Default Fossen vehicle parameters are currently tuned to approximate the REMUS100 vehicle, as described by Thor Fossen.
 
@@ -43,21 +44,17 @@ There is a list of keys that are connected to the Fossen dynamics models. This i
         - depthHeadingAutopilot: Set the depth, heading, and propellor RPM goals which will be handled by the controller
 
 - Otter (``Otter: "otter"``)
-    This class implements the dynamic equations for a surface vessel with two propellors at back of the ship. The vehicle does not
+    This class, :ref:`otter_fossen_interface`, implements the dynamic equations for a surface vessel with two propellors at back of the ship. The vehicle does not
     support to configure the parameters yet from the scenario. 
     Default vehicle parameters match the Otter surface vessel.
     
     Control Modes:
         - manualControl: Manually set the commanded control surfaces (propellors)
-        - headingAutopilot: Not verfied yet by HoloOcean developers. Likely works but with the NED reference frame instead of NWU.
+        - headingAutopilot: Set a heading goal that will handle control surface commands.
 
 .. note::
     The Unreal Engine graphics asset is not linked to the fossen model. 
-    The number of fins shown on the vehicle will not change in Unreal Engine when changing between 
-    child classes.
-
-    Implementing Fossen dynamics does not change the asset, so the fins will not visibly move when 
-    the simulation is running. 
+    The number of fins shown on the vehicle will not change in Unreal Engine visualizations.
 
 .. note::
     Mass and other default vehicle parameters set in the HoloOcean engine are ignored when using 
@@ -75,7 +72,7 @@ There is a list of keys that are connected to the Fossen dynamics models. This i
 
 .. - `dynamics`: This method should implement the dynamics equations for the vehicle. It should take in 
 ..   the current state of the vehicle (eta, nu) and the control input, and return the accelerations in 
-..   the NWU frame.
+..   the FDF coordinate system.
 
 .. The model can also implement other functions as desired, such as controllers and plotting functions. 
 .. We recommend using a `controlMode` attribute to define the control scheme for the vehicle. 
@@ -112,7 +109,7 @@ manager.
 Single Agent Fossen Dynamics Example
 ====================================
 In this section we will step through the key elements of our Fossen dynamics implementation and give 
-an example of using Fossen dynamics in HoloOcean. The full code can be found in `client/example.py`.
+an example of using Fossen dynamics in HoloOcean. The full code can be found in ``client/example.py``.
 
 Configuration
 -------------
@@ -163,6 +160,14 @@ Fossen dynamics classes.
                         "configuration": {
                             "UseCOM": True,
                             "UseRPY": False  # Use quaternion for dynamics
+                        }
+                    },
+                    {
+                        "sensor_type": "DynamicsSensor",
+                        "sensor_name": "DynamicsSensorRPY",
+                        "configuration": {
+                            "UseCOM": True,
+                            "UseRPY": True 
                         }
                     },
                 ],
@@ -256,7 +261,7 @@ Simulation setup proceeds first by setting up an environment. We create a list o
 scenario that will be controlled by the Fossen dynamics. The list of 
 fossen agent names and scenario configuration are passed to the Fossen Interface.
 Finally, we initialize a NumPy array of length 6 for linear accelerations (x, y, z) 
-and angular accelerations (about axis x, y, z), all in the global NWU frame.
+and angular accelerations (about axis x, y, z), all in the global HoloOcean frame.
 
 .. code-block:: python
 
@@ -336,11 +341,6 @@ being north (along the positive x-axis) and 90 degrees being West (along the pos
 The thruster goal is given directly as RPM, not as a percentage of the maximum RPM. Be sure to 
 check the max RPM in the Fossen vehicle configuration to ensure the command is below the maximum.
 
-.. warning::
-    When switching to the autopilot control mode more than once there is a possibility of irregular behavior
-    from the autopilot not setting the LP initial position to the current position. This is a known issue
-    and will be fixed in a future release.
-
 .. code-block:: python 
 
     depth_goal = 279 # meters
@@ -360,9 +360,74 @@ check the max RPM in the Fossen vehicle configuration to ensure the command is b
         x_end = pos[0] + 3 * np.cos(np.deg2rad(heading_goal))
         y_end = pos[1] + 3 * np.sin(np.deg2rad(heading_goal))
 
-        color = [0, 255, 0] if abs(depth + pos[2]) <= 2.0 else [255, 0, 0]
-        env.draw_arrow(pos.tolist(), end=[x_end, y_end, -depth], color=color, thickness=5, lifetime=0.03)
+        color = [0, 255, 0] if abs(depth_goal + pos[2]) <= 2.0 else [255, 0, 0]
+        env.draw_arrow(pos.tolist(), end=[x_end, y_end, -depth_goal], color=color, thickness=5, lifetime=0.03)
     
+
+Waypoint Navigation Example
+---------------------------
+
+A common mission pattern is to navigate through a sequence of 3-D waypoints using the
+``depthHeadingAutopilot``. The example below shows a basic approach with a few key points:
+
+- The heading goal is given in degrees in the HoloOcean frame. ``numpy.arctan2(dy, dx)``
+  returns the correct angle directly.
+- The heading is committed at the start of each waypoint and only refreshed once the vehicle
+  is roughly aligned (``HEADING_REARM_DEG``).
+- A waypoint is considered reached when the vehicle has come within ``ARRIVAL_RADIUS`` meters
+  and is moving away (closest-approach detection).
+- Infinite looping is a known failure mode — the vehicle may orbit a waypoint indefinitely. Adding a
+  maximum tick limit per waypoint is recommended for any real mission.
+
+.. code-block:: python
+
+    WAYPOINTS = [
+        [140, 30, 280],   # [x, y, depth] in HoloOcean frame (depth positive downward)
+        [170, 10, 276],
+        [175, -92, 266],
+    ]
+    ARRIVAL_RADIUS    = 5.0   # meters
+    HEADING_REARM_DEG = 30.0  # degrees: only refresh heading when roughly aligned
+    SPEED_RPM         = 1300
+
+    fossen_interface.set_control_mode('auv0', 'depthHeadingAutopilot')
+
+    for wp_idx, wp in enumerate(WAYPOINTS):
+        min_dist = float('inf')
+
+        # Mark waypoint with a magenta sphere
+        env.draw_point(loc=[wp[0], wp[1], -wp[2]], color=[255, 0, 255], thickness=20, lifetime=0)
+
+        # Commit to an initial heading toward this waypoint
+        state = env.step(accel)
+        accel = fossen_interface.update('auv0', state)
+        pos = state['DynamicsSensor'][6:9]
+        target_heading = np.rad2deg(np.arctan2(wp[1] - pos[1], wp[0] - pos[0]))
+        fossen_interface.set_goal('auv0', wp[2], target_heading, SPEED_RPM)
+
+        while True:
+            state = env.step(accel)
+            accel = fossen_interface.update('auv0', state)
+            pos = state['DynamicsSensor'][6:9]
+            heading_actual = state['DynamicsSensorRPY'][17]
+
+            # Re-aim once roughly aligned (avoids oscillation facing away from waypoint)
+            heading_error = abs((target_heading - heading_actual + 180) % 360 - 180)
+            if heading_error < HEADING_REARM_DEG:
+                target_heading = np.rad2deg(np.arctan2(wp[1] - pos[1], wp[0] - pos[0]))
+                fossen_interface.set_goal('auv0', wp[2], target_heading, SPEED_RPM)
+
+            # Closest-approach arrival detection
+            pos_error  = np.linalg.norm(np.array(wp[:2]) - pos[:2])
+            min_dist   = min(min_dist, pos_error)
+            vel_2d     = state['DynamicsSensor'][3:5]
+            to_wp      = np.array(wp[:2]) - pos[:2]
+            moving_away = np.dot(vel_2d, to_wp) < 0
+
+            if min_dist < ARRIVAL_RADIUS and moving_away:
+                env.draw_point(loc=[wp[0], wp[1], -wp[2]], color=[0, 255, 0], thickness=20, lifetime=0)
+                break
+
 
 Multi Agent Fossen Dynamics Example
 ===================================
@@ -435,9 +500,9 @@ See the above example for specific instructions for setting up the configuration
         ]
     }
 
-Simulation Setup
-----------------
-The setup is about the single agent example. 
+Multi Agent Simulation Setup
+----------------------------
+The setup is the same as the single agent example.
 
 The only difference is that you need to add the name of the surface vessel agent to the fossen_agents list
 
@@ -458,8 +523,8 @@ The only difference is that you need to add the name of the surface vessel agent
     accel = np.array(np.zeros(6),float)
 
 
-Manual Control Example
-----------------------
+Multi Agent Manual Control Example
+----------------------------------
 To use the manual control method, configure the vehicle mode with the fossen interface to "manualControl" mode. 
 The commanded fin angles can also be set using the Fossen interface.
 
@@ -468,7 +533,7 @@ of command inputs. The defualt torpedo has 5 control surfaces and the otter mode
 
 .. code-block:: python
 
-    ins_degrees = np.array([10, -10, -10, 10]) #Rudder and Stern Fin Deflection (degrees)
+    fins_degrees = np.array([10, -10, -10, 10]) #Rudder and Stern Fin Deflection (degrees)
     fin_radians = np.radians(fins_degrees)
     thruster_rpm = 1000
     u_control_torpedo = np.append(fin_radians,thruster_rpm)  #[RudderAngle, SternAngle,Thruster] IN RADIANS

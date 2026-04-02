@@ -125,23 +125,23 @@ Here is a summary of the steps to set up Fossen dynamics in HoloOcean with
 a more detailed explanation and examples in the next sections:</p>
 <ol class="arabic simple">
 <li><p>In the scenario configuration, in the agent dictionary, set the ‘fossen_model’ key to the matching
-Fossen dynamics class. The available Fossen dynamics classes are listed in the <cite>Fossen Vehicle Classes</cite> section below.</p></li>
-<li><p>In the agent dictionary, set the <cite>control_scheme</cite> key to the value for custom dynamics for the agent (see <a class="reference internal" href="control-schemes.html#control-schemes"><span class="std std-ref">Control Schemes</span></a>)</p></li>
+Fossen dynamics class. The available Fossen dynamics classes are listed in the <a class="reference internal" href="#fossen-vehicle-classes"><span class="std std-ref">Fossen Vehicle Classes</span></a> section below.</p></li>
+<li><p>In the agent dictionary, set the <code class="docutils literal notranslate"><span class="pre">control_scheme</span></code> key to the value for <cite>Custom Dynamics</cite> for the agent (see <a class="reference internal" href="control-schemes.html#control-schemes"><span class="std std-ref">Control Schemes</span></a>)</p></li>
 <li><p>Setup a Dynamics Sensor in the agent’s sensors list. This sensor is required to read the vehicle state and
 apply the dynamics model.</p></li>
 <li><p>Optionally, you can set the <cite>dynamics</cite>, <cite>actuator</cite>, and <cite>autopilot</cite> parameters in the agent
 configuration. These parameters define the vehicle’s dynamics, control surfaces, and autopilot
 settings. This is only supported for Fossen dynamic models with a defined configure_from_scenario function defined.</p></li>
-<li><p>Finally, create a FossenInterface manager object in your simulation script, passing the list of agent names and the scenario configuration.
-This class is implemented in <cite>client/src/fossen_dynamics/fossen_interface.py</cite>.</p></li>
+<li><p>Finally, create a <code class="docutils literal notranslate"><span class="pre">FossenInterface</span></code> manager object in your simulation script, passing the list of agent names and the scenario configuration.
+This class is implemented in <a class="reference internal" href="../../holoocean/dynamics.html#fossen-interface"><span class="std std-ref">Fossen Dynamics</span></a>.</p></li>
 </ol>
 <section id="fossen-vehicle-classes">
-<h2>Fossen Vehicle Classes<a class="headerlink" href="#fossen-vehicle-classes" title="Link to this heading"></a></h2>
+<span id="id1"></span><h2>Fossen Vehicle Classes<a class="headerlink" href="#fossen-vehicle-classes" title="Link to this heading"></a></h2>
 <p>Currently, we have implemented the dynamics models for two vehicle classes:</p>
 <p>There is a list of keys that are connected to the Fossen dynamics models. This is defined in the <code class="docutils literal notranslate"><span class="pre">FossenInterface</span></code> class.</p>
 <ul>
 <li><dl>
-<dt>Torpedo (<code class="docutils literal notranslate"><span class="pre">Torpedo:</span> <span class="pre">"torpedo"</span></code>)</dt><dd><p>This class implements the dynamics equations for a torpedo-like vehicle, including the necessary parameters and methods to
+<dt>Torpedo (<code class="docutils literal notranslate"><span class="pre">Torpedo:</span> <span class="pre">"torpedo"</span></code>)</dt><dd><p>This class, <a class="reference internal" href="../../holoocean/dynamics.html#torpedo-fossen-interface"><span class="std std-ref">Torpedo Dynamics</span></a>, implements the dynamics equations for a torpedo-like vehicle, including the necessary parameters and methods to
 calculate accelerations based on control inputs to fins and a single propellor.
 Default Fossen vehicle parameters are currently tuned to approximate the REMUS100 vehicle, as described by Thor Fossen.</p>
 <dl class="simple">
@@ -155,13 +155,13 @@ Default Fossen vehicle parameters are currently tuned to approximate the REMUS10
 </dl>
 </li>
 <li><dl>
-<dt>Otter (<code class="docutils literal notranslate"><span class="pre">Otter:</span> <span class="pre">"otter"</span></code>)</dt><dd><p>This class implements the dynamic equations for a surface vessel with two propellors at back of the ship. The vehicle does not
+<dt>Otter (<code class="docutils literal notranslate"><span class="pre">Otter:</span> <span class="pre">"otter"</span></code>)</dt><dd><p>This class, <a class="reference internal" href="../../holoocean/dynamics.html#otter-fossen-interface"><span class="std std-ref">Otter Dynamics</span></a>, implements the dynamic equations for a surface vessel with two propellors at back of the ship. The vehicle does not
 support to configure the parameters yet from the scenario.
 Default vehicle parameters match the Otter surface vessel.</p>
 <dl class="simple">
 <dt>Control Modes:</dt><dd><ul class="simple">
 <li><p>manualControl: Manually set the commanded control surfaces (propellors)</p></li>
-<li><p>headingAutopilot: Not verfied yet by HoloOcean developers. Likely works but with the NED reference frame instead of NWU.</p></li>
+<li><p>headingAutopilot: Set a heading goal that will handle control surface commands.</p></li>
 </ul>
 </dd>
 </dl>
@@ -172,10 +172,7 @@ Default vehicle parameters match the Otter surface vessel.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Unreal Engine graphics asset is not linked to the fossen model.
-The number of fins shown on the vehicle will not change in Unreal Engine when changing between
-child classes.</p>
-<p>Implementing Fossen dynamics does not change the asset, so the fins will not visibly move when
-the simulation is running.</p>
+The number of fins shown on the vehicle will not change in Unreal Engine visualizations.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -218,7 +215,7 @@ manager.</p>
 <section id="single-agent-fossen-dynamics-example">
 <h2>Single Agent Fossen Dynamics Example<a class="headerlink" href="#single-agent-fossen-dynamics-example" title="Link to this heading"></a></h2>
 <p>In this section we will step through the key elements of our Fossen dynamics implementation and give
-an example of using Fossen dynamics in HoloOcean. The full code can be found in <cite>client/example.py</cite>.</p>
+an example of using Fossen dynamics in HoloOcean. The full code can be found in <code class="docutils literal notranslate"><span class="pre">client/example.py</span></code>.</p>
 <section id="configuration">
 <h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
 <p>Setting up a HoloOcean simulation that uses Fossen dynamics begins with the scenario configuration.
@@ -276,6 +273,14 @@ Fossen dynamics classes.</p>
                     <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
                         <span class="s2">"UseCOM"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
                         <span class="s2">"UseRPY"</span><span class="p">:</span> <span class="kc">False</span>  <span class="c1"># Use quaternion for dynamics</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"DynamicsSensor"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"DynamicsSensorRPY"</span><span class="p">,</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"UseCOM"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                        <span class="s2">"UseRPY"</span><span class="p">:</span> <span class="kc">True</span>
                     <span class="p">}</span>
                 <span class="p">},</span>
             <span class="p">],</span>
@@ -369,7 +374,7 @@ Fossen dynamics classes.</p>
 scenario that will be controlled by the Fossen dynamics. The list of
 fossen agent names and scenario configuration are passed to the Fossen Interface.
 Finally, we initialize a NumPy array of length 6 for linear accelerations (x, y, z)
-and angular accelerations (about axis x, y, z), all in the global NWU frame.</p>
+and angular accelerations (about axis x, y, z), all in the global HoloOcean frame.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">holoocean.fossen_dynamics</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -436,12 +441,6 @@ depth increasing the further the vehicle descends.</p>
 being north (along the positive x-axis) and 90 degrees being West (along the positive y axis).</p>
 <p>The thruster goal is given directly as RPM, not as a percentage of the maximum RPM. Be sure to
 check the max RPM in the Fossen vehicle configuration to ensure the command is below the maximum.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>When switching to the autopilot control mode more than once there is a possibility of irregular behavior
-from the autopilot not setting the LP initial position to the current position. This is a known issue
-and will be fixed in a future release.</p>
-</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">depth_goal</span> <span class="o">=</span> <span class="mi">279</span> <span class="c1"># meters</span>
 <span class="n">heading_goal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span> <span class="c1"># degrees</span>
 <span class="n">thruster_goal</span> <span class="o">=</span> <span class="mi">1525</span> <span class="c1"># RPM</span>
@@ -459,8 +458,71 @@ and will be fixed in a future release.</p>
     <span class="n">x_end</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">heading_goal</span><span class="p">))</span>
     <span class="n">y_end</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">heading_goal</span><span class="p">))</span>
 
-    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">depth</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mf">2.0</span> <span class="k">else</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">draw_arrow</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="p">[</span><span class="n">x_end</span><span class="p">,</span> <span class="n">y_end</span><span class="p">,</span> <span class="o">-</span><span class="n">depth</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">lifetime</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">depth_goal</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mf">2.0</span> <span class="k">else</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">draw_arrow</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="p">[</span><span class="n">x_end</span><span class="p">,</span> <span class="n">y_end</span><span class="p">,</span> <span class="o">-</span><span class="n">depth_goal</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">lifetime</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="waypoint-navigation-example">
+<h3>Waypoint Navigation Example<a class="headerlink" href="#waypoint-navigation-example" title="Link to this heading"></a></h3>
+<p>A common mission pattern is to navigate through a sequence of 3-D waypoints using the
+<code class="docutils literal notranslate"><span class="pre">depthHeadingAutopilot</span></code>. The example below shows a basic approach with a few key points:</p>
+<ul class="simple">
+<li><p>The heading goal is given in degrees in the HoloOcean frame. <code class="docutils literal notranslate"><span class="pre">numpy.arctan2(dy,</span> <span class="pre">dx)</span></code>
+returns the correct angle directly.</p></li>
+<li><p>The heading is committed at the start of each waypoint and only refreshed once the vehicle
+is roughly aligned (<code class="docutils literal notranslate"><span class="pre">HEADING_REARM_DEG</span></code>).</p></li>
+<li><p>A waypoint is considered reached when the vehicle has come within <code class="docutils literal notranslate"><span class="pre">ARRIVAL_RADIUS</span></code> meters
+and is moving away (closest-approach detection).</p></li>
+<li><p>Infinite looping is a known failure mode — the vehicle may orbit a waypoint indefinitely. Adding a
+maximum tick limit per waypoint is recommended for any real mission.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">WAYPOINTS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">140</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">280</span><span class="p">],</span>   <span class="c1"># [x, y, depth] in HoloOcean frame (depth positive downward)</span>
+    <span class="p">[</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">276</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">175</span><span class="p">,</span> <span class="o">-</span><span class="mi">92</span><span class="p">,</span> <span class="mi">266</span><span class="p">],</span>
+<span class="p">]</span>
+<span class="n">ARRIVAL_RADIUS</span>    <span class="o">=</span> <span class="mf">5.0</span>   <span class="c1"># meters</span>
+<span class="n">HEADING_REARM_DEG</span> <span class="o">=</span> <span class="mf">30.0</span>  <span class="c1"># degrees: only refresh heading when roughly aligned</span>
+<span class="n">SPEED_RPM</span>         <span class="o">=</span> <span class="mi">1300</span>
+
+<span class="n">fossen_interface</span><span class="o">.</span><span class="n">set_control_mode</span><span class="p">(</span><span class="s1">'auv0'</span><span class="p">,</span> <span class="s1">'depthHeadingAutopilot'</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">wp_idx</span><span class="p">,</span> <span class="n">wp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">WAYPOINTS</span><span class="p">):</span>
+    <span class="n">min_dist</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
+
+    <span class="c1"># Mark waypoint with a magenta sphere</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">draw_point</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="n">wp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">wp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">wp</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">lifetime</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Commit to an initial heading toward this waypoint</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accel</span><span class="p">)</span>
+    <span class="n">accel</span> <span class="o">=</span> <span class="n">fossen_interface</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">'auv0'</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'DynamicsSensor'</span><span class="p">][</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+    <span class="n">target_heading</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">wp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">fossen_interface</span><span class="o">.</span><span class="n">set_goal</span><span class="p">(</span><span class="s1">'auv0'</span><span class="p">,</span> <span class="n">wp</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">target_heading</span><span class="p">,</span> <span class="n">SPEED_RPM</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accel</span><span class="p">)</span>
+        <span class="n">accel</span> <span class="o">=</span> <span class="n">fossen_interface</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">'auv0'</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'DynamicsSensor'</span><span class="p">][</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+        <span class="n">heading_actual</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'DynamicsSensorRPY'</span><span class="p">][</span><span class="mi">17</span><span class="p">]</span>
+
+        <span class="c1"># Re-aim once roughly aligned (avoids oscillation facing away from waypoint)</span>
+        <span class="n">heading_error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">((</span><span class="n">target_heading</span> <span class="o">-</span> <span class="n">heading_actual</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span> <span class="o">-</span> <span class="mi">180</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">heading_error</span> <span class="o">&lt;</span> <span class="n">HEADING_REARM_DEG</span><span class="p">:</span>
+            <span class="n">target_heading</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">wp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="n">fossen_interface</span><span class="o">.</span><span class="n">set_goal</span><span class="p">(</span><span class="s1">'auv0'</span><span class="p">,</span> <span class="n">wp</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">target_heading</span><span class="p">,</span> <span class="n">SPEED_RPM</span><span class="p">)</span>
+
+        <span class="c1"># Closest-approach arrival detection</span>
+        <span class="n">pos_error</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wp</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">min_dist</span>   <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_dist</span><span class="p">,</span> <span class="n">pos_error</span><span class="p">)</span>
+        <span class="n">vel_2d</span>     <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'DynamicsSensor'</span><span class="p">][</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">to_wp</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wp</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">moving_away</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vel_2d</span><span class="p">,</span> <span class="n">to_wp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">min_dist</span> <span class="o">&lt;</span> <span class="n">ARRIVAL_RADIUS</span> <span class="ow">and</span> <span class="n">moving_away</span><span class="p">:</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">draw_point</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="n">wp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">wp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">wp</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">lifetime</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">break</span>
 </pre></div>
 </div>
 </section>
@@ -470,8 +532,8 @@ and will be fixed in a future release.</p>
 <p>In this section we will step through using fossen dynamics with multiple
 agents in HoloOcean. The full code can be found in <cite>client/example.py</cite>.
 This example is very similar to the above example but with two agents.</p>
-<section id="id1">
-<h3>Configuration<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<section id="id2">
+<h3>Configuration<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>See the above example for specific instructions for setting up the configuration for the following items:</p>
 <ul class="simple">
 <li><p>Dynamics Sensor</p></li>
@@ -535,9 +597,9 @@ This example is very similar to the above example but with two agents.</p>
 </pre></div>
 </div>
 </section>
-<section id="id2">
-<h3>Simulation Setup<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<p>The setup is about the single agent example.</p>
+<section id="multi-agent-simulation-setup">
+<h3>Multi Agent Simulation Setup<a class="headerlink" href="#multi-agent-simulation-setup" title="Link to this heading"></a></h3>
+<p>The setup is the same as the single agent example.</p>
 <p>The only difference is that you need to add the name of the surface vessel agent to the fossen_agents list</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">holoocean.fossen_dynamics</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
@@ -555,13 +617,13 @@ This example is very similar to the above example but with two agents.</p>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3>Manual Control Example<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="multi-agent-manual-control-example">
+<h3>Multi Agent Manual Control Example<a class="headerlink" href="#multi-agent-manual-control-example" title="Link to this heading"></a></h3>
 <p>To use the manual control method, configure the vehicle mode with the fossen interface to “manualControl” mode.
 The commanded fin angles can also be set using the Fossen interface.</p>
 <p>The length of the <cite>u_control</cite> array is defined in the dynamic model class. It represents the number
 of command inputs. The defualt torpedo has 5 control surfaces and the otter model has two thruster control surfaces.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ins_degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="c1">#Rudder and Stern Fin Deflection (degrees)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fins_degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="c1">#Rudder and Stern Fin Deflection (degrees)</span>
 <span class="n">fin_radians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">fins_degrees</span><span class="p">)</span>
 <span class="n">thruster_rpm</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">u_control_torpedo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fin_radians</span><span class="p">,</span><span class="n">thruster_rpm</span><span class="p">)</span>  <span class="c1">#[RudderAngle, SternAngle,Thruster] IN RADIANS</span>

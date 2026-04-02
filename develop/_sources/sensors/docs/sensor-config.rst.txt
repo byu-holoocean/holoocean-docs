@@ -17,7 +17,7 @@ dictionary in the list.
          "rotation": [1.0, 2.0, 3.0],
          "Hz": 5,
          "lcm_channel": "channel_name",
-         "ros_publish": "False",
+         "ros_publish": "True",
          "configuration": {
             "array of sensor configurations"
          }
@@ -114,13 +114,15 @@ To publish sensor data to LCM, specify the type to publish and the channel to pu
    }
    
 
-To publish sensor data to ROS2, set ``ros_publish`` to ``True``:
+ROS2 publishing will only occur when the ROS2 bridge is running. 
+To suppress the default publish of the sensor data to ROS2, 
+set ``ros_publish`` to ``False``:
 
 .. code-block:: json
 
    {
       "sensor_type": "RGBCamera",
-      "ros_publish": "True"
+      "ros_publish": "False"
    }
    
 
