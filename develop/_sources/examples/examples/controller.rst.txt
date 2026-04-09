@@ -285,3 +285,92 @@ The :ref:`surface-vessel-agent` uses the following keyboard shortcuts:
             command = parse_keys(pressed_keys, force)
             env.act(name, command)
             state = env.tick()
+
+
+Example 4: Husky Vehicle
+-------------------------
+
+The :ref:`husky-agent` uses the following keyboard shortcuts:
+
+.. list-table::
+   :widths: 35 25 25
+   :header-rows: 1
+
+   * - Key
+     - Forward Key
+     - Backward Key
+   * - Wheels Forward/Backward
+     - w
+     - s
+   * - Yaw Left/Right
+     - a
+     - d
+   * - Flip Reset Trigger
+     - r
+     - (none)
+
+::
+
+    import holoocean
+    import numpy as np
+    from pynput import keyboard
+
+    name = "agent"
+    config = {
+        "name": "test",
+        "world": "Dam",
+        "package_name": "Ocean",
+        "main_agent": name,
+        "agents": [
+            {
+                "agent_name": name,
+                "agent_type": "HuskyVehicle",
+                "sensors": [],
+                "control_scheme": 0,
+                "location": [110.0, -166.0, 6.0],
+                "rotation": [0.0, 0.0, 135.0],
+            }
+        ]
+    }
+
+    def parse_keys(keys, val):
+        command = np.zeros(3)
+        if "w" in keys:  # forward
+            command[0:2] += val
+        if "s" in keys:  # backward
+            command[0:2] -= val
+        if "a" in keys:  # yaw left
+            command[0] -= val
+            command[1] += val
+        if "d" in keys:  # yaw right
+            command[0] += val
+            command[1] -= val
+        if "r" in keys:  # reset trigger (if upside down)
+            command[2] = 1
+        return command
+
+    def on_press(key):
+        global pressed_keys
+        if hasattr(key, "char"):
+            pressed_keys.append(key.char)
+            pressed_keys = list(set(pressed_keys))
+
+    def on_release(key):
+        global pressed_keys
+        if hasattr(key, "char"):
+            pressed_keys.remove(key.char)
+
+    pressed_keys = list()
+    listener = keyboard.Listener(on_press=on_press, on_release=on_release)
+    listener.start()
+
+    with holoocean.make(scenario_cfg=config) as env:
+        force = 700
+        while True:
+            if "q" in pressed_keys:
+                break
+
+            command = parse_keys(pressed_keys, force)
+            env.act("auv0", command)
+            state = env.tick()
+

@@ -57,6 +57,7 @@ Agent Type                  String in agent_type
 :ref:`turtle-agent`         ``TurtleAgent``
 :ref:`fixed-wing-agent`     ``FixedWing``
 :ref:`uav-agent`            ``UAV``
+:ref:`husky-agent`          ``HuskyVehicle``
 =========================== ========================
 
 Details on each agent can be found at the individual agent pages in :ref:`agents`. This list will 

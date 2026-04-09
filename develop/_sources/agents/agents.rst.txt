@@ -104,5 +104,12 @@ Aerial Agents
    :glob:
 
    agents/uav-agent
-   
+
+Ground Agents
+-------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   agents/husky-agent
 

@@ -59,6 +59,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#example-1-hovering-auv">Example 1: Hovering AUV</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example-2-torpedo-auv">Example 2: Torpedo AUV</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example-3-surface-vessel">Example 3: Surface Vessel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-4-husky-vehicle">Example 4: Husky Vehicle</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="custom-dynamics.html">Manually Defining Dynamics</a></li>
@@ -418,6 +419,101 @@ Below are three examples that allows for controlling three different kinds of ag
             <span class="k">break</span>
         <span class="n">command</span> <span class="o">=</span> <span class="n">parse_keys</span><span class="p">(</span><span class="n">pressed_keys</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
         <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="example-4-husky-vehicle">
+<h2>Example 4: Husky Vehicle<a class="headerlink" href="#example-4-husky-vehicle" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../../agents/agents/husky-agent.html#husky-agent"><span class="std std-ref">Husky Vehicle</span></a> uses the following keyboard shortcuts:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41.2%"/>
+<col style="width: 29.4%"/>
+<col style="width: 29.4%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Forward Key</p></th>
+<th class="head"><p>Backward Key</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Wheels Forward/Backward</p></td>
+<td><p>w</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yaw Left/Right</p></td>
+<td><p>a</p></td>
+<td><p>d</p></td>
+</tr>
+<tr class="row-even"><td><p>Flip Reset Trigger</p></td>
+<td><p>r</p></td>
+<td><p>(none)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pynput</span><span class="w"> </span><span class="kn">import</span> <span class="n">keyboard</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s2">"agent"</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"Dam"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"HuskyVehicle"</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mf">110.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">166.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span>
+            <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">135.0</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_keys</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">"w"</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>  <span class="c1"># forward</span>
+        <span class="n">command</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span>
+    <span class="k">if</span> <span class="s2">"s"</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>  <span class="c1"># backward</span>
+        <span class="n">command</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="n">val</span>
+    <span class="k">if</span> <span class="s2">"a"</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>  <span class="c1"># yaw left</span>
+        <span class="n">command</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">val</span>
+        <span class="n">command</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span>
+    <span class="k">if</span> <span class="s2">"d"</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>  <span class="c1"># yaw right</span>
+        <span class="n">command</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span>
+        <span class="n">command</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">val</span>
+    <span class="k">if</span> <span class="s2">"r"</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>  <span class="c1"># reset trigger (if upside down)</span>
+        <span class="n">command</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">command</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_press</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">pressed_keys</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">"char"</span><span class="p">):</span>
+        <span class="n">pressed_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
+        <span class="n">pressed_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">pressed_keys</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_release</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">pressed_keys</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">"char"</span><span class="p">):</span>
+        <span class="n">pressed_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
+
+<span class="n">pressed_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">listener</span> <span class="o">=</span> <span class="n">keyboard</span><span class="o">.</span><span class="n">Listener</span><span class="p">(</span><span class="n">on_press</span><span class="o">=</span><span class="n">on_press</span><span class="p">,</span> <span class="n">on_release</span><span class="o">=</span><span class="n">on_release</span><span class="p">)</span>
+<span class="n">listener</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">config</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="mi">700</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">"q"</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">command</span> <span class="o">=</span> <span class="n">parse_keys</span><span class="p">(</span><span class="n">pressed_keys</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
 </pre></div>
 </div>
