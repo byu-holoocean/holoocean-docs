@@ -48,7 +48,7 @@ The following semantic labels are used in this level:
      - {29, 89, 240}
    * - BaseShape
      - 3
-     - {29, 240, 89}
+     - {201, 162, 54}
    * - Landscape
      - 4
      - {153, 153, 153}
@@ -69,10 +69,7 @@ The following semantic labels are used in this level:
      - {176, 165, 146}
    * - Sub
      - 21
-     - {146, 161, 176}
+     - {146, 80, 176}
    * - Any
      - 255
      - {255, 255, 255}
-
-::
-  

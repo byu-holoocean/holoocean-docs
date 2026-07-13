@@ -12,6 +12,32 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean 2.4.0
+===============
+*7/8/2026*
+
+New Features
+------------
+
+- Added raycast and GPU implementations of sonar sensors
+- Added FFT waves
+- Added new buoyancy system for FFT waves
+- Added the Husky vehicle
+
+Changes
+-------
+
+- Updated the Viewport socket for the CougUV and SurfaceVessel
+- Added a CameraSocket back to CougUV
+- Fossen updates
+
+Bug Fixes
+---------
+
+- Camera exposure fix
+- Lidar fix for water point returns
+- Lidar fix for debug color returns
+
 HoloOcean 2.3.0
 ===============
 *2/5/2026*

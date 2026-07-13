@@ -26,8 +26,14 @@ The following are inspired by real-world sensors and are intended to collect rea
 Most sensors here include parameters for adjusting noise, bias, and other characteristics to
 simulate real-world sensor behavior.
 
-Perception Sensors
+Sonar Sensors
 ------------------
+
+Sonar , acronym for *Sound Navigation and Ranging*, is a technology that uses sound propagation to detect, navigate, and measure distances to objects underwater. 
+It is widely used in various applications, including underwater navigation, object detection, and mapping. HoloOcean includes several types of sonar sensors, each designed to simulate different aspects of sonar technology.   
+
+If you are interested in learning more about sonars, please visit the `BlueRobotics page. <https://bluerobotics.com/learn/a-smooth-operators-guide-to-underwater-sonars-and-acoustic-devices/>`_
+
 .. toctree::
    :maxdepth: 1
    :glob:
@@ -36,19 +42,52 @@ Perception Sensors
    sensors/sidescan-sonar-sensor
    sensors/imaging-sonar-sensor
    sensors/profiling-sonar-sensor
-   sensors/dvl-sensor
-   sensors/depth-sensor
+   
+
+Camera Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
    sensors/depth-camera-sensor
    sensors/rgb-camera-sensor  
    sensors/camera-sensor
    sensors/semantic-segmentation-camera-sensor
-   sensors/imu-sensor
-   sensors/gps-sensor
-   sensors/magnetometer-sensor
-   sensors/range-finder-sensor
+
+
+Lidar Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
    sensors/raycast-lidar-sensor
    sensors/raycast-semantic-lidar-sensor
+
+
+Navigation Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/imu-sensor
+   sensors/dvl-sensor
+   sensors/gps-sensor
+   sensors/magnetometer-sensor
+
+
+Perception Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/depth-sensor
+   sensors/range-finder-sensor
    sensors/bst-sensor
+
 
 Communication Sensors
 ---------------------
@@ -58,6 +97,7 @@ Communication Sensors
 
    sensors/acoustic-beacon-sensor
    sensors/optical-modem-sensor 
+
 
 State Sensors
 -------------

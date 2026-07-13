@@ -171,11 +171,14 @@ constructor or in the ``InitializeAgent`` function before ``Super::InitializeAge
     float MassInKG;
     FVector CenterBuoyancy;
     FVector CenterMass;
+    float CoefficientOfDrag;
+    float AreaOfDrag;
 
 The CenterBuoyancy and CenterMass variables are FVector objects that define the centers of mass and 
 buoyancy of the vehicles. They are defined relative to the origin of the *UE asset mesh origin* in 
 *left-handed coordinates*. If the mesh frame is located at the center of mass, the CenterMass 
-variable can be set to all zeros. 
+variable can be set to all zeros. For currents to function in a new agent the CoefficientOfDrag and 
+AreaOfDrag must also be set.
 
 Within your agent blueprint, make make sure you enable "Perfect" for the Buoyancy Setting. 
 
@@ -198,7 +201,6 @@ calculating buoyant force, but works well when high fidelity isn't necessary.
     int NumSurfacePoints = 1000;
     FBox BoundingBox = FBox();
     TArray<FVector> SurfacePoints;
-    float SurfaceLevel = 0;
 
 ``NumSurfacePoints`` Number of points to sample. May need to be larger/smaller based on robot size.
 
@@ -208,10 +210,51 @@ if it's not set. You can set this by hand if the auto-calculated one is too larg
 ``SurfacePoints`` are the sampled points. Set explicitly if you don't want to use the bounding box 
 method. NOTE: These are stored with an offset for ``CenterMass`` pre-applied to reduce complexity.
 
-``SurfaceLevel`` is the water level. For all of our environments, this has been set to 0.
+.. _create-agents:
+FFT Wave Buoyancy
+-----------------
+In Holoocean 2.4.0, :ref:`FFT Waves<wave-controller>` have been implemented along with an updated buoyancy system to use these waves. 
+This new buoyancy system uses a mesh based approach where the vehicle is split into triangles and the forces 
+on each triangle are calculated and then summed before being applied to the vehicle at the CenterBuoyancy.
+
+Designing a Mesh
+----------------
+Third party software is required to create a mesh for your vehicle due to unreal's restriction of certain functions. 
+First, you need to extract the mesh using the config parameter generate_new_mesh.
+
+.. code:: Python
+
+    "fft_waves": {
+        "generate_new_mesh": 1
+    }
+
+After doing this, the mesh will be placed in your holoocean/engine/Saved folder as collision_mesh.txt.
+
+Next, download the convex hull builder found at this repository: https://github.com/BYU-FROST-Lab/quickhull-for-holoocean. 
+
+Load the repository in vscode and make sure you have the CMake Tools extension installed. Copy and paste the contents of collision_mesh.txt into VerticesInput.txt.  
+
+Open up the command pallete with ``ctrl + shift + p`` and go to CMake: Configure and select the default setting. 
+This should create a build folder. After doing this you can use ``ctrl + shift + b`` to build the project and then 
+run the run.exe script either through the terminal or by pressing F5. This will generate the list of vertices and indices 
+in the respective BuffOutput.txt files. 
+
+After that, bring those back to holoocean and add your meshes to the list of 
+meshes in engine/Content/BuoyantAgentMeshes. Then go to the InitializeMesh function in engine/Source/HolodeckCore/Private/HolodeckBuoyantAgent.cpp and 
+add your files to the list of meshes. Here you can configure any additional drag parameters that are needed to get the 
+right feel for your vehicle.  
 
 Debugging Tools
 ---------------
 To be able to visualize the bounding box and surface points to make sure they're placed currently, 
 you can use the inherited functions ``ShowBoundingBox()`` and ``ShowSurfacePoints()`` functions in 
-your agent's tick method.
+your agent's tick method. In addition, there are also debug commands to debug the mesh, waterpatch, 
+water normals, and force vectors. These use the command, DebugLinesCommand.
+
+.. code-block:: Python
+
+    env.debug_lines("DebugMesh")
+    env.debug_lines("DebugWaterPatch")
+    env.debug_lines("DebugWaterNormals")
+    env.debug_lines("DebugForceVectors")
+

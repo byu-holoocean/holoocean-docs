@@ -1,11 +1,53 @@
-===============
+=============== 
 Sidescan Sonar
-===============
+=============== 
+
+Holoocean has three different sidescan sonar sensor implementations:
+
+* :ref:`octree_sidescan_sonar`
+* :ref:`raycast_sidescan_sonar`
+* :ref:`gpu_sidescan_sonar`
+
+These implementations have different tradeoffs in accuracy, speed, and memory usage.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Sensor
+     - Scanning Method
+     - General Speed
+     - Resolution (at Comparable Speed) 
+     - Scene Representation
+     - Requirements
+   * - :ref:`octree_singlebeam_sonar`
+     - Octree-based sampling
+     - Slow on first run, faster on subsequent runs
+     - Low-Medium
+     - Object collision meshes as octrees
+     - Memory space for octree storage
+   * - :ref:`raycast_singlebeam_sonar`
+     - CPU raycasting
+     - Fast, scales with number of rays
+     - Medium-High
+     - Object collision meshes
+     - CPU resources proporional to ray count
+   * - :ref:`gpu_singlebeam_sonar`
+     - GPU rendering
+     - Fast, depends on GPU capabilities
+     - High
+     - Rendered scene (image-based)
+     - Dedicated GPU 
+
+.. note:: See :ref:`visualizing_sidescan_sonar` for examples of how to use this sensor.
+
+
+.. _octree_sidescan_sonar: 
+
+Octree Sidescan Sonar
+---------------------
 
 Simulates a sidescan sonar with octrees. Has a narrow elevation and wide asimuth, and simulates both 
 sides being scanned. 
-
-See :ref:`visualizing_sidescan_sonar` for an example of how to use this sensor.
 
 See :py:class:`~holoocean.sensors.SidescanSonar` for the python API.
 
@@ -23,12 +65,180 @@ Example sensor definition::
             "RangeBins": 2000,
             "AddSigma": 0.05,
             "MultSigma": 0.05,
-            "ShowWarning": true,
+            "ShowWarning": True,
             "InitOctreeRange": 50,
-            "ViewRegion": false,
+            "ViewRegion": False,
             "ViewOctree": -10,
             "WaterDensity": 997,
             "WaterSpeedSound": 1480,
-            "UseApprox": true
+            "UseApprox": True
         }
     }
+
+
+.. _raycast_sidescan_sonar:
+
+Raycast Sidescan Sonar
+----------------------
+
+Simulates a sidescan sonar with raycasting. Has a narrow elevation and wide asimuth, and unlike the Octree 
+SSS, only simulates **one side** being scanned.
+
+See :py:class:`~holoocean.sensors.RaycastSidescanSonar` for the python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "RaycastSidescanSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "Azimuth": 85,
+            "Elevation": 0.25,
+            "RangeMin": 0.5,
+            "RangeMax": 40,
+            "RangeBins": 1000,
+            "AddSigma": 0.05,
+            "MultSigma": 0.05,
+            "ViewRegion": False,
+            "WaterDensity": 997,
+            "WaterSpeedSound": 1480,
+            "UseApprox": True,
+            "IgnorePlants": False
+        }
+    }
+
+
+.. _gpu_sidescan_sonar:
+
+GPU Sidescan Sonar
+------------------
+
+Simulates a sidescan sonar with GPU rendering. Has a narrow elevation and wide asimuth, and unlike
+the Octree SSS sensor, it only simulates **one side** being scanned.
+Utilizes the GPU rendering pipeline, for faster simulation speed.
+
+See :py:class:`~holoocean.sensors.GPUSidescanSonar` for the python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "GPUSidescanSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "Azimuth": 85,
+            "Elevation": 0.25,
+            "RangeMin": 0.5,
+            "RangeMax": 40,
+            "RangeBins": 1000,
+            "AddSigma": 0.05,
+            "MultSigma": 0.05,
+            "ViewRegion": False,
+            "WaterDensity": 997,
+            "WaterSpeedSound": 1480,
+            "UseApprox": True,
+            "IgnorePlants": False
+        }
+    }
+
+
+.. _resolution_calculation_sidescan:
+
+Resolution Calculation for Raycast and GPU SSS
+-----------------------------------------------
+
+The raycast and GPU sidescan sonars require sufficient angular sampling to
+accurately populate the desired range bins. This section provides a method for
+estimating the required angular resolution based on the sonar field of view and
+range-bin resolution.
+
+Worst-Case Resolution Calculation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A conservative estimate of the required angular step size can be computed as:
+
+.. math::
+
+   \theta = \Theta - \cos^{-1}\!\left(
+      \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+      \cos(\Theta)
+   \right)
+
+where:
+
+* :math:`\Theta` is the azimuth angle of a single SSS.
+* :math:`R_{\max}` is the maximum sonar range.
+* :math:`R_{\mathrm{res}}` is the range resolution.
+
+.. note:: The range resolution can be computed from the number of range bins: 
+
+    .. math:: R_{\mathrm{res}} = \frac{R_{\max} - R_{\min}}{R_{bins}}
+
+This formulation assumes that the seafloor intersects the edge of the sonar field 
+of view at maximum range, as illustrated in the figure below:
+
+.. figure:: ../images/WorstCaseResDiagram.png
+    :align: center
+
+    Worst-case geometry used for estimating the required angular resolution.
+
+The required number of samples is then:
+
+.. math::
+
+   N = \frac{\Theta}{\theta}
+
+This calculation represents a worst-case estimate and guarantees sufficient
+resolution across the full field of view.
+
+Adjusted Resolution Calculation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In many scenarios the full field of view is not utilized. For example, when the
+seafloor is relatively flat and the sonar is operated at a fixed altitude, the
+maximum range may not occur at the edge of the field of view. In these cases,
+the required angular resolution can be reduced.
+
+Given a sonar altitude :math:`h`, the utilized azimuth field of view
+:math:`\phi` can be computed as:
+
+.. math::
+
+   \phi = \cos^{-1}\!\left(\frac{h}{R_{\max}}\right)
+
+as shown in the image below:
+
+.. figure:: ../images/AngleDiagram.png
+   :align: center
+   :scale: 70
+
+   Geometry for computing the utilized field of view based on sonar altitude.
+
+The adjusted azimuth step size is then:
+
+.. math::
+
+   \theta = \phi - \cos^{-1}\!\left(
+      \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+      \cos(\phi)
+   \right)
+
+and the required number of samples becomes:
+
+.. math::
+
+   N = \frac{\phi}{\theta}
+
+The resulting value of :math:`N` may be significantly smaller than the
+worst-case estimate while still providing sufficient resolution for the
+observable portion of the scene.
+
+
+Using the Computed Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Because a sidescan sonar consists of two single SSS, each sensor should use the calculated samples `N`:
+
+* For each single :ref:`raycast_sidescan_sonar`, set ``AzimuthRayCount: N`` in the config.
+* For each single :ref:`gpu_sidescan_sonar`, set ``ResolutionX: N`` in the config.

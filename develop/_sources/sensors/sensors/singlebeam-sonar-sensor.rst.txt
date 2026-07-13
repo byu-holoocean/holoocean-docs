@@ -2,10 +2,54 @@
 Single-Beam Sonar
 ==================
 
-A sensor that simulates with octrees a single conical sonar beam, returning a 1D array of return 
-strength at each range bin.
+Holoocean has three different single-beam sonar sensor implementations:
 
-See :ref:`visualizing_singlebeam_sonar` for an example of how to use this sensor.
+* :ref:`octree_singlebeam_sonar`
+* :ref:`raycast_singlebeam_sonar`
+
+  * :ref:`semantic_raycast_singlebeam_sonar`
+
+* :ref:`gpu_singlebeam_sonar`
+
+These implementations have different tradeoffs in accuracy, speed, and memory usage.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Sensor
+     - Scanning Method
+     - General Speed
+     - Resolution (at Comparable Speed) 
+     - Scene Representation
+     - Requirements
+   * - :ref:`octree_singlebeam_sonar`
+     - Octree-based sampling
+     - Slow on first run, faster on subsequent runs
+     - Low-Medium
+     - Object collision meshes as octrees
+     - Memory space for octree storage
+   * - :ref:`raycast_singlebeam_sonar`
+     - CPU raycasting
+     - Fast, scales with number of rays
+     - Medium-High
+     - Object collision meshes
+     - CPU resources proporional to ray count
+   * - :ref:`gpu_singlebeam_sonar`
+     - GPU rendering
+     - Fast, depends on GPU capabilities
+     - High
+     - Rendered scene (image-based)
+     - Dedicated GPU 
+
+.. note:: See :ref:`visualizing_singlebeam_sonar` for examples of how to use this sensor.
+    
+
+.. _octree_singlebeam_sonar:
+
+Octree Single-Beam Sonar
+------------------------
+
+Simulates a single-beam sonar using octrees. Returns a 1D array of return strength at each range bin.
 
 See :py:class:`~holoocean.sensors.SinglebeamSonar` for the python API.
 
@@ -19,16 +63,248 @@ Example sensor definition::
             "OpeningAngle": 30,
             "RangeMin": 0.5,
             "RangeMax": 30,
-            "RangeBins": 200,
+            "RangeBins": 1000,
             "AddSigma": 0,
             "MultSigma": 0,
             "RangeSigma": 0.1,
-            "ShowWarning": true,
+            "ShowWarning": True,
             "InitOctreeRange": 40,
-            "ViewRegion": false,
+            "ViewRegion": False,
             "ViewOctree": -10,
             "WaterDensity": 997,
             "WaterSpeedSound": 1480,
-            "UseApprox": true
+            "UseApprox": True
         }
     }
+
+
+.. _raycast_singlebeam_sonar:
+
+Raycast Single-Beam Sonar 
+-------------------------
+
+Simulates a single-beam sonar using raycasting. Returns a 1D array of return strength at each range bin.
+
+See :py:class:`~holoocean.sensors.RaycastSinglebeamSonar` for the python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "RaycastSinglebeamSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "OpeningAngle": 30,
+            "RangeMin": 0.5,
+            "RangeMax": 30,
+            "RangeBins": 1000,
+            "AddSigma": 0,
+            "MultSigma": 0,
+            "RangeSigma": 0.1,
+            "ViewRays": False,
+            "ViewRegion": False,
+            "WaterDensity": 997,
+            "WaterSpeedSound": 1480,
+            "IgnorePlants": False
+        }
+    }
+
+
+.. _semantic_raycast_singlebeam_sonar:
+
+Semantic Raycast Single-Beam Sonar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Simulates a single-beam sonar using raycasting, but unlike the basic raycast version, it returns a 2D array of return 
+strength at each range bin, and the top N contributing labels strength and label IDs.
+
+See :py:class:`~holoocean.sensors.SemanticRaycastSinglebeamSonar` for the python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "SemanticRaycastSinglebeamSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "OpeningAngle": 30,
+            "RangeMin": 0.5,
+            "RangeMax": 30,
+            "RangeBins": 1000,
+            "UseTags": True,
+            "AddSigma": 0,
+            "MultSigma": 0,
+            "RangeSigma": 0.1,
+            "ViewPoints": False,
+            "ViewRays": False,
+            "ViewRegion": False,
+            "WaterDensity": 997,
+            "WaterSpeedSound": 1480,
+            "IgnorePlants": False
+        }
+    }
+
+
+.. _gpu_singlebeam_sonar:
+
+GPU Single-Beam Sonar
+---------------------
+
+Simulates a single-beam sonar using GPU rendering. Returns a 1D array of return strength at each range bin.
+Utilizes the GPU rendering pipeline, for faster simulation speed.
+
+See :py:class:`~holoocean.sensors.GPUSinglebeamSonar` for the python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "GPUSinglebeamSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "OpeningAngle": 30,
+            "RangeMin": 0.5,
+            "RangeMax": 30,
+            "RangeBins": 1000,
+            "AddSigma": 0,
+            "MultSigma": 0,
+            "ViewRegion": False,
+            "WaterDensity": 997,
+            "WaterSpeedSound": 1480,
+            "UseApprox": True,
+            "IgnorePlants": False
+        }
+    }
+
+.. _resolution_calculation_singlebeam:
+
+Resolution Calculation for Raycast and GPU Singlebeam Sonars
+------------------------------------------------------------
+
+The raycast and GPU singlebeam sonars require sufficient angular sampling to accurately populate the desired range bins. 
+For the singlebeam sonars it is necessary to compute both the opening and central angle resolutions. 
+The calculations for estimating the required resolutions are listed below.
+
+Elevation or Opening Angle Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A conservative estimate of the required elevation step size can be computed as:
+
+.. math::
+
+   \theta_{opening} = \frac{\Theta - \cos^{-1}\!\left(
+      \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+      \cos(\Theta)
+   \right)}{2}
+
+where:
+
+* :math:`\Theta` is the elevation angle of the singlebeam sonar (half of the opening angle).
+* :math:`R_{\max}` is the maximum sonar range.
+* :math:`R_{\mathrm{res}}` is the range resolution.
+
+This equation calculates the required resolution for half of the singlebeam sonar, and then by dividing our result by two we get the necessary resolution for the entire width of the sensor.
+
+.. note:: The range resolution can be computed from the number of range bins: 
+
+    .. math:: R_{\mathrm{res}} = \frac{R_{\max} - R_{\min}}{R_{bins}}
+
+This formulation assumes that the seafloor intersects the maximum range at the
+edge of the sonar field of view, as illustrated in the figure below:
+
+.. figure:: ../images/WorstCaseResDiagram.png
+    :align: center
+
+    Worst-case geometry used for estimating the required opening angle resolution.
+
+The required raycount is then:
+
+.. math::
+
+   N_{opening} = \frac{\Theta}{\theta}
+
+This calculation represents a worst-case estimate and guarantees sufficient
+resolution across the full field of view.
+
+Central Angle Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Due to the central angle being disconnected from the range resolution, the required resolution is calculated from the desired euclidian distance between each ray at the worst case range. 
+From testing, good values that balance speed and resolution are around 5-10cm, HoloOcean's default is 10cm.
+A conservative estimate of the required central angle step size can be computed as:
+
+.. math::
+
+    \theta_{central} = \frac{D}{R_{\max}*\sin(\Theta)}
+
+Where
+
+* :math:`\Theta` is the elevation angle of the singlebeam sonar (half of the opening angle).
+* :math:`R_{\max}` is the maximum sonar range.
+* :math:`D` is the desired euclidian distance between rays in centimeters.
+
+This formulation assumes that the seafloor intersects the maximum range at the edge of the sonar field of view, as illustrated in the figure below:
+
+.. figure:: ../images/CentralAngleSinglebeam.png
+    :align: center
+    :scale: 100
+
+    Worst-case geometry used for estimating the required central angle resolution.
+
+The required raycount is then:
+
+.. math::
+
+   N_{central} = \frac{360}{\theta}
+
+This calculation represents a worst-case estimate and guarantees sufficient
+resolution across the full field of view.
+
+How To Input Resolution Into HoloOcean
+--------------------------------------
+
+There are multiple parameters that you can set to change the resolution and speed of the raycast sonar. If you don't manually set your resolution, 
+the resolution will be calculated based off of your other parameters using the above equations. 
+The options are listed in the following code block. These numbers are generated from the same values that are used in the above configs. 
+
+In addition to your existing config you would add one option from the opening angles and one option from the central angles::
+    
+    {
+        "sensor_type": "RaycastSinglebeamSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "OpeningAngleRes": 0.105968,    # theta_opening
+            # "OpeningAngleRays": 142,      # N_opening
+            "CentralAngleRes": 1.28790,     # theta_central
+            # "CentralAngleRays": 280,      # N_central
+            # "CentralAngleEuclidian": 0.1, # D
+        }
+    }
+
+GPU Singlebeam Sonar
+--------------------
+
+For the GPU sonar, you can find the necessary resolution by taking the higher value between central and opening angle resolution and setting that to your resolutionX.
+
+
+.. Adjusted Elevation or Opening Angle Resolution
+.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+.. Adjusted Central Angle Resolution
+.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. When the agent is closer to the ground, less rays are necessary for the required resolution. 
+.. To calculate this new required resolution, you can either use the worst case equation and change your \R_max value or you can use this adjusted equation where h is your estimated height from the bottom
+
+.. .. math::
+
+..     \theta = \frac{D}{h*\tan(\Theta)}
+
+.. Where
+
+.. * :math:`\Theta` is the elevation angle of the singlebeam sonar (half of the opening angle).
+.. * :math:`h` is the estimated distance from the ground.
+.. * :math:`D` is the desired euclidian distance between rays in centimeters.

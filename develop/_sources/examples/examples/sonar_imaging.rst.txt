@@ -4,8 +4,11 @@
 Visualizing Imaging Sonar
 ==========================
 
-It can be useful to visualize the output of the sonar sensor during a simulation. This script will do 
+It can be useful to visualize the output of the sonar sensor during a simulation. These scripts will do 
 that, plotting each time sonar data is received.
+
+Octree Imaging Sonar
+---------------------
 
 Note, running this script will create octrees while running and may cause some pauses. See 
 :ref:`octree` for workarounds and more info.
@@ -16,38 +19,80 @@ Note, running this script will create octrees while running and may cause some p
     import matplotlib.pyplot as plt
     import numpy as np
 
-    #### GET SONAR CONFIG
-    scenario = "PierHarbor-HoveringImagingSonar"
-    config = holoocean.packagemanager.get_scenario(scenario)
-    config = config['agents'][0]['sensors'][-1]["configuration"]
-    azi = config['Azimuth']
-    minR = config['RangeMin']
-    maxR = config['RangeMax']
-    binsR = config['RangeBins']
-    binsA = config['AzimuthBins']
+    scenario = {
+        "name": "test_imaging",
+        "world": "OpenWater",
+        "package_name": "Ocean",
+        "main_agent": "auv0",
+        "ticks_per_sec": 30,
+        "frames_per_sec": False,
+        "octree_min": 0.02,
+        "octree_max": 1.5,
+        "agents": [
+            {
+                "agent_name": "auv0",
+                "agent_type": "HoveringAUV",
+                "control_scheme": 0,
+                "sensors": [
+                    {
+                        "sensor_type": "ImagingSonar",
+                        "sensor_name": "ImagingSonar",
+                        "Socket": "SonarSocket",
+                        "Hz": 10,
+                        "rotation": [0, 90, 0],
+                        "configuration": {
+                            "RangeBins": 512,
+                            "AzimuthBins": 512,
+                            "RangeMin": 0.1,
+                            "RangeMax": 10,
+                            "Elevation": 20,
+                            "Azimuth": 120,
+                            "InitOctreeRange": 50,
+                            "MultSigma": 0.0,
+                            "AddSigma": 0.0,
+                            "MultiPath": False,
+                            # "ViewRegion": True,
+                        },
+                    },
+                ],
+                "location": [620.0, 170, -291.0],
+                "rotation": [0, 0, 0],
+            },
+        ],
+        "window_width": 1280,
+        "window_height": 720,
+    }
 
-    #### GET PLOT READY
+    # GET SONAR CONFIG
+    config = scenario["agents"][0]["sensors"][-1]["configuration"]
+    azi = config["Azimuth"]
+    minR = config["RangeMin"]
+    maxR = config["RangeMax"]
+    binsR = config["RangeBins"]
+    binsA = config["AzimuthBins"]
+
+    # GET PLOT READY
     plt.ion()
-    fig, ax = plt.subplots(subplot_kw=dict(projection='polar'), figsize=(8,5))
+    fig, ax = plt.subplots(subplot_kw=dict(projection="polar"), figsize=(8, 5))
     ax.set_theta_zero_location("N")
-    ax.set_thetamin(-azi/2)
-    ax.set_thetamax(azi/2)
+    ax.set_thetamin(-azi / 2)
+    ax.set_thetamax(azi / 2)
 
-    theta = np.linspace(-azi/2, azi/2, binsA)*np.pi/180
+    theta = np.linspace(-azi / 2, azi / 2, binsA) * np.pi / 180
     r = np.linspace(minR, maxR, binsR)
     T, R = np.meshgrid(theta, r)
     z = np.zeros_like(T)
 
     plt.grid(False)
-    plot = ax.pcolormesh(T, R, z, cmap='gray', shading='auto', vmin=0, vmax=1)
+    plot = ax.pcolormesh(T, R, z, cmap="gray", shading="auto", vmin=0, vmax=1)
     plt.tight_layout()
     fig.canvas.draw()
     fig.canvas.flush_events()
 
-    #### RUN SIMULATION
-    command = np.array([0,0,0,0,-20,-20,-20,-20])
-    with holoocean.make(scenario) as env:
-        for i in range(1000):
+    # RUN SIMULATION
+    command = np.array([0, 0, 0, 0, 2, 2, 2, 2])
+    with holoocean.make(scenario_cfg=scenario, start_world=True) as env:
+        for i in range(600):
             env.act("auv0", command)
             state = env.tick()
 
@@ -61,3 +106,125 @@ Note, running this script will create octrees while running and may cause some p
     print("Finished Simulation!")
     plt.ioff()
     plt.show()
+
+The final output should look like this:
+
+.. image:: ../images/octree_imaging.png
+
+
+Raycast Imaging Sonar
+----------------------
+
+Only the sensor type and configuration are different for this sonar, the rest of the code is the same.
+
+::
+
+    scenario = {
+        "name": "test_imaging",
+        "world": "OpenWater",
+        "package_name": "Ocean",
+        "main_agent": "auv0",
+        "ticks_per_sec": 30,
+        "frames_per_sec": False,
+        "agents": [
+            {
+                "agent_name": "auv0",
+                "agent_type": "HoveringAUV",
+                "control_scheme": 0,
+                "sensors": [
+                    {
+                        "sensor_type": "RaycastImagingSonar",
+                        "sensor_name": "ImagingSonar",
+                        "Socket": "SonarSocket",
+                        "Hz": 10,
+                        "rotation": [0, 90, 0],
+                        "configuration": {
+                            "RangeBins": 512,
+                            "AzimuthBins": 512,
+                            "RangeMin": 0.1,
+                            "RangeMax": 10,
+                            "Elevation": 20,
+                            "Azimuth": 120,
+                            "ElevationRayCount": 313, # changing these parameters changes resolution   
+                            "AzimuthRayCount": 1873,  # and affects runtime
+                            "MultSigma": 0.0,
+                            "AddSigma": 0.0,
+                            "MultiPath": False,
+                            # "ViewRegion": True,
+                            # "ViewRays": True,
+                        },
+                    },
+                ],
+                "location": [620.0, 170, -291.0],
+                "rotation": [0, 0, 0],
+            },
+        ],
+        "window_width": 1280,
+        "window_height": 720,
+    }
+
+
+.. note:: For information on how to compute necessary resolution, refer to :ref:`resolution_calculation_imaging`
+
+The final output should look like this:
+
+.. image:: ../images/raycast_imaging.png
+
+
+GPU Imaging Sonar
+------------------
+
+Only the sensor type and configuration are different for this sonar, the rest of the code is the same.
+
+::
+
+    scenario = {
+        "name": "test_imaging",
+        "world": "OpenWater",
+        "package_name": "Ocean",
+        "main_agent": "auv0",
+        "ticks_per_sec": 30,
+        "frames_per_sec": False,
+        "agents": [
+            {
+                "agent_name": "auv0",
+                "agent_type": "HoveringAUV",
+                "control_scheme": 0,
+                "sensors": [
+                    {
+                        "sensor_type": "GPUImagingSonar",
+                        "sensor_name": "ImagingSonar",
+                        "Socket": "SonarSocket",
+                        "Hz": 10,
+                        "rotation": [0, 90, 0],
+                        "configuration": {
+                            "RangeBins": 512,
+                            "AzimuthBins": 512,
+                            "RangeMin": 0.1,
+                            "RangeMax": 10,
+                            "Elevation": 20,
+                            "Azimuth": 120,
+                            "ResolutionX": 2500, # changing this parameter changes resolution and affects runtime 
+                            "MultSigma": 0.0,
+                            "AddSigma": 0.0,
+                            "MultiPath": False,
+                            # "ViewRegion": True,
+                            # "ViewRays": True,
+                        },
+                    },
+                ],
+                "location": [620.0, 170, -291.0],
+                "rotation": [0, 0, 0],
+            },
+        ],
+        "window_width": 1280,
+        "window_height": 720,
+    }
+
+
+.. note:: For information on how to compute necessary resolution, refer to :ref:`resolution_calculation_imaging`
+
+The final output should look like this:
+
+.. image:: ../images/gpu_imaging.png
+

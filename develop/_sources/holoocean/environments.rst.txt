@@ -4,3 +4,13 @@ Environments
 
 .. automodule:: holoocean.environments
    :members:
+
+.. _fft-wave-api:
+FFT Wave Control Methods
+--------------------
+
+For these methods you will call them using env.fftwaves."Command":
+
+.. automethod:: holoocean.fftwaves.FFTWaveController.fft_sea_state
+.. automethod:: holoocean.fftwaves.FFTWaveController.fft_wave_scalars
+.. automethod:: holoocean.fftwaves.FFTWaveController.fft_wave_cascades

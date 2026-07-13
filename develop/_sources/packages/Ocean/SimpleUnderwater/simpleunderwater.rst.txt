@@ -35,7 +35,7 @@ The following semantic labels are used in this level:
      - {0, 0, 0}
    * - Landscape
      - 4
-     - {153, 153, 153}
+     - {201, 162, 54}
    * - WaterPlane
      - 9
      - {66, 135, 245}
@@ -48,6 +48,3 @@ The following semantic labels are used in this level:
    * - Any
      - 255
      - {255, 255, 255}
-
-::
-  

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Creating a Custom Level — HoloOcean 2.3.0 documentation</title>
+<title>Creating a Custom Level — HoloOcean 2.4.0 documentation</title>
 <link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,7 +15,7 @@
   <![endif]-->
 <script src="../../_static/jquery.js?v=5d32c60e"></script>
 <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -67,6 +67,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#collision-settings-for-objects-and-sonar">Collision Settings for Objects and Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#additional-tide-settings-for-objects">Additional Tide Settings for Objects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#weather">Weather</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rain-ripples">Rain Ripples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#air-fog">Air Fog</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#note-on-flashlights">Note on Flashlights</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-your-custom-level">Testing Your Custom Level</a></li>
@@ -141,14 +142,39 @@ The documentation explains how to use the Landscape Mode within the editor, as w
 </section>
 <section id="water">
 <h2>Water<a class="headerlink" href="#water" title="Link to this heading"></a></h2>
-<p><strong>The Unreal Engine Water plugin is not compatible with HoloOcean and will not work.</strong> Instead, to achieve an underwater appearance,
-you will need to place a water plane and two PostProcessVolumes within your environment. Please note the following are suggested settings, and there may be others you would want to consider adjusting for your level.</p>
-<section id="water-plane">
-<h3>Water Plane<a class="headerlink" href="#water-plane" title="Link to this heading"></a></h3>
-<p>For the water plane, place a plane actor at z=0. Change the material to be any water-like material. You will also need to change the collision settings so that vehicles can pass through the plane. In the Details panel, search for “collision” and set custom collision presets to ignore all options.</p>
-<img alt="../../_images/plane_settings.png" src="../../_images/plane_settings.png"/>
-<p>To make sure your water plane is compatible with our tide system, tag the water plane as “WaterSurface” and make the plane movable.</p>
+<p><strong>The Unreal Engine Water plugin is not compatible with HoloOcean and will not work.</strong> Instead, to achieve an underwater appearance, you will need
+to place a water plane and one PostProcessVolume within your environment. Please note the following are suggested settings, and there may be
+others you would want to consider adjusting for your level.</p>
+<p>There are two different options for water planes, you can make a water plane with or without waves.
+If you are only doing underwater tests in your map, a plane may give you a better frame rate.
+If you are doing anything near or on the water surface, waves could enhance your simulation and aren’t too demanding.</p>
+<section id="water-plane-without-waves">
+<h3>Water Plane Without Waves<a class="headerlink" href="#water-plane-without-waves" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Place a plane actor at z=0 and size it to your needs. Set it to moveable so it works with tides, and in the actor tags label it WaterSurface.</p></li>
+<li><p>Change the material to be any water-like material. If you do not have a material, we have a simple one that can be found at engine/Content/StarterContent/Materials.</p></li>
+<li><p>Follow the collision settings found at <a class="reference internal" href="#water-collision-tagging"><span class="std std-ref">Water Collision &amp; Tagging</span></a>.</p></li>
+</ol>
+<p>If you want a water plane that is textured with the small FFT waves, then follow the steps in building a <a class="reference internal" href="#create-waves"><span class="std std-ref">Water Plane With Waves</span></a>, but create a default wind speed of 1 or 2 so you have ripples. When running the level leave fft_waves out of your config.</p>
 <img alt="../../_images/water_plane.png" src="../../_images/water_plane.png"/>
+</section>
+<section id="water-plane-with-waves">
+<span id="create-waves"></span><h3>Water Plane With Waves<a class="headerlink" href="#water-plane-with-waves" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Place the mesh located in OceanWaterWave/Meshes into your world at z=0 and size it to your needs. Set it to moveable so it works with tides, and in the actor tags label it WaterSurface.</p></li>
+<li><p>Place the FX_OceanWaves from OceanWaterWave/Effects into the level, it can be anywhere, tag this Wave.</p></li>
+<li><p>Follow the collision settings found at <a class="reference internal" href="#water-collision-tagging"><span class="std std-ref">Water Collision &amp; Tagging</span></a>.</p></li>
+</ol>
+<img alt="../../_images/wavy_plane.png" src="../../_images/wavy_plane.png"/>
+<p>If you want to include objects that can react to the waves in your levels such as bouys or boats then create a folder within your level titled “float” with subdirectories big_float and small_float. Then put any floating objects inside of one of those.</p>
+<img alt="../../_images/float_folders.png" src="../../_images/float_folders.png"/>
+</section>
+<section id="water-collision-tagging">
+<span id="id1"></span><h3>Water Collision &amp; Tagging<a class="headerlink" href="#water-collision-tagging" title="Link to this heading"></a></h3>
+<p>Regardless of which method you chose for making your waves, please replicate the following collision settings on your plane so that the vehicles can pass through:</p>
+<img alt="../../_images/water_collision_settings.png" src="../../_images/water_collision_settings.png"/>
+<p>Please also enable “Render CustomDepth Pass” and set the “CustomDepth Stencil Value” to 9 as shown in the picture below:</p>
+<img alt="../../_images/water_plane_tag.png" src="../../_images/water_plane_tag.png"/>
 </section>
 <section id="water-color-postprocessvolume-1">
 <h3>Water Color (PostProcessVolume 1)<a class="headerlink" href="#water-color-postprocessvolume-1" title="Link to this heading"></a></h3>
@@ -158,11 +184,11 @@ Blue to green colors are best, and the Dam environment has the “Scene Color Ti
 <img alt="../../_images/water_w_postprocess.png" src="../../_images/water_w_postprocess.png"/>
 <p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">WaterPPV</span></code> so that the Water Fog Command and Tides Command function correctly.</p>
 </section>
-<section id="water-fog-postprocessvolume-2">
-<h3>Water Fog (PostProcessVolume 2)<a class="headerlink" href="#water-fog-postprocessvolume-2" title="Link to this heading"></a></h3>
-<p>To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code> material.
+<section id="water-fog-postprocessvolume-1">
+<h3>Water Fog (PostProcessVolume 1)<a class="headerlink" href="#water-fog-postprocessvolume-1" title="Link to this heading"></a></h3>
+<p>To simulate underwater fog and reduce visibility assign the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code> material to the same Post Process Volume that water color uses.
 In the <strong>Details</strong> panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to <strong>Asset Reference</strong>, and select <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code>.
-Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Water_Simple</span></code>. .</p>
+Alternatively, you can drag the material directly from <code class="docutils literal notranslate"><span class="pre">Content/WeatherContent/Fog/MM_Fog_Water_Simple</span></code>.</p>
 <img alt="../../_images/water_fog_material.png" src="../../_images/water_fog_material.png"/>
 <p>After applying the material, you can tune its parameters to achieve the desired underwater effect. The most relevant parameters are:</p>
 <ul class="simple">
@@ -172,7 +198,6 @@ Alternatively, you can drag the material directly from <code class="docutils lit
 </ul>
 <p>Although the <strong>Fog_Transition</strong> parameter can also be modified, it is generally recommended to leave it at its default value of <code class="docutils literal notranslate"><span class="pre">0.1</span></code> and adjust the other parameters first. Modify it only if you need finer control over how the fog blends with the scene.</p>
 <img alt="../../_images/fog_params.png" src="../../_images/fog_params.png"/>
-<p>Make sure to tag the PostProcessVolume as <code class="docutils literal notranslate"><span class="pre">WaterPPV</span></code> so that the Water Fog Command and Tides Command function correctly.</p>
 <p>If desired, you can also perform the previous steps with a copy of the <code class="docutils literal notranslate"><span class="pre">MM_Fog_Water_Simple</span></code> material that you then modify to your needs and save to its own material name.
 This keeps the original material’s settings intact for future use.</p>
 </section>
@@ -193,14 +218,14 @@ This keeps the original material’s settings intact for future use.</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt><a class="reference internal" href="../../packages/Ocean/Dam/dam.html#dam"><span class="std std-ref">Dam</span></a>:</dt><dd><ul>
-<li><p><a class="reference external" href="https://www.fab.com/listings/0c40a773-c71b-4c51-9286-721126fd9b0f">Ocean Floor Environment</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/f6ff3c58-7fcd-43b8-bc0a-55ab6c405e1b">Modular Dam Environment</a></p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt><a class="reference internal" href="../../packages/Ocean/OpenWater/openwater.html#openwater"><span class="std std-ref">OpenWater</span></a>:</dt><dd><ul>
-<li><p><a class="reference external" href="https://www.fab.com/listings/f6ff3c58-7fcd-43b8-bc0a-55ab6c405e1b">Modular Dam Environment</a></p></li>
+<li><p><a class="reference external" href="https://www.fab.com/listings/0c40a773-c71b-4c51-9286-721126fd9b0f">Ocean Floor Environment</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -273,8 +298,8 @@ In the Details panel of the Unreal Editor, navigate to each asset you wish to be
 </section>
 <section id="collision-settings-for-objects-and-sonar">
 <span id="object-collision"></span><h2>Collision Settings for Objects and Sonar<a class="headerlink" href="#collision-settings-for-objects-and-sonar" title="Link to this heading"></a></h2>
-<p>Sonar simulation relies upon the collision mesh for objects when generating the octree.</p>
-<p>First, make sure to set the environment boundaries to have the environment min and max.
+<p>Both raycast and octree sonar implementations rely upon the collision mesh for objects.</p>
+<p>First, if you are using our octree sonar implementation, make sure to set the environment boundaries to have the environment min and max.
 In standalone through Unreal Engine, this would be done by setting the Additional Launch Parameters as seen here: <a class="reference internal" href="../start.html#live-game"><span class="std std-ref">Launching Game Live</span></a>.
 If you have packaged your worlds, this would be set in the config file.</p>
 <div class="admonition warning">
@@ -293,7 +318,12 @@ for physics simulation. To view both the simple and complex collision meshes, cl
 <img alt="../../_images/delete_collisions.png" src="../../_images/delete_collisions.png"/>
 <p>If you still have issues with your collision mesh, it is often helpful to enable “Double Sided Geometry” in the details panel of the static mesh editor.</p>
 <img alt="../../_images/static_mesh_double_sided.png" src="../../_images/static_mesh_double_sided.png"/>
-<p>Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable “Simulation Generates Hit Events”.</p>
+<p>Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable “Simulation Generates Hit Events”. The Default option for “Collision Presets” is correct and accounts for all our sonar implementations.
+If you want the object to be ignored by either the raycast or gpu sonar implementations you must do two things:</p>
+<ol class="arabic simple">
+<li><p>Select <em>Ignore</em> under “RaycastIgnorePlants”.</p></li>
+<li><p>Make sure that the custom semantic label of the object is set to either 18 or 19, the labels for plants and corals. See, <a class="reference internal" href="custom-semantics.html#semantic-segmentation"><span class="std std-ref">Adding Custom Semantic Labels</span></a>.</p></li>
+</ol>
 <img alt="../../_images/level_collision_settings.png" src="../../_images/level_collision_settings.png"/>
 <p>You can verify the shape of the collision mesh by changing the view mode to “Player Collision” in the level or in the static mesh editor.</p>
 <img alt="../../_images/check_collisions.png" src="../../_images/check_collisions.png"/>
@@ -318,7 +348,34 @@ for physics simulation. To view both the simple and complex collision meshes, cl
 </div></blockquote>
 <p>Repeat the same process for the second Volumetric Cloud actor, but this time use the m_SimpleVolumetricCloud_Inst_Cloudy material and tag it as Cloudy.</p>
 <img alt="../../_images/volumetric_cloud.png" src="../../_images/volumetric_cloud.png"/>
-<p>Finally, you should also tag the water plane you created as “WaterSurface”.</p>
+</section>
+<section id="rain-ripples">
+<h2>Rain Ripples<a class="headerlink" href="#rain-ripples" title="Link to this heading"></a></h2>
+<p>After adding weather to your world you will already have rain effects, adding ripple effects is optional and requires additional steps.</p>
+<p>First for your custom world you must create a new material instance of the ripple material. To do this, open the content browser and go to Content/FFT_OceanWaterWave/Materials.</p>
+<img alt="../../_images/ripple_material_instance.png" src="../../_images/ripple_material_instance.png"/>
+<p>Once in this folder select the M_PreviewOceanWater_Rain and create a material instance of it, you can name this whatever you like.</p>
+<img alt="../../_images/ripple_scaling_factor.png" src="../../_images/ripple_scaling_factor.png"/>
+<p>Go into the material instance and checkmark the ripple scaling factor, this changes the size of the ripples in your level. Depending on the size of your level a different value could work best for your needs.
+You may want to try out a few different values by replacing water plane’s material with your specfic ripple material. Look at the other ripple instances for a good baseline.</p>
+<p>After you have finalized your material go to: holoocean/engine/Source/Holodeck/ClientCommands/Private/ChangeWeatherCommand.cpp. Once here find the <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span> <span class="pre">(weather</span> <span class="pre">==</span> <span class="pre">2)</span> <span class="pre">//</span> <span class="pre">Rainy</span></code> option and add an
+additional else if block containing your world name and fill the TEXT option with your material instance like the examples in code.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">WorldName</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">"Custom World Name"</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">UMaterialInterface</span><span class="o">*</span><span class="w"> </span><span class="n">NewMaterial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoadObject</span><span class="o">&lt;</span>
+<span class="w">    </span><span class="n">UMaterialInterface</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="nb">nullptr</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TEXT</span><span class="p">(</span>
+<span class="w">      </span><span class="s">"/Game/FFT_OceanWaterWave/Materials/M_PreviewOceanWater_Ripples&lt;CUSTOM_WORLD_NAME&gt;.M_PreviewOceanWater_Ripples&lt;CUSTOM_WORLD_NAME&gt;"</span><span class="p">));</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">NewMaterial</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Apply new material</span>
+<span class="w">    </span><span class="n">MeshComp</span><span class="o">-&gt;</span><span class="n">SetMaterial</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">NewMaterial</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">UE_LOG</span><span class="p">(</span>
+<span class="w">      </span><span class="n">LogHolodeck</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"New material not found"</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="air-fog">
 <h2>Air Fog<a class="headerlink" href="#air-fog" title="Link to this heading"></a></h2>

@@ -27,19 +27,49 @@ If you wish to enclose the sides of your environment, you can either place asset
 Water
 =====
 
-**The Unreal Engine Water plugin is not compatible with HoloOcean and will not work.** Instead, to achieve an underwater appearance, 
-you will need to place a water plane and two PostProcessVolumes within your environment. Please note the following are suggested settings, and there may be others you would want to consider adjusting for your level.
+**The Unreal Engine Water plugin is not compatible with HoloOcean and will not work.** Instead, to achieve an underwater appearance, you will need 
+to place a water plane and one PostProcessVolume within your environment. Please note the following are suggested settings, and there may be
+others you would want to consider adjusting for your level.
 
-Water Plane
------------
+There are two different options for water planes, you can make a water plane with or without waves. 
+If you are only doing underwater tests in your map, a plane may give you a better frame rate. 
+If you are doing anything near or on the water surface, waves could enhance your simulation and aren't too demanding.
 
-For the water plane, place a plane actor at z=0. Change the material to be any water-like material. You will also need to change the collision settings so that vehicles can pass through the plane. In the Details panel, search for "collision" and set custom collision presets to ignore all options.
+Water Plane Without Waves
+-------------------------
 
-.. image:: images/plane_settings.png
+1. Place a plane actor at z=0 and size it to your needs. Set it to moveable so it works with tides, and in the actor tags label it WaterSurface. 
+2. Change the material to be any water-like material. If you do not have a material, we have a simple one that can be found at engine/Content/StarterContent/Materials.
+3. Follow the collision settings found at :ref:`water-collision-tagging`.
 
-To make sure your water plane is compatible with our tide system, tag the water plane as "WaterSurface" and make the plane movable. 
+If you want a water plane that is textured with the small FFT waves, then follow the steps in building a :ref:`create-waves`, but create a default wind speed of 1 or 2 so you have ripples. When running the level leave fft_waves out of your config.
 
 .. image:: images/water_plane.png
+
+.. _create-waves:
+Water Plane With Waves
+----------------------
+
+1. Place the mesh located in OceanWaterWave/Meshes into your world at z=0 and size it to your needs. Set it to moveable so it works with tides, and in the actor tags label it WaterSurface.
+2. Place the FX_OceanWaves from OceanWaterWave/Effects into the level, it can be anywhere, tag this Wave.
+3. Follow the collision settings found at :ref:`water-collision-tagging`.
+
+.. image:: images/wavy_plane.png
+
+If you want to include objects that can react to the waves in your levels such as bouys or boats then create a folder within your level titled "float" with subdirectories big_float and small_float. Then put any floating objects inside of one of those.
+
+.. image:: images/float_folders.png
+
+.. _water-collision-tagging:
+Water Collision & Tagging
+-------------------------
+Regardless of which method you chose for making your waves, please replicate the following collision settings on your plane so that the vehicles can pass through:
+
+.. image:: images/water_collision_settings.png
+
+Please also enable "Render CustomDepth Pass" and set the "CustomDepth Stencil Value" to 9 as shown in the picture below:
+
+.. image:: images/water_plane_tag.png
 
 Water Color (PostProcessVolume 1)
 ------------------------------------
@@ -54,12 +84,12 @@ As seen in the Dam environment, the water plane is a separate plane located at z
 Make sure to tag the PostProcessVolume as ``WaterPPV`` so that the Water Fog Command and Tides Command function correctly.
 
 
-Water Fog (PostProcessVolume 2)
+Water Fog (PostProcessVolume 1)
 -------------------------------
 
-To simulate underwater fog and reduce visibility, add a second PostProcessVolume that is the same size as the first one (you can simply duplicate the existing volume) and assign it the ``MM_Fog_Water_Simple`` material.
+To simulate underwater fog and reduce visibility assign the ``MM_Fog_Water_Simple`` material to the same Post Process Volume that water color uses.
 In the **Details** panel, navigate to Rendering Features ➡ Post Process Materials, add an element to the array, set it to **Asset Reference**, and select ``MM_Fog_Water_Simple``. 
-Alternatively, you can drag the material directly from ``Content/WeatherContent/Fog/MM_Fog_Water_Simple``. .
+Alternatively, you can drag the material directly from ``Content/WeatherContent/Fog/MM_Fog_Water_Simple``.
 
 .. image:: images/water_fog_material.png
 
@@ -72,8 +102,6 @@ After applying the material, you can tune its parameters to achieve the desired 
 Although the **Fog_Transition** parameter can also be modified, it is generally recommended to leave it at its default value of ``0.1`` and adjust the other parameters first. Modify it only if you need finer control over how the fog blends with the scene.
 
 .. image:: images/fog_params.png
-
-Make sure to tag the PostProcessVolume as ``WaterPPV`` so that the Water Fog Command and Tides Command function correctly.
 
 If desired, you can also perform the previous steps with a copy of the ``MM_Fog_Water_Simple`` material that you then modify to your needs and save to its own material name. 
 This keeps the original material's settings intact for future use.
@@ -102,9 +130,9 @@ To populate your level with assets, you will either need to import your own asse
 To replicate similar levels as HoloOcean, we use the following asset packs:
 
 * :ref:`dam`: 
-    * `Ocean Floor Environment <https://www.fab.com/listings/0c40a773-c71b-4c51-9286-721126fd9b0f>`_ 
-* :ref:`openwater`: 
     * `Modular Dam Environment <https://www.fab.com/listings/f6ff3c58-7fcd-43b8-bc0a-55ab6c405e1b>`_
+* :ref:`openwater`: 
+    * `Ocean Floor Environment <https://www.fab.com/listings/0c40a773-c71b-4c51-9286-721126fd9b0f>`_ 
 * :ref:`pierharbor`: 
     * `Container Ships <https://www.fab.com/listings/d15bb4d9-e292-4bc0-a058-14aee645f69e>`_ 
     * `Boat Pack Vol_1 <https://www.fab.com/listings/7e671469-af0a-4516-88a4-dfffefdbc640>`_
@@ -173,9 +201,9 @@ If you already set up your world for semantic labeling, you will have already do
 Collision Settings for Objects and Sonar
 ========================================
 
-Sonar simulation relies upon the collision mesh for objects when generating the octree. 
+Both raycast and octree sonar implementations rely upon the collision mesh for objects.
 
-First, make sure to set the environment boundaries to have the environment min and max. 
+First, if you are using our octree sonar implementation, make sure to set the environment boundaries to have the environment min and max. 
 In standalone through Unreal Engine, this would be done by setting the Additional Launch Parameters as seen here: :ref:`live-game`.
 If you have packaged your worlds, this would be set in the config file. 
 
@@ -202,7 +230,12 @@ If you still have issues with your collision mesh, it is often helpful to enable
 
 .. image:: images/static_mesh_double_sided.png
 
-Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable "Simulation Generates Hit Events".
+Finally, within the level, click on the object and go to the details panel. Go to the collision section and enable "Simulation Generates Hit Events". The Default option for "Collision Presets" is correct and accounts for all our sonar implementations. 
+If you want the object to be ignored by either the raycast or gpu sonar implementations you must do two things:
+
+1. Select *Ignore* under "RaycastIgnorePlants".
+
+2. Make sure that the custom semantic label of the object is set to either 18 or 19, the labels for plants and corals. See, :ref:`semantic-segmentation`.
 
 .. image:: images/level_collision_settings.png
 
@@ -236,7 +269,41 @@ Repeat the same process for the second Volumetric Cloud actor, but this time use
 
 .. image:: images/volumetric_cloud.png
 
-Finally, you should also tag the water plane you created as "WaterSurface".
+Rain Ripples
+============
+
+After adding weather to your world you will already have rain effects, adding ripple effects is optional and requires additional steps. 
+
+First for your custom world you must create a new material instance of the ripple material. To do this, open the content browser and go to Content/FFT_OceanWaterWave/Materials. 
+
+.. image:: images/ripple_material_instance.png
+
+Once in this folder select the M_PreviewOceanWater_Rain and create a material instance of it, you can name this whatever you like.
+
+.. image:: images/ripple_scaling_factor.png
+
+Go into the material instance and checkmark the ripple scaling factor, this changes the size of the ripples in your level. Depending on the size of your level a different value could work best for your needs. 
+You may want to try out a few different values by replacing water plane's material with your specfic ripple material. Look at the other ripple instances for a good baseline.
+
+After you have finalized your material go to: holoocean/engine/Source/Holodeck/ClientCommands/Private/ChangeWeatherCommand.cpp. Once here find the ``else if (weather == 2) // Rainy`` option and add an 
+additional else if block containing your world name and fill the TEXT option with your material instance like the examples in code.
+
+.. code:: c++
+
+  else if (WorldName.Contains("Custom World Name")) {
+    UMaterialInterface* NewMaterial = LoadObject<
+      UMaterialInterface>(
+      nullptr,
+      TEXT(
+        "/Game/FFT_OceanWaterWave/Materials/M_PreviewOceanWater_Ripples<CUSTOM_WORLD_NAME>.M_PreviewOceanWater_Ripples<CUSTOM_WORLD_NAME>"));
+    if (NewMaterial) {
+      // Apply new material
+      MeshComp->SetMaterial(0, NewMaterial);
+    } else {
+      UE_LOG(
+        LogHolodeck, Warning, TEXT("New material not found"));
+    }
+  }
 
 Air Fog
 ========

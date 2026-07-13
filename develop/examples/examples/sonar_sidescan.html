@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Visualizing Sidescan Sonar — HoloOcean 2.3.0 documentation</title>
+<title>Visualizing Sidescan Sonar — HoloOcean 2.4.0 documentation</title>
 <link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,7 +15,7 @@
   <![endif]-->
 <script src="../../_static/jquery.js?v=5d32c60e"></script>
 <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -66,8 +66,14 @@
 <li class="toctree-l2"><a class="reference internal" href="sampling_bst.html">Sampling Biomass, Salinity, Temperature</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_imaging.html">Visualizing Imaging Sonar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_profiling.html">Visualizing Profiling Sonar</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Visualizing Sidescan Sonar</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Visualizing Sidescan Sonar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#octree-sidescan-sonar">Octree Sidescan Sonar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raycast-sidescan-sonar">Raycast Sidescan Sonar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-sidescan-sonar">GPU Sidescan Sonar</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_singlebeam.html">Visualizing Singlebeam Sonar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="waves_interactive.html">Interactive Waves</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
@@ -113,25 +119,63 @@
 <div itemprop="articleBody">
 <section id="visualizing-sidescan-sonar">
 <span id="id1"></span><h1>Visualizing Sidescan Sonar<a class="headerlink" href="#visualizing-sidescan-sonar" title="Link to this heading"></a></h1>
-<p>It can be useful to visualize the output of the sonar sensor during a simulation. This script will do
+<p>It can be useful to visualize the output of the sonar sensor during a simulation. These scripts will do
 that, plotting each time sonar data is received.</p>
+<section id="octree-sidescan-sonar">
+<h2>Octree Sidescan Sonar<a class="headerlink" href="#octree-sidescan-sonar" title="Link to this heading"></a></h2>
 <p>Note, running this script will create octrees while running and may cause some pauses. See
 <a class="reference internal" href="../../sensors/docs/octree.html#octree"><span class="std std-ref">Octree Generation</span></a> for workarounds and more info.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1">#### GET SONAR CONFIG</span>
-<span class="n">scenario</span> <span class="o">=</span> <span class="s2">"OpenWater-TorpedoSidescanSonar"</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">packagemanager</span><span class="o">.</span><span class="n">get_scenario</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'agents'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'sensors'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"configuration"</span><span class="p">]</span>
+<span class="c1">#### SONAR CONFIG</span>
+<span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_sidescan"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"OpenWater"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"octree_min"</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="s2">"octree_max"</span><span class="p">:</span> <span class="mf">1.28</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"TorpedoAUV"</span><span class="p">,</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"SidescanSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SidescanSonar"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+                        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">170</span><span class="p">,</span>
+                        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"InitOctreeRange"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                    <span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">555</span><span class="p">,</span> <span class="mi">236</span><span class="p">,</span> <span class="o">-</span><span class="mi">285</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">'agents'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'sensors'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"configuration"</span><span class="p">]</span>
 <span class="n">maxR</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'RangeMax'</span><span class="p">]</span>
 <span class="n">binsR</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'RangeBins'</span><span class="p">]</span>
 
 <span class="c1">#### GET PLOT READY</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">maxR</span><span class="p">,</span> <span class="n">maxR</span><span class="p">,</span> <span class="n">binsR</span><span class="p">)</span>
 <span class="n">R</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
@@ -142,27 +186,216 @@ that, plotting each time sonar data is received.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">flush_events</span><span class="p">()</span>
 
+
 <span class="c1">#### RUN SIMULATION</span>
-<span class="n">command</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
-<span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+<span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">scenario</span><span class="p">,</span> <span class="n">start_world</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1200</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="s1">'auv0'</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="s1">'SidescanSonar'</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">"SidescanSonar"</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-            <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">'SidescanSonar'</span><span class="p">]</span>
+            <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"SidescanSonar"</span><span class="p">]</span>
 
             <span class="n">plot</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
-
             <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">flush_events</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Finished Simulation!"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Finished Simulation"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>The final output should look like this:</p>
+<img alt="../../_images/octree_sidescan.png" src="../../_images/octree_sidescan.png"/>
+</section>
+<section id="raycast-sidescan-sonar">
+<h2>Raycast Sidescan Sonar<a class="headerlink" href="#raycast-sidescan-sonar" title="Link to this heading"></a></h2>
+<p>Unlike the octree version, Raycast SSS only simulates one side being scanned so two sensors are needed to simulate both sides.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For simplicity, in this example we have added both sonars to the same socket, but to more accuratey model a real system, they can also be moved to the desired location relative to the socket.
+See the <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a> documentation for more details on this.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1">#### SONAR CONFIG</span>
+<span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_sidescan"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"OpenWater"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"TorpedoAUV"</span><span class="p">,</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"RaycastSidescanSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SidescanSonarRight"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">-</span><span class="mf">42.5</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+                        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+                        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"ElevationRayCount"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                        <span class="s2">"AzimuthRayCount"</span><span class="p">:</span> <span class="mi">8500</span><span class="p">,</span> <span class="c1"># changing this parameter changes resolution and affects runtime</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                    <span class="p">},</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"RaycastSidescanSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SidescanSonarLeft"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">+</span><span class="mf">42.5</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+                        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+                        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"ElevationRayCount"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                        <span class="s2">"AzimuthRayCount"</span><span class="p">:</span> <span class="mi">8500</span><span class="p">,</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                    <span class="p">},</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">555</span><span class="p">,</span> <span class="mi">236</span><span class="p">,</span> <span class="o">-</span><span class="mi">285</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">'agents'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'sensors'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"configuration"</span><span class="p">]</span>
+<span class="n">maxR</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'RangeMax'</span><span class="p">]</span>
+<span class="n">binsR</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'RangeBins'</span><span class="p">]</span>
+<span class="n">binsR</span> <span class="o">=</span> <span class="n">binsR</span><span class="o">*</span><span class="mi">2</span>
+
+<span class="c1">#### GET PLOT READY</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">maxR</span><span class="p">,</span> <span class="n">maxR</span><span class="p">,</span> <span class="n">binsR</span><span class="p">)</span>
+<span class="n">R</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'copper'</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">'auto'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">flush_events</span><span class="p">()</span>
+
+
+<span class="c1">#### RUN SIMULATION</span>
+<span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span><span class="n">scenario</span><span class="p">,</span> <span class="n">start_world</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1200</span><span class="p">):</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="s1">'auv0'</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s2">"SidescanSonarRight"</span> <span class="ow">in</span> <span class="n">state</span> <span class="ow">and</span> <span class="s2">"SidescanSonarLeft"</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+            <span class="n">dataRight</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"SidescanSonarRight"</span><span class="p">]</span>
+            <span class="n">dataLeft</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"SidescanSonarLeft"</span><span class="p">]</span>
+            <span class="n">dataNew</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">dataLeft</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">dataRight</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataNew</span>
+
+            <span class="n">plot</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">flush_events</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Finished Simulation"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For information on how to compute necessary resolution, refer to <a class="reference internal" href="../../sensors/sensors/sidescan-sonar-sensor.html#resolution-calculation-sidescan"><span class="std std-ref">Resolution Calculation for Raycast and GPU SSS</span></a></p>
+</div>
+<p>The final output should look like this:</p>
+<img alt="../../_images/raycast_sidescan.png" src="../../_images/raycast_sidescan.png"/>
+</section>
+<section id="gpu-sidescan-sonar">
+<h2>GPU Sidescan Sonar<a class="headerlink" href="#gpu-sidescan-sonar" title="Link to this heading"></a></h2>
+<p>Only the sensor type and configuration are different for this sonar, the rest of the code is the same as the Raycast SSS example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_sidescan"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"OpenWater"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"TorpedoAUV"</span><span class="p">,</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"GPUSidescanSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SidescanSonarRight"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">-</span><span class="mf">42.5</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+                        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+                        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"ResolutionX"</span><span class="p">:</span> <span class="mi">8500</span><span class="p">,</span> <span class="c1"># changing this parameter changes resolution and affects runtime</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                    <span class="p">},</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"GPUSidescanSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SidescanSonarLeft"</span><span class="p">,</span>
+                    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">+</span><span class="mf">42.5</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+                        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+                        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                        <span class="s2">"ResolutionX"</span><span class="p">:</span> <span class="mi">8500</span><span class="p">,</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                    <span class="p">},</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">555</span><span class="p">,</span> <span class="mi">236</span><span class="p">,</span> <span class="o">-</span><span class="mi">285</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For information on how to compute necessary resolution, refer to <a class="reference internal" href="../../sensors/sensors/sidescan-sonar-sensor.html#resolution-calculation-sidescan"><span class="std std-ref">Resolution Calculation for Raycast and GPU SSS</span></a></p>
+</div>
+<p>The final output should look like this:</p>
+<img alt="../../_images/gpu_sidescan.png" src="../../_images/gpu_sidescan.png"/>
+</section>
 </section>
 </div>
 </div>

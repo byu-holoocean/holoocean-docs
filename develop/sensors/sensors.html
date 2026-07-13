@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>HoloOcean Sensors — HoloOcean 2.3.0 documentation</title>
+<title>HoloOcean Sensors — HoloOcean 2.4.0 documentation</title>
 <link href="../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,11 +15,12 @@
   <![endif]-->
 <script src="../_static/jquery.js?v=5d32c60e"></script>
 <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../_static/doctools.js?v=9a2dae69"></script>
 <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../_static/copybutton.js?v=f281be69"></script>
+<script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="../_static/js/theme.js"></script>
 <link href="../genindex.html" rel="index" title="Index"/>
 <link href="../search.html" rel="search" title="Search"/>
@@ -58,23 +59,35 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">HoloOcean Sensors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#perception-sensors">Perception Sensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sonar-sensors">Sonar Sensors</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sensors/singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/imaging-sonar-sensor.html">Imaging Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/profiling-sonar-sensor.html">Profiling Sonar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sensors/dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sensors/depth-sensor.html">Depth Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-sensors">Camera Sensors</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sensors/depth-camera-sensor.html">Depth Camera</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/rgb-camera-sensor.html">RGB Camera</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/camera-sensor.html">Camera</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sensors/imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sensors/gps-sensor.html">Global Positioning System (GPS)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sensors/magnetometer-sensor.html">Magnetometer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sensors/range-finder-sensor.html">Range Finder Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lidar-sensors">Lidar Sensors</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sensors/raycast-lidar-sensor.html">Raycast LIDAR</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#navigation-sensors">Navigation Sensors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sensors/imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/gps-sensor.html">Global Positioning System (GPS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/magnetometer-sensor.html">Magnetometer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#perception-sensors">Perception Sensors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sensors/depth-sensor.html">Depth Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensors/range-finder-sensor.html">Range Finder Sensor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sensors/bst-sensor.html">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
 </ul>
 </li>
@@ -161,26 +174,57 @@ and <code class="docutils literal notranslate"><span class="pre">.step()</span><
 <p>The following are inspired by real-world sensors and are intended to collect realistic data.
 Most sensors here include parameters for adjusting noise, bias, and other characteristics to
 simulate real-world sensor behavior.</p>
-<section id="perception-sensors">
-<h3>Perception Sensors<a class="headerlink" href="#perception-sensors" title="Link to this heading"></a></h3>
+<section id="sonar-sensors">
+<h3>Sonar Sensors<a class="headerlink" href="#sonar-sensors" title="Link to this heading"></a></h3>
+<p>Sonar , acronym for <em>Sound Navigation and Ranging</em>, is a technology that uses sound propagation to detect, navigate, and measure distances to objects underwater.
+It is widely used in various applications, including underwater navigation, object detection, and mapping. HoloOcean includes several types of sonar sensors, each designed to simulate different aspects of sonar technology.</p>
+<p>If you are interested in learning more about sonars, please visit the <a class="reference external" href="https://bluerobotics.com/learn/a-smooth-operators-guide-to-underwater-sonars-and-acoustic-devices/">BlueRobotics page.</a></p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sensors/singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/imaging-sonar-sensor.html">Imaging Sonar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/profiling-sonar-sensor.html">Profiling Sonar</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/depth-sensor.html">Depth Sensor</a></li>
+</ul>
+</div>
+</section>
+<section id="camera-sensors">
+<h3>Camera Sensors<a class="headerlink" href="#camera-sensors" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="sensors/depth-camera-sensor.html">Depth Camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/rgb-camera-sensor.html">RGB Camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/camera-sensor.html">Camera</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/gps-sensor.html">Global Positioning System (GPS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/magnetometer-sensor.html">Magnetometer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors/range-finder-sensor.html">Range Finder Sensor</a></li>
+</ul>
+</div>
+</section>
+<section id="lidar-sensors">
+<h3>Lidar Sensors<a class="headerlink" href="#lidar-sensors" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="sensors/raycast-lidar-sensor.html">Raycast LIDAR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
+</ul>
+</div>
+</section>
+<section id="navigation-sensors">
+<h3>Navigation Sensors<a class="headerlink" href="#navigation-sensors" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensors/imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors/dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors/gps-sensor.html">Global Positioning System (GPS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors/magnetometer-sensor.html">Magnetometer</a></li>
+</ul>
+</div>
+</section>
+<section id="perception-sensors">
+<h3>Perception Sensors<a class="headerlink" href="#perception-sensors" title="Link to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensors/depth-sensor.html">Depth Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensors/range-finder-sensor.html">Range Finder Sensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sensors/bst-sensor.html">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
 </ul>
 </div>

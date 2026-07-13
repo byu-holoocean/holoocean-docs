@@ -3,16 +3,58 @@ Imaging Sonar
 ===============
 
 Sometimes referred to as a forward-looking sonar, imaging sonar is a type of multi-beam sonar that 
-projects the intensity onto the 2d time of return-azimuth plane. This allows for a 2d image to be 
+projects the intensity onto the 2D time of return-azimuth plane. This allows for a 2D image to be 
 created of the area in front of the sonar. This is useful for detecting objects in front of the sonar, 
 and is often used in AUVs to detect obstacles in front of them.
 
-Note that the Azimuth streaks parameter is used to control whether the simulator will add or remove 
-streaks along the azimuth to the return, as those are common artifacts in sonar images.
+Holoocean has three different imaging sonar sensor implementations:
 
-See :ref:`visualizing_imaging_sonar` for an example of how to use this sensor.
+* :ref:`octree_imaging_sonar`
+* :ref:`raycast_imaging_sonar`
+* :ref:`gpu_imaging_sonar`
 
-See :py:class:`~holoocean.sensors.ImagingSonar` for the Python API.
+These implementations have different tradeoffs in accuracy, speed, and memory usage.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Sensor
+     - Scanning Method
+     - General Speed
+     - Resolution (at Comparable Speed) 
+     - Scene Representation
+     - Requirements
+   * - :ref:`octree_singlebeam_sonar`
+     - Octree-based sampling
+     - Slow on first run, faster on subsequent runs
+     - Low-Medium
+     - Object collision meshes as octrees
+     - Memory space for octree storage
+   * - :ref:`raycast_singlebeam_sonar`
+     - CPU raycasting
+     - Fast, scales with number of rays
+     - Medium-High
+     - Object collision meshes
+     - CPU resources proporional to ray count
+   * - :ref:`gpu_singlebeam_sonar`
+     - GPU rendering
+     - Fast, depends on GPU capabilities
+     - High
+     - Rendered scene (image-based)
+     - Dedicated GPU 
+
+.. note:: See :ref:`visualizing_imaging_sonar` for examples of how to use this sensor.
+    
+
+.. _octree_imaging_sonar:
+
+Octree Imaging Sonar
+----------------------
+
+Simulates an imaging multi-beam sonar with octrees. It projects the intensity onto the 2D time of return-azimuth plane.
+
+See :py:class:`~holoocean.sensors.ImagingSonar` for the python API.
+
 
 Example sensor definition::
 
@@ -23,23 +65,241 @@ Example sensor definition::
         "configuration": {
             "Azimuth": 120,
             "Elevation": 20,
-            "RangeMin": 1,
-            "RangeMax": 40,
+            "RangeMin": 0.1,
+            "RangeMax": 10,
             "RangeBins": 512,
             "AzimuthBins": 512,
             "AddSigma": 0.15,
             "MultSigma": 0.2,
-            "MultiPath": true,
+            "MultiPath": True,
             "ClusterSize": 5,
-            "ScaleNoise": true,
+            "ScaleNoise": True,
             "AzimuthStreaks": -1,
             "RangeSigma": 0.1,
-            "ShowWaring": true,
+            "ShowWarning": True,
             "InitOctreeRange": 50,
-            "ViewRegion": false,
+            "ViewRegion": False,
             "ViewOctree" -10,
             "WaterDensity": 997,
             "WaterSoundSpeed": 1480,
-            "UseApprox": true
+            "UseApprox": True,
         }
+    }
+
+Note that the Azimuth streaks parameter is used to control whether the simulator will add or remove 
+streaks along the azimuth to the return, as those are common artifacts in sonar images.
+
+
+.. _raycast_imaging_sonar:
+
+Raycast Imaging Sonar 
+-----------------------
+
+Simulates an imaging multi-beam sonar using raycasting. It projects the intensity onto the 2D time of return-azimuth plane.
+
+See :py:class:`~holoocean.sensors.RaycastImagingSonar` for the python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "RaycastImagingSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "RangeBins": 512,
+            "AzimuthBins": 512,
+            "RangeMin": 0.1,
+            "RangeMax": 10,
+            "Elevation": 20,
+            "Azimuth": 120,
+            "MultSigma": 0.0,
+            "AddSigma": 0.0,
+            "MultiPath": False,
+            "ViewRegion": False,
+            "WaterDensity": 997,
+            "WaterSpeedSound": 1480,
+            "IgnorePlants": False
+        }
+    }
+
+
+.. _gpu_imaging_sonar:
+
+GPU Imaging Sonar
+-----------------
+
+Simulates an imaging multi-beam sonar using GPU rendering. It projects the intensity onto the 2D time of return-azimuth plane.
+Utilizes the GPU rendering pipeline, for faster simulation speed.
+
+See :py:class:`~holoocean.sensors.GPUImagingSonar` for the python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "GPUImagingSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "RangeBins": 512,
+            "AzimuthBins": 512,
+            "RangeMin": 0.1,
+            "RangeMax": 10,
+            "Elevation": 20,
+            "Azimuth": 120,
+            "MultSigma": 0.0,
+            "AddSigma": 0.0,
+            "MultiPath": False,
+            "ViewRegion": False,
+            "WaterDensity": 997,
+            "WaterSpeedSound": 1480,
+            "IgnorePlants": False
+        }
+    }
+
+
+.. _resolution_calculation_imaging:
+
+Resolution Calculation for Raycast and GPU Imaging Sonars
+----------------------------------------------------------
+
+The raycast and GPU imaging sonars require sufficient angular sampling to
+accurately populate the desired range bins. This section provides a method for
+estimating the required angular resolution based on the sonar field of view and
+range-bin resolution.
+
+Angular Step Size Calculation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From the Azimuth Field of View
+++++++++++++++++++++++++++++++
+
+A conservative estimate of the required angular step size can be computed as:
+
+.. math::
+
+   \theta_{azi} = \frac{\Theta}{2} - \cos^{-1}\!\left(
+      \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+      \cos\!\left(\frac{\Theta}{2}\right)
+   \right)
+
+where:
+
+* :math:`\Theta` is the total azimuth angle.
+* :math:`R_{\max}` is the maximum sonar range.
+* :math:`R_{\mathrm{res}}` is the range resolution.
+
+.. note:: The range resolution can be computed from the number of range bins: 
+
+    .. math:: R_{\mathrm{res}} = \frac{R_{\max} - R_{\min}}{R_{bins}}
+
+This formulation assumes a worst-case geometry in which the seafloor or target intersects the edge of the sonar field of view at maximum range, as illustrated below:
+
+.. figure:: ../images/ResImaging.png
+    :align: center
+    :scale: 35
+
+    Worst-case geometry used for estimating the required angular resolution.
+
+
+From the Elevation Field of View
+++++++++++++++++++++++++++++++++
+
+A conservative estimate of the required angular step size can be computed as:
+
+.. math::
+
+   \theta_{elev} = \frac{\alpha}{2} - \cos^{-1}\!\left(
+      \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+      \cos\!\left(\frac{\alpha}{2}\right)
+   \right)
+
+where:
+
+* :math:`\alpha` is the total elevation angle.
+* :math:`R_{\max}` is the maximum sonar range.
+* :math:`R_{\mathrm{res}}` is the range resolution.
+
+This formulation assumes a worst-case geometry in which the seafloor or target intersects the edge of the sonar field of view at maximum range, as illustrated below:
+
+.. figure:: ../images/ResImagingElev.png
+    :align: center
+    :scale: 35
+
+    Worst-case geometry used for estimating the required angular resolution.
+
+
+Choosing Angular Step Size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The angular step size must satisfy both the azimuth and elevation constraints.
+Therefore, the more restrictive (smaller) step size should be used:
+
+.. math::
+
+   \theta = min(\theta_{azi}, \theta_{elev})
+
+
+The required number of samples is then:
+
+.. math::
+
+   N_{azi} = \frac{\Theta}{\theta}
+
+   N_{elev} = \frac{\alpha}{\theta}
+
+This calculation represents a worst-case estimate and guarantees sufficient
+resolution across the full field of view.
+
+
+How To Input Resolution Into HoloOcean
+---------------------------------------
+
+For :ref:`raycast_imaging_sonar`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are multiple parameters that you can set to change the resolution and speed of the raycast sonar.
+The options are listed in the code block below:
+
+.. note:: If you don't manually set your resolution, the resolution will be calculated based off of your other parameters using the above equations. 
+
+
+.. code-block:: python
+
+    {
+        "sensor_type": "RaycastImagingSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "AzimuthRayCount":   <N_azi>,    # set one or the other
+            # "AzimuthRayRes":   <theta>,
+            "ElevationRayCount": <N_elev>,   # set one or the other
+            # "ElevationRayRes": <theta>,
+        }
+    }
+
+where :math:`N_{azi}`, :math:`N_{elev}`, and :math:`\theta` are computed using the equations above.
+
+
+For :ref:`gpu_imaging_sonar`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There is only one parameter that you can set to change the resolution and speed of the GPU sonar.
+This parameter, ``ResolutionX``, is computed as the maximum of the azimuth or elevation ray counts times 2.
+
+.. math::
+
+    N_{x} = 2 * max(N_{azi}, N_{elev})
+
+The parameter is set in the configuration dictionary as shown below:
+
+.. code-block:: python
+
+    {
+        "sensor_type": "GPUImagingSonar",
+        "socket": "SonarSocket",
+        "Hz": 10,
+        "configuration": {
+            "ResolutionX": <N_x>,
+        }
+
     }

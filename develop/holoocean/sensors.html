@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sensors — HoloOcean 2.3.0 documentation</title>
+<title>Sensors — HoloOcean 2.4.0 documentation</title>
 <link href="../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,7 +15,7 @@
   <![endif]-->
 <script src="../_static/jquery.js?v=5d32c60e"></script>
 <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../_static/doctools.js?v=9a2dae69"></script>
 <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -117,6 +117,22 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPSSensor.sensor_data"><code class="docutils literal notranslate"><span class="pre">GPSSensor.sensor_data</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.GPUImagingSonar"><code class="docutils literal notranslate"><span class="pre">GPUImagingSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPUImagingSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">GPUImagingSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPUImagingSonar.dtype"><code class="docutils literal notranslate"><span class="pre">GPUImagingSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.GPUProfilingSonar"><code class="docutils literal notranslate"><span class="pre">GPUProfilingSonar</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.GPUSidescanSonar"><code class="docutils literal notranslate"><span class="pre">GPUSidescanSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPUSidescanSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">GPUSidescanSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPUSidescanSonar.dtype"><code class="docutils literal notranslate"><span class="pre">GPUSidescanSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.GPUSinglebeamSonar"><code class="docutils literal notranslate"><span class="pre">GPUSinglebeamSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPUSinglebeamSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">GPUSinglebeamSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.GPUSinglebeamSonar.dtype"><code class="docutils literal notranslate"><span class="pre">GPUSinglebeamSonar.dtype</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.data_shape</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor.dtype"><code class="docutils literal notranslate"><span class="pre">HoloOceanSensor.dtype</span></code></a></li>
@@ -172,6 +188,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor.dtype"><code class="docutils literal notranslate"><span class="pre">RangeFinderSensor.dtype</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RaycastImagingSonar"><code class="docutils literal notranslate"><span class="pre">RaycastImagingSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastImagingSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">RaycastImagingSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastImagingSonar.dtype"><code class="docutils literal notranslate"><span class="pre">RaycastImagingSonar.dtype</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RaycastLidar"><code class="docutils literal notranslate"><span class="pre">RaycastLidar</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastLidar.data_shape"><code class="docutils literal notranslate"><span class="pre">RaycastLidar.data_shape</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastLidar.dtype"><code class="docutils literal notranslate"><span class="pre">RaycastLidar.dtype</span></code></a></li>
@@ -179,6 +200,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastLidar.set_ticks_per_capture"><code class="docutils literal notranslate"><span class="pre">RaycastLidar.set_ticks_per_capture()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RaycastProfilingSonar"><code class="docutils literal notranslate"><span class="pre">RaycastProfilingSonar</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar"><code class="docutils literal notranslate"><span class="pre">RaycastSemanticLidar</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar.data_shape"><code class="docutils literal notranslate"><span class="pre">RaycastSemanticLidar.data_shape</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar.dtype"><code class="docutils literal notranslate"><span class="pre">RaycastSemanticLidar.dtype</span></code></a></li>
@@ -186,9 +208,24 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar.set_ticks_per_capture"><code class="docutils literal notranslate"><span class="pre">RaycastSemanticLidar.set_ticks_per_capture()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RaycastSidescanSonar"><code class="docutils literal notranslate"><span class="pre">RaycastSidescanSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastSidescanSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">RaycastSidescanSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastSidescanSonar.dtype"><code class="docutils literal notranslate"><span class="pre">RaycastSidescanSonar.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RaycastSinglebeamSonar"><code class="docutils literal notranslate"><span class="pre">RaycastSinglebeamSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastSinglebeamSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">RaycastSinglebeamSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RaycastSinglebeamSonar.dtype"><code class="docutils literal notranslate"><span class="pre">RaycastSinglebeamSonar.dtype</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.RotationSensor"><code class="docutils literal notranslate"><span class="pre">RotationSensor</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RotationSensor.data_shape"><code class="docutils literal notranslate"><span class="pre">RotationSensor.data_shape</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.RotationSensor.dtype"><code class="docutils literal notranslate"><span class="pre">RotationSensor.dtype</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar"><code class="docutils literal notranslate"><span class="pre">SemanticRaycastSinglebeamSonar</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar.data_shape"><code class="docutils literal notranslate"><span class="pre">SemanticRaycastSinglebeamSonar.data_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar.dtype"><code class="docutils literal notranslate"><span class="pre">SemanticRaycastSinglebeamSonar.dtype</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#holoocean.sensors.SemanticSegmentationCamera"><code class="docutils literal notranslate"><span class="pre">SemanticSegmentationCamera</span></code></a><ul>
@@ -289,6 +326,18 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPSSensor" title="holoocean.sensors.GPSSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPSSensor</span></code></a>(client, agent_name, agent_type[, ...])</p></td>
 <td><p>Gets the location of the agent in the world if the agent is close enough to the surface.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPUImagingSonar" title="holoocean.sensors.GPUImagingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPUImagingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates an imaging sonar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPUProfilingSonar" title="holoocean.sensors.GPUProfilingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPUProfilingSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates a multibeam profiling sonar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPUSidescanSonar" title="holoocean.sensors.GPUSidescanSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPUSidescanSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<td><p>Simulates a sidescan sonar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPUSinglebeamSonar" title="holoocean.sensors.GPUSinglebeamSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GPUSinglebeamSonar</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>(client[, agent_name, ...])</p></td>
 <td><p>Base class for a sensor</p></td>
 </tr>
@@ -322,37 +371,52 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RangeFinderSensor" title="holoocean.sensors.RangeFinderSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RangeFinderSensor</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Returns distances to nearest collisions in the directions specified by the parameters.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastLidar" title="holoocean.sensors.RaycastLidar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastLidar</span></code></a>(client, agent_name, agent_type)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastImagingSonar" title="holoocean.sensors.RaycastImagingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastImagingSonar</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Simulates a Imaging sonar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastLidar" title="holoocean.sensors.RaycastLidar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastLidar</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Runs Agent's Lidar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastProfilingSonar" title="holoocean.sensors.RaycastProfilingSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastProfilingSonar</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Simulates a Profiling sonar.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSemanticLidar" title="holoocean.sensors.RaycastSemanticLidar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastSemanticLidar</span></code></a>(client, agent_name, ...)</p></td>
 <td><p>Runs Agent's Semantic Lidar</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSidescanSonar" title="holoocean.sensors.RaycastSidescanSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastSidescanSonar</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Simulates a sidescan sonar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSinglebeamSonar" title="holoocean.sensors.RaycastSinglebeamSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RaycastSinglebeamSonar</span></code></a>(client, agent_name, ...)</p></td>
+<td><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RotationSensor" title="holoocean.sensors.RotationSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotationSensor</span></code></a>(client[, agent_name, ...])</p></td>
 <td><p>Gets the rotation of the agent in the world, with rotation XYZ about the fixed frame, in degrees.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SemanticSegmentationCamera" title="holoocean.sensors.SemanticSegmentationCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticSegmentationCamera</span></code></a>(client, ...[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar" title="holoocean.sensors.SemanticRaycastSinglebeamSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticRaycastSinglebeamSonar</span></code></a>(client, ...)</p></td>
+<td><p>WORK IN PROGRESS</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SemanticSegmentationCamera" title="holoocean.sensors.SemanticSegmentationCamera"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SemanticSegmentationCamera</span></code></a>(client, ...[, ...])</p></td>
 <td><p>Captures agent's view.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a>(agent_name, agent_type, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SensorDefinition" title="holoocean.sensors.SensorDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorDefinition</span></code></a>(agent_name, agent_type, ...)</p></td>
 <td><p>A class for new sensors and their parameters, to be used for adding new sensors.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SensorFactory" title="holoocean.sensors.SensorFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorFactory</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SensorFactory" title="holoocean.sensors.SensorFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SensorFactory</span></code></a>()</p></td>
 <td><p>Given a sensor definition, constructs the appropriate HoloOceanSensor object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SidescanSonar" title="holoocean.sensors.SidescanSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SidescanSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SidescanSonar" title="holoocean.sensors.SidescanSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SidescanSonar</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Simulates a sidescan sonar.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar" title="holoocean.sensors.SinglebeamSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SinglebeamSonar</span></code></a>(client, agent_name, agent_type)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SinglebeamSonar" title="holoocean.sensors.SinglebeamSonar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SinglebeamSonar</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.VelocitySensor" title="holoocean.sensors.VelocitySensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VelocitySensor</span></code></a>(client[, agent_name, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.VelocitySensor" title="holoocean.sensors.VelocitySensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VelocitySensor</span></code></a>(client[, agent_name, ...])</p></td>
 <td><p>Returns the x, y, and z velocity of the sensor in the global frame.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.ViewportCapture" title="holoocean.sensors.ViewportCapture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewportCapture</span></code></a>(client, agent_name, agent_type)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.ViewportCapture" title="holoocean.sensors.ViewportCapture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViewportCapture</span></code></a>(client, agent_name, agent_type)</p></td>
 <td><p>Captures what the viewport is seeing.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.WorldNumSensor" title="holoocean.sensors.WorldNumSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorldNumSensor</span></code></a>(client[, agent_name, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.WorldNumSensor" title="holoocean.sensors.WorldNumSensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorldNumSensor</span></code></a>(client[, agent_name, ...])</p></td>
 <td><p>Returns any numeric value from the world corresponding to a given key.</p></td>
 </tr>
 </tbody>
@@ -1023,6 +1087,237 @@ following options:</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUImagingSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">GPUImagingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GPUImagingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.GPUImagingSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates an imaging sonar. Utilizes the rendering pipeline for gpu acceleration.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters. Defaults to 0.1 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters. Defaults to 10 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) aperture in degrees. Defaults to 120 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation (up and down) aperture in degrees. Defaults to 20 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Set only one of these two options. The number of range bins for the sonar image, or the resolution (in meters) for each bin. Defaults to 512 range bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthBins</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRes</span></code>: Set only one of these two options. The number of azimuth bins for the sonar image, or the resolution (in degrees) for each bin. Defaults to 512 azimuth bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ResolutionX</span></code>: Resolution of GPU sonar, usually a value between 5000 - 10000.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on a green outline of the visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPUImagingSonar.data_shape" title="holoocean.sensors.GPUImagingSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPUImagingSonar.dtype" title="holoocean.sensors.GPUImagingSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUImagingSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.GPUImagingSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUImagingSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.GPUImagingSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUProfilingSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">GPUProfilingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GPUProfilingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.GPUProfilingSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates a multibeam profiling sonar. Utilizes the rendering pipeline for gpu acceleration. This is largely based off of the imaging sonar with different defaults.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters. Defaults to 0.5 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters. Defaults to 75 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) aperture in degrees. Defaults to 120 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation (up and down) aperture in degrees. Defaults to 1 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Set only one of these two options. The number of range bins for the sonar image, or the resolution (in meters) for each bin. Defaults to 750 range bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthBins</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRes</span></code>: Set only one of these two options. The number of azimuth bins for the sonar image, or the resolution (in degrees) for each bin. Defaults to 480 azimuth bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ResolutionX</span></code>: Resolution of GPU sonar, usually a value between 1000 - 5000.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on a green outline of the visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUSidescanSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">GPUSidescanSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GPUSidescanSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.GPUSidescanSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates a sidescan sonar. Utilizes the rendering pipeline for gpu acceleration.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) angle visible in degrees, defaults to 85.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation angle (up and down) visible in degrees, defaults to 0.25.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 35.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 0.05 m.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ResolutionX</span></code>: Resolution of GPU sonar, usually a value between 8000 - 15000.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPUSidescanSonar.data_shape" title="holoocean.sensors.GPUSidescanSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPUSidescanSonar.dtype" title="holoocean.sensors.GPUSidescanSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUSidescanSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.GPUSidescanSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUSidescanSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.GPUSidescanSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUSinglebeamSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">GPUSinglebeamSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GPUSinglebeamSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.GPUSinglebeamSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam.</p>
+<p>Returns a 1D numpy array of the average intensities held in each range bin of the sensor. The length of the array is specified by the number of range bins chosen for the sensor.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the following
+options:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OpeningAngle</span></code>: Opening angle of the cone visible in degrees, defaults to 30. In this documentation, the opening angle would be 2 times the semi-vertical angle of the cone.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 200 bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeSigma</span></code>: Additive noise std from an exponential distribution that will be added to the range measurements. Needs to be a float. Defaults to 0/off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ResolutionX</span></code>: Resolution of GPU sonar, usually a value between 1000 - 5000.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRays</span></code>: Turns in green lines to see rays. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewPoints</span></code>: Turns on red points to see hit points on objects. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.GPUSinglebeamSonar.data_shape" title="holoocean.sensors.GPUSinglebeamSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.GPUSinglebeamSonar.dtype" title="holoocean.sensors.GPUSinglebeamSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUSinglebeamSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.GPUSinglebeamSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.GPUSinglebeamSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.GPUSinglebeamSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.HoloOceanSensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">HoloOceanSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.HoloOceanSensor" title="Link to this definition"></a></dt>
 <dd><p>Base class for a sensor</p>
@@ -1684,6 +1979,75 @@ following options:</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastImagingSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastImagingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastImagingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastImagingSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates a Imaging sonar.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) aperture in degrees. Defaults to 120 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation (up and down) aperture in degrees. Defaults to 20 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters. Defaults to 0.1 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters. Defaults to 10 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Set only one of these two options. The number of range bins for the sonar image, or the resolution (in meters) for each bin. Defaults to 512 range bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthBins</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRes</span></code>: Set only one of these two options. The number of azimuth bins for the sonar image, or the resolution (in degrees) for each bin. Defaults to 512 azimuth bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthRayCount</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRayRes</span></code>: Setting these is usually unnecessary. The default is determined based off of the other sensor parameters. If you do set these, only set one of the two options. The number of rays used in the azimuth, or the resolution for tha ray spacing across the azimuth.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ElevationRayCount</span></code>/<code class="docutils literal notranslate"><span class="pre">ElevationRayRes</span></code>: Setting these is usually unnecessary. The default is determined based off of the other sensor parameters. If you do set these, only set one of the two options. The number of rays used in the elevation, or the resolution for tha ray spacing across the elevation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on a green outline of the visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRays</span></code>: Turns on green lines that show all of the rays. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewPoints</span></code>: Turns on red points where rays encounter any collisions within the sensor field of view. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastImagingSonar.data_shape" title="holoocean.sensors.RaycastImagingSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastImagingSonar.dtype" title="holoocean.sensors.RaycastImagingSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastImagingSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RaycastImagingSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastImagingSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RaycastImagingSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RaycastLidar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastLidar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastLidar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastLidar" title="Link to this definition"></a></dt>
 <dd><p>Runs Agent’s Lidar</p>
@@ -1786,6 +2150,38 @@ options:</p>
 </dd>
 </dl>
 </dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastProfilingSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastProfilingSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastProfilingSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastProfilingSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates a Profiling sonar.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) aperture in degrees. Defaults to 120 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation (up and down) aperture in degrees. Defaults to 1 deg.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters. Defaults to 0.5 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters. Defaults to 75 m.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Set only one of these two options. The number of range bins for the sonar image, or the resolution (in meters) for each bin. Defaults to 750 range bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthBins</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRes</span></code>: Set only one of these two options. The number of azimuth bins for the sonar image, or the resolution (in degrees) for each bin. Defaults to 480 azimuth bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthRayCount</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRayRes</span></code>: Setting these is usually unnecessary. The default is determined based off of the other sensor parameters. If you do set these, only set one of the two options. The number of rays used in the azimuth, or the resolution for tha ray spacing across the azimuth.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ElevationRayCount</span></code>/<code class="docutils literal notranslate"><span class="pre">ElevationRayRes</span></code>: Setting these is usually unnecessary. The default is determined based off of the other sensor parameters. If you do set these, only set one of the two options. The number of rays used in the elevation, or the resolution for tha ray spacing across the elevation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on a green outline of the visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRays</span></code>: Turns on green lines that show all of the rays. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewPoints</span></code>: Turns on red points where rays encounter any collisions within the sensor field of view. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RaycastSemanticLidar">
@@ -1894,6 +2290,144 @@ options:</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastSidescanSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastSidescanSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastSidescanSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastSidescanSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates a sidescan sonar.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 35.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Azimuth</span></code>: Azimuth (side to side) angle visible in degrees, defaults to 170.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elevation</span></code>: Elevation angle (up and down) visible in degrees, defaults to 0.25.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 0.05 m range resolution.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AzimuthRayCount</span></code>/<code class="docutils literal notranslate"><span class="pre">AzimuthRayRes</span></code>: Setting these is usually unnecessary. The default is determined based off of the other sensor parameters. If you do set these, only set one of the two options. The number of rays used in the azimuth, or the resolution for tha ray spacing across the azimuth.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ElevationRayCount</span></code>/<code class="docutils literal notranslate"><span class="pre">ElevationRayRes</span></code>: Setting these is usually unnecessary. The default is determined based off of the other sensor parameters. If you do set these, only set one of the two options. The number of rays used in the elevation, or the resolution for tha ray spacing across the elevation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRays</span></code>: Turns in green lines to see rays. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewPoints</span></code>: Turns on red points to see hit points on objects. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSidescanSonar.data_shape" title="holoocean.sensors.RaycastSidescanSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSidescanSonar.dtype" title="holoocean.sensors.RaycastSidescanSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastSidescanSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RaycastSidescanSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastSidescanSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RaycastSidescanSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastSinglebeamSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RaycastSinglebeamSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastSinglebeamSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RaycastSinglebeamSonar" title="Link to this definition"></a></dt>
+<dd><p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam.</p>
+<p>Returns a 1D numpy array of the average intensities held in each range bin of the sensor. The length of the array is specified by the number of range bins chosen for the sensor.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OpeningAngle</span></code>: Opening angle of the cone visible in degrees, defaults to 30. In this documentation, the opening angle would be 2 times the semi-vertical angle of the cone.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 200 bins.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeSigma</span></code>: Additive noise std from an exponential distribution that will be added to the range measurements. Needs to be a float. Defaults to 0/off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OpeningAngleRes</span></code>/<cite>OpeningAngleRays`</cite>: The resolution or raycount of the opening angle, the resolution coming out from the center. Set one or the other. Defaults to solving resolution equations based off your parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CentralAngleRes</span></code>/<code class="docutils literal notranslate"><span class="pre">CentralAngleRays</span></code>/<code class="docutils literal notranslate"><span class="pre">CentralAngleEuclidian</span></code>: The resolution, ray count, or euclidian sized gap of the central angle, the resolution going around the center. Set one or the options. Defaults to solving resolution equations based off your parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRays</span></code>: Turns in green lines to see rays. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewPoints</span></code>: Turns on red points to see hit points on objects. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSinglebeamSonar.data_shape" title="holoocean.sensors.RaycastSinglebeamSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.RaycastSinglebeamSonar.dtype" title="holoocean.sensors.RaycastSinglebeamSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastSinglebeamSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.RaycastSinglebeamSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.RaycastSinglebeamSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RaycastSinglebeamSonar.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.RotationSensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">RotationSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DefaultSensor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.RotationSensor" title="Link to this definition"></a></dt>
 <dd><p>Gets the rotation of the agent in the world, with rotation XYZ about the fixed frame, in degrees.</p>
@@ -1925,6 +2459,81 @@ options:</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="holoocean.sensors.RotationSensor.dtype">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.RotationSensor.dtype" title="Link to this definition"></a></dt>
+<dd><p>The type of data in the sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of sensor data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy dtype</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.sensors.SemanticRaycastSinglebeamSonar">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.sensors.</span></span><span class="sig-name descname"><span class="pre">SemanticRaycastSinglebeamSonar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RaycastSinglebeamSonar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar" title="Link to this definition"></a></dt>
+<dd><p>WORK IN PROGRESS</p>
+<p>Simulates an echosounder, which is a sonar sensor with a single cone shaped beam.</p>
+<p>Returns a 2D numpy array of the where each row is a range bin, and within the columns is:
+if using tags: [overall intensity, 1st category, 1st intensity, 2nd category, 2nd intensity]
+if using ids: [overall intensity, 1st category, 1st id, 1st intensity, 2nd category, 2nd id, 2nd intensity]
+Can be set to return just the category, or the category and the instance id.
+The length of the array is specified by the number of range bins chosen for the sensor, and by whether its returning category or category and Ids.</p>
+<p><strong>Configuration</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts any of
+the options in the following sections.</p>
+<p><strong>Basic Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OpeningAngle</span></code>: Opening angle of the cone visible in degrees, defaults to 30. In this documentation, the opening angle would be 2 times the semi-vertical angle of the cone.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMin</span></code>: Minimum range visible in meters, defaults to 0.5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeMax</span></code>: Maximum range visible in meters, defaults to 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeBins</span></code>/<code class="docutils literal notranslate"><span class="pre">RangeRes</span></code>: Number of range bins of resulting image, or resolution (length in meters) of each bin. Set one or the other. Defaults to 200 bins.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UseIds</span></code>: Whether to return the instance id of the objects hit. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UseTags</span></code>: Whether to return the category of the objects hit. Defaults to True. Only one of UseIds or UseTags can be set to True, and if neither is, will default to UseTags.</p></li>
+</ul>
+<p><strong>Noise Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AddSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">AddCov</span></code>: Additive noise std/covariance from a Rayleigh distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">MultCov</span></code>: Multiplication noise std/covariance from a normal distribution. Needs to be a float. Set one or the other. Defaults to 0, or off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RangeSigma</span></code>: Additive noise std from an exponential distribution that will be added to the range measurements. Needs to be a float. Defaults to 0/off.</p></li>
+</ul>
+<p><strong>Advanced Configuration</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRegion</span></code>: Turns on green lines to see visible region. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewRays</span></code>: Turns in green lines to see rays. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ViewPoints</span></code>: Turns on red points to see hit points on objects. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterDensity</span></code>: Density of water in kg/m^3. Defaults to 997.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
+</ul>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar.data_shape" title="holoocean.sensors.SemanticRaycastSinglebeamSonar.data_shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_shape</span></code></a></p></td>
+<td><p>The shape of the sensor data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar.dtype" title="holoocean.sensors.SemanticRaycastSinglebeamSonar.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a></p></td>
+<td><p>The type of data in the sensor</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.SemanticRaycastSinglebeamSonar.data_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the sensor data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sensor data shape</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.sensors.SemanticRaycastSinglebeamSonar.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#holoocean.sensors.SemanticRaycastSinglebeamSonar.dtype" title="Link to this definition"></a></dt>
 <dd><p>The type of data in the sensor</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>

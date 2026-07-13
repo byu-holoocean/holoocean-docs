@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Developing Agents — HoloOcean 2.3.0 documentation</title>
+<title>Developing Agents — HoloOcean 2.4.0 documentation</title>
 <link href="../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,7 +15,7 @@
   <![endif]-->
 <script src="../_static/jquery.js?v=5d32c60e"></script>
 <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../_static/doctools.js?v=9a2dae69"></script>
 <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -67,6 +67,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#buoyant-agents">Buoyant Agents</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#necessary-variables">Necessary Variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#extra-variables">Extra Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fft-wave-buoyancy">FFT Wave Buoyancy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#designing-a-mesh">Designing a Mesh</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#debugging-tools">Debugging Tools</a></li>
 </ul>
 </li>
@@ -265,12 +267,15 @@ constructor or in the <code class="docutils literal notranslate"><span class="pr
 <span class="kt">float</span><span class="w"> </span><span class="n">MassInKG</span><span class="p">;</span>
 <span class="n">FVector</span><span class="w"> </span><span class="n">CenterBuoyancy</span><span class="p">;</span>
 <span class="n">FVector</span><span class="w"> </span><span class="n">CenterMass</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">CoefficientOfDrag</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">AreaOfDrag</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The CenterBuoyancy and CenterMass variables are FVector objects that define the centers of mass and
 buoyancy of the vehicles. They are defined relative to the origin of the <em>UE asset mesh origin</em> in
 <em>left-handed coordinates</em>. If the mesh frame is located at the center of mass, the CenterMass
-variable can be set to all zeros.</p>
+variable can be set to all zeros. For currents to function in a new agent the CoefficientOfDrag and
+AreaOfDrag must also be set.</p>
 <p>Within your agent blueprint, make make sure you enable “Perfect” for the Buoyancy Setting.</p>
 <img alt="../_images/blueprint-settings-buoyant.png" src="../_images/blueprint-settings-buoyant.png"/>
 </section>
@@ -286,7 +291,6 @@ calculating buoyant force, but works well when high fidelity isn’t necessary.<
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">NumSurfacePoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
 <span class="n">FBox</span><span class="w"> </span><span class="n">BoundingBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FBox</span><span class="p">();</span>
 <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FVector</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SurfacePoints</span><span class="p">;</span>
-<span class="kt">float</span><span class="w"> </span><span class="n">SurfaceLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">NumSurfacePoints</span></code> Number of points to sample. May need to be larger/smaller based on robot size.</p>
@@ -294,13 +298,46 @@ calculating buoyant force, but works well when high fidelity isn’t necessary.<
 if it’s not set. You can set this by hand if the auto-calculated one is too large.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SurfacePoints</span></code> are the sampled points. Set explicitly if you don’t want to use the bounding box
 method. NOTE: These are stored with an offset for <code class="docutils literal notranslate"><span class="pre">CenterMass</span></code> pre-applied to reduce complexity.</p>
-<p><code class="docutils literal notranslate"><span class="pre">SurfaceLevel</span></code> is the water level. For all of our environments, this has been set to 0.</p>
+</section>
+<section id="fft-wave-buoyancy">
+<span id="create-agents"></span><h3>FFT Wave Buoyancy<a class="headerlink" href="#fft-wave-buoyancy" title="Link to this heading"></a></h3>
+<p>In Holoocean 2.4.0, <a class="reference internal" href="../env_appearance/waves/waves.html#wave-controller"><span class="std std-ref">FFT Waves</span></a> have been implemented along with an updated buoyancy system to use these waves.
+This new buoyancy system uses a mesh based approach where the vehicle is split into triangles and the forces
+on each triangle are calculated and then summed before being applied to the vehicle at the CenterBuoyancy.</p>
+</section>
+<section id="designing-a-mesh">
+<h3>Designing a Mesh<a class="headerlink" href="#designing-a-mesh" title="Link to this heading"></a></h3>
+<p>Third party software is required to create a mesh for your vehicle due to unreal’s restriction of certain functions.
+First, you need to extract the mesh using the config parameter generate_new_mesh.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="s2">"fft_waves"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"generate_new_mesh"</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After doing this, the mesh will be placed in your holoocean/engine/Saved folder as collision_mesh.txt.</p>
+<p>Next, download the convex hull builder found at this repository: <a class="reference external" href="https://github.com/BYU-FROST-Lab/quickhull-for-holoocean">https://github.com/BYU-FROST-Lab/quickhull-for-holoocean</a>.</p>
+<p>Load the repository in vscode and make sure you have the CMake Tools extension installed. Copy and paste the contents of collision_mesh.txt into VerticesInput.txt.</p>
+<p>Open up the command pallete with <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">shift</span> <span class="pre">+</span> <span class="pre">p</span></code> and go to CMake: Configure and select the default setting.
+This should create a build folder. After doing this you can use <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">shift</span> <span class="pre">+</span> <span class="pre">b</span></code> to build the project and then
+run the run.exe script either through the terminal or by pressing F5. This will generate the list of vertices and indices
+in the respective BuffOutput.txt files.</p>
+<p>After that, bring those back to holoocean and add your meshes to the list of
+meshes in engine/Content/BuoyantAgentMeshes. Then go to the InitializeMesh function in engine/Source/HolodeckCore/Private/HolodeckBuoyantAgent.cpp and
+add your files to the list of meshes. Here you can configure any additional drag parameters that are needed to get the
+right feel for your vehicle.</p>
 </section>
 <section id="debugging-tools">
 <h3>Debugging Tools<a class="headerlink" href="#debugging-tools" title="Link to this heading"></a></h3>
 <p>To be able to visualize the bounding box and surface points to make sure they’re placed currently,
 you can use the inherited functions <code class="docutils literal notranslate"><span class="pre">ShowBoundingBox()</span></code> and <code class="docutils literal notranslate"><span class="pre">ShowSurfacePoints()</span></code> functions in
-your agent’s tick method.</p>
+your agent’s tick method. In addition, there are also debug commands to debug the mesh, waterpatch,
+water normals, and force vectors. These use the command, DebugLinesCommand.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">debug_lines</span><span class="p">(</span><span class="s2">"DebugMesh"</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">debug_lines</span><span class="p">(</span><span class="s2">"DebugWaterPatch"</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">debug_lines</span><span class="p">(</span><span class="s2">"DebugWaterNormals"</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">debug_lines</span><span class="p">(</span><span class="s2">"DebugForceVectors"</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>

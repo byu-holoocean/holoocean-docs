@@ -19,5 +19,6 @@ Documentation on how to use environment-related commands in HoloOcean:
    water_appearance/water_appearance
    weather/weather
    air_fog/air_fog
+   waves/waves
 
 

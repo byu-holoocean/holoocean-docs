@@ -113,7 +113,7 @@ assets in that world (see :ref:`business-campus` and the world subpages in :ref:
      - {29, 240, 89}
    * - Landscape
      - 4
-     - {153, 153, 153}
+     - {201, 162, 54}
    * - GroundGrass
      - 5
      - {91, 235, 52}
@@ -143,10 +143,10 @@ assets in that world (see :ref:`business-campus` and the world subpages in :ref:
      - {214, 138, 230}
    * - Pipe
      - 14
-     - {73, 227, 78}
+     - {192, 175, 201}
    * - PipeCover
      - 15
-     - {85, 166, 3}
+     - {164, 72, 217}
    * - VentCover
      - 16
      - {245, 215, 66}
@@ -164,7 +164,7 @@ assets in that world (see :ref:`business-campus` and the world subpages in :ref:
      - {176, 165, 146}
    * - Sub
      - 21
-     - {146, 161, 176}
+     - {146, 80, 176}
    * - Pier
      - 22
      - {186, 76, 2}

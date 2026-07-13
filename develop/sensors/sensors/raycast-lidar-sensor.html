@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Raycast LIDAR — HoloOcean 2.3.0 documentation</title>
+<title>Raycast LIDAR — HoloOcean 2.4.0 documentation</title>
 <link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,7 +15,7 @@
   <![endif]-->
 <script src="../../_static/jquery.js?v=5d32c60e"></script>
 <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -24,7 +24,7 @@
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
 <link href="raycast-semantic-lidar-sensor.html" rel="next" title="Raycast Semantic LIDAR Sensor"/>
-<link href="range-finder-sensor.html" rel="prev" title="Range Finder Sensor"/>
+<link href="semantic-segmentation-camera-sensor.html" rel="prev" title="Semantic Segmentation Camera"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -53,26 +53,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="imaging-sonar-sensor.html">Imaging Sonar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="profiling-sonar-sensor.html">Profiling Sonar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="depth-sensor.html">Depth Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="depth-camera-sensor.html">Depth Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rgb-camera-sensor.html">RGB Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="camera-sensor.html">Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="gps-sensor.html">Global Positioning System (GPS)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magnetometer-sensor.html">Magnetometer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="range-finder-sensor.html">Range Finder Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#sonar-sensors">Sonar Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#camera-sensors">Camera Sensors</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#lidar-sensors">Lidar Sensors</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Raycast LIDAR</a></li>
 <li class="toctree-l4"><a class="reference internal" href="raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="bst-sensor.html">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#navigation-sensors">Navigation Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensors.html#communication-sensors">Communication Sensors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensors.html#state-sensors">State Sensors</a></li>
 </ul>
@@ -172,7 +161,7 @@ the same value as <code class="docutils literal notranslate"><span class="pre">R
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
-<a accesskey="p" class="btn btn-neutral float-left" href="range-finder-sensor.html" rel="prev" title="Range Finder Sensor"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="p" class="btn btn-neutral float-left" href="semantic-segmentation-camera-sensor.html" rel="prev" title="Semantic Segmentation Camera"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
 <a accesskey="n" class="btn btn-neutral float-right" href="raycast-semantic-lidar-sensor.html" rel="next" title="Raycast Semantic LIDAR Sensor">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>

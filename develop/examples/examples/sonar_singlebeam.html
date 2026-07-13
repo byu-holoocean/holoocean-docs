@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Visualizing Singlebeam Sonar — HoloOcean 2.3.0 documentation</title>
+<title>Visualizing Singlebeam Sonar — HoloOcean 2.4.0 documentation</title>
 <link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,7 +15,7 @@
   <![endif]-->
 <script src="../../_static/jquery.js?v=5d32c60e"></script>
 <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -23,7 +23,7 @@
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="../../develop/develop.html" rel="next" title="Developing HoloOcean"/>
+<link href="waves_interactive.html" rel="next" title="Interactive Waves"/>
 <link href="sonar_sidescan.html" rel="prev" title="Visualizing Sidescan Sonar"/>
 </head>
 <body class="wy-body-for-nav">
@@ -67,7 +67,14 @@
 <li class="toctree-l2"><a class="reference internal" href="sonar_imaging.html">Visualizing Imaging Sonar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_profiling.html">Visualizing Profiling Sonar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sonar_sidescan.html">Visualizing Sidescan Sonar</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Visualizing Singlebeam Sonar</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Visualizing Singlebeam Sonar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#octree-singlebeam-sonar">Octree Singlebeam Sonar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raycast-singlebeam-sonar">Raycast Singlebeam Sonar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-singlebeam-sonar">GPU Singlebeam Sonar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expected-singlebeam-sonar-output">Expected Singlebeam Sonar Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="waves_interactive.html">Interactive Waves</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
@@ -113,18 +120,59 @@
 <div itemprop="articleBody">
 <section id="visualizing-singlebeam-sonar">
 <span id="id1"></span><h1>Visualizing Singlebeam Sonar<a class="headerlink" href="#visualizing-singlebeam-sonar" title="Link to this heading"></a></h1>
-<p>It can be useful to visualize the output of the sonar sensor during a simulation. This script will do
+<p>It can be useful to visualize the output of the sonar sensor during a simulation. These scripts will do
 that, plotting each time sonar data is received.</p>
+<section id="octree-singlebeam-sonar">
+<h2>Octree Singlebeam Sonar<a class="headerlink" href="#octree-singlebeam-sonar" title="Link to this heading"></a></h2>
 <p>Note, running this script will create octrees while running and may cause some pauses. See
 <a class="reference internal" href="../../sensors/docs/octree.html#octree"><span class="std std-ref">Octree Generation</span></a> for workarounds and more info.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">holoocean</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="c1">#### GET SONAR CONFIG</span>
-<span class="n">scenario</span> <span class="o">=</span> <span class="s2">"OpenWater-TorpedoSinglebeamSonar"</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">packagemanager</span><span class="o">.</span><span class="n">get_scenario</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'agents'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'sensors'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"configuration"</span><span class="p">]</span>
+<span class="c1">#### SONAR CONFIG</span>
+<span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_singlebeam"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"OpenWater"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"octree_min"</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="s2">"octree_max"</span><span class="p">:</span> <span class="mf">1.28</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"TorpedoAUV"</span><span class="p">,</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"SinglebeamSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SinglebeamSonar"</span><span class="p">,</span>
+                    <span class="s2">"Socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                    <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"OpeningAngle"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                        <span class="s2">"InitOctreeRange"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                    <span class="p">},</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mf">205.0</span><span class="p">,</span> <span class="mf">457.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">280.0</span><span class="p">],</span>
+            <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="s2">"window_width"</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span>
+    <span class="s2">"window_height"</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">'agents'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'sensors'</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"configuration"</span><span class="p">]</span>
 <span class="n">minR</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'RangeMin'</span><span class="p">]</span>
 <span class="n">maxR</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'RangeMax'</span><span class="p">]</span>
 <span class="n">binsR</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">'RangeBins'</span><span class="p">]</span>
@@ -145,8 +193,8 @@ that, plotting each time sonar data is received.</p>
 
 <span class="c1">#### RUN SIMULATION</span>
 <span class="n">command</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
-<span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+<span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="n">scenario_cfg</span><span class="o">=</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">start_world</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>
         <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
 
@@ -165,11 +213,114 @@ that, plotting each time sonar data is received.</p>
 </pre></div>
 </div>
 </section>
+<section id="raycast-singlebeam-sonar">
+<h2>Raycast Singlebeam Sonar<a class="headerlink" href="#raycast-singlebeam-sonar" title="Link to this heading"></a></h2>
+<p>Only the sensor type and configuration are different for this sonar, the rest of the code is the same.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_singlebeam"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"OpenWater"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"TorpedoAUV"</span><span class="p">,</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"RaycastSinglebeamSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SinglebeamSonar"</span><span class="p">,</span>
+                    <span class="s2">"Socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                    <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"OpeningAngle"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="s2">"OpeningAngleRes"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="c1"># changing this parameter changes resolution and affects runtime</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                        <span class="c1"># "ViewRays": True,</span>
+                    <span class="p">},</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">553</span><span class="p">,</span> <span class="mi">251</span><span class="p">,</span> <span class="o">-</span><span class="mi">282</span><span class="p">],</span>
+            <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="s2">"window_width"</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span>
+    <span class="s2">"window_height"</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For information on how to compute necessary resolution, refer to <a class="reference internal" href="../../sensors/sensors/singlebeam-sonar-sensor.html#resolution-calculation-singlebeam"><span class="std std-ref">Resolution Calculation for Raycast and GPU Singlebeam Sonars</span></a></p>
+</div>
+</section>
+<section id="gpu-singlebeam-sonar">
+<h2>GPU Singlebeam Sonar<a class="headerlink" href="#gpu-singlebeam-sonar" title="Link to this heading"></a></h2>
+<p>Only the sensor type and configuration are different for this sonar, the rest of the code is the same.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"test_singlebeam"</span><span class="p">,</span>
+    <span class="s2">"world"</span><span class="p">:</span> <span class="s2">"OpenWater"</span><span class="p">,</span>
+    <span class="s2">"package_name"</span><span class="p">:</span> <span class="s2">"Ocean"</span><span class="p">,</span>
+    <span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+    <span class="s2">"ticks_per_sec"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"frames_per_sec"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"agents"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">"agent_name"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
+            <span class="s2">"agent_type"</span><span class="p">:</span> <span class="s2">"TorpedoAUV"</span><span class="p">,</span>
+            <span class="s2">"control_scheme"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"sensors"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"GPUSinglebeamSonar"</span><span class="p">,</span>
+                    <span class="s2">"sensor_name"</span><span class="p">:</span> <span class="s2">"SinglebeamSonar"</span><span class="p">,</span>
+                    <span class="s2">"Socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+                    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                    <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">"OpeningAngle"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="s2">"ResolutionX"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="c1"># changing this parameter changes resolution and affects runtime</span>
+                        <span class="c1"># "ViewRegion": True,</span>
+                    <span class="p">},</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mi">553</span><span class="p">,</span> <span class="mi">251</span><span class="p">,</span> <span class="o">-</span><span class="mi">282</span><span class="p">],</span>
+            <span class="s2">"rotation"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="s2">"window_width"</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span>
+    <span class="s2">"window_height"</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For information on how to compute necessary resolution, refer to <a class="reference internal" href="../../sensors/sensors/singlebeam-sonar-sensor.html#resolution-calculation-singlebeam"><span class="std std-ref">Resolution Calculation for Raycast and GPU Singlebeam Sonars</span></a></p>
+</div>
+</section>
+<section id="expected-singlebeam-sonar-output">
+<h2>Expected Singlebeam Sonar Output<a class="headerlink" href="#expected-singlebeam-sonar-output" title="Link to this heading"></a></h2>
+<p>At the end of the simulation, you should see a plot similar to the one below.</p>
+<img alt="../../_images/raycast_singlebeam.png" src="../../_images/raycast_singlebeam.png"/>
+</section>
+</section>
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
 <a accesskey="p" class="btn btn-neutral float-left" href="sonar_sidescan.html" rel="prev" title="Visualizing Sidescan Sonar"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="../../develop/develop.html" rel="next" title="Developing HoloOcean">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="n" class="btn btn-neutral float-right" href="waves_interactive.html" rel="next" title="Interactive Waves">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

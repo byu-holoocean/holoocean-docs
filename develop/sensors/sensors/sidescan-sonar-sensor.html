@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sidescan Sonar — HoloOcean 2.3.0 documentation</title>
+<title>Sidescan Sonar — HoloOcean 2.4.0 documentation</title>
 <link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,11 +15,12 @@
   <![endif]-->
 <script src="../../_static/jquery.js?v=5d32c60e"></script>
 <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=f281be69"></script>
+<script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -53,26 +54,17 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#sonar-sensors">Sonar Sensors</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Sidescan Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="imaging-sonar-sensor.html">Imaging Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="profiling-sonar-sensor.html">Profiling Sonar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="depth-sensor.html">Depth Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="depth-camera-sensor.html">Depth Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rgb-camera-sensor.html">RGB Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="camera-sensor.html">Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="gps-sensor.html">Global Positioning System (GPS)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magnetometer-sensor.html">Magnetometer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="range-finder-sensor.html">Range Finder Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raycast-lidar-sensor.html">Raycast LIDAR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="bst-sensor.html">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#camera-sensors">Camera Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#lidar-sensors">Lidar Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#navigation-sensors">Navigation Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensors.html#communication-sensors">Communication Sensors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensors.html#state-sensors">State Sensors</a></li>
 </ul>
@@ -125,9 +117,55 @@
 <div itemprop="articleBody">
 <section id="sidescan-sonar">
 <h1>Sidescan Sonar<a class="headerlink" href="#sidescan-sonar" title="Link to this heading"></a></h1>
+<p>Holoocean has three different sidescan sonar sensor implementations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#octree-sidescan-sonar"><span class="std std-ref">Octree Sidescan Sonar</span></a></p></li>
+<li><p><a class="reference internal" href="#raycast-sidescan-sonar"><span class="std std-ref">Raycast Sidescan Sonar</span></a></p></li>
+<li><p><a class="reference internal" href="#gpu-sidescan-sonar"><span class="std std-ref">GPU Sidescan Sonar</span></a></p></li>
+</ul>
+<p>These implementations have different tradeoffs in accuracy, speed, and memory usage.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sensor</p></th>
+<th class="head"><p>Scanning Method</p></th>
+<th class="head"><p>General Speed</p></th>
+<th class="head"><p>Resolution (at Comparable Speed)</p></th>
+<th class="head"><p>Scene Representation</p></th>
+<th class="head"><p>Requirements</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="singlebeam-sonar-sensor.html#octree-singlebeam-sonar"><span class="std std-ref">Octree Single-Beam Sonar</span></a></p></td>
+<td><p>Octree-based sampling</p></td>
+<td><p>Slow on first run, faster on subsequent runs</p></td>
+<td><p>Low-Medium</p></td>
+<td><p>Object collision meshes as octrees</p></td>
+<td><p>Memory space for octree storage</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="singlebeam-sonar-sensor.html#raycast-singlebeam-sonar"><span class="std std-ref">Raycast Single-Beam Sonar</span></a></p></td>
+<td><p>CPU raycasting</p></td>
+<td><p>Fast, scales with number of rays</p></td>
+<td><p>Medium-High</p></td>
+<td><p>Object collision meshes</p></td>
+<td><p>CPU resources proporional to ray count</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="singlebeam-sonar-sensor.html#gpu-singlebeam-sonar"><span class="std std-ref">GPU Single-Beam Sonar</span></a></p></td>
+<td><p>GPU rendering</p></td>
+<td><p>Fast, depends on GPU capabilities</p></td>
+<td><p>High</p></td>
+<td><p>Rendered scene (image-based)</p></td>
+<td><p>Dedicated GPU</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="../../examples/examples/sonar_sidescan.html#visualizing-sidescan-sonar"><span class="std std-ref">Visualizing Sidescan Sonar</span></a> for examples of how to use this sensor.</p>
+</div>
+<section id="octree-sidescan-sonar">
+<span id="id1"></span><h2>Octree Sidescan Sonar<a class="headerlink" href="#octree-sidescan-sonar" title="Link to this heading"></a></h2>
 <p>Simulates a sidescan sonar with octrees. Has a narrow elevation and wide asimuth, and simulates both
 sides being scanned.</p>
-<p>See <a class="reference internal" href="../../examples/examples/sonar_sidescan.html#visualizing-sidescan-sonar"><span class="std std-ref">Visualizing Sidescan Sonar</span></a> for an example of how to use this sensor.</p>
 <p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.SidescanSonar" title="holoocean.sensors.SidescanSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">SidescanSonar</span></code></a> for the python API.</p>
 <p>Example sensor definition:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -142,17 +180,154 @@ sides being scanned.</p>
         <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
         <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
         <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
-        <span class="s2">"ShowWarning"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">"ShowWarning"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="s2">"InitOctreeRange"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
         <span class="s2">"ViewOctree"</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
         <span class="s2">"WaterDensity"</span><span class="p">:</span> <span class="mi">997</span><span class="p">,</span>
         <span class="s2">"WaterSpeedSound"</span><span class="p">:</span> <span class="mi">1480</span><span class="p">,</span>
-        <span class="s2">"UseApprox"</span><span class="p">:</span> <span class="n">true</span>
+        <span class="s2">"UseApprox"</span><span class="p">:</span> <span class="kc">True</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="raycast-sidescan-sonar">
+<span id="id2"></span><h2>Raycast Sidescan Sonar<a class="headerlink" href="#raycast-sidescan-sonar" title="Link to this heading"></a></h2>
+<p>Simulates a sidescan sonar with raycasting. Has a narrow elevation and wide asimuth, and unlike the Octree
+SSS, only simulates <strong>one side</strong> being scanned.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.RaycastSidescanSonar" title="holoocean.sensors.RaycastSidescanSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">RaycastSidescanSonar</span></code></a> for the python API.</p>
+<p>Example sensor definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"RaycastSidescanSonar"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"WaterDensity"</span><span class="p">:</span> <span class="mi">997</span><span class="p">,</span>
+        <span class="s2">"WaterSpeedSound"</span><span class="p">:</span> <span class="mi">1480</span><span class="p">,</span>
+        <span class="s2">"UseApprox"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">"IgnorePlants"</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="gpu-sidescan-sonar">
+<span id="id3"></span><h2>GPU Sidescan Sonar<a class="headerlink" href="#gpu-sidescan-sonar" title="Link to this heading"></a></h2>
+<p>Simulates a sidescan sonar with GPU rendering. Has a narrow elevation and wide asimuth, and unlike
+the Octree SSS sensor, it only simulates <strong>one side</strong> being scanned.
+Utilizes the GPU rendering pipeline, for faster simulation speed.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.GPUSidescanSonar" title="holoocean.sensors.GPUSidescanSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPUSidescanSonar</span></code></a> for the python API.</p>
+<p>Example sensor definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"GPUSidescanSonar"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"WaterDensity"</span><span class="p">:</span> <span class="mi">997</span><span class="p">,</span>
+        <span class="s2">"WaterSpeedSound"</span><span class="p">:</span> <span class="mi">1480</span><span class="p">,</span>
+        <span class="s2">"UseApprox"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">"IgnorePlants"</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="resolution-calculation-for-raycast-and-gpu-sss">
+<span id="resolution-calculation-sidescan"></span><h2>Resolution Calculation for Raycast and GPU SSS<a class="headerlink" href="#resolution-calculation-for-raycast-and-gpu-sss" title="Link to this heading"></a></h2>
+<p>The raycast and GPU sidescan sonars require sufficient angular sampling to
+accurately populate the desired range bins. This section provides a method for
+estimating the required angular resolution based on the sonar field of view and
+range-bin resolution.</p>
+<section id="worst-case-resolution-calculation">
+<h3>Worst-Case Resolution Calculation<a class="headerlink" href="#worst-case-resolution-calculation" title="Link to this heading"></a></h3>
+<p>A conservative estimate of the required angular step size can be computed as:</p>
+<div class="math notranslate nohighlight">
+\[\theta = \Theta - \cos^{-1}\!\left(
+   \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+   \cos(\Theta)
+\right)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Theta\)</span> is the azimuth angle of a single SSS.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{\max}\)</span> is the maximum sonar range.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{\mathrm{res}}\)</span> is the range resolution.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The range resolution can be computed from the number of range bins:</p>
+<div class="math notranslate nohighlight">
+\[R_{\mathrm{res}} = \frac{R_{\max} - R_{\min}}{R_{bins}}\]</div>
+</div>
+<p>This formulation assumes that the seafloor intersects the edge of the sonar field
+of view at maximum range, as illustrated in the figure below:</p>
+<figure class="align-center" id="id4">
+<img alt="../../_images/WorstCaseResDiagram.png" src="../../_images/WorstCaseResDiagram.png"/>
+<figcaption>
+<p><span class="caption-text">Worst-case geometry used for estimating the required angular resolution.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The required number of samples is then:</p>
+<div class="math notranslate nohighlight">
+\[N = \frac{\Theta}{\theta}\]</div>
+<p>This calculation represents a worst-case estimate and guarantees sufficient
+resolution across the full field of view.</p>
+</section>
+<section id="adjusted-resolution-calculation">
+<h3>Adjusted Resolution Calculation<a class="headerlink" href="#adjusted-resolution-calculation" title="Link to this heading"></a></h3>
+<p>In many scenarios the full field of view is not utilized. For example, when the
+seafloor is relatively flat and the sonar is operated at a fixed altitude, the
+maximum range may not occur at the edge of the field of view. In these cases,
+the required angular resolution can be reduced.</p>
+<p>Given a sonar altitude <span class="math notranslate nohighlight">\(h\)</span>, the utilized azimuth field of view
+<span class="math notranslate nohighlight">\(\phi\)</span> can be computed as:</p>
+<div class="math notranslate nohighlight">
+\[\phi = \cos^{-1}\!\left(\frac{h}{R_{\max}}\right)\]</div>
+<p>as shown in the image below:</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../_images/AngleDiagram.png"><img alt="../../_images/AngleDiagram.png" src="../../_images/AngleDiagram.png" style="width: 203.7px; height: 156.79999999999998px;"/></a>
+<figcaption>
+<p><span class="caption-text">Geometry for computing the utilized field of view based on sonar altitude.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The adjusted azimuth step size is then:</p>
+<div class="math notranslate nohighlight">
+\[\theta = \phi - \cos^{-1}\!\left(
+   \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+   \cos(\phi)
+\right)\]</div>
+<p>and the required number of samples becomes:</p>
+<div class="math notranslate nohighlight">
+\[N = \frac{\phi}{\theta}\]</div>
+<p>The resulting value of <span class="math notranslate nohighlight">\(N\)</span> may be significantly smaller than the
+worst-case estimate while still providing sufficient resolution for the
+observable portion of the scene.</p>
+</section>
+<section id="using-the-computed-resolution">
+<h3>Using the Computed Resolution<a class="headerlink" href="#using-the-computed-resolution" title="Link to this heading"></a></h3>
+<p>Because a sidescan sonar consists of two single SSS, each sensor should use the calculated samples <cite>N</cite>:</p>
+<ul class="simple">
+<li><p>For each single <a class="reference internal" href="#raycast-sidescan-sonar"><span class="std std-ref">Raycast Sidescan Sonar</span></a>, set <code class="docutils literal notranslate"><span class="pre">AzimuthRayCount:</span> <span class="pre">N</span></code> in the config.</p></li>
+<li><p>For each single <a class="reference internal" href="#gpu-sidescan-sonar"><span class="std std-ref">GPU Sidescan Sonar</span></a>, set <code class="docutils literal notranslate"><span class="pre">ResolutionX:</span> <span class="pre">N</span></code> in the config.</p></li>
+</ul>
+</section>
+</section>
 </section>
 </div>
 </div>

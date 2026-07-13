@@ -2,9 +2,51 @@
 Profiling Sonar
 ===============
 
-A simulaiton of a profiling sonar using octrees. 
+Holoocean has three different profiling sonar sensor implementations:
 
-See :ref:`visualizing_profiling_sonar` for an example of how to use this sensor.
+* :ref:`octree_profiling_sonar`
+* :ref:`raycast_profiling_sonar`
+* :ref:`gpu_profiling_sonar`
+
+These implementations have different tradeoffs in accuracy, speed, and memory usage.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Sensor
+     - Scanning Method
+     - General Speed
+     - Resolution (at Comparable Speed) 
+     - Scene Representation
+     - Requirements
+   * - :ref:`octree_singlebeam_sonar`
+     - Octree-based sampling
+     - Slow on first run, faster on subsequent runs
+     - Low-Medium
+     - Object collision meshes as octrees
+     - Memory space for octree storage
+   * - :ref:`raycast_singlebeam_sonar`
+     - CPU raycasting
+     - Fast, scales with number of rays
+     - Medium-High
+     - Object collision meshes
+     - CPU resources proporional to ray count
+   * - :ref:`gpu_singlebeam_sonar`
+     - GPU rendering
+     - Fast, depends on GPU capabilities
+     - High
+     - Rendered scene (image-based)
+     - Dedicated GPU 
+
+.. note:: See :ref:`visualizing_profiling_sonar` for examples of how to use this sensor.
+    
+
+.. _octree_profiling_sonar:
+
+Octree Profiling Sonar
+------------------------
+
+Simulates a profiling sonar with octrees. It has a narrow elevation and wide asimuth, and projects the intensity onto the 2D time of return-azimuth plane.
 
 See :py:class:`~holoocean.sensors.ProfilingSonar` for the Python API.
 
@@ -23,14 +65,89 @@ Example sensor definition::
             "AzimuthBins": 512,
             "AddSigma": 0.15,
             "MultSigma": 0.2,
-            "MultiPath": true,
+            "MultiPath": True,
             "ClusterSize": 5,
-            "ScaleNoise": true,
+            "ScaleNoise": True,
             "AzimuthStreaks": -1,
             "RangeSigma": 0.1,
-            "ShowWarning": true,
+            "ShowWarning": True,
             "InitOctreeRange": 70,
-            "ViewRegion": false,
+            "ViewRegion": False,
             "ViewOctree": -10,
         }
     }
+
+.. _raycast_profiling_sonar:
+
+
+Raycast Profiling Sonar
+-----------------------
+
+Simulates a profiling sonar with raycasting. It has a narrow elevation and wide asimuth, and projects the intensity onto the 2D time of return-azimuth plane.
+
+See :py:class:`~holoocean.sensors.RaycastProfilingSonar` for the Python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "RaycastProfilingSonar",
+        "socket": "SonarSocket",
+        "Hz": 2,
+        "configuration": {
+            "RangeBins": 512,
+            "AzimuthBins": 512,
+            "RangeMin": 0.5,
+            "RangeMax": 60,
+            "Elevation": 1,
+            "Azimuth": 120,
+            "AddSigma": 0.0,
+            "MultSigma": 0.0,
+            "MultiPath": False,
+            "ShowWarning": False,
+            "ViewRegion": False,
+            "IgnorePlants": False
+        }
+
+
+.. _gpu_profiling_sonar:
+
+GPU Profiling Sonar
+-------------------
+
+Simulates a profiling sonar with GPU rendering. It has a narrow elevation and wide asimuth, and projects the intensity onto the 2D time of return-azimuth plane. 
+It utilizes the GPU rendering pipeline, for faster simulation speed.
+
+See :py:class:`~holoocean.sensors.GPUProfilingSonar` for the Python API.
+
+Example sensor definition::
+    
+    {
+        "sensor_type": "GPUProfilingSonar",
+        "socket": "SonarSocket",
+        "Hz": 2,
+        "configuration": {
+            "RangeBins": 512,
+            "AzimuthBins": 512,
+            "RangeMin": 0.5,
+            "RangeMax": 60,
+            "Elevation": 1,
+            "Azimuth": 120,
+            "AddSigma": 0.0,
+            "MultSigma": 0.0,
+            "MultiPath": False,
+            "ShowWarning": False,
+            "ViewRegion": False,
+            "IgnorePlants": False
+        }
+    }
+
+
+.. _resolution_calculation_profiling:
+
+Resolution Calculation for Raycast and GPU Profiling Sonars
+-----------------------------------------------------------
+
+Resolution for the raycast and GPU profiling sonars can be calculated using the same equations as the imaging sonars.
+Please refer to :ref:`resolution_calculation_imaging` for more information.    
+
+.. note:: The values for `Azimuth`, `Elevation`, `RangeMax`, `RangeMin`, and `RangeRes`  in the equations should be set to the values used in your sensor configuration.

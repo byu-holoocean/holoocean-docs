@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FFT Wave Controller &mdash; HoloOcean 2.4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/themes_override.css?v=3297d54e" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=4d935f96"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Examples" href="../../examples/examples.html" />
+    <link rel="prev" title="Air Fog Command" href="../air_fog/air_fog.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HoloOcean
+          </a>
+              <div class="version">
+                2.4.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">HoloOcean Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/usage.html">Using HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages/packages.html">HoloOcean Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../agents/agents.html">HoloOcean Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sensors/sensors.html">HoloOcean Sensors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../env_appearance.html">Environment Appearance</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../env_appearance.html#environment-commands">Environment commands</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../tides/tide.html">Tide Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time_cycle/timeofday.html">Time of Day Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../water_appearance/water_appearance.html">Water Appearance Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../weather/weather.html">Weather Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../air_fog/air_fog.html">Air Fog Command</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FFT Wave Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-fft-waves">Configuring FFT Waves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#worlds-without-fft-waves">Worlds Without FFT waves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#buoyancy-configuration">Buoyancy Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-fft-waves-to-a-custom-level">Adding FFT Waves to a Custom Level</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-custom-agents">Adding Custom Agents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../develop/develop.html">Developing HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog/changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/index.html">HoloOcean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/environments.html">Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/spaces.html">Action Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/commands.html">Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/holooceanclient.html">HoloOcean Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/packagemanager.html">Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/sensors.html">Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/lcm.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/dynamics.html">Fossen Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/shmem.html">Shared Memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../holoocean/exceptions.html">Exceptions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">HoloOcean</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../env_appearance.html">Environment Appearance</a></li>
+      <li class="breadcrumb-item active">FFT Wave Controller</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/env_appearance/waves/waves.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fft-wave-controller">
+<span id="wave-controller"></span><h1>FFT Wave Controller<a class="headerlink" href="#fft-wave-controller" title="Link to this heading"></a></h1>
+<p>HoloOcean worlds have FFT wave settings that can be configured, either with the scenario or real time with commands. The FFT waves will impact the buoyancy of the surface vessel and the movement of underwater vehicles while they are close to the surface.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/ss1.gif"><img alt="Sea state 1 on pier harbor" src="../../_images/ss1.gif" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">Sea state 1 on pier harbor map.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/ss4.gif"><img alt="Sea state 4 on pier harbor" src="../../_images/ss4.gif" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">Sea state 4 on pier harbor map.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/ss9.gif"><img alt="Example image" src="../../_images/ss9.gif" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">Sea state 9 on pier harbor map.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="configuring-fft-waves">
+<h2>Configuring FFT Waves<a class="headerlink" href="#configuring-fft-waves" title="Link to this heading"></a></h2>
+<p>Holoocean worlds have a FFT wave configuration and command. This allows you to define the FFT waves in the simulation before running or to do more precise changes during a simulation. If you want FFT waves in your world you must include the fft_waves config, otherwise they will not spawn.</p>
+<section id="in-a-scenario">
+<h3>In a Scenario<a class="headerlink" href="#in-a-scenario" title="Link to this heading"></a></h3>
+<p>To setup FFT waves in your config file, you can either define a sea state or define various wave parameters.</p>
+<p><strong>Sea State Config:</strong></p>
+<p>This config introduces FFT waves into the world which can then be modified with commands during simulation.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;waves&quot;</span><span class="p">,</span>
+<span class="s2">&quot;world&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenWater&quot;</span><span class="p">,</span>
+<span class="s2">&quot;main_agent&quot;</span><span class="p">:</span> <span class="s2">&quot;sv0&quot;</span><span class="p">,</span>
+<span class="s2">&quot;fft_waves&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sea_state&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Wave Parameters Config:</strong></p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;fft_waves&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;sea_state&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;wind_directionality&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="s2">&quot;wind_tighten&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="s2">&quot;wind_direction&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
+        <span class="s2">&quot;foam_threshold&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s2">&quot;wave_speed&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">&quot;boat_buoyancy&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;wave_force&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="s2">&quot;max_influence_depth&quot;</span><span class="p">:</span> <span class="mi">5</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In addition to these parameters, you can also set the wind_speed parameter. However, there is no point in setting both wind_speed and sea_state as they both change the height of the waves.</p>
+<p>Parameter definitions can be found at <a class="reference internal" href="../../holoocean/environments.html#fft-wave-api"><span class="std std-ref">FFT Wave API</span></a> under fft_wave_scalars and fft_wave_cascades.</p>
+</section>
+<section id="with-a-command">
+<h3>With a Command<a class="headerlink" href="#with-a-command" title="Link to this heading"></a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">fftwaves</span><span class="o">.</span><span class="n">fft_sea_state</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">fft_wave_scalers_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;WindSpeed&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;WaveSpeed&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;WindDirection&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">env</span><span class="o">.</span><span class="n">fftwaves</span><span class="o">.</span><span class="n">fft_wave_scalars</span><span class="p">(</span><span class="n">fft_wave_scalers_config</span><span class="p">)</span>
+
+<span class="n">fft_wave_cascades_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;WindDirectionality&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;WindTighten&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">env</span><span class="o">.</span><span class="n">fftwaves</span><span class="o">.</span><span class="n">fft_wave_cascades</span><span class="p">(</span><span class="n">fft_wave_cascades_config</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are a few basic FFT wave commands. env.fftwaves.sea_state just sets the sea state from 0 - 9. env.fftwaves.wave_scalars allows you to set various wave parameters that only take in one value. env.fftwaves.wave_cascades allows to set the wave parameters with 4 values, one for each cascade. While you are able to change every parameter regarding FFT waves, the best ones to change are the ones available through the config as they have the most influence while retaining realism.
+You can see which parameters work with each command here: <a class="reference internal" href="../../holoocean/environments.html#fft-wave-api"><span class="std std-ref">FFT Wave API</span></a>.</p>
+</section>
+<section id="default-values">
+<span id="default-wave-values"></span><h3>Default Values<a class="headerlink" href="#default-values" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Amplitude: 168000.0, 64000.0, 4000.0, 240.0</p></li>
+<li><p>Wind Directionality: 1.0, 1.0, 1.0, 1.0</p></li>
+<li><p>Choppiness: 1.5, 1.5, 1.5, 1.5</p></li>
+<li><p>Patch Length: 10.0, 28.0, 432.0, 2000.0</p></li>
+<li><p>Short Wave Cutoff: 0.0001, 0.002, 2.0, 30.0</p></li>
+<li><p>Long Wave Cutoff: 1.0, 0.25, 0.125, 0.04</p></li>
+<li><p>Wind Tighten: 1.0, 1.0, 1.0, 1.0</p></li>
+<li><p>Foam Injection: 1.0</p></li>
+<li><p>Foam Threshold: -0.25</p></li>
+<li><p>Foam Fade: 0.1</p></li>
+<li><p>Foam Blur: 2.0</p></li>
+<li><p>Wind Speed: 0.0</p></li>
+<li><p>Wind Direction: 0.0</p></li>
+<li><p>Repeat Period: 1000.0</p></li>
+<li><p>Roughness Power: 0.5</p></li>
+<li><p>Num Roughness Samples: 128</p></li>
+<li><p>Wave Speed: 9.8</p></li>
+<li><p>Boat Buoyancy: 1 (true)</p></li>
+<li><p>Wave Force: 1</p></li>
+<li><p>Max Influence Depth: 10</p></li>
+<li><p>Generate New Mesh: 0</p></li>
+</ul>
+</section>
+<section id="sea-state-values">
+<h3>Sea State values<a class="headerlink" href="#sea-state-values" title="Link to this heading"></a></h3>
+<p>Sea states are preset wind speed values that approximate the WMO sea state code</p>
+<ul class="simple">
+<li><p>SS1: 2</p></li>
+<li><p>SS2: 4</p></li>
+<li><p>SS3: 6</p></li>
+<li><p>SS4: 8</p></li>
+<li><p>SS5: 10</p></li>
+<li><p>SS6: 13</p></li>
+<li><p>SS7: 16</p></li>
+<li><p>SS8: 20</p></li>
+<li><p>SS9: 30</p></li>
+</ul>
+</section>
+</section>
+<section id="worlds-without-fft-waves">
+<h2>Worlds Without FFT waves<a class="headerlink" href="#worlds-without-fft-waves" title="Link to this heading"></a></h2>
+<p>Worlds from before the 2.4.0 HoloOcean update, or custom worlds that haven’t implemented FFT waves, will not be able to support wave imagery during simulation.
+Your experience with HoloOcean will not change if you do not include FFT waves in your config. However, if you include FFT waves, then your agent will experience wave buoyancy without any of the visuals of FFT waves. If want to have FFT waves in
+your world you must update to worlds to an equal or greater version than 2.4.0.</p>
+</section>
+<section id="buoyancy-configuration">
+<h2>Buoyancy Configuration<a class="headerlink" href="#buoyancy-configuration" title="Link to this heading"></a></h2>
+<p>When using FFT waves, you may still want to use the old buoyancy system so that you can have the visuals of large FFT waves and calm water for underwater agents. This can be done by adding the buoyancy config.
+Without this config option, the buoyancy will default to the mesh based system compatible with FFT waves.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;fft_waves&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sea_state&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+<span class="s2">&quot;buoyancy&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Bounding Box Buoyancy (``0``)</strong></dt><dd><p>Bounding box buoyancy is the original buoyancy system used by holoocean. This is still used by default when running holoocean without FFT waves and cannot be changed.
+When running FFT waves you have the option to enable this system. As this was not created with FFT waves it is largely incompatible, but still could have some use cases in specific situations.</p>
+</dd>
+<dt><strong>Mesh Based Buoyancy (``1``)</strong></dt><dd><p>Meshed based buoyancy is the default system when using holoocean with FFT waves. This buoyancy system was made to be compatible with FFT waves and is configurable to your needs.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mesh based buoyancy is an estimation and may not reflect real world buoyancy interactions. To change how this buoyancy affects your agent, change the values of the “max_influence_depth” or “wave_force” parameters either in the config or with commands.</p>
+</div>
+</section>
+<section id="adding-fft-waves-to-a-custom-level">
+<h2>Adding FFT Waves to a Custom Level<a class="headerlink" href="#adding-fft-waves-to-a-custom-level" title="Link to this heading"></a></h2>
+<p>FFT Waves are functional through a joint CPU and GPU implementation. In Unreal there is a Niagara system that is located in content at FFT_OceanWaterWave/Effects/FX_OceanWaves.
+This along with the other folders within FFT_OceanWaterWaves make up the visualization of the FFT waves, all of which is done on the GPU.
+To add FFT waves to a custom level, please follow the instructions here: <a class="reference internal" href="../../develop/env-docs/create-env.html#create-waves"><span class="std std-ref">Adding FFT Waves</span></a>.</p>
+<p>The best way to change the parameters of your FFT waves is through the config and the commands. However, if you decide that you want to change the default
+parameters you must change them in your world’s FX_OceanWaves, and in the c++ file OceanFFTData.h. If you decide to add/remove any variables from
+this file then make sure to mirror your change in OceanFFTCalculator.ispc or else Unreal may crash.</p>
+</section>
+<section id="adding-custom-agents">
+<h2>Adding Custom Agents<a class="headerlink" href="#adding-custom-agents" title="Link to this heading"></a></h2>
+<p>With the addition of FFT waves, when FFT waves are turned on a new buoyancy system is used. This new system uses a mesh based approach to calculate the buoyancy experienced by an agent.
+To add a new agent, follow the instructions in developing agents: <a class="reference internal" href="../../develop/agents.html#create-agents"><span class="std std-ref">Adding Agents</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../air_fog/air_fog.html" class="btn btn-neutral float-left" title="Air Fog Command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../examples/examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright BYU FRoStLab.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

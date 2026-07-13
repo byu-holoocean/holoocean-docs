@@ -101,6 +101,8 @@ HoloOcean 2.0 features:
    holoocean/shmem
    holoocean/util
    holoocean/exceptions
+   holoocean/weather
+
 
 Contributions
 """""""""""""

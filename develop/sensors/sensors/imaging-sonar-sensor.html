@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Imaging Sonar — HoloOcean 2.3.0 documentation</title>
+<title>Imaging Sonar — HoloOcean 2.4.0 documentation</title>
 <link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -15,11 +15,12 @@
   <![endif]-->
 <script src="../../_static/jquery.js?v=5d32c60e"></script>
 <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-<script src="../../_static/documentation_options.js?v=c3c8ae58"></script>
+<script src="../../_static/documentation_options.js?v=4d935f96"></script>
 <script src="../../_static/doctools.js?v=9a2dae69"></script>
 <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
 <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
 <script src="../../_static/copybutton.js?v=f281be69"></script>
+<script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
@@ -53,26 +54,17 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../sensors.html">HoloOcean Sensors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../sensors.html#sonar-sensors">Sonar Sensors</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="singlebeam-sonar-sensor.html">Single-Beam Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sidescan-sonar-sensor.html">Sidescan Sonar</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Imaging Sonar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="profiling-sonar-sensor.html">Profiling Sonar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="dvl-sensor.html">Doppler Velocity Log (DVL)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="depth-sensor.html">Depth Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="depth-camera-sensor.html">Depth Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rgb-camera-sensor.html">RGB Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="camera-sensor.html">Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="semantic-segmentation-camera-sensor.html">Semantic Segmentation Camera</a></li>
-<li class="toctree-l4"><a class="reference internal" href="imu-sensor.html">Inertial Measurement Unit (IMU)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="gps-sensor.html">Global Positioning System (GPS)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magnetometer-sensor.html">Magnetometer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="range-finder-sensor.html">Range Finder Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raycast-lidar-sensor.html">Raycast LIDAR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="raycast-semantic-lidar-sensor.html">Raycast Semantic LIDAR Sensor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="bst-sensor.html">Biomass, Salinity, and Temperature (BST) Sensor</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#camera-sensors">Camera Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#lidar-sensors">Lidar Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#navigation-sensors">Navigation Sensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensors.html#perception-sensors">Perception Sensors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensors.html#communication-sensors">Communication Sensors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensors.html#state-sensors">State Sensors</a></li>
 </ul>
@@ -126,13 +118,58 @@
 <section id="imaging-sonar">
 <h1>Imaging Sonar<a class="headerlink" href="#imaging-sonar" title="Link to this heading"></a></h1>
 <p>Sometimes referred to as a forward-looking sonar, imaging sonar is a type of multi-beam sonar that
-projects the intensity onto the 2d time of return-azimuth plane. This allows for a 2d image to be
+projects the intensity onto the 2D time of return-azimuth plane. This allows for a 2D image to be
 created of the area in front of the sonar. This is useful for detecting objects in front of the sonar,
 and is often used in AUVs to detect obstacles in front of them.</p>
-<p>Note that the Azimuth streaks parameter is used to control whether the simulator will add or remove
-streaks along the azimuth to the return, as those are common artifacts in sonar images.</p>
-<p>See <a class="reference internal" href="../../examples/examples/sonar_imaging.html#visualizing-imaging-sonar"><span class="std std-ref">Visualizing Imaging Sonar</span></a> for an example of how to use this sensor.</p>
-<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a> for the Python API.</p>
+<p>Holoocean has three different imaging sonar sensor implementations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#octree-imaging-sonar"><span class="std std-ref">Octree Imaging Sonar</span></a></p></li>
+<li><p><a class="reference internal" href="#raycast-imaging-sonar"><span class="std std-ref">Raycast Imaging Sonar</span></a></p></li>
+<li><p><a class="reference internal" href="#gpu-imaging-sonar"><span class="std std-ref">GPU Imaging Sonar</span></a></p></li>
+</ul>
+<p>These implementations have different tradeoffs in accuracy, speed, and memory usage.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sensor</p></th>
+<th class="head"><p>Scanning Method</p></th>
+<th class="head"><p>General Speed</p></th>
+<th class="head"><p>Resolution (at Comparable Speed)</p></th>
+<th class="head"><p>Scene Representation</p></th>
+<th class="head"><p>Requirements</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="singlebeam-sonar-sensor.html#octree-singlebeam-sonar"><span class="std std-ref">Octree Single-Beam Sonar</span></a></p></td>
+<td><p>Octree-based sampling</p></td>
+<td><p>Slow on first run, faster on subsequent runs</p></td>
+<td><p>Low-Medium</p></td>
+<td><p>Object collision meshes as octrees</p></td>
+<td><p>Memory space for octree storage</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="singlebeam-sonar-sensor.html#raycast-singlebeam-sonar"><span class="std std-ref">Raycast Single-Beam Sonar</span></a></p></td>
+<td><p>CPU raycasting</p></td>
+<td><p>Fast, scales with number of rays</p></td>
+<td><p>Medium-High</p></td>
+<td><p>Object collision meshes</p></td>
+<td><p>CPU resources proporional to ray count</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="singlebeam-sonar-sensor.html#gpu-singlebeam-sonar"><span class="std std-ref">GPU Single-Beam Sonar</span></a></p></td>
+<td><p>GPU rendering</p></td>
+<td><p>Fast, depends on GPU capabilities</p></td>
+<td><p>High</p></td>
+<td><p>Rendered scene (image-based)</p></td>
+<td><p>Dedicated GPU</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference internal" href="../../examples/examples/sonar_imaging.html#visualizing-imaging-sonar"><span class="std std-ref">Visualizing Imaging Sonar</span></a> for examples of how to use this sensor.</p>
+</div>
+<section id="octree-imaging-sonar">
+<span id="id1"></span><h2>Octree Imaging Sonar<a class="headerlink" href="#octree-imaging-sonar" title="Link to this heading"></a></h2>
+<p>Simulates an imaging multi-beam sonar with octrees. It projects the intensity onto the 2D time of return-azimuth plane.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.ImagingSonar" title="holoocean.sensors.ImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagingSonar</span></code></a> for the python API.</p>
 <p>Example sensor definition:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"ImagingSonar"</span><span class="p">,</span>
@@ -141,28 +178,205 @@ streaks along the azimuth to the return, as those are common artifacts in sonar 
     <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
         <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
         <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
         <span class="s2">"AzimuthBins"</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
         <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span>
         <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-        <span class="s2">"MultiPath"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">"MultiPath"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="s2">"ClusterSize"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s2">"ScaleNoise"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">"ScaleNoise"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="s2">"AzimuthStreaks"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
         <span class="s2">"RangeSigma"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-        <span class="s2">"ShowWaring"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">"ShowWarning"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="s2">"InitOctreeRange"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
         <span class="s2">"ViewOctree"</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
         <span class="s2">"WaterDensity"</span><span class="p">:</span> <span class="mi">997</span><span class="p">,</span>
         <span class="s2">"WaterSoundSpeed"</span><span class="p">:</span> <span class="mi">1480</span><span class="p">,</span>
-        <span class="s2">"UseApprox"</span><span class="p">:</span> <span class="n">true</span>
+        <span class="s2">"UseApprox"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Note that the Azimuth streaks parameter is used to control whether the simulator will add or remove
+streaks along the azimuth to the return, as those are common artifacts in sonar images.</p>
+</section>
+<section id="raycast-imaging-sonar">
+<span id="id2"></span><h2>Raycast Imaging Sonar<a class="headerlink" href="#raycast-imaging-sonar" title="Link to this heading"></a></h2>
+<p>Simulates an imaging multi-beam sonar using raycasting. It projects the intensity onto the 2D time of return-azimuth plane.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.RaycastImagingSonar" title="holoocean.sensors.RaycastImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">RaycastImagingSonar</span></code></a> for the python API.</p>
+<p>Example sensor definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"RaycastImagingSonar"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="s2">"AzimuthBins"</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">"MultiPath"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"WaterDensity"</span><span class="p">:</span> <span class="mi">997</span><span class="p">,</span>
+        <span class="s2">"WaterSpeedSound"</span><span class="p">:</span> <span class="mi">1480</span><span class="p">,</span>
+        <span class="s2">"IgnorePlants"</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="gpu-imaging-sonar">
+<span id="id3"></span><h2>GPU Imaging Sonar<a class="headerlink" href="#gpu-imaging-sonar" title="Link to this heading"></a></h2>
+<p>Simulates an imaging multi-beam sonar using GPU rendering. It projects the intensity onto the 2D time of return-azimuth plane.
+Utilizes the GPU rendering pipeline, for faster simulation speed.</p>
+<p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.GPUImagingSonar" title="holoocean.sensors.GPUImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPUImagingSonar</span></code></a> for the python API.</p>
+<p>Example sensor definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"GPUImagingSonar"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"RangeBins"</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="s2">"AzimuthBins"</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="s2">"RangeMin"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s2">"RangeMax"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">"Elevation"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s2">"Azimuth"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+        <span class="s2">"MultSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">"AddSigma"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">"MultiPath"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"ViewRegion"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">"WaterDensity"</span><span class="p">:</span> <span class="mi">997</span><span class="p">,</span>
+        <span class="s2">"WaterSpeedSound"</span><span class="p">:</span> <span class="mi">1480</span><span class="p">,</span>
+        <span class="s2">"IgnorePlants"</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="resolution-calculation-for-raycast-and-gpu-imaging-sonars">
+<span id="resolution-calculation-imaging"></span><h2>Resolution Calculation for Raycast and GPU Imaging Sonars<a class="headerlink" href="#resolution-calculation-for-raycast-and-gpu-imaging-sonars" title="Link to this heading"></a></h2>
+<p>The raycast and GPU imaging sonars require sufficient angular sampling to
+accurately populate the desired range bins. This section provides a method for
+estimating the required angular resolution based on the sonar field of view and
+range-bin resolution.</p>
+<section id="angular-step-size-calculation">
+<h3>Angular Step Size Calculation<a class="headerlink" href="#angular-step-size-calculation" title="Link to this heading"></a></h3>
+<section id="from-the-azimuth-field-of-view">
+<h4>From the Azimuth Field of View<a class="headerlink" href="#from-the-azimuth-field-of-view" title="Link to this heading"></a></h4>
+<p>A conservative estimate of the required angular step size can be computed as:</p>
+<div class="math notranslate nohighlight">
+\[\theta_{azi} = \frac{\Theta}{2} - \cos^{-1}\!\left(
+   \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+   \cos\!\left(\frac{\Theta}{2}\right)
+\right)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Theta\)</span> is the total azimuth angle.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{\max}\)</span> is the maximum sonar range.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{\mathrm{res}}\)</span> is the range resolution.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The range resolution can be computed from the number of range bins:</p>
+<div class="math notranslate nohighlight">
+\[R_{\mathrm{res}} = \frac{R_{\max} - R_{\min}}{R_{bins}}\]</div>
+</div>
+<p>This formulation assumes a worst-case geometry in which the seafloor or target intersects the edge of the sonar field of view at maximum range, as illustrated below:</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/ResImaging.png"><img alt="../../_images/ResImaging.png" src="../../_images/ResImaging.png" style="width: 358.4px; height: 217.0px;"/></a>
+<figcaption>
+<p><span class="caption-text">Worst-case geometry used for estimating the required angular resolution.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="from-the-elevation-field-of-view">
+<h4>From the Elevation Field of View<a class="headerlink" href="#from-the-elevation-field-of-view" title="Link to this heading"></a></h4>
+<p>A conservative estimate of the required angular step size can be computed as:</p>
+<div class="math notranslate nohighlight">
+\[\theta_{elev} = \frac{\alpha}{2} - \cos^{-1}\!\left(
+   \frac{R_{\max}}{R_{\max}-R_{\mathrm{res}}}
+   \cos\!\left(\frac{\alpha}{2}\right)
+\right)\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is the total elevation angle.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{\max}\)</span> is the maximum sonar range.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{\mathrm{res}}\)</span> is the range resolution.</p></li>
+</ul>
+<p>This formulation assumes a worst-case geometry in which the seafloor or target intersects the edge of the sonar field of view at maximum range, as illustrated below:</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../_images/ResImagingElev.png"><img alt="../../_images/ResImagingElev.png" src="../../_images/ResImagingElev.png" style="width: 292.95px; height: 247.79999999999998px;"/></a>
+<figcaption>
+<p><span class="caption-text">Worst-case geometry used for estimating the required angular resolution.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="choosing-angular-step-size">
+<h3>Choosing Angular Step Size<a class="headerlink" href="#choosing-angular-step-size" title="Link to this heading"></a></h3>
+<p>The angular step size must satisfy both the azimuth and elevation constraints.
+Therefore, the more restrictive (smaller) step size should be used:</p>
+<div class="math notranslate nohighlight">
+\[\theta = min(\theta_{azi}, \theta_{elev})\]</div>
+<p>The required number of samples is then:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}N_{azi} = \frac{\Theta}{\theta}\\N_{elev} = \frac{\alpha}{\theta}\end{aligned}\end{align} \]</div>
+<p>This calculation represents a worst-case estimate and guarantees sufficient
+resolution across the full field of view.</p>
+</section>
+</section>
+<section id="how-to-input-resolution-into-holoocean">
+<h2>How To Input Resolution Into HoloOcean<a class="headerlink" href="#how-to-input-resolution-into-holoocean" title="Link to this heading"></a></h2>
+<section id="for-raycast-imaging-sonar">
+<h3>For <a class="reference internal" href="#raycast-imaging-sonar"><span class="std std-ref">Raycast Imaging Sonar</span></a><a class="headerlink" href="#for-raycast-imaging-sonar" title="Link to this heading"></a></h3>
+<p>There are multiple parameters that you can set to change the resolution and speed of the raycast sonar.
+The options are listed in the code block below:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don’t manually set your resolution, the resolution will be calculated based off of your other parameters using the above equations.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"RaycastImagingSonar"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"AzimuthRayCount"</span><span class="p">:</span>   <span class="o">&lt;</span><span class="n">N_azi</span><span class="o">&gt;</span><span class="p">,</span>    <span class="c1"># set one or the other</span>
+        <span class="c1"># "AzimuthRayRes":   &lt;theta&gt;,</span>
+        <span class="s2">"ElevationRayCount"</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">N_elev</span><span class="o">&gt;</span><span class="p">,</span>   <span class="c1"># set one or the other</span>
+        <span class="c1"># "ElevationRayRes": &lt;theta&gt;,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where <span class="math notranslate nohighlight">\(N_{azi}\)</span>, <span class="math notranslate nohighlight">\(N_{elev}\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span> are computed using the equations above.</p>
+</section>
+<section id="for-gpu-imaging-sonar">
+<h3>For <a class="reference internal" href="#gpu-imaging-sonar"><span class="std std-ref">GPU Imaging Sonar</span></a><a class="headerlink" href="#for-gpu-imaging-sonar" title="Link to this heading"></a></h3>
+<p>There is only one parameter that you can set to change the resolution and speed of the GPU sonar.
+This parameter, <code class="docutils literal notranslate"><span class="pre">ResolutionX</span></code>, is computed as the maximum of the azimuth or elevation ray counts times 2.</p>
+<div class="math notranslate nohighlight">
+\[N_{x} = 2 * max(N_{azi}, N_{elev})\]</div>
+<p>The parameter is set in the configuration dictionary as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">"sensor_type"</span><span class="p">:</span> <span class="s2">"GPUImagingSonar"</span><span class="p">,</span>
+    <span class="s2">"socket"</span><span class="p">:</span> <span class="s2">"SonarSocket"</span><span class="p">,</span>
+    <span class="s2">"Hz"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"configuration"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"ResolutionX"</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">N_x</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 </div>
 </div>
