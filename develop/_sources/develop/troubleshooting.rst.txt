@@ -22,6 +22,71 @@ Please see :ref:`develop-compiling` if you have issues opening the project in Vi
 There are some errors in the Unreal Engine source code that also could be preventing issues. These files can be changed without affecting HoloOcean. 
 
 
+"Holodeck could not be compiled" on Linux
+-----------------------------------------
+
+If you see the error below when opening HoloOcean on Linux:
+
+- **"Missing Holodeck Modules"** listing ``Holodeck``, ``SonarHistogramModule``,
+  ``ShaderIncludePlugin``
+- Rebuild results in:
+  **"Holodeck could not be compiled. Try rebuilding from source manually."**
+
+It is very likely that your Linux Unreal Engine 5.3 download doesn't include the ISPC compiler binary necessary for our new FFT-based ocean waves.
+To fix this you will need to install ISPC v1.18.0 manually, you can do this by following these instructions:
+
+1. Download the Linux release
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+.. code-block:: bash
+ 
+    cd /tmp
+    wget https://github.com/ispc/ispc/releases/download/v1.18.0/ispc-v1.18.0-linux.tar.gz
+    tar -xzf ispc-v1.18.0-linux.tar.gz
+ 
+This creates ``ispc-v1.18.0-linux/bin/ispc``.
+ 
+2. Copy it into your engine install
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+Replace ``<UE_ROOT>`` with the path to your Unreal Engine 5.3 install (the
+folder containing ``Engine/``):
+ 
+.. code-block:: bash
+ 
+    mkdir -p <UE_ROOT>/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/
+    cp /tmp/ispc-v1.18.0-linux/bin/ispc \
+       <UE_ROOT>/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/ispc
+    chmod +x <UE_ROOT>/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/ispc
+ 
+3. Verify it runs
+~~~~~~~~~~~~~~~~~
+ 
+.. code-block:: bash
+ 
+    <UE_ROOT>/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/ispc --version
+ 
+Expected output::
+ 
+    Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.18.0 (build commit ... LLVM 13.0.1)
+ 
+4. Rebuild Holodeck
+~~~~~~~~~~~~~~~~~~~
+ 
+.. code-block:: bash
+ 
+    cd <UE_ROOT>
+    ./Engine/Build/BatchFiles/Linux/Build.sh HolodeckEditor Linux Development \
+      -project="<PATH_TO_HOLODECK>/Holodeck.uproject" -Progress
+ 
+Replace ``<PATH_TO_HOLODECK>`` with your HoloOcean project path.
+
+
+You're done! Reopen the project in the editor and it should load normally.
+
+.. note:: This is a one-time setup step per engine install. You won't need to repeat it unless you download a fresh copy of the engine.
+
+
 None of my changes to code are showing up when I run HoloOcean
 --------------------------------------------------------------
 

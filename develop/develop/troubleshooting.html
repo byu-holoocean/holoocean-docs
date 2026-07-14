@@ -61,6 +61,13 @@
 <li class="toctree-l2"><a class="reference internal" href="sensors.html">Developing Sensors</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#i-can-t-open-holoocean-in-unreal-engine-on-windows">I can’t open HoloOcean in Unreal Engine on Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holodeck-could-not-be-compiled-on-linux">“Holodeck could not be compiled” on Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#download-the-linux-release">1. Download the Linux release</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copy-it-into-your-engine-install">2. Copy it into your engine install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verify-it-runs">3. Verify it runs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rebuild-holodeck">4. Rebuild Holodeck</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#none-of-my-changes-to-code-are-showing-up-when-i-run-holoocean">None of my changes to code are showing up when I run HoloOcean</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#i-added-new-objects-to-my-level-but-they-don-t-show-up-on-sonar">I added new objects to my level but they don’t show up on sonar</a></li>
 </ul>
@@ -119,6 +126,62 @@ Please verify that you have all of the Unreal Engine requirements downloaded.</p
 <p>If there is still an error, you will need to manually build the project in Visual Studio. Right click on the <code class="docutils literal notranslate"><span class="pre">holodeck.uproject</span></code> file and select “Generate Visual Studio project files.”
 Please see <a class="reference internal" href="start.html#develop-compiling"><span class="std std-ref">Compiling</span></a> if you have issues opening the project in Visual Studio.</p>
 <p>There are some errors in the Unreal Engine source code that also could be preventing issues. These files can be changed without affecting HoloOcean.</p>
+</section>
+<section id="holodeck-could-not-be-compiled-on-linux">
+<h2>“Holodeck could not be compiled” on Linux<a class="headerlink" href="#holodeck-could-not-be-compiled-on-linux" title="Link to this heading"></a></h2>
+<p>If you see the error below when opening HoloOcean on Linux:</p>
+<ul class="simple">
+<li><p><strong>“Missing Holodeck Modules”</strong> listing <code class="docutils literal notranslate"><span class="pre">Holodeck</span></code>, <code class="docutils literal notranslate"><span class="pre">SonarHistogramModule</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ShaderIncludePlugin</span></code></p></li>
+<li><p>Rebuild results in:
+<strong>“Holodeck could not be compiled. Try rebuilding from source manually.”</strong></p></li>
+</ul>
+<p>It is very likely that your Linux Unreal Engine 5.3 download doesn’t include the ISPC compiler binary necessary for our new FFT-based ocean waves.
+To fix this you will need to install ISPC v1.18.0 manually, you can do this by following these instructions:</p>
+<section id="download-the-linux-release">
+<h3>1. Download the Linux release<a class="headerlink" href="#download-the-linux-release" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
+wget<span class="w"> </span>https://github.com/ispc/ispc/releases/download/v1.18.0/ispc-v1.18.0-linux.tar.gz
+tar<span class="w"> </span>-xzf<span class="w"> </span>ispc-v1.18.0-linux.tar.gz
+</pre></div>
+</div>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">ispc-v1.18.0-linux/bin/ispc</span></code>.</p>
+</section>
+<section id="copy-it-into-your-engine-install">
+<h3>2. Copy it into your engine install<a class="headerlink" href="#copy-it-into-your-engine-install" title="Link to this heading"></a></h3>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;UE_ROOT&gt;</span></code> with the path to your Unreal Engine 5.3 install (the
+folder containing <code class="docutils literal notranslate"><span class="pre">Engine/</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>&lt;UE_ROOT&gt;/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/
+cp<span class="w"> </span>/tmp/ispc-v1.18.0-linux/bin/ispc<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>&lt;UE_ROOT&gt;/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/ispc
+chmod<span class="w"> </span>+x<span class="w"> </span>&lt;UE_ROOT&gt;/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/ispc
+</pre></div>
+</div>
+</section>
+<section id="verify-it-runs">
+<h3>3. Verify it runs<a class="headerlink" href="#verify-it-runs" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;UE_ROOT&gt;/Engine/Source/ThirdParty/Intel/ISPC/bin/Linux/ispc<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Expected output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Intel</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="n">Implicit</span> <span class="n">SPMD</span> <span class="n">Program</span> <span class="n">Compiler</span> <span class="p">(</span><span class="n">Intel</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="n">ISPC</span><span class="p">),</span> <span class="mf">1.18.0</span> <span class="p">(</span><span class="n">build</span> <span class="n">commit</span> <span class="o">...</span> <span class="n">LLVM</span> <span class="mf">13.0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="rebuild-holodeck">
+<h3>4. Rebuild Holodeck<a class="headerlink" href="#rebuild-holodeck" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;UE_ROOT&gt;
+./Engine/Build/BatchFiles/Linux/Build.sh<span class="w"> </span>HolodeckEditor<span class="w"> </span>Linux<span class="w"> </span>Development<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-project<span class="o">=</span><span class="s2">"&lt;PATH_TO_HOLODECK&gt;/Holodeck.uproject"</span><span class="w"> </span>-Progress
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;PATH_TO_HOLODECK&gt;</span></code> with your HoloOcean project path.</p>
+<p>You’re done! Reopen the project in the editor and it should load normally.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a one-time setup step per engine install. You won’t need to repeat it unless you download a fresh copy of the engine.</p>
+</div>
+</section>
 </section>
 <section id="none-of-my-changes-to-code-are-showing-up-when-i-run-holoocean">
 <h2>None of my changes to code are showing up when I run HoloOcean<a class="headerlink" href="#none-of-my-changes-to-code-are-showing-up-when-i-run-holoocean" title="Link to this heading"></a></h2>

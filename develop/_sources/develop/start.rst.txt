@@ -64,6 +64,7 @@ opens up. Alternatively, open the Unreal Editor and select "Open Project" from t
 In the Unreal Editor, go to Platforms -> <your operating system> -> Cook Content. After a few minutes 
 you should get a success popup in the lower right.
 
+
 Setting up VSCode 
 =================
 If you would like to use VSCode instead of Visual Studio for HoloOcean, you can do the following:
