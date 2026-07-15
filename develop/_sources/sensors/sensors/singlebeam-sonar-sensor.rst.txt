@@ -140,7 +140,9 @@ Example sensor definition::
             "ViewRegion": False,
             "WaterDensity": 997,
             "WaterSpeedSound": 1480,
-            "IgnorePlants": False
+            "IgnorePlants": False,
+            "OpeningAngleRays": 142,
+            "CentralAngleRays": 280,
         }
     }
 
@@ -172,7 +174,8 @@ Example sensor definition::
             "WaterDensity": 997,
             "WaterSpeedSound": 1480,
             "UseApprox": True,
-            "IgnorePlants": False
+            "IgnorePlants": False,
+            "ResolutionX": 280
         }
     }
 
@@ -286,25 +289,3 @@ GPU Singlebeam Sonar
 --------------------
 
 For the GPU sonar, you can find the necessary resolution by taking the higher value between central and opening angle resolution and setting that to your resolutionX.
-
-
-.. Adjusted Elevation or Opening Angle Resolution
-.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
-.. Adjusted Central Angle Resolution
-.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. When the agent is closer to the ground, less rays are necessary for the required resolution. 
-.. To calculate this new required resolution, you can either use the worst case equation and change your \R_max value or you can use this adjusted equation where h is your estimated height from the bottom
-
-.. .. math::
-
-..     \theta = \frac{D}{h*\tan(\Theta)}
-
-.. Where
-
-.. * :math:`\Theta` is the elevation angle of the singlebeam sonar (half of the opening angle).
-.. * :math:`h` is the estimated distance from the ground.
-.. * :math:`D` is the desired euclidian distance between rays in centimeters.

@@ -116,7 +116,7 @@ in standalone". This is a multi-step process, as follows.
    
    .. code::
 
-      -EnvMinX=-1000 -EnvMinY=-1000 -EnvMinZ=-1000 -EnvMaxX=1000 -EnvMaxY=1000 -EnvMinZ=1000 -OctreeMin=0.02 OctreeMax=5
+      -EnvMinX=-1000 -EnvMinY=-1000 -EnvMinZ=-1000 -EnvMaxX=1000 -EnvMaxY=1000 -EnvMinZ=1000 -OctreeMin=0.02 -OctreeMax=5
 
    These are all in meters. Tweak them as needed.
 
