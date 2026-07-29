@@ -33,8 +33,19 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 
 Socket Definitions
 ------------------
-- ``CameraSocket`` located at the top of the sensor platform.
-- ``Viewport`` where the robot is viewed from.
+.. list-table::
+   :widths: 20 20 40
+   :header-rows: 1
+
+   * - Socket Name
+     - Location
+     - Description
+   * - ``CameraSocket``
+     - (-37, 0, 122.5)
+     - located at the top of the sensor platform.
+   * - ``Viewport``
+     - (-147, 0, 71)
+     - where the robot is viewed from.
 
 Socket Frames
 -------------

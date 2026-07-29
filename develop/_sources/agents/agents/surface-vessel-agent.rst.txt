@@ -40,9 +40,22 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 
 Socket Definitions
 ------------------
-- ``Payload`` where the payload with sensors will be in the water. Rotated 90 degrees on y-axis (x points down, y points left, z points forward).
-- ``Platform`` sensors placed on platform.
-- ``Viewport`` where the robot is viewed from.
+.. list-table::
+   :widths: 20 20 40
+   :header-rows: 1
+
+   * - Socket Name
+     - Location
+     - Description
+   * - ``Payload``
+     - (0, 0, 0)
+     - Where the payload with sensors will be in the water. Rotated 90 degrees on y-axis (x points down, y points left, z points forward).
+   * - ``Platform``
+     - (55, 0, 130)
+     - Sensors placed on platform.
+   * - ``Viewport``
+     - (-500, 0, 400)
+     - where the robot is viewed from.
 
 Socket Frames
 -------------

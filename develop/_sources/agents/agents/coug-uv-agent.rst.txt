@@ -48,23 +48,45 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 Socket Definitions
 ------------------
 
-- ``COM`` Center of mass.
-- ``DVLSocket`` Location of the DVL. Rotated 180 degrees on x-axis (x points forward, y points right, z points down).
-- ``IMUSocket`` Location of the IMU. Rotated 180 degrees on x-axis (x points forward, y points right, z points down). Same location as DVL Socket.
-- ``DepthSocket`` Location of the depth sensor.
-- ``AcousticModemSocket`` Location of the acoustic modem.
-- ``Viewport`` where the robot is viewed from.
+.. list-table::
+   :widths: 20 20 40
+   :header-rows: 1
+
+   * - Socket Name
+     - Location
+     - Description
+   * - ``COM``
+     - (0, 0, 0)
+     - Center of mass.
+   * - ``DVLSocket``
+     - (50.4, 0, -5.3)
+     - Location of the DVL. Rotated 180 degrees on x-axis (x points forward, y points right, z points down).
+   * - ``IMUSocket``
+     - (50.4, 0, -5.3)
+     - Location of the IMU. Rotated 180 degrees on x-axis (x points forward, y points right, z points down). Same location as DVL Socket.
+   * - ``DepthSocket``
+     - (16.2, 0, 0)
+     - Location of the depth sensor.
+   * - ``AcousticModemSocket``
+     - (37.85, 0, -9.85)
+     - Location of the acoustic modem.
+   * - ``CameraSocket``
+     - (10, 0, 0)
+     - Location of the camera sensor.
+   * - ``Viewport``
+     - (-216, 0, 138)
+     - where the robot is viewed from.
 
 Socket Frames
 -------------
 .. image:: images/coug-perspective.png
-   :scale: 50%
+   :scale: 70%
 
 .. image:: images/coug-top.png
    :scale: 50%
 
 .. image:: images/coug-side.png
-   :scale: 50%
+   :scale: 70%
 
 .. image:: images/coug-front.png
    :scale: 50%

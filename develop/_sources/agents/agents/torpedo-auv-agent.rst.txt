@@ -43,13 +43,32 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 
 Socket Definitions
 ------------------
-- ``COM`` Center of mass.
-- ``CameraSocket`` Location of camera, rotated +90 degrees on y-axis (x points down, y points left, z points forward).
-- ``DVLSocket`` Location of the DVL
-- ``IMUSocket`` Location of the IMU.
-- ``DepthSocket`` Location of the depth sensor.
-- ``SonarSocket`` Location of the sonar sensor, rotated +90 degrees on y-axis (x points down, y points left, z points forward).
-- ``Viewport`` where the robot is viewed from.
+
+.. list-table::
+   :widths: 20 20 40
+   :header-rows: 1
+
+   * - Socket Name
+     - Location
+     - Description
+   * - ``SonarSocket``
+     - (0, 0, -7)
+     - Location of the sonar sensor, rotated +90 degrees on y-axis (x points down, y points left, z points forward).
+   * - ``DVLSocket``
+     - (-30, 0, -7)
+     - Location of the DVL.
+   * - ``IMUSocket``
+     - (86, -3, -3)
+     - Location of the IMU.
+   * - ``DepthSocket``
+     - (95, 3, 3)
+     - Location of the depth sensor.
+   * - ``CameraSocket``
+     - (30, 0, -7)
+     - Location of camera, rotated +90 degrees on y-axis (x points down, y points left, z points forward).
+   * - ``Viewport``
+     - (-400, 0, 300)
+     - where the robot is viewed from.
 
 Socket Frames
 -------------

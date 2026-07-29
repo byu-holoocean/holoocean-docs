@@ -41,8 +41,19 @@ the y-axis pointing to the left, and the z-axis pointing upward) unless stated o
 
 Socket Definitions
 ------------------
-- ``CameraSocket`` located underneath the uav body.
-- ``Viewport`` located behind the agent.
+.. list-table::
+   :widths: 20 20 40
+   :header-rows: 1
+
+   * - Socket Name
+     - Location
+     - Description
+   * - ``CameraSocket``
+     - (0, 0, 0)
+     - located underneath the uav body.
+   * - ``Viewport``
+     - (-130, 0, 120)
+     - located behind the agent.
 
 Socket Frames
 -------------
