@@ -1,0 +1,18 @@
+.. _`material-dependency`:
+Material Dependency
+===================
+
+Material dependency allows for different materials to "reflect sound" more or less. This works with the raycasting and GPU rendering sonars. 
+
+In order to use this you must first configure the :ref:`materials_csv`. For packaged builds please see the aforementioned link for the location, for standalone builds this file will be found here:
+
+::
+
+   +HoloOcean
+   +-- engine
+       +-- Content
+           +-- Config
+               + materials.csv
+       +-- etc.
+   +-- client
+   +-- etc.

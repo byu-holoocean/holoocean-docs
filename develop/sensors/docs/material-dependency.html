@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Publishing Sensor Data — HoloOcean 2.4.0 documentation</title>
+<title>Material Dependency — HoloOcean 2.4.0 documentation</title>
 <link href="../../_static/pygments.css?v=b86133f3" rel="stylesheet" type="text/css"/>
 <link href="../../_static/css/theme.css?v=19f00094" rel="stylesheet" type="text/css"/>
 <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
@@ -23,8 +23,8 @@
 <script src="../../_static/js/theme.js"></script>
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
-<link href="material-dependency.html" rel="next" title="Material Dependency"/>
-<link href="octree.html" rel="prev" title="Octree Generation"/>
+<link href="../sensors/singlebeam-sonar-sensor.html" rel="next" title="Single-Beam Sonar"/>
+<link href="publishing.html" rel="prev" title="Publishing Sensor Data"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -54,12 +54,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../sensors.html#using-sensors">Using Sensors</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sensor-config.html">Sensor Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="octree.html">Octree Generation</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Publishing Sensor Data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#publishing-data-using-ros2-bridge">Publishing Data Using ROS2 Bridge</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#publishing-data-using-lcm">Publishing Data Using LCM</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="material-dependency.html">Material Dependency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="publishing.html">Publishing Sensor Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Material Dependency</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../sensors.html#id1">HoloOcean Sensors</a></li>
@@ -100,64 +96,35 @@
 <ul class="wy-breadcrumbs">
 <li><a aria-label="Home" class="icon icon-home" href="../../index.html"></a></li>
 <li class="breadcrumb-item"><a href="../sensors.html">HoloOcean Sensors</a></li>
-<li class="breadcrumb-item active">Publishing Sensor Data</li>
+<li class="breadcrumb-item active">Material Dependency</li>
 <li class="wy-breadcrumbs-aside">
-<a href="../../_sources/sensors/docs/publishing.rst.txt" rel="nofollow"> View page source</a>
+<a href="../../_sources/sensors/docs/material-dependency.rst.txt" rel="nofollow"> View page source</a>
 </li>
 </ul>
 <hr/>
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div itemprop="articleBody">
-<section id="publishing-sensor-data">
-<h1>Publishing Sensor Data<a class="headerlink" href="#publishing-sensor-data" title="Link to this heading"></a></h1>
-<section id="publishing-data-using-ros2-bridge">
-<span id="ros"></span><h2>Publishing Data Using ROS2 Bridge<a class="headerlink" href="#publishing-data-using-ros2-bridge" title="Link to this heading"></a></h2>
-<p>ROS2 (Robot Operating System) is a popular middleware for robotics development. We have created
-the ROS2 Bridge package to allow users to connect ROS2 with other middleware systems, such as LCM
-and HoloOcean. This allows you to use ROS2 to control HoloOcean agents and publish sensor data to
-ROS2 topics.</p>
-<section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
-<p>Using the ROS2 Bridge requires downloading a separate package.
-For more information see the README on the repository: <a class="reference external" href="https://github.com/byu-holoocean/holoocean-ros">https://github.com/byu-holoocean/holoocean-ros</a></p>
-</section>
-</section>
-<section id="publishing-data-using-lcm">
-<span id="lcm"></span><h2>Publishing Data Using LCM<a class="headerlink" href="#publishing-data-using-lcm" title="Link to this heading"></a></h2>
-<p>HoloOcean supports publishing data to LCM (Lightweight Communications and Marshalling), a messaging
-system that is used to communicate between different processes. This allows you to publish sensor
-data to LCM channels, which can be used to communicate with other systems.</p>
-<p>LCM configuration happens in the <a class="reference internal" href="../../usage/scenarios.html#scenarios"><span class="std std-ref">scenario</span></a> file. LCM publishes data to a
-medium called the provider. This can be local, over the network, a log file, etc. This can be
-specified in the header of the scenario file. See <a class="reference external" href="https://lcm-proj.github.io/lcm/">here</a>
-for options on this. If no provider is specified, HoloOcean uses the default LCM udqm.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{Scenario Name}"</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">"world"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{world it is associated with}"</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">"lcm_provider"</span><span class="p">:</span><span class="w"> </span><span class="nt">"file:///home/lcm.log"</span>
-<span class="w">   </span><span class="nt">"agents"</span><span class="p">:[</span>
-<span class="w">      </span><span class="s2">"array of agent objects"</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="p">}</span>
+<section id="material-dependency">
+<span id="id1"></span><h1>Material Dependency<a class="headerlink" href="#material-dependency" title="Link to this heading"></a></h1>
+<p>Material dependency allows for different materials to “reflect sound” more or less. This works with the raycasting and GPU rendering sonars.</p>
+<p>In order to use this you must first configure the <a class="reference internal" href="../../packages/docs/package-structure.html#materials-csv"><span class="std std-ref">materials.csv</span></a>. For packaged builds please see the aforementioned link for the location, for standalone builds this file will be found here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">HoloOcean</span>
+<span class="o">+--</span> <span class="n">engine</span>
+    <span class="o">+--</span> <span class="n">Content</span>
+        <span class="o">+--</span> <span class="n">Config</span>
+            <span class="o">+</span> <span class="n">materials</span><span class="o">.</span><span class="n">csv</span>
+    <span class="o">+--</span> <span class="n">etc</span><span class="o">.</span>
+<span class="o">+--</span> <span class="n">client</span>
+<span class="o">+--</span> <span class="n">etc</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Once the provider is chosen, HoloOcean publishes each sensor individually. The lcm_channel is
-set in the sensor configuration. If no channel is specified, the sensor will not be published.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">"sensor_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RGBCamera"</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">"sensor_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FrontCamera"</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">"lcm_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAMERA"</span><span class="p">,</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
 </section>
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
-<a accesskey="p" class="btn btn-neutral float-left" href="octree.html" rel="prev" title="Octree Generation"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
-<a accesskey="n" class="btn btn-neutral float-right" href="material-dependency.html" rel="next" title="Material Dependency">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="publishing.html" rel="prev" title="Publishing Sensor Data"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="n" class="btn btn-neutral float-right" href="../sensors/singlebeam-sonar-sensor.html" rel="next" title="Single-Beam Sonar">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

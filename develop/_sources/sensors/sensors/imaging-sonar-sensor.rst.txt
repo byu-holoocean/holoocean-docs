@@ -13,7 +13,7 @@ Holoocean has three different imaging sonar sensor implementations:
 * :ref:`raycast_imaging_sonar`
 * :ref:`gpu_imaging_sonar`
 
-These implementations have different tradeoffs in accuracy, speed, and memory usage.
+These implementations have different tradeoffs in accuracy, speed, and memory usage. Both raycasting and GPU rendering can use HoloOcean's :ref:`material-dependency`.
 
 .. list-table::
    :header-rows: 1
@@ -303,3 +303,4 @@ The parameter is set in the configuration dictionary as shown below:
         }
 
     }
+

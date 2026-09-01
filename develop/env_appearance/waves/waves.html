@@ -155,25 +155,25 @@
 <p><strong>Sea State Config:</strong></p>
 <p>This config introduces FFT waves into the world which can then be modified with commands during simulation.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-<span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;waves&quot;</span><span class="p">,</span>
-<span class="s2">&quot;world&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenWater&quot;</span><span class="p">,</span>
-<span class="s2">&quot;main_agent&quot;</span><span class="p">:</span> <span class="s2">&quot;sv0&quot;</span><span class="p">,</span>
-<span class="s2">&quot;fft_waves&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sea_state&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="s2">"name"</span><span class="p">:</span> <span class="s2">"waves"</span><span class="p">,</span>
+<span class="s2">"world"</span><span class="p">:</span> <span class="s2">"OpenWater"</span><span class="p">,</span>
+<span class="s2">"main_agent"</span><span class="p">:</span> <span class="s2">"sv0"</span><span class="p">,</span>
+<span class="s2">"fft_waves"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"sea_state"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Wave Parameters Config:</strong></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;fft_waves&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;sea_state&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s2">&quot;wind_directionality&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
-        <span class="s2">&quot;wind_tighten&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
-        <span class="s2">&quot;wind_direction&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
-        <span class="s2">&quot;foam_threshold&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-        <span class="s2">&quot;wave_speed&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-        <span class="s2">&quot;boat_buoyancy&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;wave_force&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
-        <span class="s2">&quot;max_influence_depth&quot;</span><span class="p">:</span> <span class="mi">5</span>
+    <span class="s2">"fft_waves"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"sea_state"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"wind_directionality"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="s2">"wind_tighten"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="s2">"wind_direction"</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
+        <span class="s2">"foam_threshold"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s2">"wave_speed"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">"boat_buoyancy"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">"wave_force"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="s2">"max_influence_depth"</span><span class="p">:</span> <span class="mi">5</span>
     <span class="p">},</span>
 <span class="p">}</span>
 </pre></div>
@@ -186,15 +186,15 @@
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">fftwaves</span><span class="o">.</span><span class="n">fft_sea_state</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="n">fft_wave_scalers_config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;WindSpeed&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="s2">&quot;WaveSpeed&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;WindDirection&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
+    <span class="s2">"WindSpeed"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">"WaveSpeed"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"WindDirection"</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">env</span><span class="o">.</span><span class="n">fftwaves</span><span class="o">.</span><span class="n">fft_wave_scalars</span><span class="p">(</span><span class="n">fft_wave_scalers_config</span><span class="p">)</span>
 
 <span class="n">fft_wave_cascades_config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;WindDirectionality&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="s2">&quot;WindTighten&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="s2">"WindDirectionality"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s2">"WindTighten"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="p">}</span>
 <span class="n">env</span><span class="o">.</span><span class="n">fftwaves</span><span class="o">.</span><span class="n">fft_wave_cascades</span><span class="p">(</span><span class="n">fft_wave_cascades_config</span><span class="p">)</span>
 </pre></div>
@@ -254,8 +254,8 @@ your world you must update to worlds to an equal or greater version than 2.4.0.<
 <h2>Buoyancy Configuration<a class="headerlink" href="#buoyancy-configuration" title="Link to this heading"></a></h2>
 <p>When using FFT waves, you may still want to use the old buoyancy system so that you can have the visuals of large FFT waves and calm water for underwater agents. This can be done by adding the buoyancy config.
 Without this config option, the buoyancy will default to the mesh based system compatible with FFT waves.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;fft_waves&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sea_state&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
-<span class="s2">&quot;buoyancy&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="s2">"fft_waves"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"sea_state"</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+<span class="s2">"buoyancy"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
 </pre></div>
 </div>
 <dl class="simple">

@@ -137,23 +137,23 @@
 <section id="programmatically">
 <h3>Programmatically<a class="headerlink" href="#programmatically" title="Link to this heading"></a></h3>
 <p>Below is an example of using the water color command to change the water to red, green, or blue:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
       <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s1">&#39;r&#39;</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">'r'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
                   <span class="n">env</span><span class="o">.</span><span class="n">water_color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="k">if</span> <span class="s1">&#39;g&#39;</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">'g'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
                   <span class="n">env</span><span class="o">.</span><span class="n">water_color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="k">if</span> <span class="s1">&#39;b&#39;</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">'b'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
                   <span class="n">env</span><span class="o">.</span><span class="n">water_color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Another example to set the custom colors shown in the two pictures above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
       <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s1">&#39;u&#39;</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">'u'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
                   <span class="n">env</span><span class="o">.</span><span class="n">water_color</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span> <span class="c1"># first picture</span>
 
-            <span class="k">if</span> <span class="s1">&#39;i&#39;</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">'i'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
                   <span class="n">env</span><span class="o">.</span><span class="n">water_color</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="c1"># second picture</span>
 </pre></div>
 </div>
@@ -179,7 +179,7 @@
 <section id="id2">
 <h3>Programmatically<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>Here is an example of using the water fog command to achieve the visibility level shown in the middle of the image above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
       <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">env</span><span class="o">.</span><span class="n">water_fog</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span> <span class="c1"># sets the fog density to 0.8</span>
 </pre></div>

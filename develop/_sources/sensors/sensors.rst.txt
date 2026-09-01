@@ -18,6 +18,7 @@ Using Sensors
    docs/sensor-config
    docs/octree
    docs/publishing
+   docs/material-dependency
 
 
 HoloOcean Sensors

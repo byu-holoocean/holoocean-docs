@@ -29,7 +29,7 @@ Package Structure
 =================
 
 The package.zip contains a ``config.json`` file at the root of the archive, as
-well as all of the scenarios for every world included in the package. The
+well as all of the scenarios for every world included in the package. The 
 scenario files must follow the format ``{WorldName}-{ScenarioName}.json``.
 
 ::
@@ -78,12 +78,13 @@ occur before starting the simulation, to work around world idiosyncrasies.
 The ``env_min``/``env_max`` attributes are used to set the upper/lower bounds 
 of the environment, used when an octree is made for a sonar sensor.
 
+.. _materials_csv:
 materials.csv
 =============
 
 .. warning::
 
-   In HoloOcean 2.0-2.3, sonar material dependency is temporarily unavailable.
+   Material dependency is only available for raycasting and GPU rendering sonars.
 
 This file contains acoustic properties of the materials found in the environments, 
 used for computation of the sonar images. Below is the format the config file is 

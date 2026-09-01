@@ -11,7 +11,7 @@ Holoocean has three different single-beam sonar sensor implementations:
 
 * :ref:`gpu_singlebeam_sonar`
 
-These implementations have different tradeoffs in accuracy, speed, and memory usage.
+These implementations have different tradeoffs in accuracy, speed, and memory usage. Both raycasting and GPU rendering can use HoloOcean's :ref:`material-dependency`.
 
 .. list-table::
    :header-rows: 1
@@ -153,7 +153,7 @@ GPU Single-Beam Sonar
 ---------------------
 
 Simulates a single-beam sonar using GPU rendering. Returns a 1D array of return strength at each range bin.
-Utilizes the GPU rendering pipeline, for faster simulation speed.
+Utilizes the GPU rendering pipeline for faster simulation speed.
 
 See :py:class:`~holoocean.sensors.GPUSinglebeamSonar` for the python API.
 

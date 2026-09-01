@@ -145,13 +145,13 @@ for simulating different air clarity conditions.</p>
 <section id="programmatically">
 <h3>Programmatically<a class="headerlink" href="#programmatically" title="Link to this heading"></a></h3>
 <p>Here is an example of using the air fog command to achieve the visibility level shown in the middle of the image above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
       <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">env</span><span class="o">.</span><span class="n">air_fog</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># sets the fog density to 1</span>
 </pre></div>
 </div>
 <p>Additionally, you can modify fog depth and color.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
       <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">env</span><span class="o">.</span><span class="n">air_fog</span><span class="p">(</span>
                   <span class="mf">0.8</span><span class="p">,</span>

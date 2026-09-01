@@ -25,7 +25,7 @@
 <link href="../../genindex.html" rel="index" title="Index"/>
 <link href="../../search.html" rel="search" title="Search"/>
 <link href="sidescan-sonar-sensor.html" rel="next" title="Sidescan Sonar"/>
-<link href="../docs/publishing.html" rel="prev" title="Publishing Sensor Data"/>
+<link href="../docs/material-dependency.html" rel="prev" title="Material Dependency"/>
 </head>
 <body class="wy-body-for-nav">
 <div class="wy-grid-for-nav">
@@ -127,7 +127,7 @@
 </li>
 <li><p><a class="reference internal" href="#gpu-singlebeam-sonar"><span class="std std-ref">GPU Single-Beam Sonar</span></a></p></li>
 </ul>
-<p>These implementations have different tradeoffs in accuracy, speed, and memory usage.</p>
+<p>These implementations have different tradeoffs in accuracy, speed, and memory usage. Both raycasting and GPU rendering can use HoloOcean’s <a class="reference internal" href="../docs/material-dependency.html#material-dependency"><span class="std std-ref">Material Dependency</span></a>.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sensor</p></th>
@@ -257,7 +257,7 @@ strength at each range bin, and the top N contributing labels strength and label
 <section id="gpu-single-beam-sonar">
 <span id="gpu-singlebeam-sonar"></span><h2>GPU Single-Beam Sonar<a class="headerlink" href="#gpu-single-beam-sonar" title="Link to this heading"></a></h2>
 <p>Simulates a single-beam sonar using GPU rendering. Returns a 1D array of return strength at each range bin.
-Utilizes the GPU rendering pipeline, for faster simulation speed.</p>
+Utilizes the GPU rendering pipeline for faster simulation speed.</p>
 <p>See <a class="reference internal" href="../../holoocean/sensors.html#holoocean.sensors.GPUSinglebeamSonar" title="holoocean.sensors.GPUSinglebeamSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPUSinglebeamSonar</span></code></a> for the python API.</p>
 <p>Example sensor definition:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -378,7 +378,7 @@ The options are listed in the following code block. These numbers are generated 
 </div>
 </div>
 <footer><div aria-label="Footer" class="rst-footer-buttons" role="navigation">
-<a accesskey="p" class="btn btn-neutral float-left" href="../docs/publishing.html" rel="prev" title="Publishing Sensor Data"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
+<a accesskey="p" class="btn btn-neutral float-left" href="../docs/material-dependency.html" rel="prev" title="Material Dependency"><span aria-hidden="true" class="fa fa-arrow-circle-left"></span> Previous</a>
 <a accesskey="n" class="btn btn-neutral float-right" href="sidescan-sonar-sensor.html" rel="next" title="Sidescan Sonar">Next <span aria-hidden="true" class="fa fa-arrow-circle-right"></span></a>
 </div>
 <hr/>

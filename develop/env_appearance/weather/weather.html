@@ -136,10 +136,10 @@ Weather is purely a visual effect; it does not impact vehicle movement or sensor
 <section id="in-a-scenario">
 <h4>In a scenario<a class="headerlink" href="#in-a-scenario" title="Link to this heading"></a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;weather_test&quot;</span><span class="p">,</span>
+   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"weather_test"</span><span class="p">,</span>
    <span class="o">...</span>
-   <span class="s2">&quot;weather&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">0</span>
+   <span class="s2">"weather"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="mi">0</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -147,7 +147,7 @@ Weather is purely a visual effect; it does not impact vehicle movement or sensor
 </section>
 <section id="programmatically">
 <h4>Programmatically<a class="headerlink" href="#programmatically" title="Link to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
       <span class="n">env</span><span class="o">.</span><span class="n">change_weather</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
       <span class="o">...</span>
@@ -195,7 +195,7 @@ Weather is purely a visual effect; it does not impact vehicle movement or sensor
 </section>
 <section id="id1">
 <h4>Programmatically<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
       <span class="n">env</span><span class="o">.</span><span class="n">change_weather</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Set weather to rain here or in the config</span>
       <span class="n">env</span><span class="o">.</span><span class="n">set_rain_parameters</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>  <span class="c1"># Custom rain behavior</span>

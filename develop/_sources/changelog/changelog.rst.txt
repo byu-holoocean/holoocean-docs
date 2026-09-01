@@ -14,7 +14,7 @@ Changelog
 
 HoloOcean 2.4.0
 ===============
-*7/8/2026*
+*9/4/2026*
 
 New Features
 ------------
@@ -30,6 +30,7 @@ Changes
 - Updated the Viewport socket for the CougUV and SurfaceVessel
 - Added a CameraSocket back to CougUV
 - Fossen updates
+- Updated documentation for material dependency
 
 Bug Fixes
 ---------

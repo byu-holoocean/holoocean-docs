@@ -8,7 +8,7 @@ Holoocean has three different sidescan sonar sensor implementations:
 * :ref:`raycast_sidescan_sonar`
 * :ref:`gpu_sidescan_sonar`
 
-These implementations have different tradeoffs in accuracy, speed, and memory usage.
+These implementations have different tradeoffs in accuracy, speed, and memory usage. Both raycasting and GPU rendering can use HoloOcean's :ref:`material-dependency`.
 
 .. list-table::
    :header-rows: 1
