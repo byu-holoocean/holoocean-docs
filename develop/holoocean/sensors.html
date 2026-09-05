@@ -1114,6 +1114,15 @@ the options in the following sections.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
 </ul>
+<p><strong>Startup warm-up</strong>: unlike raycast-based sensors, this sensor’s first reading after being
+added (via the initial scenario or a runtime <code class="docutils literal notranslate"><span class="pre">add_sensors()</span></code>) comes back as zeros rather
+than real data (observed: exactly 1 tick), not garbage or an error. The underlying cause is
+ordinary for a capture-based sensor, not a bug to route around: <code class="docutils literal notranslate"><span class="pre">TickSensorComponent</span></code>
+requests a scene capture and reads that capture’s render target in the <em>same</em> tick, but the
+capture itself completes on the render thread, so the read sees last tick’s content – nothing,
+on the very first tick. If your code ticks once right after adding this sensor and expects a
+populated reading immediately, discard that first tick (or wait for the first non-zero read)
+instead of treating an all-zero first capture as an error.</p>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -1208,6 +1217,16 @@ the options in the following sections.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
 </ul>
+<p><strong>Startup warm-up</strong>: unlike raycast-based sensors, a GPU sonar’s first reading or two after
+being added (via the initial scenario or a runtime <code class="docutils literal notranslate"><span class="pre">add_sensors()</span></code>) may come back as zeros
+rather than real data, while its GPU render/readback pipeline catches up. This isn’t garbage
+data or an error – it’s a genuine one-or-two-tick latency (observed: ~2 ticks for this sensor
+at <code class="docutils literal notranslate"><span class="pre">Hz=10</span></code>/<code class="docutils literal notranslate"><span class="pre">ticks_per_sec=30</span></code>), not something an application can assume away. If your code
+ticks once right after adding this sensor and expects a populated reading immediately, expect
+to see zeros for the first tick or two instead; discard them or wait for the first non-zero
+read before treating the data as real. The exact tick count isn’t a stable contract – it has
+already shifted once (a hard-GPU-fence fix removed an existing readback race, at the cost of a
+one-tick-longer warm-up) and may shift again with future engine changes.</p>
 <p><strong>Attributes:</strong></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>

@@ -147,6 +147,21 @@ The same UUID should be passed to the world through a command line flag. Default
 <span class="sig-name descname"><span class="pre">malloc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.holooceanclient.HoloOceanClient.malloc" title="Link to this definition"></a></dt>
 <dd><p>Allocates a block of shared memory, and returns a numpy array whose data corresponds
 with that block.</p>
+<p>NOTE: <cite>key</cite> should never be reused for a buffer of a different size/dtype while the
+previous one is still in use. Both this client and the engine independently <cite>shm_open</cite> /
+<cite>ftruncate</cite> / <cite>mmap</cite> the same named object; reusing a key at a different size resizes that
+object in place, and there’s no synchronization to guarantee the other side has stopped
+using the old-sized mapping first – whichever side touches it during the resize can
+SIGBUS. <cite>Agent.add_sensors()</cite> avoids this by giving a sensor a fresh, never-before-used
+engine-facing name whenever the buffer shape/dtype it requests changes, and only reusing
+its previous name when the shape/dtype is unchanged – so <cite>key</cite> here is never reused
+across an actual size change in practice, and this function itself needs no change to stay
+safe. Reuse-when-unchanged also keeps memory bounded: nothing on either side frees a
+buffer once allocated (see <cite>total_bytes_allocated</cite> above, and <cite>UHolodeckServer::Free()</cite> on
+the engine side, which frees the engine’s own copy on <cite>RemoveSensorCommand</cite> but has no
+client-side equivalent – this client’s copy of a buffer isn’t released until the whole
+process exits), so a key that’s actually new every time would leak a full buffer’s worth
+of memory on every single sensor add.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

@@ -772,6 +772,39 @@ scheme.</p>
 <span class="sig-name descname"><span class="pre">add_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensor_defs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.agents.HoloOceanAgent.add_sensors" title="Link to this definition"></a></dt>
 <dd><p>Adds a sensor to a particular agent object and attaches an instance of the sensor to the
 agent in the world.</p>
+<p>NOTE on shared-memory safety: a sensor added here that reuses the same <cite>sensor_name</cite> as
+a <em>previous</em>, already-removed sensor – at a different buffer size (shape/dtype) – is a
+real cross-process race with the C++ engine: both this client and the engine independently
+reuse-and-resize the same underlying shared-memory object for a repeated name, with no
+acknowledgement that the other side has actually stopped using the old-sized mapping
+first, which can SIGBUS whichever side is still touching it when the resize lands.</p>
+<p>Fixed here, entirely client-side: every newly-created sensor (not one whose
+<cite>existing=True</cite>, i.e. already present in the world) gets a unique engine-facing name the
+first time it’s added, or the next time it’s re-added with a different resulting buffer
+shape/dtype than the last add under that public name – so the same underlying
+shared-memory object is never reused across an actual size change.
+<cite>self.sensors</cite>/<cite>self.agent_state_dict</cite> (and therefore the state dict <cite>tick()</cite> returns)
+still key by the caller-supplied <cite>sensor_name</cite> exactly as before; only the engine-facing
+name (sent in <cite>AddSensorCommand</cite>, used for this sensor’s own shared-memory buffer key, and
+later for <cite>RemoveSensorCommand</cite> – see <cite>remove_sensors()</cite>) can differ from it. Existing
+callers see no behavior change.</p>
+<p>A re-add whose buffer would be the same shape/dtype reuses the previous wire name instead
+of always minting a new one, because nothing frees a sensor’s shared-memory buffer once
+allocated (see <cite>UHolodeckServer::Free()</cite>, called from <cite>RemoveSensorCommand</cite>, on the engine
+side – there’s no equivalent on this client’s side, and the engine’s own copy is only
+freed on an explicit removal, not on every add): giving every single add a brand-new name
+would leak a full buffer on every add, which adds up quickly for large sensors re-added
+often. Comparing the <em>resulting shape/dtype</em> rather than the raw <cite>config</cite> dict matters
+because config fields can legitimately vary between adds without changing the buffer size
+at all (an imaging sonar’s <cite>RangeMax</cite>, for instance) – comparing the dict directly would
+defeat the reuse almost every time. Reusing the wire name whenever shape/dtype is
+unchanged hits <cite>Malloc()</cite>’s existing no-op/reuse branch, the same path any sensor whose
+config never changes has always safely used, and only mints (and therefore only leaks) a
+new buffer on an actual size change. Determining the shape/dtype ahead of the real add
+requires constructing the sensor once already (see <cite>_probe_shape_dtype()</cite>); this isn’t an
+independent-derivation risk, since it constructs the <em>same</em> sensor class via the <em>same</em>
+code path <cite>SensorFactory.build_sensor()</cite> uses for the real add, just against a throwaway
+client, so there’s no separate/divergent computation that could disagree with the real one.</p>
 <dl class="simple">
 <dt>:param sensor_defs (<a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a> or:          list of <a class="reference internal" href="sensors.html#holoocean.sensors.HoloOceanSensor" title="holoocean.sensors.HoloOceanSensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanSensor</span></code></a>):</dt><dd><p>Sensors to add to the agent.</p>
 </dd>
