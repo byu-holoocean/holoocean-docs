@@ -443,7 +443,7 @@ elevation, r range, and d depth in water,</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor. If not given, they are numbered sequentially.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor, scoped to the sensor’s own <a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment" title="holoocean.environments.HoloOceanEnvironment"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code></a>. If not given, ids are assigned sequentially in declaration order. If given, it must be unique among sensors of this type in the same environment – a duplicate raises <a class="reference internal" href="exceptions.html#holoocean.exceptions.HoloOceanConfigurationException" title="holoocean.exceptions.HoloOceanConfigurationException"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanConfigurationException</span></code></a>. Mixing explicit and auto-assigned ids in one scenario is discouraged: give every sensor of this type an explicit, unique id, or omit id on all of them.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CheckVisible</span></code>: Whether to check for linear line of sight to vehicle when verify message will be received. Used when sending data. Defaults to false.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MaxDistance</span></code>: Max Distance in meters of AcousticBeacon. Used when sending data. Defaults to no max distance.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DistanceSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">DistanceCov</span></code>: Determines the standard deviation/covariance of the noise on MaxDistance. Must be scalar value. (default 0 =&gt; no noise)</p></li>
@@ -1189,6 +1189,12 @@ the options in the following sections.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">WaterSpeedSound</span></code>: Speed of sound in water in m/s. Defaults to 1480.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IgnorePlants</span></code>: Whether or not the sonar will ignore plants. Defaults to False.</p></li>
 </ul>
+<p><strong>Startup warm-up</strong>: this sensor shares <a class="reference internal" href="#holoocean.sensors.GPUImagingSonar" title="holoocean.sensors.GPUImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPUImagingSonar</span></code></a>’s tick/capture
+implementation (it does not override it), so the same warm-up applies – unlike
+raycast-based sensors, its first reading after being added (via the initial scenario or a
+runtime <code class="docutils literal notranslate"><span class="pre">add_sensors()</span></code>) comes back as zeros rather than real data (observed: exactly 1
+tick), not garbage or an error. See <a class="reference internal" href="#holoocean.sensors.GPUImagingSonar" title="holoocean.sensors.GPUImagingSonar"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPUImagingSonar</span></code></a>’s own “Startup warm-up”
+note for the underlying mechanism.</p>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.sensors.GPUSidescanSonar">
@@ -1672,7 +1678,7 @@ following options:</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">configuration</span></code> block (see <a class="reference internal" href="../sensors/docs/sensor-config.html#configuration-block"><span class="std std-ref">Configuration Block</span></a>) accepts the
 following options:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor. If not given, they are numbered sequentially.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Id of this sensor, scoped to the sensor’s own <a class="reference internal" href="environments.html#holoocean.environments.HoloOceanEnvironment" title="holoocean.environments.HoloOceanEnvironment"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanEnvironment</span></code></a>. If not given, ids are assigned sequentially in declaration order. If given, it must be unique among sensors of this type in the same environment – a duplicate raises <a class="reference internal" href="exceptions.html#holoocean.exceptions.HoloOceanConfigurationException" title="holoocean.exceptions.HoloOceanConfigurationException"><code class="xref py py-class docutils literal notranslate"><span class="pre">HoloOceanConfigurationException</span></code></a>. Mixing explicit and auto-assigned ids in one scenario is discouraged: give every sensor of this type an explicit, unique id, or omit id on all of them.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MaxDistance</span></code>: Max Distance in meters of OpticalModem. Used when sending data. (default 50)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DistanceSigma</span></code>/<code class="docutils literal notranslate"><span class="pre">DistanceCov</span></code>: Determines the standard deviation/covariance of the noise on MaxDistance. Must be scalar value. (default 0 =&gt; no noise)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">LaserAngle</span></code>: Angle of lasers from origin. Measured in degrees. Used when sending data. (default 60)</p></li>
