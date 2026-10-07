@@ -22,7 +22,7 @@ details on creating levels.
 .. note::
     
     Because the other packaged worlds distributed with HoloOcean contain purchased assets, they are 
-    only available to official BYU FRoStLab members. Other users will have to develop their own 
+    only available to official BYU FROST Lab members. Other users will have to develop their own
     worlds in the HoloOcean repo.
 
 Cooking Content
