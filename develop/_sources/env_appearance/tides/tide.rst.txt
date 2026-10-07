@@ -1,56 +1,124 @@
 Tide Controller
 ==================
 
-
-HoloOcean worlds have tide settings that can be configured, either with the scenario or real time with commands during simulation.
+HoloOcean worlds support tidal simulation that can be configured either statically within scenario JSON or dynamically at runtime using client commands.
 
 .. image:: ../images/tidesinaction.gif
 
 
-Tide Options
-~~~~~~~~~~~~~~~
+Tide Overview
+~~~~~~~~~~~~~
 
-Holoocean worlds have a tide configuration and command. This allows you to set either a consistent tide cycle 
-in your world or use env.tide() commands to set or adjust the tide to whatever you want at any point. With the command,
-you can either set the tide water level by setting the absolute parameter to be True, or you can offset the current tide level
-by setting absolute to be False.
+All tide configurations across HoloOcean are unified under the single ``tide`` parameter in scenarios and are specified in **meters**.
 
-In a scenario 
-^^^^^^^^^^^^^
-Amplitude is in cm and frequency is in ticks.
+You can:
+
+- Set a static water level or relative offset
+- Define a dynamic sinusoidal tidal oscillation
+- Dynamically alter the water level or configure tidal cycles mid-simulation
+
+
+Configuring in a Scenario
+^^^^^^^^^^^^^^^^^^^^^^^^^
+All tide configurations in scenario JSON belong under the ``"tide"`` key.
+
+Static Water Level or Offset
+""""""""""""""""""""""""""""
+Sets a static initial water level or applies an offset (in **meters**).
 
 .. code-block:: python
 
-   config = {  
-      "tide_cycle":{
-            "active": True,
-            "amplitude": ###,
-            "frequency": ###,
-         },
-      }
+   # Set absolute water level to 2.0 meters
+   config = { "tide": 2.0 }
 
-Programmatically
-^^^^^^^^^^^^^^^^
-Usage of commands.
+   # Or specify as a list [height_m, absolute]:
+   # absolute: 1 = absolute water level, 0 = relative offset
+   config = { "tide": [2.0, 1] }
+
+   # Or specify with explicit dictionary fields:
+   config = {
+      "tide": {
+         "height": 2.0,
+         "absolute": 1  # 1 = absolute water level, 0 = relative offset
+      }
+   }
+
+Dynamic Tide Cycle
+""""""""""""""""""
+A periodic tide oscillation defined in the scenario. Amplitude is specified in **meters** and period in simulation **ticks** (the time for one full oscillation).
+
+.. code-block:: python
+
+   config = {
+      "tide": {
+         "active": True,
+         "amplitude": 1.5,      # Tidal amplitude in meters (+/- 1.5m)
+         "period": 2000,        # Time for one full oscillation, in simulation ticks
+      }
+   }
+
+   # Example of both static offset and dynamic cycle
+   config = {
+      "tide": {
+         "height": 1.0,         # Base height to add cycle amplitude to
+         "absolute": 1,         # Whether height is absolute or relative
+         "active": True,        # Enable tide cycle
+         "amplitude": 1.5,      # Tidal amplitude in meters (+/- 1.5m)
+         "period": 2000,        # Time for one full oscillation, in simulation ticks
+      }
+   }
+
+
+Programmatic Control
+^^^^^^^^^^^^^^^^^^^
+
+Using ``env.tide()``
+"""""""""""""""""""""""""""""""""""""""""""""
+The ``env.tide()`` method allows you to change the water level or configure a cycle dynamically:
+
+- Pass a float to adjust or set water level:
+  - Set ``absolute=1`` (or ``True``) to set an **absolute water level** in meters.
+  - Set ``absolute=0`` (or ``False``) to apply a **relative offset** in meters.
+- Pass a dictionary to configure a dynamic cycle or static level.
 
 .. code-block:: python
 
    env = holoocean.make("...")
-   #This would set the tide to 1 meter
-   env.tide(1, True)
-   #This would adjust the tide by -2 meters relative to its current position - setting the tide to -1 meter 
-   env.tide(-2, False)
 
-Example of pushing a button to raise tide by 10cm.
+   # Set the water level to 1.0 meter (absolute)
+   env.tide(1.0) # absolute defaults to 1 (absolute)
+   env.tide(1.0, absolute=1)
+
+   # Lower the water level by 2.0 meters relative to current water level
+   env.tide(-2.0, absolute=0)
+
+   # Configure a dynamic sinusoidal tide cycle
+   env.tide({
+      "active": True,
+      "amplitude": 2.5,
+      "period": 2000
+   })
+
+Using ``env.tides`` (TideController)
+""""""""""""""""""""""""""""""""""""
+You can also interact directly with the ``TideController`` instance using the same structure as ``env.tide()``:
 
 .. code-block:: python
 
-   with holoocean.make("...") as env:
-      while True:
-         if 't' in pressed_keys:
-            #Raise tide by 10cm
-            env.tide(0.1, False)
+   # Set static tide water levels
+   env.tides.set_tide(1.0, absolute=1)
+   
+   # Configure dynamic tide cycle parameters
+   env.tides.set_tide({
+      "active": True,
+      "amplitude": 2.5,
+      "period": 2500
+   })
+
+   # Or configure individual cycle properties
+   env.tides.set_amplitude(2.0)   # meters
+   env.tides.set_period(3000)     # ticks
+   env.tides.set_active(True)
 
 .. note::
-      For more information on how to use this command, please refer to the API Documentation: 
-      :py:class:`~holoocean.command.TideCommand`.
+   For more information on the underlying client command, please refer to :py:class:`~holoocean.command.TideCommand`.

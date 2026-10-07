@@ -62,7 +62,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#compiling">Compiling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#launching-game-live">Launching Game Live</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#code-formatting">Code Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-formatting">Code Formatting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c">C++</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="env.html">Developing Environments</a></li>
@@ -288,13 +292,32 @@ for more information on logging in Unreal Engine.</p>
 <section id="code-formatting">
 <h2>Code Formatting<a class="headerlink" href="#code-formatting" title="Link to this heading"></a></h2>
 <p>If you are going to pull request changes to the C++ or Python code, please ensure that your code is properly
-formatted.
-Python code should be formatted using <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a> and C++ code should be
-formatted using the provided clang-format configuration, based on the UE style guide.
-To format with c++, you can run the following command from engine/ue5-clang-format-file:</p>
+formatted.</p>
+<section id="python">
+<h3>Python<a class="headerlink" href="#python" title="Link to this heading"></a></h3>
+<p>Python code should be formatted using <a class="reference external" href="https://docs.astral.sh/ruff/">ruff</a>.
+To run the formatting, install ruff into your python environment (our formatting checker uses version 0.15.13):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ruff</span><span class="o">==</span><span class="m">0</span>.15.13
+</pre></div>
+</div>
+<p>and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ruff<span class="w"> </span>format
+</pre></div>
+</div>
+</section>
+<section id="c">
+<h3>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h3>
+<p>C++ code should be formatted using the provided clang-format configuration, based on the UE style guide.
+To format the C++ code, run the following command from engine/ue5-clang-format-file:</p>
+<p>Windows (PowerShell):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get-ChildItem -Path ../Source -Recurse -Include *.h,*.cpp | ForEach-Object {clang-format "-style=file:.clang-format" -i $_.FullName}
+</pre></div>
+</div>
+<p>Linux (bash):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>../Source<span class="w"> </span>-iname<span class="w"> </span><span class="s2">"*.h"</span><span class="w"> </span>-o<span class="w"> </span>-iname<span class="w"> </span><span class="s2">"*.cpp"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>clang-format<span class="w"> </span>-style<span class="o">=</span>file<span class="w"> </span>-i
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 </div>

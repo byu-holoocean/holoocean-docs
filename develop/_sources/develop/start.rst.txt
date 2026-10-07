@@ -193,10 +193,37 @@ Code Formatting
 ===============
 If you are going to pull request changes to the C++ or Python code, please ensure that your code is properly
 formatted.
-Python code should be formatted using `ruff <https://docs.astral.sh/ruff/>`_ and C++ code should be
-formatted using the provided clang-format configuration, based on the UE style guide.
-To format with c++, you can run the following command from engine/ue5-clang-format-file:
+
+Python
+------
+
+Python code should be formatted using `ruff <https://docs.astral.sh/ruff/>`_. 
+To run the formatting, install ruff into your python environment (our formatting checker uses version 0.15.13):
 
 .. code:: bash
 
-      find ../Source -iname "*.h" -o -iname "*.cpp" | xargs clang-format -style=file -i
+   pip install ruff==0.15.13
+
+and run the following command:
+
+.. code:: bash
+
+   ruff format
+
+C++
+---
+
+C++ code should be formatted using the provided clang-format configuration, based on the UE style guide.
+To format the C++ code, run the following command from engine/ue5-clang-format-file:
+
+Windows (PowerShell):
+
+.. code::
+
+   Get-ChildItem -Path ../Source -Recurse -Include *.h,*.cpp | ForEach-Object {clang-format "-style=file:.clang-format" -i $_.FullName}
+
+Linux (bash):
+
+.. code:: bash
+
+   find ../Source -iname "*.h" -o -iname "*.cpp" | xargs clang-format -style=file -i

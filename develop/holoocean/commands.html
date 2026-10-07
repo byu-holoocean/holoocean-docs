@@ -246,7 +246,7 @@ worry about these.</p>
 <td><p>Move the viewport camera (agent follower)</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.command.TideCommand" title="holoocean.command.TideCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TideCommand</span></code></a>(adjustment, absolute)</p></td>
-<td><p>Changes the water level in the current world.</p></td>
+<td><p>Sets the water surface to an absolute height, or offsets it by a relative amount, in meters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.command.TurnOffFlashlightCommand" title="holoocean.command.TurnOffFlashlightCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TurnOffFlashlightCommand</span></code></a>(flashlight_name)</p></td>
 <td><p>Turns off the vehicle's flashlight.</p></td>
@@ -847,12 +847,18 @@ before this will have any visible effect.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="holoocean.command.TideCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.command.</span></span><span class="sig-name descname"><span class="pre">TideCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.command.TideCommand" title="Link to this definition"></a></dt>
-<dd><p>Changes the water level in the current world.</p>
+<dd><p>Sets the water surface to an absolute height, or offsets it by a relative amount, in meters.
+For dynamic tide cycles, this command is sent once per tick with the absolute height for
+that tick.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">TideController</span></code> always resolves the desired change to an absolute
+height client-side and sends it with <code class="docutils literal notranslate"><span class="pre">absolute=True</span></code>, so the relative path is not exercised
+by the packaged client today. It’s exposed here for future/direct use (e.g. a lower-level
+caller that wants to nudge the tide without first querying the current water level).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>adjustment</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The amount in meters you want to adjust the water level by or the level you want to set the water at.</p></li>
-<li><p><strong>absolute</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – True if you want to set a new surface level and False if you want to adjust the tides by an offset.</p></li>
+<li><p><strong>adjustment</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – The water level to set, in meters, if absolute; otherwise the amount in meters to adjust it by.</p></li>
+<li><p><strong>absolute</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – True to set an absolute surface level, False to apply a relative offset.</p></li>
 </ul>
 </dd>
 </dl>

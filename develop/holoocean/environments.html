@@ -107,6 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.step"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.step()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.tick()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.tide()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide_cycle"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.tide_cycle</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_off_flashlight"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.turn_off_flashlight()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_on_flashlight"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.turn_on_flashlight()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.water_color"><code class="docutils literal notranslate"><span class="pre">HoloOceanEnvironment.water_color()</span></code></a></li>
@@ -309,8 +310,8 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish, tick_clock])</p></td>
 <td><p>Ticks the environment once.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide" title="holoocean.environments.HoloOceanEnvironment.tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tide</span></code></a>(adjustment[, choice])</p></td>
-<td><p>Changes the water level.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide" title="holoocean.environments.HoloOceanEnvironment.tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tide</span></code></a>(adjustment[, absolute, choice])</p></td>
+<td><p>Changes the water level or configures dynamic tide cycling.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_off_flashlight" title="holoocean.environments.HoloOceanEnvironment.turn_off_flashlight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_off_flashlight</span></code></a>(flashlight_name)</p></td>
 <td><p>Turns off the vehicle's flashlight.</p></td>
@@ -346,6 +347,9 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.modems_id" title="holoocean.environments.HoloOceanEnvironment.modems_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modems_id</span></code></a></p></td>
 <td><p>Gets all ids of OpticalModemSensor in the environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide_cycle" title="holoocean.environments.HoloOceanEnvironment.tide_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tide_cycle</span></code></a></p></td>
+<td><p>Deprecated alias for <code class="xref py py-attr docutils literal notranslate"><span class="pre">tides</span></code>, kept for backwards compatibility with the pre-revamp tide system, which exposed the <code class="docutils literal notranslate"><span class="pre">TideController</span></code> under this name.</p></td>
 </tr>
 </tbody>
 </table>
@@ -962,16 +966,24 @@ terminal sensors. Reward and terminals can also be gotten through <a class="refe
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.tide">
-<span class="sig-name descname"><span class="pre">tide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tide" title="Link to this definition"></a></dt>
-<dd><p>Changes the water level.</p>
+<span class="sig-name descname"><span class="pre">tide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tide" title="Link to this definition"></a></dt>
+<dd><p>Changes the water level or configures dynamic tide cycling.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>adjustment</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Any positive/negative number that you want to set the water level to in cm.</p></li>
-<li><p><strong>choice</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Allows for a choice to set the water level (1) or to adjust the water level (0), defaults to seting the water level.</p></li>
+<li><p><strong>adjustment</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – Water level or offset in meters,
+or dictionary of tide configuration (static level and/or dynamic cycle).</p></li>
+<li><p><strong>absolute</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – 1 (True) to set absolute water level, 0 (False) to set offset from current level.</p></li>
+<li><p><strong>choice</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – Deprecated alias for <code class="docutils literal notranslate"><span class="pre">absolute</span></code>, kept for backwards compatibility.</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.tide_cycle">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tide_cycle</span></span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tide_cycle" title="Link to this definition"></a></dt>
+<dd><p>Deprecated alias for <code class="xref py py-attr docutils literal notranslate"><span class="pre">tides</span></code>, kept for backwards compatibility with the
+pre-revamp tide system, which exposed the <code class="docutils literal notranslate"><span class="pre">TideController</span></code> under this name.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.turn_off_flashlight">
