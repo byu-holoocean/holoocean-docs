@@ -118,21 +118,24 @@ coordinates for HoloOcean levels, please refer to the <a class="reference intern
 <section id="coordinate-system">
 <span id="id1"></span><h2>Coordinate System<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
 <p>Unreal Engine uses a left-handed coordinate system by default. However, to keep with general robotics
-conventions, we use a right-handed coordinate system, with positive <code class="docutils literal notranslate"><span class="pre">z</span></code> being up.</p>
-<p>Locations and translations in HoloOcean worlds are specified as <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> where:</p>
+conventions, HoloOcean uses a right-handed coordinate system, with positive <code class="docutils literal notranslate"><span class="pre">z</span></code> being up.</p>
+<p>Locations and translations in HoloOcean are specified in right-handed coordinates as <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> where:</p>
 <ul class="simple">
 <li><p>Positive <code class="docutils literal notranslate"><span class="pre">x</span></code> is <strong>forward</strong></p></li>
 <li><p>Positive <code class="docutils literal notranslate"><span class="pre">y</span></code> is <strong>left</strong></p></li>
 <li><p>Positive <code class="docutils literal notranslate"><span class="pre">z</span></code> is <strong>up</strong></p></li>
 </ul>
-<p>Remember that the units for <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> are in meters (Unreal Engine defaults to centimeters).</p>
+<p>HoloOcean handles the conversion of these right-handed coordinates to left-handed to interface with
+Unreal Engine. Remember that the units for <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> are in meters (Unreal Engine defaults to
+centimeters).</p>
 </section>
 <section id="rotations">
 <span id="id2"></span><h2>Rotations<a class="headerlink" href="#rotations" title="Link to this heading"></a></h2>
-<p>Rotations are specified in <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> / <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format, in degrees.</p>
+<p>Rotations are specified in <code class="docutils literal notranslate"><span class="pre">[roll,</span> <span class="pre">pitch,</span> <span class="pre">yaw]</span></code> / <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code> format, in degrees, using right-
+handed coordinates:</p>
 <ul class="simple">
 <li><p><strong>Roll</strong>: Rotation around the fixed forward (<code class="docutils literal notranslate"><span class="pre">x</span></code>) axis</p></li>
-<li><p><strong>Pitch</strong>: Rotation around the fixed right (<code class="docutils literal notranslate"><span class="pre">y</span></code>) axis</p></li>
+<li><p><strong>Pitch</strong>: Rotation around the fixed left (<code class="docutils literal notranslate"><span class="pre">y</span></code>) axis</p></li>
 <li><p><strong>Yaw</strong>: Rotation around the fixed up (<code class="docutils literal notranslate"><span class="pre">z</span></code>) axis</p></li>
 </ul>
 </section>

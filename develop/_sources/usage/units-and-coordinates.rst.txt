@@ -17,15 +17,17 @@ Coordinate System
 =================
 
 Unreal Engine uses a left-handed coordinate system by default. However, to keep with general robotics 
-conventions, we use a right-handed coordinate system, with positive ``z`` being up. 
+conventions, HoloOcean uses a right-handed coordinate system, with positive ``z`` being up.  
 
-Locations and translations in HoloOcean worlds are specified as ``[x, y, z]`` where:
+Locations and translations in HoloOcean are specified in right-handed coordinates as ``[x, y, z]`` where:
 
 - Positive ``x`` is **forward**
 - Positive ``y`` is **left**
 - Positive ``z`` is **up**
 
-Remember that the units for ``[x, y, z]`` are in meters (Unreal Engine defaults to centimeters).
+HoloOcean handles the conversion of these right-handed coordinates to left-handed to interface with 
+Unreal Engine. Remember that the units for ``[x, y, z]`` are in meters (Unreal Engine defaults to 
+centimeters).
 
 
 .. _`rotations`:
@@ -33,10 +35,11 @@ Remember that the units for ``[x, y, z]`` are in meters (Unreal Engine defaults 
 Rotations
 =========
 
-Rotations are specified in ``[roll, pitch, yaw]`` / ``[x, y, z]`` format, in degrees.
+Rotations are specified in ``[roll, pitch, yaw]`` / ``[x, y, z]`` format, in degrees, using right-
+handed coordinates:
 
 - **Roll**: Rotation around the fixed forward (``x``) axis
-- **Pitch**: Rotation around the fixed right (``y``) axis
+- **Pitch**: Rotation around the fixed left (``y``) axis
 - **Yaw**: Rotation around the fixed up (``z``) axis
 
 Agent, Socket, & Sensor Frames
