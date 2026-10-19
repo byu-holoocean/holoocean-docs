@@ -120,6 +120,26 @@
 <li class="toctree-l3"><a class="reference internal" href="#holoocean.fftwaves.FFTWaveController.fft_wave_cascades"><code class="docutils literal notranslate"><span class="pre">FFTWaveController.fft_wave_cascades()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#tide-control-methods">Tide Control Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#holoocean.tides.TideController"><code class="docutils literal notranslate"><span class="pre">TideController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.get_cycle_height"><code class="docutils literal notranslate"><span class="pre">TideController.get_cycle_height()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.get_target_level"><code class="docutils literal notranslate"><span class="pre">TideController.get_target_level()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.get_water_level"><code class="docutils literal notranslate"><span class="pre">TideController.get_water_level()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.period"><code class="docutils literal notranslate"><span class="pre">TideController.period</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.period_sec"><code class="docutils literal notranslate"><span class="pre">TideController.period_sec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_active"><code class="docutils literal notranslate"><span class="pre">TideController.set_active()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_amplitude"><code class="docutils literal notranslate"><span class="pre">TideController.set_amplitude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_frequency"><code class="docutils literal notranslate"><span class="pre">TideController.set_frequency()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_max_rate"><code class="docutils literal notranslate"><span class="pre">TideController.set_max_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_period"><code class="docutils literal notranslate"><span class="pre">TideController.set_period()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_period_sec"><code class="docutils literal notranslate"><span class="pre">TideController.set_period_sec()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_tide"><code class="docutils literal notranslate"><span class="pre">TideController.set_tide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_tide_cycle"><code class="docutils literal notranslate"><span class="pre">TideController.set_tide_cycle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holoocean.tides.TideController.set_tide_type"><code class="docutils literal notranslate"><span class="pre">TideController.set_tide_type()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="spaces.html">Action Spaces</a></li>
@@ -310,7 +330,7 @@ turned on. If an integer, will set to that value. Defaults to true.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tick" title="holoocean.environments.HoloOceanEnvironment.tick"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tick</span></code></a>([num_ticks, publish, tick_clock])</p></td>
 <td><p>Ticks the environment once.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide" title="holoocean.environments.HoloOceanEnvironment.tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tide</span></code></a>(adjustment[, absolute, choice])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.tide" title="holoocean.environments.HoloOceanEnvironment.tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tide</span></code></a>(adjustment[, absolute, choice, instant])</p></td>
 <td><p>Changes the water level or configures dynamic tide cycling.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.environments.HoloOceanEnvironment.turn_off_flashlight" title="holoocean.environments.HoloOceanEnvironment.turn_off_flashlight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">turn_off_flashlight</span></code></a>(flashlight_name)</p></td>
@@ -966,15 +986,18 @@ terminal sensors. Reward and terminals can also be gotten through <a class="refe
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="holoocean.environments.HoloOceanEnvironment.tide">
-<span class="sig-name descname"><span class="pre">tide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tide" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.environments.HoloOceanEnvironment.tide" title="Link to this definition"></a></dt>
 <dd><p>Changes the water level or configures dynamic tide cycling.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>adjustment</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code>) – Water level or offset in meters,
-or dictionary of tide configuration (static level and/or dynamic cycle).</p></li>
+or dictionary of tide configuration (static level, dynamic cycle and/or <code class="docutils literal notranslate"><span class="pre">max_rate</span></code>).</p></li>
 <li><p><strong>absolute</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – 1 (True) to set absolute water level, 0 (False) to set offset from current level.</p></li>
 <li><p><strong>choice</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – Deprecated alias for <code class="docutils literal notranslate"><span class="pre">absolute</span></code>, kept for backwards compatibility.</p></li>
+<li><p><strong>instant</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If True, jump to the new level in one tick even if a tide
+<code class="docutils literal notranslate"><span class="pre">max_rate</span></code> is set. This is a reset of the water: simulations that keep their own
+water state discard it and restart calm at the new level.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1119,6 +1142,192 @@ pre-revamp tide system, which exposed the <code class="docutils literal notransl
 </ul>
 </dd>
 </dl>
+</dd></dl>
+</section>
+<section id="tide-control-methods">
+<span id="tide-api"></span><h2>Tide Control Methods<a class="headerlink" href="#tide-control-methods" title="Link to this heading"></a></h2>
+<p>For these methods you will call them using env.tides.”Command”. See
+<a class="reference internal" href="../env_appearance/tides/tide.html"><span class="doc">Tide Controller</span></a> for usage and scenario configuration.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="holoocean.tides.TideController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">holoocean.tides.</span></span><span class="sig-name descname"><span class="pre">TideController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_water_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tide_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TideNormal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period_sec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController" title="Link to this definition"></a></dt>
+<dd><p>Controls static tides and dynamic tidal cycles in a HoloOcean world.</p>
+<p>All tide measurements (amplitude, height, offset) are in meters.</p>
+<p>A tide cycle’s period can be given in ticks (<code class="docutils literal notranslate"><span class="pre">period</span></code>) or in seconds of simulation time
+(<code class="docutils literal notranslate"><span class="pre">period_sec</span></code>), but not both at once. A period in seconds stays fixed in seconds: it is
+converted with the environment’s current ticks per second.</p>
+<p>The controller keeps a <em>target</em> water level (base level + offset + cycle) and the level it
+last sent to the engine. Each tick it moves the sent level toward the target, by at most
+<code class="docutils literal notranslate"><span class="pre">max_rate</span></code> meters per second if a maximum rate is set. With no maximum rate (the default),
+changes are applied in one tick.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A few names from the pre-revamp tide system are still accepted for backwards
+compatibility (the <code class="docutils literal notranslate"><span class="pre">frequency</span></code> param/key, which really means <code class="docutils literal notranslate"><span class="pre">period</span></code>; the
+<code class="docutils literal notranslate"><span class="pre">choice</span></code> param, which really means <code class="docutils literal notranslate"><span class="pre">absolute</span></code>; and the <code class="docutils literal notranslate"><span class="pre">tide_type</span></code> param,
+of which only <code class="docutils literal notranslate"><span class="pre">"TideNormal"</span></code> is actually implemented). New code should use the
+current names directly.</p>
+</div>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.tides.TideController.get_cycle_height" title="holoocean.tides.TideController.get_cycle_height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cycle_height</span></code></a>()</p></td>
+<td><p>Calculates the current cycle height in meters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.tides.TideController.get_target_level" title="holoocean.tides.TideController.get_target_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_target_level</span></code></a>()</p></td>
+<td><p>The water level the controller is moving toward, in meters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.tides.TideController.get_water_level" title="holoocean.tides.TideController.get_water_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_water_level</span></code></a>()</p></td>
+<td><p>The water level last sent to the engine, in meters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_active" title="holoocean.tides.TideController.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_active</span></code></a>(active)</p></td>
+<td><p>Enables or disables dynamic tide cycling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_amplitude" title="holoocean.tides.TideController.set_amplitude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_amplitude</span></code></a>(amplitude)</p></td>
+<td><p>Sets the tide cycle amplitude in meters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_frequency" title="holoocean.tides.TideController.set_frequency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_frequency</span></code></a>(frequency)</p></td>
+<td><p>Deprecated alias for <a class="reference internal" href="#holoocean.tides.TideController.set_period" title="holoocean.tides.TideController.set_period"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_period()</span></code></a>, kept for backwards compatibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_max_rate" title="holoocean.tides.TideController.set_max_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_max_rate</span></code></a>(max_rate)</p></td>
+<td><p>Sets the maximum rate the water level may change, in meters per second.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_period" title="holoocean.tides.TideController.set_period"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_period</span></code></a>(period)</p></td>
+<td><p>Sets the tide cycle period (time for one full oscillation) in ticks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_period_sec" title="holoocean.tides.TideController.set_period_sec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_period_sec</span></code></a>(period_sec)</p></td>
+<td><p>Sets the tide cycle period (time for one full oscillation) in seconds of simulation time.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_tide" title="holoocean.tides.TideController.set_tide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_tide</span></code></a>(tide_val[, absolute, choice, instant])</p></td>
+<td><p>Sets or offsets the water level, or configures dynamic tide cycle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_tide_cycle" title="holoocean.tides.TideController.set_tide_cycle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_tide_cycle</span></code></a>(tide_cycle_val)</p></td>
+<td><p>Configures and activates dynamic tide cycling.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.tides.TideController.set_tide_type" title="holoocean.tides.TideController.set_tide_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_tide_type</span></code></a>(tide_type)</p></td>
+<td><p>Deprecated; only <code class="docutils literal notranslate"><span class="pre">"TideNormal"</span></code> (sinusoidal) tides are implemented.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holoocean.tides.TideController.period" title="holoocean.tides.TideController.period"><code class="xref py py-obj docutils literal notranslate"><span class="pre">period</span></code></a></p></td>
+<td><p>The tide cycle period in ticks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holoocean.tides.TideController.period_sec" title="holoocean.tides.TideController.period_sec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">period_sec</span></code></a></p></td>
+<td><p>The tide cycle period in seconds of simulation time, or None if it was set in ticks and the ticks per second aren't known.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.get_cycle_height">
+<span class="sig-name descname"><span class="pre">get_cycle_height</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.get_cycle_height" title="Link to this definition"></a></dt>
+<dd><p>Calculates the current cycle height in meters.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.get_target_level">
+<span class="sig-name descname"><span class="pre">get_target_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.get_target_level" title="Link to this definition"></a></dt>
+<dd><p>The water level the controller is moving toward, in meters.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.get_water_level">
+<span class="sig-name descname"><span class="pre">get_water_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.get_water_level" title="Link to this definition"></a></dt>
+<dd><p>The water level last sent to the engine, in meters. Differs from
+<a class="reference internal" href="#holoocean.tides.TideController.get_target_level" title="holoocean.tides.TideController.get_target_level"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_target_level()</span></code></a> while a change is being limited by <code class="docutils literal notranslate"><span class="pre">max_rate</span></code>.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.period">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#holoocean.tides.TideController.period" title="Link to this definition"></a></dt>
+<dd><p>The tide cycle period in ticks. If the period was set in seconds, it is converted with
+the current ticks per second.</p>
+</dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.period_sec">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">period_sec</span></span><a class="headerlink" href="#holoocean.tides.TideController.period_sec" title="Link to this definition"></a></dt>
+<dd><p>The tide cycle period in seconds of simulation time, or None if it was set in ticks
+and the ticks per second aren’t known.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_active">
+<span class="sig-name descname"><span class="pre">set_active</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_active" title="Link to this definition"></a></dt>
+<dd><p>Enables or disables dynamic tide cycling.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_amplitude">
+<span class="sig-name descname"><span class="pre">set_amplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_amplitude" title="Link to this definition"></a></dt>
+<dd><p>Sets the tide cycle amplitude in meters.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_frequency">
+<span class="sig-name descname"><span class="pre">set_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_frequency" title="Link to this definition"></a></dt>
+<dd><p>Deprecated alias for <a class="reference internal" href="#holoocean.tides.TideController.set_period" title="holoocean.tides.TideController.set_period"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_period()</span></code></a>, kept for backwards compatibility.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_max_rate">
+<span class="sig-name descname"><span class="pre">set_max_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_rate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_max_rate" title="Link to this definition"></a></dt>
+<dd><p>Sets the maximum rate the water level may change, in meters per second.</p>
+<p>Level changes larger than <code class="docutils literal notranslate"><span class="pre">max_rate</span></code> times the tick length are spread over several
+ticks, for both static changes and tide cycles. Use <code class="docutils literal notranslate"><span class="pre">instant=True</span></code> in
+<a class="reference internal" href="#holoocean.tides.TideController.set_tide" title="holoocean.tides.TideController.set_tide"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_tide()</span></code></a> to bypass it for a single change.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>max_rate</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code> or None) – Maximum rate in m/s, or None for no limit (changes
+are applied in one tick).</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_period">
+<span class="sig-name descname"><span class="pre">set_period</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_period" title="Link to this definition"></a></dt>
+<dd><p>Sets the tide cycle period (time for one full oscillation) in ticks. Replaces a
+period set in seconds.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_period_sec">
+<span class="sig-name descname"><span class="pre">set_period_sec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">period_sec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_period_sec" title="Link to this definition"></a></dt>
+<dd><p>Sets the tide cycle period (time for one full oscillation) in seconds of simulation
+time. Replaces a period set in ticks. The period stays fixed in seconds if the ticks per
+second change.</p>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_tide">
+<span class="sig-name descname"><span class="pre">set_tide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tide_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_tide" title="Link to this definition"></a></dt>
+<dd><p>Sets or offsets the water level, or configures dynamic tide cycle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tide_val</strong> – float (meters), list [height, absolute], or dict (static level, dynamic
+cycle parameters and/or <code class="docutils literal notranslate"><span class="pre">max_rate</span></code>).</p></li>
+<li><p><strong>absolute</strong> – 1 for absolute level (default), 0 for relative offset.</p></li>
+<li><p><strong>choice</strong> – Deprecated alias for <code class="docutils literal notranslate"><span class="pre">absolute</span></code>, kept for backwards compatibility.</p></li>
+<li><p><strong>instant</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If True, jump to the new level in one tick regardless of
+<code class="docutils literal notranslate"><span class="pre">max_rate</span></code>. This is a reset of the water: simulations that keep their own water
+state discard it and restart calm at the new level.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_tide_cycle">
+<span class="sig-name descname"><span class="pre">set_tide_cycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tide_cycle_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_tide_cycle" title="Link to this definition"></a></dt>
+<dd><p>Configures and activates dynamic tide cycling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tide_cycle_val</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code>) – Dictionary containing ‘active’, ‘amplitude’ (in meters),
+and either ‘period’ (in ticks) or ‘period_sec’ (in seconds), not both.
+‘frequency’ (alias for ‘period’) and ‘tide_type’ are also accepted for backwards
+compatibility.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="holoocean.tides.TideController.set_tide_type">
+<span class="sig-name descname"><span class="pre">set_tide_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tide_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holoocean.tides.TideController.set_tide_type" title="Link to this definition"></a></dt>
+<dd><p>Deprecated; only <code class="docutils literal notranslate"><span class="pre">"TideNormal"</span></code> (sinusoidal) tides are implemented. Kept for
+backwards compatibility so old scenarios/scripts referencing e.g. <code class="docutils literal notranslate"><span class="pre">"TideFreaky"</span></code>
+don’t error out - they’ll just run the standard sinusoidal cycle instead.</p>
+</dd></dl>
 </dd></dl>
 </section>
 </section>

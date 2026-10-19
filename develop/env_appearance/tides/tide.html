@@ -127,6 +127,9 @@
 <img alt="../../_images/tidesinaction.gif" src="../../_images/tidesinaction.gif" />
 <section id="tide-overview">
 <h2>Tide Overview<a class="headerlink" href="#tide-overview" title="Link to this heading"></a></h2>
+<p>Tides raise or lower the water level in a HoloOcean world. The water level can be set to a static value or offset, or it can oscillate
+dynamically in a sinusoidal cycle. The tide can also be changed mid-simulation, either instantaneously or gradually at a maximum rate.
+Changes to the tide raise or lower the wateracross the entire world, affecting the water surface, post-processing and all agents.</p>
 <p>All tide configurations across HoloOcean are unified under the single <code class="docutils literal notranslate"><span class="pre">tide</span></code> parameter in scenarios and are specified in <strong>meters</strong>.</p>
 <p>You can:</p>
 <ul class="simple">
@@ -159,12 +162,27 @@
 </section>
 <section id="dynamic-tide-cycle">
 <h4>Dynamic Tide Cycle<a class="headerlink" href="#dynamic-tide-cycle" title="Link to this heading"></a></h4>
-<p>A periodic tide oscillation defined in the scenario. Amplitude is specified in <strong>meters</strong> and period in simulation <strong>ticks</strong> (the time for one full oscillation).</p>
+<p>A periodic tide oscillation defined in the scenario. Amplitude is specified in <strong>meters</strong>. The
+period (the time for one full oscillation) is given either in simulation <strong>ticks</strong> with <code class="docutils literal notranslate"><span class="pre">period</span></code>
+or in <strong>seconds</strong> of simulation time with <code class="docutils literal notranslate"><span class="pre">period_sec</span></code>. Use one or the other: giving both raises
+an error.</p>
+<p>A period in ticks stays fixed in ticks, so the cycle takes longer in real simulation time at a
+lower <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code>. A period in seconds stays fixed in seconds: it is converted with the
+current <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</span></code>, even if that changes during the run.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
    <span class="s2">"tide"</span><span class="p">:</span> <span class="p">{</span>
       <span class="s2">"active"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
       <span class="s2">"amplitude"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>      <span class="c1"># Tidal amplitude in meters (+/- 1.5m)</span>
       <span class="s2">"period"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>        <span class="c1"># Time for one full oscillation, in simulation ticks</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># The same kind of cycle with the period in seconds</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">"tide"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"active"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s2">"amplitude"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+      <span class="s2">"period_sec"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>     <span class="c1"># Time for one full oscillation, in seconds</span>
    <span class="p">}</span>
 <span class="p">}</span>
 
@@ -191,7 +209,9 @@
 <li><p>Pass a float to adjust or set water level:
 - Set <code class="docutils literal notranslate"><span class="pre">absolute=1</span></code> (or <code class="docutils literal notranslate"><span class="pre">True</span></code>) to set an <strong>absolute water level</strong> in meters.
 - Set <code class="docutils literal notranslate"><span class="pre">absolute=0</span></code> (or <code class="docutils literal notranslate"><span class="pre">False</span></code>) to apply a <strong>relative offset</strong> in meters.</p></li>
-<li><p>Pass a dictionary to configure a dynamic cycle or static level.</p></li>
+<li><p>Pass a dictionary to configure a dynamic cycle, static level and/or <code class="docutils literal notranslate"><span class="pre">max_rate</span></code>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">instant=True</span></code> to apply the change in one tick regardless of <code class="docutils literal notranslate"><span class="pre">max_rate</span></code> (see
+<a class="reference internal" href="#instantaneous-changes">Instantaneous Changes</a>).</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span>
 
@@ -213,7 +233,8 @@
 </section>
 <section id="using-env-tides-tidecontroller">
 <h4>Using <code class="docutils literal notranslate"><span class="pre">env.tides</span></code> (TideController)<a class="headerlink" href="#using-env-tides-tidecontroller" title="Link to this heading"></a></h4>
-<p>You can also interact directly with the <code class="docutils literal notranslate"><span class="pre">TideController</span></code> instance using the same structure as <code class="docutils literal notranslate"><span class="pre">env.tide()</span></code>:</p>
+<p>You can also interact directly with the <code class="docutils literal notranslate"><span class="pre">TideController</span></code> instance using the same structure as <code class="docutils literal notranslate"><span class="pre">env.tide()</span></code>.
+All of its methods are listed in the <a class="reference internal" href="../../holoocean/environments.html#tide-api"><span class="std std-ref">Tide API</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set static tide water levels</span>
 <span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">set_tide</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">absolute</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -227,14 +248,62 @@
 <span class="c1"># Or configure individual cycle properties</span>
 <span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">set_amplitude</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>   <span class="c1"># meters</span>
 <span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">set_period</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>     <span class="c1"># ticks</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">set_period_sec</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># or seconds; replaces a period set in ticks</span>
 <span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">set_active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Read the period in either unit</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">period</span>               <span class="c1"># ticks</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">period_sec</span>           <span class="c1"># seconds</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="limiting-how-fast-the-water-level-changes">
+<h3>Limiting How Fast the Water Level Changes<a class="headerlink" href="#limiting-how-fast-the-water-level-changes" title="Link to this heading"></a></h3>
+<p>By default every tide change takes effect in a single tick. Setting <code class="docutils literal notranslate"><span class="pre">max_rate</span></code> (in <strong>meters per
+second</strong>) makes the water level move toward each new level gradually instead: a change larger than
+<code class="docutils literal notranslate"><span class="pre">max_rate</span></code> times the tick length is spread over several ticks. This applies to static changes and
+to tide cycles alike, and the water surface, post-processing and agents all move together.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the scenario</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">"tide"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"height"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="s2">"max_rate"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>       <span class="c1"># Change the water level by at most 0.5 m/s</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Or at runtime</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">set_max_rate</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tide</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>                 <span class="c1"># Rises to 2.0 m over 4 seconds of simulation time</span>
+<span class="n">env</span><span class="o">.</span><span class="n">tides</span><span class="o">.</span><span class="n">set_max_rate</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># Remove the limit</span>
+</pre></div>
+</div>
+<p>If a tide cycle changes the water level faster than <code class="docutils literal notranslate"><span class="pre">max_rate</span></code> (its peak rate is
+2π × amplitude / period, with the period in seconds), a warning is printed, because the cycle
+would be clipped.</p>
+</section>
+<section id="instantaneous-changes">
+<h3>Instantaneous Changes<a class="headerlink" href="#instantaneous-changes" title="Link to this heading"></a></h3>
+<p>Pass <code class="docutils literal notranslate"><span class="pre">instant=True</span></code> to jump to a new level in one tick even when <code class="docutils literal notranslate"><span class="pre">max_rate</span></code> is set:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">tide</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">instant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An instantaneous change is treated as a <strong>reset of the water</strong>. Water simulations that keep
+their own state discard their waves and currents and restart calm at the new level. Floating agents feel the change all at once, so a large jump can push them around. The
+scenario’s <code class="docutils literal notranslate"><span class="pre">tide</span></code> setting is always applied instantaneously, since it’s the starting water level.</p>
+</section>
+<section id="environment-resets-and-newly-spawned-agents">
+<h3>Environment Resets and Newly Spawned Agents<a class="headerlink" href="#environment-resets-and-newly-spawned-agents" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">env.reset()</span></code> reloads the level, which puts the water back at its default level, and then
+reapplies the scenario’s <code class="docutils literal notranslate"><span class="pre">tide</span></code> setting. Any tide changes made during the run are discarded and a
+tide cycle starts again from the beginning of its period. To change the water level without
+resetting anything else, use <code class="docutils literal notranslate"><span class="pre">env.tide()</span></code>.</p>
+<p>Agents spawned after a tide change, for example with <code class="docutils literal notranslate"><span class="pre">env.add_agent()</span></code>, start at the current
+water level.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For more information on the underlying client command, please refer to <a class="reference internal" href="../../holoocean/commands.html#holoocean.command.TideCommand" title="holoocean.command.TideCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TideCommand</span></code></a>.</p>
 </div>
-</section>
 </section>
 </section>
 </section>
