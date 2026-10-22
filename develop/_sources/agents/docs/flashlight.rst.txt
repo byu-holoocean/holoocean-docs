@@ -47,11 +47,13 @@ In a scenario
         ...
         "flashlight":[
             {
+                "agent_tag": "auv0",
                 "flashlight_name": "flashlight1",
                 "intensity": 10000,
                 "beam_width": 60,
             },
             {
+                "agent_tag": "auv0",
                 "flashlight_name": "flashlight4",
                 "intensity": 10000,
                 "color_G": 0,
@@ -69,14 +71,14 @@ Programmatically
     with holoocean.make("...") as env:
         while True:
             if 'o' in pressed_keys:
-                env.turn_on_flashlight("flashlight1") 
-                env.turn_on_flashlight("flashlight4", beam_width=80, color_B=0) #Turning on flashlight 4 with a beam width of 80 degrees and turning the blue color component to zero
+                env.turn_on_flashlight("auv0", "flashlight1") 
+                env.turn_on_flashlight("auv0", "flashlight4", beam_width=80, color_B=0) #Turning on auv0's flashlight 4 with a beam width of 80 degrees and setting the blue color component to zero
 
             if 'p' in pressed_keys:
-                env.turn_off_flashlight("flashlight1")
-                env.turn_off_flashlight("flashlight4")
+                env.turn_off_flashlight("auv0", "flashlight1")
+                env.turn_off_flashlight("auv0", "flashlight4")
 
             env.tick()
 
 .. note::  
-    When calling ``turn_on_flashlight("flashlight_number")`` without specifying additional parameters, the system will first look for values defined in the scenario config. If the flashlight was configured there, those values become its defaults. Only if no config values are found will the command fall back to its built-in default parameters.  
+    When calling ``turn_on_flashlight("agent_tag", "flashlight_name")`` without specifying additional parameters, the system will first look for values defined in the scenario config. If the flashlight was configured there, those values become its defaults. Only if no config values are found will the command fall back to its built-in default parameters.  

@@ -149,11 +149,13 @@
     <span class="o">...</span>
     <span class="s2">"flashlight"</span><span class="p">:[</span>
         <span class="p">{</span>
+            <span class="s2">"agent_tag"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
             <span class="s2">"flashlight_name"</span><span class="p">:</span> <span class="s2">"flashlight1"</span><span class="p">,</span>
             <span class="s2">"intensity"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
             <span class="s2">"beam_width"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
         <span class="p">},</span>
         <span class="p">{</span>
+            <span class="s2">"agent_tag"</span><span class="p">:</span> <span class="s2">"auv0"</span><span class="p">,</span>
             <span class="s2">"flashlight_name"</span><span class="p">:</span> <span class="s2">"flashlight4"</span><span class="p">,</span>
             <span class="s2">"intensity"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
             <span class="s2">"color_G"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -169,19 +171,19 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">holoocean</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="s1">'o'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
-            <span class="n">env</span><span class="o">.</span><span class="n">turn_on_flashlight</span><span class="p">(</span><span class="s2">"flashlight1"</span><span class="p">)</span>
-            <span class="n">env</span><span class="o">.</span><span class="n">turn_on_flashlight</span><span class="p">(</span><span class="s2">"flashlight4"</span><span class="p">,</span> <span class="n">beam_width</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">color_B</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#Turning on flashlight 4 with a beam width of 80 degrees and turning the blue color component to zero</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_on_flashlight</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="s2">"flashlight1"</span><span class="p">)</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_on_flashlight</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="s2">"flashlight4"</span><span class="p">,</span> <span class="n">beam_width</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">color_B</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#Turning on auv0's flashlight 4 with a beam width of 80 degrees and setting the blue color component to zero</span>
 
         <span class="k">if</span> <span class="s1">'p'</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
-            <span class="n">env</span><span class="o">.</span><span class="n">turn_off_flashlight</span><span class="p">(</span><span class="s2">"flashlight1"</span><span class="p">)</span>
-            <span class="n">env</span><span class="o">.</span><span class="n">turn_off_flashlight</span><span class="p">(</span><span class="s2">"flashlight4"</span><span class="p">)</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_off_flashlight</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="s2">"flashlight1"</span><span class="p">)</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">turn_off_flashlight</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="s2">"flashlight4"</span><span class="p">)</span>
 
         <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When calling <code class="docutils literal notranslate"><span class="pre">turn_on_flashlight("flashlight_number")</span></code> without specifying additional parameters, the system will first look for values defined in the scenario config. If the flashlight was configured there, those values become its defaults. Only if no config values are found will the command fall back to its built-in default parameters.</p>
+<p>When calling <code class="docutils literal notranslate"><span class="pre">turn_on_flashlight("agent_tag",</span> <span class="pre">"flashlight_name")</span></code> without specifying additional parameters, the system will first look for values defined in the scenario config. If the flashlight was configured there, those values become its defaults. Only if no config values are found will the command fall back to its built-in default parameters.</p>
 </div>
 </section>
 </section>
