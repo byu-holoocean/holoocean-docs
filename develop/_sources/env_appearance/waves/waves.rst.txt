@@ -90,7 +90,7 @@ With a Command
     }
     env.fftwaves.fft_wave_cascades(fft_wave_cascades_config)
 
-There are a few basic FFT wave commands. env.fftwaves.sea_state just sets the sea state from 0 - 9. env.fftwaves.wave_scalars allows you to set various wave parameters that only take in one value. env.fftwaves.wave_cascades allows to set the wave parameters with 4 values, one for each cascade. While you are able to change every parameter regarding FFT waves, the best ones to change are the ones available through the config as they have the most influence while retaining realism.
+There are a few basic FFT wave commands. env.fftwaves.fft_sea_state just sets the sea state from 0 - 9. env.fftwaves.fft_wave_scalars allows you to set various wave parameters that only take in one value. env.fftwaves.fft_wave_cascades allows to set the wave parameters with 4 values, one for each cascade. While you are able to change every parameter regarding FFT waves, the best ones to change are the ones available through the config as they have the most influence while retaining realism.
 You can see which parameters work with each command here: :ref:`FFT Wave API<fft-wave-api>`.
 
 .. _default-wave-values:
@@ -135,9 +135,9 @@ Sea states are preset wind speed values that approximate the WMO sea state code
 Worlds Without FFT waves
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Worlds from before the 2.4.0 HoloOcean update, or custom worlds that haven't implemented FFT waves, will not be able to support wave imagery during simulation. 
-Your experience with HoloOcean will not change if you do not include FFT waves in your config. However, if you include FFT waves, then your agent will experience wave buoyancy without any of the visuals of FFT waves. If want to have FFT waves in 
-your world you must update to worlds to an equal or greater version than 2.4.0. 
+Worlds from before HoloOcean 2.4.0, or custom worlds that haven't implemented FFT waves, cannot display waves during simulation.
+If you do not include FFT waves in your config, HoloOcean behaves as before. If you do include FFT waves, your agent will experience wave buoyancy
+without any of the wave visuals. To see FFT waves, update your worlds to version 2.4.0 or later.
 
 Buoyancy Configuration
 ~~~~~~~~~~~~~~~~~~~~~~

@@ -11,9 +11,14 @@ Tide Overview
 
 Tides raise or lower the water level in a HoloOcean world. The water level can be set to a static value or offset, or it can oscillate 
 dynamically in a sinusoidal cycle. The tide can also be changed mid-simulation, either instantaneously or gradually at a maximum rate. 
-Changes to the tide raise or lower the wateracross the entire world, affecting the water surface, post-processing and all agents.
+Changes to the tide raise or lower the water across the entire world, affecting the water surface, post-processing and all agents.
 
 All tide configurations across HoloOcean are unified under the single ``tide`` parameter in scenarios and are specified in **meters**.
+
+.. note::
+   As of HoloOcean 2.4.0, the ``tide_cycle`` scenario key, ``env.tide_cycle``, the ``choice`` argument of ``env.tide()``,
+   and the ``frequency`` setting are deprecated. They still work but emit a deprecation warning. Use ``tide``, ``env.tides``,
+   ``absolute`` and ``period`` instead. Tide values that were previously documented in centimeters are now in meters.
 
 You can:
 

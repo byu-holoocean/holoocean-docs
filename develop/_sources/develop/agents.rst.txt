@@ -211,9 +211,10 @@ if it's not set. You can set this by hand if the auto-calculated one is too larg
 method. NOTE: These are stored with an offset for ``CenterMass`` pre-applied to reduce complexity.
 
 .. _create-agents:
+
 FFT Wave Buoyancy
 -----------------
-In Holoocean 2.4.0, :ref:`FFT Waves<wave-controller>` have been implemented along with an updated buoyancy system to use these waves. 
+Starting in HoloOcean 2.4.0, :ref:`FFT Waves<wave-controller>` have been implemented along with an updated buoyancy system to use these waves. 
 This new buoyancy system uses a mesh based approach where the vehicle is split into triangles and the forces 
 on each triangle are calculated and then summed before being applied to the vehicle at the CenterBuoyancy.
 

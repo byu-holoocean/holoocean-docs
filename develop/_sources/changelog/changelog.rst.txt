@@ -14,30 +14,38 @@ Changelog
 
 HoloOcean 2.4.0
 ===============
-*9/4/2026*
+*11/3/2026*
 
 New Features
 ------------
 
-- Added raycast and GPU implementations of sonar sensors
+- Added raycast and GPU implementations of imaging, profiling, sidescan, and singlebeam sonars
 - Added FFT waves
-- Added new buoyancy system for FFT waves
-- Added the Husky vehicle
+- Added mesh-based buoyancy system for FFT waves
+- Added the Husky ground vehicle
+- Added command to enable/disable world collisions during simulation
+- Added material dependency for raycast and GPU sonars
 
 Changes
 -------
 
-- Updated the Viewport socket for the CougUV and SurfaceVessel
-- Added a CameraSocket back to CougUV
-- Fossen updates
-- Updated documentation for material dependency
+- Revamped the tide system with units in meters, periods in seconds, and rate limits. ``tide_cycle`` is deprecated in favor of ``tide``
+- Added agent tag support to flashlight commands
+- Fossen dynamics updates, including a waypoint example and improved heading controller
+- Lidar sensors no longer return water points by default
+- Updated agent sockets and socket documentation
+- Updated Docker images to Ubuntu 24.04 and CUDA 12.9
+- Sensors now publish to ROS 2 by default
+- Dropped support for Python 3.9 and 3.10; added support for Python 3.14
 
 Bug Fixes
 ---------
 
-- Camera exposure fix
-- Lidar fix for water point returns
-- Lidar fix for debug color returns
+- Fixed shared memory and memory buildup crashes, especially with sonar sensors
+- Fixed camera exposure
+- Fixed tide state bugs
+- Fixed acoustic beacon depth reporting
+- Fixed relative paths on Linux standalone builds
 
 HoloOcean 2.3.0
 ===============

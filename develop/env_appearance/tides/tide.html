@@ -129,8 +129,14 @@
 <h2>Tide Overview<a class="headerlink" href="#tide-overview" title="Link to this heading"></a></h2>
 <p>Tides raise or lower the water level in a HoloOcean world. The water level can be set to a static value or offset, or it can oscillate
 dynamically in a sinusoidal cycle. The tide can also be changed mid-simulation, either instantaneously or gradually at a maximum rate.
-Changes to the tide raise or lower the wateracross the entire world, affecting the water surface, post-processing and all agents.</p>
+Changes to the tide raise or lower the water across the entire world, affecting the water surface, post-processing and all agents.</p>
 <p>All tide configurations across HoloOcean are unified under the single <code class="docutils literal notranslate"><span class="pre">tide</span></code> parameter in scenarios and are specified in <strong>meters</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of HoloOcean 2.4.0, the <code class="docutils literal notranslate"><span class="pre">tide_cycle</span></code> scenario key, <code class="docutils literal notranslate"><span class="pre">env.tide_cycle</span></code>, the <code class="docutils literal notranslate"><span class="pre">choice</span></code> argument of <code class="docutils literal notranslate"><span class="pre">env.tide()</span></code>,
+and the <code class="docutils literal notranslate"><span class="pre">frequency</span></code> setting are deprecated. They still work but emit a deprecation warning. Use <code class="docutils literal notranslate"><span class="pre">tide</span></code>, <code class="docutils literal notranslate"><span class="pre">env.tides</span></code>,
+<code class="docutils literal notranslate"><span class="pre">absolute</span></code> and <code class="docutils literal notranslate"><span class="pre">period</span></code> instead. Tide values that were previously documented in centimeters are now in meters.</p>
+</div>
 <p>You can:</p>
 <ul class="simple">
 <li><p>Set a static water level or relative offset</p></li>

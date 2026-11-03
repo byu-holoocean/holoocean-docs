@@ -64,10 +64,12 @@ Standard Packaged Installation
 
 Additional Requirements
 -----------------------
-- Python >= 3.7
+- Python >= 3.11
 - pip3
-- For Linux: OpenGL 3+, gcc (minimum build-essential package) 
-.. TODO i think you dont need open gl anymore?? vulkan? mention that pip will install numpy, scipy.. etc?
+- A Vulkan-capable GPU and driver
+- For Linux: gcc (minimum build-essential package)
+
+pip will install the remaining Python dependencies (numpy, scipy, matplotlib) automatically.
 
 For the build-essential package for Linux, you can run the following console command:
 ::

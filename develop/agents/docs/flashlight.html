@@ -183,6 +183,12 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>As of HoloOcean 2.4.0, <code class="docutils literal notranslate"><span class="pre">turn_on_flashlight</span></code> and <code class="docutils literal notranslate"><span class="pre">turn_off_flashlight</span></code> take the agent tag as their first argument.
+Code written for earlier versions, such as <code class="docutils literal notranslate"><span class="pre">env.turn_off_flashlight("flashlight1")</span></code>, must be updated to
+<code class="docutils literal notranslate"><span class="pre">env.turn_off_flashlight("auv0",</span> <span class="pre">"flashlight1")</span></code>. In scenario configs, <code class="docutils literal notranslate"><span class="pre">agent_tag</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">auv0</span></code> if omitted.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>When calling <code class="docutils literal notranslate"><span class="pre">turn_on_flashlight("agent_tag",</span> <span class="pre">"flashlight_name")</span></code> without specifying additional parameters, the system will first look for values defined in the scenario config. If the flashlight was configured there, those values become its defaults. Only if no config values are found will the command fall back to its built-in default parameters.</p>
 </div>
 </section>

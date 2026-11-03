@@ -171,31 +171,39 @@
 <h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
 <section id="holoocean-2-4-0">
 <h2>HoloOcean 2.4.0<a class="headerlink" href="#holoocean-2-4-0" title="Link to this heading"></a></h2>
-<p><em>9/4/2026</em></p>
+<p><em>11/3/2026</em></p>
 <section id="new-features">
 <h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Added raycast and GPU implementations of sonar sensors</p></li>
+<li><p>Added raycast and GPU implementations of imaging, profiling, sidescan, and singlebeam sonars</p></li>
 <li><p>Added FFT waves</p></li>
-<li><p>Added new buoyancy system for FFT waves</p></li>
-<li><p>Added the Husky vehicle</p></li>
+<li><p>Added mesh-based buoyancy system for FFT waves</p></li>
+<li><p>Added the Husky ground vehicle</p></li>
+<li><p>Added command to enable/disable world collisions during simulation</p></li>
+<li><p>Added material dependency for raycast and GPU sonars</p></li>
 </ul>
 </section>
 <section id="changes">
 <h3>Changes<a class="headerlink" href="#changes" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Updated the Viewport socket for the CougUV and SurfaceVessel</p></li>
-<li><p>Added a CameraSocket back to CougUV</p></li>
-<li><p>Fossen updates</p></li>
-<li><p>Updated documentation for material dependency</p></li>
+<li><p>Revamped the tide system with units in meters, periods in seconds, and rate limits. <code class="docutils literal notranslate"><span class="pre">tide_cycle</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">tide</span></code></p></li>
+<li><p>Added agent tag support to flashlight commands</p></li>
+<li><p>Fossen dynamics updates, including a waypoint example and improved heading controller</p></li>
+<li><p>Lidar sensors no longer return water points by default</p></li>
+<li><p>Updated agent sockets and socket documentation</p></li>
+<li><p>Updated Docker images to Ubuntu 24.04 and CUDA 12.9</p></li>
+<li><p>Sensors now publish to ROS 2 by default</p></li>
+<li><p>Dropped support for Python 3.9 and 3.10; added support for Python 3.14</p></li>
 </ul>
 </section>
 <section id="bug-fixes">
 <h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Camera exposure fix</p></li>
-<li><p>Lidar fix for water point returns</p></li>
-<li><p>Lidar fix for debug color returns</p></li>
+<li><p>Fixed shared memory and memory buildup crashes, especially with sonar sensors</p></li>
+<li><p>Fixed camera exposure</p></li>
+<li><p>Fixed tide state bugs</p></li>
+<li><p>Fixed acoustic beacon depth reporting</p></li>
+<li><p>Fixed relative paths on Linux standalone builds</p></li>
 </ul>
 </section>
 </section>
