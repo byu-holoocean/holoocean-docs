@@ -1,0 +1,128 @@
+.. _`sensors`:
+
+=================
+HoloOcean Sensors
+=================
+
+HoloOcean sensors are used to gather data from the environment. Sensors are attached to agents at 
+specific locations called "sockets" (see :ref:`sockets` for more information). Sensors publish data 
+to the simulation state, which can be accessed as the return value of the environment's ``.tick()`` 
+and ``.step()`` functions.
+
+Using Sensors
+=============
+
+.. toctree::
+   :maxdepth: 1
+
+   docs/sensor-config
+   docs/octree
+   docs/publishing
+   docs/material-dependency
+
+
+HoloOcean Sensors
+=================
+The following are inspired by real-world sensors and are intended to collect realistic data.
+Most sensors here include parameters for adjusting noise, bias, and other characteristics to
+simulate real-world sensor behavior.
+
+Sonar Sensors
+------------------
+
+Sonar , acronym for *Sound Navigation and Ranging*, is a technology that uses sound propagation to detect, navigate, and measure distances to objects underwater. 
+It is widely used in various applications, including underwater navigation, object detection, and mapping. HoloOcean includes several types of sonar sensors, each designed to simulate different aspects of sonar technology.   
+
+If you are interested in learning more about sonars, please visit the `BlueRobotics page. <https://bluerobotics.com/learn/a-smooth-operators-guide-to-underwater-sonars-and-acoustic-devices/>`_
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/singlebeam-sonar-sensor
+   sensors/sidescan-sonar-sensor
+   sensors/imaging-sonar-sensor
+   sensors/profiling-sonar-sensor
+   
+
+Camera Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/depth-camera-sensor
+   sensors/rgb-camera-sensor  
+   sensors/camera-sensor
+   sensors/semantic-segmentation-camera-sensor
+
+
+Lidar Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/raycast-lidar-sensor
+   sensors/raycast-semantic-lidar-sensor
+
+
+Navigation Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/imu-sensor
+   sensors/dvl-sensor
+   sensors/gps-sensor
+   sensors/magnetometer-sensor
+
+
+Perception Sensors
+------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/depth-sensor
+   sensors/range-finder-sensor
+   sensors/bst-sensor
+
+
+Communication Sensors
+---------------------
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/acoustic-beacon-sensor
+   sensors/optical-modem-sensor 
+
+
+State Sensors
+-------------
+The following are not physical sensors, but are used to return information that is only available in 
+simulation. They are helpful in debugging, collecting ground truth data, capturing simulation videos, 
+and other applications where simulation information is helpful. Some of these have overlap with each 
+other, but are provided for convenience for different use cases.
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   sensors/viewport-capture-sensor
+   sensors/location-sensor
+   sensors/rotation-sensor
+   sensors/orientation-sensor
+   sensors/pose-sensor
+   sensors/velocity-sensor
+   sensors/dynamics-sensor
+
+.. note::
+   The location, rotation, orientation, pose, and velocity sensors return values relative to the 
+   **global frame** for the pose of the socket they are placed in. 
+
+   The dynamics sensor always returns values for the COM of the agent, with values given in the 
+   **global frame**, regardless of the socket it is placed in.
+

@@ -1,0 +1,30 @@
+.. _environment-api:
+
+Environments
+============
+
+.. automodule:: holoocean.environments
+   :members:
+
+.. _fft-wave-api:
+
+FFT Wave Control Methods
+------------------------
+
+For these methods you will call them using env.fftwaves."Command":
+
+.. automethod:: holoocean.fftwaves.FFTWaveController.fft_sea_state
+.. automethod:: holoocean.fftwaves.FFTWaveController.fft_wave_scalars
+.. automethod:: holoocean.fftwaves.FFTWaveController.fft_wave_cascades
+
+.. _tide-api:
+
+Tide Control Methods
+--------------------
+
+For these methods you will call them using env.tides."Command". See
+:doc:`../env_appearance/tides/tide` for usage and scenario configuration.
+
+.. autoclass:: holoocean.tides.TideController
+   :members:
+   :exclude-members: get_ticks, get_ticks_per_sec, update_tide, reset
