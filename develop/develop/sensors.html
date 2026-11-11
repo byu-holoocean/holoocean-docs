@@ -273,7 +273,10 @@ available to the HoloOcean client.</p>
 </pre></div>
 </div>
 <p>Additionally, if your sensor is computationally expensive and you expect the <code class="docutils literal notranslate"><span class="pre">Hz</span></code> parameter to be set, and affect
-the run speed, you will need to add it to the list of _heavy_sensors or _sonar_sensors in the <code class="docutils literal notranslate"><span class="pre">SensorDefinition</span></code> class.</p>
+the run speed, you will need to add it to the list of _engine_rated_sensors or _sonar_sensors in the
+<code class="docutils literal notranslate"><span class="pre">SensorDefinition</span></code> class. Sensors in _engine_rated_sensors are given <code class="docutils literal notranslate"><span class="pre">TicksPerCapture</span></code> in their configuration and
+gate themselves in the engine; override <code class="docutils literal notranslate"><span class="pre">UHolodeckSensor::SetTicksPerCapture</span></code> so that
+<a class="reference internal" href="../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_sensor_rate" title="holoocean.environments.HoloOceanEnvironment.set_sensor_rate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_sensor_rate()</span></code></a> can change it at runtime.</p>
 <p>Next, in <code class="docutils literal notranslate"><span class="pre">engine/Source/Holodeck/ClientCommands/Public/AddSensorCommand.h</span></code>, add an include statement
 for your sensor’s .h file:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ExampleSensor.h"</span>

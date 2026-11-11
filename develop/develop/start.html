@@ -308,7 +308,12 @@ To run the formatting, install ruff into your python environment (our formatting
 <section id="c">
 <h3>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h3>
 <p>C++ code should be formatted using the provided clang-format configuration, based on the UE style guide.
-To format the C++ code, run the following command from engine/ue5-clang-format-file:</p>
+Install clang-format into your python environment (our formatting checker uses version 22.1.0).
+Other versions format some lines differently, so use this version to match the checker:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>clang-format<span class="o">==</span><span class="m">22</span>.1.0
+</pre></div>
+</div>
+<p>To format the C++ code, run the following command from engine/ue5-clang-format-file:</p>
 <p>Windows (PowerShell):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get-ChildItem -Path ../Source -Recurse -Include *.h,*.cpp | ForEach-Object {clang-format "-style=file:.clang-format" -i $_.FullName}
 </pre></div>

@@ -214,6 +214,13 @@ C++
 ---
 
 C++ code should be formatted using the provided clang-format configuration, based on the UE style guide.
+Install clang-format into your python environment (our formatting checker uses version 22.1.0).
+Other versions format some lines differently, so use this version to match the checker:
+
+.. code:: bash
+
+   pip install clang-format==22.1.0
+
 To format the C++ code, run the following command from engine/ue5-clang-format-file:
 
 Windows (PowerShell):

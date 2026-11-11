@@ -194,6 +194,13 @@ on <code class="docutils literal notranslate"><span class="pre">ticks_per_sec</s
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>The rate can also be changed while the simulation is running with
+<a class="reference internal" href="../../holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_sensor_rate" title="holoocean.environments.HoloOceanEnvironment.set_sensor_rate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_sensor_rate()</span></code></a>, which
+takes the same limits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">set_sensor_rate</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="s2">"RGBCamera"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This does not persist across a call to <code class="docutils literal notranslate"><span class="pre">reset()</span></code>.</p>
 </section>
 <section id="publish-message">
 <h2>Publish Message<a class="headerlink" href="#publish-message" title="Link to this heading"></a></h2>

@@ -97,6 +97,14 @@ on ``ticks_per_sec``.
       "Hz": 20
    }
 
+The rate can also be changed while the simulation is running with
+:meth:`~holoocean.environments.HoloOceanEnvironment.set_sensor_rate`, which
+takes the same limits::
+
+   env.set_sensor_rate("auv0", "RGBCamera", 5)
+
+This does not persist across a call to ``reset()``.
+
 
 Publish Message
 ===============

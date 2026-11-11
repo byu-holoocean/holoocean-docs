@@ -463,6 +463,8 @@
 </li>
 </ul></td>
 <td style="width: 33%; vertical-align: top;"><ul>
+<li><a href="holoocean/sensors.html#holoocean.sensors.HoloOceanSensor.engine_rated">engine_rated (holoocean.sensors.HoloOceanSensor attribute)</a>
+</li>
 <li><a href="holoocean/commands.html#holoocean.command.CommandCenter.enqueue_command">enqueue_command() (holoocean.command.CommandCenter method)</a>
 </li>
 </ul></td>
@@ -865,8 +867,6 @@
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastLidar">RaycastLidar (class in holoocean.sensors)</a>
 </li>
-<li><a href="holoocean/commands.html#holoocean.command.RaycastLidarRateCommand">RaycastLidarRateCommand (class in holoocean.command)</a>
-</li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastProfilingSonar">RaycastProfilingSonar (class in holoocean.sensors)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RaycastSemanticLidar">RaycastSemanticLidar (class in holoocean.sensors)</a>
@@ -894,8 +894,6 @@
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.reset">reset() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.RGBCamera">RGBCamera (class in holoocean.sensors)</a>
-</li>
-<li><a href="holoocean/commands.html#holoocean.command.RGBCameraRateCommand">RGBCameraRateCommand (class in holoocean.command)</a>
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.HoloOceanSensor.rotate">rotate() (holoocean.sensors.HoloOceanSensor method)</a>
 </li>
@@ -958,6 +956,8 @@
 </li>
 <li><a href="holoocean/sensors.html#holoocean.sensors.SensorFactory">SensorFactory (class in holoocean.sensors)</a>
 </li>
+<li><a href="holoocean/commands.html#holoocean.command.SensorRateCommand">SensorRateCommand (class in holoocean.command)</a>
+</li>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.sensors">sensors (holoocean.agents.HoloOceanAgent attribute)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.tides.TideController.set_active">set_active() (holoocean.tides.TideController method)</a>
@@ -993,12 +993,12 @@
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_ocean_currents">set_ocean_currents() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
+</ul></td>
+<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/environments.html#holoocean.tides.TideController.set_period">set_period() (holoocean.tides.TideController method)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.tides.TideController.set_period_sec">set_period_sec() (holoocean.tides.TideController method)</a>
 </li>
-</ul></td>
-<td style="width: 33%; vertical-align: top;"><ul>
 <li><a href="holoocean/agents.html#holoocean.agents.HoloOceanAgent.set_physics_state">set_physics_state() (holoocean.agents.HoloOceanAgent method)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_rain_parameters">set_rain_parameters() (holoocean.environments.HoloOceanEnvironment method)</a>
@@ -1011,23 +1011,14 @@
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_salinity_function">set_salinity_function() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
+<li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_sensor_rate">set_sensor_rate() (holoocean.environments.HoloOceanEnvironment method)</a>
+</li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_show_vector_field_name">set_show_vector_field_name() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_temperature_function">set_temperature_function() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.CameraSensor.set_ticks_per_capture">set_ticks_per_capture() (holoocean.sensors.CameraSensor method)</a>
-<ul>
-<li><a href="holoocean/sensors.html#holoocean.sensors.DepthCamera.set_ticks_per_capture">(holoocean.sensors.DepthCamera method)</a>
+<li><a href="holoocean/sensors.html#holoocean.sensors.HoloOceanSensor.set_ticks_per_capture">set_ticks_per_capture() (holoocean.sensors.HoloOceanSensor method)</a>
 </li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RaycastLidar.set_ticks_per_capture">(holoocean.sensors.RaycastLidar method)</a>
-</li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RaycastSemanticLidar.set_ticks_per_capture">(holoocean.sensors.RaycastSemanticLidar method)</a>
-</li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.RGBCamera.set_ticks_per_capture">(holoocean.sensors.RGBCamera method)</a>
-</li>
-<li><a href="holoocean/sensors.html#holoocean.sensors.SemanticSegmentationCamera.set_ticks_per_capture">(holoocean.sensors.SemanticSegmentationCamera method)</a>
-</li>
-</ul></li>
 <li><a href="holoocean/environments.html#holoocean.environments.HoloOceanEnvironment.set_ticks_per_sec">set_ticks_per_sec() (holoocean.environments.HoloOceanEnvironment method)</a>
 </li>
 <li><a href="holoocean/environments.html#holoocean.tides.TideController.set_tide">set_tide() (holoocean.tides.TideController method)</a>
