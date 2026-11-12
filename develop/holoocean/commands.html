@@ -833,7 +833,7 @@ before this will have any visible effect.</p>
 <dd><p>Sets the water surface to an absolute height, or offsets it by a relative amount, in meters.
 For dynamic tide cycles, this command is sent once per tick with the absolute height for
 that tick.</p>
-<p><a class="reference internal" href="environments.html#holoocean.tides.TideController" title="holoocean.tides.TideController"><code class="xref py py-class docutils literal notranslate"><span class="pre">TideController</span></code></a> always resolves the desired change to an absolute
+<p><a class="reference internal" href="environments.html#holoocean.ocean.tides.TideController" title="holoocean.ocean.tides.TideController"><code class="xref py py-class docutils literal notranslate"><span class="pre">TideController</span></code></a> always resolves the desired change to an absolute
 height client-side and sends it with <code class="docutils literal notranslate"><span class="pre">absolute=True</span></code>, so the relative path is not exercised
 by the packaged client today. It’s exposed here for future/direct use (e.g. a lower-level
 caller that wants to nudge the tide without first querying the current water level).</p>

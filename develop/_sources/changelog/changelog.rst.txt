@@ -12,6 +12,14 @@ Changelog
     merged it at the end in parentheses
   - see https://github.com/BYU-PCCL/holodeck/wiki/Holodeck-Release-Notes-Template
 
+HoloOcean (next release)
+========================
+
+Changes
+-------
+
+- Moved the tide and wave controllers into ``holoocean.ocean``; the old import paths still work
+
 HoloOcean 2.4.0
 ===============
 *11/3/2026*
