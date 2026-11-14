@@ -5,7 +5,7 @@ Manually Controlling an Agent
 =============================
 
 We've found that `pynput` is a good library for sending keyboard commands to the agents for manual control.
-Below are three examples that allows for controlling three different kinds of agents using keyboard inputs. 
+Below are four examples that allow for controlling four different kinds of agents using keyboard inputs. 
 
 Example 1: Hovering AUV
 -----------------------
@@ -90,7 +90,7 @@ The :ref:`hovering-auv-agent` uses the following keyboard shortcuts to control t
 
     def on_release(key):
         global pressed_keys
-        if hasattr(key, 'char'):
+        if hasattr(key, 'char') and key.char in pressed_keys:
             pressed_keys.remove(key.char)
 
     pressed_keys = list()
@@ -107,6 +107,8 @@ The :ref:`hovering-auv-agent` uses the following keyboard shortcuts to control t
             command = parse_keys(pressed_keys, force)
             env.act(name, command)
             state = env.tick()
+
+    listener.stop()
 
 
 Example 2: Torpedo AUV
@@ -184,7 +186,7 @@ The :ref:`torpedo-auv-agent` uses the following keyboard shortcuts:
 
     def on_release(key):
         global pressed_keys
-        if hasattr(key, 'char'):
+        if hasattr(key, 'char') and key.char in pressed_keys:
             pressed_keys.remove(key.char)
 
     pressed_keys = list()
@@ -201,6 +203,8 @@ The :ref:`torpedo-auv-agent` uses the following keyboard shortcuts:
             command = parse_keys(pressed_keys, force)
             env.act(name, command)
             state = env.tick()
+
+    listener.stop()
 
 Example 3: Surface Vessel
 -------------------------
@@ -268,7 +272,7 @@ The :ref:`surface-vessel-agent` uses the following keyboard shortcuts:
 
     def on_release(key):
         global pressed_keys
-        if hasattr(key, 'char'):
+        if hasattr(key, 'char') and key.char in pressed_keys:
             pressed_keys.remove(key.char)
 
     pressed_keys = list()
@@ -285,6 +289,8 @@ The :ref:`surface-vessel-agent` uses the following keyboard shortcuts:
             command = parse_keys(pressed_keys, force)
             env.act(name, command)
             state = env.tick()
+
+    listener.stop()
 
 
 Example 4: Husky Vehicle
@@ -357,7 +363,7 @@ The :ref:`husky-agent` uses the following keyboard shortcuts:
 
     def on_release(key):
         global pressed_keys
-        if hasattr(key, "char"):
+        if hasattr(key, "char") and key.char in pressed_keys:
             pressed_keys.remove(key.char)
 
     pressed_keys = list()
@@ -371,6 +377,8 @@ The :ref:`husky-agent` uses the following keyboard shortcuts:
                 break
 
             command = parse_keys(pressed_keys, force)
-            env.act("auv0", command)
+            env.act(name, command)
             state = env.tick()
+
+    listener.stop()
 

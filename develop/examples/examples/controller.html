@@ -121,7 +121,7 @@
 <section id="manually-controlling-an-agent">
 <span id="manual-control"></span><h1>Manually Controlling an Agent<a class="headerlink" href="#manually-controlling-an-agent" title="Link to this heading"></a></h1>
 <p>We’ve found that <cite>pynput</cite> is a good library for sending keyboard commands to the agents for manual control.
-Below are three examples that allows for controlling three different kinds of agents using keyboard inputs.</p>
+Below are four examples that allow for controlling four different kinds of agents using keyboard inputs.</p>
 <section id="example-1-hovering-auv">
 <h2>Example 1: Hovering AUV<a class="headerlink" href="#example-1-hovering-auv" title="Link to this heading"></a></h2>
 <p>The <a class="reference internal" href="../../agents/agents/hovering-auv-agent.html#hovering-auv-agent"><span class="std std-ref">HoveringAUV</span></a> uses the following keyboard shortcuts to control the vehicle:</p>
@@ -212,7 +212,7 @@ Below are three examples that allows for controlling three different kinds of ag
 
 <span class="k">def</span><span class="w"> </span><span class="nf">on_release</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">pressed_keys</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">'char'</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">'char'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
         <span class="n">pressed_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
 
 <span class="n">pressed_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -229,6 +229,8 @@ Below are three examples that allows for controlling three different kinds of ag
         <span class="n">command</span> <span class="o">=</span> <span class="n">parse_keys</span><span class="p">(</span><span class="n">pressed_keys</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
         <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+
+<span class="n">listener</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -313,7 +315,7 @@ Below are three examples that allows for controlling three different kinds of ag
 
 <span class="k">def</span><span class="w"> </span><span class="nf">on_release</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">pressed_keys</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">'char'</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">'char'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
         <span class="n">pressed_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
 
 <span class="n">pressed_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -330,6 +332,8 @@ Below are three examples that allows for controlling three different kinds of ag
         <span class="n">command</span> <span class="o">=</span> <span class="n">parse_keys</span><span class="p">(</span><span class="n">pressed_keys</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
         <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+
+<span class="n">listener</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -404,7 +408,7 @@ Below are three examples that allows for controlling three different kinds of ag
 
 <span class="k">def</span><span class="w"> </span><span class="nf">on_release</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">pressed_keys</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">'char'</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">'char'</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
         <span class="n">pressed_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
 
 <span class="n">pressed_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -421,6 +425,8 @@ Below are three examples that allows for controlling three different kinds of ag
         <span class="n">command</span> <span class="o">=</span> <span class="n">parse_keys</span><span class="p">(</span><span class="n">pressed_keys</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
         <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+
+<span class="n">listener</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -500,7 +506,7 @@ Below are three examples that allows for controlling three different kinds of ag
 
 <span class="k">def</span><span class="w"> </span><span class="nf">on_release</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">pressed_keys</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">"char"</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">"char"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">char</span> <span class="ow">in</span> <span class="n">pressed_keys</span><span class="p">:</span>
         <span class="n">pressed_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>
 
 <span class="n">pressed_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -514,8 +520,10 @@ Below are three examples that allows for controlling three different kinds of ag
             <span class="k">break</span>
 
         <span class="n">command</span> <span class="o">=</span> <span class="n">parse_keys</span><span class="p">(</span><span class="n">pressed_keys</span><span class="p">,</span> <span class="n">force</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="s2">"auv0"</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
         <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+
+<span class="n">listener</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
